@@ -1,0 +1,57 @@
+# Subscriber Data (CONTAINS PII - DO NOT COMMIT TO PUBLIC REPOS)
+subscribers.json
+subscribers_*.json
+subscribers.csv
+subscribers_*.csv
+
+# Environment variables (API keys)
+.env
+.env.local
+.env.*.local
+
+# Temporary files
+.tmp/
+*.tmp
+*.log
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Newsletter outputs (optional - these are OK to commit if you want archive)
+# .tmp/newsletter_*.html
+# .tmp/summaries_*.json

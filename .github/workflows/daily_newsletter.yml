@@ -1,0 +1,150 @@
+name: Daily Newsletter Pipeline
+
+on:
+  schedule:
+    # Run at 6 AM UTC daily (7 AM CET, 2 AM EST)
+    - cron: '0 6 * * *'
+  
+  # Allow manual triggering
+  workflow_dispatch:
+    inputs:
+      segment:
+        description: 'Segment to run (all, builders, leaders, innovators)'
+        required: false
+        default: 'all'
+      enable_trends:
+        description: 'Enable trend detection'
+        required: false
+        default: 'true'
+      test_mode:
+        description: 'Test mode (send to test recipients only)'
+        required: false
+        default: 'false'
+
+jobs:
+  run_pipeline:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+      
+      - name: Create subscribers file from secret
+        run: |
+          echo '${{ secrets.SUBSCRIBERS_JSON }}' > subscribers.json
+          echo "✅ Loaded subscribers from GitHub Secret"
+      
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      
+      - name: Create temp directory
+        run: mkdir -p .tmp
+      
+      - name: Step 1 - Aggregate feeds
+        run: python3 execution/aggregate_feeds.py
+        env:
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+      
+      - name: Step 2 - Enrich articles
+        run: python3 execution/enrich_articles.py
+        continue-on-error: true  # Don't fail if some scraping fails
+      
+      - name: Step 3 - Select stories (All segments)
+        run: |
+          python3 execution/select_stories.py --segment builders
+          python3 execution/select_stories.py --segment leaders
+          python3 execution/select_stories.py --segment innovators
+        env:
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+      
+      - name: Step 4 - Detect trends (Optional)
+        if: github.event.inputs.enable_trends != 'false'
+        run: |
+          python3 execution/detect_trends.py --segment builders
+          python3 execution/detect_trends.py --segment leaders
+          python3 execution/detect_trends.py --segment innovators
+        continue-on-error: true
+      
+      - name: Step 5 - Synthesize trends (Optional)
+        if: github.event.inputs.enable_trends != 'false'
+        run: |
+          python3 execution/synthesize_trends.py --segment builders
+          python3 execution/synthesize_trends.py --segment leaders
+          python3 execution/synthesize_trends.py --segment innovators
+        env:
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+        continue-on-error: true
+      
+      - name: Step 6 - Summarize articles (Builders)
+        run: |
+          if [ "${{ github.event.inputs.enable_trends }}" != "false" ]; then
+            python3 execution/summarize_articles.py --segment builders --enable-trends
+          else
+            python3 execution/summarize_articles.py --segment builders
+          fi
+        env:
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+      
+      - name: Step 7 - Summarize articles (Leaders)
+        run: |
+          if [ "${{ github.event.inputs.enable_trends }}" != "false" ]; then
+            python3 execution/summarize_articles.py --segment leaders --enable-trends
+          else
+            python3 execution/summarize_articles.py --segment leaders
+          fi
+        env:
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+      
+      - name: Step 8 - Summarize articles (Innovators)
+        run: |
+          if [ "${{ github.event.inputs.enable_trends }}" != "false" ]; then
+            python3 execution/summarize_articles.py --segment innovators --enable-trends
+          else
+            python3 execution/summarize_articles.py --segment innovators
+          fi
+        env:
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+      
+      - name: Step 9 - Compose newsletters
+        run: |
+          python3 execution/compose_newsletter.py --segment builders
+          python3 execution/compose_newsletter.py --segment leaders
+          python3 execution/compose_newsletter.py --segment innovators
+      
+      - name: Step 10 - Send newsletters
+        run: |
+          if [ "${{ github.event.inputs.test_mode }}" == "true" ]; then
+            echo "Test mode: Would send to test recipients only"
+            # Implement test mode in send_newsletter.py
+          else
+            python3 execution/send_newsletter.py --segment builders
+            python3 execution/send_newsletter.py --segment leaders
+            python3 execution/send_newsletter.py --segment innovators
+          fi
+        env:
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+      
+      - name: Upload artifacts (logs and newsletters)
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: newsletter-output-${{ github.run_number }}
+          path: |
+            .tmp/*.json
+            .tmp/*.html
+            .tmp/*.txt
+          retention-days: 7
+      
+      - name: Send completion notification
+        if: failure()
+        run: |
+          echo "Pipeline failed! Check logs in GitHub Actions"
+          # Optional: Send alert email via Resend

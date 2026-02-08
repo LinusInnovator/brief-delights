@@ -1,0 +1,43 @@
+{
+    "segment": "innovators",
+    "description": "Researchers, AI/ML practitioners, and technology pioneers",
+    "categories": {
+        "AI Research & Labs": [
+            "https://openai.com/blog/rss/",
+            "https://www.anthropic.com/index/rss.xml",
+            "https://deepmind.google/blog/rss.xml",
+            "https://ai.meta.com/blog/rss/",
+            "https://blog.google/technology/ai/rss/"
+        ],
+        "Academic Research": [
+            "http://arxiv.org/rss/cs.AI",
+            "http://arxiv.org/rss/cs.LG",
+            "http://arxiv.org/rss/cs.CL",
+            "https://www.nature.com/subjects/computer-science.rss",
+            "https://paperswithcode.com/feeds/papers.atom"
+        ],
+        "ML Community & Tools": [
+            "https://huggingface.co/blog/feed.xml",
+            "https://venturebeat.com/category/ai/feed/"
+        ],
+        "Tech Innovation": [
+            "https://www.technologyreview.com/feed/",
+            "https://www.wired.com/feed/rss",
+            "https://www.theverge.com/rss/index.xml",
+            "https://feeds.arstechnica.com/arstechnica/index"
+        ],
+        "Engineering & Development": [
+            "https://github.blog/feed/",
+            "https://stackoverflow.blog/feed/",
+            "https://engineering.fb.com/feed/",
+            "https://netflixtechblog.com/feed"
+        ],
+        "Emerging Tech": [
+            "https://news.ycombinator.com/rss",
+            "https://techcrunch.com/category/artificial-intelligence/feed/"
+        ]
+    },
+    "update_frequency": "daily",
+    "max_articles_per_feed": 10,
+    "lookback_hours": 24
+}

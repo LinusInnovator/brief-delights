@@ -1,0 +1,48 @@
+{
+  "niche": "B2B Tech & AI for Decision-Makers",
+  "categories": {
+    "AI & Machine Learning": [
+      "https://techcrunch.com/category/artificial-intelligence/feed/",
+      "https://www.technologyreview.com/feed/",
+      "https://openai.com/blog/rss/",
+      "https://blog.google/technology/ai/rss/",
+      "https://www.anthropic.com/index/rss.xml",
+      "https://huggingface.co/blog/feed.xml"
+    ],
+    "Tech Business & Startups": [
+      "https://techcrunch.com/feed/",
+      "https://www.theverge.com/rss/index.xml",
+      "https://www.wsj.com/xml/rss/3_7455.xml",
+      "https://feeds.arstechnica.com/arstechnica/index",
+      "https://www.bloomberg.com/feed/rss/technology",
+      "https://news.ycombinator.com/rss"
+    ],
+    "Enterprise Tech & Cloud": [
+      "https://aws.amazon.com/blogs/aws/feed/",
+      "https://cloud.google.com/blog/rss",
+      "https://azure.microsoft.com/en-us/blog/feed/",
+      "https://www.infoworld.com/index.rss",
+      "https://www.zdnet.com/news/rss.xml"
+    ],
+    "Developer & Engineering": [
+      "https://github.blog/feed/",
+      "https://stackoverflow.blog/feed/",
+      "https://engineeringblog.yelp.com/feed.xml",
+      "https://netflixtechblog.com/feed",
+      "https://engineering.fb.com/feed/"
+    ],
+    "Cybersecurity": [
+      "https://krebsonsecurity.com/feed/",
+      "https://www.schneier.com/blog/atom.xml",
+      "https://www.darkreading.com/rss.xml"
+    ],
+    "Innovation & Research": [
+      "https://www.wired.com/feed/rss",
+      "https://www.nature.com/subjects/computer-science.rss",
+      "https://arxiv.org/rss/cs.AI"
+    ]
+  },
+  "update_frequency": "daily",
+  "max_articles_per_feed": 10,
+  "lookback_hours": 24
+}

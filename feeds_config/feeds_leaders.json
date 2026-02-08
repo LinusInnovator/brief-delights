@@ -1,0 +1,44 @@
+{
+    "segment": "leaders",
+    "description": "CTOs, VPs, and business decision-makers",
+    "categories": {
+        "Tech Business & Strategy": [
+            "https://techcrunch.com/feed/",
+            "https://www.theverge.com/rss/index.xml",
+            "https://www.bloomberg.com/feed/rss/technology",
+            "https://www.wsj.com/xml/rss/3_7455.xml"
+        ],
+        "Venture Capital & Funding": [
+            "https://a16z.com/feed/",
+            "https://www.sequoiacap.com/feed/"
+        ],
+        "Management & Leadership": [
+            "https://hbr.org/topic/technology.rss",
+            "https://sloanreview.mit.edu/feed/"
+        ],
+        "Market Intelligence": [
+            "https://www.gartner.com/en/newsroom/rss",
+            "https://www.mckinsey.com/capabilities/mckinsey-digital/rss"
+        ],
+        "Enterprise Tech & Cloud": [
+            "https://aws.amazon.com/blogs/aws/feed/",
+            "https://cloud.google.com/blog/rss",
+            "https://azure.microsoft.com/en-us/blog/feed/",
+            "https://www.infoworld.com/index.rss",
+            "https://www.zdnet.com/news/rss.xml"
+        ],
+        "AI & Innovation": [
+            "https://openai.com/blog/rss/",
+            "https://www.technologyreview.com/feed/",
+            "https://www.wired.com/feed/rss"
+        ],
+        "Cybersecurity": [
+            "https://krebsonsecurity.com/feed/",
+            "https://www.schneier.com/blog/atom.xml",
+            "https://www.darkreading.com/rss.xml"
+        ]
+    },
+    "update_frequency": "daily",
+    "max_articles_per_feed": 10,
+    "lookback_hours": 24
+}

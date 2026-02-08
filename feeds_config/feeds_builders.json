@@ -1,0 +1,44 @@
+{
+    "segment": "builders",
+    "description": "Engineers, developers, and technical contributors",
+    "categories": {
+        "Developer & Engineering": [
+            "https://github.blog/feed/",
+            "https://stackoverflow.blog/feed/",
+            "https://dev.to/feed",
+            "https://hashnode.com/n/all/rss",
+            "https://martinfowler.com/feed.atom",
+            "https://blog.codinghorror.com/rss/"
+        ],
+        "Engineering Blogs": [
+            "https://engineering.fb.com/feed/",
+            "https://netflixtechblog.com/feed",
+            "https://engineeringblog.yelp.com/feed.xml",
+            "https://medium.com/feed/airbnb-engineering",
+            "https://eng.uber.com/feed/",
+            "https://stripe.com/blog/feed.rss"
+        ],
+        "AI & Machine Learning": [
+            "https://openai.com/blog/rss/",
+            "https://blog.google/technology/ai/rss/",
+            "https://huggingface.co/blog/feed.xml",
+            "https://machinelearningmastery.com/feed/"
+        ],
+        "Developer Tools & Platforms": [
+            "https://news.ycombinator.com/rss",
+            "https://www.infoworld.com/index.rss"
+        ],
+        "Cloud & Infrastructure": [
+            "https://aws.amazon.com/blogs/aws/feed/",
+            "https://cloud.google.com/blog/rss",
+            "https://azure.microsoft.com/en-us/blog/feed/"
+        ],
+        "Cybersecurity": [
+            "https://krebsonsecurity.com/feed/",
+            "https://www.schneier.com/blog/atom.xml"
+        ]
+    },
+    "update_frequency": "daily",
+    "max_articles_per_feed": 10,
+    "lookback_hours": 24
+}

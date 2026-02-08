@@ -1,0 +1,95 @@
+{
+    "segments": {
+        "builders": {
+            "name": "Builders",
+            "emoji": "🔧",
+            "description": "For engineering leaders building the future",
+            "focus_categories": [
+                "Developer & Engineering",
+                "Enterprise Tech & Cloud",
+                "Cybersecurity"
+            ],
+            "focus_keywords": [
+                "infrastructure",
+                "cloud",
+                "devops",
+                "kubernetes",
+                "api",
+                "performance",
+                "architecture",
+                "scalability",
+                "database",
+                "microservices"
+            ],
+            "skip_keywords": [
+                "funding",
+                "acquisition",
+                "ipo",
+                "raises"
+            ],
+            "selection_criteria": "Prioritize technical depth, implementation details, infrastructure decisions, and tools that help engineering teams build better products. Focus on what CTOs and VPs of Engineering need to make technical purchasing decisions."
+        },
+        "leaders": {
+            "name": "Leaders",
+            "emoji": "💼",
+            "description": "For executives making strategic tech decisions",
+            "focus_categories": [
+                "Tech Business & Startups",
+                "AI & Machine Learning",
+                "Innovation & Research"
+            ],
+            "focus_keywords": [
+                "funding",
+                "acquisition",
+                "strategy",
+                "market",
+                "revenue",
+                "growth",
+                "leadership",
+                "hiring",
+                "trends",
+                "valuation"
+            ],
+            "skip_keywords": [
+                "code",
+                "implementation",
+                "debugging",
+                "compiler"
+            ],
+            "selection_criteria": "Prioritize business impact, market trends, strategic decisions, and news that affects company direction. Focus on what CEOs and founders need to make strategic business decisions."
+        },
+        "innovators": {
+            "name": "Innovators",
+            "emoji": "🚀",
+            "description": "For pioneers exploring bleeding-edge tech",
+            "focus_categories": [
+                "AI & Machine Learning",
+                "Innovation & Research"
+            ],
+            "focus_keywords": [
+                "ai",
+                "research",
+                "breakthrough",
+                "novel",
+                "innovation",
+                "emerging",
+                "paper",
+                "model",
+                "algorithm",
+                "discovery"
+            ],
+            "skip_keywords": [
+                "legacy",
+                "maintenance",
+                "incremental",
+                "routine"
+            ],
+            "selection_criteria": "Prioritize breakthrough research, novel applications, future-forward innovations, and AI advances that will shape the next 5 years. Focus on what researchers and early adopters need to stay ahead of the curve."
+        }
+    },
+    "default_segment": "leaders",
+    "metadata": {
+        "version": "1.0",
+        "last_updated": "2026-02-08"
+    }
+}
