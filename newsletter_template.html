@@ -52,27 +52,28 @@
             border-bottom: 1px solid #e8e8e8;
         }
 
-        .header h1 {
-            margin: 0 0 8px 0;
-            font-size: 36px;
+        .logo {
+            font-size: 52px;
             font-weight: 700;
-            letter-spacing: -0.5px;
-            color: #000;
+            letter-spacing: -1.5px;
+            margin: 0;
+            line-height: 1;
+            color: #000000;
+        }
+
+        .tagline {
+            font-size: 16px;
+            font-weight: 400;
+            color: #666666;
+            margin: 4px 0 12px 0;
+            letter-spacing: 2px;
         }
 
         .header .date {
-            margin: 0 0 12px 0;
-            font-size: 15px;
-            color: #666;
-            font-weight: 400;
-        }
-
-        .header .tagline {
             margin: 0;
-            font-size: 16px;
-            color: #555;
+            font-size: 14px;
+            color: #999;
             font-weight: 400;
-            line-height: 1.5;
         }
 
         /* Sponsor Block (white background, tight integration) */
@@ -364,9 +365,9 @@
 
         <!-- Header -->
         <div class="header">
-            <h1>{{ newsletter_name }}</h1>
-            <p class="date">{{ formatted_date }}</p>
-            <p class="tagline">{{ segment_description }}</p>
+            <div class="logo">Brief</div>
+            <div class="tagline">delights</div>
+            <p class="date">{{ segment_name }} | {{ date }}</p>
         </div>
 
         <!-- Sponsor (Placeholder - customize per segment) -->
