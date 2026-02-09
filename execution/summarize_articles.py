@@ -32,11 +32,7 @@ TODAY = datetime.now().strftime("%Y-%m-%d")
 # OpenRouter configuration
 client = OpenAI(
     base_url="https://openrouter.ai/api/v1",
-    api_key=os.getenv("OPENROUTER_API_KEY"),
-    default_headers={
-        "HTTP-Referer": "https://briefdelights.com",
-        "X-Title": "Brief Delights Newsletter"
-    }
+    api_key=os.getenv("OPENROUTER_API_KEY")
 )
 
 # Model selection (using faster/cheaper model for summaries)
