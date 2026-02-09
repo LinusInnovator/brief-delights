@@ -403,11 +403,18 @@ def main():
         segments = segments_data['segments']
         log(f"\n📋 Processing {len(segments)} segments: {', '.join(segments.keys())}")
         
-        # Select stories for each segment
-        for segment_id, segment_config in segments.items():
+        # Select stories for each segment with delay to avoid rate limiting
+        segment_list = list(segments.items())
+        for idx, (segment_id, segment_config) in enumerate(segment_list):
             try:
                 selected = select_stories_for_segment(filtered_articles, segment_id, segment_config)
                 save_segment_selection(segment_id, selected)
+                
+                # Add delay between segments to avoid rate limiting (except for last segment)
+                if idx < len(segment_list) - 1:
+                    log(f"⏳ Waiting 5s before next segment to avoid rate limits...")
+                    time.sleep(5)
+                    
             except Exception as e:
                 log(f"❌ Failed to process segment {segment_id}: {str(e)}")
                 # Continue with other segments
