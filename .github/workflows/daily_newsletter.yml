@@ -69,10 +69,7 @@ jobs:
           OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
       
       - name: Step 3 - Select stories (All segments)
-        run: |
-          python3 execution/select_stories.py --segment builders
-          python3 execution/select_stories.py --segment leaders
-          python3 execution/select_stories.py --segment innovators
+        run: python3 execution/select_stories.py
         env:
           OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
       
