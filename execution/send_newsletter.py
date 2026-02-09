@@ -82,7 +82,7 @@ def send_email(subscriber: dict, html_content: str, segment_name: str) -> dict:
         response = resend.Emails.send({
             "from": EMAIL_SENDER,
             "to": subscriber['email'],
-            "subject": f"{NEWSLETTER_NAME} {segment_name} - {datetime.now().strftime('%B %d, %Y')}",
+            "subject": f"Brief Delights for {segment_name.split()[0]} - {datetime.now().strftime('%B %d, %Y')}",
             "html": html_content
         })
         
