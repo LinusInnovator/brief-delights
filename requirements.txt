@@ -10,7 +10,7 @@ requests==2.31.0
 resend==0.8.0
 
 # LLM Integration via OpenRouter
-openai==1.12.0
+openai>=1.52.0
 
 # Web Scraping
 beautifulsoup4==4.12.3
