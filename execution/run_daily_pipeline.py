@@ -178,7 +178,7 @@ def main():
     # STEP 2: Select Stories (for all segments)
     log("\n\n▶️  Step 2/5: Select Top Stories (All Segments)")
     log("─"*70)
-    if not run_script("select_stories.py", timeout=120):
+    if not run_script("select_stories.py", timeout=300):  # Increased from 120s - LLM calls can take 2-3min with large datasets
         log("❌ Pipeline failed at story selection", "ERROR")
         return False
     log("✅ Story selection complete for all segments")
