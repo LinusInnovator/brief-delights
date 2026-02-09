@@ -22,7 +22,19 @@ REQUESTS_PER_DOMAIN = {}
 MIN_DELAY_SECONDS = 0.5
 
 # Timeout settings
-TIMEOUT_SECONDS = 10
+TIMEOUT_SECONDS = 5  # Reduced from 10s to fail faster
+
+# Domain blacklist - sites that consistently fail or timeout
+BLACKLISTED_DOMAINS = {
+    'huggingface.co',  # Consistently times out
+    'papers.huggingface.co',
+    'bloomberg.com',  # Paywall
+    'wsj.com',  # Paywall
+    'ft.com',  # Paywall
+    'hbr.org',  # Paywall
+    'netflixtechblog.com',  # Often slow/fails
+    'eng.uber.com',  # Often slow/fails
+}
 
 # User agent (look more like a real browser)
 USER_AGENT = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36'
@@ -46,6 +58,12 @@ def rate_limit(url: str):
 
 def fetch_html(url: str) -> Optional[str]:
     """Fetch HTML content from URL with exponential backoff retry"""
+    # Check blacklist first
+    domain = urlparse(url).netloc
+    if domain in BLACKLISTED_DOMAINS:
+        logger.info(f"⏭️  Skipping blacklisted domain: {domain}")
+        return None
+    
     rate_limit(url)
     
     headers = {
