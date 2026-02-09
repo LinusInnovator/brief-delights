@@ -57,6 +57,48 @@ def generate_article_id(url: str) -> str:
     return hashlib.md5(url.encode()).hexdigest()
 
 
+def extract_source_from_url(url: str, feed_title: str) -> str:
+    """Extract readable source name from URL if feed title is generic"""
+    from urllib.parse import urlparse
+    
+    # If feed title is meaningful, use it
+    generic_titles = ['ai', 'blog', 'news', 'feed', 'rss']
+    if feed_title and feed_title.lower() not in generic_titles and len(feed_title) > 3:
+        return feed_title
+    
+    # Extract from URL
+    domain = urlparse(url).netloc
+    
+    # Remove www. and .com, .ai, .io etc
+    clean_domain = domain.replace('www.', '').split('.')[0]
+    
+    # Known blog mapping
+    blog_map = {
+        'googleblog': 'Google Blog',
+        'ai': 'Google AI Blog',
+        'blog.google': 'Google Blog',
+        'techcrunch': 'TechCrunch',
+        'theverge': 'The Verge',
+        'wired': 'Wired',
+        'arstechnica': 'Ars Technica',
+        'thenextweb': 'The Next Web',
+        'venturebeat': 'VentureBeat',
+        'reddit': 'Reddit',
+        'github': 'GitHub Blog',
+        'medium': 'Medium',
+        'substack': 'Substack',
+        'huggingface': 'Hugging Face'
+    }
+    
+    # Check if domain is in known blogs
+    for key, name in blog_map.items():
+        if key in domain.lower():
+            return name
+    
+    # Capitalize first letter of domain as fallback
+    return clean_domain.capitalize()
+
+
 def detect_source_type(url: str, source: str, category: str) -> str:
     """Detect if article is primary source (original) or secondary (news coverage)"""
     url_lower = url.lower()
@@ -138,7 +180,7 @@ def fetch_feed(feed_url: str, category: str, segment: str, lookback_hours: int =
                 "url": entry.link,
                 "published_date": pub_date.isoformat(),
                 "description": entry.get('summary', ''),
-                "source": feed.feed.get('title', feed_url),
+                "source": extract_source_from_url(entry.link, feed.feed.get('title', '')),
                 "category": category,
                 "segment": segment,  # Tag with segment
                 "source_type": detect_source_type(entry.link, feed.feed.get('title', ''), category),  # Detect primary vs secondary
