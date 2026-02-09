@@ -73,7 +73,7 @@ jobs:
       
       - name: Upload artifacts (logs and newsletters)
         if: always()
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: weekly-insights-output-${{ github.run_number }}
           path: |
