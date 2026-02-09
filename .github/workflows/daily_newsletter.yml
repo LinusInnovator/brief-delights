@@ -2,29 +2,20 @@ name: Daily Newsletter Pipeline
 
 on:
   schedule:
-    # Run at 6 AM UTC daily (7 AM CET, 2 AM EST)
+    # Run at 6 AM UTC daily (7 AM CET)
     - cron: '0 6 * * *'
   
-  # Allow manual triggering
   workflow_dispatch:
     inputs:
-      segment:
-        description: 'Segment to run (all, builders, leaders, innovators)'
-        required: false
-        default: 'all'
-      enable_trends:
-        description: 'Enable trend detection'
-        required: false
-        default: 'true'
       test_mode:
-        description: 'Test mode (send to test recipients only)'
+        description: 'Test mode (no emails sent)'
         required: false
         default: 'false'
 
 jobs:
   run_pipeline:
     runs-on: ubuntu-latest
-    timeout-minutes: 60
+    timeout-minutes: 30
     
     steps:
       - name: Checkout code
@@ -48,38 +39,14 @@ jobs:
       - name: Create temp directory
         run: mkdir -p .tmp
       
-      - name: Step 1 - Aggregate feeds
-        run: python3 execution/aggregate_feeds.py
-        env:
-          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
-      
-      - name: Step 2 - Enrich articles
-        run: python3 execution/enrich_articles.py
-        continue-on-error: true  # Don't fail if some scraping fails
-      
-      - name: Debug - Check API key
-        run: |
-          if [ -z "$OPENROUTER_API_KEY" ]; then
-            echo "❌ OPENROUTER_API_KEY is NOT set"
-            exit 1
-          else
-            echo "✅ OPENROUTER_API_KEY is set (first 10 chars: ${OPENROUTER_API_KEY:0:10}...)"
-          fi
-        env:
-          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
-      
-      - name: Run Newsletter Pipeline
-        run: |
-          if [ "${{ github.event.inputs.segment }}" = "all" ]; then
-            python3 execution/run_daily_pipeline.py
-          else
-            python3 execution/run_daily_pipeline.py --segment ${{ github.event.inputs.segment }}
-          fi
+      - name: Run Full Pipeline
+        run: python3 execution/run_daily_pipeline.py
+        timeout-minutes: 25
         env:
           OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
           RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
       
-      - name: Upload artifacts (logs and newsletters)
+      - name: Upload artifacts
         if: always()
         uses: actions/upload-artifact@v4
         with:
@@ -89,9 +56,3 @@ jobs:
             .tmp/*.html
             .tmp/*.txt
           retention-days: 7
-      
-      - name: Send completion notification
-        if: failure()
-        run: |
-          echo "Pipeline failed! Check logs in GitHub Actions"
-          # Optional: Send alert email via Resend
