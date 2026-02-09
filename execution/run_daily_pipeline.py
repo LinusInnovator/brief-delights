@@ -89,8 +89,12 @@ def check_prerequisites() -> bool:
     """Verify prerequisites"""
     log("\n🔍 Checking prerequisites...")
     
+    # Check for API keys: either from .env file OR environment variables
+    has_env_file = (PROJECT_ROOT / ".env").exists()
+    has_env_vars = os.environ.get("OPENROUTER_API_KEY") and os.environ.get("RESEND_API_KEY")
+    
     checks = {
-        ".env file": (PROJECT_ROOT / ".env").exists(),
+        "API keys (.env or env vars)": has_env_file or has_env_vars,
         "feeds_config.json": (PROJECT_ROOT / "feeds_config.json").exists(),
         "subscribers.json": (PROJECT_ROOT / "subscribers.json").exists(),
         "segments_config.json": SEGMENTS_CONFIG_FILE.exists()
