@@ -1,0 +1,89 @@
+name: Sunday Weekly Insights
+
+on:
+  schedule:
+    # Run at 10 AM UTC on Sundays (11 AM CET, 5 AM EST)
+    - cron: '0 10 * * 0'
+  
+  # Allow manual triggering
+  workflow_dispatch:
+    inputs:
+      segment:
+        description: 'Segment to run (all, builders, leaders, innovators)'
+        required: false
+        default: 'all'
+      test_mode:
+        description: 'Test mode (send to test recipients only)'
+        required: false
+        default: 'false'
+
+jobs:
+  weekly_insights:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+      
+      - name: Create subscribers file from secret
+        run: |
+          echo '${{ secrets.SUBSCRIBERS_JSON }}' > subscribers.json
+          echo "✅ Loaded subscribers from GitHub Secret"
+      
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      
+      - name: Create temp directory
+        run: mkdir -p .tmp .tmp/weekly_insights
+      
+      - name: Step 1 - Synthesize weekly insights (All segments)
+        run: |
+          python3 execution/synthesize_weekly_insights.py builders
+          python3 execution/synthesize_weekly_insights.py leaders
+          python3 execution/synthesize_weekly_insights.py innovators
+        env:
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+      
+      - name: Step 2 - Compose insights newsletters
+        run: |
+          python3 execution/compose_insights_newsletter.py builders
+          python3 execution/compose_insights_newsletter.py leaders
+          python3 execution/compose_insights_newsletter.py innovators
+      
+      - name: Step 3 - Send insights newsletters
+        run: |
+          if [ "${{ github.event.inputs.test_mode }}" == "true" ]; then
+            echo "Test mode: Would send to test recipients only"
+            # Implement test mode in send_newsletter.py
+          else
+            python3 execution/send_newsletter.py --segment builders --weekly
+            python3 execution/send_newsletter.py --segment leaders --weekly
+            python3 execution/send_newsletter.py --segment innovators --weekly
+          fi
+        env:
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+      
+      - name: Upload artifacts (logs and newsletters)
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: weekly-insights-output-${{ github.run_number }}
+          path: |
+            .tmp/*.json
+            .tmp/*.html
+            .tmp/*.txt
+          retention-days: 7
+      
+      - name: Send completion notification
+        if: failure()
+        run: |
+          echo "Weekly insights pipeline failed! Check logs in GitHub Actions"
+          # Optional: Send alert email via Resend

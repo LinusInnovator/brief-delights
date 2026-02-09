@@ -62,9 +62,12 @@ def load_segments_config():
         return json.load(f)
 
 
-def load_newsletter_html(segment_id: str) -> str:
+def load_newsletter_html(segment_id: str, weekly: bool = False) -> str:
     """Load segment-specific newsletter HTML"""
-    newsletter_file = TMP_DIR / f"newsletter_{segment_id}_{TODAY}.html"
+    if weekly:
+        newsletter_file = TMP_DIR / f"newsletter_weekly_{segment_id}_{TODAY}.html"
+    else:
+        newsletter_file = TMP_DIR / f"newsletter_{segment_id}_{TODAY}.html"
     
     if not newsletter_file.exists():
         raise FileNotFoundError(f"Newsletter not found for segment {segment_id}: {newsletter_file}")
@@ -153,11 +156,20 @@ def save_send_log(all_results: dict):
 
 def main():
     """Main execution"""
+    import argparse
+    parser = argparse.ArgumentParser(description='Send newsletters')
+    parser.add_argument('--segment', help='Specific segment to send (optional)')
+    parser.add_argument('--weekly', action='store_true', help='Send weekly insights instead of daily')
+    args = parser.parse_args()
+    
     start_time = datetime.now()
     
     try:
         log("=" * 60)
-        log("Starting Segment-Based Newsletter Delivery")
+        if args.weekly:
+            log("Starting Weekly Insights Delivery")
+        else:
+            log("Starting Segment-Based Newsletter Delivery")
         log("=" * 60)
         
         # Load segments and subscribers
@@ -177,7 +189,7 @@ def main():
                 segment_name = f"{segment_config['name']} {segment_config['emoji']}"
                 
                 # Load segment-specific newsletter
-                html_content = load_newsletter_html(segment_id)
+                html_content = load_newsletter_html(segment_id, weekly=args.weekly)
                 
                 # Send to this segment
                 results = send_to_segment(segment_id, subscribers, html_content, segment_name)

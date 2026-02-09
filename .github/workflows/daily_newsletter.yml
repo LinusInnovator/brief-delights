@@ -119,6 +119,14 @@ jobs:
           python3 execution/compose_newsletter.py --segment leaders
           python3 execution/compose_newsletter.py --segment innovators
       
+      - name: Step 9.5 - Aggregate weekly trends (for Sunday)
+        if: github.event.inputs.enable_trends != 'false'
+        run: |
+          python3 execution/aggregate_weekly_trends.py builders
+          python3 execution/aggregate_weekly_trends.py leaders
+          python3 execution/aggregate_weekly_trends.py innovators
+        continue-on-error: true
+      
       - name: Step 10 - Send newsletters
         run: |
           if [ "${{ github.event.inputs.test_mode }}" == "true" ]; then
