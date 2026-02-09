@@ -24,8 +24,12 @@ MIN_DELAY_SECONDS = 0.5
 # Timeout settings
 TIMEOUT_SECONDS = 10
 
-# User agent
-USER_AGENT = 'Mozilla/5.0 (compatible; BriefDelightsBot/1.0; +https://briefdelights.com/about)'
+# User agent (look more like a real browser)
+USER_AGENT = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36'
+
+# Retry settings
+MAX_RETRIES = 3
+RETRY_DELAY_BASE = 2  # seconds
 
 
 def rate_limit(url: str):
@@ -41,22 +45,49 @@ def rate_limit(url: str):
 
 
 def fetch_html(url: str) -> Optional[str]:
-    """Fetch HTML content from URL"""
+    """Fetch HTML content from URL with exponential backoff retry"""
     rate_limit(url)
     
     headers = {
         'User-Agent': USER_AGENT,
-        'Accept': 'text/html,application/xhtml+xml',
+        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
         'Accept-Language': 'en-US,en;q=0.9',
+        'Accept-Encoding': 'gzip, deflate',
+        'DNT': '1',
+        'Connection': 'keep-alive',
+        'Upgrade-Insecure-Requests': '1',
     }
     
-    try:
-        response = requests.get(url, headers=headers, timeout=TIMEOUT_SECONDS)
-        response.raise_for_status()
-        return response.text
-    except Exception as e:
-        logger.warning(f"Failed to fetch {url}: {e}")
-        return None
+    for attempt in range(MAX_RETRIES):
+        try:
+            response = requests.get(url, headers=headers, timeout=TIMEOUT_SECONDS, allow_redirects=True)
+            response.raise_for_status()
+            return response.text
+            
+        except requests.exceptions.HTTPError as e:
+            # Handle 429 rate limiting with exponential backoff
+            if e.response.status_code == 429:
+                if attempt < MAX_RETRIES - 1:
+                    delay = RETRY_DELAY_BASE * (2 ** attempt)  # 2, 4, 8 seconds
+                    logger.warning(f"Rate limited (429) for {url}, retrying in {delay}s (attempt {attempt + 1}/{MAX_RETRIES})")
+                    time.sleep(delay)
+                    continue
+                else:
+                    logger.warning(f"Rate limited (429) for {url}, max retries exceeded")
+                    return None
+            else:
+                logger.warning(f"HTTP error {e.response.status_code} for {url}: {e}")
+                return None
+                
+        except requests.exceptions.Timeout:
+            logger.warning(f"Timeout fetching {url}")
+            return None
+            
+        except Exception as e:
+            logger.warning(f"Failed to fetch {url}: {e}")
+            return None
+    
+    return None
 
 
 def extract_with_readability(html: str) -> Optional[str]:

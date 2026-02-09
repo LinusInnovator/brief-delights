@@ -30,7 +30,7 @@ TMP_DIR = BASE_DIR / '.tmp'
 TODAY = datetime.now().strftime('%Y-%m-%d')
 
 # Processing settings
-MAX_WORKERS = 15  # Parallel scraping threads
+MAX_WORKERS = 8  # Parallel scraping threads (reduced from 15 to avoid rate limits)
 ARTICLES_TO_ENRICH = 'full'  # 'full' = all articles, 'selected' = only selected ones
 
 
