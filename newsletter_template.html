@@ -70,10 +70,18 @@
         }
 
         .header .date {
-            margin: 0;
+            margin: 0 0 8px 0;
             font-size: 14px;
             color: #999;
             font-weight: 400;
+        }
+
+        .header .curation-stats {
+            margin: 0;
+            font-size: 12px;
+            color: #aaa;
+            font-weight: 400;
+            font-family: 'Courier New', monospace;
         }
 
         /* Sponsor Block (white background, tight integration) */
@@ -368,6 +376,8 @@
             <div class="logo">Brief</div>
             <div class="tagline">delights</div>
             <p class="date">{{ segment_name }} | {{ date }}</p>
+            <p class="curation-stats">{{ total_scanned }} scanned → {{ total_enriched }} analyzed → {{ total_selected }}
+                selected</p>
         </div>
 
         <!-- Sponsor (Placeholder - customize per segment) -->
