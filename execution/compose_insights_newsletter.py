@@ -51,7 +51,7 @@ def load_synthesis(segment: str) -> dict:
 def load_template() -> Template:
     """Load Jinja2 template"""
     if not TEMPLATE_FILE.exists():
-        # Use minimal fallback based on newsletter_template.html structure
+        # Use template matching daily newsletter styling exactly
         template_content = """
 <!DOCTYPE html>
 <html lang="en">
@@ -59,50 +59,306 @@ def load_template() -> Template:
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ newsletter_name }} Weekly Insights - {{ date }}</title>
+    <style>
+        /* Reset */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background-color: #f8f9fa;
+            color: #1a1a1a;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* Container */
+        .email-wrapper {
+            max-width: 680px;
+            margin: 0 auto;
+            background-color: #ffffff;
+        }
+
+        /* Top Bar (minimal, like TLDR) */
+        .top-bar {
+            padding: 16px 40px;
+            text-align: center;
+            border-bottom: 1px solid #e8e8e8;
+            background: #ffffff;
+        }
+
+        .top-bar a {
+            color: #666;
+            text-decoration: none;
+            font-size: 13px;
+            margin: 0 12px;
+            font-weight: 500;
+        }
+
+        .top-bar a:hover {
+            color: #000;
+        }
+
+        /* Header (Clean, no gradient!) */
+        .header {
+            background: #ffffff;
+            padding: 40px 40px 32px 40px;
+            text-align: center;
+            border-bottom: 1px solid #e8e8e8;
+        }
+
+        .logo {
+            font-size: 52px;
+            font-weight: 700;
+            letter-spacing: -1.5px;
+            margin: 0;
+            line-height: 1;
+            color: #000000;
+        }
+
+        .tagline {
+            font-size: 18px;
+            font-weight: 400;
+            color: #666666;
+            margin: 4px 0 12px 0;
+            letter-spacing: 2px;
+        }
+
+        .header .date {
+            margin: 0 0 8px 0;
+            font-size: 14px;
+            color: #999;
+            font-weight: 400;
+        }
+
+        .header .curation-stats {
+            margin: 0;
+            font-size: 12px;
+            color: #aaa;
+            font-weight: 400;
+            font-family: 'Courier New', monospace;
+        }
+
+        /* Content */
+        .content {
+            padding: 40px;
+        }
+
+        /* Section Headers */
+        .section {
+            margin-bottom: 32px;
+        }
+
+        .section h2 {
+            font-size: 20px;
+            font-weight: 700;
+            color: #000;
+            margin: 0 0 20px 0;
+            padding: 0;
+            border: none;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .section h3 {
+            font-size: 18px;
+            font-weight: 600;
+            color: #000;
+            margin: 24px 0 12px 0;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Insights text */
+        .insights p {
+            font-size: 15px;
+            color: #444;
+            line-height: 1.7;
+            margin: 0 0 16px 0;
+        }
+
+        .insights ul, .insights ol {
+            font-size: 15px;
+            color: #444;
+            line-height: 1.7;
+            margin: 0 0 16px 0;
+            padding-left: 24px;
+        }
+
+        .insights li {
+            margin-bottom: 8px;
+        }
+
+        .insights a {
+            color: #4f46e5;
+            text-decoration: none;
+            border-bottom: 1px solid rgba(79, 70, 229, 0.3);
+        }
+
+        .insights a:hover {
+            color: #1e40af;
+            border-bottom-color: #1e40af;
+        }
+
+        .insights strong {
+            font-weight: 600;
+            color: #000;
+        }
+
+        /* Section separators */
+        .section-separator {
+            border-top: 2px solid #e8e8e8;
+            margin: 32px 0;
+        }
+
+        /* Charts */
+        .chart-container {
+            margin: 32px 0;
+            text-align: center;
+        }
+
+        .chart-container img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+            border-radius: 8px;
+        }
+
+        /* Footer */
+        .footer {
+            background: #ffffff;
+            padding: 40px;
+            text-align: center;
+            border-top: 1px solid #e8e8e8;
+        }
+
+        .footer .share {
+            margin: 0 0 24px 0;
+            font-size: 16px;
+            color: #444;
+        }
+
+        .footer .share a {
+            color: #4f46e5;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .footer .share a:hover {
+            text-decoration: underline;
+        }
+
+        .footer .links {
+            margin: 20px 0;
+            font-size: 14px;
+        }
+
+        .footer .links a {
+            color: #666;
+            text-decoration: none;
+            margin: 0 12px;
+        }
+
+        .footer .links a:hover {
+            color: #000;
+        }
+
+        .footer .legal {
+            margin-top: 24px;
+            font-size: 13px;
+            color: #999;
+            line-height: 1.6;
+        }
+
+        /* Mobile Responsive */
+        @media only screen and (max-width: 600px) {
+            .email-wrapper {
+                width: 100% !important;
+            }
+
+            .top-bar {
+                padding: 12px 20px !important;
+            }
+
+            .header {
+                padding: 24px 20px 20px 20px !important;
+            }
+
+            .logo {
+                font-size: 36px !important;
+            }
+
+            .tagline {
+                font-size: 15px !important;
+            }
+
+            .content, .footer {
+                padding: 24px !important;
+            }
+
+            .chart-container {
+                margin: 24px 0 !important;
+            }
+        }
+    </style>
 </head>
-<body style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; background-color: #f8f9fa; margin: 0; padding: 0;">
-    <div style="max-width: 680px; margin: 0 auto; background-color: #ffffff;">
-        <!-- Header -->
-        <div style="background: #ffffff; padding: 40px 40px 32px 40px; text-align: center; border-bottom: 1px solid #e8e8e8;">
-            <div style="font-size: 52px; font-weight: 700; letter-spacing: -1.5px; margin: 0; line-height: 1; color: #000000;">{{ newsletter_name }}</div>
-            <div style="font-size: 16px; font-weight: 400; color: #666666; margin: 4px 0 12px 0; letter-spacing: 2px;">delights</div>
-            <p style="margin: 0 0 8px 0; font-size: 14px; color: #999;">Weekly Insights 📊 | {{ date }}</p>
-            <p style="margin: 0; font-size: 12px; color: #aaa; font-family: 'Courier New', monospace;">{{ total_scanned }} scanned → {{ total_enriched }} analyzed → {{ total_selected }} selected this week</p>
+<body>
+    <div class="email-wrapper">
+        <!-- Top Navigation Bar -->
+        <div class="top-bar">
+            <a href="{{ website_url }}">Sign Up</a> |
+            <a href="{{ website_url }}/advertise">Advertise</a> |
+            <a href="{{ website_url }}/{{ date }}">View Online</a>
         </div>
 
-        <!-- Insights Content -->
-        <div style="padding: 40px;">
-            {{ insights_html | safe }}
+        <!-- Header -->
+        <div class="header">
+            <div class="logo">Brief</div>
+            <div class="tagline">delights</div>
+            <p class="date">Weekly Insights 📊 | {{ date }}</p>
+            <p class="curation-stats">{{ total_scanned }} scanned → {{ total_enriched }} analyzed → {{ total_selected }} selected this week</p>
+        </div>
+
+        <!-- Content -->
+        <div class="content">
+            <div class="insights">
+                {{ insights_html | safe }}
+            </div>
         </div>
 
         <!-- Trend Charts -->
         {% if chart_top_trend %}
-        <div style="padding: 0 40px 20px 40px;">
+        <div class="chart-container">
             <img src="{{ chart_top_trend }}" 
                  alt="Weekly trend chart showing mention count over time"
-                 style="max-width: 100%; height: auto; display: block; margin: 0 auto; border-radius: 8px;"
                  width="600" height="300">
         </div>
         {% endif %}
         
         {% if chart_top_trends_bar %}
-        <div style="padding: 0 40px 40px 40px;">
+        <div class="chart-container">
             <img src="{{ chart_top_trends_bar }}" 
                  alt="Bar chart showing top 5 trending topics this week"
-                 style="max-width: 100%; height: auto; display: block; margin: 0 auto; border-radius: 8px;"
                  width="600" height="375">
         </div>
         {% endif %}
 
         <!-- Footer -->
-        <div style="background: #f8f9fa; padding: 32px 40px; border-top: 1px solid #e8e8e8; text-align: center; color: #666;">
-            <p style="margin: 0 0 16px 0; font-size: 14px;">
-                <a href="{{ website_url }}" style="color: #666; text-decoration: none;">briefdelights.com</a> |
-                <a href="{{ unsubscribe_url }}" style="color: #666; text-decoration: none;">Unsubscribe</a>
+        <div class="footer">
+            <p class="share">💌 Enjoying Brief Delights? <a href="mailto:?subject=Check%20out%20Brief%20Delights&body=I%20thought%20you'd%20find%20this%20weekly%20tech%20brief%20useful">Forward to a colleague</a></p>
+
+            <p class="links">
+                <a href="{{ website_url }}">Website</a>
+                <a href="{{ website_url }}/about">About</a>
+                <a href="{{ website_url }}/advertise">Advertise</a>
+                <a href="{{ unsubscribe_url }}">Unsubscribe</a>
             </p>
-            <p style="margin: 0; font-size: 13px; color: #999;">
-                This is a weekly strategic insights newsletter.<br>
-                To change frequency preferences, visit your account settings.
+
+            <p class="legal">
+                You're receiving this because you subscribed to Brief Delights.<br>
+                <strong>brief delights | A DreamValidator brand</strong><br>
+                © 2026 All rights reserved.<br>
+                Questions? <a href="mailto:hello@dreamvalidator.com" style="color: #999; text-decoration: none;">hello@dreamvalidator.com</a>
             </p>
         </div>
     </div>
