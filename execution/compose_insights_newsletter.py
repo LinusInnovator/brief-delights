@@ -95,43 +95,103 @@ def load_template() -> Template:
         return Template(f.read())
 
 def format_insights_html(insights_markdown: str) -> str:
-    """Convert markdown insights to HTML"""
-    # Simple markdown -> HTML conversion
-    html = insights_markdown
-    
-    # Headers
-    html = html.replace('\n# ', '\n<h2 style="font-size: 24px; font-weight: 700; margin: 32px 0 16px 0; color: #000;">')
-    html = html.replace('\n## ', '\n<h3 style="font-size: 20px; font-weight: 600; margin: 24px 0 12px 0; color: #000;">')
-    html = html.replace('\n### ', '\n<h4 style="font-size: 18px; font-weight: 600; margin: 20px 0 10px 0; color: #333;">')
-    
-    # Close headers (naive but works for our case)
-    html = html.replace('</h', '\n</h')
-    for i in range(2, 5):
-        html = html.replace(f'<h{i} ', f'<h{i} ').replace('\n<', f'</h{i}>\n<')
-    
-    # Paragraphs
-    paragraphs = html.split('\n\n')
-    formatted = []
-    for para in paragraphs:
-        if not para.strip():
-            continue
-        if para.startswith('<h') or para.startswith('•'):
-            formatted.append(para)
-        else:
-            formatted.append(f'<p style="margin: 0 0 16px 0; line-height: 1.6; color: #333;">{para}</p>')
-    
-    html = '\n\n'.join(formatted)
-    
-    # Bold
+    """Convert markdown insights to properly formatted HTML"""
     import re
-    html = re.sub(r'\*\*(.+?)\*\*', r'<strong>\1</strong>', html)
     
-    # Bullets
-    html = html.replace('\n• ', '\n<li style="margin-bottom: 8px;">')
-    html = html.replace('<li ', '<ul style="margin: 16px 0; padding-left: 24px;"><li ')
-    html = html.replace('</li>\n\n', '</li></ul>\n\n')
+    lines = insights_markdown.split('\n')
+    html_parts = []
+    in_list = False
+    current_section = []
     
-    return html
+    for line in lines:
+        line = line.strip()
+        
+        if not line:
+            if current_section:
+                # Close any open sections
+                if in_list:
+                    current_section.append('</ul>')
+                    in_list = False
+                html_parts.append('\n'.join(current_section))
+                current_section = []
+            continue
+        
+        # Skip the title line (# Sunday Weekly Insights Report)
+        if line.startswith('# Sunday Weekly Insights'):
+            continue
+            
+        # H2 headers (## SECTION)
+        if line.startswith('## '):
+            if in_list:
+                current_section.append('</ul>')
+                in_list = False
+            if current_section:
+                html_parts.append('\n'.join(current_section))
+                current_section = []
+            
+            header_text = line[3:].strip()
+            # Add visual separator before each major section
+            current_section.append('<div style="border-top: 2px solid #e8e8e8; margin: 32px 0;"></div>')
+            current_section.append(f'<h2 style="font-size: 22px; font-weight: 700; margin: 24px 0 16px 0; color: #000; text-transform: uppercase; letter-spacing: 0.5px;">{header_text}</h2>')
+            
+        # H3 headers (### Subheading) - not used in current format but handle anyway
+        elif line.startswith('### '):
+            header_text = line[4:].strip()
+            current_section.append(f'<h3 style="font-size: 18px; font-weight: 600; margin: 20px 0 12px 0; color: #333;">{header_text}</h3>')
+            
+        # Numbered lists (1. item)
+        elif re.match(r'^\d+\.\s+', line):
+            if not in_list:
+                current_section.append('<ol style="margin: 16px 0; padding-left: 24px; line-height: 1.8;">')
+                in_list = 'ol'
+            item_text = re.sub(r'^\d+\.\s+', '', line)
+            # Convert links in list items
+            item_text = convert_links(item_text)
+            current_section.append(f'<li style="margin-bottom: 8px; color: #333;">{item_text}</li>')
+            
+        # Bullet lists (- item or • item)
+        elif line.startswith('- ') or line.startswith('• '):
+            if not in_list:
+                current_section.append('<ul style="margin: 16px 0; padding-left: 24px; line-height: 1.8;">')
+                in_list = 'ul'
+            item_text = line[2:].strip()
+            # Convert links in list items
+            item_text = convert_links(item_text)
+            current_section.append(f'<li style="margin-bottom: 8px; color: #333;">{item_text}</li>')
+            
+        # Regular paragraphs
+        else:
+            if in_list:
+                current_section.append(f'</{in_list}>')
+                in_list = False
+            
+            # Convert markdown formatting
+            paragraph = convert_links(line)
+            paragraph = convert_bold(paragraph)
+            
+            current_section.append(f'<p style="margin: 0 0 16px 0; line-height: 1.7; color: #333; font-size: 15px;">{paragraph}</p>')
+    
+    # Close any remaining open tags
+    if in_list:
+        current_section.append(f'</{in_list}>')
+    if current_section:
+        html_parts.append('\n'.join(current_section))
+    
+    return '\n\n'.join(html_parts)
+
+
+def convert_links(text: str) -> str:
+    """Convert markdown links [text](url) to HTML"""
+    import re
+    # Match [text](url) pattern
+    pattern = r'\[([^\]]+)\]\(([^\)]+)\)'
+    return re.sub(pattern, r'<a href="\2" style="color: #0066cc; text-decoration: none; border-bottom: 1px solid #cce0ff;">\1</a>', text)
+
+
+def convert_bold(text: str) -> str:
+    """Convert **bold** to HTML"""
+    import re
+    return re.sub(r'\*\*(.+?)\*\*', r'<strong style="font-weight: 600; color: #000;">\1</strong>', text)
 
 def compose_insights_newsletter(synthesis: dict, segment_config: dict) -> str:
     """Compose the Sunday insights newsletter HTML"""

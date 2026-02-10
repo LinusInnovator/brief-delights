@@ -208,12 +208,28 @@ def main():
         log(f"✅ Newsletter composed for {segment_name}")
     
     # STEP 5: Send (handles all segments)
-    log("\n\n▶️  Step 5/5: Send Newsletters (All Segments)")
-    log("─"*70)
-    if not run_script("send_newsletter.py", timeout=300):
-        log("❌ Pipeline failed at sending", "ERROR")
-        return False
+    # ========================================
+    # STEP 5: Send Newsletters
+    # ========================================
+    if not run_script("send_newsletter.py", 300):
+        log("⚠️ Send newsletters failed - check logs", "ERROR")
+        return False # This return False was missing in the provided snippet, but is crucial for pipeline integrity.
     log("✅ Delivery complete")
+    
+    # ========================================
+    # STEP 6: Aggregate Weekly Trends (for Sunday insights)
+    # ========================================
+    log("\n" + "=" * 60)
+    log("STEP 6: Aggregating Weekly Trends", "INFO")
+    log("=" * 60)
+    log("📊 Saving today's trends for Sunday synthesis...")
+    
+    # Run aggregation for each segment
+    for segment_id in ["builders", "leaders", "innovators"]:
+        if not run_script("aggregate_weekly_trends.py", 30, [segment_id]):
+            log(f"⚠️ Weekly aggregation failed for {segment_id}", "WARN")
+    
+    log("✅ Weekly trend aggregation complete")
     
     # Summary
     generate_summary(segments)
