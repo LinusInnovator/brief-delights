@@ -12,7 +12,7 @@ from pathlib import Path
 from openai import OpenAI
 from dotenv import load_dotenv
 import concurrent.futures
-from typing import Dict, List
+from typing import Dict, List, Tuple
 import time
 
 # Import editorial prompt templates from same directory
@@ -69,12 +69,25 @@ def prepare_content(article: Dict) -> str:
     return content
 
 
-def create_summary_prompt(article: Dict, trend_context: str = "") -> str:
-    """Create summarization prompt with segment-specific editorial guidance"""
+def calculate_read_time(word_count: int) -> int:
+    """Calculate read time in minutes based on word count (200 words/min average)"""
+    if word_count == 0:
+        return 1
+    minutes = max(1, round(word_count / 200))
+    return min(minutes, 15)  # Cap at 15 min for sanity
+
+
+def create_summary_prompt(article: Dict, trend_context: str = "") -> Tuple[str, int]:
+    """Create summarization prompt with segment-specific editorial guidance
+    
+    Returns:
+        tuple: (prompt, word_count) - word_count used for fallback read time calculation
+    """
     content = prepare_content(article)
     
     # Estimate word count for read time calculation
     word_count = len(content.split())
+    estimated_read_time = calculate_read_time(word_count)
     
     # Get segment and metadata
     segment = article.get('segment', 'builders')
@@ -136,11 +149,11 @@ Return ONLY valid JSON (no markdown, no explanations):
   "summary": "Ultra-concise summary in 30-40 words.",
   "key_takeaway": "One crisp sentence in 15 words max.",
   "why_this_matters": "Strategic insight - specific, actionable, non-obvious (20-25 words)",
-  "read_time_minutes": 5
+  "read_time_minutes": {estimated_read_time}
 }}
 """
     
-    return prompt
+    return prompt, word_count
 
 
 
@@ -194,9 +207,11 @@ def summarize_article(article: Dict, index: int, log_file: Path, trend_context: 
         if len(snippet) > 250:
             snippet = snippet[:247] + "..."
         
+        # Calculate read time from description word count
+        desc_word_count = len(description.split())
         article['summary'] = snippet
         article['key_takeaway'] = ''
-        article['read_time_minutes'] = 3  # Default for quick links
+        article['read_time_minutes'] = calculate_read_time(desc_word_count)
         
         log(f"✅ Quick link {article_num} processed (no LLM needed)", log_file)
         return article
@@ -207,8 +222,9 @@ def summarize_article(article: Dict, index: int, log_file: Path, trend_context: 
     start_time = time.time()
     
     try:
-        # Create prompt
-        prompt = create_summary_prompt(article, trend_context=trend_context)
+        # Create prompt and get word count for fallback read time
+        prompt, word_count = create_summary_prompt(article, trend_context=trend_context)
+        calculated_read_time = calculate_read_time(word_count)
         
         # Get summary from LLM
         try:
@@ -221,7 +237,7 @@ def summarize_article(article: Dict, index: int, log_file: Path, trend_context: 
         article['summary'] = summary_data['summary']
         article['key_takeaway'] = summary_data.get('key_takeaway', '')
         article['why_this_matters'] = summary_data.get('why_this_matters', '')  # NEW: Editorial context
-        article['read_time_minutes'] = summary_data.get('read_time_minutes', 5)  # Default to 5 min
+        article['read_time_minutes'] = summary_data.get('read_time_minutes', calculated_read_time)  # Use calculated as fallback
         
         elapsed = time.time() - start_time
         log(f"✅ Article {article_num} summarized in {elapsed:.2f}s ({article['read_time_minutes']} min read)", log_file)
@@ -230,10 +246,12 @@ def summarize_article(article: Dict, index: int, log_file: Path, trend_context: 
         
     except Exception as e:
         log(f"❌ Failed to summarize article {article_num}: {str(e)}", log_file)
-        # Fallback: use description as summary
-        article['summary'] = article.get('description', '')[:200]
+        # Fallback: use description as summary and calculate read time
+        fallback_content = article.get('description', '') or article.get('raw_content', '')
+        fallback_word_count = len(fallback_content.split())
+        article['summary'] = fallback_content[:200]
         article['key_takeaway'] = f"See full article for details: {article['source']}"
-        article['read_time_minutes'] = 5
+        article['read_time_minutes'] = calculate_read_time(fallback_word_count)
         return article
 
 
