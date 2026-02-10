@@ -1,0 +1,179 @@
+import { Handler } from '@netlify/functions';
+import { readFileSync, writeFileSync, existsSync } from 'fs';
+import { join } from 'path';
+import crypto from 'crypto';
+
+interface SubscribeRequest {
+    email: string;
+    segment: 'builders' | 'leaders' | 'innovators';
+}
+
+interface PendingVerification {
+    email: string;
+    segment: string;
+    token: string;
+    createdAt: string;
+}
+
+const PENDING_FILE = join(process.cwd(), '.tmp', 'pending_verifications.json');
+const RESEND_API_KEY = process.env.RESEND_API_KEY;
+
+export const handler: Handler = async (event) => {
+    // CORS headers
+    const headers = {
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Headers': 'Content-Type',
+        'Content-Type': 'application/json',
+    };
+
+    // Handle preflight
+    if (event.httpMethod === 'OPTIONS') {
+        return { statusCode: 200, headers, body: '' };
+    }
+
+    // Only allow POST
+    if (event.httpMethod !== 'POST') {
+        return {
+            statusCode: 405,
+            headers,
+            body: JSON.stringify({ error: 'Method not allowed' }),
+        };
+    }
+
+    try {
+        const { email, segment }: SubscribeRequest = JSON.parse(event.body || '{}');
+
+        // Validate input
+        if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+            return {
+                statusCode: 400,
+                headers,
+                body: JSON.stringify({ error: 'Invalid email address' }),
+            };
+        }
+
+        if (!['builders', 'leaders', 'innovators'].includes(segment)) {
+            return {
+                statusCode: 400,
+                headers,
+                body: JSON.stringify({ error: 'Invalid segment' }),
+            };
+        }
+
+        // Generate verification token
+        const token = crypto.randomBytes(32).toString('hex');
+
+        // Load or create pending verifications file
+        let pending: PendingVerification[] = [];
+        if (existsSync(PENDING_FILE)) {
+            pending = JSON.parse(readFileSync(PENDING_FILE, 'utf-8'));
+        }
+
+        // Check if already pending
+        const existing = pending.find(p => p.email === email);
+        if (existing) {
+            // Resend verification
+            await sendVerificationEmail(email, existing.token, segment);
+            return {
+                statusCode: 200,
+                headers,
+                body: JSON.stringify({
+                    message: 'Verification email resent! Check your inbox.'
+                }),
+            };
+        }
+
+        // Add to pending
+        pending.push({
+            email,
+            segment,
+            token,
+            createdAt: new Date().toISOString(),
+        });
+
+        // Save pending file
+        writeFileSync(PENDING_FILE, JSON.stringify(pending, null, 2));
+
+        // Send verification email
+        await sendVerificationEmail(email, token, segment);
+
+        return {
+            statusCode: 200,
+            headers,
+            body: JSON.stringify({
+                message: 'Check your email to confirm your subscription! 📧'
+            }),
+        };
+
+    } catch (error) {
+        console.error('Subscribe error:', error);
+        return {
+            statusCode: 500,
+            headers,
+            body: JSON.stringify({ error: 'Internal server error' }),
+        };
+    }
+};
+
+async function sendVerificationEmail(email: string, token: string, segment: string) {
+    if (!RESEND_API_KEY) {
+        console.error('RESEND_API_KEY not set');
+        return;
+    }
+
+    const verifyUrl = `${process.env.URL}/api/verify?token=${token}`;
+
+    const segmentEmoji = {
+        builders: '🛠️',
+        leaders: '💼',
+        innovators: '🚀',
+    }[segment];
+
+    const response = await fetch('https://api.resend.com/emails', {
+        method: 'POST',
+        headers: {
+            'Authorization': `Bearer ${RESEND_API_KEY}`,
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            from: 'Brief Delights <hello@delights.pro>',
+            to: email,
+            subject: `${segmentEmoji} Verify your Brief Delights subscription`,
+            html: `
+        <div style="font-family: -apple-system, BlinkMacSystemFont, sans-serif; max-width: 600px; margin: 0 auto;">
+          <h1 style="font-size: 48px; margin: 0;">Brief</h1>
+          <p style="font-size: 18px; color: #666; letter-spacing: 0.2em;">delights</p>
+          
+          <p style="font-size: 16px; line-height: 1.6;">
+            Thanks for subscribing to <strong>Brief Delights</strong>! 
+          </p>
+          
+          <p style="font-size: 16px; line-height: 1.6;">
+            You'll receive daily AI-powered tech insights curated for <strong>${segment}</strong> ${segmentEmoji}.
+          </p>
+          
+          <div style="text-align: center; margin: 32px 0;">
+            <a href="${verifyUrl}" style="background: #000; color: #fff; padding: 16px 32px; text-decoration: none; border-radius: 8px; font-weight: bold; display: inline-block;">
+              Confirm Subscription
+            </a>
+          </div>
+          
+          <p style="font-size: 14px; color: #999; line-height: 1.6;">
+            If you didn't subscribe, you can safely ignore this email.
+          </p>
+          
+          <hr style="border: none; border-top: 1px solid #e8e8e8; margin: 32px 0;" />
+          
+          <p style="font-size: 12px; color: #999; text-align: center;">
+            <strong>brief delights</strong> | A DreamValidator brand<br>
+            © 2026 All rights reserved
+          </p>
+        </div>
+      `,
+        }),
+    });
+
+    if (!response.ok) {
+        throw new Error(`Resend API error: ${response.statusText}`);
+    }
+}
