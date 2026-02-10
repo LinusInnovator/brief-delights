@@ -10,6 +10,7 @@ import sys
 from datetime import datetime
 from pathlib import Path
 from jinja2 import Template
+import base64
 
 # Configuration
 PROJECT_ROOT = Path(__file__).parent.parent
@@ -73,6 +74,25 @@ def load_template() -> Template:
         <div style="padding: 40px;">
             {{ insights_html | safe }}
         </div>
+
+        <!-- Trend Charts -->
+        {% if chart_top_trend %}
+        <div style="padding: 0 40px 20px 40px;">
+            <img src="{{ chart_top_trend }}" 
+                 alt="Weekly trend chart showing mention count over time"
+                 style="max-width: 100%; height: auto; display: block; margin: 0 auto; border-radius: 8px;"
+                 width="600" height="300">
+        </div>
+        {% endif %}
+        
+        {% if chart_top_trends_bar %}
+        <div style="padding: 0 40px 40px 40px;">
+            <img src="{{ chart_top_trends_bar }}" 
+                 alt="Bar chart showing top 5 trending topics this week"
+                 style="max-width: 100%; height: auto; display: block; margin: 0 auto; border-radius: 8px;"
+                 width="600" height="375">
+        </div>
+        {% endif %}
 
         <!-- Footer -->
         <div style="background: #f8f9fa; padding: 32px 40px; border-top: 1px solid #e8e8e8; text-align: center; color: #666;">
@@ -193,7 +213,17 @@ def convert_bold(text: str) -> str:
     import re
     return re.sub(r'\*\*(.+?)\*\*', r'<strong style="font-weight: 600; color: #000;">\1</strong>', text)
 
-def compose_insights_newsletter(synthesis: dict, segment_config: dict) -> str:
+def encode_chart_to_base64(chart_path: Path) -> str:
+    """Encode chart PNG to base64 data URI for email embedding"""
+    if not chart_path.exists():
+        return ""
+    
+    with open(chart_path, 'rb') as f:
+        encoded = base64.b64encode(f.read()).decode('utf-8')
+    return f"data:image/png;base64,{encoded}"
+
+
+def compose_insights_newsletter(synthesis: dict, segment_config: dict, segment: str) -> str:
     """Compose the Sunday insights newsletter HTML"""
     log("=" * 60)
     log(f"Composing Weekly Insights for {segment_config['name']} {segment_config['emoji']}")
@@ -205,6 +235,19 @@ def compose_insights_newsletter(synthesis: dict, segment_config: dict) -> str:
     # Calculate metrics
     total_articles = synthesis['analysis']['total_articles']
     
+    # Load charts and encode as base64
+    charts_dir = PROJECT_ROOT / ".tmp" / "charts"
+    top_trend_chart = charts_dir / f"top_trend_{segment}_{TODAY}.png"
+    top_trends_bar = charts_dir / f"top_trends_bar_{segment}_{TODAY}.png"
+    
+    chart1_data = encode_chart_to_base64(top_trend_chart)
+    chart2_data = encode_chart_to_base64(top_trends_bar)
+    
+    if chart1_data:
+        log(f"✅ Embedded top trend chart ({os.path.getsize(top_trend_chart)/1024:.1f}KB)")
+    if chart2_data:
+        log(f"✅ Embedded bar chart ({os.path.getsize(top_trends_bar)/1024:.1f}KB)")
+    
     # Load template
     template = load_template()
     
@@ -214,6 +257,8 @@ def compose_insights_newsletter(synthesis: dict, segment_config: dict) -> str:
         segment_name=f"{segment_config['name']} {segment_config['emoji']}",
         date=format_date(),
         insights_html=insights_html,
+        chart_top_trend=chart1_data,
+        chart_top_trends_bar=chart2_data,
         total_scanned="~8,000",
         total_enriched="~2,400",
         total_selected=total_articles,
@@ -260,8 +305,8 @@ def main():
         
         segment_config = segments_data['segments'][segment]
         
-        # Compose newsletter
-        html = compose_insights_newsletter(synthesis, segment_config)
+                # Compose newsletter
+        html = compose_insights_newsletter(synthesis, segment_config, segment)
         
         # Save result
         save_newsletter(html, output_file)
