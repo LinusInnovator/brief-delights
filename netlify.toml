@@ -1,6 +1,7 @@
 [build]
+  base = "landing"
   command = "npm run build"
-  publish = ".next"
+  publish = "landing/.next"
 
 [[redirects]]
   from = "/api/*"
