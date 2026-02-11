@@ -405,7 +405,7 @@
 
                 {% for article in section.articles %}
                 <div class="story">
-                    <h3><a href="{{ article.url }}">{{ article.title }}</a> <span
+                    <h3><a href="{{ article.tracked_url }}">{{ article.title }}</a> <span
                             style="color: #666; font-weight: 400;">({{ article.read_time_minutes }} minute read)</span>
                     </h3>
                     <p class="summary">{{ article.summary }}</p>
@@ -416,7 +416,7 @@
                     </div>
                     {% endif %}
 
-                    <p class="meta"><a href="{{ article.url }}">{{ article.source }}</a></p>
+                    <p class="meta"><a href="{{ article.tracked_url }}">{{ article.source }}</a></p>
                 </div>
                 {% endfor %}
             </div>
@@ -431,7 +431,7 @@
 
             {% for article in quick_links %}
             <div class="quick-item">
-                <h4><a href="{{ article.url }}">{{ article.title }}</a> <span
+                <h4><a href="{{ article.tracked_url }}">{{ article.title }}</a> <span
                         style="color: #999; font-weight: 400; font-size: 14px;">({{ article.read_time_minutes }}
                         min)</span></h4>
                 <p class="snippet">{{ article.summary }}</p>
@@ -449,10 +449,10 @@
 
                 {% for article in trending %}
                 <div class="story">
-                    <h3><a href="{{ article.url }}">{{ article.title }}</a> <span
+                    <h3><a href="{{ article.tracked_url }}">{{ article.title }}</a> <span
                             style="color: #666; font-weight: 400;">({{ article.read_time_minutes }} min)</span></h3>
                     <p class="summary">{{ article.summary }}</p>
-                    <p class="meta"><a href="{{ article.url }}">{{ article.source }}</a></p>
+                    <p class="meta"><a href="{{ article.tracked_url }}">{{ article.source }}</a></p>
                 </div>
                 {% endfor %}
             </div>

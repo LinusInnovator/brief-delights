@@ -8,6 +8,7 @@ import json
 import os
 import sys
 import argparse
+import urllib.parse
 from datetime import datetime
 from pathlib import Path
 from jinja2 import Template
@@ -45,6 +46,28 @@ def load_segments_config():
 def format_date() -> str:
     """Format today's date for newsletter"""
     return datetime.now().strftime("%B %d, %Y")
+
+
+def wrap_article_links_for_tracking(articles: list, segment: str, date: str) -> list:
+    """Wrap article links with click tracking URLs"""
+    base_url = "https://brief.delights.pro/api/track"
+    
+    for article in articles:
+        original_url = article.get('source', '')
+        title = article.get('title', '')[:100]  # Truncate long titles
+        
+        # Build tracking URL with parameters
+        params = {
+            'url': original_url,
+            's': segment,  # segment
+            'd': date,     # date
+            't': title     # title
+        }
+        
+        tracking_url = f"{base_url}?{urllib.parse.urlencode(params)}"
+        article['tracked_url'] = tracking_url
+    
+    return articles
 
 
 def group_articles_by_category(articles: list) -> dict:
@@ -119,6 +142,14 @@ def compose_newsletter(articles: list, segment_config: dict, log_file: Path) -> 
     trending = [a for a in articles if a.get('tier') == 'trending']
     
     log(f"📊 Separated {len(articles)} articles: {len(full_articles)} full, {len(quick_links)} quick, {len(trending)} trending", log_file)
+    
+    # Wrap article links with click tracking (GDPR-compliant)
+    segment_name = segment_config['segment']  # e.g., 'builders'
+    full_articles = wrap_article_links_for_tracking(full_articles, segment_name, TODAY)
+    quick_links = wrap_article_links_for_tracking(quick_links, segment_name, TODAY)
+    trending = wrap_article_links_for_tracking(trending, segment_name, TODAY)
+    
+    log(f"🔗 Wrapped {len(full_articles + quick_links + trending)} article links with click tracking", log_file)
     
     # Group FULL articles by category
     grouped = group_articles_by_category(full_articles)
