@@ -1,0 +1,48 @@
+{
+    "twitter_bot": {
+        "enabled": false,
+        "dry_run": true,
+        "frequency": "daily",
+        "segments": [
+            "builders",
+            "innovators",
+            "leaders"
+        ],
+        "max_tweets_per_day": 5
+    },
+    "reddit_poster": {
+        "enabled": false,
+        "dry_run": true,
+        "subreddits": [
+            "programming",
+            "entrepreneur",
+            "startups"
+        ],
+        "max_posts_per_day": 3
+    },
+    "linkedin_engager": {
+        "enabled": false,
+        "dry_run": true,
+        "max_comments_per_day": 10
+    },
+    "sponsor_matcher": {
+        "enabled": false,
+        "dry_run": true,
+        "frequency": "weekly",
+        "min_funding": 50000,
+        "max_outreach_per_week": 10
+    },
+    "affiliate_injector": {
+        "enabled": false,
+        "dry_run": true,
+        "networks": [
+            "amazon",
+            "impact"
+        ],
+        "conversion_threshold": 0.8
+    },
+    "referral_tracker": {
+        "enabled": false,
+        "dry_run": true
+    }
+}
