@@ -1,6 +1,6 @@
 {
     "twitter_bot": {
-        "enabled": false,
+        "enabled": true,
         "dry_run": true,
         "frequency": "daily",
         "segments": [
