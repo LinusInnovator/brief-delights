@@ -130,29 +130,59 @@ class SponsorMatcher(AutomationModule):
         return topics
     
     def _find_sponsors(self, topics: Dict[str, List[Dict]], all_articles: List[Dict]) -> List[Dict]:
-        """Find potential sponsors based on topics"""
+        """Find potential sponsors based on topics - PRIORITIZE HUNGRY CHALLENGERS"""
         sponsors = []
         
-        # Sponsor database (will be replaced with real scraping/API)
+        # Sponsor database - CHALLENGERS ONLY (Series A-C, fast-moving)
+        # Avoid: Docker (public), AWS (too big), OpenAI (corporate)
         sponsor_database = {
             "DevOps": [
-                {"name": "Vercel", "domain": "vercel.com", "description": "Frontend hosting platform"},
-                {"name": "Render", "domain": "render.com", "description": "Cloud platform"},
-                {"name": "Docker", "domain": "docker.com", "description": "Container platform"},
-                {"name": "Supabase", "domain": "supabase.com", "description": "Open source Firebase alternative"}
+                {"name": "Vercel", "domain": "vercel.com", "description": "Frontend hosting", 
+                 "stage": "series_b", "age": 6, "team": 100, "raised_m": 150},
+                {"name": "Render", "domain": "render.com", "description": "Cloud platform",
+                 "stage": "series_b", "age": 5, "team": 50, "raised_m": 85},
+                {"name": "Railway", "domain": "railway.app", "description": "Infrastructure",
+                 "stage": "series_a", "age": 3, "team": 25, "raised_m": 30},
+                {"name": "Fly.io", "domain": "fly.io", "description": "Edge compute",
+                 "stage": "series_a", "age": 4, "team": 30, "raised_m": 70}
             ],
             "AI/ML": [
-                {"name": "OpenAI", "domain": "openai.com", "description": "AI research company"},
-                {"name": "Anthropic", "domain": "anthropic.com", "description": "AI safety company"},
-                {"name": "Hugging Face", "domain": "huggingface.co", "description": "ML model hub"}
+                {"name": "Anthropic", "domain": "anthropic.com", "description": "AI safety",
+                 "stage": "series_c", "age": 3, "team": 150, "raised_m": 1500},
+                {"name": "Perplexity", "domain": "perplexity.ai", "description": "AI search",
+                 "stage": "series_b", "age": 2, "team": 20, "raised_m": 73},
+                {"name": "Together AI", "domain": "together.ai", "description": "AI platform",
+                 "stage": "series_a", "age": 2, "team": 40, "raised_m": 100},
+                {"name": "Modal", "domain": "modal.com", "description": "Serverless AI",
+                 "stage": "series_a", "age": 3, "team": 15, "raised_m": 16},
+                {"name": "Replicate", "domain": "replicate.com", "description": "ML deployment",
+                 "stage": "series_b", "age": 4, "team": 25, "raised_m": 60}
             ],
             "Leadership": [
-                {"name": "Harvard Business Review", "domain": "hbr.org", "description": "Business insights"},
-                {"name": "First Round Review", "domain": "review.firstround.com", "description": "Startup advice"}
+                {"name": "First Round Review", "domain": "review.firstround.com", "description": "Startup advice",
+                 "stage": "series_a", "age": 5, "team": 30, "raised_m": 50},
+                {"name": "Pavilion", "domain": "joinpavilion.com", "description": "Executive network",
+                 "stage": "series_b", "age": 3, "team": 40, "raised_m": 35}
             ],
             "Cloud": [
-                {"name": "AWS", "domain": "aws.amazon.com", "description": "Cloud computing"},
-                {"name": "Netlify", "domain": "netlify.com", "description": "Web hosting"}
+                {"name": "Supabase", "domain": "supabase.com", "description": "Database platform",
+                 "stage": "series_b", "age": 4, "team": 30, "raised_m": 116},
+                {"name": "Convex", "domain": "convex.dev", "description": "Backend platform",
+                 "stage": "series_a", "age": 2, "team": 20, "raised_m": 26},
+                {"name": "Neon", "domain": "neon.tech", "description": "Serverless Postgres",
+                 "stage": "series_b", "age": 2, "team": 35, "raised_m": 104},
+                {"name": "Turso", "domain": "turso.tech", "description": "Edge database",
+                 "stage": "series_a", "age": 2, "team": 8, "raised_m": 10},
+                {"name": "PlanetScale", "domain": "planetscale.com", "description": "MySQL platform",
+                 "stage": "series_b", "age": 4, "team": 50, "raised_m": 105}
+            ],
+            "Developer Tools": [
+                {"name": "Clerk", "domain": "clerk.com", "description": "Auth for developers",
+                 "stage": "series_b", "age": 3, "team": 35, "raised_m": 55},
+                {"name": "Resend", "domain": "resend.com", "description": "Email API",
+                 "stage": "series_a", "age": 2, "team": 12, "raised_m": 3},
+                {"name": "Inngest", "domain": "inngest.com", "description": "Workflow engine",
+                 "stage": "series_a", "age": 2, "team": 15, "raised_m": 6}
             ]
         }
         
@@ -163,25 +193,99 @@ class SponsorMatcher(AutomationModule):
                     # Find the most relevant article for this sponsor
                     best_article = max(articles, key=lambda x: x["clicks"])
                     
+                    # Calculate eagerness score (how fast will they move?)
+                    eagerness = self._calculate_eagerness_score(sponsor_info)
+                    
+                    # Calculate content match score
+                    content_match = self._calculate_match_score(sponsor_info, best_article)
+                    
+                    # Final score (50% eagerness, 30% content, 20% budget)
+                    final_score = (
+                        eagerness * 0.5 +
+                        content_match * 0.3 +
+                        self._budget_fit_score(sponsor_info) * 0.2
+                    )
+                    
                     sponsors.append({
                         "company_name": sponsor_info["name"],
                         "domain": sponsor_info["domain"],
                         "industry": sponsor_info["description"],
                         "matched_topic": topic,
                         "matched_segment": best_article["segment"],
-                        "match_score": self._calculate_match_score(sponsor_info, best_article),
+                        "match_score": int(final_score),
+                        "eagerness_score": int(eagerness),
+                        "content_match_score": int(content_match),
+                        "funding_stage": sponsor_info["stage"],
+                        "team_size": sponsor_info["team"],
                         "related_article_title": best_article["title"],
                         "related_article_url": best_article["url"],
                         "article_clicks": best_article["clicks"],
                         "dream_outcome": self._generate_dream_outcome(sponsor_info, best_article),
-                        "offer_price": self._calculate_pricing(best_article),
+                        "offer_price": self._calculate_pricing(best_article, sponsor_info),
                         "offer_stack": self._build_value_stack(sponsor_info, best_article)
                     })
         
-        # Sort by match score
+        # Sort by final score (challengers will naturally rank higher)
         sponsors.sort(key=lambda x: x["match_score"], reverse=True)
         
         return sponsors
+    
+    def _calculate_eagerness_score(self, sponsor: Dict) -> int:
+        """Calculate how eager/fast this company will move (0-100)"""
+        score = 0
+        
+        # Funding stage (0-40 points) - Series A is PERFECT
+        stage_scores = {
+            "series_a": 40,      # Sweet spot - just raised, eager
+            "series_b": 35,      # Still hungry, bigger budgets
+            "series_c": 30,      # Getting mature
+            "seed": 20,          # Too small, limited budget
+            "series_d": 15,      # Getting bureaucratic
+            "public": 5          # Way too slow
+        }
+        score += stage_scores.get(sponsor.get("stage", "").lower(), 0)
+        
+        # Company age (0-25 points) - Younger = hungrier
+        age = sponsor.get("age", 10)
+        if age <= 2:
+            score += 25
+        elif age <= 5:
+            score += 15
+        elif age <= 10:
+            score += 5
+        
+        # Team size (0-20 points) - Small teams move fast
+        team = sponsor.get("team", 1000)
+        if 10 <= team <= 50:
+            score += 20   # Perfect - small, fast decisions
+        elif 51 <= team <= 200:
+            score += 10   # Medium, still agile
+        elif team <= 500:
+            score += 5    # Getting slow
+        
+        # Budget capacity (0-15 points) - Based on funding
+        raised_m = sponsor.get("raised_m", 0)
+        if raised_m >= 50:
+            score += 15   # Can definitely afford $500-1200
+        elif raised_m >= 10:
+            score += 10
+        elif raised_m >= 3:
+            score += 5
+        
+        return min(score, 100)
+    
+    def _budget_fit_score(self, sponsor: Dict) -> int:
+        """Can they afford our pricing? (0-100)"""
+        raised_m = sponsor.get("raised_m", 0)
+        
+        if raised_m >= 50:
+            return 100  # Easy yes
+        elif raised_m >= 10:
+            return 80   # Likely yes
+        elif raised_m >= 3:
+            return 60   # Maybe
+        else:
+            return 30   # Stretch
     
     def _calculate_match_score(self, sponsor: Dict, article: Dict) -> int:
         """Calculate 0-100 match score"""
@@ -208,7 +312,7 @@ class SponsorMatcher(AutomationModule):
         
         return f"Get your product in front of {clicks}+ {segment} who recently clicked content about {topic}"
     
-    def _calculate_pricing(self, article: Dict) -> int:
+    def _calculate_pricing(self, article: Dict, sponsor: Dict = None) -> int:
         """Calculate pricing based on engagement (in cents)"""
         base_price = 50000  # $500
         
