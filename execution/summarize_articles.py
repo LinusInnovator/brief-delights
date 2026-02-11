@@ -148,8 +148,7 @@ Return ONLY valid JSON (no markdown, no explanations):
 {{
   "summary": "Ultra-concise summary in 30-40 words.",
   "key_takeaway": "One crisp sentence in 15 words max.",
-  "why_this_matters": "Strategic insight - specific, actionable, non-obvious (20-25 words)",
-  "read_time_minutes": {estimated_read_time}
+  "why_this_matters": "Strategic insight - specific, actionable, non-obvious (20-25 words)"
 }}
 """
     
@@ -237,7 +236,7 @@ def summarize_article(article: Dict, index: int, log_file: Path, trend_context: 
         article['summary'] = summary_data['summary']
         article['key_takeaway'] = summary_data.get('key_takeaway', '')
         article['why_this_matters'] = summary_data.get('why_this_matters', '')  # NEW: Editorial context
-        article['read_time_minutes'] = summary_data.get('read_time_minutes', calculated_read_time)  # Use calculated as fallback
+        article['read_time_minutes'] = calculated_read_time  # Always use our calculated value
         
         elapsed = time.time() - start_time
         log(f"✅ Article {article_num} summarized in {elapsed:.2f}s ({article['read_time_minutes']} min read)", log_file)
