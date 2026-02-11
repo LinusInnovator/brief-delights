@@ -14,8 +14,9 @@ sys.path.append(str(Path(__file__).parent))
 # Import automation modules
 from automations.growth.twitter_bot import TwitterBot
 from automations.growth.reddit_bot import RedditBot
+from automations.monetization.content_sponsor_discovery import ContentSponsorDiscovery
 # from automations.growth.reddit_poster import RedditPoster  # TODO: implement
-# from automations.monetization.sponsor_matcher import SponsorMatcher  # TODO: implement
+# from automations.monetization.sponsor_matcher import SponsorMatcher  # Future: weekly batch matching
 
 
 def run_all_automations():
@@ -37,9 +38,10 @@ def run_all_automations():
     modules = [
         TwitterBot(),
         RedditBot(),
+        ContentSponsorDiscovery(),  # NEW: Auto-discover sponsors from content
         # Add more modules here as we build them
         # LinkedInEngager(),
-        # SponsorMatcher(),
+        # SourceDiscovery(),  # Future: auto-discover RSS sources
         # AffiliateInjector(),
     ]
     

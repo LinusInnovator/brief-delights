@@ -20,6 +20,13 @@
         ],
         "max_posts_per_day": 3
     },
+    "content_sponsor_discovery": {
+        "enabled": true,
+        "dry_run": false,
+        "frequency": "daily",
+        "min_eagerness_score": 70,
+        "max_discoveries_per_day": 20
+    },
     "linkedin_engager": {
         "enabled": false,
         "dry_run": true,
