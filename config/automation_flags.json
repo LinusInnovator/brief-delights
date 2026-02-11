@@ -10,8 +10,8 @@
         ],
         "max_tweets_per_day": 5
     },
-    "reddit_poster": {
-        "enabled": false,
+    "reddit_bot": {
+        "enabled": true,
         "dry_run": true,
         "subreddits": [
             "programming",

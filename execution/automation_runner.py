@@ -13,6 +13,7 @@ sys.path.append(str(Path(__file__).parent))
 
 # Import automation modules
 from automations.growth.twitter_bot import TwitterBot
+from automations.growth.reddit_bot import RedditBot
 # from automations.growth.reddit_poster import RedditPoster  # TODO: implement
 # from automations.monetization.sponsor_matcher import SponsorMatcher  # TODO: implement
 
@@ -35,8 +36,8 @@ def run_all_automations():
     # List of all automation modules
     modules = [
         TwitterBot(),
-        # Add more modules as we build them:
-        # RedditPoster(),
+        RedditBot(),
+        # Add more modules here as we build them
         # LinkedInEngager(),
         # SponsorMatcher(),
         # AffiliateInjector(),
