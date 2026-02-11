@@ -26,12 +26,28 @@
         ],
         "Developer Tools & Platforms": [
             "https://news.ycombinator.com/rss",
-            "https://www.infoworld.com/index.rss"
+            "https://www.infoworld.com/index.rss",
+            "https://vercel.com/blog/rss.xml",
+            "https://supabase.com/blog/rss.xml",
+            "https://railway.app/blog/rss.xml",
+            "https://fly.io/blog/feed.xml",
+            "https://render.com/blog/rss.xml"
         ],
         "Cloud & Infrastructure": [
             "https://aws.amazon.com/blogs/aws/feed/",
             "https://cloud.google.com/blog/rss",
-            "https://azure.microsoft.com/en-us/blog/feed/"
+            "https://azure.microsoft.com/en-us/blog/feed/",
+            "https://blog.cloudflare.com/rss/",
+            "https://www.docker.com/blog/feed/",
+            "https://kubernetes.io/feed.xml",
+            "https://www.hashicorp.com/blog/feed.xml"
+        ],
+        "Database & Backend": [
+            "https://planetscale.com/blog/rss.xml",
+            "https://turso.tech/blog/rss.xml"
+        ],
+        "DevOps & SRE": [
+            "https://sreweekly.com/feed/"
         ],
         "Cybersecurity": [
             "https://krebsonsecurity.com/feed/",
