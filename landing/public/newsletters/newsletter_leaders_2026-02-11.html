@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Briefly 💼 - 2026-02-11</title>
+    <style>
+        /* Reset */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background-color: #f8f9fa;
+            color: #1a1a1a;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* Container */
+        .email-wrapper {
+            max-width: 680px;
+            margin: 0 auto;
+            background-color: #ffffff;
+        }
+
+        /* Top Bar (minimal, like TLDR) */
+        .top-bar {
+            padding: 16px 40px;
+            text-align: center;
+            border-bottom: 1px solid #e8e8e8;
+            background: #ffffff;
+        }
+
+        .top-bar a {
+            color: #666;
+            text-decoration: none;
+            font-size: 13px;
+            margin: 0 12px;
+            font-weight: 500;
+        }
+
+        .top-bar a:hover {
+            color: #000;
+        }
+
+        /* Header (Clean, no gradient!) */
+        .header {
+            background: #ffffff;
+            padding: 40px 40px 32px 40px;
+            text-align: center;
+            border-bottom: 1px solid #e8e8e8;
+        }
+
+        .logo {
+            font-size: 52px;
+            font-weight: 700;
+            letter-spacing: -1.5px;
+            margin: 0;
+            line-height: 1;
+            color: #000000;
+        }
+
+        .tagline {
+            font-size: 18px;
+            font-weight: 400;
+            color: #666666;
+            margin: 4px 0 12px 0;
+            letter-spacing: 2px;
+        }
+
+        .header .date {
+            margin: 0 0 8px 0;
+            font-size: 14px;
+            color: #999;
+            font-weight: 400;
+        }
+
+        .header .curation-stats {
+            margin: 0;
+            font-size: 12px;
+            color: #aaa;
+            font-weight: 400;
+            font-family: 'Courier New', monospace;
+        }
+
+        /* Sponsor Block (white background, tight integration) */
+        .sponsor {
+            background: #ffffff;
+            border-top: 1px solid #e8e8e8;
+            border-bottom: 1px solid #e8e8e8;
+            padding: 32px 40px;
+            margin: 0;
+        }
+
+        .sponsor-label {
+            font-size: 9px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #999;
+            margin: 0 0 12px 0;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        .sponsor h3 {
+            margin: 0 0 12px 0;
+            font-size: 20px;
+            font-weight: 700;
+            color: #000;
+            line-height: 1.3;
+        }
+
+        .sponsor h3 a {
+            color: #000;
+            text-decoration: none;
+        }
+
+        .sponsor h3 a:hover {
+            color: #4f46e5;
+        }
+
+        .sponsor p {
+            margin: 0;
+            font-size: 14px;
+            line-height: 1.5;
+            color: #666;
+        }
+
+        .sponsor a.cta {
+            display: inline-block;
+            margin-top: 12px;
+            color: #4f46e5;
+            font-weight: 600;
+            text-decoration: underline;
+            font-size: 15px;
+        }
+
+        /* Content */
+        .content {
+            padding: 40px 40px 20px 40px;
+        }
+
+        /* Section Headers */
+        .section {
+            margin-bottom: 40px;
+        }
+
+        .section-emoji {
+            text-align: center;
+            font-size: 20px;
+            margin: 0 0 12px 0;
+        }
+
+        .section h2 {
+            font-size: 20px;
+            font-weight: 700;
+            color: #000;
+            margin: 0 0 24px 0;
+            padding: 0;
+            border: none;
+            text-align: center;
+        }
+
+        /* Story Cards */
+        .story {
+            margin-bottom: 28px;
+            padding-bottom: 28px;
+            border-bottom: 1px solid #e8e8e8;
+        }
+
+        .story:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        /* Article Titles (slightly bigger than body) */
+        .story h3 {
+            margin: 0 0 10px 0;
+            font-size: 20px;
+            line-height: 1.4;
+            font-weight: 700;
+        }
+
+        .story h3 a {
+            color: #000;
+            text-decoration: underline;
+        }
+
+        .story h3 a:hover {
+            color: #1e40af;
+        }
+
+        /* Summary Text (close in size to titles) */
+        .story .summary {
+            margin: 10px 0;
+            font-size: 18px;
+            color: #444;
+            line-height: 1.6;
+        }
+
+        /* Meta Info */
+        .story .meta {
+            margin: 12px 0 0 0;
+            font-size: 14px;
+            color: #999;
+        }
+
+        .story .meta a {
+            color: #999;
+            text-decoration: none;
+        }
+
+        .story .meta a:hover {
+            color: #4f46e5;
+        }
+
+        /* Editorial Context - NEW: Why This Matters */
+        .editorial-context {
+            margin: 20px 0 12px 0;
+            padding: 12px 16px;
+            background: #eff6ff;
+            border-left: 3px solid #3b82f6;
+            font-size: 16px;
+            color: #1e40af;
+            font-style: italic;
+            line-height: 1.5;
+        }
+
+        .editorial-context-label {
+            font-weight: 600;
+            font-style: normal;
+            color: #1e40af;
+        }
+
+        /* Quick Links Section */
+        .quick-links {
+            margin: 40px 0;
+            padding: 0 40px;
+            border-top: 2px solid #e8e8e8;
+            padding-top: 32px;
+        }
+
+        .quick-item {
+            margin-bottom: 24px;
+            padding-bottom: 24px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .quick-item:last-child {
+            margin-bottom: 0;
+            border-bottom: none;
+        }
+
+        .quick-item h4 {
+            font-size: 16px;
+            font-weight: 600;
+            margin: 0 0 8px 0;
+            line-height: 1.4;
+        }
+
+        .quick-item h4 a {
+            color: #000;
+            text-decoration: underline;
+        }
+
+        .quick-item h4 a:hover {
+            color: #1e40af;
+        }
+
+        .quick-item .snippet {
+            font-size: 15px;
+            color: #555;
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        /* Footer */
+        .footer {
+            background: #ffffff;
+            padding: 40px;
+            text-align: center;
+            border-top: 1px solid #e8e8e8;
+        }
+
+        .footer .share {
+            margin: 0 0 24px 0;
+            font-size: 16px;
+            color: #444;
+        }
+
+        .footer .share a {
+            color: #4f46e5;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .footer .share a:hover {
+            text-decoration: underline;
+        }
+
+        .footer .links {
+            margin: 20px 0;
+            font-size: 14px;
+        }
+
+        .footer .links a {
+            color: #666;
+            text-decoration: none;
+            margin: 0 12px;
+        }
+
+        .footer .links a:hover {
+            color: #000;
+        }
+
+        .footer .legal {
+            margin-top: 24px;
+            font-size: 13px;
+            color: #999;
+            line-height: 1.6;
+        }
+
+        /* Mobile Responsive */
+        @media only screen and (max-width: 600px) {
+            .email-wrapper {
+                width: 100% !important;
+            }
+
+            .top-bar {
+                padding: 12px 20px !important;
+            }
+
+            .header {
+                padding: 24px 20px 20px 20px !important;
+            }
+
+            .header h1 {
+                font-size: 28px !important;
+            }
+
+            .header .tagline {
+                font-size: 15px !important;
+            }
+
+            .content,
+            .footer {
+                padding: 24px !important;
+            }
+
+            .sponsor {
+                padding: 24px 20px !important;
+            }
+
+            .story h3 {
+                font-size: 18px !important;
+            }
+
+            .story .summary {
+                font-size: 16px !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="email-wrapper">
+        <!-- Top Navigation Bar -->
+        <div class="top-bar">
+            <a href="https://send.dreamvalidator.com">Sign Up</a> |
+            <a href="https://send.dreamvalidator.com/advertise">Advertise</a> |
+            <a href="https://send.dreamvalidator.com/2026-02-11">View Online</a>
+        </div>
+
+        <!-- Header -->
+        <div class="header">
+            <div class="logo">Brief</div>
+            <div class="tagline">delights</div>
+            <p class="date">Leaders 💼 | 2026-02-11</p>
+            <p class="curation-stats">1,340+ news scanned → ~400 analyzed → 14
+                selected</p>
+        </div>
+
+        <!-- Sponsor (Placeholder - customize per segment) -->
+        <div class="sponsor">
+            <p class="sponsor-label">Together With Our Sponsor</p>
+            <h3><a href="#">Your Brand Here</a></h3>
+            <p>This is where segment-specific sponsor content goes. Builders see DevOps tools, Leaders see business
+                SaaS, Innovators see AI platforms.</p>
+            <a href="#" class="cta">Learn More →</a>
+        </div>
+
+        <!-- Content Sections -->
+        <div class="content">
+            
+            <div class="section">
+                
+                
+                <div class="section-emoji">🚀</div>
+                <h2>AI & Innovation</h2>
+                
+
+                
+                <div class="story">
+                    <h3><a href="https://techcrunch.com/2026/02/09/the-first-signs-of-burnout-are-coming-from-the-people-who-embrace-ai-the-most/">The first signs of burnout are coming from the people who embrace AI the most</a> <span
+                            style="color: #666; font-weight: 400;">(1 minute read)</span>
+                    </h3>
+                    <p class="summary">AI boosts productivity, but heavy users face burnout and turnover due to blurred work-life boundaries.</p>
+
+                    
+                    <div class="editorial-context">
+                        <span class="editorial-context-label">Why this matters:</span> Businesses must rethink how AI affects work culture and employee well-being, not just efficiency.
+                    </div>
+                    
+
+                    <p class="meta"><a href="https://techcrunch.com/2026/02/09/the-first-signs-of-burnout-are-coming-from-the-people-who-embrace-ai-the-most/">AI News & Artificial Intelligence | TechCrunch</a></p>
+                </div>
+                
+            </div>
+            
+            <div class="section">
+                
+                
+                <div class="section-emoji">💼</div>
+                <h2>Tech Business</h2>
+                
+
+                
+                <div class="story">
+                    <h3><a href="https://techcrunch.com/2026/02/09/workday-ceo-eschenbach-departs-with-co-founder-aneel-bhusri-returning-as-ceo/">Workday CEO Eschenbach departs, with co-founder Aneel Bhusri returning as CEO</a> <span
+                            style="color: #666; font-weight: 400;">(1 minute read)</span>
+                    </h3>
+                    <p class="summary">Workday's CEO Eschenbach departs, with co-founder Aneel Bhusri returning to focus on AI.</p>
+
+                    
+                    <div class="editorial-context">
+                        <span class="editorial-context-label">Why this matters:</span> Tech leaders should prioritize AI strategies with the return of Bhusri to drive Workday's next chapter.
+                    </div>
+                    
+
+                    <p class="meta"><a href="https://techcrunch.com/2026/02/09/workday-ceo-eschenbach-departs-with-co-founder-aneel-bhusri-returning-as-ceo/">AI News & Artificial Intelligence | TechCrunch</a></p>
+                </div>
+                
+                <div class="story">
+                    <h3><a href="https://sloanreview.mit.edu/article/your-people-are-not-all-right/">Your People Are Not All Right</a> <span
+                            style="color: #666; font-weight: 400;">(12 minute read)</span>
+                    </h3>
+                    <p class="summary">Widespread workforce mental health struggles are hurting productivity, but leaders can learn to recognize and address the crisis through empathetic strategies.</p>
+
+                    
+                    <div class="editorial-context">
+                        <span class="editorial-context-label">Why this matters:</span> Leaders must understand the pervasive impact of employee mental health challenges and adapt their management approach to support teams effectively.
+                    </div>
+                    
+
+                    <p class="meta"><a href="https://sloanreview.mit.edu/article/your-people-are-not-all-right/">MIT Sloan Management Review</a></p>
+                </div>
+                
+            </div>
+            
+            <div class="section">
+                
+                
+                <div class="section-emoji">💰</div>
+                <h2>Funding & M&A</h2>
+                
+
+                
+                <div class="story">
+                    <h3><a href="https://techcrunch.com/2026/02/09/anthropic-closes-in-on-20b-round/">Anthropic closes in on $20B round</a> <span
+                            style="color: #666; font-weight: 400;">(1 minute read)</span>
+                    </h3>
+                    <p class="summary">Anthropic aims to raise $20B after a recent $13B funding round to keep up with AI competition and computing costs.</p>
+
+                    
+                    <div class="editorial-context">
+                        <span class="editorial-context-label">Why this matters:</span> AI practitioners must adapt quickly to escalating funding needs to stay competitive in the evolving landscape.
+                    </div>
+                    
+
+                    <p class="meta"><a href="https://techcrunch.com/2026/02/09/anthropic-closes-in-on-20b-round/">AI News & Artificial Intelligence | TechCrunch</a></p>
+                </div>
+                
+                <div class="story">
+                    <h3><a href="https://techcrunch.com/2026/02/10/ai-video-startup-runway-raises-315m-at-5-3b-valuation-eyes-more-capable-world-models/">AI video startup Runway raises $315M at $5.3B valuation, eyes more capable world models</a> <span
+                            style="color: #666; font-weight: 400;">(1 minute read)</span>
+                    </h3>
+                    <p class="summary">Runway, an AI video startup, raises $315M at $5.3B valuation to expand beyond video generation into world models.</p>
+
+                    
+                    <div class="editorial-context">
+                        <span class="editorial-context-label">Why this matters:</span> Runway's world model capabilities could enable new AI-powered applications and simulations across industries.
+                    </div>
+                    
+
+                    <p class="meta"><a href="https://techcrunch.com/2026/02/10/ai-video-startup-runway-raises-315m-at-5-3b-valuation-eyes-more-capable-world-models/">AI News & Artificial Intelligence | TechCrunch</a></p>
+                </div>
+                
+                <div class="story">
+                    <h3><a href="https://techcrunch.com/2026/02/10/former-github-ceo-raises-record-60m-dev-tool-seed-round-at-300m-valuation/">Former GitHub CEO raises record $60M dev tool seed round at $300M valuation</a> <span
+                            style="color: #666; font-weight: 400;">(1 minute read)</span>
+                    </h3>
+                    <p class="summary">Former GitHub CEO raises record $60M dev tool seed round for AI system to manage code AI agents produce.</p>
+
+                    
+                    <div class="editorial-context">
+                        <span class="editorial-context-label">Why this matters:</span> Developers should explore AI tools like Dohmke's for efficient code management and productivity gains.
+                    </div>
+                    
+
+                    <p class="meta"><a href="https://techcrunch.com/2026/02/10/former-github-ceo-raises-record-60m-dev-tool-seed-round-at-300m-valuation/">AI News & Artificial Intelligence | TechCrunch</a></p>
+                </div>
+                
+            </div>
+            
+            <div class="section">
+                
+                
+                <div class="section-emoji">📊</div>
+                <h2>Market Trends</h2>
+                
+
+                
+                <div class="story">
+                    <h3><a href="https://techcrunch.com/2026/02/09/databricks-ceo-says-saas-isnt-dead-but-ai-will-soon-make-it-irrelevant/">Databricks CEO says SaaS isn’t dead, but AI will soon make it irrelevant</a> <span
+                            style="color: #666; font-weight: 400;">(1 minute read)</span>
+                    </h3>
+                    <p class="summary">Databricks CEO Ali Ghodsi predicts AI won't replace major SaaS apps but could spawn competitors.</p>
+
+                    
+                    <div class="editorial-context">
+                        <span class="editorial-context-label">Why this matters:</span> Prepare for potential market shifts as AI influences the future landscape of SaaS offerings.
+                    </div>
+                    
+
+                    <p class="meta"><a href="https://techcrunch.com/2026/02/09/databricks-ceo-says-saas-isnt-dead-but-ai-will-soon-make-it-irrelevant/">AI News & Artificial Intelligence | TechCrunch</a></p>
+                </div>
+                
+                <div class="story">
+                    <h3><a href="https://sequoiacap.com/article/the-abundance-paradox-why-netflix-paid-82b-for-scarcity/">The Abundance Paradox: Why Netflix Paid $82B for Scarcity</a> <span
+                            style="color: #666; font-weight: 400;">(2 minute read)</span>
+                    </h3>
+                    <p class="summary">Netflix acquires Warner Bros. for $82B, gaining valuable IP like Batman, Harry Potter, and Game of Thrones, as scarcity becomes more valuable in the AI era.</p>
+
+                    
+                    <div class="editorial-context">
+                        <span class="editorial-context-label">Why this matters:</span> Tech leaders should reevaluate build-vs-buy strategies for AI-generated content as vendor capabilities surpass in-house teams.
+                    </div>
+                    
+
+                    <p class="meta"><a href="https://sequoiacap.com/article/the-abundance-paradox-why-netflix-paid-82b-for-scarcity/">Sequoia Capital</a></p>
+                </div>
+                
+            </div>
+            
+        </div>
+
+        <!-- Quick Links Section -->
+        
+        <div class="quick-links">
+            <div class="section-emoji">⚡</div>
+            <h2>Quick Links</h2>
+
+            
+            <div class="quick-item">
+                <h4><a href="https://stripe.com/blog/new-features-to-help-saas-platforms-manage-risk-and-stay-compliant">New features to help SaaS platforms manage risk and stay compliant</a> <span
+                        style="color: #999; font-weight: 400; font-size: 14px;">(1
+                        min)</span></h4>
+                <p class="snippet">We recently launched three new features that give you more control to fine-tune your risk and compliance strategy, allowing you to use more of Stripe’s data to inform your approach. Here’s what’s new..</p>
+            </div>
+            
+            <div class="quick-item">
+                <h4><a href="https://stripe.com/blog/analyzing-how-saas-platforms-are-shipping-payments-and-finance-products-in-days">Analyzing how SaaS platforms are shipping payments and finance products in days</a> <span
+                        style="color: #999; font-weight: 400; font-size: 14px;">(1
+                        min)</span></h4>
+                <p class="snippet">Leading SaaS platforms across industries—from Squarespace to Jobber—are using embedded components to ship payments and finance features with minimal code. We analyzed the data to see which types of platforms are getting the most value..</p>
+            </div>
+            
+            <div class="quick-item">
+                <h4><a href="https://sloanreview.mit.edu/article/how-to-navigate-rapid-growth/">How to Navigate Rapid Growth</a> <span
+                        style="color: #999; font-weight: 400; font-size: 14px;">(1
+                        min)</span></h4>
+                <p class="snippet">Carolyn Geason-Beissel/MIT SMR &#124; Getty Images In 2019, two Dutch entrepreneurs founded an environmental, social, and governance (ESG) consulting firm with six like-minded friends and former classmates.</p>
+            </div>
+            
+            <div class="quick-item">
+                <h4><a href="https://deepmind.google/blog/mapping-the-misuse-of-generative-ai/">Mapping the misuse of generative AI</a> <span
+                        style="color: #999; font-weight: 400; font-size: 14px;">(1
+                        min)</span></h4>
+                <p class="snippet">New research analyzes the misuse of multimodal generative AI today, in order to help build safer and more responsible technologies..</p>
+            </div>
+            
+        </div>
+        
+
+        <!-- Worth Your Attention (Trending) Section -->
+        
+        <div class="content">
+            <div class="section">
+                <div class="section-emoji">🔥</div>
+                <h2>Worth Your Attention</h2>
+
+                
+                <div class="story">
+                    <h3><a href="https://blog.codinghorror.com/there-is-no-longer-any-such-thing-as-computer-security/">There is no longer any such thing as Computer Security</a> <span
+                            style="color: #666; font-weight: 400;">(2 min)</span></h3>
+                    <p class="summary">Autonomous AI agents are now hacking computers, automating all phases of cyberattacks faster than expected. This fundamentally changes the cybersecurity landscape.</p>
+                    <p class="meta"><a href="https://blog.codinghorror.com/there-is-no-longer-any-such-thing-as-computer-security/">Coding Horror</a></p>
+                </div>
+                
+                <div class="story">
+                    <h3><a href="https://techcrunch.com/podcast/this-sequoia-backed-lab-thinks-the-brain-is-the-floor-not-the-ceiling-for-ai/">This Sequoia-backed lab thinks the brain is ‘the floor, not the ceiling’ for AI</a> <span
+                            style="color: #666; font-weight: 400;">(1 min)</span></h3>
+                    <p class="summary">A Sequoia-backed AI lab aims to create models that learn like humans, not just vacuum up data, with $180M in seed funding.</p>
+                    <p class="meta"><a href="https://techcrunch.com/podcast/this-sequoia-backed-lab-thinks-the-brain-is-the-floor-not-the-ceiling-for-ai/">AI News & Artificial Intelligence | TechCrunch</a></p>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <!-- Footer -->
+        <div class="footer">
+            <p class="share">💌 Enjoying Brief Delights? <a
+                    href="mailto:?subject=Check%20out%20Brief%20Delights&body=I%20thought%20you'd%20find%20this%20daily%20tech%20brief%20useful">Forward
+                    to a colleague</a></p>
+
+            <p class="links">
+                <a href="https://send.dreamvalidator.com">Website</a>
+                <a href="https://send.dreamvalidator.com/about">About</a>
+                <a href="https://send.dreamvalidator.com/advertise">Advertise</a>
+                <a href="https://send.dreamvalidator.com/unsubscribe">Unsubscribe</a>
+            </p>
+
+            <p class="legal">
+                You're receiving this because you subscribed to Brief Delights.<br>
+                <strong>brief delights | A DreamValidator brand</strong><br>
+                © 2026 All rights reserved.<br>
+                Questions? <a href="mailto:hello@dreamvalidator.com"
+                    style="color: #999; text-decoration: none;">hello@dreamvalidator.com</a>
+            </p>
+        </div>
+    </div>
+</body>
+
+</html>
