@@ -46,6 +46,26 @@ jobs:
           OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
           RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
       
+      - name: Move newsletters to public folder
+        run: |
+          mkdir -p landing/public/newsletters
+          # Copy any generated newsletters from .tmp to public
+          if ls .tmp/newsletter_*.html 1> /dev/null 2>&1; then
+            cp .tmp/newsletter_*.html landing/public/newsletters/
+            echo "✅ Moved newsletters to public folder"
+          else
+            echo "⚠️ No newsletters generated"
+          fi
+      
+      - name: Commit and push newsletters
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action Bot"
+          git add landing/public/newsletters/
+          # Only commit if there are changes
+          git diff --staged --quiet || git commit -m "📰 Auto-generated newsletters $(date +%Y-%m-%d)"
+          git push
+      
       - name: Upload artifacts
         if: always()
         uses: actions/upload-artifact@v4
