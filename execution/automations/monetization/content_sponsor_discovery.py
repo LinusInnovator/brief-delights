@@ -65,9 +65,31 @@ class ContentSponsorDiscovery(AutomationModule):
             # 4. Score companies against eagerness algorithm
             scored = self._score_companies(enriched)
             
+            # 4.5. GROWTH HACK: Find competitive challengers for incumbents
+            competitive_opportunities = self._find_competitive_challengers(enriched)
+            
+            # Combine direct discoveries + competitive opportunities
+            all_sponsors = scored + competitive_opportunities
+            
+            # Deduplicate by domain
+            seen_domains = set()
+            unique_sponsors = []
+            for sponsor in all_sponsors:
+                if sponsor['domain'] not in seen_domains:
+                    seen_domains.add(sponsor['domain'])
+                    unique_sponsors.append(sponsor)
+            
+            # Re-sort by eagerness score
+            unique_sponsors.sort(key=lambda x: x.get('eagerness_score', 0), reverse=True)
+            
             # 5. Filter high-scoring companies
-            qualified = [c for c in scored if c['eagerness_score'] >= self.min_eagerness_score]
+            qualified = [c for c in unique_sponsors if c.get('eagerness_score', 0) >= self.min_eagerness_score]
             self.log(f"Found {len(qualified)} qualified sponsors (score >= {self.min_eagerness_score})")
+            
+            if competitive_opportunities:
+                comp_count = len([c for c in competitive_opportunities if c.get('eagerness_score', 0) >= self.min_eagerness_score])
+                if comp_count > 0:
+                    self.log(f"  🎯 Including {comp_count} competitive challengers!")
             
             # 6. Save to sponsor leads
             self._save_sponsor_leads(qualified)
@@ -77,6 +99,7 @@ class ContentSponsorDiscovery(AutomationModule):
                 "newsletters_analyzed": len(newsletters),
                 "companies_found": len(companies),
                 "companies_enriched": len(enriched),
+                "competitive_opportunities": len(competitive_opportunities),
                 "qualified_sponsors": len(qualified),
                 "top_sponsor": qualified[0]['name'] if qualified else None
             }
@@ -308,7 +331,77 @@ class ContentSponsorDiscovery(AutomationModule):
         
         # Log top 3
         for i, sponsor in enumerate(sponsors[:3], 1):
-            self.log(f"  {i}. {sponsor['name']} ({sponsor['domain']}) - Score: {sponsor['eagerness_score']}")
+            competitive_flag = " 🎯" if sponsor.get('competitive_boost') else ""
+            self.log(f"  {i}. {sponsor['name']} ({sponsor['domain']}) - Score: {sponsor['eagerness_score']}{competitive_flag}")
+    
+    def _find_competitive_challengers(self, discovered_companies: List[Dict]) -> List[Dict]:
+        """
+        GROWTH HACK: Find challenger competitors of mentioned incumbents
+        
+        When AWS/Docker/OpenAI appear → Find their hungry challengers
+        Pitch: "AWS was in our newsletter. Show readers why you're better."
+        """
+        # Competitive mapping: Incumbent → Challengers
+        competitive_map = {
+            'aws.amazon.com': {
+                'name': 'AWS',
+                'challengers': [
+                    {'name': 'Vercel', 'domain': 'vercel.com', 'stage': 'series_b', 'age': 6, 'team': 100, 'raised_m': 150},
+                    {'name': 'Railway', 'domain': 'railway.app', 'stage': 'series_a', 'age': 3, 'team': 25, 'raised_m': 30},
+                    {'name': 'Render', 'domain': 'render.com', 'stage': 'series_b', 'age': 5, 'team': 50, 'raised_m': 85},
+                    {'name': 'Fly.io', 'domain': 'fly.io', 'stage': 'series_a', 'age': 4, 'team': 30, 'raised_m': 70},
+                ]
+            },
+            'docker.com': {
+                'name': 'Docker',
+                'challengers': [
+                    {'name': 'Railway', 'domain': 'railway.app', 'stage': 'series_a', 'age': 3, 'team': 25, 'raised_m': 30},
+                    {'name': 'Render', 'domain': 'render.com', 'stage': 'series_b', 'age': 5, 'team': 50, 'raised_m': 85},
+                ]
+            },
+            'openai.com': {
+                'name': 'OpenAI',
+                'challengers': [
+                    {'name': 'Anthropic', 'domain': 'anthropic.com', 'stage': 'series_c', 'age': 3, 'team': 150, 'raised_m': 1500},
+                    {'name': 'Perplexity', 'domain': 'perplexity.ai', 'stage': 'series_b', 'age': 2, 'team': 20, 'raised_m': 73},
+                ]
+            },
+        }
+        
+        challengers = []
+        discovered_domains = {c['domain'] for c in discovered_companies}
+        
+        # Check if any incumbents were discovered
+        for company in discovered_companies:
+            domain = company['domain']
+            
+            if domain in competitive_map:
+                incumbent = competitive_map[domain]
+                self.log(f"🎯 Incumbent detected: {incumbent['name']} → Finding challengers...")
+                
+                # Add all challengers for this incumbent
+                for challenger in incumbent['challengers']:
+                    if challenger['domain'] in discovered_domains:
+                        continue  # Skip if already discovered
+                    
+                    # Create challenger entry with competitive context
+                    challenger_entry = {
+                        **challenger,
+                        'discovered_from': f"competitive_to_{domain}",
+                        'discovered_at': datetime.now().isoformat(),
+                        'competitive_context': {
+                            'incumbent_name': incumbent['name'],
+                            'incumbent_domain': domain,
+                            'pitch_angle': 'beat_the_incumbent'
+                        },
+                        'eagerness_score': self._calculate_eagerness_score(challenger),
+                        'competitive_boost': True
+                    }
+                    
+                    challengers.append(challenger_entry)
+                    self.log(f"  → {challenger['name']} (score: {challenger_entry['eagerness_score']})")
+        
+        return challengers
 
 
 if __name__ == "__main__":
