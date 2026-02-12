@@ -405,10 +405,17 @@ def main():
         
         # Select stories for each segment with delay to avoid rate limiting
         segment_list = list(segments.items())
+        failed_segments = []
         for idx, (segment_id, segment_config) in enumerate(segment_list):
             try:
                 selected = select_stories_for_segment(filtered_articles, segment_id, segment_config)
                 save_segment_selection(segment_id, selected)
+                
+                # Verify the file was actually created
+                output_file = TMP_DIR / f"selected_articles_{segment_id}_{TODAY}.json"
+                if not output_file.exists():
+                    log(f"❌ ERROR: Selection file not created for {segment_id}")
+                    failed_segments.append(segment_id)
                 
                 # Add delay between segments to avoid rate limiting (except for last segment)
                 if idx < len(segment_list) - 1:
@@ -417,12 +424,20 @@ def main():
                     
             except Exception as e:
                 log(f"❌ Failed to process segment {segment_id}: {str(e)}")
+                import traceback
+                log(traceback.format_exc())
+                failed_segments.append(segment_id)
                 # Continue with other segments
                 continue
         
         # Log execution time
         elapsed = (datetime.now() - start_time).total_seconds()
         log(f"\n⏱️ Total execution time: {elapsed:.2f} seconds")
+        
+        # Check if any segments failed
+        if failed_segments:
+            log(f"\n❌ CRITICAL: Story selection failed for segments: {', '.join(failed_segments)}")
+            return False
         
         return True
         
