@@ -177,7 +177,26 @@ def main():
     if not run_script("aggregate_feeds.py", timeout=120):
         log("❌ Pipeline failed at aggregation", "ERROR")
         return False
-    log("✅ Aggregation complete")
+    
+    # Validation: Ensure raw articles file was created
+    raw_articles_file = TMP_DIR / f"raw_articles_{TODAY}.json"
+    if not raw_articles_file.exists():
+        log(f"❌ CRITICAL: Raw articles file not found: {raw_articles_file}", "ERROR")
+        log("   This means feed aggregation didn't create the expected output", "ERROR")
+        return False
+    
+    # Check if file has content
+    try:
+        with open(raw_articles_file, 'r') as f:
+            data = json.load(f)
+            article_count = len(data.get('articles', []))
+            if article_count == 0:
+                log("❌ CRITICAL: No articles found in raw_articles file", "ERROR")
+                return False
+            log(f"✅ Aggregation complete: {article_count} articles collected")
+    except Exception as e:
+        log(f"❌ CRITICAL: Failed to read raw articles: {str(e)}", "ERROR")
+        return False
     
     # STEP 2: Select Stories (for all segments)
     log("\n\n▶️  Step 2/5: Select Top Stories (All Segments)")
@@ -185,6 +204,19 @@ def main():
     if not run_script("select_stories.py", timeout=300):  # Increased from 120s - LLM calls can take 2-3min with large datasets
         log("❌ Pipeline failed at story selection", "ERROR")
         return False
+    
+    # Validation: Ensure selected articles files were created for each segment
+    missing_segments = []
+    for segment_id in segment_ids:
+        selected_file = TMP_DIR / f"selected_articles_{segment_id}_{TODAY}.json"
+        if not selected_file.exists():
+            missing_segments.append(segment_id)
+            log(f"❌ Missing selection file for {segment_id}: {selected_file}", "ERROR")
+    
+    if missing_segments:
+        log(f"❌ CRITICAL: Story selection failed for segments: {', '.join(missing_segments)}", "ERROR")
+        return False
+    
     log("✅ Story selection complete for all segments")
     
     # STEP 3 & 4: Summarize and Compose for each segment
