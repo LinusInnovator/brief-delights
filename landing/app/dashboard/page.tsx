@@ -1,4 +1,4 @@
-import { getAnalyticsDashboardData } from '@/lib/analytics'
+import { getAnalyticsDashboardData } from '../../lib/analytics'
 
 export const revalidate = 300 // Revalidate every 5 minutes
 
