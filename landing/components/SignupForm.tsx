@@ -5,9 +5,11 @@ import { useState } from 'react';
 type Segment = 'builders' | 'leaders' | 'innovators';
 
 export default function SignupForm({
-    preSelectedSegment
+    preSelectedSegment,
+    referrer
 }: {
-    preSelectedSegment?: Segment
+    preSelectedSegment?: Segment;
+    referrer?: string | null;
 }) {
     const [email, setEmail] = useState('');
     const [segment, setSegment] = useState<Segment>(preSelectedSegment || 'innovators');
@@ -30,7 +32,7 @@ export default function SignupForm({
             const response = await fetch('/api/subscribe', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ email, segment })
+                body: JSON.stringify({ email, segment, referrer })
             });
 
             const data = await response.json();
@@ -54,13 +56,17 @@ export default function SignupForm({
             <form onSubmit={handleSubmit} className="space-y-4">
                 {/* Email Input */}
                 <div>
+                    <label htmlFor="email-input" className="sr-only">Email address</label>
                     <input
+                        id="email-input"
                         type="email"
                         placeholder="your@email.com"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
-                        className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-black focus:outline-none text-lg"
+                        className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-black focus:outline-none text-lg placeholder:text-gray-500 placeholder:opacity-100"
                         disabled={status === 'loading'}
+                        aria-label="Email address"
+                        aria-required="true"
                     />
                 </div>
 
@@ -70,8 +76,8 @@ export default function SignupForm({
                         type="button"
                         onClick={() => setSegment('builders')}
                         className={`py-2 px-3 rounded-lg border-2 font-semibold transition ${segment === 'builders'
-                                ? 'bg-orange-500 text-white border-orange-500'
-                                : 'bg-white text-gray-700 border-gray-300 hover:border-orange-500'
+                            ? 'bg-orange-500 text-white border-orange-500'
+                            : 'bg-white text-gray-700 border-gray-300 hover:border-orange-500'
                             }`}
                         disabled={status === 'loading'}
                     >
@@ -82,8 +88,8 @@ export default function SignupForm({
                         type="button"
                         onClick={() => setSegment('leaders')}
                         className={`py-2 px-3 rounded-lg border-2 font-semibold transition ${segment === 'leaders'
-                                ? 'bg-blue-600 text-white border-blue-600'
-                                : 'bg-white text-gray-700 border-gray-300 hover:border-blue-600'
+                            ? 'bg-blue-600 text-white border-blue-600'
+                            : 'bg-white text-gray-700 border-gray-300 hover:border-blue-600'
                             }`}
                         disabled={status === 'loading'}
                     >
@@ -94,8 +100,8 @@ export default function SignupForm({
                         type="button"
                         onClick={() => setSegment('innovators')}
                         className={`py-2 px-3 rounded-lg border-2 font-semibold transition ${segment === 'innovators'
-                                ? 'bg-purple-600 text-white border-purple-600'
-                                : 'bg-white text-gray-700 border-gray-300 hover:border-purple-600'
+                            ? 'bg-purple-600 text-white border-purple-600'
+                            : 'bg-white text-gray-700 border-gray-300 hover:border-purple-600'
                             }`}
                         disabled={status === 'loading'}
                     >
@@ -115,8 +121,8 @@ export default function SignupForm({
                 {/* Status Message */}
                 {message && (
                     <div className={`p-4 rounded-lg text-center ${status === 'success'
-                            ? 'bg-green-50 text-green-800 border border-green-200'
-                            : 'bg-red-50 text-red-800 border border-red-200'
+                        ? 'bg-green-50 text-green-800 border border-green-200'
+                        : 'bg-red-50 text-red-800 border border-red-200'
                         }`}>
                         {message}
                     </div>

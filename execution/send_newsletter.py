@@ -2,16 +2,25 @@
 """
 Newsletter Send Script - Segment-Based Version
 Sends segmented newsletters via Resend API.
+
+NEW: Includes fallback to yesterday's newsletter if today's fails.
 """
 
 import json
 import os
-from datetime import datetime
+import sys
+from datetime import datetime, timedelta
 from pathlib import Path
 from collections import defaultdict
 import time
 from dotenv import load_dotenv
 import resend
+
+# Add utils to path
+UTILS_DIR = Path(__file__).parent / "utils"
+sys.path.insert(0, str(UTILS_DIR))
+
+from newsletter_archive import NewsletterArchive
 
 # Load environment variables
 load_dotenv()
@@ -62,18 +71,40 @@ def load_segments_config():
         return json.load(f)
 
 
-def load_newsletter_html(segment_id: str, weekly: bool = False) -> str:
-    """Load segment-specific newsletter HTML"""
+def load_newsletter_html(segment_id: str, weekly: bool = False, use_fallback: bool = True) -> tuple[str, bool]:
+    """Load segment-specific newsletter HTML with fallback support
+    
+    Returns:
+        tuple: (html_content, is_fallback)
+    """
     if weekly:
         newsletter_file = TMP_DIR / f"newsletter_weekly_{segment_id}_{TODAY}.html"
     else:
         newsletter_file = TMP_DIR / f"newsletter_{segment_id}_{TODAY}.html"
     
-    if not newsletter_file.exists():
-        raise FileNotFoundError(f"Newsletter not found for segment {segment_id}: {newsletter_file}")
+    # Try today's newsletter first
+    if newsletter_file.exists():
+        with open(newsletter_file, 'r') as f:
+            return f.read(), False
     
-    with open(newsletter_file, 'r') as f:
-        return f.read()
+    # If not found and fallback enabled, try yesterday's
+    if use_fallback:
+        log(f"⚠️ Today's newsletter not found for {segment_id}, trying fallback...")
+        archive = NewsletterArchive(TMP_DIR)
+        fallback_path = archive.get_fallback_newsletter(segment_id)
+        
+        if fallback_path:
+            with open(fallback_path, 'r') as f:
+                html = f.read()
+            
+            # Extract date from fallback filename
+            fallback_date = fallback_path.stem.split('_')[-1]
+            modified_html = archive.modify_fallback_header(html, fallback_date)
+            
+            log(f"✅ Using fallback newsletter from {fallback_date}")
+            return modified_html, True
+    
+    raise FileNotFoundError(f"Newsletter not found for segment {segment_id} and no fallback available")
 
 
 def send_email(subscriber: dict, html_content: str, segment_name: str) -> dict:
@@ -182,17 +213,20 @@ def main():
         
         # Send to each segment
         all_results = {}
+        fallback_used = {}  # Track which segments used fallback
         
         for segment_id, subscribers in segments_by_sub.items():
             try:
                 segment_config = segments_data['segments'][segment_id]
                 segment_name = f"{segment_config['name']} {segment_config['emoji']}"
                 
-                # Load segment-specific newsletter
-                html_content = load_newsletter_html(segment_id, weekly=args.weekly)
+                # Load segment-specific newsletter (with fallback support)
+                html_content, is_fallback = load_newsletter_html(segment_id, weekly=args.weekly, use_fallback=True)
+                fallback_used[segment_id] = is_fallback
                 
                 # Send to this segment
                 results = send_to_segment(segment_id, subscribers, html_content, segment_name)
+                results['used_fallback'] = is_fallback
                 all_results[segment_id] = results
                 
             except Exception as e:
@@ -217,8 +251,14 @@ def main():
         log(f"  Total sent: {total_sent}")
         log(f"  Total failed: {total_failed}")
         
+        # Check if any fallbacks were used
+        fallbacks_count = sum(1 for r in all_results.values() if r.get('used_fallback', False))
+        if fallbacks_count > 0:
+            log(f"  ⚠️ Fallback newsletters used: {fallbacks_count} segments")
+        
         for segment_id, results in all_results.items():
-            log(f"  {segment_id}: {results['sent']} sent, {results['failed']} failed")
+            fallback_indicator = " (FALLBACK)" if results.get('used_fallback', False) else ""
+            log(f"  {segment_id}: {results['sent']} sent, {results['failed']} failed{fallback_indicator}")
         
         # Log execution time
         elapsed = (datetime.now() - start_time).total_seconds()

@@ -1,6 +1,26 @@
 import SignupForm from '../components/SignupForm';
+import { createClient } from '../lib/supabase';
 
-export default function Home() {
+async function getSubscriberCount() {
+  const supabase = createClient();
+  try {
+    const { count } = await supabase
+      .from('subscribers')
+      .select('*', { count: 'exact', head: true })
+      .eq('status', 'confirmed');
+    return count || 0;
+  } catch {
+    return 0;
+  }
+}
+
+export default async function Home({
+  searchParams
+}: {
+  searchParams: { ref?: string }
+}) {
+  const subscriberCount = await getSubscriberCount();
+  const referrer = searchParams.ref || null;
   return (
     <main className="min-h-screen bg-white">
       {/* Hero Section */}
@@ -27,9 +47,9 @@ export default function Home() {
 
           {/* CTA Buttons */}
           <div className="flex gap-4 justify-center">
-            <button className="bg-black text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-800 transition">
+            <a href="#signup" className="bg-black text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-800 transition">
               Get Brief Daily
-            </button>
+            </a>
             <a href="/archive" className="border-2 border-gray-300 text-gray-700 px-8 py-4 rounded-lg font-semibold text-lg hover:border-gray-400 transition inline-block">
               See Archive
             </a>
@@ -57,9 +77,9 @@ export default function Home() {
             <p className="text-sm text-gray-500 mb-4">
               Developer tools • Infrastructure • Open source
             </p>
-            <button className="w-full bg-orange-500 text-white py-3 rounded-lg font-semibold hover:bg-orange-600 transition">
+            <a href="#signup" className="w-full bg-orange-500 text-white py-3 rounded-lg font-semibold hover:bg-orange-600 transition inline-block text-center">
               Get Builder Brief
-            </button>
+            </a>
           </div>
 
           {/* Leaders Card */}
@@ -70,9 +90,9 @@ export default function Home() {
             <p className="text-sm text-gray-500 mb-4">
               Business strategy • Leadership • Market trends
             </p>
-            <button className="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition">
+            <a href="#signup" className="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition inline-block text-center">
               Get Leader Brief
-            </button>
+            </a>
           </div>
 
           {/* Innovators Card */}
@@ -83,22 +103,29 @@ export default function Home() {
             <p className="text-sm text-gray-500 mb-4">
               Cutting-edge AI • Emerging tech • Venture trends
             </p>
-            <button className="w-full bg-purple-600 text-white py-3 rounded-lg font-semibold hover:bg-purple-700 transition">
+            <a href="#signup" className="w-full bg-purple-600 text-white py-3 rounded-lg font-semibold hover:bg-purple-700 transition inline-block text-center">
               Get Innovator Brief
-            </button>
+            </a>
           </div>
         </div>
       </section>
 
       {/* Signup Section */}
-      <section className="max-w-6xl mx-auto px-6 py-20 bg-gray-50">
+      <section id="signup" className="max-w-6xl mx-auto px-6 py-20 bg-gray-50 scroll-mt-8">
         <h3 className="text-3xl font-bold text-center mb-4 text-gray-900">
           Start Getting Brief
         </h3>
-        <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
-          Join subscribers getting curated intelligence daily
+        <p className="text-center text-gray-600 mb-8 max-w-2xl mx-auto">
+          {subscriberCount > 0 ? (
+            <span className="font-semibold text-gray-900">
+              Join {subscriberCount}+ subscribers
+            </span>
+          ) : (
+            <span>Join subscribers</span>
+          )}{' '}
+          getting curated intelligence daily
         </p>
-        <SignupForm />
+        <SignupForm referrer={referrer} />
       </section>
 
       {/* Value Props Section */}

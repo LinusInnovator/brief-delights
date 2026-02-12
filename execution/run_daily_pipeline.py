@@ -206,6 +206,17 @@ def main():
             log(f"❌ Failed to compose for {segment_id}", "ERROR")
             continue
         log(f"✅ Newsletter composed for {segment_name}")
+        
+        # NEW: Archive successful newsletter for fallback
+        newsletter_file = TMP_DIR / f"newsletter_{segment_id}_{TODAY}.html"
+        if newsletter_file.exists():
+            try:
+                sys.path.insert(0, str(PROJECT_ROOT / "execution" / "utils"))
+                from newsletter_archive import NewsletterArchive
+                archive = NewsletterArchive(TMP_DIR)
+                archive.archive_newsletter(segment_id, newsletter_file)
+            except Exception as e:
+                log(f"⚠️ Failed to archive newsletter: {str(e)}", "WARN")
     
     # STEP 5: Send (handles all segments)
     # ========================================
