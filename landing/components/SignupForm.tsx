@@ -1,20 +1,32 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useRef, useImperativeHandle, forwardRef } from 'react';
 
 type Segment = 'builders' | 'leaders' | 'innovators';
 
-export default function SignupForm({
-    preSelectedSegment,
-    referrer
-}: {
+export interface SignupFormRef {
+    selectSegmentAndFocus: (segment: Segment) => void;
+}
+
+const SignupForm = forwardRef<SignupFormRef, {
     preSelectedSegment?: Segment;
     referrer?: string | null;
-}) {
+}>(({ preSelectedSegment, referrer }, ref) => {
     const [email, setEmail] = useState('');
     const [segment, setSegment] = useState<Segment>(preSelectedSegment || 'innovators');
     const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
     const [message, setMessage] = useState('');
+    const emailInputRef = useRef<HTMLInputElement>(null);
+
+    // Expose method to parent to select segment and focus email
+    useImperativeHandle(ref, () => ({
+        selectSegmentAndFocus: (newSegment: Segment) => {
+            setSegment(newSegment);
+            setTimeout(() => {
+                emailInputRef.current?.focus();
+            }, 100); // Small delay to ensure scroll completes
+        }
+    }));
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -58,6 +70,7 @@ export default function SignupForm({
                 <div>
                     <label htmlFor="email-input" className="sr-only">Email address</label>
                     <input
+                        ref={emailInputRef}
                         id="email-input"
                         type="email"
                         placeholder="your@email.com"
@@ -135,4 +148,8 @@ export default function SignupForm({
             </form>
         </div>
     );
-}
+});
+
+SignupForm.displayName = 'SignupForm';
+
+export default SignupForm;
