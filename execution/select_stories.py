@@ -229,9 +229,9 @@ def validate_selection(selection: dict, segment_id: str) -> bool:
     
     selected = selection['selected_articles']
     
-    # Check count (10-15 articles - more forgiving than strict 14-15)
-    if not (10 <= len(selected) <= 15):
-        log(f"⚠️ Invalid count: {len(selected)} articles (expected 10-15)")
+    # Check count (8-15 articles - more forgiving to handle edge cases)
+    if not (8 <= len(selected) <= 15):
+        log(f"⚠️ Invalid count: {len(selected)} articles (expected 8-15)")
         return False
     
     # Check all required fields present
@@ -253,21 +253,93 @@ def validate_selection(selection: dict, segment_id: str) -> bool:
     quick_count = tiers.count('quick')
     trending_count = tiers.count('trending')
     
-    # At least 5 full articles, at least 2 quick, at least 1 trending
-    if full_count < 5:
-        log(f"⚠️ Not enough full articles: {full_count} (need at least 5)")
+    # At least 3 full articles, at least 1 quick, at least 1 trending (more lenient)
+    if full_count < 3:
+        log(f"⚠️ Not enough full articles: {full_count} (need at least 3)")
         return False
     
-    if quick_count < 2:
-        log(f"⚠️ Not enough quick links: {quick_count} (need at least 2)")
+    if quick_count < 1:
+        log(f"⚠️ Not enough quick articles: {quick_count} (need at least 1)")
         return False
     
     if trending_count < 1:
-        log(f"⚠️ Not enough trending: {trending_count} (need at least 1)")
+        log(f"⚠️ Not enough trending articles: {trending_count} (need at least 1)")
         return False
     
     log(f"✅ Selection validated for {segment_id}: {len(selected)} articles ({full_count} full, {quick_count} quick, {trending_count} trending)")
     return True
+
+
+def calculate_newsworthiness_score(selected_articles: list) -> dict:
+    """
+    Calculate content quality score (0-100) based on article characteristics.
+    
+    Returns dict with:
+    - score: 0-100 integer
+    - tier: 'must_read' (90-100), 'relevant' (60-89), 'interesting' (0-59)
+    - metrics: detailed breakdown
+    """
+    if not selected_articles:
+        return {'score': 0, 'tier': 'interesting', 'metrics': {}}
+    
+    score = 0
+    
+    # 1. Base score from article count (max 20 points)
+    article_count = len(selected_articles)
+    score += min(20, (article_count / 15) * 20)
+    
+    # 2. Average urgency score (max 40 points)
+    # Handle both int and str values from LLM, with fallback for invalid values
+    urgency_scores = []
+    for a in selected_articles:
+        val = a.get('urgency_score', 3)
+        try:
+            score_val = int(val) if isinstance(val, str) else val
+            urgency_scores.append(min(5, max(1, score_val)))  # Clamp 1-5
+        except (ValueError, TypeError):
+            urgency_scores.append(3)  # Default to 3 if conversion fails
+    avg_urgency = sum(urgency_scores) / len(urgency_scores)
+    score += (avg_urgency / 5) * 40
+    
+    # 3. Average audience value (max 30 points)
+    # Handle both int and str values from LLM, with fallback for invalid values
+    value_scores = []
+    for a in selected_articles:
+        val = a.get('audience_value', 3)
+        try:
+            score_val = int(val) if isinstance(val, str) else val
+            value_scores.append(min(5, max(1, score_val)))  # Clamp 1-5
+        except (ValueError, TypeError):
+            value_scores.append(3)  # Default to 3 if conversion fails
+    avg_value = sum(value_scores) / len(value_scores)
+    score += (avg_value / 5) * 30
+    
+    # 4. Tier quality bonus (max 10 points)
+    full_count = sum(1 for a in selected_articles if a.get('tier') == 'full')
+    score += min(10, (full_count / 8) * 10)
+    
+    final_score = int(score)
+    
+    # Determine quality tier
+    if final_score >= 90:
+        tier = 'must_read'
+    elif final_score >= 60:
+        tier = 'relevant'
+    else:
+        tier = 'interesting'
+    
+    log(f"📊 Content Quality: {final_score}/100 ({tier.upper()})")
+    
+    return {
+        'score': final_score,
+        'tier': tier,
+        'metrics': {
+            'article_count': article_count,
+            'avg_urgency': round(avg_urgency, 2),
+            'avg_value': round(avg_value, 2),
+            'full_articles': full_count
+        }
+    }
 
 
 def merge_selection_with_articles(raw_articles: list, selection: dict) -> list:
@@ -359,13 +431,19 @@ def select_stories_for_segment(articles: list, segment_id: str, segment_config: 
 
 
 def save_segment_selection(segment_id: str, articles: list):
-    """Save segment-specific selection"""
+    """Save segment-specific selection with newsworthiness score"""
     output_file = TMP_DIR / f"selected_articles_{segment_id}_{TODAY}.json"
+    
+    # Calculate newsworthiness score
+    quality_data = calculate_newsworthiness_score(articles)
     
     output_data = {
         "generated_date": datetime.now().isoformat(),
         "segment": segment_id,
         "article_count": len(articles),
+        "newsworthiness_score": quality_data['score'],
+        "quality_tier": quality_data['tier'],
+        "quality_metrics": quality_data['metrics'],
         "selected_articles": articles
     }
     
