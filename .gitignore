@@ -55,3 +55,6 @@ htmlcov/
 # Newsletter outputs (optional - these are OK to commit if you want archive)
 # .tmp/newsletter_*.html
 # .tmp/summaries_*.json
+
+# Local Netlify folder
+.netlify
