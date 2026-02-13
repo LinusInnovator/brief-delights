@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Briefly 💼 - 2026-02-13</title>
+    <style>
+        /* Reset */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background-color: #f8f9fa;
+            color: #1a1a1a;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* Container */
+        .email-wrapper {
+            max-width: 680px;
+            margin: 0 auto;
+            background-color: #ffffff;
+        }
+
+        /* Top Bar (minimal, like TLDR) */
+        .top-bar {
+            padding: 16px 40px;
+            text-align: center;
+            border-bottom: 1px solid #e8e8e8;
+            background: #ffffff;
+        }
+
+        .top-bar a {
+            color: #666;
+            text-decoration: none;
+            font-size: 13px;
+            margin: 0 12px;
+            font-weight: 500;
+        }
+
+        .top-bar a:hover {
+            color: #000;
+        }
+
+        /* Header (Clean, no gradient!) */
+        .header {
+            background: #ffffff;
+            padding: 40px 40px 32px 40px;
+            text-align: center;
+            border-bottom: 1px solid #e8e8e8;
+        }
+
+        .logo {
+            font-size: 52px;
+            font-weight: 700;
+            letter-spacing: -1.5px;
+            margin: 0;
+            line-height: 1;
+            color: #000000;
+        }
+
+        .tagline {
+            font-size: 18px;
+            font-weight: 400;
+            color: #666666;
+            margin: 4px 0 12px 0;
+            letter-spacing: 2px;
+        }
+
+        .header .date {
+            margin: 0 0 8px 0;
+            font-size: 14px;
+            color: #999;
+            font-weight: 400;
+        }
+
+        .header .curation-stats {
+            margin: 0;
+            font-size: 12px;
+            color: #aaa;
+            font-weight: 400;
+            font-family: 'Courier New', monospace;
+        }
+
+        /* Sponsor Block (white background, tight integration) */
+        .sponsor {
+            background: #ffffff;
+            border-top: 1px solid #e8e8e8;
+            border-bottom: 1px solid #e8e8e8;
+            padding: 32px 40px;
+            margin: 0;
+        }
+
+        .sponsor-label {
+            font-size: 9px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #999;
+            margin: 0 0 12px 0;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        .sponsor h3 {
+            margin: 0 0 12px 0;
+            font-size: 20px;
+            font-weight: 700;
+            color: #000;
+            line-height: 1.3;
+        }
+
+        .sponsor h3 a {
+            color: #000;
+            text-decoration: none;
+        }
+
+        .sponsor h3 a:hover {
+            color: #4f46e5;
+        }
+
+        .sponsor p {
+            margin: 0;
+            font-size: 14px;
+            line-height: 1.5;
+            color: #666;
+        }
+
+        .sponsor a.cta {
+            display: inline-block;
+            margin-top: 12px;
+            color: #4f46e5;
+            font-weight: 600;
+            text-decoration: underline;
+            font-size: 15px;
+        }
+
+        /* Content */
+        .content {
+            padding: 40px 40px 20px 40px;
+        }
+
+        /* Section Headers */
+        .section {
+            margin-bottom: 40px;
+        }
+
+        .section-emoji {
+            text-align: center;
+            font-size: 20px;
+            margin: 0 0 12px 0;
+        }
+
+        .section h2 {
+            font-size: 20px;
+            font-weight: 700;
+            color: #000;
+            margin: 0 0 24px 0;
+            padding: 0;
+            border: none;
+            text-align: center;
+        }
+
+        /* Story Cards */
+        .story {
+            margin-bottom: 28px;
+            padding-bottom: 28px;
+            border-bottom: 1px solid #e8e8e8;
+        }
+
+        .story:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        /* Article Titles (slightly bigger than body) */
+        .story h3 {
+            margin: 0 0 10px 0;
+            font-size: 20px;
+            line-height: 1.4;
+            font-weight: 700;
+        }
+
+        .story h3 a {
+            color: #000;
+            text-decoration: underline;
+        }
+
+        .story h3 a:hover {
+            color: #1e40af;
+        }
+
+        /* Summary Text (close in size to titles) */
+        .story .summary {
+            margin: 10px 0;
+            font-size: 18px;
+            color: #444;
+            line-height: 1.6;
+        }
+
+        /* Meta Info */
+        .story .meta {
+            margin: 12px 0 0 0;
+            font-size: 14px;
+            color: #999;
+        }
+
+        .story .meta a {
+            color: #999;
+            text-decoration: none;
+        }
+
+        .story .meta a:hover {
+            color: #4f46e5;
+        }
+
+        /* Editorial Context - NEW: Why This Matters */
+        .editorial-context {
+            margin: 20px 0 12px 0;
+            padding: 12px 16px;
+            background: #eff6ff;
+            border-left: 3px solid #3b82f6;
+            font-size: 16px;
+            color: #1e40af;
+            font-style: italic;
+            line-height: 1.5;
+        }
+
+        .editorial-context-label {
+            font-weight: 600;
+            font-style: normal;
+            color: #1e40af;
+        }
+
+        /* Quick Links Section */
+        .quick-links {
+            margin: 40px 0;
+            padding: 0 40px;
+            border-top: 2px solid #e8e8e8;
+            padding-top: 32px;
+        }
+
+        .quick-item {
+            margin-bottom: 24px;
+            padding-bottom: 24px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .quick-item:last-child {
+            margin-bottom: 0;
+            border-bottom: none;
+        }
+
+        .quick-item h4 {
+            font-size: 16px;
+            font-weight: 600;
+            margin: 0 0 8px 0;
+            line-height: 1.4;
+        }
+
+        .quick-item h4 a {
+            color: #000;
+            text-decoration: underline;
+        }
+
+        .quick-item h4 a:hover {
+            color: #1e40af;
+        }
+
+        .quick-item .snippet {
+            font-size: 15px;
+            color: #555;
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        /* Footer */
+        .footer {
+            background: #ffffff;
+            padding: 40px;
+            text-align: center;
+            border-top: 1px solid #e8e8e8;
+        }
+
+        .footer .share {
+            margin: 0 0 24px 0;
+            font-size: 16px;
+            color: #444;
+        }
+
+        .footer .share a {
+            color: #4f46e5;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .footer .share a:hover {
+            text-decoration: underline;
+        }
+
+        .footer .links {
+            margin: 20px 0;
+            font-size: 14px;
+        }
+
+        .footer .links a {
+            color: #666;
+            text-decoration: none;
+            margin: 0 12px;
+        }
+
+        .footer .links a:hover {
+            color: #000;
+        }
+
+        .footer .legal {
+            margin-top: 24px;
+            font-size: 13px;
+            color: #999;
+            line-height: 1.6;
+        }
+
+        /* Mobile Responsive */
+        @media only screen and (max-width: 600px) {
+            .email-wrapper {
+                width: 100% !important;
+            }
+
+            .top-bar {
+                padding: 12px 20px !important;
+            }
+
+            .header {
+                padding: 24px 20px 20px 20px !important;
+            }
+
+            .header h1 {
+                font-size: 28px !important;
+            }
+
+            .header .tagline {
+                font-size: 15px !important;
+            }
+
+            .content,
+            .footer {
+                padding: 24px !important;
+            }
+
+            .sponsor {
+                padding: 24px 20px !important;
+            }
+
+            .story h3 {
+                font-size: 18px !important;
+            }
+
+            .story .summary {
+                font-size: 16px !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="email-wrapper">
+        <!-- Top Navigation Bar -->
+        <div class="top-bar">
+            <a href="https://send.dreamvalidator.com">Sign Up</a> |
+            <a href="https://send.dreamvalidator.com/advertise">Advertise</a> |
+            <a href="https://send.dreamvalidator.com/2026-02-13">View Online</a>
+        </div>
+
+        <!-- Header -->
+        <div class="header">
+            <div class="logo">Brief</div>
+            <div class="tagline">delights</div>
+            <p class="date">Leaders 💼 | 2026-02-13</p>
+            <p class="curation-stats">1,340+ news scanned → ~400 analyzed → 14
+                selected</p>
+        </div>
+
+        <!-- Sponsor (Placeholder - customize per segment) -->
+        <div class="sponsor">
+            <p class="sponsor-label">Together With Our Sponsor</p>
+            <h3><a href="#">Your Brand Here</a></h3>
+            <p>This is where segment-specific sponsor content goes. Builders see DevOps tools, Leaders see business
+                SaaS, Innovators see AI platforms.</p>
+            <a href="#" class="cta">Learn More →</a>
+        </div>
+
+        <!-- Content Sections -->
+        <div class="content">
+            
+            <div class="section">
+                
+                
+                <div class="section-emoji">🚀</div>
+                <h2>AI & Innovation</h2>
+                
+
+                
+                <div class="story">
+                    <h3><a href="https://brief.delights.pro/api/track?url=AI+News+%26+Artificial+Intelligence+%7C+TechCrunch&s=leaders&d=2026-02-13&t=Former+Founders+Fund+VC+Sam+Blond+launches+AI+sales+startup+to+upend+Salesforce">Former Founders Fund VC Sam Blond launches AI sales startup to upend Salesforce</a> <span
+                            style="color: #666; font-weight: 400;">(1 minute read)</span>
+                    </h3>
+                    <p class="summary">Monaco, an AI-powered CRM startup backed by tech luminaries, aims to disrupt Salesforce's dominance in the sales software market.</p>
+
+                    
+                    <div class="editorial-context">
+                        <span class="editorial-context-label">Why this matters:</span> This signals a major shift in the CRM landscape, forcing enterprises to rethink their sales technology stack and workflows.
+                    </div>
+                    
+
+                    <p class="meta"><a href="https://brief.delights.pro/api/track?url=AI+News+%26+Artificial+Intelligence+%7C+TechCrunch&s=leaders&d=2026-02-13&t=Former+Founders+Fund+VC+Sam+Blond+launches+AI+sales+startup+to+upend+Salesforce">AI News & Artificial Intelligence | TechCrunch</a></p>
+                </div>
+                
+            </div>
+            
+            <div class="section">
+                
+                
+                <div class="section-emoji">💼</div>
+                <h2>Tech Business</h2>
+                
+
+                
+                <div class="story">
+                    <h3><a href="https://brief.delights.pro/api/track?url=MIT+Sloan+Management+Review&s=leaders&d=2026-02-13&t=The+CEO%E2%80%99s+Playbook+for+Difficult+Board+Directors">The CEO’s Playbook for Difficult Board Directors</a> <span
+                            style="color: #666; font-weight: 400;">(2 minute read)</span>
+                    </h3>
+                    <p class="summary">The article outlines 5 common 'difficult' board director archetypes that CEOs may encounter, and provides a playbook for how to effectively manage them.</p>
+
+                    
+                    <div class="editorial-context">
+                        <span class="editorial-context-label">Why this matters:</span> Knowing how to handle problematic board directors is critical for CEOs to execute their strategic vision and maintain effective board-CEO relationships.
+                    </div>
+                    
+
+                    <p class="meta"><a href="https://brief.delights.pro/api/track?url=MIT+Sloan+Management+Review&s=leaders&d=2026-02-13&t=The+CEO%E2%80%99s+Playbook+for+Difficult+Board+Directors">MIT Sloan Management Review</a></p>
+                </div>
+                
+            </div>
+            
+            <div class="section">
+                
+                
+                <div class="section-emoji">☁️</div>
+                <h2>Enterprise Tech</h2>
+                
+
+                
+                <div class="story">
+                    <h3><a href="https://brief.delights.pro/api/track?url=HashiCorp+Blog&s=leaders&d=2026-02-13&t=New+year%2C+new+cloud+strategy%3A+5+shifts+cloud+leaders+will+be+making+in+2026">New year, new cloud strategy: 5 shifts cloud leaders will be making in 2026</a> <span
+                            style="color: #666; font-weight: 400;">(2 minute read)</span>
+                    </h3>
+                    <p class="summary">Cloud leaders in 2026 will prioritize AI-driven automation, dynamic secrets, and unified infrastructure to accelerate innovation and optimize hybrid cloud environments.</p>
+
+                    
+                    <div class="editorial-context">
+                        <span class="editorial-context-label">Why this matters:</span> Software teams must adopt these strategies to stay competitive and remove constraints on building new features and applications.
+                    </div>
+                    
+
+                    <p class="meta"><a href="https://brief.delights.pro/api/track?url=HashiCorp+Blog&s=leaders&d=2026-02-13&t=New+year%2C+new+cloud+strategy%3A+5+shifts+cloud+leaders+will+be+making+in+2026">HashiCorp Blog</a></p>
+                </div>
+                
+            </div>
+            
+            <div class="section">
+                
+                
+                <div class="section-emoji">🔐</div>
+                <h2>Security</h2>
+                
+
+                
+                <div class="story">
+                    <h3><a href="https://brief.delights.pro/api/track?url=Coding+Horror&s=leaders&d=2026-02-13&t=There+is+no+longer+any+such+thing+as+Computer+Security">There is no longer any such thing as Computer Security</a> <span
+                            style="color: #666; font-weight: 400;">(2 minute read)</span>
+                    </h3>
+                    <p class="summary">Phishing attacks are becoming increasingly sophisticated, blurring the line between cybersecurity and reality, with far-reaching consequences for individuals and organizations.</p>
+
+                    
+                    <div class="editorial-context">
+                        <span class="editorial-context-label">Why this matters:</span> Software engineers must rethink security assumptions and develop more robust defenses against evolving phishing tactics.
+                    </div>
+                    
+
+                    <p class="meta"><a href="https://brief.delights.pro/api/track?url=Coding+Horror&s=leaders&d=2026-02-13&t=There+is+no+longer+any+such+thing+as+Computer+Security">Coding Horror</a></p>
+                </div>
+                
+                <div class="story">
+                    <h3><a href="https://brief.delights.pro/api/track?url=darkreading&s=leaders&d=2026-02-13&t=OpenClaw+AI+Runs+Wild+in+Business+Environments">OpenClaw AI Runs Wild in Business Environments</a> <span
+                            style="color: #666; font-weight: 400;">(1 minute read)</span>
+                    </h3>
+                    <p class="summary">Widespread misconfiguration of the popular AI assistant OpenClaw has exposed thousands of instances to remote takeover, posing security risks for enterprises.</p>
+
+                    
+                    <div class="editorial-context">
+                        <span class="editorial-context-label">Why this matters:</span> Enterprises must reevaluate AI deployment strategies and security controls to mitigate the risks of unchecked AI automation.
+                    </div>
+                    
+
+                    <p class="meta"><a href="https://brief.delights.pro/api/track?url=darkreading&s=leaders&d=2026-02-13&t=OpenClaw+AI+Runs+Wild+in+Business+Environments">darkreading</a></p>
+                </div>
+                
+                <div class="story">
+                    <h3><a href="https://brief.delights.pro/api/track?url=darkreading&s=leaders&d=2026-02-13&t=Tenable+Tackles+AI+Governance%2C+Shadow+AI+Risks%2C+Data+Exposure">Tenable Tackles AI Governance, Shadow AI Risks, Data Exposure</a> <span
+                            style="color: #666; font-weight: 400;">(1 minute read)</span>
+                    </h3>
+                    <p class="summary">Tenable's new AI Exposure tool unifies discovery, protection, and governance of AI systems across the enterprise, addressing the 'AI Exposure Gap' that leaves many organizations vulnerable.</p>
+
+                    
+                    <div class="editorial-context">
+                        <span class="editorial-context-label">Why this matters:</span> Helps CTOs and engineering leaders gain visibility and control over enterprise AI deployments to mitigate risks and optimize AI investments.
+                    </div>
+                    
+
+                    <p class="meta"><a href="https://brief.delights.pro/api/track?url=darkreading&s=leaders&d=2026-02-13&t=Tenable+Tackles+AI+Governance%2C+Shadow+AI+Risks%2C+Data+Exposure">darkreading</a></p>
+                </div>
+                
+            </div>
+            
+            <div class="section">
+                
+                
+                <div class="section-emoji">💰</div>
+                <h2>Funding & M&A</h2>
+                
+
+                
+                <div class="story">
+                    <h3><a href="https://brief.delights.pro/api/track?url=Sequoia+Capital&s=leaders&d=2026-02-13&t=Partnering+with+Serval%3A+Empowering+IT+for+AI+Enterprise+Automation">Partnering with Serval: Empowering IT for AI Enterprise Automation</a> <span
+                            style="color: #666; font-weight: 400;">(2 minute read)</span>
+                    </h3>
+                    <p class="summary">Serval, an AI-powered IT assistant, raised $75M Series B at $1B valuation to empower IT teams to automate workflows across the enterprise.</p>
+
+                    
+                    <div class="editorial-context">
+                        <span class="editorial-context-label">Why this matters:</span> Serval's success signals growing enterprise demand for AI-driven IT automation, challenging existing tools and workflows.
+                    </div>
+                    
+
+                    <p class="meta"><a href="https://brief.delights.pro/api/track?url=Sequoia+Capital&s=leaders&d=2026-02-13&t=Partnering+with+Serval%3A+Empowering+IT+for+AI+Enterprise+Automation">Sequoia Capital</a></p>
+                </div>
+                
+            </div>
+            
+            <div class="section">
+                
+                
+                <div class="section-emoji">📊</div>
+                <h2>Market Trends</h2>
+                
+
+                
+                <div class="story">
+                    <h3><a href="https://brief.delights.pro/api/track?url=Latest+news&s=leaders&d=2026-02-13&t=AI+isn%27t+getting+smarter%2C+it%27s+getting+more+power+hungry+-+and+expensive">AI isn't getting smarter, it's getting more power hungry - and expensive</a> <span
+                            style="color: #666; font-weight: 400;">(1 minute read)</span>
+                    </h3>
+                    <p class="summary">AI models rely more on raw compute power than algorithmic innovation, MIT finds, signaling rising infrastructure costs for AI development.</p>
+
+                    
+                    <div class="editorial-context">
+                        <span class="editorial-context-label">Why this matters:</span> Forces reevaluation of build-vs-buy AI strategies as vendor models now exceed in-house capabilities, driving up infrastructure costs.
+                    </div>
+                    
+
+                    <p class="meta"><a href="https://brief.delights.pro/api/track?url=Latest+news&s=leaders&d=2026-02-13&t=AI+isn%27t+getting+smarter%2C+it%27s+getting+more+power+hungry+-+and+expensive">Latest news</a></p>
+                </div>
+                
+            </div>
+            
+        </div>
+
+        <!-- Quick Links Section -->
+        
+        <div class="quick-links">
+            <div class="section-emoji">⚡</div>
+            <h2>Quick Links</h2>
+
+            
+            <div class="quick-item">
+                <h4><a href="https://brief.delights.pro/api/track?url=AI+News+%26+Artificial+Intelligence+%7C+TechCrunch&s=leaders&d=2026-02-13&t=Build+a+pipeline+and+close+deals+with+an+exhibit+table+at+TechCrunch+Disrupt+2026">Build a pipeline and close deals with an exhibit table at TechCrunch Disrupt 2026</a> <span
+                        style="color: #999; font-weight: 400; font-size: 14px;">(1
+                        min)</span></h4>
+                <p class="snippet">Get an unmatched ROI by exhibiting your startup in front of 10,000 tech leaders and investors at TechCrunch Disrupt 2026, October 13-15 in San Francisco. Book your table now before it's gone..</p>
+            </div>
+            
+            <div class="quick-item">
+                <h4><a href="https://brief.delights.pro/api/track?url=The+Verge&s=leaders&d=2026-02-13&t=Top+DOJ+antitrust+enforcer+is+out+weeks+before+Live+Nation+trial">Top DOJ antitrust enforcer is out weeks before Live Nation trial</a> <span
+                        style="color: #999; font-weight: 400; font-size: 14px;">(1
+                        min)</span></h4>
+                <p class="snippet">Gail Slater, the top antitrust enforcer at the Justice Department, announced Thursday that she has left her post, just weeks before the agency's next major tech monopoly trial against entertainment giant Live Nation is set to begin.</p>
+            </div>
+            
+            <div class="quick-item">
+                <h4><a href="https://brief.delights.pro/api/track?url=MIT+Sloan+Management+Review&s=leaders&d=2026-02-13&t=Learn+From+%EF%BB%BFOutcomes+to+Promote+Growth">Learn From ﻿Outcomes to Promote Growth</a> <span
+                        style="color: #999; font-weight: 400; font-size: 14px;">(1
+                        min)</span></h4>
+                <p class="snippet">Carl Wiens/theispot.com The Research The authors are conducting a longitudinal study of global business models to examine how companies in different countries and industries achieve sustainable growth, resilience, and longevity.</p>
+            </div>
+            
+            <div class="quick-item">
+                <h4><a href="https://brief.delights.pro/api/track?url=Sequoia+Capital&s=leaders&d=2026-02-13&t=Partnering+with+WithCoverage%3A+Insurance+As+It+Should+Be">Partnering with WithCoverage: Insurance As It Should Be</a> <span
+                        style="color: #999; font-weight: 400; font-size: 14px;">(1
+                        min)</span></h4>
+                <p class="snippet"><p>The post <a href="https://sequoiacap.com/article/partnering-with-withcoverage-insurance-as-it-should-be/">Partnering with WithCoverage: Insurance As It Should Be</a> appeared first on <a href="https://sequoiacap.com">Sequoia Capital</a>.</p>.</p>
+            </div>
+            
+        </div>
+        
+
+        <!-- Worth Your Attention (Trending) Section -->
+        
+        <div class="content">
+            <div class="section">
+                <div class="section-emoji">🔥</div>
+                <h2>Worth Your Attention</h2>
+
+                
+                <div class="story">
+                    <h3><a href="https://brief.delights.pro/api/track?url=Stripe+Blog&s=leaders&d=2026-02-13&t=New+features+to+help+SaaS+platforms+manage+risk+and+stay+compliant">New features to help SaaS platforms manage risk and stay compliant</a> <span
+                            style="color: #666; font-weight: 400;">(1 min)</span></h3>
+                    <p class="summary">Stripe launched new features to help SaaS platforms better manage risk and stay compliant, giving them more control over their risk and compliance strategy.</p>
+                    <p class="meta"><a href="https://brief.delights.pro/api/track?url=Stripe+Blog&s=leaders&d=2026-02-13&t=New+features+to+help+SaaS+platforms+manage+risk+and+stay+compliant">Stripe Blog</a></p>
+                </div>
+                
+                <div class="story">
+                    <h3><a href="https://brief.delights.pro/api/track?url=Stripe+Blog&s=leaders&d=2026-02-13&t=Create+new+monetization+opportunities+with+Stripe+Billing%E2%80%99s+recent+upgrades">Create new monetization opportunities with Stripe Billing’s recent upgrades</a> <span
+                            style="color: #666; font-weight: 400;">(1 min)</span></h3>
+                    <p class="summary">Stripe Billing's latest upgrades enable new monetization models, billing control, and AI-tailored pricing to help software companies grow revenue.</p>
+                    <p class="meta"><a href="https://brief.delights.pro/api/track?url=Stripe+Blog&s=leaders&d=2026-02-13&t=Create+new+monetization+opportunities+with+Stripe+Billing%E2%80%99s+recent+upgrades">Stripe Blog</a></p>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <!-- Footer -->
+        <div class="footer">
+            <p class="share">💌 Enjoying Brief Delights? <a
+                    href="mailto:?subject=Check%20out%20Brief%20Delights&body=I%20thought%20you'd%20find%20this%20daily%20tech%20brief%20useful">Forward
+                    to a colleague</a></p>
+
+            <p class="links">
+                <a href="https://send.dreamvalidator.com">Website</a>
+                <a href="https://send.dreamvalidator.com/about">About</a>
+                <a href="https://send.dreamvalidator.com/advertise">Advertise</a>
+                <a href="https://send.dreamvalidator.com/unsubscribe">Unsubscribe</a>
+            </p>
+
+            <p class="legal">
+                You're receiving this because you subscribed to Brief Delights.<br>
+                <strong>brief delights | A DreamValidator brand</strong><br>
+                © 2026 All rights reserved.<br>
+                Questions? <a href="mailto:hello@dreamvalidator.com"
+                    style="color: #999; text-decoration: none;">hello@dreamvalidator.com</a>
+            </p>
+        </div>
+    </div>
+</body>
+
+</html>
