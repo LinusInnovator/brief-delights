@@ -444,7 +444,8 @@ def save_segment_selection(segment_id: str, articles: list):
         "newsworthiness_score": quality_data['score'],
         "quality_tier": quality_data['tier'],
         "quality_metrics": quality_data['metrics'],
-        "selected_articles": articles
+        "selected_articles": articles,
+        "articles": articles  # Backward compatibility for compose_newsletter.py
     }
     
     with open(output_file, 'w') as f:

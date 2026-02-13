@@ -130,7 +130,7 @@ def load_template() -> Template:
         """)
 
 
-def compose_newsletter(articles: list, segment_config: dict, log_file: Path) -> str:
+def compose_newsletter(articles: list, segment_id: str, segment_config: dict, log_file: Path) -> str:
     """Compose the final newsletter HTML for a specific segment with multi-tier support"""
     log("=" * 60, log_file)
     log(f"Composing Newsletter for {segment_config['name']} {segment_config['emoji']}", log_file)
@@ -144,10 +144,9 @@ def compose_newsletter(articles: list, segment_config: dict, log_file: Path) -> 
     log(f"📊 Separated {len(articles)} articles: {len(full_articles)} full, {len(quick_links)} quick, {len(trending)} trending", log_file)
     
     # Wrap article links with click tracking (GDPR-compliant)
-    segment_name = segment_config['segment']  # e.g., 'builders'
-    full_articles = wrap_article_links_for_tracking(full_articles, segment_name, TODAY)
-    quick_links = wrap_article_links_for_tracking(quick_links, segment_name, TODAY)
-    trending = wrap_article_links_for_tracking(trending, segment_name, TODAY)
+    full_articles = wrap_article_links_for_tracking(full_articles, segment_id, TODAY)
+    quick_links = wrap_article_links_for_tracking(quick_links, segment_id, TODAY)
+    trending = wrap_article_links_for_tracking(trending, segment_id, TODAY)
     
     log(f"🔗 Wrapped {len(full_articles + quick_links + trending)} article links with click tracking", log_file)
     
@@ -252,7 +251,7 @@ def main():
         articles = data['articles']
         
         # Compose newsletter
-        html = compose_newsletter(articles, segment_config, log_file)
+        html = compose_newsletter(articles, segment_id, segment_config, log_file)
         
         # Save result
         save_newsletter(html, output_file, log_file)
