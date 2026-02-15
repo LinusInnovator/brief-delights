@@ -1,0 +1,1 @@
+ok we are getting somewhere! Now, you know we are the automagic rebels - let's be smart in how we could get "automatic" readers of the newsletter, and partnerships/sponsorships. We made it with the whole production, let's aim for the rest as well!

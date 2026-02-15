@@ -19,7 +19,8 @@ load_dotenv()
 # Configuration
 PROJECT_ROOT = Path(__file__).parent.parent
 TMP_DIR = PROJECT_ROOT / ".tmp"
-WEEKLY_DIR = TMP_DIR / "weekly_insights"
+# Read weekly insights from committed directory (not .tmp which is gitignored)
+WEEKLY_DIR = PROJECT_ROOT / "reports" / "weekly_insights"
 TODAY = datetime.now().strftime("%Y-%m-%d")
 
 # OpenRouter config

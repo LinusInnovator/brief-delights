@@ -70,6 +70,16 @@ jobs:
           git diff --staged --quiet || git commit -m "📰 Auto-generated newsletters $(date +%Y-%m-%d)"
           git push
       
+      - name: Commit weekly insights data
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action Bot"
+          # Add weekly insights snapshots for Sunday synthesis
+          git add reports/weekly_insights/
+          # Only commit if there are changes
+          git diff --staged --quiet || git commit -m "📊 Weekly insights data $(date +%Y-%m-%d)"
+          git push
+      
       - name: Upload artifacts
         if: always()
         uses: actions/upload-artifact@v4
