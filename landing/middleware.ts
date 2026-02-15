@@ -3,7 +3,7 @@ import type { NextRequest } from 'next/server';
 import { createClient } from '@supabase/supabase-js';
 
 // Whitelisted admin emails
-const ADMIN_EMAILS = ['linus@disrupt.re'];
+const ADMIN_EMAILS = ['linus@disrupt.re', 'linus@delights.pro'];
 
 export async function middleware(request: NextRequest) {
     const pathname = request.nextUrl.pathname;
