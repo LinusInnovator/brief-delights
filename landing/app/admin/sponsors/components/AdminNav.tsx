@@ -38,6 +38,12 @@ export default function AdminNav() {
                             Pipeline
                         </a>
                         <a
+                            href="/admin/sponsors/insights"
+                            className="text-sm text-gray-600 hover:text-gray-900"
+                        >
+                            Insights
+                        </a>
+                        <a
                             href="/admin/sponsors/analytics"
                             className="text-sm text-gray-600 hover:text-gray-900"
                         >
