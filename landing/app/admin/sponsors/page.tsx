@@ -27,10 +27,36 @@ export default function SponsorAdminPage() {
     const [leads, setLeads] = useState<SponsorLead[]>([]);
     const [loading, setLoading] = useState(true);
     const [filter, setFilter] = useState<'new' | 'sent' | 'responded' | 'booked'>('new');
+    const [sending, setSending] = useState<string | null>(null);
 
     useEffect(() => {
         loadSponsors();
     }, [filter]);
+
+    async function handleSendEmail(leadId: string) {
+        if (!confirm('Send outreach email to this sponsor?')) return;
+
+        setSending(leadId);
+        try {
+            const res = await fetch(`/api/admin/sponsors/${leadId}/send`, {
+                method: 'POST',
+            });
+
+            const data = await res.json();
+
+            if (data.success) {
+                alert('Email sent successfully!');
+                await loadSponsors(); // Refresh list
+            } else {
+                alert('Failed to send email: ' + (data.error || 'Unknown error'));
+            }
+        } catch (error) {
+            console.error('Send error:', error);
+            alert('Failed to send email');
+        } finally {
+            setSending(null);
+        }
+    }
 
     async function loadSponsors() {
         setLoading(true);
@@ -226,10 +252,21 @@ export default function SponsorAdminPage() {
                                             </button>
                                             {filter === 'new' && (
                                                 <button
-                                                    className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition font-medium"
-                                                    onClick={() => handleApprove(lead.id)}
+                                                    className={`px-6 py-3 rounded-lg transition font-medium flex items-center gap-2 ${sending === lead.id
+                                                            ? 'bg-gray-400 text-white cursor-not-allowed'
+                                                            : 'bg-blue-600 text-white hover:bg-blue-700'
+                                                        }`}
+                                                    onClick={() => handleSendEmail(lead.id)}
+                                                    disabled={sending === lead.id}
                                                 >
-                                                    ✓ Approve & Send
+                                                    {sending === lead.id ? (
+                                                        <>
+                                                            <div className="animate-spin h-4 w-4 border-2 border-white border-t-transparent rounded-full"></div>
+                                                            Sending...
+                                                        </>
+                                                    ) : (
+                                                        '✓ Approve & Send'
+                                                    )}
                                                 </button>
                                             )}
                                             {filter === 'sent' && (
