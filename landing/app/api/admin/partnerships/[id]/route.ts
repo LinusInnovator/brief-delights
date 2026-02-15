@@ -1,11 +1,13 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { createClient } from '@supabase/supabase-js';
+import { createClient } from '@supabase/supabase/supabase-js';
 
 export async function GET(
     request: NextRequest,
-    { params }: { params: { id: string } }
+    { params }: { params: Promise<{ id: string }> }
 ) {
     try {
+        const { id } = await params;
+
         const supabase = createClient(
             process.env.NEXT_PUBLIC_SUPABASE_URL!,
             process.env.SUPABASE_SERVICE_KEY!
@@ -14,7 +16,7 @@ export async function GET(
         const { data, error } = await supabase
             .from('sponsored_content')
             .select('*')
-            .eq('id', params.id)
+            .eq('id', id)
             .single();
 
         if (error) throw error;
@@ -32,9 +34,11 @@ export async function GET(
 
 export async function PUT(
     request: NextRequest,
-    { params }: { params: { id: string } }
+    { params }: { params: Promise<{ id: string }> }
 ) {
     try {
+        const { id } = await params;
+
         const supabase = createClient(
             process.env.NEXT_PUBLIC_SUPABASE_URL!,
             process.env.SUPABASE_SERVICE_KEY!
@@ -45,7 +49,7 @@ export async function PUT(
         const { data, error } = await supabase
             .from('sponsored_content')
             .update(body)
-            .eq('id', params.id)
+            .eq('id', id)
             .select()
             .single();
 
@@ -64,9 +68,11 @@ export async function PUT(
 
 export async function DELETE(
     request: NextRequest,
-    { params }: { params: { id: string } }
+    { params }: { params: Promise<{ id: string }> }
 ) {
     try {
+        const { id } = await params;
+
         const supabase = createClient(
             process.env.NEXT_PUBLIC_SUPABASE_URL!,
             process.env.SUPABASE_SERVICE_KEY!
@@ -75,7 +81,7 @@ export async function DELETE(
         const { error } = await supabase
             .from('sponsored_content')
             .delete()
-            .eq('id', params.id);
+            .eq('id', id);
 
         if (error) throw error;
 

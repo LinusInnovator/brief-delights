@@ -3,9 +3,11 @@ import { createClient } from '@supabase/supabase-js';
 
 export async function POST(
     request: NextRequest,
-    { params }: { params: { id: string } }
+    { params }: { params: Promise<{ id: string }> }
 ) {
     try {
+        const { id } = await params;
+
         const supabase = createClient(
             process.env.NEXT_PUBLIC_SUPABASE_URL!,
             process.env.SUPABASE_SERVICE_KEY!
@@ -29,7 +31,7 @@ export async function POST(
                 segment: segment || 'all',
                 status: 'scheduled',
             })
-            .eq('id', params.id)
+            .eq('id', id)
             .select()
             .single();
 
