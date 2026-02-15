@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
-import { createClient } from '@supabase/supabase-js';
+import { createServerClient, type CookieOptions } from '@supabase/ssr';
 
 // Whitelisted admin emails
 const ADMIN_EMAILS = ['linus@disrupt.re', 'linus@delights.pro'];
@@ -8,8 +8,8 @@ const ADMIN_EMAILS = ['linus@disrupt.re', 'linus@delights.pro'];
 export async function middleware(request: NextRequest) {
     const pathname = request.nextUrl.pathname;
 
-    // Allow access to login page without authentication
-    if (pathname === '/admin/login') {
+    // Allow access to login page and auth callback without authentication
+    if (pathname === '/admin/login' || pathname.startsWith('/auth/')) {
         return NextResponse.next();
     }
 
@@ -18,17 +18,57 @@ export async function middleware(request: NextRequest) {
         return NextResponse.next();
     }
 
-    // Get session from cookie
-    const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
-    const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!;
-
-    const supabase = createClient(supabaseUrl, supabaseAnonKey, {
-        global: {
-            headers: {
-                cookie: request.headers.get('cookie') || ''
-            }
-        }
+    let response = NextResponse.next({
+        request: {
+            headers: request.headers,
+        },
     });
+
+    const supabase = createServerClient(
+        process.env.NEXT_PUBLIC_SUPABASE_URL!,
+        process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+        {
+            cookies: {
+                get(name: string) {
+                    return request.cookies.get(name)?.value;
+                },
+                set(name: string, value: string, options: CookieOptions) {
+                    request.cookies.set({
+                        name,
+                        value,
+                        ...options,
+                    });
+                    response = NextResponse.next({
+                        request: {
+                            headers: request.headers,
+                        },
+                    });
+                    response.cookies.set({
+                        name,
+                        value,
+                        ...options,
+                    });
+                },
+                remove(name: string, options: CookieOptions) {
+                    request.cookies.set({
+                        name,
+                        value: '',
+                        ...options,
+                    });
+                    response = NextResponse.next({
+                        request: {
+                            headers: request.headers,
+                        },
+                    });
+                    response.cookies.set({
+                        name,
+                        value: '',
+                        ...options,
+                    });
+                },
+            },
+        }
+    );
 
     const { data: { session } } = await supabase.auth.getSession();
 
@@ -46,7 +86,7 @@ export async function middleware(request: NextRequest) {
     }
 
     // All good, proceed
-    return NextResponse.next();
+    return response;
 }
 
 export const config = {
