@@ -9,7 +9,7 @@ import { Resend } from 'resend';
 
 export async function POST(
     request: NextRequest,
-    { params }: { params: { id: string } }
+    { params }: { params: Promise<{ id: string }> }
 ) {
     try {
         const supabase = createClient(
@@ -17,7 +17,7 @@ export async function POST(
             process.env.SUPABASE_SERVICE_KEY!
         );
 
-        const sponsorId = params.id;
+        const { id: sponsorId } = await params;
 
         // Get sponsor lead
         const { data: sponsor, error: fetchError } = await supabase
