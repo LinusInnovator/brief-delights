@@ -44,6 +44,12 @@ export default function AdminNav() {
                             Insights
                         </a>
                         <a
+                            href="/admin/partnerships"
+                            className="text-sm text-gray-600 hover:text-gray-900"
+                        >
+                            Partnerships
+                        </a>
+                        <a
                             href="/admin/sponsors/analytics"
                             className="text-sm text-gray-600 hover:text-gray-900"
                         >
