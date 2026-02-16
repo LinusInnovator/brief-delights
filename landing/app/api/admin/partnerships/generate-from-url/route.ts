@@ -69,11 +69,11 @@ async function fetchMetadata(url: string) {
     }
 }
 
-// Generate content using OpenAI
+// Generate content using OpenRouter (Claude via OpenRouter)
 async function generateContent(url: string, metadata: any) {
-    const openaiKey = process.env.OPENAI_API_KEY;
+    const openrouterKey = process.env.OPENROUTER_API_KEY;
 
-    if (!openaiKey) {
+    if (!openrouterKey) {
         // Fallback: use metadata as-is
         return {
             headline: metadata.title?.slice(0, 100) || 'Check Out This Amazing Tool',
@@ -83,7 +83,10 @@ async function generateContent(url: string, metadata: any) {
     }
 
     try {
-        const openai = new OpenAI({ apiKey: openaiKey });
+        const openai = new OpenAI({
+            apiKey: openrouterKey,
+            baseURL: OPENROUTER_BASE_URL,
+        });
 
         const prompt = `You are a master copywriter creating sponsored content for a technical newsletter read by builders and innovators.
 
@@ -121,7 +124,7 @@ Output ONLY valid JSON in this exact format:
 }`;
 
         const completion = await openai.chat.completions.create({
-            model: 'gpt-4o-mini',
+            model: 'anthropic/claude-3.5-sonnet',  // Using Claude via OpenRouter
             messages: [
                 {
                     role: 'system',
