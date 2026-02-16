@@ -22,6 +22,9 @@ export default function PartnershipsPage() {
     const [partnerships, setPartnerships] = useState<Partnership[]>([]);
     const [loading, setLoading] = useState(true);
     const [showEditor, setShowEditor] = useState(false);
+    const [showQuickCreate, setShowQuickCreate] = useState(false);
+    const [generatingUrl, setGeneratingUrl] = useState('');
+    const [generating, setGenerating] = useState(false);
     const [editingPartnership, setEditingPartnership] = useState<Partnership | null>(null);
     const [formData, setFormData] = useState({
         sponsor_name: '',
@@ -149,6 +152,47 @@ export default function PartnershipsPage() {
         });
     }
 
+    async function handleQuickCreate(url: string) {
+        setGenerating(true);
+        try {
+            const res = await fetch('/api/admin/partnerships/generate-from-url', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ url }),
+            });
+
+            if (!res.ok) {
+                const error = await res.json();
+                throw new Error(error.error || 'Failed to generate');
+            }
+
+            const data = await res.json();
+
+            // Pre-fill form with generated data
+            setFormData({
+                sponsor_name: data.sponsor_name,
+                sponsor_domain: data.sponsor_domain,
+                headline: data.headline,
+                body: data.body,
+                cta_text: data.cta_text,
+                cta_url: data.cta_url,
+                segment: 'all',
+                partnership_type: 'paid',
+                deal_value_cents: 0,
+            });
+
+            // Close quick create modal and open editor
+            setShowQuickCreate(false);
+            setGeneratingUrl('');
+            setShowEditor(true);
+        } catch (error: any) {
+            console.error('Failed to generate:', error);
+            alert(error.message || 'Failed to generate content from URL');
+        } finally {
+            setGenerating(false);
+        }
+    }
+
     const draftPartnerships = partnerships.filter(p => p.status === 'draft');
     const scheduledPartnerships = partnerships.filter(p => p.status === 'scheduled');
 
@@ -167,12 +211,20 @@ export default function PartnershipsPage() {
                                 Manage manual partnerships and sponsored content
                             </p>
                         </div>
-                        <button
-                            onClick={() => openEditor()}
-                            className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition font-medium"
-                        >
-                            + New Partnership
-                        </button>
+                        <div className="flex gap-3">
+                            <button
+                                onClick={() => setShowQuickCreate(true)}
+                                className="px-6 py-3 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition font-medium flex items-center gap-2"
+                            >
+                                ⚡ Quick Create from URL
+                            </button>
+                            <button
+                                onClick={() => openEditor()}
+                                className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition font-medium"
+                            >
+                                + New Partnership
+                            </button>
+                        </div>
                     </div>
 
                     {loading ? (
@@ -414,6 +466,69 @@ export default function PartnershipsPage() {
                                     {editingPartnership ? 'Update' : 'Create'} Partnership
                                 </button>
                             </div>
+                        </div>
+                    </div>
+                </div>
+            )}
+
+            {/* Quick Create Modal */}
+            {showQuickCreate && (
+                <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
+                    <div className="bg-white rounded-lg shadow-xl max-w-md w-full p-6">
+                        <h2 className="text-2xl font-bold text-gray-900 mb-4">
+                            ⚡ Quick Create from URL
+                        </h2>
+                        <p className="text-gray-600 mb-4">
+                            Paste a URL and we'll auto-generate compelling sponsored content using AI.
+                        </p>
+
+                        <div className="mb-4">
+                            <label className="block text-sm font-medium text-gray-700 mb-2">
+                                Product URL
+                            </label>
+                            <input
+                                type="text"
+                                value={generatingUrl}
+                                onChange={(e) => setGeneratingUrl(e.target.value)}
+                                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                                placeholder="share.delights.pro"
+                                disabled={generating}
+                                onKeyDown={(e) => {
+                                    if (e.key === 'Enter' && generatingUrl && !generating) {
+                                        handleQuickCreate(generatingUrl);
+                                    }
+                                }}
+                            />
+                            <p className="text-xs text-gray-500 mt-1">
+                                Example: share.delights.pro or https://railway.app
+                            </p>
+                        </div>
+
+                        <div className="flex gap-3">
+                            <button
+                                onClick={() => {
+                                    setShowQuickCreate(false);
+                                    setGeneratingUrl('');
+                                }}
+                                className="px-4 py-2 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition font-medium"
+                                disabled={generating}
+                            >
+                                Cancel
+                            </button>
+                            <button
+                                onClick={() => handleQuickCreate(generatingUrl)}
+                                className="flex-1 px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition font-medium disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                                disabled={!generatingUrl || generating}
+                            >
+                                {generating ? (
+                                    <>
+                                        <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white"></div>
+                                        Generating...
+                                    </>
+                                ) : (
+                                    '✨ Generate Content'
+                                )}
+                            </button>
                         </div>
                     </div>
                 </div>
