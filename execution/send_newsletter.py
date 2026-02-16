@@ -13,8 +13,10 @@ from datetime import datetime, timedelta
 from pathlib import Path
 from collections import defaultdict
 import time
+import re
 from dotenv import load_dotenv
 import resend
+from supabase import create_client, Client
 
 # Add utils to path
 UTILS_DIR = Path(__file__).parent / "utils"
@@ -37,6 +39,10 @@ LOG_FILE = TMP_DIR / f"send_log_{TODAY}.json"
 # Resend configuration
 resend.api_key = os.getenv("RESEND_API_KEY")
 EMAIL_SENDER = os.getenv("EMAIL_SENDER", "brief@send.dreamvalidator.com")
+
+# Supabase configuration
+SUPABASE_URL = os.getenv("NEXT_PUBLIC_SUPABASE_URL", "")
+SUPABASE_KEY = os.getenv("SUPABASE_SERVICE_KEY", "")
 
 # Newsletter config
 NEWSLETTER_NAME = "Briefly"
@@ -105,6 +111,79 @@ def load_newsletter_html(segment_id: str, weekly: bool = False, use_fallback: bo
             return modified_html, True
     
     raise FileNotFoundError(f"Newsletter not found for segment {segment_id} and no fallback available")
+
+
+def get_sponsor_for_segment(segment_id: str) -> dict | None:
+    """Fetch scheduled or default sponsor from Supabase for today's segment"""
+    if not SUPABASE_URL or not SUPABASE_KEY:
+        log("⚠️ Supabase not configured, skipping sponsor injection")
+        return None
+    
+    try:
+        supabase: Client = create_client(SUPABASE_URL, SUPABASE_KEY)
+        result = supabase.rpc('get_sponsor_for_newsletter', {
+            'target_date': TODAY,
+            'target_segment': segment_id
+        }).execute()
+        
+        if result.data and len(result.data) > 0:
+            sponsor = result.data[0]
+            is_default = sponsor.get('is_default', False)
+            log(f"  💰 Sponsor: {sponsor['company']} ({'default' if is_default else 'scheduled'})")
+            return sponsor
+        else:
+            log(f"  ℹ️ No sponsor found for {segment_id} on {TODAY}")
+            return None
+    except Exception as e:
+        log(f"  ⚠️ Sponsor lookup failed: {e}")
+        return None
+
+
+def inject_sponsor(html_content: str, sponsor: dict | None) -> str:
+    """Inject sponsor template variables into newsletter HTML"""
+    if not sponsor:
+        # Remove the sponsor section entirely if no sponsor
+        html_content = re.sub(
+            r'\{%\s*if\s+sponsor_headline\s*%\}.*?\{%\s*endif\s*%\}',
+            '',
+            html_content,
+            flags=re.DOTALL
+        )
+        return html_content
+    
+    # Replace template variables
+    replacements = {
+        '{{ sponsor_headline }}': sponsor.get('headline', ''),
+        '{{ sponsor_description }}': sponsor.get('description', ''),
+        '{{ sponsor_cta_text }}': sponsor.get('cta_text', 'Learn More →'),
+        '{{ sponsor_cta_url }}': sponsor.get('cta_url', '#'),
+    }
+    
+    for key, value in replacements.items():
+        html_content = html_content.replace(key, value)
+    
+    # Remove the Jinja if/endif wrappers (they're not processed by a template engine here)
+    html_content = re.sub(r'\{%\s*if\s+sponsor_headline\s*%\}', '', html_content)
+    html_content = re.sub(r'\{%\s*endif\s*%\}', '', html_content)
+    
+    return html_content
+
+
+def mark_sponsor_sent(sponsor: dict, segment_id: str):
+    """Update sponsor_schedule status to sent after newsletter is delivered"""
+    schedule_id = sponsor.get('schedule_id')
+    if not schedule_id or not SUPABASE_URL or not SUPABASE_KEY:
+        return
+    
+    try:
+        supabase: Client = create_client(SUPABASE_URL, SUPABASE_KEY)
+        supabase.table('sponsor_schedule').update({
+            'status': 'sent',
+            'newsletter_slug': f"{segment_id}_{TODAY}"
+        }).eq('id', schedule_id).execute()
+        log(f"  ✅ Sponsor schedule marked as sent")
+    except Exception as e:
+        log(f"  ⚠️ Failed to update sponsor schedule: {e}")
 
 
 def send_email(subscriber: dict, html_content: str, segment_name: str) -> dict:
@@ -224,10 +303,19 @@ def main():
                 html_content, is_fallback = load_newsletter_html(segment_id, weekly=args.weekly, use_fallback=True)
                 fallback_used[segment_id] = is_fallback
                 
+                # Inject sponsor content
+                sponsor = get_sponsor_for_segment(segment_id)
+                html_content = inject_sponsor(html_content, sponsor)
+                
                 # Send to this segment
                 results = send_to_segment(segment_id, subscribers, html_content, segment_name)
                 results['used_fallback'] = is_fallback
+                results['sponsor'] = sponsor.get('company', 'none') if sponsor else 'none'
                 all_results[segment_id] = results
+                
+                # Mark sponsor as sent
+                if sponsor:
+                    mark_sponsor_sent(sponsor, segment_id)
                 
             except Exception as e:
                 log(f"❌ Failed to send to segment {segment_id}: {str(e)}")
