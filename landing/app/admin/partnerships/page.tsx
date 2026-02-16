@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import AdminNav from '../sponsors/components/AdminNav';
+import { createClient } from '@/lib/supabase/client';
 
 interface Partnership {
     id: string;
@@ -38,15 +39,21 @@ export default function PartnershipsPage() {
         deal_value_cents: 0,
     });
 
+    const supabase = createClient();
+
     useEffect(() => {
         loadPartnerships();
     }, []);
 
     async function loadPartnerships() {
         try {
-            const res = await fetch('/api/admin/partnerships');
-            const data = await res.json();
-            setPartnerships(data.partnerships || []);
+            const { data, error } = await supabase
+                .from('sponsored_content')
+                .select('*')
+                .order('scheduled_date', { ascending: true });
+
+            if (error) throw error;
+            setPartnerships(data || []);
         } catch (error) {
             console.error('Failed to load partnerships:', error);
         } finally {
@@ -56,27 +63,33 @@ export default function PartnershipsPage() {
 
     async function handleSave() {
         try {
-            const url = editingPartnership
-                ? `/api/admin/partnerships/${editingPartnership.id}`
-                : '/api/admin/partnerships';
+            if (editingPartnership) {
+                // Update existing
+                const { error } = await supabase
+                    .from('sponsored_content')
+                    .update(formData)
+                    .eq('id', editingPartnership.id);
 
-            const method = editingPartnership ? 'PUT' : 'POST';
+                if (error) throw error;
+            } else {
+                // Create new
+                const { error } = await supabase
+                    .from('sponsored_content')
+                    .insert({
+                        ...formData,
+                        status: 'draft',
+                    });
 
-            const res = await fetch(url, {
-                method,
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(formData),
-            });
-
-            if (res.ok) {
-                setShowEditor(false);
-                setEditingPartnership(null);
-                resetForm();
-                await loadPartnerships();
+                if (error) throw error;
             }
+
+            setShowEditor(false);
+            setEditingPartnership(null);
+            resetForm();
+            await loadPartnerships();
         } catch (error) {
             console.error('Failed to save partnership:', error);
-            alert('Failed to save partnership');
+            alert('Failed to save partnership: ' + (error as Error).message);
         }
     }
 
@@ -85,16 +98,19 @@ export default function PartnershipsPage() {
             const segment = prompt('Schedule for which segment? (all/builders/innovators/leaders)', 'all');
             if (!segment) return;
 
-            const res = await fetch(`/api/admin/partnerships/${partnershipId}/schedule`, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ scheduled_date: date, segment }),
-            });
+            const { error } = await supabase
+                .from('sponsored_content')
+                .update({
+                    scheduled_date: date,
+                    segment,
+                    status: 'scheduled'
+                })
+                .eq('id', partnershipId);
 
-            if (res.ok) {
-                await loadPartnerships();
-                alert('Scheduled successfully!');
-            }
+            if (error) throw error;
+
+            await loadPartnerships();
+            alert('Scheduled successfully!');
         } catch (error) {
             console.error('Failed to schedule:', error);
             alert('Failed to schedule partnership');
@@ -105,13 +121,13 @@ export default function PartnershipsPage() {
         if (!confirm('Delete this partnership?')) return;
 
         try {
-            const res = await fetch(`/api/admin/partnerships/${id}`, {
-                method: 'DELETE',
-            });
+            const { error } = await supabase
+                .from('sponsored_content')
+                .delete()
+                .eq('id', id);
 
-            if (res.ok) {
-                await loadPartnerships();
-            }
+            if (error) throw error;
+            await loadPartnerships();
         } catch (error) {
             console.error('Failed to delete:', error);
             alert('Failed to delete partnership');
