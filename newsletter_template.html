@@ -367,9 +367,11 @@
     <div class="email-wrapper">
         <!-- Top Navigation Bar -->
         <div class="top-bar">
-            <a href="{{ website_url }}">Sign Up</a> |
-            <a href="{{ website_url }}/advertise">Advertise</a> |
-            <a href="{{ website_url }}/{{ date }}">View Online</a>
+            <a href="https://brief.delights.pro">Sign Up</a> |
+            <a href="mailto:sponsors@brief.delights.pro?subject=Advertising%20Inquiry">Advertise</a> |
+            <a
+                href="https://brief.delights.pro/archive/{{ date }}-{{ segment_name.split()[0]|lower|default('builders') }}">View
+                Online</a>
         </div>
 
         <!-- Header -->
@@ -483,16 +485,16 @@
             <p class="links">
                 <a href="https://brief.delights.pro">Website</a>
                 <a href="https://brief.delights.pro/archive">Archive</a>
-                <a href="{{ website_url|default('#') }}/advertise">Advertise</a>
-                <a href="{{ unsubscribe_url|default('mailto:unsubscribe@briefly.com') }}">Unsubscribe</a>
+                <a href="mailto:sponsors@brief.delights.pro?subject=Advertising%20Inquiry">Advertise</a>
+                <a href="mailto:hello@brief.delights.pro?subject=Unsubscribe">Unsubscribe</a>
             </p>
 
             <p class="legal">
                 You're receiving this because you subscribed to Brief Delights.<br>
-                <strong>brief delights | A DreamValidator brand</strong><br>
+                <strong>brief delights</strong><br>
                 © 2026 All rights reserved.<br>
-                Questions? <a href="mailto:hello@dreamvalidator.com"
-                    style="color: #999; text-decoration: none;">hello@dreamvalidator.com</a>
+                Questions? <a href="mailto:hello@brief.delights.pro"
+                    style="color: #999; text-decoration: none;">hello@brief.delights.pro</a>
             </p>
         </div>
     </div>

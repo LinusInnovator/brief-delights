@@ -244,7 +244,7 @@ export default async function ArchivePage() {
             <footer className="border-t border-gray-200 py-12 mt-10 bg-white">
                 <div className="max-w-5xl mx-auto px-6 text-center">
                     <p className="text-gray-600 mb-2">
-                        <strong>brief delights</strong> | A DreamValidator brand
+                        <strong>brief delights</strong>
                     </p>
                     <p className="text-sm text-gray-400">
                         © 2026 All rights reserved

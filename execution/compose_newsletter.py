@@ -23,9 +23,9 @@ TEMPLATE_FILE = PROJECT_ROOT / "newsletter_template.html"
 SEGMENTS_CONFIG_FILE = PROJECT_ROOT / "segments_config.json"
 
 # Newsletter config
-NEWSLETTER_NAME = "Briefly"
-WEBSITE_URL = "https://send.dreamvalidator.com"
-UNSUBSCRIBE_URL = f"{WEBSITE_URL}/unsubscribe"
+NEWSLETTER_NAME = "Brief Delights"
+WEBSITE_URL = "https://brief.delights.pro"
+UNSUBSCRIBE_URL = "mailto:hello@brief.delights.pro?subject=Unsubscribe"
 
 
 def log(message: str, log_file: Path):
@@ -85,9 +85,8 @@ def validate_footer_in_html(html: str, log_file: Path) -> bool:
     """Validate that critical footer elements are present in rendered HTML"""
     required_elements = [
         'Unsubscribe',
-        'DreamValidator brand',
-        'hello@dreamvalidator.com',
-        'brief delights'
+        'brief delights',
+        'brief.delights.pro'
     ]
     
     missing = []

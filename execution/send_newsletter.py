@@ -38,7 +38,7 @@ LOG_FILE = TMP_DIR / f"send_log_{TODAY}.json"
 
 # Resend configuration
 resend.api_key = os.getenv("RESEND_API_KEY")
-EMAIL_SENDER = os.getenv("EMAIL_SENDER", "brief@send.dreamvalidator.com")
+EMAIL_SENDER = os.getenv("EMAIL_SENDER", "Brief Delights <hello@brief.delights.pro>")
 
 # Supabase configuration
 SUPABASE_URL = os.getenv("NEXT_PUBLIC_SUPABASE_URL", "")

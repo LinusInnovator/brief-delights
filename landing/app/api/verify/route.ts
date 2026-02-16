@@ -182,7 +182,7 @@ function generateSuccessPage(email: string, segment: string): string {
                 </a>
 
                 <p style="color: #999; font-size: 14px; margin-top: 40px;">
-                    brief delights | A DreamValidator brand
+                    brief delights
                 </p>
             </div>
         </body>

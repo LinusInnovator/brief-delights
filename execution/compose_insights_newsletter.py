@@ -20,9 +20,9 @@ SEGMENTS_CONFIG_FILE = PROJECT_ROOT / "segments_config.json"
 TODAY = datetime.now().strftime("%Y-%m-%d")
 
 # Newsletter config
-NEWSLETTER_NAME = "Brief"
-WEBSITE_URL = "https://send.dreamvalidator.com"
-UNSUBSCRIBE_URL = f"{WEBSITE_URL}/unsubscribe"
+NEWSLETTER_NAME = "Brief Delights"
+WEBSITE_URL = "https://brief.delights.pro"
+UNSUBSCRIBE_URL = "mailto:hello@brief.delights.pro?subject=Unsubscribe"
 
 def log(message: str):
     """Log to console"""
@@ -306,9 +306,9 @@ def load_template() -> Template:
     <div class="email-wrapper">
         <!-- Top Navigation Bar -->
         <div class="top-bar">
-            <a href="{{ website_url }}">Sign Up</a> |
-            <a href="{{ website_url }}/advertise">Advertise</a> |
-            <a href="{{ website_url }}/{{ date }}">View Online</a>
+            <a href="https://brief.delights.pro">Sign Up</a> |
+            <a href="mailto:sponsors@brief.delights.pro?subject=Advertising%20Inquiry">Advertise</a> |
+            <a href="https://brief.delights.pro/archive">View Online</a>
         </div>
 
         <!-- Header -->
@@ -348,17 +348,17 @@ def load_template() -> Template:
             <p class="share">💌 Enjoying Brief Delights? <a href="mailto:?subject=Check%20out%20Brief%20Delights&body=I%20thought%20you'd%20find%20this%20weekly%20tech%20brief%20useful">Forward to a colleague</a></p>
 
             <p class="links">
-                <a href="{{ website_url }}">Website</a>
-                <a href="{{ website_url }}/about">About</a>
-                <a href="{{ website_url }}/advertise">Advertise</a>
-                <a href="{{ unsubscribe_url }}">Unsubscribe</a>
+                <a href="https://brief.delights.pro">Website</a>
+                <a href="https://brief.delights.pro/archive">Archive</a>
+                <a href="mailto:sponsors@brief.delights.pro?subject=Advertising%20Inquiry">Advertise</a>
+                <a href="mailto:hello@brief.delights.pro?subject=Unsubscribe">Unsubscribe</a>
             </p>
 
             <p class="legal">
                 You're receiving this because you subscribed to Brief Delights.<br>
-                <strong>brief delights | A DreamValidator brand</strong><br>
+                <strong>brief delights</strong><br>
                 © 2026 All rights reserved.<br>
-                Questions? <a href="mailto:hello@dreamvalidator.com" style="color: #999; text-decoration: none;">hello@dreamvalidator.com</a>
+                Questions? <a href="mailto:hello@brief.delights.pro" style="color: #999; text-decoration: none;">hello@brief.delights.pro</a>
             </p>
         </div>
     </div>
