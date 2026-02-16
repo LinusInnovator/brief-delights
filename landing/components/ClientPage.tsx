@@ -27,8 +27,32 @@ export default function ClientPage({
         }, 300); // Wait for scroll to mostly complete
     };
 
+    const scrollToSignup = () => {
+        const signupSection = document.getElementById('signup');
+        if (signupSection) {
+            signupSection.scrollIntoView({ behavior: 'smooth' });
+        }
+        setTimeout(() => {
+            signupFormRef.current?.selectSegmentAndFocus('innovators');
+        }, 300);
+    };
+
     return (
         <>
+            {/* Launch Banner */}
+            <div className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white py-2.5 text-center text-sm">
+                <span className="inline-flex items-center gap-2">
+                    <span className="relative flex h-2 w-2">
+                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                        <span className="relative inline-flex rounded-full h-2 w-2 bg-green-400"></span>
+                    </span>
+                    Just launched — Be among the first subscribers
+                    <button onClick={scrollToSignup} className="underline font-bold hover:text-white/90 transition ml-1">
+                        Join free →
+                    </button>
+                </span>
+            </div>
+
             {/* Hero Section */}
             <section className="max-w-6xl mx-auto px-6 py-20 text-center">
                 <div className="inline-block bg-gray-100 px-4 py-2 rounded-full text-sm font-semibold text-gray-700 mb-6">
@@ -43,15 +67,23 @@ export default function ClientPage({
                 </h1>
 
                 <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
-                    Get the top 14 stories that matter to your role—daily. Plus weekly strategic insights that connect the dots. We read 1,340+ articles so you don't have to.
+                    Get the top 14 stories that matter to your role—daily. Plus weekly strategic insights that connect the dots. We read 1,340+ articles so you don&apos;t have to.
                 </p>
 
-                <a
-                    href="/archive"
-                    className="inline-block bg-gray-900 text-white px-6 py-3 rounded-lg font-semibold hover:bg-gray-800 transition"
-                >
-                    See Archive
-                </a>
+                <div className="flex gap-3 justify-center">
+                    <button
+                        onClick={scrollToSignup}
+                        className="bg-gray-900 text-white px-6 py-3 rounded-lg font-semibold hover:bg-gray-800 transition"
+                    >
+                        Subscribe Free
+                    </button>
+                    <a
+                        href="/archive"
+                        className="border-2 border-gray-300 text-gray-700 px-6 py-3 rounded-lg font-semibold hover:border-gray-400 transition"
+                    >
+                        See Archive
+                    </a>
+                </div>
 
                 <div className="mt-12 bg-gray-50 rounded-xl p-8 inline-block">
                     <p className="text-gray-700 font-mono text-sm">
@@ -125,10 +157,10 @@ export default function ClientPage({
                 <p className="text-center text-gray-600 mb-8 max-w-2xl mx-auto">
                     {subscriberCount > 0 ? (
                         <span className="font-semibold text-gray-900">
-                            Join {subscriberCount.toLocaleString()} subscribers getting curated intelligence daily
+                            Join {subscriberCount.toLocaleString()} subscriber{subscriberCount !== 1 ? 's' : ''} getting curated intelligence daily
                         </span>
                     ) : (
-                        'Join subscribers getting curated intelligence daily'
+                        'Be among the first to get curated intelligence daily'
                     )}
                 </p>
 
@@ -184,7 +216,14 @@ export default function ClientPage({
             <footer className="border-t border-gray-200 mt-20 py-8">
                 <div className="max-w-6xl mx-auto px-6 text-center text-gray-600 text-sm">
                     <p><span className="font-semibold">brief delights</span> | A DreamValidator brand</p>
-                    <p className="mt-2">© 2026 All rights reserved</p>
+                    <p className="mt-3 space-x-4">
+                        <a href="https://sell.delights.pro" className="hover:text-gray-900 transition">Sell Delights</a>
+                        <span className="text-gray-300">·</span>
+                        <a href="https://share.delights.pro" className="hover:text-gray-900 transition">Share Delights</a>
+                        <span className="text-gray-300">·</span>
+                        <a href="/archive" className="hover:text-gray-900 transition">Archive</a>
+                    </p>
+                    <p className="mt-2 text-gray-400">© 2026 All rights reserved</p>
                 </div>
             </footer>
         </>
