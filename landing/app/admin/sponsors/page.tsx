@@ -610,6 +610,7 @@ function PipelineTab() {
     }
 
     function formatPrice(cents: number) {
+        if (!cents && cents !== 0) return '—';
         return `$${(cents / 100).toLocaleString()}`;
     }
 

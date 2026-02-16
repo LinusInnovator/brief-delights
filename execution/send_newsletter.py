@@ -139,7 +139,7 @@ def get_sponsor_for_segment(segment_id: str) -> dict | None:
         return None
 
 
-def inject_sponsor(html_content: str, sponsor: dict | None) -> str:
+def inject_sponsor(html_content: str, sponsor: dict | None, segment_id: str = '') -> str:
     """Inject sponsor template variables into newsletter HTML"""
     if not sponsor:
         # Remove the sponsor section entirely if no sponsor
@@ -151,12 +151,27 @@ def inject_sponsor(html_content: str, sponsor: dict | None) -> str:
         )
         return html_content
     
+    # Wrap sponsor CTA URL with click tracking
+    cta_url = sponsor.get('cta_url', '#')
+    schedule_id = sponsor.get('schedule_id')
+    if schedule_id:
+        # Route through tracking endpoint for click counting
+        from urllib.parse import urlencode, quote
+        track_params = urlencode({
+            'url': cta_url,
+            'segment': segment_id,
+            'sponsor_schedule_id': schedule_id
+        })
+        tracked_url = f"https://brief.delights.pro/api/track?{track_params}"
+    else:
+        tracked_url = cta_url
+    
     # Replace template variables
     replacements = {
         '{{ sponsor_headline }}': sponsor.get('headline', ''),
         '{{ sponsor_description }}': sponsor.get('description', ''),
         '{{ sponsor_cta_text }}': sponsor.get('cta_text', 'Learn More →'),
-        '{{ sponsor_cta_url }}': sponsor.get('cta_url', '#'),
+        '{{ sponsor_cta_url }}': tracked_url,
     }
     
     for key, value in replacements.items():
@@ -305,7 +320,7 @@ def main():
                 
                 # Inject sponsor content
                 sponsor = get_sponsor_for_segment(segment_id)
-                html_content = inject_sponsor(html_content, sponsor)
+                html_content = inject_sponsor(html_content, sponsor, segment_id)
                 
                 # Send to this segment
                 results = send_to_segment(segment_id, subscribers, html_content, segment_name)
