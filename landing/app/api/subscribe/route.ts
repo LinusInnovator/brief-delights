@@ -4,7 +4,7 @@ import { supabase } from '../../../lib/supabase';
 
 export async function POST(request: NextRequest) {
     try {
-        const { email, segment } = await request.json();
+        const { email, segment, referrer } = await request.json();
 
         // Validate email
         if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
@@ -44,15 +44,22 @@ export async function POST(request: NextRequest) {
         const expiresAt = new Date(Date.now() + 24 * 60 * 60 * 1000); // 24 hours
 
         // Create or update subscriber in database
+        const subscriberData: Record<string, string> = {
+            email,
+            segment,
+            status: 'pending',
+            verification_token: token,
+            token_expires_at: expiresAt.toISOString(),
+        };
+
+        // Track referral source if present
+        if (referrer && typeof referrer === 'string' && referrer.length > 0) {
+            subscriberData.referred_by = referrer;
+        }
+
         const { error: dbError } = await supabase
             .from('subscribers')
-            .upsert({
-                email,
-                segment,
-                status: 'pending',
-                verification_token: token,
-                token_expires_at: expiresAt.toISOString(),
-            }, {
+            .upsert(subscriberData, {
                 onConflict: 'email'
             });
 
