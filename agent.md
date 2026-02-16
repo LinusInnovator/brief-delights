@@ -66,4 +66,11 @@ You sit between human intent (directives) and deterministic execution (Python sc
 
 Be pragmatic. Be reliable. Self-anneal.
 
+## Landing / Admin Dashboard
 
+The `landing/` directory contains a Next.js app deployed to Netlify. This is a **separate concern** from the Python execution layer. Key rules:
+
+- **Read `directives/landing_admin.md` before touching anything in `landing/`**
+- **Use client-side Supabase for all CRUD** (API routes have persistent auth issues)
+- **Never add manual API redirects** in `netlify.toml`
+- Keep admin features simple — avoid unnecessary server-side complexity
