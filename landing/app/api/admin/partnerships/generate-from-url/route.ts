@@ -1,6 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server';
 import OpenAI from 'openai';
 
+// Use OpenRouter (already configured for the platform)
+const OPENROUTER_BASE_URL = 'https://openrouter.ai/api/v1';
+
 // Helper to normalize URL
 function normalizeUrl(url: string): string {
     let normalized = url.trim();
