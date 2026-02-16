@@ -3,10 +3,8 @@
   command = "npm run build"
   publish = ".next"
 
-[[redirects]]
-  from = "/api/*"
-  to = "/.netlify/functions/:splat"
-  status = 200
+# Next.js plugin handles API routes automatically
+# No manual redirects needed
 
 [[plugins]]
   package = "@netlify/plugin-nextjs"
