@@ -117,8 +117,9 @@ export const handler: Handler = async (event) => {
         });
 
         // Redirect through SparkLoop Upscribe (paid newsletter recs → $1-3/sub)
-        // SparkLoop will redirect to /welcome after user interacts
-        const sparkLoopUrl = `https://upscribe.page/b3b25cc980?rh_ref=${encodeURIComponent(`https://brief.delights.pro/welcome?${welcomeParams.toString()}`)}`;
+        // SparkLoop requires email_address param for hosted page integration
+        const welcomeUrl = `https://brief.delights.pro/welcome?${welcomeParams.toString()}`;
+        const sparkLoopUrl = `https://upscribe.page/b3b25cc980?email_address=${encodeURIComponent(verification.email)}&rh_ref=${encodeURIComponent(welcomeUrl)}`;
 
         return {
             statusCode: 302,
