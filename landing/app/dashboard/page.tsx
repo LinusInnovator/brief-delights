@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from 'react';
 import { getAnalyticsDashboardData, DashboardStats } from '../../lib/analytics';
-import AdminNav from '../admin/sponsors/components/AdminNav';
 
 export default function DashboardPage() {
     const [data, setData] = useState<DashboardStats | null>(null);
@@ -28,7 +27,6 @@ export default function DashboardPage() {
     if (loading) {
         return (
             <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100">
-                <AdminNav />
                 <div className="max-w-7xl mx-auto px-6 py-20 text-center">
                     <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto"></div>
                     <p className="mt-4 text-slate-600">Loading dashboard...</p>
@@ -40,7 +38,6 @@ export default function DashboardPage() {
     if (!data) {
         return (
             <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100">
-                <AdminNav />
                 <div className="max-w-7xl mx-auto px-6 py-20 text-center">
                     <p className="text-red-600">Failed to load dashboard data</p>
                     <button
@@ -56,7 +53,6 @@ export default function DashboardPage() {
 
     return (
         <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100">
-            <AdminNav />
 
             <main className="max-w-7xl mx-auto px-6 py-8">
                 {/* Header */}

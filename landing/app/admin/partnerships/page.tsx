@@ -1,7 +1,6 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import AdminNav from '../sponsors/components/AdminNav';
 import { createClient } from '@/lib/supabase/client';
 
 interface Partnership {
@@ -214,7 +213,6 @@ export default function PartnershipsPage() {
 
     return (
         <>
-            <AdminNav />
             <div className="min-h-screen bg-gray-50 p-8">
                 <div className="max-w-6xl mx-auto">
                     {/* Header */}

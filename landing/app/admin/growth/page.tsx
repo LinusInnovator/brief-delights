@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from 'react';
 import { createClient } from '@/lib/supabase/client';
-import AdminNav from '../sponsors/components/AdminNav';
 
 interface GrowthData {
     referralStats: {
@@ -87,7 +86,6 @@ export default function GrowthPage() {
     if (loading) {
         return (
             <div className="min-h-screen bg-gray-50">
-                <AdminNav />
                 <div className="max-w-7xl mx-auto p-8 text-center py-20">
                     <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-purple-600 mx-auto" />
                     <p className="mt-4 text-gray-600">Loading growth data...</p>
@@ -99,7 +97,6 @@ export default function GrowthPage() {
     if (!data) {
         return (
             <div className="min-h-screen bg-gray-50">
-                <AdminNav />
                 <div className="max-w-7xl mx-auto p-8 text-center py-20">
                     <p className="text-red-600">⚠️ {error || 'Failed to load'}</p>
                     <button onClick={() => { setLoading(true); loadData(); }} className="mt-3 text-sm text-blue-600 underline">Retry</button>
@@ -112,7 +109,6 @@ export default function GrowthPage() {
 
     return (
         <div className="min-h-screen bg-gray-50">
-            <AdminNav />
             <div className="max-w-7xl mx-auto p-8">
                 {/* Header */}
                 <div className="mb-8">

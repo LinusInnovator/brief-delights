@@ -2,7 +2,6 @@
 
 import { useEffect, useState, useCallback } from 'react';
 import { createClient } from '@/lib/supabase/client';
-import AdminNav from '../sponsors/components/AdminNav';
 
 interface Subscriber {
     id: string;
@@ -113,7 +112,6 @@ export default function SubscribersPage() {
     if (loading) {
         return (
             <div className="min-h-screen bg-gray-50">
-                <AdminNav />
                 <div className="max-w-7xl mx-auto p-8 text-center py-20">
                     <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto" />
                     <p className="mt-4 text-gray-600">Loading subscribers...</p>
@@ -124,7 +122,6 @@ export default function SubscribersPage() {
 
     return (
         <div className="min-h-screen bg-gray-50">
-            <AdminNav />
             <div className="max-w-7xl mx-auto p-8">
                 {/* Header */}
                 <div className="flex items-center justify-between mb-8">

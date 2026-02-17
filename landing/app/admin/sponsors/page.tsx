@@ -2,7 +2,6 @@
 
 import { useEffect, useState, useCallback } from 'react';
 import { createClient } from '@/lib/supabase/client';
-import AdminNav from './components/AdminNav';
 
 // ========== Types ==========
 
@@ -81,7 +80,6 @@ export default function SponsorAdminPage() {
 
     return (
         <>
-            <AdminNav />
             <div className="min-h-screen bg-gray-50">
                 <div className="max-w-7xl mx-auto px-8 py-6">
                     {/* Header */}

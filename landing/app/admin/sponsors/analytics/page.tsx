@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from 'react';
 import { createClient } from '@/lib/supabase/client';
-import AdminNav from '../components/AdminNav';
 
 interface Analytics {
     metrics: {
@@ -101,7 +100,6 @@ export default function AnalyticsPage() {
     if (loading) {
         return (
             <div className="min-h-screen bg-gray-50">
-                <AdminNav />
                 <div className="max-w-6xl mx-auto p-8">
                     <div className="text-center py-12">
                         <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto"></div>
@@ -115,7 +113,6 @@ export default function AnalyticsPage() {
     if (error) {
         return (
             <div className="min-h-screen bg-gray-50">
-                <AdminNav />
                 <div className="max-w-6xl mx-auto p-8">
                     <div className="bg-red-50 border border-red-200 rounded-lg p-6 text-center">
                         <p className="text-red-600 font-medium">⚠️ {error}</p>
@@ -133,7 +130,6 @@ export default function AnalyticsPage() {
 
     return (
         <div className="min-h-screen bg-gray-50">
-            <AdminNav />
             <div className="max-w-6xl mx-auto p-8">
                 {/* Header */}
                 <div className="mb-8">
