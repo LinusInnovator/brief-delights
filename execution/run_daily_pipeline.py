@@ -274,6 +274,31 @@ def main():
     
     log("✅ Weekly trend aggregation complete")
     
+    # ========================================
+    # STEP 7: Growth Engine (drip, win-back, repurposing)
+    # ========================================
+    log("\n" + "=" * 60)
+    log("STEP 7: Growth Engine", "INFO")
+    log("=" * 60)
+    
+    # 7a: Welcome drip sequence
+    log("💧 Running welcome drip sequence...")
+    if not run_script("send_drip_sequence.py", 60):
+        log("⚠️ Drip sequence failed (non-blocking)", "WARN")
+    
+    # 7b: Win-back & list hygiene
+    log("🧹 Running win-back engine...")
+    if not run_script("winback_sequence.py", 60):
+        log("⚠️ Win-back engine failed (non-blocking)", "WARN")
+    
+    # 7c: Content repurposing (for each segment)
+    log("♻️  Running content repurposing...")
+    for segment_id in segment_ids:
+        if not run_script("repurpose_newsletter.py", 60, ["--segment", segment_id]):
+            log(f"⚠️ Repurposing failed for {segment_id} (non-blocking)", "WARN")
+    
+    log("✅ Growth engine complete")
+    
     # Summary
     generate_summary(segments)
     
