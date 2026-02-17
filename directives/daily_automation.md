@@ -1,141 +1,128 @@
 # Directive: Daily Automation
 
 ## Goal
-Orchestrate the complete newsletter pipeline end-to-end. This is the master directive that coordinates all other directives in sequence.
+Orchestrate the complete multi-segment newsletter pipeline end-to-end. Run all steps sequentially for 3 audience segments (Builders, Leaders, Innovators), then deliver and archive.
 
 ## Inputs
-- Configuration files: `feeds_config.json`, `subscribers.json`
-- Environment: Current date/time, API keys in `.env`
+- `feeds_config.json` + `feeds_config/` — 1,300+ RSS feed URLs by category
+- `segments_config.json` — 3 segment definitions with focus keywords
+- Supabase `subscribers` table — subscriber list with segment assignment
+- `.env` — all API keys (OpenRouter, Resend, Supabase, Serper, Apify)
 
 ## Tool to Use
 - **Script:** `execution/run_daily_pipeline.py`
 
-## Expected Outputs
-- Complete newsletter generated and sent
-- All intermediate files in `.tmp/`
-- Comprehensive execution log
-
-## Success Criteria
-- ✅ All pipeline steps complete successfully
-- ✅ Newsletter sent to all active subscribers
-- ✅ No manual intervention required
-- ✅ Complete execution in < 5 minutes
-- ✅ Detailed logs for debugging if needed
-
-## Pipeline Sequence
+## Pipeline Sequence (6 Steps)
 
 ```
-1. Aggregate RSS Feeds (30-60s)
+Step 1: Aggregate RSS Feeds (30-120s)
    → execution/aggregate_feeds.py
-   → Output: .tmp/raw_articles_YYYY-MM-DD.json
+   → Input: 1,300+ RSS feeds
+   → Output: .tmp/raw_articles_{YYYY-MM-DD}.json
+   → Shared across all segments
 
-2. Select Top Stories (10-30s)
+Step 2: Select Top Stories (60-300s, LLM-heavy)
    → execution/select_stories.py
-   → Output: .tmp/selected_articles_YYYY-MM-DD.json
+   → Runs per-segment selection with segment-specific criteria
+   → Output: .tmp/selected_articles_{segment}_{YYYY-MM-DD}.json (×3)
+   → Uses OpenRouter (Claude/GPT-4o)
 
-3. Summarize Articles (10-20s)
-   → execution/summarize_articles.py
-   → Output: .tmp/summaries_YYYY-MM-DD.json
+Step 3: Summarize Articles (per segment, 30-90s each)
+   → execution/summarize_articles.py --segment {segment}
+   → Output: .tmp/summaries_{segment}_{YYYY-MM-DD}.json (×3)
 
-4. Compose Newsletter (<5s)
-   → execution/compose_newsletter.py
-   → Output: .tmp/newsletter_YYYY-MM-DD.html
+Step 4: Compose Newsletter (per segment, <5s each)
+   → execution/compose_newsletter.py --segment {segment}
+   → Output: .tmp/newsletter_{segment}_{YYYY-MM-DD}.html (×3)
+   → Also archives to .tmp/ via NewsletterArchive utility
 
-5. Send Newsletter (1-5min)
+Step 5: Send Newsletters (1-5min total)
    → execution/send_newsletter.py
-   → Output: .tmp/send_log_YYYY-MM-DD.json
+   → Handles all segments, fetches subscribers from Supabase
+   → Injects sponsors if scheduled, wraps links with tracking
+   → Output: .tmp/send_log_{YYYY-MM-DD}.json
+
+Step 6: Aggregate Weekly Trends (per segment, <30s each)
+   → execution/aggregate_weekly_trends.py {segment}
+   → Saves daily trend data for Sunday synthesis
 ```
+
+## Segment-Specific Processing
+Steps 2-4 run independently per segment. The pipeline iterates:
+```
+for segment in [builders, leaders, innovators]:
+    select_stories.py    (uses segment-specific criteria from segments_config.json)
+    summarize_articles.py --segment {segment}
+    compose_newsletter.py --segment {segment}
+```
+
+## Pre-flight Checks
+The pipeline verifies before starting:
+1. ✅ `.env` exists with API keys (or env vars set)
+2. ✅ `feeds_config.json` exists
+3. ✅ `subscribers.json` exists (legacy fallback)
+4. ✅ `segments_config.json` exists
 
 ## Error Handling Strategy
 
-**Step failures:**
-- If step fails, log error and STOP pipeline (don't continue)
-- Send alert/notification to admin
-- Save partial results for debugging
-
-**Retry logic:**
-- Aggregate feeds: Retry up to 2 times on failure
-- LLM calls: Already have retry logic in individual scripts
-- Email sending: Continue even if some emails fail
-
-**Logging:**
-- Each step logs to its own file in `.tmp/`
-- Master pipeline creates `pipeline_log_YYYY-MM-DD.txt` with summary
+| Failure | Response |
+|---------|----------|
+| Aggregation fails | **STOP** — no articles means no newsletter |
+| Selection fails | **STOP** — can't proceed without curated articles |
+| Summarization fails for one segment | **SKIP** that segment, continue others |
+| Composition fails for one segment | **SKIP** that segment, continue others |
+| Send fails | Log error, return failure |
+| Weekly aggregation fails | **WARN** only — non-critical |
 
 ## Scheduling
+- **Weekdays:** 6:00 AM UTC (7:00 AM CET)
+- **Method:** GitHub Actions cron (`.github/workflows/daily_newsletter.yml`)
+- **Manual trigger:** GitHub Actions → "Run workflow" button
 
-**Recommended schedule:**
-- **Weekdays:** 6:00 AM local time
-- **Weekends:** Optional (can skip or send reduced frequency)
-
-**macOS cron setup:**
-```bash
-# Edit crontab
-crontab -e
-
-# Add this line (runs Mon-Fri at 6 AM)
-0 6 * * 1-5 cd /path/to/project && python3 execution/run_daily_pipeline.py
+```yaml
+# .github/workflows/daily_newsletter.yml
+on:
+  schedule:
+    - cron: '0 6 * * *'
+  workflow_dispatch:  # manual trigger
 ```
-
-**Alternative: launchd (macOS native)**
-Create `~/Library/LaunchAgents/com.newsletter.daily.plist`
-
-## Environment Requirements
-- Python 3.8+
-- All dependencies installed (`pip install -r requirements.txt`)
-- API keys in `.env`
-- Sufficient API credits (OpenRouter, Resend)
-
-## Pre-flight Checks
-Before running pipeline, verify:
-1. `.env` file exists with all required keys
-2. `feeds_config.json` has valid RSS feeds
-3. `subscribers.json` has at least one active subscriber
-4. No stale locks from previous runs
-
-## Monitoring & Alerts
-
-**Success indicators:**
-- Pipeline completes in < 5 minutes
-- All log files created
-- Send log shows >95% delivery success
-
-**Failure indicators:**
-- Pipeline exceeds 10 minutes
-- Any step exits with error code
-- Send log shows <80% delivery success
-
-**Alert mechanisms (future):**
-- Send error report to admin email
-- Slack/Discord webhook notification
-- SMS via Twilio (for critical failures)
-
-## Cleanup
-- Keep logs for 30 days, then delete
-- `.tmp/` files can be regenerated, so safe to delete anytime
-
-## Testing
-Run manually first:
-```bash
-cd /path/to/project
-python3 execution/run_daily_pipeline.py
-```
-
-Check all outputs to verify correct operation before scheduling.
 
 ## Performance Expectations
-- **Total runtime:** 2-5 minutes (depends on subscriber count)
-- **API costs per day:** ~$0.10-0.20 (OpenRouter) + email costs
-- **Success rate:** >98%
+- **Total runtime:** 3-8 minutes (depends on article volume and subscriber count)
+- **API costs per day:** ~$0.10-0.30 (OpenRouter LLM calls)
+- **Success rate target:** >98%
 
-## Edge Cases
-- **No new articles:** If RSS aggregation finds <5 articles, skip newsletter for that day
-- **All LLM calls fail:** Send error alert, don't send empty newsletter
-- **Resend API down:** Retry 3 times, then alert admin
+## Monitoring
+- `pipeline_log_{YYYY-MM-DD}.txt` — master log with all steps
+- Check `.tmp/` for expected output files per segment
+- `send_log_{YYYY-MM-DD}.json` — delivery statistics
 
-## Next Steps
-Once pipeline is stable:
-1. Add performance monitoring
-2. Implement A/B testing
-3. Build referral program
-4. Add analytics dashboard
+## Known Issues & Learnings
+
+### LLM timeout on large datasets (Feb 2026)
+- **Root cause:** `select_stories.py` processing 200+ articles sometimes exceeded 120s timeout
+- **Fix:** Increased timeout to 300s for story selection step
+- **Prevention:** Monitor article count; consider batching if consistently >250
+
+### Newsletter archiving silently fails (Feb 2026)
+- **Root cause:** `NewsletterArchive` import errors caught and logged as warning, not failure
+- **Impact:** Low — newsletter still sends, just archive copy missing
+- **Prevention:** Non-critical, but monitor for repeated failures
+
+### iCloud git push bus errors (Feb 2026)
+- **Root cause:** Git operations on iCloud-synced directories cause signal 10 crashes
+- **Fix:** Set `GIT_HTTP_POST_BUFFER=524288000` and retry
+- **Prevention:** Always retry git push with buffer flag if first attempt fails
+
+## Next Steps (Future)
+- Add email alerting on pipeline failure
+- Implement A/B testing for subject lines
+- Send time optimization per subscriber timezone
+
+## Previous Issues (Resolved)
+
+### Missing `supabase` in requirements.txt (Feb 17, 2026)
+- **Root cause:** `send_newsletter.py` imports `supabase` but the package was never added to `requirements.txt`
+- **Impact:** Step 5 (send) crashed with `ModuleNotFoundError` in CI; steps 1-4 worked fine because they don't use Supabase
+- **Fix:** Added `supabase>=2.0.0` to `requirements.txt` and added `NEXT_PUBLIC_SUPABASE_URL` + `SUPABASE_SERVICE_KEY` env vars to both workflow files
+- **Prevention:** When adding new imports, always verify they're in `requirements.txt`. Run `pip freeze | grep <pkg>` locally doesn't catch CI gaps
