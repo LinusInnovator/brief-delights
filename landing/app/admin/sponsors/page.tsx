@@ -2,6 +2,7 @@
 
 import { useEffect, useState, useCallback } from 'react';
 import { createClient } from '@/lib/supabase/client';
+import { discoverSponsors, generateAndSaveEmailDraft, type DiscoveryResult } from '@/lib/sponsorDiscovery';
 
 // ========== Types ==========
 
@@ -38,6 +39,11 @@ interface SponsorLead {
     email_draft: any;
     status: string;
     discovered_at: string;
+    eagerness_score: number;
+    discovery_method: string;
+    competitive_context: any;
+    dream_outcome: string;
+    article_clicks: number;
 }
 
 interface ScheduleEntry {
@@ -570,6 +576,10 @@ function PipelineTab() {
     const [loading, setLoading] = useState(true);
     const [filter, setFilter] = useState<'new' | 'sent' | 'responded' | 'booked'>('new');
     const [sending, setSending] = useState<string | null>(null);
+    const [discovering, setDiscovering] = useState(false);
+    const [discoveryResult, setDiscoveryResult] = useState<DiscoveryResult | null>(null);
+    const [expandedDraft, setExpandedDraft] = useState<string | null>(null);
+    const [generatingEmail, setGeneratingEmail] = useState<string | null>(null);
 
     const loadLeads = useCallback(async () => {
         setLoading(true);
@@ -590,6 +600,35 @@ function PipelineTab() {
     }, [filter]);
 
     useEffect(() => { loadLeads(); }, [loadLeads]);
+
+    async function handleRunDiscovery() {
+        setDiscovering(true);
+        setDiscoveryResult(null);
+        try {
+            const result = await discoverSponsors();
+            setDiscoveryResult(result);
+            if (result.status === 'success') {
+                await loadLeads();
+            }
+        } catch {
+            setDiscoveryResult({ status: 'error', articlesAnalyzed: 0, incumbentsDetected: [], challengersFound: 0, leadsWritten: 0, error: 'Unexpected error' });
+        } finally {
+            setDiscovering(false);
+        }
+    }
+
+    async function handleGenerateEmail(leadId: string) {
+        setGeneratingEmail(leadId);
+        try {
+            const draft = await generateAndSaveEmailDraft(leadId);
+            if (draft) {
+                // Refresh lead data to show the draft
+                await loadLeads();
+                setExpandedDraft(leadId);
+            }
+        } catch { /* ignore */ }
+        finally { setGeneratingEmail(null); }
+    }
 
     async function handleSendEmail(leadId: string) {
         if (!confirm('Send outreach email to this sponsor?')) return;
@@ -617,12 +656,69 @@ function PipelineTab() {
             case 'enterprise': return 'bg-purple-100 text-purple-800';
             case 'premium': return 'bg-blue-100 text-blue-800';
             case 'standard': return 'bg-green-100 text-green-800';
+            case 'starter': return 'bg-amber-100 text-amber-800';
             default: return 'bg-gray-100 text-gray-800';
+        }
+    }
+
+    function getMethodBadge(method: string) {
+        switch (method) {
+            case 'competitive_challenger': return { label: '🎯 Competitive', color: 'bg-orange-100 text-orange-800' };
+            case 'content_analysis': return { label: '📊 Content Match', color: 'bg-blue-100 text-blue-800' };
+            default: return { label: '✏️ Manual', color: 'bg-gray-100 text-gray-600' };
         }
     }
 
     return (
         <div>
+            {/* Discovery Controls */}
+            <div className="bg-gradient-to-r from-indigo-50 to-blue-50 rounded-xl p-5 mb-6 border border-indigo-100">
+                <div className="flex items-center justify-between">
+                    <div>
+                        <h3 className="text-base font-bold text-gray-900 mb-1">🔍 Sponsor Discovery Engine</h3>
+                        <p className="text-sm text-gray-600">
+                            Analyses article clicks → detects incumbents → finds hungry challengers → generates outreach
+                        </p>
+                    </div>
+                    <button
+                        onClick={handleRunDiscovery}
+                        disabled={discovering}
+                        className={`px-5 py-2.5 rounded-lg text-sm font-semibold transition shadow-sm ${discovering
+                            ? 'bg-gray-300 text-gray-500 cursor-not-allowed'
+                            : 'bg-indigo-600 text-white hover:bg-indigo-700 hover:shadow-md'
+                            }`}
+                    >
+                        {discovering ? (
+                            <span className="flex items-center gap-2">
+                                <span className="animate-spin h-4 w-4 border-2 border-white border-t-transparent rounded-full" />
+                                Scanning...
+                            </span>
+                        ) : '🔍 Run Discovery'}
+                    </button>
+                </div>
+
+                {/* Discovery Result Banner */}
+                {discoveryResult && (
+                    <div className={`mt-4 p-3 rounded-lg text-sm ${discoveryResult.status === 'success'
+                        ? 'bg-green-50 border border-green-200 text-green-800'
+                        : 'bg-red-50 border border-red-200 text-red-800'
+                        }`}>
+                        {discoveryResult.status === 'success' ? (
+                            <div className="flex items-center gap-4 flex-wrap">
+                                <span>✅ <strong>{discoveryResult.leadsWritten}</strong> leads discovered</span>
+                                <span>📰 {discoveryResult.articlesAnalyzed} articles analysed</span>
+                                {discoveryResult.incumbentsDetected.length > 0 && (
+                                    <span>🏢 Incumbents: {discoveryResult.incumbentsDetected.join(', ')}</span>
+                                )}
+                                <span>🎯 {discoveryResult.challengersFound} competitive challengers</span>
+                            </div>
+                        ) : (
+                            <span>❌ {discoveryResult.error}</span>
+                        )}
+                    </div>
+                )}
+            </div>
+
             {/* Filters */}
             <div className="flex gap-2 mb-6">
                 {(['new', 'sent', 'responded', 'booked'] as const).map(f => (
@@ -643,48 +739,138 @@ function PipelineTab() {
                 <EmptyState emoji="⚡" title={`No ${filter} leads`} description="Run sponsor discovery to find new leads" />
             ) : (
                 <div className="space-y-3">
-                    {leads.map(lead => (
-                        <div key={lead.id} className="bg-white rounded-lg shadow-sm p-5 hover:shadow-md transition">
-                            <div className="flex items-start justify-between">
-                                <div className="flex-1">
-                                    <div className="flex items-center gap-3 mb-1">
-                                        <h3 className="text-lg font-bold text-gray-900">{lead.company_name}</h3>
-                                        <span className="text-sm text-gray-500">Score: {lead.match_score}</span>
-                                    </div>
-                                    <p className="text-sm text-gray-600 mb-2">
-                                        {lead.industry} · {lead.matched_segment}
-                                    </p>
-                                    <p className="text-sm text-gray-700 mb-3">{lead.match_reason}</p>
-                                    <div className="flex items-center gap-3">
-                                        <span className="text-xl font-bold text-gray-900">{formatPrice(lead.suggested_price_cents)}</span>
-                                        <span className={`px-2 py-0.5 rounded-full text-xs font-medium ${getTierColor(lead.pricing_tier)}`}>
-                                            {lead.pricing_tier}
-                                        </span>
-                                        <span className="text-xs text-gray-500">{lead.guaranteed_clicks}+ clicks guaranteed</span>
+                    {leads.map(lead => {
+                        const methodBadge = getMethodBadge(lead.discovery_method);
+                        const hasEmail = lead.email_draft && typeof lead.email_draft === 'object';
+                        const isExpanded = expandedDraft === lead.id;
+
+                        return (
+                            <div key={lead.id} className="bg-white rounded-lg shadow-sm hover:shadow-md transition border border-gray-100">
+                                <div className="p-5">
+                                    <div className="flex items-start justify-between">
+                                        <div className="flex-1">
+                                            {/* Header: Name + Badges */}
+                                            <div className="flex items-center gap-2 mb-1 flex-wrap">
+                                                <h3 className="text-lg font-bold text-gray-900">{lead.company_name}</h3>
+                                                <span className="text-sm text-gray-500">Score: {lead.match_score}</span>
+                                                {lead.eagerness_score && (
+                                                    <span className="text-xs text-gray-400">
+                                                        ⚡ {lead.eagerness_score}
+                                                    </span>
+                                                )}
+                                                {/* Discovery method badge */}
+                                                <span className={`px-2 py-0.5 rounded-full text-[10px] font-semibold ${methodBadge.color}`}>
+                                                    {methodBadge.label}
+                                                </span>
+                                                {/* Competitor badge */}
+                                                {lead.competitor_mentioned && (
+                                                    <span className="px-2 py-0.5 rounded-full text-[10px] font-semibold bg-orange-100 text-orange-800">
+                                                        🎯 vs {lead.competitor_mentioned}
+                                                    </span>
+                                                )}
+                                            </div>
+
+                                            {/* Info line */}
+                                            <p className="text-sm text-gray-600 mb-1">
+                                                {lead.industry} · {lead.matched_segment}
+                                                {lead.domain && <span className="text-gray-400"> · {lead.domain}</span>}
+                                            </p>
+
+                                            {/* Match reason / Dream outcome */}
+                                            {lead.match_reason && (
+                                                <p className="text-sm text-gray-700 mb-2">{lead.match_reason}</p>
+                                            )}
+                                            {lead.dream_outcome && !lead.match_reason && (
+                                                <p className="text-sm text-gray-600 italic mb-2">&ldquo;{lead.dream_outcome}&rdquo;</p>
+                                            )}
+
+                                            {/* Pricing row */}
+                                            <div className="flex items-center gap-3">
+                                                <span className="text-xl font-bold text-gray-900">{formatPrice(lead.suggested_price_cents)}</span>
+                                                {lead.pricing_tier && (
+                                                    <span className={`px-2 py-0.5 rounded-full text-xs font-medium ${getTierColor(lead.pricing_tier)}`}>
+                                                        {lead.pricing_tier}
+                                                    </span>
+                                                )}
+                                                {lead.guaranteed_clicks && (
+                                                    <span className="text-xs text-gray-500">{lead.guaranteed_clicks}+ clicks guaranteed</span>
+                                                )}
+                                                {lead.article_clicks && (
+                                                    <span className="text-xs text-gray-400">({lead.article_clicks} real clicks)</span>
+                                                )}
+                                            </div>
+                                        </div>
+
+                                        {/* Action buttons */}
+                                        <div className="flex flex-col gap-2 ml-4">
+                                            {filter === 'new' && (
+                                                <>
+                                                    {!hasEmail && (
+                                                        <button
+                                                            onClick={() => handleGenerateEmail(lead.id)}
+                                                            disabled={generatingEmail === lead.id}
+                                                            className={`px-4 py-2 rounded-lg text-sm font-medium transition ${generatingEmail === lead.id
+                                                                ? 'bg-gray-200 text-gray-400 cursor-not-allowed'
+                                                                : 'bg-white border border-blue-300 text-blue-700 hover:bg-blue-50'
+                                                                }`}
+                                                        >
+                                                            {generatingEmail === lead.id ? '...' : '✉️ Generate Email'}
+                                                        </button>
+                                                    )}
+                                                    <button
+                                                        onClick={() => handleSendEmail(lead.id)}
+                                                        disabled={sending === lead.id}
+                                                        className={`px-4 py-2 rounded-lg text-sm font-medium transition ${sending === lead.id
+                                                            ? 'bg-gray-300 text-white cursor-not-allowed'
+                                                            : 'bg-blue-600 text-white hover:bg-blue-700'
+                                                            }`}
+                                                    >
+                                                        {sending === lead.id ? 'Sending...' : '✓ Approve & Send'}
+                                                    </button>
+                                                </>
+                                            )}
+                                            {filter === 'sent' && (
+                                                <button className="px-4 py-2 bg-green-600 text-white rounded-lg text-sm font-medium hover:bg-green-700 transition">
+                                                    📧 Follow Up
+                                                </button>
+                                            )}
+                                        </div>
                                     </div>
                                 </div>
-                                <div className="flex flex-col gap-2 ml-4">
-                                    {filter === 'new' && (
+
+                                {/* Email Draft Expandable Section */}
+                                {hasEmail && (
+                                    <div className="border-t border-gray-100">
                                         <button
-                                            onClick={() => handleSendEmail(lead.id)}
-                                            disabled={sending === lead.id}
-                                            className={`px-4 py-2 rounded-lg text-sm font-medium transition ${sending === lead.id
-                                                ? 'bg-gray-300 text-white cursor-not-allowed'
-                                                : 'bg-blue-600 text-white hover:bg-blue-700'
-                                                }`}
+                                            onClick={() => setExpandedDraft(isExpanded ? null : lead.id)}
+                                            className="w-full px-5 py-2 text-left text-xs font-medium text-gray-500 hover:bg-gray-50 transition flex items-center gap-1"
                                         >
-                                            {sending === lead.id ? 'Sending...' : '✓ Approve & Send'}
+                                            <span className={`transition-transform ${isExpanded ? 'rotate-90' : ''}`}>▶</span>
+                                            ✉️ Email Draft Preview
                                         </button>
-                                    )}
-                                    {filter === 'sent' && (
-                                        <button className="px-4 py-2 bg-green-600 text-white rounded-lg text-sm font-medium hover:bg-green-700 transition">
-                                            📧 Follow Up
-                                        </button>
-                                    )}
-                                </div>
+                                        {isExpanded && (
+                                            <div className="px-5 pb-4 space-y-3">
+                                                <div>
+                                                    <p className="text-[10px] uppercase text-gray-400 font-bold mb-0.5">Subject A (Competitive)</p>
+                                                    <p className="text-sm text-gray-800 font-medium">{(lead.email_draft as any).subject_competitive}</p>
+                                                </div>
+                                                <div>
+                                                    <p className="text-[10px] uppercase text-gray-400 font-bold mb-0.5">Subject B (Data-Driven)</p>
+                                                    <p className="text-sm text-gray-800 font-medium">{(lead.email_draft as any).subject_data_driven}</p>
+                                                </div>
+                                                <div>
+                                                    <p className="text-[10px] uppercase text-gray-400 font-bold mb-0.5">Body</p>
+                                                    <pre className="text-xs text-gray-700 whitespace-pre-wrap bg-gray-50 rounded p-3 max-h-48 overflow-y-auto">
+                                                        {(lead.email_draft as any).body}
+                                                    </pre>
+                                                </div>
+                                            </div>
+                                        )}
+                                    </div>
+                                )}
                             </div>
-                        </div>
-                    ))}
+                        );
+                    })}
                 </div>
             )}
         </div>
