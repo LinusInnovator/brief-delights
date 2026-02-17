@@ -200,10 +200,147 @@ function calculateMatchScore(clicks: number, segment: string): number {
     return Math.min(score, 100);
 }
 
-function calculatePricing(clicks: number): { priceCents: number; tier: string; guaranteedClicks: number } {
-    if (clicks > 20) return { priceCents: 120000, tier: 'premium', guaranteedClicks: 15 };
-    if (clicks > 10) return { priceCents: 80000, tier: 'standard', guaranteedClicks: 10 };
-    return { priceCents: 50000, tier: 'starter', guaranteedClicks: 5 };
+/**
+ * Dynamic Pricing Engine
+ * 
+ * Formula: price = baseCPM × reachMultiplier × engagementMultiplier × proofMultiplier × recencyDecay
+ * 
+ * This replaces the old 3-tier static pricing with a continuous, data-driven model.
+ * Mirrors the Python SmartPricingCalculator but adds recency decay.
+ */
+
+interface DynamicPricingInputs {
+    clicks: number;           // Article clicks (proof)
+    subscribers?: number;     // Segment subscriber count (reach)
+    segmentClickRate?: number; // Average segment CTR % (engagement)
+    daysSinceArticle?: number; // Recency of the trigger article
+}
+
+interface PricingOutput {
+    priceCents: number;
+    tier: string;
+    guaranteedClicks: number;
+    cpm: number;             // Effective CPM
+    reachMultiplier: number;
+    engagementMultiplier: number;
+    proofMultiplier: number;
+    recencyDecay: number;
+    priceBreakdown: string;  // Human-readable reasoning
+}
+
+function calculatePricing(clicks: number, opts?: Partial<DynamicPricingInputs>): PricingOutput {
+    const subscribers = opts?.subscribers ?? 50;   // Default 50 if unknown
+    const segmentCTR = opts?.segmentClickRate ?? 5; // Default 5% CTR
+    const daysSince = opts?.daysSinceArticle ?? 3;  // Default 3 days
+
+    // ── Base CPM: $40 per 1,000 impressions (premium dev audience) ──
+    const baseCPM = 4000; // in cents
+
+    // ── Reach multiplier (0.5x – 3x) based on subscriber count ──
+    let reachMultiplier: number;
+    if (subscribers <= 25) reachMultiplier = 0.5;
+    else if (subscribers <= 50) reachMultiplier = 1.0;
+    else if (subscribers <= 100) reachMultiplier = 1.5;
+    else if (subscribers <= 200) reachMultiplier = 2.0;
+    else reachMultiplier = Math.min(3.0, 2.0 + (subscribers - 200) / 200);
+
+    // ── Engagement multiplier (0.7x – 2x) based on segment CTR ──
+    let engagementMultiplier: number;
+    if (segmentCTR < 3) engagementMultiplier = 0.7;
+    else if (segmentCTR < 5) engagementMultiplier = 0.9;
+    else if (segmentCTR < 7) engagementMultiplier = 1.1;
+    else if (segmentCTR < 10) engagementMultiplier = 1.5;
+    else engagementMultiplier = Math.min(2.0, 1.5 + (segmentCTR - 10) / 10);
+
+    // ── Proof multiplier (0.8x – 2x) based on actual article clicks ──
+    let proofMultiplier: number;
+    if (clicks < 5) proofMultiplier = 0.8;
+    else if (clicks < 10) proofMultiplier = 0.9;
+    else if (clicks < 15) proofMultiplier = 1.1;
+    else if (clicks < 20) proofMultiplier = 1.5;
+    else proofMultiplier = Math.min(2.0, 1.5 + (clicks - 20) / 20);
+
+    // ── Recency decay (1.0 for fresh, decays to 0.6 over 14 days) ──
+    const recencyDecay = Math.max(0.6, 1.0 - (daysSince / 35));
+
+    // ── Final price calculation ──
+    const rawPrice = (baseCPM / 100) * reachMultiplier * engagementMultiplier * proofMultiplier * recencyDecay;
+
+    // Round to nearest $5
+    const roundedPrice = Math.round(rawPrice / 5) * 5;
+    const priceCents = Math.max(5000, roundedPrice * 100); // Floor: $50
+
+    // Effective CPM
+    const cpm = subscribers > 0 ? Math.round((priceCents / subscribers) * 1000) : 0;
+
+    // ── Tier assignment ──
+    let tier: string;
+    if (priceCents >= 200000) tier = 'enterprise';
+    else if (priceCents >= 100000) tier = 'premium';
+    else if (priceCents >= 60000) tier = 'standard';
+    else tier = 'starter';
+
+    // ── Guaranteed clicks = 70% of expected clicks ──
+    const expectedClicks = Math.max(5, Math.round(subscribers * segmentCTR / 100));
+    const guaranteedClicks = Math.max(5, Math.round(expectedClicks * 0.7));
+
+    // ── Price breakdown for transparency ──
+    const priceBreakdown = [
+        `$${(priceCents / 100).toFixed(0)} ${tier}`,
+        `${subscribers} subs × ${segmentCTR}% CTR`,
+        `${clicks} proof clicks`,
+        `${guaranteedClicks}+ guaranteed`,
+    ].join(' · ');
+
+    return {
+        priceCents,
+        tier,
+        guaranteedClicks,
+        cpm,
+        reachMultiplier,
+        engagementMultiplier,
+        proofMultiplier,
+        recencyDecay,
+        priceBreakdown,
+    };
+}
+
+/**
+ * Fetch real-time pricing inputs from Supabase.
+ * Call this before calculatePricing for live data.
+ */
+export async function fetchPricingInputs(segment: string): Promise<DynamicPricingInputs> {
+    const supabase = createClient();
+
+    // Get subscriber count for this segment
+    const { count: subscribers } = await supabase
+        .from('subscribers')
+        .select('*', { count: 'exact', head: true })
+        .eq('segments', segment)
+        .eq('status', 'verified');
+
+    // Get average click rate for this segment (last 30 days)
+    const thirtyDaysAgo = new Date(Date.now() - 30 * 24 * 60 * 60 * 1000)
+        .toISOString().split('T')[0];
+
+    const { data: recentClicks } = await supabase
+        .from('article_clicks')
+        .select('newsletter_date')
+        .eq('segment', segment)
+        .gte('newsletter_date', thirtyDaysAgo);
+
+    // Calculate approximate CTR
+    const totalClicks = recentClicks?.length ?? 0;
+    const uniqueDates = new Set(recentClicks?.map(c => c.newsletter_date) ?? []);
+    const sendCount = uniqueDates.size * (subscribers ?? 50);
+    const segmentClickRate = sendCount > 0 ? (totalClicks / sendCount) * 100 : 5;
+
+    return {
+        clicks: 0, // Set per-article
+        subscribers: subscribers ?? 50,
+        segmentClickRate: Math.round(segmentClickRate * 10) / 10,
+        daysSinceArticle: 3,
+    };
 }
 
 function detectTopic(title: string, domain: string): string {
