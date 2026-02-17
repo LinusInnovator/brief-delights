@@ -62,7 +62,7 @@ def load_subscribers():
     if SUPABASE_URL and SUPABASE_KEY:
         try:
             supabase: Client = create_client(SUPABASE_URL, SUPABASE_KEY)
-            result = supabase.table('subscribers').select('email, segment').eq('status', 'confirmed').execute()
+            result = supabase.table('subscribers').select('email, segment, referral_code, referral_count').eq('status', 'confirmed').execute()
             
             if result.data and len(result.data) > 0:
                 by_segment = defaultdict(list)
@@ -224,14 +224,71 @@ def mark_sponsor_sent(sponsor: dict, segment_id: str):
         log(f"  ⚠️ Failed to update sponsor schedule: {e}")
 
 
+# Referral tier definitions
+REFERRAL_TIERS = [
+    (1, "Founding Reader badge"),
+    (3, "Sunday Deep Dive access"),
+    (5, "All 3 segments unlocked"),
+    (10, "Newsletter shoutout"),
+]
+
+
+def personalize_referral(html_content: str, subscriber: dict) -> str:
+    """Replace referral placeholders with subscriber-specific data"""
+    code = subscriber.get('referral_code', '')
+    count = subscriber.get('referral_count', 0) or 0
+    
+    # Find next milestone
+    next_milestone = 10
+    next_reward = "Newsletter shoutout"
+    for tier_count, tier_reward in REFERRAL_TIERS:
+        if count < tier_count:
+            next_milestone = tier_count
+            next_reward = tier_reward
+            break
+    
+    plural = "s" if count != 1 else ""
+    remaining = max(next_milestone - count, 0)
+    
+    # Calculate progress bar width (capped at 100%)
+    progress_width = min(count * 10, 100)
+    
+    # Milestone style: highlight achieved milestones
+    achieved_style = "color: #4f46e5; font-weight: 600;"
+    
+    html = html_content
+    html = html.replace('{{ referral_code }}', code or 'NONE')
+    html = html.replace('{{ referral_count }}', str(count))
+    html = html.replace('{{ referral_count_plural }}', plural)
+    html = html.replace('{{ referral_next_milestone }}', str(next_milestone))
+    html = html.replace('{{ referral_next_reward }}', next_reward)
+    
+    # Replace the "X more to unlock" expression
+    html = html.replace('{{ referral_remaining }}', str(remaining))
+    
+    # Replace milestone styles
+    html = html.replace('MILESTONE_1_STYLE', achieved_style if count >= 1 else '')
+    html = html.replace('MILESTONE_3_STYLE', achieved_style if count >= 3 else '')
+    html = html.replace('MILESTONE_5_STYLE', achieved_style if count >= 5 else '')
+    html = html.replace('MILESTONE_10_STYLE', achieved_style if count >= 10 else '')
+    
+    # Replace progress bar width
+    html = html.replace('PROGRESS_BAR_WIDTH', str(progress_width))
+    
+    return html
+
+
 def send_email(subscriber: dict, html_content: str, segment_name: str) -> dict:
     """Send email to individual subscriber"""
     try:
+        # Personalize referral section for this subscriber
+        personalized_html = personalize_referral(html_content, subscriber)
+        
         response = resend.Emails.send({
             "from": EMAIL_SENDER,
             "to": subscriber['email'],
             "subject": f"Brief Delights for {segment_name.split()[0]} - {datetime.now().strftime('%B %d, %Y')}",
-            "html": html_content
+            "html": personalized_html
         })
         
         return {

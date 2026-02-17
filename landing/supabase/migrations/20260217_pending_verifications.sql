@@ -7,6 +7,7 @@ CREATE TABLE IF NOT EXISTS pending_verifications (
   email TEXT NOT NULL,
   segment TEXT NOT NULL CHECK (segment IN ('builders', 'leaders', 'innovators')),
   token TEXT NOT NULL UNIQUE,
+  referrer TEXT,  -- referral code of the person who referred this signup
   created_at TIMESTAMPTZ DEFAULT NOW(),
   expires_at TIMESTAMPTZ DEFAULT NOW() + INTERVAL '24 hours'
 );
