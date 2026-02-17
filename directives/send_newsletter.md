@@ -1,112 +1,121 @@
 # Directive: Send Newsletter
 
 ## Goal
-Distribute the newsletter to all active subscribers using Resend API. Handle batching, rate limits, and error tracking.
+Deliver composed newsletter HTML to all confirmed subscribers via Resend API, with per-segment sponsor injection and click tracking.
 
 ## Inputs
-- `.tmp/newsletter_YYYY-MM-DD.html` - Compiled newsletter HTML
-- `subscribers.json` - Subscriber list with emails and preferences
+- `.tmp/newsletter_{segment}_{YYYY-MM-DD}.html` — Composed newsletter for each segment
+- Supabase `subscribers` table — confirmed subscribers with segment assignment
+- Supabase `sponsor_schedule` + `sponsor_content` — sponsor for today's segment (if scheduled)
+- `.env` — `RESEND_API_KEY`, `EMAIL_SENDER`, `SUPABASE_SERVICE_KEY`
 
 ## Tool to Use
 - **Script:** `execution/send_newsletter.py`
 
 ## Expected Outputs
-- Email sent to all active subscribers
-- `.tmp/send_log_YYYY-MM-DD.json` - Delivery log
-- Success/failure status for each recipient
-
-## Success Criteria
-- ✅ All active subscribers receive the email
-- ✅ No rate limit errors
-- ✅ Failed sends are logged for retry
-- ✅ Delivery within 5 minutes for lists under 1000 subscribers
+- Email delivered to all confirmed subscribers per segment
+- `.tmp/send_log_{YYYY-MM-DD}.json` — delivery report
+- Sponsor impressions recorded in `sponsor_schedule.impressions`
 
 ## Process
-1. Read newsletter HTML from `.tmp/newsletter_YYYY-MM-DD.html`
-2. Load subscribers from `subscribers.json`
-3. Filter for active subscribers only
-4. Batch sends (100 emails at a time to avoid rate limits)
-5. For each batch:
-   - Send via Resend API
-   - Log success/failure
-   - Wait between batches if needed
-6. Save delivery log to `.tmp/send_log_YYYY-MM-DD.json`
+1. Load `.env` and connect to Supabase
+2. For each segment (builders, leaders, innovators):
+   a. Read composed newsletter HTML from `.tmp/`
+   b. Fetch confirmed subscribers for this segment from Supabase
+   c. Query `get_sponsor_for_newsletter(date, segment)` via Supabase RPC
+   d. If sponsor found: call `inject_sponsor()` to replace placeholders:
+      - `{{ sponsor_headline }}`, `{{ sponsor_description }}`
+      - `{{ sponsor_cta_text }}`, `{{ sponsor_cta_url }}`
+      - CTA URL is wrapped with `/api/track?url=...&sponsor_schedule_id=...` for click tracking
+   e. Send to each subscriber via Resend API
+   f. Update `sponsor_schedule` with impressions count
+3. Save send log to `.tmp/send_log_{YYYY-MM-DD}.json`
 
-## Resend API Integration
+## Email Configuration
+- **From:** `Brief Delights <hello@send.dreamvalidator.com>` (override via `EMAIL_SENDER` env var)
+- **Subject:** `Brief Delights for {Segment} — {Date}`
+- **Reply-To:** `hello@brief.delights.pro`
 
-**Authentication:**
-- API Key from `RESEND_API_KEY` environment variable
-
-**Send Endpoint:**
+## Resend API Details
 ```python
 import resend
 resend.api_key = os.getenv("RESEND_API_KEY")
 
 resend.Emails.send({
-    "from": "TechPulse Daily <send@send.dreamvalidator.com>",
+    "from": "Brief Delights <hello@send.dreamvalidator.com>",
     "to": subscriber_email,
-    "subject": f"📬 TechPulse Daily - {formatted_date}",
-    "html": newsletter_html
+    "subject": f"Brief Delights for Builders 🔧 — February 17, 2026",
+    "html": personalized_html  # After referral personalization
 })
 ```
-
-**Rate Limits:**
-- Resend free tier: 100 emails/day, 3,000/month
-- Paid tier: Higher limits based on plan
-- Implement batching with delays to stay within limits
 
 ## Batching Strategy
 - **Batch size:** 100 emails per batch
 - **Delay between batches:** 1 second
 - **Retry failed sends:** Up to 3 attempts with exponential backoff
 
-## Email Headers
-- **From:** `TechPulse Daily <send@send.dreamvalidator.com>`
-- **Reply-To:** `hello@send.dreamvalidator.com` (optional)
-- **Subject:** `📬 TechPulse Daily - [Date]`
-- **List-Unsubscribe:** `<{unsubscribe_url}>`
-
-## Subscriber Filtering
-- **Active status:** Only send to `status: "active"`
-- **Skip bounced:** Don't send to `status: "bounced"` or `"unsubscribed"`
-- **Respect preferences:** Check frequency preferences (daily, weekly, etc.)
-
-## Error Handling
-- **API error:** Log and continue with next batch
-- **Invalid email:** Skip and log warning
-- **Rate limit hit:** Wait and retry
-- **Network timeout:** Retry up to 3 times
-
-## Logging
-Log to `.tmp/send_log_YYYY-MM-DD.json`:
-```json
-{
-  "send_date": "2026-02-08T07:00:00",
-  "total_subscribers": 150,
-  "emails_sent": 148,
-  "failures": 2,
-  "failed_emails": [
-    {"email": "bounce@example.com", "error": "Invalid recipient"}
-  ],
-  "execution_time_seconds": 45
-}
+## Subscriber Source
+Subscribers come from Supabase, **not** `subscribers.json` (legacy file, kept as fallback only):
+```python
+supabase.table('subscribers')
+    .select('email, segment, referral_code, referral_count')
+    .eq('status', 'confirmed')
+    .execute()
 ```
 
-## Performance Expectations
-- **Runtime:** 1-5 minutes for 100-1000 subscribers
-- **Success rate:** >98%
+## Referral Personalization
+Each email is personalized per-subscriber before sending via `personalize_referral()`:
+- `{{ referral_code }}` → subscriber's unique 8-char code
+- `{{ referral_count }}` → number of successful referrals
+- `{{ referral_remaining }}` → referrals needed for next milestone
+- `{{ referral_next_reward }}` → name of next reward tier
+- `MILESTONE_X_STYLE` → highlighted style for achieved milestones
+- `PROGRESS_BAR_WIDTH` → percentage width for progress bar
 
-## Edge Cases
-- **No subscribers:** Log warning, skip sending
-- **HTML file missing:** Abort with error
-- **API credentials invalid:** Abort with clear error message
+### Referral Tiers
+| Referrals | Reward |
+|---|---|
+| 1 | Founding Reader badge |
+| 3 | Sunday Deep Dive access |
+| 5 | All 3 segments unlocked |
+| 10 | Newsletter shoutout |
+
+## Sponsor Injection Flow
+```
+sponsor_schedule (date + segment) → sponsor_content (creative) → inject_sponsor()
+  → Replace placeholders in HTML
+  → Wrap CTA URL with /api/track for click tracking
+  → increment_sponsor_clicks() RPC on subscriber click
+```
+
+## Edge Cases & Error Handling
+- **No subscribers for segment:** Skip segment, log warning
+- **Newsletter HTML missing:** Skip segment, log error
+- **No sponsor scheduled:** Send without sponsor block (placeholders removed)
+- **Resend API error:** Log and continue with next subscriber
+- **Rate limit hit:** Wait and retry (exponential backoff)
 - **All sends fail:** Alert for manual investigation
 
-## Next Step
-After sending, proceed to tracking and monitoring (future phase).
+## Performance Expectations
+- **Runtime:** 1-5 minutes per segment (scales with subscriber count)
+- **Success rate:** >98%
 
-## Future Enhancements
-- Personalization (use subscriber name in greeting)
-- A/B testing subject lines
-- Send time optimization
-- Engagement scoring
+## Known Issues & Learnings
+
+### Fixed: Sender domain mismatch (Feb 17, 2026)
+- **Root cause:** `EMAIL_SENDER` defaulted to `brief.delights.pro` which is not verified in Resend
+- **Fix:** Updated to `hello@send.dreamvalidator.com` (verified domain)
+- **Prevention:** Always use `send.dreamvalidator.com` for outbound email
+
+### Resolved: Ephemeral subscriber storage (Feb 17, 2026)
+- **Root cause:** Netlify functions wrote subscribers to filesystem (`subscribers.json`, `pending_verifications.json`) which is lost on deploy
+- **Fix:** Migrated both `subscribe.ts` and `verify.ts` to use Supabase tables exclusively
+- **Prevention:** Never write persistent data to Netlify's filesystem
+
+### Fixed: Sponsor click tracking missing (Feb 16, 2026)
+- **Root cause:** `inject_sponsor()` wasn't wrapping CTA URL with tracking
+- **Fix:** Added `/api/track?url=...&sponsor_schedule_id=...` wrapping
+- **Prevention:** All outbound links in newsletters should go through `/api/track`
+
+## Next Step
+After sending, the pipeline logs results and aggregates weekly trends via `aggregate_weekly_trends.py`.

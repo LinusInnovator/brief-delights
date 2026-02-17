@@ -1,6 +1,6 @@
 # Status — The Letter
 
-> Last updated: 2026-02-17 11:30 CET
+> Last updated: 2026-02-17 13:24 CET
 
 ## System Health
 
@@ -11,6 +11,8 @@
 | **Landing / Admin** | ✅ Deployed | Netlify at `brief.delights.pro` |
 | **Sponsor System** | ✅ Operational | Discovery, scheduling, click tracking, smart pricing |
 | **Supabase** | ✅ Connected | Subscribers, sponsors, analytics |
+| **Subscriber Backend** | ✅ Supabase-only | Subscribe → verify → send, all via Supabase (no filesystem) |
+| **Referral System** | ✅ Active | Personalized links, milestone progress bar, auto-increment triggers |
 
 ## Segments
 
@@ -45,3 +47,6 @@
 - [ ] Email alerting on pipeline failure
 - [ ] Sponsor A/B test placement positions
 - [ ] Sponsor self-serve portal
+- [ ] Gate Sunday Deep Dive behind referral tier (≥3 referrals)
+- [ ] Product Hunt launch for subscriber burst
+- [ ] Newsletter cross-promotions with adjacent publishers
