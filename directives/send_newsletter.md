@@ -32,8 +32,8 @@ Deliver composed newsletter HTML to all confirmed subscribers via Resend API, wi
 3. Save send log to `.tmp/send_log_{YYYY-MM-DD}.json`
 
 ## Email Configuration
-- **From:** `Brief Delights <hello@brief.delights.pro>` (override via `EMAIL_SENDER` env var)
-- **Subject:** `📬 Brief Delights | {Segment Name} {Emoji} — {Date}`
+- **From:** `Brief Delights <hello@send.dreamvalidator.com>` (override via `EMAIL_SENDER` env var)
+- **Subject:** `Brief Delights for {Segment} — {Date}`
 - **Reply-To:** `hello@brief.delights.pro`
 
 ## Resend API Details
@@ -42,10 +42,10 @@ import resend
 resend.api_key = os.getenv("RESEND_API_KEY")
 
 resend.Emails.send({
-    "from": "Brief Delights <hello@brief.delights.pro>",
+    "from": "Brief Delights <hello@send.dreamvalidator.com>",
     "to": subscriber_email,
-    "subject": f"📬 Brief Delights | Builders 🔧 — February 17, 2026",
-    "html": newsletter_html
+    "subject": f"Brief Delights for Builders 🔧 — February 17, 2026",
+    "html": personalized_html  # After referral personalization
 })
 ```
 
@@ -58,10 +58,27 @@ resend.Emails.send({
 Subscribers come from Supabase, **not** `subscribers.json` (legacy file, kept as fallback only):
 ```python
 supabase.table('subscribers')
-    .select('email, segment')
+    .select('email, segment, referral_code, referral_count')
     .eq('status', 'confirmed')
     .execute()
 ```
+
+## Referral Personalization
+Each email is personalized per-subscriber before sending via `personalize_referral()`:
+- `{{ referral_code }}` → subscriber's unique 8-char code
+- `{{ referral_count }}` → number of successful referrals
+- `{{ referral_remaining }}` → referrals needed for next milestone
+- `{{ referral_next_reward }}` → name of next reward tier
+- `MILESTONE_X_STYLE` → highlighted style for achieved milestones
+- `PROGRESS_BAR_WIDTH` → percentage width for progress bar
+
+### Referral Tiers
+| Referrals | Reward |
+|---|---|
+| 1 | Founding Reader badge |
+| 3 | Sunday Deep Dive access |
+| 5 | All 3 segments unlocked |
+| 10 | Newsletter shoutout |
 
 ## Sponsor Injection Flow
 ```
@@ -85,10 +102,15 @@ sponsor_schedule (date + segment) → sponsor_content (creative) → inject_spon
 
 ## Known Issues & Learnings
 
-### Fixed: Stale dreamvalidator.com links (Feb 16, 2026)
-- **Root cause:** `EMAIL_SENDER` defaulted to `brief@send.dreamvalidator.com`
-- **Fix:** Updated fallback to `Brief Delights <hello@brief.delights.pro>`
-- **Prevention:** Always use `brief.delights.pro` domain for all email references
+### Fixed: Sender domain mismatch (Feb 17, 2026)
+- **Root cause:** `EMAIL_SENDER` defaulted to `brief.delights.pro` which is not verified in Resend
+- **Fix:** Updated to `hello@send.dreamvalidator.com` (verified domain)
+- **Prevention:** Always use `send.dreamvalidator.com` for outbound email
+
+### Resolved: Ephemeral subscriber storage (Feb 17, 2026)
+- **Root cause:** Netlify functions wrote subscribers to filesystem (`subscribers.json`, `pending_verifications.json`) which is lost on deploy
+- **Fix:** Migrated both `subscribe.ts` and `verify.ts` to use Supabase tables exclusively
+- **Prevention:** Never write persistent data to Netlify's filesystem
 
 ### Fixed: Sponsor click tracking missing (Feb 16, 2026)
 - **Root cause:** `inject_sponsor()` wasn't wrapping CTA URL with tracking

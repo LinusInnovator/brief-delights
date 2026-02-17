@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { createClient } from '@/lib/supabase/client';
 import AdminNav from '../components/AdminNav';
 
 interface ArticleInsight {
@@ -19,7 +20,9 @@ interface ArticleInsight {
 
 export default function InsightsPage() {
     const [insights, setInsights] = useState<ArticleInsight[]>([]);
+    const [totalArticles, setTotalArticles] = useState(0);
     const [loading, setLoading] = useState(true);
+    const [error, setError] = useState<string | null>(null);
 
     useEffect(() => {
         loadInsights();
@@ -27,175 +30,242 @@ export default function InsightsPage() {
 
     async function loadInsights() {
         try {
-            const res = await fetch('/api/admin/sponsors/insights');
-            const data = await res.json();
-            setInsights(data.articles || []);
-        } catch (error) {
-            console.error('Failed to load insights:', error);
+            const supabase = createClient();
+
+            // Get top articles from last 7 days
+            const sevenDaysAgo = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000)
+                .toISOString()
+                .split('T')[0];
+
+            const { data: articles, error: articlesError } = await supabase
+                .from('article_clicks')
+                .select('article_url, article_title, source_domain, segment, newsletter_date')
+                .gte('newsletter_date', sevenDaysAgo)
+                .order('clicked_at', { ascending: false });
+
+            if (articlesError) throw articlesError;
+
+            // Aggregate clicks by article
+            const articleMap = new Map<string, any>();
+            articles?.forEach((article: any) => {
+                const key = article.article_url;
+                if (!articleMap.has(key)) {
+                    articleMap.set(key, {
+                        article_title: article.article_title,
+                        article_url: article.article_url,
+                        source_domain: article.source_domain,
+                        segment: article.segment,
+                        total_clicks: 0,
+                        competitor_detected: null,
+                        matched_sponsors: [],
+                    });
+                }
+                articleMap.get(key).total_clicks += 1;
+            });
+
+            // Get sponsor leads to match with articles
+            const { data: sponsors, error: sponsorsError } = await supabase
+                .from('sponsor_leads')
+                .select('company_name, match_score, status, competitor_mentioned')
+                .order('match_score', { ascending: false });
+
+            if (sponsorsError) throw sponsorsError;
+
+            // Match sponsors to articles based on competitor detection
+            const competitorMap: { [key: string]: string } = {
+                'docker.com': 'Docker',
+                'kubernetes.io': 'Kubernetes',
+                'aws.amazon.com': 'AWS',
+                'microsoft.com': 'Microsoft',
+                'openai.com': 'OpenAI',
+                'github.com': 'GitHub',
+            };
+
+            const result = Array.from(articleMap.values())
+                .map((article) => {
+                    const competitor = competitorMap[article.source_domain] || null;
+                    const matchedSponsors = (sponsors || []).filter(
+                        (s: any) =>
+                            s.competitor_mentioned?.toLowerCase() === competitor?.toLowerCase()
+                    );
+                    return {
+                        ...article,
+                        competitor_detected: competitor,
+                        matched_sponsors: matchedSponsors.map((s: any) => ({
+                            company_name: s.company_name,
+                            match_score: s.match_score,
+                            status: s.status,
+                        })),
+                    };
+                })
+                .sort((a, b) => b.total_clicks - a.total_clicks);
+
+            setInsights(result.slice(0, 20));
+            setTotalArticles(result.length);
+        } catch (err: any) {
+            console.error('Failed to load insights:', err);
+            setError(err.message || 'Failed to load insights');
         } finally {
             setLoading(false);
         }
     }
 
     function getSegmentColor(segment: string): string {
-        switch (segment) {
-            case 'builders': return 'bg-blue-100 text-blue-800';
-            case 'innovators': return 'bg-purple-100 text-purple-800';
-            case 'leaders': return 'bg-green-100 text-green-800';
-            default: return 'bg-gray-100 text-gray-800';
-        }
+        const colors: Record<string, string> = {
+            builders: 'bg-blue-100 text-blue-800',
+            innovators: 'bg-purple-100 text-purple-800',
+            leaders: 'bg-amber-100 text-amber-800',
+        };
+        return colors[segment] || 'bg-gray-100 text-gray-800';
     }
 
     function getStatusColor(status: string): string {
-        switch (status) {
-            case 'booked': return 'bg-green-100 text-green-800';
-            case 'responded': return 'bg-purple-100 text-purple-800';
-            case 'outreach_sent': return 'bg-blue-100 text-blue-800';
-            case 'matched': return 'bg-gray-100 text-gray-800';
-            default: return 'bg-gray-100 text-gray-800';
-        }
+        const colors: Record<string, string> = {
+            discovered: 'bg-gray-100 text-gray-600',
+            outreach: 'bg-blue-100 text-blue-600',
+            responded: 'bg-green-100 text-green-600',
+            booked: 'bg-purple-100 text-purple-600',
+            paid: 'bg-emerald-100 text-emerald-600',
+        };
+        return colors[status] || 'bg-gray-100 text-gray-600';
     }
 
     if (loading) {
         return (
-            <>
+            <div className="min-h-screen bg-gray-50">
                 <AdminNav />
-                <div className="min-h-screen bg-gray-50 p-8">
-                    <div className="max-w-6xl mx-auto">
-                        <div className="text-center py-12">
-                            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto"></div>
-                            <p className="mt-4 text-gray-600">Loading insights...</p>
-                        </div>
+                <div className="max-w-6xl mx-auto p-8">
+                    <div className="text-center py-12">
+                        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto"></div>
+                        <p className="mt-4 text-gray-600">Loading insights...</p>
                     </div>
                 </div>
-            </>
+            </div>
+        );
+    }
+
+    if (error) {
+        return (
+            <div className="min-h-screen bg-gray-50">
+                <AdminNav />
+                <div className="max-w-6xl mx-auto p-8">
+                    <div className="bg-red-50 border border-red-200 rounded-lg p-6 text-center">
+                        <p className="text-red-600 font-medium">⚠️ {error}</p>
+                        <button
+                            onClick={() => { setLoading(true); setError(null); loadInsights(); }}
+                            className="mt-3 text-sm text-red-600 hover:text-red-700 underline"
+                        >
+                            Retry
+                        </button>
+                    </div>
+                </div>
+            </div>
         );
     }
 
     return (
-        <>
+        <div className="min-h-screen bg-gray-50">
             <AdminNav />
-            <div className="min-h-screen bg-gray-50 p-8">
-                <div className="max-w-6xl mx-auto">
-                    {/* Header */}
-                    <div className="mb-8">
-                        <h1 className="text-3xl font-bold text-gray-900 mb-2">
-                            🎯 Article Performance → Sponsor Insights
-                        </h1>
-                        <p className="text-gray-600">
-                            See which articles drive engagement and how we match sponsors to content performance
-                        </p>
-                    </div>
+            <div className="max-w-6xl mx-auto p-8">
+                {/* Header */}
+                <div className="mb-8">
+                    <h1 className="text-3xl font-bold text-gray-900 mb-2">
+                        🔍 Content Insights
+                    </h1>
+                    <p className="text-gray-600">
+                        Top performing articles and sponsor matching opportunities
+                        {totalArticles > 0 && (
+                            <span className="ml-2 text-gray-400">
+                                ({totalArticles} articles this week)
+                            </span>
+                        )}
+                    </p>
+                </div>
 
-                    {/* Insights Grid */}
-                    {insights.length === 0 ? (
-                        <div className="bg-white rounded-lg shadow-sm p-12 text-center">
-                            <p className="text-gray-600 text-lg">
-                                No article data yet
-                            </p>
-                            <p className="text-gray-500 mt-2">
-                                Articles will appear here after newsletter sends
-                            </p>
-                        </div>
-                    ) : (
-                        <div className="space-y-6">
-                            {insights.map((insight, index) => (
-                                <div
-                                    key={index}
-                                    className="bg-white rounded-lg shadow-sm p-6 hover:shadow-md transition"
-                                >
-                                    {/* Article Info */}
-                                    <div className="mb-4">
-                                        <div className="flex items-start justify-between">
-                                            <div className="flex-1">
-                                                <h3 className="text-xl font-bold text-gray-900 mb-2">
-                                                    📰 {insight.article_title}
-                                                </h3>
-                                                <div className="flex items-center gap-3 text-sm text-gray-600">
-                                                    <span>🌐 {insight.source_domain}</span>
-                                                    <span>•</span>
-                                                    <span className={`px-2 py-1 rounded text-xs font-medium ${getSegmentColor(insight.segment)}`}>
-                                                        {insight.segment}
-                                                    </span>
-                                                </div>
-                                            </div>
-                                            <div className="text-right">
-                                                <p className="text-3xl font-bold text-blue-600">
-                                                    {insight.total_clicks}
-                                                </p>
-                                                <p className="text-sm text-gray-600">clicks</p>
-                                            </div>
+                {/* Articles */}
+                {insights.length > 0 ? (
+                    <div className="space-y-4">
+                        {insights.map((article, index) => (
+                            <div
+                                key={article.article_url}
+                                className="bg-white rounded-lg shadow-sm border border-gray-100 p-6"
+                            >
+                                <div className="flex items-start justify-between gap-4">
+                                    <div className="flex-1">
+                                        <div className="flex items-center gap-2 mb-2">
+                                            <span className="text-lg font-bold text-gray-400">
+                                                #{index + 1}
+                                            </span>
+                                            <a
+                                                href={article.article_url}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className="text-lg font-semibold text-gray-900 hover:text-blue-600 transition"
+                                            >
+                                                {article.article_title || article.article_url}
+                                            </a>
+                                        </div>
+
+                                        <div className="flex items-center gap-3 text-sm">
+                                            <span className="text-gray-500">
+                                                {article.source_domain}
+                                            </span>
+                                            <span
+                                                className={`px-2 py-0.5 rounded-full text-xs font-medium ${getSegmentColor(
+                                                    article.segment
+                                                )}`}
+                                            >
+                                                {article.segment}
+                                            </span>
+                                            {article.competitor_detected && (
+                                                <span className="px-2 py-0.5 rounded-full text-xs font-medium bg-orange-100 text-orange-700">
+                                                    🏢 {article.competitor_detected}
+                                                </span>
+                                            )}
                                         </div>
                                     </div>
 
-                                    {/* Competitor Detection */}
-                                    {insight.competitor_detected && (
-                                        <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4 mb-4">
-                                            <div className="flex items-center gap-2">
-                                                <span className="text-lg">⚡</span>
-                                                <div>
-                                                    <p className="font-medium text-gray-900">
-                                                        Competitor Opportunity Detected
-                                                    </p>
-                                                    <p className="text-sm text-gray-600">
-                                                        Article mentions <strong>{insight.competitor_detected}</strong> - pitched to their challengers
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    )}
-
-                                    {/* Sponsor Matches */}
-                                    {insight.matched_sponsors && insight.matched_sponsors.length > 0 && (
-                                        <div>
-                                            <h4 className="font-semibold text-gray-900 mb-3">
-                                                🎯 Sponsors Matched from This Article
-                                            </h4>
-                                            <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                                                {insight.matched_sponsors.map((sponsor, i) => (
-                                                    <div
-                                                        key={i}
-                                                        className="border border-gray-200 rounded-lg p-3 hover:border-blue-300 transition"
-                                                    >
-                                                        <div className="flex items-center justify-between mb-2">
-                                                            <p className="font-medium text-gray-900">
-                                                                {sponsor.company_name}
-                                                            </p>
-                                                            <span className={`px-2 py-1 rounded text-xs font-medium ${getStatusColor(sponsor.status)}`}>
-                                                                {sponsor.status.replace('_', ' ')}
-                                                            </span>
-                                                        </div>
-                                                        <div className="flex items-center gap-2 text-sm text-gray-600">
-                                                            <span>Match Score: {sponsor.match_score}</span>
-                                                        </div>
-                                                    </div>
-                                                ))}
-                                            </div>
-                                        </div>
-                                    )}
-
-                                    {/* No matches */}
-                                    {(!insight.matched_sponsors || insight.matched_sponsors.length === 0) && (
-                                        <div className="text-sm text-gray-500 italic">
-                                            No sponsors matched yet for this article
-                                        </div>
-                                    )}
+                                    <div className="text-right">
+                                        <p className="text-2xl font-bold text-gray-900">
+                                            {article.total_clicks}
+                                        </p>
+                                        <p className="text-xs text-gray-500">clicks</p>
+                                    </div>
                                 </div>
-                            ))}
-                        </div>
-                    )}
 
-                    {/* Back Link */}
-                    <div className="mt-8">
-                        <a
-                            href="/admin/sponsors"
-                            className="inline-flex items-center px-4 py-2 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition font-medium"
-                        >
-                            ← Back to Pipeline
-                        </a>
+                                {/* Matched Sponsors */}
+                                {article.matched_sponsors.length > 0 && (
+                                    <div className="mt-4 pt-4 border-t border-gray-100">
+                                        <p className="text-xs text-gray-500 mb-2">
+                                            Matched Sponsors:
+                                        </p>
+                                        <div className="flex flex-wrap gap-2">
+                                            {article.matched_sponsors.map((s, i) => (
+                                                <span
+                                                    key={i}
+                                                    className={`px-3 py-1 rounded-full text-xs font-medium ${getStatusColor(
+                                                        s.status
+                                                    )}`}
+                                                >
+                                                    {s.company_name} ({s.match_score}%)
+                                                </span>
+                                            ))}
+                                        </div>
+                                    </div>
+                                )}
+                            </div>
+                        ))}
                     </div>
-                </div>
+                ) : (
+                    <div className="bg-white rounded-lg shadow-sm p-12 border border-gray-100 text-center">
+                        <div className="text-5xl mb-4">🔍</div>
+                        <h3 className="text-xl font-bold text-gray-900 mb-2">No insights yet</h3>
+                        <p className="text-gray-600">
+                            Article click data will appear here once newsletters are sent
+                        </p>
+                    </div>
+                )}
             </div>
-        </>
+        </div>
     );
 }

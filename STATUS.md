@@ -1,6 +1,6 @@
 # Status — The Letter
 
-> Last updated: 2026-02-17 11:30 CET
+> Last updated: 2026-02-17 13:40 CET
 
 ## System Health
 
@@ -11,6 +11,11 @@
 | **Landing / Admin** | ✅ Deployed | Netlify at `brief.delights.pro` |
 | **Sponsor System** | ✅ Operational | Discovery, scheduling, click tracking, smart pricing |
 | **Supabase** | ✅ Connected | Subscribers, sponsors, analytics |
+| **Subscriber Backend** | ✅ Supabase-only | Subscribe → verify → send, all via Supabase (no filesystem) |
+| **Referral System** | ✅ Active | Personalized links, milestone progress bar, auto-increment triggers |
+| **Gated Deep Dive** | ✅ Active | Weekly insights locked behind ≥3 referrals, teaser for others |
+| **A/B Testing** | ✅ Active | Random subject line variants, logged per email |
+| **Send Time Opt** | ✅ Active | Timezone-aware send windows via `--send-window` flag |
 
 ## Segments
 
@@ -44,4 +49,8 @@
 - [ ] Send time optimization per subscriber timezone
 - [ ] Email alerting on pipeline failure
 - [ ] Sponsor A/B test placement positions
-- [ ] Sponsor self-serve portal
+- [x] ~~Gate Sunday Deep Dive behind referral tier (≥3 referrals)~~ (done Feb 17)
+- [x] ~~A/B test subject lines~~ (done Feb 17)
+- [x] ~~Send time optimization per subscriber timezone~~ (done Feb 17)
+- [ ] Product Hunt launch for subscriber burst
+- [ ] Newsletter cross-promotions with adjacent publishers

@@ -1,9 +1,4 @@
-import { createClient } from '@supabase/supabase-js'
-
-const supabase = createClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.SUPABASE_SERVICE_KEY!
-)
+import { createClient } from './supabase/client'
 
 export interface DashboardStats {
     overview: {
@@ -43,172 +38,112 @@ export interface DashboardStats {
 }
 
 export async function getAnalyticsDashboardData(): Promise<DashboardStats> {
-    // Get overview metrics
-    const { data: latestGrowth } = await supabase
-        .from('subscriber_growth')
-        .select('*')
-        .order('date', { ascending: false })
-        .limit(1)
-        .single()
+    const supabase = createClient()
 
-    const { data: weekAgoGrowth } = await supabase
-        .from('subscriber_growth')
-        .select('*')
-        .eq('date', new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString().split('T')[0])
-        .single()
-
-    const growthThisWeek = latestGrowth && weekAgoGrowth
-        ? latestGrowth.total_subscribers - weekAgoGrowth.total_subscribers
-        : 0
-
-    // Get open/click rates
-    const { data: openRates } = await supabase
-        .rpc('v_recent_open_rates')
-
-    const avgOpenRate = openRates
-        ? openRates.reduce((sum: number, s: any) => sum + (s.open_rate_pct || 0), 0) / openRates.length
-        : 0
-
-    // Get click rate (from article_clicks)
-    const { count: totalClicks } = await supabase
-        .from('article_clicks')
+    // ── Overview: subscribers ─────────────────────────────────
+    const { count: totalSubscribers } = await supabase
+        .from('subscribers')
         .select('*', { count: 'exact', head: true })
-        .gte('newsletter_date', new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString().split('T')[0])
+        .eq('status', 'confirmed')
 
-    const { data: sends } = await supabase
-        .from('newsletter_sends')
-        .select('recipient_count')
-        .gte('send_date', new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString().split('T')[0])
+    const oneWeekAgo = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString()
 
-    const totalRecipients = sends?.reduce((sum, s) => sum + s.recipient_count, 0) || 1
-    const avgClickRate = totalClicks && totalRecipients ? (totalClicks / totalRecipients) * 100 : 0
-
-    const { count: newslettersSent } = await supabase
-        .from('newsletter_sends')
+    const { count: newThisWeek } = await supabase
+        .from('subscribers')
         .select('*', { count: 'exact', head: true })
-        .gte('send_date', new Date(Date.now() - 30 * 24 * 60 * 60 * 1000).toISOString().split('T')[0])
+        .eq('status', 'confirmed')
+        .gte('confirmed_at', oneWeekAgo)
 
-    // Get segment performance
+    // ── Segment counts ───────────────────────────────────────
     const segments = await Promise.all(
         ['builders', 'innovators', 'leaders'].map(async (segment) => {
-            const { data: growth } = await supabase
-                .from('subscriber_growth')
-                .select('*')
-                .order('date', { ascending: false })
-                .limit(1)
-                .single()
-
-            const subscribers = growth?.[`${segment}_count`] || 0
-
-            const { count: opensCount } = await supabase
-                .from('email_events')
+            const { count: subscribers } = await supabase
+                .from('subscribers')
                 .select('*', { count: 'exact', head: true })
+                .eq('status', 'confirmed')
                 .eq('segment', segment)
-                .eq('event_type', 'email.opened')
-                .gte('created_at', new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString())
-
-            const { count: sentCount } = await supabase
-                .from('email_events')
-                .select('*', { count: 'exact', head: true })
-                .eq('segment', segment)
-                .eq('event_type', 'email.sent')
-                .gte('created_at', new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString())
-
-            const openRate = sentCount && opensCount ? ((opensCount as number) / (sentCount as number)) * 100 : 0
-
-            const { count: clicks } = await supabase
-                .from('article_clicks')
-                .select('*', { count: 'exact', head: true })
-                .eq('segment', segment)
-                .gte('newsletter_date', new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString().split('T')[0])
-
-            const clickRate = sentCount && clicks ? ((clicks as number) / (sentCount as number)) * 100 : 0
 
             return {
                 name: segment,
-                subscribers,
-                openRate,
-                clickRate,
-                engagement: (openRate + clickRate * 2) / 3 // Weighted engagement score
+                subscribers: subscribers || 0,
+                openRate: 0,  // Populated when email_events table has data
+                clickRate: 0,
+                engagement: 0,
             }
         })
     )
 
-    // Get top articles
-    const { data: topArticles } = await supabase
+    // ── Top articles (from article_clicks if any) ────────────
+    const sevenDaysAgo = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString().split('T')[0]
+
+    const { data: clickData } = await supabase
         .from('article_clicks')
         .select('article_title, article_url, source_domain, segment, newsletter_date')
-        .gte('newsletter_date', new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString().split('T')[0])
+        .gte('newsletter_date', sevenDaysAgo)
         .order('clicked_at', { ascending: false })
-        .limit(10)
+        .limit(200)
 
-    const articleCounts = topArticles?.reduce((acc: any, article) => {
-        const key = article.article_url
-        if (!acc[key]) {
-            acc[key] = { ...article, clicks: 0 }
+    // Aggregate
+    const articleCounts: Record<string, any> = {}
+    clickData?.forEach((c: any) => {
+        if (!articleCounts[c.article_url]) {
+            articleCounts[c.article_url] = {
+                title: c.article_title || 'Untitled',
+                url: c.article_url,
+                clicks: 0,
+                source: c.source_domain,
+                segment: c.segment,
+                date: c.newsletter_date,
+            }
         }
-        acc[key].clicks++
-        return acc
-    }, {})
+        articleCounts[c.article_url].clicks++
+    })
 
-    const topArticlesFormatted = Object.values(articleCounts || {})
+    const topArticles = Object.values(articleCounts)
         .sort((a: any, b: any) => b.clicks - a.clicks)
         .slice(0, 10)
-        .map((a: any) => ({
-            title: a.article_title || 'Untitled',
-            url: a.article_url,
-            clicks: a.clicks,
-            source: a.source_domain,
-            segment: a.segment,
-            date: a.newsletter_date
-        }))
 
-    // Get top sources
-    const { data: sourceData } = await supabase
-        .from('article_clicks')
-        .select('source_domain')
-        .gte('newsletter_date', new Date(Date.now() - 30 * 24 * 60 * 60 * 1000).toISOString().split('T')[0])
+    // ── Top sources ──────────────────────────────────────────
+    const sourceCounts: Record<string, number> = {}
+    clickData?.forEach((c: any) => {
+        sourceCounts[c.source_domain] = (sourceCounts[c.source_domain] || 0) + 1
+    })
 
-    const sourceCounts = sourceData?.reduce((acc: any, { source_domain }) => {
-        acc[source_domain] = (acc[source_domain] || 0) + 1
-        return acc
-    }, {})
-
-    const topSources = Object.entries(sourceCounts || {})
-        .sort(([, a]: any, [, b]: any) => b - a)
+    const topSources = Object.entries(sourceCounts)
+        .sort(([, a], [, b]) => b - a)
         .slice(0, 10)
-        .map(([domain, clicks]: any) => ({
+        .map(([domain, clicks]) => ({
             domain,
-            articles: 0, // TODO: Calculate from newsletter_sends
+            articles: 0,
             clicks,
-            avgClickRate: 0 // TODO: Calculate
+            avgClickRate: 0,
         }))
 
-    // Get growth data
+    // ── Growth data (from subscriber_growth if it exists, else approximate) ──
     const { data: growthData } = await supabase
         .from('subscriber_growth')
         .select('*')
         .order('date', { ascending: false })
         .limit(30)
 
-    const growth = growthData?.reverse().map(g => ({
+    const growth = growthData?.reverse().map((g: any) => ({
         date: g.date,
         total: g.total_subscribers,
-        new: g.new_today,
-        unsubscribed: g.unsubscribed_today
+        new: g.new_today || 0,
+        unsubscribed: g.unsubscribed_today || 0,
     })) || []
 
     return {
         overview: {
-            totalSubscribers: latestGrowth?.total_subscribers || 0,
-            growthThisWeek,
-            avgOpenRate,
-            avgClickRate,
-            newslettersSent: newslettersSent || 0
+            totalSubscribers: totalSubscribers || 0,
+            growthThisWeek: newThisWeek || 0,
+            avgOpenRate: 0,   // Populated when open tracking is wired
+            avgClickRate: 0,  // Populated when click tracking is wired
+            newslettersSent: 0,
         },
         segments,
-        topArticles: topArticlesFormatted as any,
+        topArticles: topArticles as any,
         topSources,
-        growth
+        growth,
     }
 }

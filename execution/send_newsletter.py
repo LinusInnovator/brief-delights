@@ -9,11 +9,13 @@ NEW: Includes fallback to yesterday's newsletter if today's fails.
 import json
 import os
 import sys
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone as dt_timezone
 from pathlib import Path
 from collections import defaultdict
 import time
 import re
+import random
+from zoneinfo import ZoneInfo
 from dotenv import load_dotenv
 import resend
 from supabase import create_client, Client
@@ -38,7 +40,7 @@ LOG_FILE = TMP_DIR / f"send_log_{TODAY}.json"
 
 # Resend configuration
 resend.api_key = os.getenv("RESEND_API_KEY")
-EMAIL_SENDER = os.getenv("EMAIL_SENDER", "Brief Delights <hello@brief.delights.pro>")
+EMAIL_SENDER = os.getenv("EMAIL_SENDER", "Brief Delights <hello@send.dreamvalidator.com>")
 
 # Supabase configuration
 SUPABASE_URL = os.getenv("NEXT_PUBLIC_SUPABASE_URL", "")
@@ -49,6 +51,12 @@ NEWSLETTER_NAME = "Briefly"
 BATCH_SIZE = 100
 RATE_LIMIT_DELAY = 1  # seconds between batches
 
+# A/B subject line variants
+SUBJECT_VARIANTS = {
+    "A": "Brief Delights for {segment} - {date}",
+    "B": "📬 {segment}: your daily tech brief is here",
+}
+
 
 def log(message: str):
     """Log to console"""
@@ -57,18 +65,41 @@ def log(message: str):
 
 
 def load_subscribers():
-    """Load and group subscribers by segment"""
-    with open(SUBSCRIBERS_FILE, 'r') as f:
-        data = json.load(f)
+    """Load and group subscribers by segment from Supabase (with JSON fallback)"""
+    # Try Supabase first (primary source)
+    if SUPABASE_URL and SUPABASE_KEY:
+        try:
+            supabase: Client = create_client(SUPABASE_URL, SUPABASE_KEY)
+            result = supabase.table('subscribers').select('email, segment, referral_code, referral_count, timezone').eq('status', 'confirmed').execute()
+            
+            if result.data and len(result.data) > 0:
+                by_segment = defaultdict(list)
+                for sub in result.data:
+                    segment = sub.get('segment', 'leaders')
+                    by_segment[segment].append(sub)
+                log(f"📊 Loaded {len(result.data)} subscribers from Supabase")
+                return dict(by_segment)
+            else:
+                log("⚠️ No confirmed subscribers found in Supabase")
+        except Exception as e:
+            log(f"⚠️ Supabase subscriber fetch failed: {e}, falling back to JSON")
     
-    # Group active subscribers by segment
-    by_segment = defaultdict(list)
-    for sub in data['subscribers']:
-        if sub.get('status') == 'active':
-            segment = sub.get('segment', 'leaders')  # Default to leaders
-            by_segment[segment].append(sub)
+    # Fallback to subscribers.json
+    if SUBSCRIBERS_FILE.exists():
+        log("📄 Using subscribers.json fallback")
+        with open(SUBSCRIBERS_FILE, 'r') as f:
+            data = json.load(f)
+        
+        by_segment = defaultdict(list)
+        for sub in data.get('subscribers', []):
+            if sub.get('status') in ('active', 'confirmed'):
+                segment = sub.get('segment', 'leaders')
+                by_segment[segment].append(sub)
+        
+        return dict(by_segment)
     
-    return dict(by_segment)
+    log("❌ No subscriber source available")
+    return {}
 
 
 def load_segments_config():
@@ -201,20 +232,88 @@ def mark_sponsor_sent(sponsor: dict, segment_id: str):
         log(f"  ⚠️ Failed to update sponsor schedule: {e}")
 
 
-def send_email(subscriber: dict, html_content: str, segment_name: str) -> dict:
+# Referral tier definitions
+REFERRAL_TIERS = [
+    (1, "Founding Reader badge"),
+    (3, "Sunday Deep Dive access"),
+    (5, "All 3 segments unlocked"),
+    (10, "Newsletter shoutout"),
+]
+
+
+def personalize_referral(html_content: str, subscriber: dict) -> str:
+    """Replace referral placeholders with subscriber-specific data"""
+    code = subscriber.get('referral_code', '')
+    count = subscriber.get('referral_count', 0) or 0
+    
+    # Find next milestone
+    next_milestone = 10
+    next_reward = "Newsletter shoutout"
+    for tier_count, tier_reward in REFERRAL_TIERS:
+        if count < tier_count:
+            next_milestone = tier_count
+            next_reward = tier_reward
+            break
+    
+    plural = "s" if count != 1 else ""
+    remaining = max(next_milestone - count, 0)
+    
+    # Calculate progress bar width (capped at 100%)
+    progress_width = min(count * 10, 100)
+    
+    # Milestone style: highlight achieved milestones
+    achieved_style = "color: #4f46e5; font-weight: 600;"
+    
+    html = html_content
+    html = html.replace('{{ referral_code }}', code or 'NONE')
+    html = html.replace('{{ referral_count }}', str(count))
+    html = html.replace('{{ referral_count_plural }}', plural)
+    html = html.replace('{{ referral_next_milestone }}', str(next_milestone))
+    html = html.replace('{{ referral_next_reward }}', next_reward)
+    
+    # Replace the "X more to unlock" expression
+    html = html.replace('{{ referral_remaining }}', str(remaining))
+    
+    # Replace milestone styles
+    html = html.replace('MILESTONE_1_STYLE', achieved_style if count >= 1 else '')
+    html = html.replace('MILESTONE_3_STYLE', achieved_style if count >= 3 else '')
+    html = html.replace('MILESTONE_5_STYLE', achieved_style if count >= 5 else '')
+    html = html.replace('MILESTONE_10_STYLE', achieved_style if count >= 10 else '')
+    
+    # Replace progress bar width
+    html = html.replace('PROGRESS_BAR_WIDTH', str(progress_width))
+    
+    return html
+
+
+def send_email(subscriber: dict, html_content: str, segment_name: str, ab_enabled: bool = True) -> dict:
     """Send email to individual subscriber"""
     try:
+        # Personalize referral section for this subscriber
+        personalized_html = personalize_referral(html_content, subscriber)
+        
+        # A/B subject line
+        date_str = datetime.now().strftime('%B %d, %Y')
+        segment_short = segment_name.split()[0]
+        if ab_enabled:
+            variant = random.choice(['A', 'B'])
+            subject = SUBJECT_VARIANTS[variant].format(segment=segment_short, date=date_str)
+        else:
+            variant = 'none'
+            subject = SUBJECT_VARIANTS['A'].format(segment=segment_short, date=date_str)
+        
         response = resend.Emails.send({
             "from": EMAIL_SENDER,
             "to": subscriber['email'],
-            "subject": f"Brief Delights for {segment_name.split()[0]} - {datetime.now().strftime('%B %d, %Y')}",
-            "html": html_content
+            "subject": subject,
+            "html": personalized_html
         })
         
         return {
             "email": subscriber['email'],
             "status": "success",
             "message_id": response.get('id'),
+            "subject_variant": variant,
             "timestamp": datetime.now().isoformat()
         }
         
@@ -227,7 +326,7 @@ def send_email(subscriber: dict, html_content: str, segment_name: str) -> dict:
         }
 
 
-def send_to_segment(segment_id: str, subscribers: list, html_content: str, segment_name: str) -> dict:
+def send_to_segment(segment_id: str, subscribers: list, html_content: str, segment_name: str, ab_enabled: bool = True) -> dict:
     """Send newsletter to all subscribers in a segment"""
     log(f"\n📧 Sending to {segment_name} segment ({len(subscribers)} subscribers)")
     
@@ -246,7 +345,7 @@ def send_to_segment(segment_id: str, subscribers: list, html_content: str, segme
         log(f"  Batch {batch_num}/{total_batches} ({len(batch)} emails)")
         
         for subscriber in batch:
-            result = send_email(subscriber, html_content, segment_name)
+            result = send_email(subscriber, html_content, segment_name, ab_enabled=ab_enabled)
             results['details'].append(result)
             
             if result['status'] == 'success':
@@ -285,6 +384,9 @@ def main():
     parser = argparse.ArgumentParser(description='Send newsletters')
     parser.add_argument('--segment', help='Specific segment to send (optional)')
     parser.add_argument('--weekly', action='store_true', help='Send weekly insights instead of daily')
+    parser.add_argument('--no-ab', action='store_true', help='Disable A/B subject line testing')
+    parser.add_argument('--send-window', type=int, default=None,
+                       help='Target local hour for send (e.g. 8 = send to subscribers where it is ~8 AM). Omit to send to everyone.')
     args = parser.parse_args()
     
     start_time = datetime.now()
@@ -297,6 +399,10 @@ def main():
             log("Starting Segment-Based Newsletter Delivery")
         log("=" * 60)
         
+        ab_enabled = not getattr(args, 'no_ab', False)
+        if ab_enabled:
+            log("📊 A/B subject line testing: ENABLED")
+        
         # Load segments and subscribers
         segments_data = load_segments_config()
         segments_by_sub = load_subscribers()
@@ -305,9 +411,37 @@ def main():
         for seg_id, subs in segments_by_sub.items():
             log(f"  {seg_id}: {len(subs)} subscribers")
         
+        # Timezone-based send window filtering
+        if args.send_window is not None:
+            target_hour = args.send_window
+            utc_now = datetime.now(dt_timezone.utc)
+            filtered_by_sub = {}
+            total_filtered = 0
+            for seg_id, subs in segments_by_sub.items():
+                eligible = []
+                for s in subs:
+                    tz_name = s.get('timezone', 'UTC') or 'UTC'
+                    try:
+                        local_hour = utc_now.astimezone(ZoneInfo(tz_name)).hour
+                    except Exception:
+                        local_hour = utc_now.hour  # fallback to UTC
+                    # ±1 hour window
+                    if abs(local_hour - target_hour) <= 1 or abs(local_hour - target_hour) >= 23:
+                        eligible.append(s)
+                if eligible:
+                    filtered_by_sub[seg_id] = eligible
+                total_filtered += len(subs) - len(eligible)
+            log(f"\n🕐 Send window: {target_hour}:00 local time (±1h)")
+            log(f"   {sum(len(s) for s in filtered_by_sub.values())} eligible, {total_filtered} deferred")
+            segments_by_sub = filtered_by_sub
+        
         # Send to each segment
         all_results = {}
         fallback_used = {}  # Track which segments used fallback
+        
+        # Weekly gating: minimum referrals to receive Deep Dive
+        WEEKLY_REFERRAL_GATE = 3
+        TEASER_TEMPLATE = PROJECT_ROOT / "newsletter_teaser_weekly.html"
         
         for segment_id, subscribers in segments_by_sub.items():
             try:
@@ -322,8 +456,32 @@ def main():
                 sponsor = get_sponsor_for_segment(segment_id)
                 html_content = inject_sponsor(html_content, sponsor, segment_id)
                 
-                # Send to this segment
-                results = send_to_segment(segment_id, subscribers, html_content, segment_name)
+                if args.weekly:
+                    # Gate weekly Deep Dive behind referral count
+                    unlocked = [s for s in subscribers if (s.get('referral_count') or 0) >= WEEKLY_REFERRAL_GATE]
+                    locked = [s for s in subscribers if (s.get('referral_count') or 0) < WEEKLY_REFERRAL_GATE]
+                    
+                    log(f"\n🔓 Weekly gate: {len(unlocked)} unlocked, {len(locked)} locked (need {WEEKLY_REFERRAL_GATE}+ referrals)")
+                    
+                    # Send full Deep Dive to unlocked subscribers
+                    results = send_to_segment(segment_id, unlocked, html_content, segment_name, ab_enabled=ab_enabled)
+                    
+                    # Send teaser to locked subscribers
+                    if locked and TEASER_TEMPLATE.exists():
+                        teaser_html = TEASER_TEMPLATE.read_text(encoding='utf-8')
+                        # Inject segment name into teaser
+                        teaser_html = teaser_html.replace('{{ segment_name }}', segment_name)
+                        teaser_results = send_to_segment(segment_id, locked, teaser_html, f"{segment_name} (teaser)", ab_enabled=ab_enabled)
+                        results['sent'] += teaser_results['sent']
+                        results['failed'] += teaser_results['failed']
+                        results['details'].extend(teaser_results['details'])
+                        results['teaser_sent'] = teaser_results['sent']
+                    elif locked:
+                        log(f"  ⚠️ Teaser template not found, skipping {len(locked)} locked subscribers")
+                else:
+                    # Daily: send to everyone
+                    results = send_to_segment(segment_id, subscribers, html_content, segment_name, ab_enabled=ab_enabled)
+                
                 results['used_fallback'] = is_fallback
                 results['sponsor'] = sponsor.get('company', 'none') if sponsor else 'none'
                 all_results[segment_id] = results

@@ -1,6 +1,8 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { createClient } from '@/lib/supabase/client';
+import AdminNav from '../components/AdminNav';
 
 interface Analytics {
     metrics: {
@@ -26,6 +28,7 @@ interface Analytics {
 export default function AnalyticsPage() {
     const [analytics, setAnalytics] = useState<Analytics | null>(null);
     const [loading, setLoading] = useState(true);
+    const [error, setError] = useState<string | null>(null);
 
     useEffect(() => {
         loadAnalytics();
@@ -33,11 +36,63 @@ export default function AnalyticsPage() {
 
     async function loadAnalytics() {
         try {
-            const res = await fetch('/api/admin/sponsors/analytics');
-            const data = await res.json();
-            setAnalytics(data);
-        } catch (error) {
-            console.error('Failed to load analytics:', error);
+            const supabase = createClient();
+
+            // Fetch all data client-side
+            const [leadsRes, bookingsRes, outreachRes] = await Promise.all([
+                supabase.from('sponsor_leads').select('*'),
+                supabase.from('sponsor_bookings').select('*'),
+                supabase.from('sponsor_outreach').select('*'),
+            ]);
+
+            const allLeads = leadsRes.data || [];
+            const bookings = bookingsRes.data || [];
+            const outreach = outreachRes.data || [];
+
+            // Calculate metrics
+            const totalDiscovered = allLeads.length;
+            const totalOutreach = outreach.filter((o: any) => o.status === 'sent').length;
+            const totalResponded = allLeads.filter((l: any) => l.status === 'responded').length;
+            const totalBooked = bookings.filter((b: any) => b.status === 'confirmed').length;
+            const totalPaid = bookings.filter((b: any) => b.payment_status === 'paid').length;
+
+            const revenue = bookings
+                .filter((b: any) => b.payment_status === 'paid')
+                .reduce((sum: number, b: any) => sum + (b.final_price_cents || 0), 0);
+
+            const conversionRate = totalOutreach > 0
+                ? ((totalPaid / totalOutreach) * 100).toFixed(1)
+                : '0.0';
+
+            const avgDealSize = totalPaid > 0 ? revenue / totalPaid : 0;
+
+            // Get top performers
+            const { data: topPerformers } = await supabase
+                .from('sponsor_bookings')
+                .select('company_name, final_price_cents, newsletter_date')
+                .eq('status', 'delivered')
+                .order('newsletter_date', { ascending: false })
+                .limit(5);
+
+            setAnalytics({
+                metrics: {
+                    revenue_display: `$${(revenue / 100).toLocaleString()}`,
+                    deals_closed: totalPaid,
+                    conversion_rate: `${conversionRate}%`,
+                    avg_deal_size_display: `$${(avgDealSize / 100).toFixed(0)}`,
+                },
+                funnel: {
+                    discovered: totalDiscovered,
+                    outreach: totalOutreach,
+                    responded: totalResponded,
+                    booked: totalBooked,
+                    paid: totalPaid,
+                },
+                top_performers: topPerformers || [],
+            });
+        } catch (err: any) {
+            console.error('Failed to load analytics:', err);
+            setError(err.message || 'Failed to load analytics');
         } finally {
             setLoading(false);
         }
@@ -45,8 +100,9 @@ export default function AnalyticsPage() {
 
     if (loading) {
         return (
-            <div className="min-h-screen bg-gray-50 p-8">
-                <div className="max-w-6xl mx-auto">
+            <div className="min-h-screen bg-gray-50">
+                <AdminNav />
+                <div className="max-w-6xl mx-auto p-8">
                     <div className="text-center py-12">
                         <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto"></div>
                         <p className="mt-4 text-gray-600">Loading analytics...</p>
@@ -56,9 +112,29 @@ export default function AnalyticsPage() {
         );
     }
 
+    if (error) {
+        return (
+            <div className="min-h-screen bg-gray-50">
+                <AdminNav />
+                <div className="max-w-6xl mx-auto p-8">
+                    <div className="bg-red-50 border border-red-200 rounded-lg p-6 text-center">
+                        <p className="text-red-600 font-medium">⚠️ {error}</p>
+                        <button
+                            onClick={() => { setLoading(true); setError(null); loadAnalytics(); }}
+                            className="mt-3 text-sm text-red-600 hover:text-red-700 underline"
+                        >
+                            Retry
+                        </button>
+                    </div>
+                </div>
+            </div>
+        );
+    }
+
     return (
-        <div className="min-h-screen bg-gray-50 p-8">
-            <div className="max-w-6xl mx-auto">
+        <div className="min-h-screen bg-gray-50">
+            <AdminNav />
+            <div className="max-w-6xl mx-auto p-8">
                 {/* Header */}
                 <div className="mb-8">
                     <h1 className="text-3xl font-bold text-gray-900 mb-2">
@@ -71,28 +147,28 @@ export default function AnalyticsPage() {
 
                 {/* Key Metrics */}
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
-                    <div className="bg-white rounded-lg shadow-sm p-6">
+                    <div className="bg-white rounded-lg shadow-sm p-6 border border-gray-100">
                         <p className="text-sm text-gray-600 mb-1">Revenue (This Month)</p>
                         <p className="text-3xl font-bold text-gray-900">
                             {analytics?.metrics.revenue_display || '$0'}
                         </p>
                     </div>
 
-                    <div className="bg-white rounded-lg shadow-sm p-6">
+                    <div className="bg-white rounded-lg shadow-sm p-6 border border-gray-100">
                         <p className="text-sm text-gray-600 mb-1">Deals Closed</p>
                         <p className="text-3xl font-bold text-gray-900">
                             {analytics?.metrics.deals_closed || 0}
                         </p>
                     </div>
 
-                    <div className="bg-white rounded-lg shadow-sm p-6">
+                    <div className="bg-white rounded-lg shadow-sm p-6 border border-gray-100">
                         <p className="text-sm text-gray-600 mb-1">Conversion Rate</p>
                         <p className="text-3xl font-bold text-gray-900">
                             {analytics?.metrics.conversion_rate || '0%'}
                         </p>
                     </div>
 
-                    <div className="bg-white rounded-lg shadow-sm p-6">
+                    <div className="bg-white rounded-lg shadow-sm p-6 border border-gray-100">
                         <p className="text-sm text-gray-600 mb-1">Avg Deal Size</p>
                         <p className="text-3xl font-bold text-gray-900">
                             {analytics?.metrics.avg_deal_size_display || '$0'}
@@ -101,7 +177,7 @@ export default function AnalyticsPage() {
                 </div>
 
                 {/* Funnel */}
-                <div className="bg-white rounded-lg shadow-sm p-6 mb-8">
+                <div className="bg-white rounded-lg shadow-sm p-6 mb-8 border border-gray-100">
                     <h2 className="text-xl font-bold text-gray-900 mb-6">Pipeline Funnel</h2>
 
                     <div className="space-y-4">
@@ -136,7 +212,7 @@ export default function AnalyticsPage() {
 
                 {/* Top Performers */}
                 {analytics?.top_performers && analytics.top_performers.length > 0 && (
-                    <div className="bg-white rounded-lg shadow-sm p-6">
+                    <div className="bg-white rounded-lg shadow-sm p-6 border border-gray-100">
                         <h2 className="text-xl font-bold text-gray-900 mb-6">Top Performing Sponsors</h2>
 
                         <div className="space-y-3">
@@ -159,15 +235,21 @@ export default function AnalyticsPage() {
                     </div>
                 )}
 
-                {/* Back to Pipeline */}
-                <div className="mt-8">
-                    <a
-                        href="/admin/sponsors"
-                        className="inline-flex items-center px-4 py-2 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition font-medium"
-                    >
-                        ← Back to Pipeline
-                    </a>
-                </div>
+                {/* Empty state */}
+                {(!analytics?.top_performers || analytics.top_performers.length === 0) &&
+                    analytics?.funnel.discovered === 0 && (
+                        <div className="bg-white rounded-lg shadow-sm p-12 border border-gray-100 text-center">
+                            <div className="text-5xl mb-4">📊</div>
+                            <h3 className="text-xl font-bold text-gray-900 mb-2">No pipeline data yet</h3>
+                            <p className="text-gray-600 mb-4">Start discovering sponsors to see analytics here</p>
+                            <a
+                                href="/admin/sponsors"
+                                className="inline-flex items-center px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition font-medium"
+                            >
+                                Go to Pipeline →
+                            </a>
+                        </div>
+                    )}
             </div>
         </div>
     );

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sunday Deep Dive — Unlock with Referrals</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background-color: #f8f9fa;
+            color: #1a1a1a;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .email-wrapper {
+            max-width: 680px;
+            margin: 0 auto;
+            background-color: #ffffff;
+        }
+
+        .footer {
+            background: #1a1a1a;
+            color: #999;
+            padding: 32px 40px;
+            text-align: center;
+        }
+
+        .footer a {
+            color: #999;
+            text-decoration: none;
+            margin: 0 8px;
+            font-size: 12px;
+        }
+
+        .footer .legal {
+            font-size: 11px;
+            color: #666;
+            margin-top: 16px;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="email-wrapper">
+
+        <!-- Header -->
+        <div
+            style="background: #ffffff; padding: 40px 40px 24px 40px; text-align: center; border-bottom: 1px solid #e8e8e8;">
+            <p style="font-size: 24px; font-weight: 700; margin: 0 0 4px 0; color: #000;">📚 Sunday Deep Dive</p>
+            <p style="font-size: 14px; color: #999; margin: 0;">Weekly insights for {{ segment_name }}</p>
+        </div>
+
+        <!-- Lock Message -->
+        <div style="padding: 48px 40px; text-align: center;">
+
+            <div style="font-size: 64px; margin-bottom: 16px;">🔒</div>
+
+            <h2 style="font-size: 24px; font-weight: 700; color: #000; margin: 0 0 12px 0;">
+                This week's Deep Dive is ready
+            </h2>
+
+            <p
+                style="font-size: 16px; color: #666; line-height: 1.6; margin: 0 0 32px 0; max-width: 440px; margin-left: auto; margin-right: auto;">
+                The Sunday Deep Dive is an exclusive perk for readers who've referred <strong>3+&nbsp;friends</strong>.
+                You've referred <strong style="color: #4f46e5;">{{ referral_count }}</strong> so far — just
+                <strong>{{ referral_remaining }}</strong> more to unlock it forever.
+            </p>
+
+            <!-- Progress -->
+            <div style="max-width: 360px; margin: 0 auto 32px auto;">
+                <div
+                    style="display: flex; justify-content: space-between; margin-bottom: 6px; font-size: 12px; color: #999;">
+                    <span>0</span>
+                    <span style="MILESTONE_1_STYLE">1 🏅</span>
+                    <span style="MILESTONE_3_STYLE; font-weight: 700;">3 📰 ← unlock</span>
+                    <span style="MILESTONE_5_STYLE">5 🔓</span>
+                </div>
+                <div style="background: #e5e7eb; border-radius: 999px; height: 10px; overflow: hidden;">
+                    <div
+                        style="background: linear-gradient(90deg, #4f46e5, #7c3aed); height: 100%; border-radius: 999px; width: PROGRESS_BAR_WIDTH%;">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Referral Link -->
+            <div
+                style="background: #f8f7ff; border: 2px dashed #4f46e5; border-radius: 12px; padding: 20px 24px; margin: 0 auto 24px auto; max-width: 420px;">
+                <p
+                    style="font-size: 11px; color: #999; margin: 0 0 6px 0; text-transform: uppercase; letter-spacing: 1px;">
+                    Share your personal link</p>
+                <p
+                    style="font-size: 18px; font-weight: 700; color: #4f46e5; margin: 0 0 12px 0; word-break: break-all;">
+                    <a href="https://brief.delights.pro/?ref={{ referral_code }}"
+                        style="color: #4f46e5; text-decoration: none;">brief.delights.pro/?ref={{ referral_code }}</a>
+                </p>
+                <p style="font-size: 13px; color: #666; margin: 0;">
+                    When friends sign up using your link, your count goes up automatically.
+                </p>
+            </div>
+
+            <!-- Social Buttons -->
+            <p style="font-size: 14px; margin: 0 0 8px 0;">
+                <a href="https://twitter.com/intent/tweet?text=I%20read%20Brief%20Delights%20daily%20%E2%80%94%20AI-curated%20tech%20stories%20for%20your%20role.%20Free%20%26%20no%20spam.&url=https%3A%2F%2Fbrief.delights.pro%2F%3Fref%3D{{ referral_code }}"
+                    style="display: inline-block; background: #000; color: #fff; padding: 10px 20px; text-decoration: none; border-radius: 8px; font-weight: 600; font-size: 13px; margin: 4px;">𝕏
+                    Share on Twitter</a>
+                <a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fbrief.delights.pro%2F%3Fref%3D{{ referral_code }}"
+                    style="display: inline-block; background: #0077b5; color: #fff; padding: 10px 20px; text-decoration: none; border-radius: 8px; font-weight: 600; font-size: 13px; margin: 4px;">LinkedIn</a>
+                <a href="mailto:?subject=Check%20out%20Brief%20Delights&body=I%20read%20this%20daily%20tech%20brief%20and%20thought%20you'd%20find%20it%20useful%3A%20https%3A%2F%2Fbrief.delights.pro%2F%3Fref%3D{{ referral_code }}"
+                    style="display: inline-block; background: #666; color: #fff; padding: 10px 20px; text-decoration: none; border-radius: 8px; font-weight: 600; font-size: 13px; margin: 4px;">📧
+                    Forward via Email</a>
+            </p>
+        </div>
+
+        <!-- Quick Reminder of Daily -->
+        <div style="background: #f0fdf4; padding: 20px 40px; text-align: center; border-top: 1px solid #d1fae5;">
+            <p style="font-size: 13px; color: #166534; margin: 0;">
+                ✅ You'll still receive your <strong>daily Brief Delights</strong> as usual — the Deep Dive is a bonus
+                unlock.
+            </p>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p>
+                <a href="https://brief.delights.pro">Website</a>
+                <a href="https://brief.delights.pro/archive">Archive</a>
+                <a href="mailto:hello@brief.delights.pro?subject=Unsubscribe">Unsubscribe</a>
+            </p>
+
+            <p class="legal">
+                You're receiving this because you subscribed to Brief Delights.<br>
+                <strong>brief delights</strong><br>
+                © 2026 All rights reserved.
+            </p>
+        </div>
+    </div>
+</body>
+
+</html>

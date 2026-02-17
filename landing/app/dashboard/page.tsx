@@ -1,29 +1,82 @@
-import { getAnalyticsDashboardData } from '../../lib/analytics'
+'use client';
 
-export const revalidate = 300 // Revalidate every 5 minutes
+import { useEffect, useState } from 'react';
+import { getAnalyticsDashboardData, DashboardStats } from '../../lib/analytics';
+import AdminNav from '../admin/sponsors/components/AdminNav';
 
-export default async function DashboardPage() {
-    const data = await getAnalyticsDashboardData()
+export default function DashboardPage() {
+    const [data, setData] = useState<DashboardStats | null>(null);
+    const [loading, setLoading] = useState(true);
+    const [lastUpdated, setLastUpdated] = useState('');
+
+    useEffect(() => {
+        loadData();
+    }, []);
+
+    async function loadData() {
+        try {
+            const stats = await getAnalyticsDashboardData();
+            setData(stats);
+            setLastUpdated(new Date().toLocaleTimeString());
+        } catch (err) {
+            console.error('Failed to load dashboard data:', err);
+        } finally {
+            setLoading(false);
+        }
+    }
+
+    if (loading) {
+        return (
+            <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100">
+                <AdminNav />
+                <div className="max-w-7xl mx-auto px-6 py-20 text-center">
+                    <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto"></div>
+                    <p className="mt-4 text-slate-600">Loading dashboard...</p>
+                </div>
+            </div>
+        );
+    }
+
+    if (!data) {
+        return (
+            <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100">
+                <AdminNav />
+                <div className="max-w-7xl mx-auto px-6 py-20 text-center">
+                    <p className="text-red-600">Failed to load dashboard data</p>
+                    <button
+                        onClick={() => { setLoading(true); loadData(); }}
+                        className="mt-3 text-sm text-blue-600 hover:text-blue-700 underline"
+                    >
+                        Retry
+                    </button>
+                </div>
+            </div>
+        );
+    }
 
     return (
         <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100">
-            {/* Header */}
-            <header className="bg-white border-b border-slate-200 shadow-sm">
-                <div className="max-w-7xl mx-auto px-6 py-6">
-                    <div className="flex items-center justify-between">
-                        <div>
-                            <h1 className="text-3xl font-bold text-slate-900">Analytics Dashboard</h1>
-                            <p className="text-slate-600 mt-1">Real-time newsletter performance metrics</p>
-                        </div>
-                        <div className="flex items-center gap-4">
-                            <span className="text-sm text-slate-500">Last updated: {new Date().toLocaleTimeString()}</span>
-                            <div className="h-2 w-2 bg-green-500 rounded-full animate-pulse" />
-                        </div>
-                    </div>
-                </div>
-            </header>
+            <AdminNav />
 
             <main className="max-w-7xl mx-auto px-6 py-8">
+                {/* Header */}
+                <div className="flex items-center justify-between mb-8">
+                    <div>
+                        <h1 className="text-3xl font-bold text-slate-900">Analytics Dashboard</h1>
+                        <p className="text-slate-600 mt-1">Real-time newsletter performance metrics</p>
+                    </div>
+                    <div className="flex items-center gap-4">
+                        <button
+                            onClick={() => { setLoading(true); loadData(); }}
+                            className="text-sm text-slate-500 hover:text-slate-700 transition"
+                        >
+                            ↻ Refresh
+                        </button>
+                        <span className="text-sm text-slate-500">Last updated: {lastUpdated}</span>
+                        <div className="h-2 w-2 bg-green-500 rounded-full animate-pulse" />
+                    </div>
+                </div>
+
                 {/* Overview Stats */}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 mb-8">
                     <MetricCard
@@ -81,11 +134,15 @@ export default async function DashboardPage() {
                     <div className="bg-white rounded-xl shadow-lg p-6 border border-slate-200">
                         <h2 className="text-2xl font-bold text-slate-900 mb-4">🔥 Top Performing Articles</h2>
                         <p className="text-slate-600 mb-6">Most engaged content this week - perfect for sponsor alignment</p>
-                        <div className="space-y-3">
-                            {data.topArticles.map((article, index) => (
-                                <ArticleRow key={index} article={article} rank={index + 1} />
-                            ))}
-                        </div>
+                        {data.topArticles.length > 0 ? (
+                            <div className="space-y-3">
+                                {data.topArticles.map((article, index) => (
+                                    <ArticleRow key={index} article={article} rank={index + 1} />
+                                ))}
+                            </div>
+                        ) : (
+                            <p className="text-slate-400 text-center py-8">No article click data this week</p>
+                        )}
                     </div>
                 </section>
 
@@ -94,11 +151,15 @@ export default async function DashboardPage() {
                     <div className="bg-white rounded-xl shadow-lg p-6 border border-slate-200">
                         <h2 className="text-2xl font-bold text-slate-900 mb-4">📰 Top Content Sources</h2>
                         <p className="text-slate-600 mb-6">Which publications drive the most engagement</p>
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            {data.topSources.map((source, index) => (
-                                <SourceCard key={index} source={source} rank={index + 1} />
-                            ))}
-                        </div>
+                        {data.topSources.length > 0 ? (
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                {data.topSources.map((source, index) => (
+                                    <SourceCard key={index} source={source} rank={index + 1} />
+                                ))}
+                            </div>
+                        ) : (
+                            <p className="text-slate-400 text-center py-8">No content source data yet</p>
+                        )}
                     </div>
                 </section>
 

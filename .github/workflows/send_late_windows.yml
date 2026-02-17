@@ -1,0 +1,61 @@
+name: Send Newsletter - Late Timezone Windows
+
+# Sends to subscribers in later timezones using pre-composed newsletters
+# The daily pipeline at 6 AM UTC composes + sends to early timezones
+# This workflow picks up the rest without re-composing.
+
+on:
+  schedule:
+    # 2 PM UTC (covers Americas morning ~8-10 AM)
+    - cron: '0 14 * * 1-5'
+  
+  workflow_dispatch:
+
+jobs:
+  send_late_window:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+      
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      
+      - name: Create temp directory
+        run: mkdir -p .tmp
+      
+      - name: Copy today's newsletters from public
+        run: |
+          DATE=$(date +%Y-%m-%d)
+          if ls landing/public/newsletters/newsletter_*_${DATE}.html 1> /dev/null 2>&1; then
+            cp landing/public/newsletters/newsletter_*_${DATE}.html .tmp/
+            echo "✅ Found today's newsletters"
+          else
+            echo "⚠️ No newsletters found for ${DATE}, skipping"
+            exit 0
+          fi
+      
+      - name: Send to Americas timezone window
+        run: |
+          python3 execution/send_newsletter.py --send-window 8
+        env:
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+          NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
+          SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
+      
+      - name: Upload send log
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: late-window-send-${{ github.run_number }}
+          path: .tmp/send_log_*.json
+          retention-days: 7

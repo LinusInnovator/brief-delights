@@ -1,96 +1,128 @@
 # Directive: Compose Newsletter
 
 ## Goal
-Assemble final HTML newsletter from summarized articles using Jinja2 templates. Creates a clean, scannable, mobile-responsive email per segment with 3-tier article structure and sponsor placeholders.
+Assemble the final HTML newsletter email from summarized articles. Create a clean, scannable, mobile-responsive email that readers can digest in 5 minutes.
 
 ## Inputs
-- `.tmp/summaries_{segment}_{YYYY-MM-DD}.json` — Articles with AI summaries (per segment)
-- `newsletter_template.html` — Jinja2 base email template
-- `segments_config.json` — Segment definitions and selection criteria
+- `.tmp/summaries_YYYY-MM-DD.json` - Articles with summaries
+- `newsletter_template.html` - Base email template
 
 ## Tool to Use
 - **Script:** `execution/compose_newsletter.py`
-- **Invocation:** `python3 execution/compose_newsletter.py --segment builders`
 
 ## Expected Outputs
-- `.tmp/newsletter_{segment}_{YYYY-MM-DD}.html` — Final HTML email per segment
-- Each newsletter includes:
-  - Header with Brief Delights branding + segment emoji
-  - **Full stories** (top 3-4) with deep summaries + "why this matters"
-  - **Quick links** (5-8) with one-line summaries
-  - **Trending** section with hot topics
-  - Sponsor block (placeholders for injection by `send_newsletter.py`)
-  - Footer with archive, unsubscribe, and contact links
-
-## 3-Tier Article Structure
-
-| Tier | Count | Format |
-|------|-------|--------|
-| **Full** | 3-4 | Headline + 2-3 sentence summary + "why this matters" + source link |
-| **Quick Links** | 5-8 | Headline + one-line summary + source link |
-| **Trending** | 3-5 | Topic name + brief context |
-
-## Link Tracking
-All article URLs are wrapped with the tracking redirect:
-```
-https://brief.delights.pro/api/track?url={encoded_url}&segment={segment}
-```
-This enables click analytics without breaking the reader experience.
-
-## Sponsor Placeholders
-The template includes these Jinja2 variables, replaced by `send_newsletter.py` at send time:
-- `{{ sponsor_headline }}`
-- `{{ sponsor_description }}`
-- `{{ sponsor_cta_text }}`
-- `{{ sponsor_cta_url }}`
-
-If no sponsor is scheduled, the sponsor block is removed entirely.
-
-## Footer Links (Hardcoded)
-All footer links point to `brief.delights.pro`:
-- **Sign Up:** `https://brief.delights.pro`
-- **Advertise:** `mailto:sponsors@brief.delights.pro`
-- **View Online:** `https://brief.delights.pro/archive/{date}-{segment}`
-- **Unsubscribe:** `mailto:hello@brief.delights.pro?subject=Unsubscribe`
-- **Contact:** `hello@brief.delights.pro`
-
-## Footer Validation
-`compose_newsletter.py` runs a `validate_footer()` check on rendered HTML:
-```python
-required_elements = ['Unsubscribe', 'brief delights', 'brief.delights.pro']
-```
-If any element is missing, the script logs a warning.
+- `.tmp/newsletter_YYYY-MM-DD.html` - Final HTML email ready to send
+- Preview includes:
+  - Header with newsletter branding
+  - 5-7 stories organized by category
+  - Footer with referral CTA and unsubscribe link
 
 ## Success Criteria
-- ✅ All selected articles included in appropriate tier
-- ✅ Organized by segment-specific categories
+- ✅ All selected articles included
+- ✅ Organized by category tags (AI, Business, Enterprise, etc.)
 - ✅ Mobile-responsive design
-- ✅ All links wrapped with tracking redirect
-- ✅ Sponsor placeholders present for injection
-- ✅ HTML under 102KB (Gmail clipping threshold)
-- ✅ Footer validation passes
+- ✅ All links functional
+- ✅ Unsubscribe link present
+- ✅ Clean HTML (passes email validators)
+
+## Process
+1. Read summarized articles from `.tmp/summaries_YYYY-MM-DD.json`
+2. Group articles by `category_tag`
+3. Load HTML template from `newsletter_template.html`
+4. For each category section:
+   - Add section header
+   - Insert article cards (headline + summary + link)
+5. Add header (date, newsletter branding)
+6. Add footer (referral CTA, unsubscribe)
+7. Render final HTML
+8. Save to `.tmp/newsletter_YYYY-MM-DD.html`
+
+## Template Structure
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{newsletter_name}} - {{date}}</title>
+  <style>
+    /* Responsive email CSS */
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Header -->
+    <div class="header">
+      <h1>{{newsletter_name}}</h1>
+      <p class="date">{{formatted_date}}</p>
+      <p class="tagline">Your daily 5-min AI & Tech Brief</p>
+    </div>
+    
+    <!-- Content Sections -->
+    {% for category in categories %}
+    <div class="section">
+      <h2>{{category_name}}</h2>
+      
+      {% for article in category_articles %}
+      <div class="story">
+        <h3><a href="{{article.url}}">{{article.title}}</a></h3>
+        <p class="summary">{{article.summary}}</p>
+        <p class="meta">{{article.source}}</p>
+      </div>
+      {% endfor %}
+    </div>
+    {% endfor %}
+    
+    <!-- Footer -->
+    <div class="footer">
+      <p class="cta">💌 Enjoying this? <a href="{{referral_link}}">Forward to a friend</a></p>
+      <p class="links">
+        <a href="{{website_url}}">Website</a> | 
+        <a href="{{unsubscribe_url}}">Unsubscribe</a>
+      </p>
+    </div>
+  </div>
+</body>
+</html>
+```
+
+## Styling Guidelines
+- **Font:** Sans-serif, 16px base size
+- **Colors:** Professional blues/grays, high contrast
+- **Spacing:** Generous whitespace between sections
+- **Links:** Clear, underlined, blue
+- **Mobile:** Single column, readable on small screens
+
+## Dynamic Elements
+- `{{date}}` - Today's date (e.g., "February 8, 2026")
+- `{{newsletter_name}}` - Brand name
+- `{{category_name}}` - Section headers (🚀 AI & Innovation, etc.)
+- `{{article.*}}` - Article data (title, summary, url, source)
+- `{{referral_link}}` - Referral program link (future)
+- `{{unsubscribe_url}}` - Unsubscribe endpoint
+
+## Email Best Practices
+- Keep HTML under 102KB (Gmail clipping threshold)
+- Use inline CSS (many email clients strip `<style>`)
+- Test in Litmus or Email on Acid (if budget allows)
+- Include plain text version (for accessibility)
 
 ## Edge Cases & Error Handling
-- **No articles for a tier:** Skip tier section, don't render empty
-- **HTML exceeds 102KB:** Log warning (Gmail will clip)
-- **Template not found:** Fall back to hardcoded minimal template
-- **Segment unknown:** Abort with clear error
+- **No articles in category:** Skip section entirely
+- **Very long title:** Truncate at 80 characters
+- **Missing summary:** Use description fallback
+- **Template not found:** Use hardcoded minimal template
 
 ## Performance Expectations
-- **Runtime:** <5 seconds per segment
-- **Output size:** 50-90KB HTML
+- **Runtime:** <5 seconds
+- **Output size:** ~50-80KB HTML
 
-## Known Issues & Learnings
-
-### Fixed: Jinja2 variables not rendering (Feb 16, 2026)
-- **Root cause:** `{{ website_url }}` and `{{ unsubscribe_url }}` were template variables but `WEBSITE_URL` constant pointed to stale `send.dreamvalidator.com`
-- **Fix:** Hardcoded all footer links to `brief.delights.pro` directly in template
-- **Prevention:** Footer links should always be hardcoded, not dynamic — they don't change per-send
-
-### Fixed: "View Online" link wrong format (Feb 16, 2026)
-- **Root cause:** Template used `{{ website_url }}/{{ date }}` which produced a date-only path
-- **Fix:** Changed to `brief.delights.pro/archive/{{ date }}-{{ segment }}` to match actual archive URL format
-- **Prevention:** Archive URLs follow the pattern `/archive/{date}-{segment-name}`
+## Logging
+Log to `.tmp/composition_log_YYYY-MM-DD.txt`:
+- Number of articles per category
+- Total HTML size
+- Any rendering errors
 
 ## Next Step
-After composition, proceed to `send_newsletter.md` for delivery.
+After composition, proceed to `send_newsletter.md` to deliver emails.
