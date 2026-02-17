@@ -20,10 +20,10 @@ python3 execution/run_daily_pipeline.py
 ```
 
 Expected output files in `.tmp/`:
-- `raw_articles_YYYY-MM-DD.json`
-- `selected_articles_YYYY-MM-DD.json`
-- `summaries_YYYY-MM-DD.json`
-- `newsletter_YYYY-MM-DD.html`
+- `raw_articles_YYYY-MM-DD.json` (shared across segments)
+- `selected_articles_{segment}_YYYY-MM-DD.json` (×3: builders, leaders, innovators)
+- `summaries_{segment}_YYYY-MM-DD.json` (×3)
+- `newsletter_{segment}_YYYY-MM-DD.html` (×3)
 - `send_log_YYYY-MM-DD.json`
 - `pipeline_log_YYYY-MM-DD.txt`
 
@@ -107,10 +107,10 @@ cat .tmp/send_log_$(date +%Y-%m-%d).json
 ## Cost Estimates
 
 Daily operating costs (approximate):
-- **OpenRouter (LLM)**: $0.10 - $0.20/day
+- **OpenRouter (LLM)**: $0.10 - $0.30/day (3 segments × selection + summarization)
 - **Resend (Email)**: Free tier: 100 emails/day
   - Paid: $20/month for 50K emails
-- **Total**: ~$3-$10/month for small newsletter (<1000 subs)
+- **Total**: ~$5-$15/month for small newsletter (<1000 subs)
 
 ## Next Steps
 

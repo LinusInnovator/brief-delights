@@ -118,3 +118,11 @@ on:
 - Add email alerting on pipeline failure
 - Implement A/B testing for subject lines
 - Send time optimization per subscriber timezone
+
+## Previous Issues (Resolved)
+
+### Missing `supabase` in requirements.txt (Feb 17, 2026)
+- **Root cause:** `send_newsletter.py` imports `supabase` but the package was never added to `requirements.txt`
+- **Impact:** Step 5 (send) crashed with `ModuleNotFoundError` in CI; steps 1-4 worked fine because they don't use Supabase
+- **Fix:** Added `supabase>=2.0.0` to `requirements.txt` and added `NEXT_PUBLIC_SUPABASE_URL` + `SUPABASE_SERVICE_KEY` env vars to both workflow files
+- **Prevention:** When adding new imports, always verify they're in `requirements.txt`. Run `pip freeze | grep <pkg>` locally doesn't catch CI gaps
