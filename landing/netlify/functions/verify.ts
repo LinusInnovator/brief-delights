@@ -103,11 +103,24 @@ export const handler: Handler = async (event) => {
         // Send welcome email
         await sendWelcomeEmail(verification.email, verification.segment);
 
-        // Redirect to success page
+        // Get the subscriber's referral code for the welcome page
+        const { data: confirmedSub } = await supabase
+            .from('subscribers')
+            .select('referral_code')
+            .eq('email', verification.email)
+            .maybeSingle();
+
+        const refCode = confirmedSub?.referral_code || '';
+        const welcomeParams = new URLSearchParams({
+            segment: verification.segment,
+            ...(refCode ? { ref: refCode } : {}),
+        });
+
+        // Redirect to welcome page (monetizes the signup moment)
         return {
             statusCode: 302,
             headers: {
-                Location: '/?verified=true',
+                Location: `/welcome?${welcomeParams.toString()}`,
             },
             body: '',
         };
