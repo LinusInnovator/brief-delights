@@ -8,6 +8,7 @@ CREATE TABLE IF NOT EXISTS pending_verifications (
   segment TEXT NOT NULL CHECK (segment IN ('builders', 'leaders', 'innovators')),
   token TEXT NOT NULL UNIQUE,
   referrer TEXT,  -- referral code of the person who referred this signup
+  timezone TEXT DEFAULT 'UTC',  -- subscriber timezone from Intl API
   created_at TIMESTAMPTZ DEFAULT NOW(),
   expires_at TIMESTAMPTZ DEFAULT NOW() + INTERVAL '24 hours'
 );

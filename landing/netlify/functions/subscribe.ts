@@ -6,6 +6,7 @@ interface SubscribeRequest {
     email: string;
     segment: 'builders' | 'leaders' | 'innovators';
     referrer?: string;  // referral code from ?ref= URL param
+    timezone?: string;  // e.g. 'America/New_York' from Intl API
 }
 
 const RESEND_API_KEY = process.env.RESEND_API_KEY;
@@ -39,7 +40,7 @@ export const handler: Handler = async (event) => {
     }
 
     try {
-        const { email, segment, referrer }: SubscribeRequest = JSON.parse(event.body || '{}');;
+        const { email, segment, referrer, timezone }: SubscribeRequest = JSON.parse(event.body || '{}');;
 
         // Validate input
         if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
@@ -107,6 +108,7 @@ export const handler: Handler = async (event) => {
                 segment,
                 token,
                 ...(referrer ? { referrer } : {}),
+                ...(timezone ? { timezone } : {}),
             });
 
         if (insertError) {

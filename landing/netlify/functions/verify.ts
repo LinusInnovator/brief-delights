@@ -82,6 +82,7 @@ export const handler: Handler = async (event) => {
                     status: 'confirmed',
                     confirmed_at: new Date().toISOString(),
                     ...(verification.referrer ? { referred_by: verification.referrer } : {}),
+                    ...(verification.timezone ? { timezone: verification.timezone } : {}),
                 });
 
             if (insertError) {
