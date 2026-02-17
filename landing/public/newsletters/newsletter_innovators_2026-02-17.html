@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brief Delights 🚀 - 2026-02-17</title>
+    <style>
+        /* Reset */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background-color: #f8f9fa;
+            color: #1a1a1a;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* Container */
+        .email-wrapper {
+            max-width: 680px;
+            margin: 0 auto;
+            background-color: #ffffff;
+        }
+
+        /* Top Bar (minimal, like TLDR) */
+        .top-bar {
+            padding: 16px 40px;
+            text-align: center;
+            border-bottom: 1px solid #e8e8e8;
+            background: #ffffff;
+        }
+
+        .top-bar a {
+            color: #666;
+            text-decoration: none;
+            font-size: 13px;
+            margin: 0 12px;
+            font-weight: 500;
+        }
+
+        .top-bar a:hover {
+            color: #000;
+        }
+
+        /* Header (Clean, no gradient!) */
+        .header {
+            background: #ffffff;
+            padding: 40px 40px 32px 40px;
+            text-align: center;
+            border-bottom: 1px solid #e8e8e8;
+        }
+
+        .logo {
+            font-size: 52px;
+            font-weight: 700;
+            letter-spacing: -1.5px;
+            margin: 0;
+            line-height: 1;
+            color: #000000;
+        }
+
+        .tagline {
+            font-size: 18px;
+            font-weight: 400;
+            color: #666666;
+            margin: 4px 0 12px 0;
+            letter-spacing: 2px;
+        }
+
+        .header .date {
+            margin: 0 0 8px 0;
+            font-size: 14px;
+            color: #999;
+            font-weight: 400;
+        }
+
+        .header .curation-stats {
+            margin: 0;
+            font-size: 12px;
+            color: #aaa;
+            font-weight: 400;
+            font-family: 'Courier New', monospace;
+        }
+
+        /* Sponsor Block (white background, tight integration) */
+        .sponsor {
+            background: #ffffff;
+            border-top: 1px solid #e8e8e8;
+            border-bottom: 1px solid #e8e8e8;
+            padding: 32px 40px;
+            margin: 0;
+        }
+
+        .sponsor-label {
+            font-size: 9px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #999;
+            margin: 0 0 12px 0;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        .sponsor h3 {
+            margin: 0 0 12px 0;
+            font-size: 20px;
+            font-weight: 700;
+            color: #000;
+            line-height: 1.3;
+        }
+
+        .sponsor h3 a {
+            color: #000;
+            text-decoration: none;
+        }
+
+        .sponsor h3 a:hover {
+            color: #4f46e5;
+        }
+
+        .sponsor p {
+            margin: 0;
+            font-size: 14px;
+            line-height: 1.5;
+            color: #666;
+        }
+
+        .sponsor a.cta {
+            display: inline-block;
+            margin-top: 12px;
+            color: #4f46e5;
+            font-weight: 600;
+            text-decoration: underline;
+            font-size: 15px;
+        }
+
+        /* Content */
+        .content {
+            padding: 40px 40px 20px 40px;
+        }
+
+        /* Section Headers */
+        .section {
+            margin-bottom: 40px;
+        }
+
+        .section-emoji {
+            text-align: center;
+            font-size: 20px;
+            margin: 0 0 12px 0;
+        }
+
+        .section h2 {
+            font-size: 20px;
+            font-weight: 700;
+            color: #000;
+            margin: 0 0 24px 0;
+            padding: 0;
+            border: none;
+            text-align: center;
+        }
+
+        /* Story Cards */
+        .story {
+            margin-bottom: 28px;
+            padding-bottom: 28px;
+            border-bottom: 1px solid #e8e8e8;
+        }
+
+        .story:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        /* Article Titles (slightly bigger than body) */
+        .story h3 {
+            margin: 0 0 10px 0;
+            font-size: 20px;
+            line-height: 1.4;
+            font-weight: 700;
+        }
+
+        .story h3 a {
+            color: #000;
+            text-decoration: underline;
+        }
+
+        .story h3 a:hover {
+            color: #1e40af;
+        }
+
+        /* Summary Text (close in size to titles) */
+        .story .summary {
+            margin: 10px 0;
+            font-size: 18px;
+            color: #444;
+            line-height: 1.6;
+        }
+
+        /* Meta Info */
+        .story .meta {
+            margin: 12px 0 0 0;
+            font-size: 14px;
+            color: #999;
+        }
+
+        .story .meta a {
+            color: #999;
+            text-decoration: none;
+        }
+
+        .story .meta a:hover {
+            color: #4f46e5;
+        }
+
+        /* Editorial Context - NEW: Why This Matters */
+        .editorial-context {
+            margin: 20px 0 12px 0;
+            padding: 12px 16px;
+            background: #eff6ff;
+            border-left: 3px solid #3b82f6;
+            font-size: 16px;
+            color: #1e40af;
+            font-style: italic;
+            line-height: 1.5;
+        }
+
+        .editorial-context-label {
+            font-weight: 600;
+            font-style: normal;
+            color: #1e40af;
+        }
+
+        /* Quick Links Section */
+        .quick-links {
+            margin: 40px 0;
+            padding: 0 40px;
+            border-top: 2px solid #e8e8e8;
+            padding-top: 32px;
+        }
+
+        .quick-item {
+            margin-bottom: 24px;
+            padding-bottom: 24px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .quick-item:last-child {
+            margin-bottom: 0;
+            border-bottom: none;
+        }
+
+        .quick-item h4 {
+            font-size: 16px;
+            font-weight: 600;
+            margin: 0 0 8px 0;
+            line-height: 1.4;
+        }
+
+        .quick-item h4 a {
+            color: #000;
+            text-decoration: underline;
+        }
+
+        .quick-item h4 a:hover {
+            color: #1e40af;
+        }
+
+        .quick-item .snippet {
+            font-size: 15px;
+            color: #555;
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        /* Footer */
+        .footer {
+            background: #ffffff;
+            padding: 40px;
+            text-align: center;
+            border-top: 1px solid #e8e8e8;
+        }
+
+        .footer .share {
+            margin: 0 0 24px 0;
+            font-size: 16px;
+            color: #444;
+        }
+
+        .footer .share a {
+            color: #4f46e5;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .footer .share a:hover {
+            text-decoration: underline;
+        }
+
+        .footer .links {
+            margin: 20px 0;
+            font-size: 14px;
+        }
+
+        .footer .links a {
+            color: #666;
+            text-decoration: none;
+            margin: 0 12px;
+        }
+
+        .footer .links a:hover {
+            color: #000;
+        }
+
+        .footer .legal {
+            margin-top: 24px;
+            font-size: 13px;
+            color: #999;
+            line-height: 1.6;
+        }
+
+        /* Mobile Responsive */
+        @media only screen and (max-width: 600px) {
+            .email-wrapper {
+                width: 100% !important;
+            }
+
+            .top-bar {
+                padding: 12px 20px !important;
+            }
+
+            .header {
+                padding: 24px 20px 20px 20px !important;
+            }
+
+            .header h1 {
+                font-size: 28px !important;
+            }
+
+            .header .tagline {
+                font-size: 15px !important;
+            }
+
+            .content,
+            .footer {
+                padding: 24px !important;
+            }
+
+            .sponsor {
+                padding: 24px 20px !important;
+            }
+
+            .story h3 {
+                font-size: 18px !important;
+            }
+
+            .story .summary {
+                font-size: 16px !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="email-wrapper">
+        <!-- Top Navigation Bar -->
+        <div class="top-bar">
+            <a href="https://brief.delights.pro">Sign Up</a> |
+            <a href="mailto:sponsors@brief.delights.pro?subject=Advertising%20Inquiry">Advertise</a> |
+            <a
+                href="https://brief.delights.pro/archive/2026-02-17-innovators">View
+                Online</a>
+        </div>
+
+        <!-- Header -->
+        <div class="header">
+            <div class="logo">Brief</div>
+            <div class="tagline">delights</div>
+            <p class="date">Innovators 🚀 | 2026-02-17</p>
+            <p class="curation-stats">1,340+ news scanned → ~400 analyzed → 12
+                selected</p>
+        </div>
+
+        <!-- Sponsor Section -->
+        
+
+        <!-- Content Sections -->
+        <div class="content">
+            
+            <div class="section">
+                
+                
+                <div class="section-emoji">🚀</div>
+                <h2>AI & Innovation</h2>
+                
+
+                
+                <div class="story">
+                    <h3><a href="https://brief.delights.pro/api/track?url=Engineering+at+Meta&s=innovators&d=2026-02-17&t=How+We+Built+Meta+Ray-Ban+Display%3A+From+Zero+to+Polish">How We Built Meta Ray-Ban Display: From Zero to Polish</a> <span
+                            style="color: #666; font-weight: 400;">(1 minute read)</span>
+                    </h3>
+                    <p class="summary">Meta's Ray-Ban Display glasses combine a high-res display, EMG wristband, and AI to create a hands-free, always-available computing platform for everyday tasks.</p>
+
+                    
+                    <div class="editorial-context">
+                        <span class="editorial-context-label">Why this matters:</span> This sets a new benchmark for wearable computing, challenging assumptions about how we interact with technology in public spaces.
+                    </div>
+                    
+
+                    <p class="meta"><a href="https://brief.delights.pro/api/track?url=Engineering+at+Meta&s=innovators&d=2026-02-17&t=How+We+Built+Meta+Ray-Ban+Display%3A+From+Zero+to+Polish">Engineering at Meta</a></p>
+                </div>
+                
+                <div class="story">
+                    <h3><a href="https://brief.delights.pro/api/track?url=Blog+%E2%80%94+PlanetScale&s=innovators&d=2026-02-17&t=Videos%3A+Intro+to+Vitess%E2%80%94its+powerful+capabilities+and+how+to+get+started">Videos: Intro to Vitess—its powerful capabilities and how to get started</a> <span
+                            style="color: #666; font-weight: 400;">(1 minute read)</span>
+                    </h3>
+                    <p class="summary">Vitess is an open-source sharding framework for MySQL that enables high-performance, scalable, and resilient database infrastructure, as showcased in PlanetScale's video series and training course.</p>
+
+                    
+                    <div class="editorial-context">
+                        <span class="editorial-context-label">Why this matters:</span> Vitess could enable your organization to scale MySQL databases and improve availability, making it a strategic consideration for software teams building data-driven applications.
+                    </div>
+                    
+
+                    <p class="meta"><a href="https://brief.delights.pro/api/track?url=Blog+%E2%80%94+PlanetScale&s=innovators&d=2026-02-17&t=Videos%3A+Intro+to+Vitess%E2%80%94its+powerful+capabilities+and+how+to+get+started">Blog — PlanetScale</a></p>
+                </div>
+                
+                <div class="story">
+                    <h3><a href="https://brief.delights.pro/api/track?url=The+Verge&s=innovators&d=2026-02-17&t=After+spooking+Hollywood%2C+ByteDance+will+tweak+safeguards+on+new+AI+model">After spooking Hollywood, ByteDance will tweak safeguards on new AI model</a> <span
+                            style="color: #666; font-weight: 400;">(1 minute read)</span>
+                    </h3>
+                    <p class="summary">ByteDance will strengthen safeguards on its Seedance 2.0 AI video generator after Hollywood accused it of widespread copyright infringement, including using likenesses of stars and characters without permission.</p>
+
+                    
+                    <div class="editorial-context">
+                        <span class="editorial-context-label">Why this matters:</span> Enterprises must review AI policies and vendor selection to mitigate legal risks and brand damage from unauthorized content use.
+                    </div>
+                    
+
+                    <p class="meta"><a href="https://brief.delights.pro/api/track?url=The+Verge&s=innovators&d=2026-02-17&t=After+spooking+Hollywood%2C+ByteDance+will+tweak+safeguards+on+new+AI+model">The Verge</a></p>
+                </div>
+                
+                <div class="story">
+                    <h3><a href="https://brief.delights.pro/api/track?url=MachineLearningMastery.com&s=innovators&d=2026-02-17&t=7+Important+Considerations+Before+Deploying+Agentic+AI+in+Production">7 Important Considerations Before Deploying Agentic AI in Production</a> <span
+                            style="color: #666; font-weight: 400;">(1 minute read)</span>
+                    </h3>
+                    <p class="summary">Agentic AI systems that reason and execute tasks autonomously introduce new production challenges around reliability, scalability, and security that teams must address.</p>
+
+                    
+                    <div class="editorial-context">
+                        <span class="editorial-context-label">Why this matters:</span> Agentic AI could transform workflows, but production failures can undermine trust - teams must proactively address the distributed systems challenges.
+                    </div>
+                    
+
+                    <p class="meta"><a href="https://brief.delights.pro/api/track?url=MachineLearningMastery.com&s=innovators&d=2026-02-17&t=7+Important+Considerations+Before+Deploying+Agentic+AI+in+Production">MachineLearningMastery.com</a></p>
+                </div>
+                
+                <div class="story">
+                    <h3><a href="https://brief.delights.pro/api/track?url=Google+Blog&s=innovators&d=2026-02-17&t=Introducing+Community+Benchmarks+on+Kaggle">Introducing Community Benchmarks on Kaggle</a> <span
+                            style="color: #666; font-weight: 400;">(1 minute read)</span>
+                    </h3>
+                    <p class="summary">Kaggle launches Community Benchmarks, enabling the AI community to design, run, and share custom evaluations to better assess model performance in real-world scenarios.</p>
+
+                    
+                    <div class="editorial-context">
+                        <span class="editorial-context-label">Why this matters:</span> This allows researchers and practitioners to move beyond static accuracy scores and test how models behave in dynamic, real-world-like environments.
+                    </div>
+                    
+
+                    <p class="meta"><a href="https://brief.delights.pro/api/track?url=Google+Blog&s=innovators&d=2026-02-17&t=Introducing+Community+Benchmarks+on+Kaggle">Google Blog</a></p>
+                </div>
+                
+                <div class="story">
+                    <h3><a href="https://brief.delights.pro/api/track?url=Ars+Technica+-+All+content&s=innovators&d=2026-02-17&t=Tiny%2C+45+base+long+RNA+can+make+copies+of+itself">Tiny, 45 base long RNA can make copies of itself</a> <span
+                            style="color: #666; font-weight: 400;">(1 minute read)</span>
+                    </h3>
+                    <p class="summary">Researchers discover a tiny 45-base RNA that can self-replicate, a key step towards understanding how life emerged from chemistry.</p>
+
+                    
+                    <div class="editorial-context">
+                        <span class="editorial-context-label">Why this matters:</span> This discovery challenges assumptions about the complexity required for self-replication, opening new paths for AGI and synthetic biology.
+                    </div>
+                    
+
+                    <p class="meta"><a href="https://brief.delights.pro/api/track?url=Ars+Technica+-+All+content&s=innovators&d=2026-02-17&t=Tiny%2C+45+base+long+RNA+can+make+copies+of+itself">Ars Technica - All content</a></p>
+                </div>
+                
+            </div>
+            
+        </div>
+
+        <!-- Quick Links Section -->
+        
+        <div class="quick-links">
+            <div class="section-emoji">⚡</div>
+            <h2>Quick Links</h2>
+
+            
+            <div class="quick-item">
+                <h4><a href="https://brief.delights.pro/api/track?url=Hugging+Face+-+Blog&s=innovators&d=2026-02-17&t=How+to+train+a+new+language+model+from+scratch+using+Transformers+and+Tokenizers">How to train a new language model from scratch using Transformers and Tokenizers</a> <span
+                        style="color: #999; font-weight: 400; font-size: 14px;">(1
+                        min)</span></h4>
+                <p class="snippet">.</p>
+            </div>
+            
+            <div class="quick-item">
+                <h4><a href="https://brief.delights.pro/api/track?url=Hugging+Face+-+Blog&s=innovators&d=2026-02-17&t=How+to+generate+text%3A+using+different+decoding+methods+for+language+generation+with+Transformers">How to generate text: using different decoding methods for language generation with Transformers</a> <span
+                        style="color: #999; font-weight: 400; font-size: 14px;">(1
+                        min)</span></h4>
+                <p class="snippet">.</p>
+            </div>
+            
+            <div class="quick-item">
+                <h4><a href="https://brief.delights.pro/api/track?url=Computer+science+%3A+nature.com+subject+feeds&s=innovators&d=2026-02-17&t=STTORM-CD+low-demand+and+high-impact+disaster+monitoring+onboard+satellites+using+change+detection">STTORM-CD low-demand and high-impact disaster monitoring onboard satellites using change detection</a> <span
+                        style="color: #999; font-weight: 400; font-size: 14px;">(1
+                        min)</span></h4>
+                <p class="snippet">.</p>
+            </div>
+            
+            <div class="quick-item">
+                <h4><a href="https://brief.delights.pro/api/track?url=Computer+science+%3A+nature.com+subject+feeds&s=innovators&d=2026-02-17&t=An+intelligent+monitoring+system+for+forecasting+and+anomaly+detection+in+precision+beekeeping">An intelligent monitoring system for forecasting and anomaly detection in precision beekeeping</a> <span
+                        style="color: #999; font-weight: 400; font-size: 14px;">(1
+                        min)</span></h4>
+                <p class="snippet">.</p>
+            </div>
+            
+        </div>
+        
+
+        <!-- Worth Your Attention (Trending) Section -->
+        
+        <div class="content">
+            <div class="section">
+                <div class="section-emoji">🔥</div>
+                <h2>Worth Your Attention</h2>
+
+                
+                <div class="story">
+                    <h3><a href="https://brief.delights.pro/api/track?url=darkreading&s=innovators&d=2026-02-17&t=Chinese+Hackers+Hijack+Notepad%2B%2B+Updates+for+6+Months">Chinese Hackers Hijack Notepad++ Updates for 6 Months</a> <span
+                            style="color: #666; font-weight: 400;">(1 min)</span></h3>
+                    <p class="summary">Chinese state-backed hackers hijacked Notepad++ updates for 6 months, redirecting targeted users to malicious downloads.</p>
+                    <p class="meta"><a href="https://brief.delights.pro/api/track?url=darkreading&s=innovators&d=2026-02-17&t=Chinese+Hackers+Hijack+Notepad%2B%2B+Updates+for+6+Months">darkreading</a></p>
+                </div>
+                
+                <div class="story">
+                    <h3><a href="https://brief.delights.pro/api/track?url=Sequoia+Capital&s=innovators&d=2026-02-17&t=Partnering+with+Serval%3A+Empowering+IT+for+AI+Enterprise+Automation">Partnering with Serval: Empowering IT for AI Enterprise Automation</a> <span
+                            style="color: #666; font-weight: 400;">(2 min)</span></h3>
+                    <p class="summary">Serval's AI-powered platform empowers IT teams to automate workflows and free up time for higher-impact work, unlocking productivity across the organization.</p>
+                    <p class="meta"><a href="https://brief.delights.pro/api/track?url=Sequoia+Capital&s=innovators&d=2026-02-17&t=Partnering+with+Serval%3A+Empowering+IT+for+AI+Enterprise+Automation">Sequoia Capital</a></p>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <!-- Referral Share Section -->
+        <div style="background: #f0f0ff; padding: 32px 40px; text-align: center; border-top: 2px solid #e8e8e8;">
+            <p style="font-size: 20px; font-weight: 700; margin: 0 0 8px 0; color: #000;">📬 Know someone who'd love
+                this?</p>
+            <p style="font-size: 14px; color: #666; margin: 0 0 16px 0;">Share Brief Delights and help us grow.</p>
+            <a href="https://brief.delights.pro"
+                style="display: inline-block; background: #000; color: #fff; padding: 12px 28px; text-decoration: none; border-radius: 8px; font-weight: 600; font-size: 14px;">Share
+                Brief Delights →</a>
+            <p style="font-size: 12px; color: #999; margin: 16px 0 0 0;">
+                <a href="https://twitter.com/intent/tweet?text=I%20read%20Brief%20Delights%20daily%20%E2%80%94%20top%20tech%20stories%20curated%20for%20your%20role.%20Free%20%26%20no%20spam.&url=https%3A%2F%2Fbrief.delights.pro"
+                    style="color: #999; text-decoration: none; margin: 0 8px;">Twitter</a> ·
+                <a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fbrief.delights.pro"
+                    style="color: #999; text-decoration: none; margin: 0 8px;">LinkedIn</a> ·
+                <a href="mailto:?subject=Check%20out%20Brief%20Delights&body=I%20read%20this%20daily%20tech%20brief%20and%20thought%20you'd%20find%20it%20useful%3A%20https%3A%2F%2Fbrief.delights.pro"
+                    style="color: #999; text-decoration: none; margin: 0 8px;">Email</a>
+            </p>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p class="links">
+                <a href="https://brief.delights.pro">Website</a>
+                <a href="https://brief.delights.pro/archive">Archive</a>
+                <a href="mailto:sponsors@brief.delights.pro?subject=Advertising%20Inquiry">Advertise</a>
+                <a href="mailto:hello@brief.delights.pro?subject=Unsubscribe">Unsubscribe</a>
+            </p>
+
+            <p class="legal">
+                You're receiving this because you subscribed to Brief Delights.<br>
+                <strong>brief delights</strong><br>
+                © 2026 All rights reserved.<br>
+                Questions? <a href="mailto:hello@brief.delights.pro"
+                    style="color: #999; text-decoration: none;">hello@brief.delights.pro</a>
+            </p>
+        </div>
+    </div>
+</body>
+
+</html>
