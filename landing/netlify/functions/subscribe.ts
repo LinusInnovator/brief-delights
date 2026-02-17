@@ -1,6 +1,5 @@
 import { Handler } from '@netlify/functions';
-import { readFileSync, writeFileSync, existsSync } from 'fs';
-import { join } from 'path';
+import { createClient } from '@supabase/supabase-js';
 import crypto from 'crypto';
 
 interface SubscribeRequest {
@@ -8,15 +7,13 @@ interface SubscribeRequest {
     segment: 'builders' | 'leaders' | 'innovators';
 }
 
-interface PendingVerification {
-    email: string;
-    segment: string;
-    token: string;
-    createdAt: string;
-}
-
-const PENDING_FILE = join(process.cwd(), '.tmp', 'pending_verifications.json');
 const RESEND_API_KEY = process.env.RESEND_API_KEY;
+const SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL!;
+const SUPABASE_KEY = process.env.SUPABASE_SERVICE_KEY || process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!;
+
+function getSupabase() {
+    return createClient(SUPABASE_URL, SUPABASE_KEY);
+}
 
 export const handler: Handler = async (event) => {
     // CORS headers
@@ -60,39 +57,64 @@ export const handler: Handler = async (event) => {
             };
         }
 
-        // Generate verification token
-        const token = crypto.randomBytes(32).toString('hex');
+        const supabase = getSupabase();
 
-        // Load or create pending verifications file
-        let pending: PendingVerification[] = [];
-        if (existsSync(PENDING_FILE)) {
-            pending = JSON.parse(readFileSync(PENDING_FILE, 'utf-8'));
-        }
+        // Check if already a confirmed subscriber
+        const { data: existingSub } = await supabase
+            .from('subscribers')
+            .select('id, status')
+            .eq('email', email)
+            .maybeSingle();
 
-        // Check if already pending
-        const existing = pending.find(p => p.email === email);
-        if (existing) {
-            // Resend verification
-            await sendVerificationEmail(email, existing.token, segment);
+        if (existingSub?.status === 'confirmed') {
             return {
                 statusCode: 200,
                 headers,
                 body: JSON.stringify({
-                    message: 'Verification email resent! Check your inbox.'
+                    message: 'You\'re already subscribed! Check your inbox for your next brief. 📧'
                 }),
             };
         }
 
-        // Add to pending
-        pending.push({
-            email,
-            segment,
-            token,
-            createdAt: new Date().toISOString(),
-        });
+        // Generate verification token
+        const token = crypto.randomBytes(32).toString('hex');
 
-        // Save pending file
-        writeFileSync(PENDING_FILE, JSON.stringify(pending, null, 2));
+        // Check if already pending
+        const { data: existingPending } = await supabase
+            .from('pending_verifications')
+            .select('token')
+            .eq('email', email)
+            .maybeSingle();
+
+        if (existingPending) {
+            // Resend verification with existing token
+            await sendVerificationEmail(email, existingPending.token, segment);
+            return {
+                statusCode: 200,
+                headers,
+                body: JSON.stringify({
+                    message: 'Verification email resent! Check your inbox. 📧'
+                }),
+            };
+        }
+
+        // Insert pending verification into Supabase
+        const { error: insertError } = await supabase
+            .from('pending_verifications')
+            .insert({
+                email,
+                segment,
+                token,
+            });
+
+        if (insertError) {
+            console.error('Failed to insert pending verification:', insertError);
+            return {
+                statusCode: 500,
+                headers,
+                body: JSON.stringify({ error: 'Failed to process subscription' }),
+            };
+        }
 
         // Send verification email
         await sendVerificationEmail(email, token, segment);
@@ -136,7 +158,7 @@ async function sendVerificationEmail(email: string, token: string, segment: stri
             'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-            from: 'Brief Delights <hello@delights.pro>',
+            from: 'Brief Delights <hello@send.dreamvalidator.com>',
             to: email,
             subject: `${segmentEmoji} Verify your Brief Delights subscription`,
             html: `

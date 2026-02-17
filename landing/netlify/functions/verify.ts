@@ -1,24 +1,13 @@
 import { Handler } from '@netlify/functions';
-import { readFileSync, writeFileSync, existsSync } from 'fs';
-import { join } from 'path';
+import { createClient } from '@supabase/supabase-js';
 
-interface PendingVerification {
-    email: string;
-    segment: string;
-    token: string;
-    createdAt: string;
-}
-
-interface Subscriber {
-    email: string;
-    segment: string;
-    status: string;
-    subscribed_at: string;
-}
-
-const PENDING_FILE = join(process.cwd(), '.tmp', 'pending_verifications.json');
-const SUBSCRIBERS_FILE = join(process.cwd(), 'subscribers.json');
 const RESEND_API_KEY = process.env.RESEND_API_KEY;
+const SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL!;
+const SUPABASE_KEY = process.env.SUPABASE_SERVICE_KEY || process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!;
+
+function getSupabase() {
+    return createClient(SUPABASE_URL, SUPABASE_KEY);
+}
 
 export const handler: Handler = async (event) => {
     const token = event.queryStringParameters?.token;
@@ -31,21 +20,16 @@ export const handler: Handler = async (event) => {
     }
 
     try {
-        // Load pending verifications
-        if (!existsSync(PENDING_FILE)) {
-            return {
-                statusCode: 404,
-                body: 'Verification not found',
-            };
-        }
+        const supabase = getSupabase();
 
-        const pending: PendingVerification[] = JSON.parse(
-            readFileSync(PENDING_FILE, 'utf-8')
-        );
+        // Look up pending verification by token
+        const { data: verification, error: lookupError } = await supabase
+            .from('pending_verifications')
+            .select('*')
+            .eq('token', token)
+            .maybeSingle();
 
-        // Find verification
-        const verification = pending.find(p => p.token === token);
-        if (!verification) {
+        if (lookupError || !verification) {
             return {
                 statusCode: 404,
                 body: 'Invalid or expired verification token',
@@ -53,47 +37,69 @@ export const handler: Handler = async (event) => {
         }
 
         // Check if token is expired (24 hours)
-        const createdAt = new Date(verification.createdAt);
+        const createdAt = new Date(verification.created_at);
         const now = new Date();
         const hoursSinceCreation = (now.getTime() - createdAt.getTime()) / (1000 * 60 * 60);
 
         if (hoursSinceCreation > 24) {
+            // Delete expired token
+            await supabase
+                .from('pending_verifications')
+                .delete()
+                .eq('id', verification.id);
+
             return {
                 statusCode: 400,
                 body: 'Verification token expired. Please sign up again.',
             };
         }
 
-        // Load subscribers
-        let subscribers: { subscribers: Subscriber[] } = { subscribers: [] };
-        if (existsSync(SUBSCRIBERS_FILE)) {
-            subscribers = JSON.parse(readFileSync(SUBSCRIBERS_FILE, 'utf-8'));
+        // Check if already a subscriber
+        const { data: existingSub } = await supabase
+            .from('subscribers')
+            .select('id, status')
+            .eq('email', verification.email)
+            .maybeSingle();
+
+        if (existingSub) {
+            // Update status to confirmed if not already
+            if (existingSub.status !== 'confirmed') {
+                await supabase
+                    .from('subscribers')
+                    .update({
+                        status: 'confirmed',
+                        segment: verification.segment,
+                    })
+                    .eq('id', existingSub.id);
+            }
+        } else {
+            // Insert new confirmed subscriber
+            const { error: insertError } = await supabase
+                .from('subscribers')
+                .insert({
+                    email: verification.email,
+                    segment: verification.segment,
+                    status: 'confirmed',
+                    subscribed_at: new Date().toISOString(),
+                });
+
+            if (insertError) {
+                console.error('Failed to insert subscriber:', insertError);
+                return {
+                    statusCode: 500,
+                    body: 'Failed to confirm subscription. Please try again.',
+                };
+            }
         }
 
-        // Check if already subscribed
-        const alreadySubscribed = subscribers.subscribers.find(
-            s => s.email === verification.email
-        );
+        // Delete the used verification token
+        await supabase
+            .from('pending_verifications')
+            .delete()
+            .eq('id', verification.id);
 
-        if (!alreadySubscribed) {
-            // Add to subscribers
-            subscribers.subscribers.push({
-                email: verification.email,
-                segment: verification.segment,
-                status: 'active',
-                subscribed_at: new Date().toISOString(),
-            });
-
-            // Save subscribers file
-            writeFileSync(SUBSCRIBERS_FILE, JSON.stringify(subscribers, null, 2));
-
-            // Send welcome email
-            await sendWelcomeEmail(verification.email, verification.segment);
-        }
-
-        // Remove from pending
-        const updatedPending = pending.filter(p => p.token !== token);
-        writeFileSync(PENDING_FILE, JSON.stringify(updatedPending, null, 2));
+        // Send welcome email
+        await sendWelcomeEmail(verification.email, verification.segment);
 
         // Redirect to success page
         return {
@@ -132,7 +138,7 @@ async function sendWelcomeEmail(email: string, segment: string) {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-            from: 'Brief Delights <hello@delights.pro>',
+            from: 'Brief Delights <hello@send.dreamvalidator.com>',
             to: email,
             subject: `${segmentEmoji} Welcome to Brief Delights!`,
             html: `

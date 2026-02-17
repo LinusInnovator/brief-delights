@@ -57,18 +57,41 @@ def log(message: str):
 
 
 def load_subscribers():
-    """Load and group subscribers by segment"""
-    with open(SUBSCRIBERS_FILE, 'r') as f:
-        data = json.load(f)
+    """Load and group subscribers by segment from Supabase (with JSON fallback)"""
+    # Try Supabase first (primary source)
+    if SUPABASE_URL and SUPABASE_KEY:
+        try:
+            supabase: Client = create_client(SUPABASE_URL, SUPABASE_KEY)
+            result = supabase.table('subscribers').select('email, segment').eq('status', 'confirmed').execute()
+            
+            if result.data and len(result.data) > 0:
+                by_segment = defaultdict(list)
+                for sub in result.data:
+                    segment = sub.get('segment', 'leaders')
+                    by_segment[segment].append(sub)
+                log(f"📊 Loaded {len(result.data)} subscribers from Supabase")
+                return dict(by_segment)
+            else:
+                log("⚠️ No confirmed subscribers found in Supabase")
+        except Exception as e:
+            log(f"⚠️ Supabase subscriber fetch failed: {e}, falling back to JSON")
     
-    # Group active subscribers by segment
-    by_segment = defaultdict(list)
-    for sub in data['subscribers']:
-        if sub.get('status') == 'active':
-            segment = sub.get('segment', 'leaders')  # Default to leaders
-            by_segment[segment].append(sub)
+    # Fallback to subscribers.json
+    if SUBSCRIBERS_FILE.exists():
+        log("📄 Using subscribers.json fallback")
+        with open(SUBSCRIBERS_FILE, 'r') as f:
+            data = json.load(f)
+        
+        by_segment = defaultdict(list)
+        for sub in data.get('subscribers', []):
+            if sub.get('status') in ('active', 'confirmed'):
+                segment = sub.get('segment', 'leaders')
+                by_segment[segment].append(sub)
+        
+        return dict(by_segment)
     
-    return dict(by_segment)
+    log("❌ No subscriber source available")
+    return {}
 
 
 def load_segments_config():
