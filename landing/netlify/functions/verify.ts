@@ -80,7 +80,7 @@ export const handler: Handler = async (event) => {
                     email: verification.email,
                     segment: verification.segment,
                     status: 'confirmed',
-                    subscribed_at: new Date().toISOString(),
+                    confirmed_at: new Date().toISOString(),
                 });
 
             if (insertError) {

@@ -17,41 +17,21 @@ CREATE INDEX IF NOT EXISTS idx_pending_token ON pending_verifications(token);
 -- Index for auto-cleanup of expired verifications
 CREATE INDEX IF NOT EXISTS idx_pending_expires ON pending_verifications(expires_at);
 
--- Ensure subscribers table has the columns we need
--- (table should already exist, this is a safety net)
-CREATE TABLE IF NOT EXISTS subscribers (
-  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-  email TEXT NOT NULL UNIQUE,
-  segment TEXT NOT NULL DEFAULT 'leaders' CHECK (segment IN ('builders', 'leaders', 'innovators')),
-  status TEXT NOT NULL DEFAULT 'pending' CHECK (status IN ('pending', 'confirmed', 'unsubscribed')),
-  subscribed_at TIMESTAMPTZ DEFAULT NOW(),
-  referral_code TEXT,
-  referred_by TEXT
-);
-
--- RLS: Allow anon key to insert pending verifications and read/update during verify
-ALTER TABLE pending_verifications ENABLE ROW LEVEL SECURITY;
-
-CREATE POLICY "Allow insert pending verifications" ON pending_verifications
-  FOR INSERT WITH CHECK (true);
-
-CREATE POLICY "Allow select pending verifications by token" ON pending_verifications
-  FOR SELECT USING (true);
-
-CREATE POLICY "Allow delete pending verifications" ON pending_verifications
-  FOR DELETE USING (true);
-
--- RLS for subscribers: allow inserts during verification, allow reads for send pipeline
-ALTER TABLE subscribers ENABLE ROW LEVEL SECURITY;
-
--- Allow anon to insert new subscribers (during verification)
-CREATE POLICY "Allow insert subscribers" ON subscribers
-  FOR INSERT WITH CHECK (true);
-
--- Allow anon to read subscriber count (for landing page)
-CREATE POLICY "Allow select subscribers" ON subscribers
-  FOR SELECT USING (true);
-
--- Allow anon to update subscriber status (for unsubscribe)
-CREATE POLICY "Allow update subscribers" ON subscribers
-  FOR UPDATE USING (true);
+-- RLS for subscribers: ensure policies exist for the send pipeline and signup flow
+-- (These are safe to run even if policies already exist due to IF NOT EXISTS-style behavior)
+DO $$ BEGIN
+  -- Allow reading subscribers (for send pipeline and landing page count)
+  IF NOT EXISTS (SELECT 1 FROM pg_policies WHERE tablename = 'subscribers' AND policyname = 'Allow select subscribers') THEN
+    CREATE POLICY "Allow select subscribers" ON subscribers FOR SELECT USING (true);
+  END IF;
+  
+  -- Allow inserting new subscribers (during verification)
+  IF NOT EXISTS (SELECT 1 FROM pg_policies WHERE tablename = 'subscribers' AND policyname = 'Allow insert subscribers') THEN
+    CREATE POLICY "Allow insert subscribers" ON subscribers FOR INSERT WITH CHECK (true);
+  END IF;
+  
+  -- Allow updating subscriber status (for unsubscribe)
+  IF NOT EXISTS (SELECT 1 FROM pg_policies WHERE tablename = 'subscribers' AND policyname = 'Allow update subscribers') THEN
+    CREATE POLICY "Allow update subscribers" ON subscribers FOR UPDATE USING (true);
+  END IF;
+END $$;
