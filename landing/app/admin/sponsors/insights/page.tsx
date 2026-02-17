@@ -65,7 +65,7 @@ export default function InsightsPage() {
             // Get sponsor leads to match with articles
             const { data: sponsors, error: sponsorsError } = await supabase
                 .from('sponsor_leads')
-                .select('company_name, match_score, status, competitor_mentioned')
+                .select('company_name, match_score, status, matched_segment')
                 .order('match_score', { ascending: false });
 
             if (sponsorsError) throw sponsorsError;
@@ -83,14 +83,14 @@ export default function InsightsPage() {
             const result = Array.from(articleMap.values())
                 .map((article) => {
                     const competitor = competitorMap[article.source_domain] || null;
+                    // Match sponsors by segment since competitor_mentioned is not in DB
                     const matchedSponsors = (sponsors || []).filter(
-                        (s: any) =>
-                            s.competitor_mentioned?.toLowerCase() === competitor?.toLowerCase()
+                        (s: any) => s.matched_segment === article.segment
                     );
                     return {
                         ...article,
                         competitor_detected: competitor,
-                        matched_sponsors: matchedSponsors.map((s: any) => ({
+                        matched_sponsors: matchedSponsors.slice(0, 5).map((s: any) => ({
                             company_name: s.company_name,
                             match_score: s.match_score,
                             status: s.status,
