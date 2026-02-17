@@ -1,127 +1,81 @@
 # Directive: Select Top Stories
 
 ## Goal
-Use LLM to analyze aggregated articles and select the 5-7 most important stories for the newsletter. This implements the "Would I forward this to my friends?" filter.
+Use LLM to analyze aggregated articles and select the most important stories per audience segment. Each segment gets its own curated selection based on unique criteria from `segments_config.json`.
 
 ## Inputs
-- `.tmp/raw_articles_YYYY-MM-DD.json` - All articles from RSS aggregation
-- Target audience: B2B Tech & AI Decision-Makers
+- `.tmp/raw_articles_{YYYY-MM-DD}.json` — All articles from RSS aggregation
+- `segments_config.json` — Segment definitions with focus categories and keywords
 
 ## Tool to Use
 - **Script:** `execution/select_stories.py`
 
+## Segments
+Selection runs independently for each of the 3 segments:
+
+| Segment | Target Audience | Focus |
+|---------|----------------|-------|
+| **Builders** 🔧 | CTOs, VPs of Engineering | Infrastructure, DevOps, APIs, databases, scalability |
+| **Leaders** 💼 | CEOs, Founders | Strategy, M&A, market trends, funding, leadership |
+| **Innovators** 🚀 | Researchers, Early Adopters | AI research, breakthroughs, novel applications |
+
+Each segment has `focus_keywords`, `skip_keywords`, and `selection_criteria` in `segments_config.json`.
+
 ## Expected Outputs
-- `.tmp/selected_articles_YYYY-MM-DD.json` - 5-7 curated articles
+- `.tmp/selected_articles_{segment}_{YYYY-MM-DD}.json` — per segment (×3 files)
 - Each article includes:
   - All original metadata (title, url, source, etc.)
-  - `selection_reason` - Why this article was chosen
-  - `audience_value` - What readers will gain
-  - `urgency_score` - 1-10 rating
-  - `category_tag` - Section placement (e.g., "🚀 AI Updates", "💼 Business")
+  - `selection_reason` — Why this article was chosen
+  - `audience_value` — What readers will gain
+  - `urgency_score` — 1-10 rating
+  - `category_tag` — Section placement
+  - `tier` — Full, Quick Link, or Trending
 
-## Success Criteria
-- ✅ Exactly 5-7 articles selected
-- ✅ Diversity: Multiple categories represented
-- ✅ Relevance: All stories matter to decision-makers
-- ✅ Quality: Each has clear "why it matters" reasoning
-- ✅ No fluff: High signal-to-noise ratio
+## 3-Tier Selection
+
+| Tier | Count | Criteria |
+|------|-------|----------|
+| **Full** | 3-4 | Highest impact, worth deep summary |
+| **Quick Links** | 5-8 | Relevant but lower priority, one-liner summaries |
+| **Trending** | 3-5 | Hot topics appearing across multiple sources |
 
 ## Process
-1. Read raw articles from `.tmp/raw_articles_YYYY-MM-DD.json`
-2. Prepare articles for LLM analysis (deduplicate, format)
-3. Send to OpenRouter with selection prompt
-4. Parse LLM response to get selected articles + metadata
-5. Validate selection (5-7 articles, diverse categories)
-6. Save to `.tmp/selected_articles_YYYY-MM-DD.json`
+1. Read raw articles from `.tmp/raw_articles_{YYYY-MM-DD}.json`
+2. For each segment:
+   a. Filter by segment's `focus_categories` and `focus_keywords`
+   b. Exclude articles matching `skip_keywords`
+   c. Send filtered set to OpenRouter with segment-specific prompt
+   d. LLM returns tiered selection with metadata
+   e. Validate (correct tier counts, diverse categories)
+   f. Save to `.tmp/selected_articles_{segment}_{YYYY-MM-DD}.json`
 
-## LLM Selection Criteria
-
-**Audience:** B2B decision-makers (CTOs, VPs of Engineering, Product Leaders, Tech Executives)
-
-**Selection Rules:**
-1. **Relevance:** Impacts their work, company strategy, or tech stack decisions
-2. **Newsworthiness:** Breaking news, major announcements, or significant trends
-3. **Actionability:** Readers can apply insights or make decisions
-4. **Shareability:** Worth discussing with colleagues ("forward-worthy")
-5. **Diversity:** Cover multiple sub-topics (AI, cloud, security, startups, etc.)
-
-**Filters to Apply:**
-- ❌ Skip: Tutorials, how-to guides, deep technical implementation details
-- ❌ Skip: Minor product updates, individual developer blog posts
-- ❌ Skip: Old news (rehashed stories already covered widely)
-- ✅ Prioritize: Major funding rounds, breakthrough AI research, enterprise tech shifts
-- ✅ Prioritize: Leadership changes at major companies, regulatory developments
-- ✅ Prioritize: Market trends that affect business strategy
-
-## LLM Prompt Template
-
-```
-You are a senior tech editor curating a daily newsletter for B2B decision-makers (CTOs, VPs of Engineering, Product Leaders). Your audience includes people who make technology purchasing decisions and strategic tech choices for their companies.
-
-Review these {count} articles and select exactly 5-7 that are most important for this audience.
-
-SELECTION CRITERIA:
-1. Business Impact: Does this affect their company strategy, budget, or tech decisions?
-2. Newsworthiness: Is this breaking news, a major announcement, or a significant trend?
-3. Actionability: Can readers apply insights or make better decisions?
-4. Shareability: Would a CTO forward this to their team?
-5. Diversity: Cover multiple areas (AI, cloud, security, funding, etc.)
-
-SKIP:
-- Tutorials and how-tos
-- Minor product updates
-- Individual developer blogs
-- Old/rehashed news
-
-PRIORITIZE:
-- Major funding rounds ($50M+)
-- Breakthrough AI/tech research
-- Enterprise tech shifts (cloud, infrastructure)
-- Leadership changes at major companies
-- Regulatory developments
-- Market trends affecting business
-
-For each selected article, provide:
-1. selection_reason: One sentence on why you chose it
-2. audience_value: What decision-makers will gain
-3. urgency_score: 1-10 (how time-sensitive)
-4. category_tag: One of ["🚀 AI & Innovation", "💼 Tech Business", "☁️  Enterprise Tech", "🔐 Security", "💰 Funding & M&A", "📊 Market Trends"]
-
-Return ONLY valid JSON in this exact format:
-{
-  "selected_articles": [
-    {
-      "article_id": "original_article_id",
-      "selection_reason": "...",
-      "audience_value": "...",
-      "urgency_score": 8,
-      "category_tag": "🚀 AI & Innovation"
-    }
-  ]
-}
-```
+## Model Selection
+- **Primary:** `anthropic/claude-3.5-sonnet` via OpenRouter (best editorial judgement)
+- **Fallback:** `openai/gpt-4o` if Claude unavailable
 
 ## Edge Cases & Error Handling
-- **LLM returns wrong count:** If <5 or >7 articles, re-prompt with stricter instructions
+- **LLM returns wrong count:** Re-prompt with stricter instructions
 - **Invalid JSON:** Parse error → retry with formatted examples
-- **All articles low quality:** Relax lookback window in RSS aggregation
+- **All articles low quality:** Relax keyword filtering, expand selection
 - **Missing article IDs:** Cross-reference by title/URL
 - **API timeout:** Retry up to 3 times with exponential backoff
 
-## Model Selection
-- **Primary:** `anthropic/claude-3.5-sonnet` (best at nuanced editorial decisions)
-- **Fallback:** `openai/gpt-4-turbo` (if Claude unavailable)
-
 ## Performance Expectations
-- **Runtime:** 10-30 seconds (depends on article count)
-- **Cost:** ~$0.05-0.15 per day
+- **Runtime:** 60-300 seconds total (all 3 segments)
+- **Cost:** ~$0.05-0.15 per day (OpenRouter)
+- **Timeout:** 300 seconds (increased from 120s due to large datasets)
 
-## Logging
-Log to `.tmp/story_selection_log_YYYY-MM-DD.txt`:
-- Number of articles analyzed
-- LLM model used
-- Selection reasoning summary
-- Any errors or retries
+## Known Issues & Learnings
+
+### Timeout at 120s with large article sets (Feb 2026)
+- **Root cause:** Processing 200+ articles in a single LLM call took >120s
+- **Fix:** Increased timeout to 300s in `run_daily_pipeline.py`
+- **Prevention:** If article count regularly exceeds 250, consider pre-filtering or batching
+
+### Segment overlap can be high (ongoing)
+- **Observation:** Some articles (especially major AI news) appear in all 3 segments
+- **Impact:** Low — each segment frames the article differently
+- **Prevention:** Acceptable; segment value comes from framing, not exclusivity
 
 ## Next Step
-After selection, proceed to `summarize_articles.md` to generate concise summaries.
+After selection, proceed to `summarize_articles.md` to generate per-segment summaries.

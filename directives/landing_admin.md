@@ -47,8 +47,12 @@ For these cases, use `NEXT_PUBLIC_SUPABASE_ANON_KEY` for any database operations
 ## Key Database Tables
 | Table | Purpose |
 |-------|---------|
-| `sponsored_content` | Partnership/sponsor management |
-| `subscribers` | Newsletter subscriber list |
+| `subscribers` | Newsletter subscriber list with segment, status, referral |
+| `sponsor_leads` | Auto-discovered sponsor prospects from pipeline |
+| `sponsor_content` | Ad creatives (headline, CTA, description, segments) |
+| `sponsor_schedule` | Date × segment calendar assignments with impressions/clicks |
+| `partnerships` | Partnership/collaboration tracking |
+| `referrals` | Subscriber referral tracking |
 | `analytics_events` | Click/view tracking |
 
 ## Netlify Deployment
@@ -79,7 +83,16 @@ For these cases, use `NEXT_PUBLIC_SUPABASE_ANON_KEY` for any database operations
 - **Features:** Quick Create from URL, manual create, edit, delete, schedule
 
 ### Sponsor Dashboard (`/admin/sponsors`)
-- Analytics and sponsor management
+Full sponsor lifecycle management with 4 tabs:
+- **Library tab:** CRUD sponsor creatives (`/api/admin/sponsors/content`)
+- **Schedule tab:** Calendar assignments per date × segment (`/api/admin/sponsors/schedule`)
+- **Pipeline tab:** Auto-discovered prospects from `sponsor_matcher.py` (`/api/admin/sponsors`)
+- **Stats tab:** Impressions, clicks, CTR per sponsor (`/api/admin/sponsors/stats`)
+
+Additional API routes:
+- `/api/admin/sponsors/[id]/send` — Send outreach email to prospect
+- `/api/admin/sponsors/analytics` — Deep analytics
+- `/api/admin/sponsors/insights` — AI-generated insights
 
 ## Development Patterns
 
@@ -109,6 +122,21 @@ For these cases, use `NEXT_PUBLIC_SUPABASE_ANON_KEY` for any database operations
 - **Root cause:** Manual `/api/*` redirect in `netlify.toml` conflicting with Next.js plugin
 - **Fix:** Removed the redirect rule
 - **Prevention:** Never add manual API redirects; let the plugin handle it
+
+### Issue: Pipeline tab showing $NaN prices (Feb 16, 2026)
+- **Root cause:** `formatPrice()` didn't guard against null/undefined `suggested_price_cents`
+- **Fix:** Added null check to return '—' instead of `$NaN`
+- **Prevention:** Always guard against null in formatting functions
+
+### Issue: Stale dreamvalidator.com links in emails (Feb 16, 2026)
+- **Root cause:** Multiple files still referenced `send.dreamvalidator.com` and `hello@dreamvalidator.com`
+- **Fix:** Replaced all references across 7 files with `brief.delights.pro`
+- **Prevention:** Search entire repo for old domains before deploying branding changes
+
+### Issue: iCloud git push crashes (Feb 2026)
+- **Root cause:** Git on iCloud-synced dirs causes signal 10 (bus error)
+- **Fix:** Set `GIT_HTTP_POST_BUFFER=524288000` and retry
+- **Prevention:** Always retry with buffer flag; consider moving repo off iCloud
 
 ## Testing
 ```bash
