@@ -155,12 +155,26 @@ export default function ClientPage({
                     Start Getting Brief
                 </h3>
                 <p className="text-center text-gray-600 mb-8 max-w-2xl mx-auto">
-                    {subscriberCount > 0 ? (
+                    {subscriberCount >= 5000 ? (
                         <span className="font-semibold text-gray-900">
-                            Join {subscriberCount.toLocaleString()} subscriber{subscriberCount !== 1 ? 's' : ''} getting curated intelligence daily
+                            🔥 {subscriberCount.toLocaleString()} readers strong — you&apos;re late to the party
+                        </span>
+                    ) : subscriberCount >= 1000 ? (
+                        <span className="font-semibold text-gray-900">
+                            Join {subscriberCount.toLocaleString()} readers getting smarter every morning
+                        </span>
+                    ) : subscriberCount >= 500 ? (
+                        <span className="font-semibold text-gray-900">
+                            {subscriberCount.toLocaleString()} early adopters and counting 📈
+                        </span>
+                    ) : subscriberCount >= 100 ? (
+                        <span className="font-semibold text-gray-900">
+                            Join {subscriberCount.toLocaleString()} subscribers getting curated intelligence daily
                         </span>
                     ) : (
-                        'Be among the first to get curated intelligence daily'
+                        <span className="font-semibold text-gray-900">
+                            We&apos;d show our subscriber count, but our abacus only goes to 💯
+                        </span>
                     )}
                 </p>
 
