@@ -54,11 +54,24 @@ export async function GET(request: NextRequest) {
             );
         }
 
-        // Return success page
-        return new NextResponse(
-            generateSuccessPage(subscriber.email, subscriber.segment),
-            { status: 200, headers: { 'Content-Type': 'text/html' } }
-        );
+        // Get the subscriber's referral code for the welcome page
+        const { data: confirmedSub } = await supabase
+            .from('subscribers')
+            .select('referral_code')
+            .eq('email', subscriber.email)
+            .maybeSingle();
+
+        const refCode = confirmedSub?.referral_code || '';
+        const welcomeParams = new URLSearchParams({
+            segment: subscriber.segment,
+            ...(refCode ? { ref: refCode } : {}),
+        });
+
+        // Redirect through SparkLoop Upscribe (paid newsletter recs → $1-3/sub)
+        const welcomeUrl = `https://brief.delights.pro/welcome?${welcomeParams.toString()}`;
+        const sparkLoopUrl = `https://upscribe.page/b3b25cc980?email_address=${encodeURIComponent(subscriber.email)}&rh_ref=${encodeURIComponent(welcomeUrl)}`;
+
+        return NextResponse.redirect(sparkLoopUrl);
 
     } catch (error) {
         console.error('Verification error:', error);
