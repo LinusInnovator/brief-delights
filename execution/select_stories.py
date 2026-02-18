@@ -229,7 +229,7 @@ def validate_selection(selection: dict, segment_id: str) -> bool:
     
     selected = selection['selected_articles']
     
-    # Check count (8-15 articles - more forgiving to handle edge cases)
+    # Check count (10-15 articles expected)
     if not (8 <= len(selected) <= 15):
         log(f"⚠️ Invalid count: {len(selected)} articles (expected 8-15)")
         return False
@@ -253,10 +253,13 @@ def validate_selection(selection: dict, segment_id: str) -> bool:
     quick_count = tiers.count('quick')
     trending_count = tiers.count('trending')
     
-    # At least 3 full articles, at least 1 quick, at least 1 trending (more lenient)
-    if full_count < 3:
-        log(f"⚠️ Not enough full articles: {full_count} (need at least 3)")
+    # At least 6 full articles to avoid thin newsletters
+    if full_count < 6:
+        log(f"⚠️ Not enough full articles: {full_count} (need at least 6 — prompt asks for 8)")
         return False
+    
+    if full_count < 8:
+        log(f"ℹ️ Note: {full_count} full articles (ideal is 8, but acceptable)")
     
     if quick_count < 1:
         log(f"⚠️ Not enough quick articles: {quick_count} (need at least 1)")
@@ -402,32 +405,57 @@ def pre_filter_articles(raw_articles: list, max_articles: int = 50) -> list:
 
 
 def select_stories_for_segment(articles: list, segment_id: str, segment_config: dict) -> list:
-    """Select stories for a specific segment"""
+    """Select stories for a specific segment with retry logic"""
     log(f"\n{segment_config['emoji']} Processing segment: {segment_config['name']}")
     
-    # Create prompt
-    prompt = create_segment_prompt(articles, segment_id, segment_config)
+    max_attempts = 3
+    last_error = None
     
-    # Call LLM (try primary, fallback to secondary)
-    try:
-        selection = call_llm(prompt, PRIMARY_MODEL)
-    except Exception as e:
-        log(f"⚠️ Primary model failed, trying fallback: {str(e)}")
-        selection = call_llm(prompt, FALLBACK_MODEL)
+    for attempt in range(1, max_attempts + 1):
+        # Create prompt (with correction hint on retries)
+        prompt = create_segment_prompt(articles, segment_id, segment_config)
+        
+        if attempt > 1:
+            prompt += f"""
+
+IMPORTANT CORRECTION (attempt {attempt}/{max_attempts}):
+Your previous response was rejected: {last_error}
+You MUST follow the tier distribution exactly:
+- TIER 1 "full": AT LEAST 6 articles (target 8)
+- TIER 2 "quick": AT LEAST 2 articles (target 4)
+- TIER 3 "trending": AT LEAST 1 article (target 2-3)
+Total: 10-15 articles. Do NOT skimp on full articles."""
+            log(f"  🔄 Retry attempt {attempt}/{max_attempts}: {last_error}")
+        
+        # Call LLM (try primary, fallback to secondary)
+        try:
+            selection = call_llm(prompt, PRIMARY_MODEL)
+        except Exception as e:
+            log(f"⚠️ Primary model failed, trying fallback: {str(e)}")
+            selection = call_llm(prompt, FALLBACK_MODEL)
+        
+        # Validate selection
+        if validate_selection(selection, segment_id):
+            # Merge with original articles
+            selected_articles = merge_selection_with_articles(articles, selection)
+            
+            log(f"\n📈 Selected {len(selected_articles)} stories for {segment_config['name']}:")
+            for i, article in enumerate(selected_articles, 1):
+                log(f"  {i}. [{article['category_tag']}] {article['title']}")
+                log(f"     Reason: {article['selection_reason']}")
+            
+            if attempt > 1:
+                log(f"  ✅ Succeeded on attempt {attempt}")
+            
+            return selected_articles
+        else:
+            # Capture the reason for the retry
+            tiers = [a['tier'] for a in selection.get('selected_articles', [])]
+            full_count = tiers.count('full')
+            total = len(tiers)
+            last_error = f"Got {full_count} full articles out of {total} total (need at least 6 full)"
     
-    # Validate selection
-    if not validate_selection(selection, segment_id):
-        raise Exception(f"Selection validation failed for {segment_id}")
-    
-    # Merge with original articles
-    selected_articles = merge_selection_with_articles(articles, selection)
-    
-    log(f"\n📈 Selected {len(selected_articles)} stories for {segment_config['name']}:")
-    for i, article in enumerate(selected_articles, 1):
-        log(f"  {i}. [{article['category_tag']}] {article['title']}")
-        log(f"     Reason: {article['selection_reason']}")
-    
-    return selected_articles
+    raise Exception(f"Selection validation failed for {segment_id} after {max_attempts} attempts: {last_error}")
 
 
 def save_segment_selection(segment_id: str, articles: list):
