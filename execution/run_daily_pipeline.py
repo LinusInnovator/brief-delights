@@ -239,12 +239,16 @@ def main():
             continue
         log(f"✅ Newsletter composed for {segment_name}")
         
-        # Quality Gate — validate before sending
+        # Quality Gate + Self-Healing Loop
         log(f"\n   🔍 Quality Gate ({segment_name}):")
         if not run_script("validate_newsletter.py", timeout=15, args=["--segment", segment_id]):
-            log(f"❌ QUALITY GATE FAILED for {segment_id} — newsletter will NOT be sent", "ERROR")
-            log(f"   Fix the issues above and re-run the pipeline", "ERROR")
-            return False
+            log(f"   🩺 Quality gate failed — attempting self-healing...", "WARN")
+            if run_script("heal_newsletter.py", timeout=60, args=["--segment", segment_id, "--create-issue"]):
+                log(f"   ✅ Self-healed for {segment_name}")
+            else:
+                log(f"   ❌ Self-healing FAILED for {segment_id} — newsletter will NOT be sent", "ERROR")
+                log(f"      Check GitHub Issues for diagnostics", "ERROR")
+                return False
         
         # NEW: Archive successful newsletter for fallback
         newsletter_file = TMP_DIR / f"newsletter_{segment_id}_{TODAY}.html"
