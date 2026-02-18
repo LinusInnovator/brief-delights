@@ -239,6 +239,13 @@ def main():
             continue
         log(f"✅ Newsletter composed for {segment_name}")
         
+        # Quality Gate — validate before sending
+        log(f"\n   🔍 Quality Gate ({segment_name}):")
+        if not run_script("validate_newsletter.py", timeout=15, args=["--segment", segment_id]):
+            log(f"❌ QUALITY GATE FAILED for {segment_id} — newsletter will NOT be sent", "ERROR")
+            log(f"   Fix the issues above and re-run the pipeline", "ERROR")
+            return False
+        
         # NEW: Archive successful newsletter for fallback
         newsletter_file = TMP_DIR / f"newsletter_{segment_id}_{TODAY}.html"
         if newsletter_file.exists():
