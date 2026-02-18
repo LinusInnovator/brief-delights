@@ -5,7 +5,17 @@
  * Flow: article_clicks → detect incumbents → find challengers → score → price → email draft → write to sponsor_leads
  */
 
-import { createClient } from '@/lib/supabase/client';
+import { createClient, type SupabaseClient } from '@supabase/supabase-js';
+
+// Re-export for callers that need the type
+export type { SupabaseClient } from '@supabase/supabase-js';
+
+// Default browser client (used by admin page)
+function getDefaultClient(): SupabaseClient {
+    const url = process.env.NEXT_PUBLIC_SUPABASE_URL!;
+    const key = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!;
+    return createClient(url, key);
+}
 
 // ─── Types ───────────────────────────────────────────────────────────────────
 
@@ -309,8 +319,8 @@ function calculatePricing(clicks: number, opts?: Partial<DynamicPricingInputs>):
  * Fetch real-time pricing inputs from Supabase.
  * Call this before calculatePricing for live data.
  */
-export async function fetchPricingInputs(segment: string): Promise<DynamicPricingInputs> {
-    const supabase = createClient();
+export async function fetchPricingInputs(segment: string, supabaseClient?: SupabaseClient): Promise<DynamicPricingInputs> {
+    const supabase = supabaseClient ?? getDefaultClient();
 
     // Get subscriber count for this segment
     const { count: subscribers } = await supabase
@@ -427,9 +437,9 @@ If ${companyName} wants the spot, just reply "yes" and I'll lock it in. Otherwis
 
 // ─── Main Discovery Engine ──────────────────────────────────────────────────
 
-export async function discoverSponsors(): Promise<DiscoveryResult> {
+export async function discoverSponsors(supabaseClient?: SupabaseClient): Promise<DiscoveryResult> {
     try {
-        const supabase = createClient();
+        const supabase = supabaseClient ?? getDefaultClient();
 
         // 1. Get article clicks from last 7 days
         const sevenDaysAgo = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000)
@@ -607,9 +617,9 @@ export async function discoverSponsors(): Promise<DiscoveryResult> {
 /**
  * Generate/regenerate an email draft for a specific lead and save it to Supabase
  */
-export async function generateAndSaveEmailDraft(leadId: string): Promise<EmailDraft | null> {
+export async function generateAndSaveEmailDraft(leadId: string, supabaseClient?: SupabaseClient): Promise<EmailDraft | null> {
     try {
-        const supabase = createClient();
+        const supabase = supabaseClient ?? getDefaultClient();
         const { data: lead, error } = await supabase
             .from('sponsor_leads')
             .select('*')

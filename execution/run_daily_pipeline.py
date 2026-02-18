@@ -310,6 +310,41 @@ def main():
     
     log("✅ Growth engine complete")
     
+    # ========================================
+    # STEP 8: Sponsor Discovery (auto-find leads from click data)
+    # ========================================
+    log("\n" + "=" * 60)
+    log("STEP 8: Sponsor Discovery", "INFO")
+    log("=" * 60)
+    log("🔍 Finding sponsor leads from recent article clicks...")
+    
+    site_url = os.environ.get("SITE_URL", "https://brief.delights.pro")
+    cron_secret = os.environ.get("CRON_SECRET", os.environ.get("SUPABASE_SERVICE_KEY", ""))
+    
+    if cron_secret:
+        try:
+            import urllib.request
+            req = urllib.request.Request(
+                f"{site_url}/api/cron/discover-sponsors",
+                data=b'{}',
+                headers={
+                    'Content-Type': 'application/json',
+                    'x-cron-secret': cron_secret,
+                },
+                method='POST',
+            )
+            with urllib.request.urlopen(req, timeout=30) as resp:
+                result = json.loads(resp.read())
+                leads = result.get('leadsWritten', 0)
+                incumbents = result.get('incumbentsDetected', [])
+                log(f"✅ Sponsor discovery: {leads} new leads, {len(incumbents)} incumbents detected")
+                if incumbents:
+                    log(f"   Incumbents: {', '.join(incumbents[:5])}")
+        except Exception as e:
+            log(f"⚠️ Sponsor discovery failed (non-blocking): {e}", "WARN")
+    else:
+        log("⚠️ No CRON_SECRET set — skipping automated sponsor discovery", "WARN")
+    
     # Summary
     generate_summary(segments)
     
