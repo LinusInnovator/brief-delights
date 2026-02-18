@@ -8,6 +8,7 @@ import json
 import os
 import sys
 import argparse
+import re
 import urllib.parse
 from datetime import datetime
 from pathlib import Path
@@ -53,8 +54,13 @@ def wrap_article_links_for_tracking(articles: list, segment: str, date: str) -> 
     base_url = "https://brief.delights.pro/api/track"
     
     for article in articles:
-        original_url = article.get('source', '')
+        original_url = article.get('url', '')  # The actual article URL (not 'source' which is the publisher name)
         title = article.get('title', '')[:100]  # Truncate long titles
+        
+        if not original_url:
+            # Skip tracking for articles without URLs
+            article['tracked_url'] = '#'
+            continue
         
         # Build tracking URL with parameters
         params = {
@@ -129,11 +135,64 @@ def load_template() -> Template:
         """)
 
 
+def calculate_read_time(word_count: int) -> int:
+    """Calculate read time in minutes based on word count (200 words/min average)"""
+    if word_count == 0:
+        return 1
+    return max(1, min(round(word_count / 200), 15))
+
+
+def fix_read_times(articles: list, log_file: Path) -> list:
+    """Recalculate read_time_minutes from raw_content word count.
+    The summarizer may produce stale values when raw_content is truncated."""
+    for article in articles:
+        raw = article.get('raw_content', '') or article.get('description', '')
+        word_count = len(raw.split())
+        old_rt = article.get('read_time_minutes', 1)
+        article['read_time_minutes'] = calculate_read_time(word_count)
+        if article['read_time_minutes'] != old_rt:
+            log(f"  ⏱️ Read time fix: '{article['title'][:40]}' {old_rt}→{article['read_time_minutes']} min ({word_count} words)", log_file)
+    return articles
+
+
+def get_dynamic_scanned_count(segment_id: str, date: str) -> str:
+    """Read actual article count from the aggregation output."""
+    agg_file = TMP_DIR / f"aggregated_{segment_id}_{date}.json"
+    if agg_file.exists():
+        try:
+            with open(agg_file) as f:
+                data = json.load(f)
+            count = len(data.get('articles', []))
+            if count > 0:
+                return f"{count:,}"
+        except Exception:
+            pass
+    
+    # Fallback: check the aggregation log for the count
+    log_file = TMP_DIR / f"aggregation_{segment_id}_log_{date}.txt"
+    if log_file.exists():
+        try:
+            text = log_file.read_text()
+            # Look for patterns like "Found 1340 articles" or "1340 total articles"
+            match = re.search(r'(\d[\d,]+)\s*(?:total\s+)?(?:articles?|entries|items)\s+(?:found|fetched|collected|aggregated)', text, re.IGNORECASE)
+            if not match:
+                match = re.search(r'(?:Found|Fetched|Collected|Total:?)\s*(\d[\d,]+)', text, re.IGNORECASE)
+            if match:
+                return match.group(1)
+        except Exception:
+            pass
+    
+    return "1,300+"  # Reasonable fallback based on RSS pool size
+
+
 def compose_newsletter(articles: list, segment_id: str, segment_config: dict, log_file: Path) -> str:
     """Compose the final newsletter HTML for a specific segment with multi-tier support"""
     log("=" * 60, log_file)
     log(f"Composing Newsletter for {segment_config['name']} {segment_config['emoji']}", log_file)
     log("=" * 60, log_file)
+    
+    # Fix read times from raw content word count
+    articles = fix_read_times(articles, log_file)
     
     # Separate articles by tier
     full_articles = [a for a in articles if a.get('tier', 'full') == 'full']
@@ -175,6 +234,9 @@ def compose_newsletter(articles: list, segment_id: str, segment_config: dict, lo
     sections.sort(key=lambda s: priority_order.index(s['category']) 
                   if s['category'] in priority_order else 999)
     
+    # Get dynamic scanned count from aggregation data
+    total_scanned = get_dynamic_scanned_count(segment_id, TODAY)
+    
     # Load template
     template = load_template()
     
@@ -189,9 +251,9 @@ def compose_newsletter(articles: list, segment_id: str, segment_config: dict, lo
         sections=sections,
         quick_links=quick_links,
         trending=trending,
-        total_scanned="1,340+",  # From RSS aggregation
-        total_enriched="~400",    # Articles we scraped content for
-        total_selected=len(articles),  # Final selected count
+        total_scanned=total_scanned,
+        total_enriched=f"~{len(articles) * 15}",  # Rough estimate of enriched pool
+        total_selected=len(articles),
         website_url=WEBSITE_URL,
         unsubscribe_url=UNSUBSCRIBE_URL
     )
