@@ -1,0 +1,49 @@
+{
+    "experiment_id": "exp_seed_001",
+    "active": true,
+    "variants": {
+        "var_champion": {
+            "slot": "champion",
+            "weight": 70,
+            "content": {
+                "banner_text": "Just launched — Be among the first subscribers",
+                "banner_cta": "Join free →",
+                "badge_text": "Tech Intelligence, Curated for Your Role",
+                "headline": "Brief",
+                "headline_accent": "delights",
+                "subheadline": "Get the top 14 stories that matter to your role—daily. Plus weekly strategic insights that connect the dots. We read 1,340+ articles so you don't have to.",
+                "cta_primary": "Subscribe Free",
+                "cta_secondary": "See Archive"
+            }
+        },
+        "var_challenger": {
+            "slot": "challenger",
+            "weight": 20,
+            "content": {
+                "banner_text": "🚀 AI-curated news, zero noise — daily in your inbox",
+                "banner_cta": "Start reading →",
+                "badge_text": "Tech Intelligence, Curated for Your Role",
+                "headline": "Brief",
+                "headline_accent": "delights",
+                "subheadline": "14 must-read stories picked for builders, leaders, and innovators—delivered every morning. We scan 1,340+ articles so you stay sharp without the scroll.",
+                "cta_primary": "Get My Daily Brief",
+                "cta_secondary": "See Archive"
+            }
+        },
+        "var_explorer": {
+            "slot": "explorer",
+            "weight": 10,
+            "content": {
+                "banner_text": "Your competitors read this every morning",
+                "banner_cta": "Don't fall behind →",
+                "badge_text": "The Daily Tech Brief That Respects Your Time",
+                "headline": "Brief",
+                "headline_accent": "delights",
+                "subheadline": "Stop drowning in tabs. Get the 14 stories that actually matter—curated by AI, edited by humans, delivered before your first coffee.",
+                "cta_primary": "Subscribe in 10 Seconds",
+                "cta_secondary": "See Archive"
+            }
+        }
+    },
+    "updated_at": "2026-02-21T13:41:00Z"
+}

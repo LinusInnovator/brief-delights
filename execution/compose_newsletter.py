@@ -143,15 +143,17 @@ def calculate_read_time(word_count: int) -> int:
 
 
 def fix_read_times(articles: list, log_file: Path) -> list:
-    """Recalculate read_time_minutes from raw_content word count.
-    The summarizer may produce stale values when raw_content is truncated."""
+    """Fix missing or zero read times. Preserves values already set by the summarizer,
+    which has access to richer content than the raw RSS snippet available here."""
     for article in articles:
+        old_rt = article.get('read_time_minutes', 0) or 0
+        if old_rt > 0:
+            continue  # Summarizer already set a valid value
+        # Only recalculate if missing/zero
         raw = article.get('raw_content', '') or article.get('description', '')
         word_count = len(raw.split())
-        old_rt = article.get('read_time_minutes', 1)
         article['read_time_minutes'] = calculate_read_time(word_count)
-        if article['read_time_minutes'] != old_rt:
-            log(f"  ⏱️ Read time fix: '{article['title'][:40]}' {old_rt}→{article['read_time_minutes']} min ({word_count} words)", log_file)
+        log(f"  ⏱️ Read time fix: '{article['title'][:40]}' → {article['read_time_minutes']} min ({word_count} words)", log_file)
     return articles
 
 

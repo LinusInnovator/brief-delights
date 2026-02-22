@@ -37,6 +37,8 @@ const NAV_SECTIONS: NavSection[] = [
         items: [
             { href: '/admin/sponsors/insights', label: 'Insights', icon: '🔍' },
             { href: '/admin/sponsors/analytics', label: 'Analytics', icon: '📈' },
+            { href: '/admin/feedback', label: 'Feedback', icon: '💬' },
+            { href: '/admin/ab-testing', label: 'A/B Testing', icon: '🧪' },
         ],
     },
 ];

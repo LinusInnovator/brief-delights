@@ -4,7 +4,7 @@ import { supabase } from '../../../lib/supabase';
 
 export async function POST(request: NextRequest) {
     try {
-        const { email, segment, referrer } = await request.json();
+        const { email, segment, referrer, ab_variant_id } = await request.json();
 
         // Validate email
         if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
@@ -69,6 +69,15 @@ export async function POST(request: NextRequest) {
                 { error: 'Failed to create subscription' },
                 { status: 500 }
             );
+        }
+
+        // Track A/B conversion (non-blocking)
+        if (ab_variant_id) {
+            supabase.rpc('increment_ab_conversions', {
+                p_variant_id: ab_variant_id,
+            }).then(({ error: abError }) => {
+                if (abError) console.error('AB conversion tracking error:', abError.message);
+            });
         }
 
         // Send verification email using Resend

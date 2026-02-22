@@ -32,7 +32,11 @@ TODAY = datetime.now().strftime("%Y-%m-%d")
 # OpenRouter configuration
 client = OpenAI(
     base_url="https://openrouter.ai/api/v1",
-    api_key=os.getenv("OPENROUTER_API_KEY")
+    api_key=os.getenv("OPENROUTER_API_KEY"),
+    default_headers={
+        "HTTP-Referer": "https://brief.delights.pro",
+        "X-Title": "The Brief",
+    }
 )
 
 # Model selection (using faster/cheaper model for summaries)
@@ -221,9 +225,17 @@ def summarize_article(article: Dict, index: int, log_file: Path, trend_context: 
     start_time = time.time()
     
     try:
-        # Create prompt and get word count for fallback read time
-        prompt, word_count = create_summary_prompt(article, trend_context=trend_context)
-        calculated_read_time = calculate_read_time(word_count)
+        # Create prompt (content is truncated for the LLM, but we need full word count for read time)
+        prompt, _truncated_word_count = create_summary_prompt(article, trend_context=trend_context)
+        
+        # Calculate read time from FULL content, not the truncated prompt version
+        full_content = (
+            article.get('full_content', '') or
+            article.get('raw_content', '') or
+            article.get('description', '')
+        )
+        full_word_count = len(full_content.split())
+        calculated_read_time = calculate_read_time(full_word_count)
         
         # Get summary from LLM
         try:
@@ -239,7 +251,7 @@ def summarize_article(article: Dict, index: int, log_file: Path, trend_context: 
         article['read_time_minutes'] = calculated_read_time  # Always use our calculated value
         
         elapsed = time.time() - start_time
-        log(f"✅ Article {article_num} summarized in {elapsed:.2f}s ({article['read_time_minutes']} min read)", log_file)
+        log(f"✅ Article {article_num} summarized in {elapsed:.2f}s ({article['read_time_minutes']} min read, {full_word_count} words)", log_file)
         
         return article
         
