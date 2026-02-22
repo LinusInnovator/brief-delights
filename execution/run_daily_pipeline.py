@@ -45,17 +45,18 @@ def print_banner():
 
 
 def run_script(script_name: str, timeout: int, args: list = None) -> bool:
-    """Run a Python script"""
+    """Run a Python script with visible output"""
     script_path = EXECUTION_DIR / script_name
     cmd = [sys.executable, str(script_path)]
     if args:
         cmd.extend(args)
     
     try:
+        # Stream output to console so errors are visible in CI logs
         result = subprocess.run(
             cmd,
             cwd=PROJECT_ROOT,
-            capture_output=True,
+            capture_output=False,
             text=True,
             timeout=timeout
         )
@@ -64,10 +65,6 @@ def run_script(script_name: str, timeout: int, args: list = None) -> bool:
             return True
         else:
             log(f"❌ Script failed with exit code {result.returncode}", "ERROR")
-            if result.stderr:
-                for line in result.stderr.split('\n')[:10]:  # First 10 lines
-                    if line.strip():
-                        log(f"   {line}", "ERROR")
             return False
             
     except subprocess.TimeoutExpired:

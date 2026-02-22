@@ -412,7 +412,7 @@ async function sendAdminDigest(actions: string[]): Promise<void> {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-                from: process.env.EMAIL_SENDER || 'Brief Delights <hello@brief.delights.pro>',
+                from: process.env.EMAIL_SENDER || 'Brief Delights <hello@send.dreamvalidator.com>',
                 to: [adminEmail],
                 subject: `🧪 A/B Engine: ${actions.length} action(s) taken`,
                 html: `

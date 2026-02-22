@@ -92,7 +92,7 @@ export async function POST(request: NextRequest) {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({
-                    from: process.env.EMAIL_SENDER || 'Brief Delights <hello@brief.delights.pro>',
+                    from: process.env.EMAIL_SENDER || 'Brief Delights <hello@send.dreamvalidator.com>',
                     to: [email],
                     subject: 'Confirm your Brief Delights subscription',
                     html: `

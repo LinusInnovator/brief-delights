@@ -520,10 +520,22 @@ def main():
         for segment_id, results in all_results.items():
             fallback_indicator = " (FALLBACK)" if results.get('used_fallback', False) else ""
             log(f"  {segment_id}: {results['sent']} sent, {results['failed']} failed{fallback_indicator}")
+            # Print individual error details so they show in CI logs
+            if results['failed'] > 0:
+                for detail in results.get('details', []):
+                    if detail.get('status') == 'failed':
+                        log(f"    ↳ {detail['email']}: {detail.get('error', 'unknown error')}")
+                if results.get('error'):
+                    log(f"    ↳ Segment error: {results['error']}")
         
         # Log execution time
         elapsed = (datetime.now() - start_time).total_seconds()
         log(f"\n⏱️ Total execution time: {elapsed:.2f} seconds")
+        
+        # Fail if ANY sends failed — we want clockwork reliability
+        if total_failed > 0:
+            log(f"\n❌ DELIVERY INCOMPLETE: {total_failed} email(s) failed to send")
+            return False
         
         return True
         
