@@ -91,22 +91,25 @@ def heal_broken_links(articles: List[Dict], segment_id: str) -> Tuple[bool, str]
 
 
 def heal_read_times(articles: List[Dict]) -> Tuple[bool, str]:
-    """Recalculate read_time_minutes from raw_content word count."""
+    """Fix missing or zero read times. Preserves values already set by the summarizer,
+    which has access to richer content than the raw RSS snippet available here."""
     fixed = 0
 
     for article in articles:
+        old = article.get('read_time_minutes', 0) or 0
+        if old > 0:
+            continue  # Summarizer already set a valid value
+
         raw = article.get('raw_content', '') or article.get('description', '')
         word_count = len(raw.split())
-        old = article.get('read_time_minutes', 1)
 
         if word_count == 0:
             new = 1
         else:
             new = max(1, min(round(word_count / 200), 15))
 
-        if new != old:
-            article['read_time_minutes'] = new
-            fixed += 1
+        article['read_time_minutes'] = new
+        fixed += 1
 
     if fixed > 0:
         return True, f"Fixed {fixed} read times"

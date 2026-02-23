@@ -467,8 +467,8 @@
             <p style="font-size: 22px; font-weight: 700; margin: 0 0 4px 0; color: #000;">🎯 Share Brief Delights,
                 Unlock Rewards</p>
             <p style="font-size: 14px; color: #666; margin: 0 0 20px 0;">You've referred <strong
-                    style="color: #4f46e5;">{{ referral_count }}</strong> reader{{ referral_count_plural }}. {{
-                referral_remaining }} more to unlock: <strong>{{ referral_next_reward }}</strong>
+                    style="color: #4f46e5;">{{ '{{ referral_count }}' }}</strong> reader{{ '{{ referral_count_plural }}'
+                }}. {{ '{{ referral_remaining }}' }} more to unlock: <strong>{{ '{{ referral_next_reward }}' }}</strong>
             </p>
 
             <!-- Milestone Progress Bar -->
@@ -476,14 +476,14 @@
                 <div
                     style="display: flex; justify-content: space-between; margin-bottom: 6px; font-size: 11px; color: #999;">
                     <span>0</span>
-                    <span style="MILESTONE_1_STYLE">1 🏅</span>
-                    <span style="MILESTONE_3_STYLE">3 📰</span>
-                    <span style="MILESTONE_5_STYLE">5 🔓</span>
-                    <span style="MILESTONE_10_STYLE">10 ⭐</span>
+                    <span style="{{ 'MILESTONE_1_STYLE' }}">1 🏅</span>
+                    <span style="{{ 'MILESTONE_3_STYLE' }}">3 📰</span>
+                    <span style="{{ 'MILESTONE_5_STYLE' }}">5 🔓</span>
+                    <span style="{{ 'MILESTONE_10_STYLE' }}">10 ⭐</span>
                 </div>
                 <div style="background: #e5e7eb; border-radius: 999px; height: 8px; overflow: hidden;">
                     <div
-                        style="background: linear-gradient(90deg, #4f46e5, #7c3aed); height: 100%; border-radius: 999px; width: PROGRESS_BAR_WIDTH%;">
+                        style="background: linear-gradient(90deg, #4f46e5, #7c3aed); height: 100%; border-radius: 999px; width: {{ 'PROGRESS_BAR_WIDTH' }}%;">
                     </div>
                 </div>
             </div>
@@ -495,20 +495,36 @@
                     style="font-size: 11px; color: #999; margin: 0 0 4px 0; text-transform: uppercase; letter-spacing: 1px;">
                     Your personal link</p>
                 <p style="font-size: 16px; font-weight: 600; color: #4f46e5; margin: 0; word-break: break-all;">
-                    <a href="https://brief.delights.pro/?ref={{ referral_code }}"
-                        style="color: #4f46e5; text-decoration: none;">brief.delights.pro/?ref={{ referral_code }}</a>
+                    <a href="https://brief.delights.pro/?ref={{ '{{ referral_code }}' }}"
+                        style="color: #4f46e5; text-decoration: none;">brief.delights.pro/?ref={{ '{{ referral_code }}'
+                        }}</a>
                 </p>
             </div>
 
             <!-- Social Share Buttons -->
             <p style="font-size: 13px; color: #999; margin: 0;">
-                <a href="https://twitter.com/intent/tweet?text=I%20read%20Brief%20Delights%20daily%20%E2%80%94%20AI-curated%20tech%20stories%20for%20your%20role.%20Free%20%26%20no%20spam.&url=https%3A%2F%2Fbrief.delights.pro%2F%3Fref%3D{{ referral_code }}"
+                <a href="https://twitter.com/intent/tweet?text=I%20read%20Brief%20Delights%20daily%20%E2%80%94%20AI-curated%20tech%20stories%20for%20your%20role.%20Free%20%26%20no%20spam.&url=https%3A%2F%2Fbrief.delights.pro%2F%3Fref%3D{{ '{{ referral_code }}' }}"
                     style="color: #666; text-decoration: none; margin: 0 8px; font-weight: 500;">𝕏 Twitter</a> ·
-                <a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fbrief.delights.pro%2F%3Fref%3D{{ referral_code }}"
+                <a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fbrief.delights.pro%2F%3Fref%3D{{ '{{ referral_code }}' }}"
                     style="color: #666; text-decoration: none; margin: 0 8px; font-weight: 500;">LinkedIn</a> ·
-                <a href="mailto:?subject=Check%20out%20Brief%20Delights&body=I%20read%20this%20daily%20tech%20brief%20and%20thought%20you'd%20find%20it%20useful%3A%20https%3A%2F%2Fbrief.delights.pro%2F%3Fref%3D{{ referral_code }}"
+                <a href="mailto:?subject=Check%20out%20Brief%20Delights&body=I%20read%20this%20daily%20tech%20brief%20and%20thought%20you'd%20find%20it%20useful%3A%20https%3A%2F%2Fbrief.delights.pro%2F%3Fref%3D{{ '{{ referral_code }}' }}"
                     style="color: #666; text-decoration: none; margin: 0 8px; font-weight: 500;">📧 Email</a>
             </p>
+        </div>
+
+        <!-- Feedback Rating -->
+        <div style="background: #ffffff; padding: 28px 40px; text-align: center; border-top: 1px solid #e8e8e8;">
+            <p style="font-size: 15px; font-weight: 600; color: #000; margin: 0 0 4px 0;">How was today's Brief?</p>
+            <p style="font-size: 12px; color: #999; margin: 0 0 16px 0;">Your feedback shapes tomorrow's edition</p>
+            <div style="font-size: 28px;">
+                <a href="https://brief.delights.pro/feedback?rating=loved&date={{ date }}&segment={{ segment_name.split()[0]|lower|default('builders') }}"
+                    style="text-decoration: none; margin: 0 12px;">🔥</a>
+                <a href="https://brief.delights.pro/feedback?rating=good&date={{ date }}&segment={{ segment_name.split()[0]|lower|default('builders') }}"
+                    style="text-decoration: none; margin: 0 12px;">👍</a>
+                <a href="https://brief.delights.pro/feedback?rating=meh&date={{ date }}&segment={{ segment_name.split()[0]|lower|default('builders') }}"
+                    style="text-decoration: none; margin: 0 12px;">😐</a>
+            </div>
+            <p style="font-size: 11px; color: #bbb; margin: 8px 0 0 0;">Loved it · Good · Meh</p>
         </div>
 
         <!-- Footer -->

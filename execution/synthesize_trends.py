@@ -20,7 +20,11 @@ load_dotenv()
 # Initialize OpenAI client (via OpenRouter)
 client = OpenAI(
     base_url="https://openrouter.ai/api/v1",
-    api_key=os.getenv("OPENROUTER_API_KEY")
+    api_key=os.getenv("OPENROUTER_API_KEY"),
+    default_headers={
+        "HTTP-Referer": "https://brief.delights.pro",
+        "X-Title": "The Brief",
+    }
 )
 
 MODEL = "anthropic/claude-3.5-sonnet"

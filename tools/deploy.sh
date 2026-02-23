@@ -38,6 +38,15 @@ rsync -av --exclude='.git' --exclude='.tmp' --exclude='__pycache__' \
 rsync -av "$ICLOUD_DIR/.github/" "$TMP_REPO/.github/"
 rsync -av "$ICLOUD_DIR/requirements.txt" "$TMP_REPO/"
 rsync -av "$ICLOUD_DIR/README.md" "$TMP_REPO/" 2>/dev/null || true
+
+# Pipeline-critical root files: templates, configs, tools
+rsync -av "$ICLOUD_DIR/newsletter_template.html" "$TMP_REPO/"
+rsync -av "$ICLOUD_DIR/newsletter_teaser_weekly.html" "$TMP_REPO/"
+rsync -av "$ICLOUD_DIR/segments_config.json" "$TMP_REPO/"
+rsync -av "$ICLOUD_DIR/feeds_config.json" "$TMP_REPO/"
+rsync -av "$ICLOUD_DIR/subscribers.json" "$TMP_REPO/"
+rsync -av --exclude='__pycache__' "$ICLOUD_DIR/feeds_config/" "$TMP_REPO/feeds_config/" 2>/dev/null || true
+rsync -av "$ICLOUD_DIR/tools/" "$TMP_REPO/tools/" 2>/dev/null || true
 echo "  ✅ Files synced"
 echo ""
 

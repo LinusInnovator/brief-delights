@@ -1,17 +1,56 @@
 'use client';
 
-import { useRef } from 'react';
+import { useRef, useEffect } from 'react';
 import SignupForm, { SignupFormRef } from './SignupForm';
 
 type Segment = 'builders' | 'leaders' | 'innovators';
 
+interface ABVariantContent {
+    banner_text?: string;
+    banner_cta?: string;
+    badge_text?: string;
+    headline?: string;
+    headline_accent?: string;
+    subheadline?: string;
+    cta_primary?: string;
+    cta_secondary?: string;
+}
+
 export default function ClientPage({
     subscriberCount,
-    referrer
+    referrer,
+    abVariant,
+    abVariantId,
+    abExperimentId,
 }: {
     subscriberCount: number;
     referrer?: string | null;
+    abVariant?: ABVariantContent | null;
+    abVariantId?: string | null;
+    abExperimentId?: string | null;
 }) {
+    // Track impression on mount
+    useEffect(() => {
+        if (abVariantId && abExperimentId) {
+            fetch('/api/ab-impression', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ variant_id: abVariantId, experiment_id: abExperimentId }),
+            }).catch(() => { }); // Non-blocking
+        }
+    }, [abVariantId, abExperimentId]);
+
+    // A/B content with fallbacks to current defaults
+    const content = {
+        banner_text: abVariant?.banner_text || 'Just launched — Be among the first subscribers',
+        banner_cta: abVariant?.banner_cta || 'Join free →',
+        badge_text: abVariant?.badge_text || 'Tech Intelligence, Curated for Your Role',
+        headline: abVariant?.headline || 'Brief',
+        headline_accent: abVariant?.headline_accent || 'delights',
+        subheadline: abVariant?.subheadline || "Get the top 14 stories that matter to your role—daily. Plus weekly strategic insights that connect the dots. We read 1,340+ articles so you don't have to.",
+        cta_primary: abVariant?.cta_primary || 'Subscribe Free',
+        cta_secondary: abVariant?.cta_secondary || 'See Archive',
+    };
     const signupFormRef = useRef<SignupFormRef>(null);
 
     const handleSegmentClick = (segment: Segment) => {
@@ -46,9 +85,9 @@ export default function ClientPage({
                         <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
                         <span className="relative inline-flex rounded-full h-2 w-2 bg-green-400"></span>
                     </span>
-                    Just launched — Be among the first subscribers
+                    {content.banner_text}
                     <button onClick={scrollToSignup} className="underline font-bold hover:text-white/90 transition ml-1">
-                        Join free →
+                        {content.banner_cta}
                     </button>
                 </span>
             </div>
@@ -56,18 +95,18 @@ export default function ClientPage({
             {/* Hero Section */}
             <section className="max-w-6xl mx-auto px-6 py-20 text-center">
                 <div className="inline-block bg-gray-100 px-4 py-2 rounded-full text-sm font-semibold text-gray-700 mb-6">
-                    Tech Intelligence, Curated for Your Role
+                    {content.badge_text}
                 </div>
 
                 <h1 className="text-5xl md:text-6xl font-bold mb-6 text-gray-900 leading-tight">
-                    Brief
+                    {content.headline}
                     <span className="block mt-2 bg-gradient-to-r from-orange-500 via-blue-600 to-purple-600 bg-clip-text text-transparent">
-                        delights
+                        {content.headline_accent}
                     </span>
                 </h1>
 
                 <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
-                    Get the top 14 stories that matter to your role—daily. Plus weekly strategic insights that connect the dots. We read 1,340+ articles so you don&apos;t have to.
+                    {content.subheadline}
                 </p>
 
                 <div className="flex gap-3 justify-center">
@@ -75,13 +114,13 @@ export default function ClientPage({
                         onClick={scrollToSignup}
                         className="bg-gray-900 text-white px-6 py-3 rounded-lg font-semibold hover:bg-gray-800 transition"
                     >
-                        Subscribe Free
+                        {content.cta_primary}
                     </button>
                     <a
                         href="/archive"
                         className="border-2 border-gray-300 text-gray-700 px-6 py-3 rounded-lg font-semibold hover:border-gray-400 transition"
                     >
-                        See Archive
+                        {content.cta_secondary}
                     </a>
                 </div>
 
@@ -178,7 +217,7 @@ export default function ClientPage({
                     )}
                 </p>
 
-                <SignupForm ref={signupFormRef} referrer={referrer} />
+                <SignupForm ref={signupFormRef} referrer={referrer} abVariantId={abVariantId} />
             </section>
 
             {/* Value Props */}

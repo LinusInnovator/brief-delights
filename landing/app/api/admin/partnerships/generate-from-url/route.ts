@@ -86,6 +86,10 @@ async function generateContent(url: string, metadata: any) {
         const openai = new OpenAI({
             apiKey: openrouterKey,
             baseURL: OPENROUTER_BASE_URL,
+            defaultHeaders: {
+                'HTTP-Referer': 'https://brief.delights.pro',
+                'X-Title': 'The Brief',
+            },
         });
 
         const prompt = `You are a master copywriter creating sponsored content for a technical newsletter read by builders and innovators.

@@ -166,7 +166,7 @@ def extract_with_bs4(html: str) -> Optional[str]:
         return None
 
 
-def clean_text(text: str, max_chars: int = 3000) -> str:
+def clean_text(text: str, max_chars: int = 100000) -> str:
     """Clean and truncate extracted text"""
     # Remove excessive whitespace
     lines = [line.strip() for line in text.split('\n') if line.strip()]

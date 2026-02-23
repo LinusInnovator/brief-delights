@@ -143,15 +143,17 @@ def calculate_read_time(word_count: int) -> int:
 
 
 def fix_read_times(articles: list, log_file: Path) -> list:
-    """Recalculate read_time_minutes from raw_content word count.
-    The summarizer may produce stale values when raw_content is truncated."""
+    """Fix missing or zero read times. Preserves values already set by the summarizer,
+    which has access to richer content than the raw RSS snippet available here."""
     for article in articles:
+        old_rt = article.get('read_time_minutes', 0) or 0
+        if old_rt > 0:
+            continue  # Summarizer already set a valid value
+        # Only recalculate if missing/zero
         raw = article.get('raw_content', '') or article.get('description', '')
         word_count = len(raw.split())
-        old_rt = article.get('read_time_minutes', 1)
         article['read_time_minutes'] = calculate_read_time(word_count)
-        if article['read_time_minutes'] != old_rt:
-            log(f"  ⏱️ Read time fix: '{article['title'][:40]}' {old_rt}→{article['read_time_minutes']} min ({word_count} words)", log_file)
+        log(f"  ⏱️ Read time fix: '{article['title'][:40]}' → {article['read_time_minutes']} min ({word_count} words)", log_file)
     return articles
 
 
@@ -194,12 +196,21 @@ def compose_newsletter(articles: list, segment_id: str, segment_config: dict, lo
     # Fix read times from raw content word count
     articles = fix_read_times(articles, log_file)
     
-    # Separate articles by tier
-    full_articles = [a for a in articles if a.get('tier', 'full') == 'full']
-    quick_links = [a for a in articles if a.get('tier') == 'quick']
-    trending = [a for a in articles if a.get('tier') == 'trending']
+    # Separate articles by tier and drop any missing a URL
+    valid_articles = []
+    for a in articles:
+        # Check if the url is missing, empty, or just a hash
+        url = a.get('url', '').strip()
+        if not url or url == '#':
+            log(f"⚠️ Dropping article missing valid URL: '{a.get('title', 'Unknown')[:40]}'", log_file)
+            continue
+        valid_articles.append(a)
+            
+    full_articles = [a for a in valid_articles if a.get('tier', 'full') == 'full']
+    quick_links = [a for a in valid_articles if a.get('tier') == 'quick']
+    trending = [a for a in valid_articles if a.get('tier') == 'trending']
     
-    log(f"📊 Separated {len(articles)} articles: {len(full_articles)} full, {len(quick_links)} quick, {len(trending)} trending", log_file)
+    log(f"📊 Separated {len(valid_articles)} valid articles: {len(full_articles)} full, {len(quick_links)} quick, {len(trending)} trending", log_file)
     
     # Wrap article links with click tracking (GDPR-compliant)
     full_articles = wrap_article_links_for_tracking(full_articles, segment_id, TODAY)

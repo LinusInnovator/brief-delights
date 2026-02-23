@@ -11,7 +11,8 @@ export interface SignupFormRef {
 const SignupForm = forwardRef<SignupFormRef, {
     preSelectedSegment?: Segment;
     referrer?: string | null;
-}>(({ preSelectedSegment, referrer }, ref) => {
+    abVariantId?: string | null;
+}>(({ preSelectedSegment, referrer, abVariantId }, ref) => {
     const [email, setEmail] = useState('');
     const [segment, setSegment] = useState<Segment>(preSelectedSegment || 'innovators');
     const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
@@ -44,7 +45,7 @@ const SignupForm = forwardRef<SignupFormRef, {
             const response = await fetch('/api/subscribe', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ email, segment, referrer })
+                body: JSON.stringify({ email, segment, referrer, ab_variant_id: abVariantId })
             });
 
             const data = await response.json();

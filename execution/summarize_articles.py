@@ -32,7 +32,11 @@ TODAY = datetime.now().strftime("%Y-%m-%d")
 # OpenRouter configuration
 client = OpenAI(
     base_url="https://openrouter.ai/api/v1",
-    api_key=os.getenv("OPENROUTER_API_KEY")
+    api_key=os.getenv("OPENROUTER_API_KEY"),
+    default_headers={
+        "HTTP-Referer": "https://brief.delights.pro",
+        "X-Title": "The Brief",
+    }
 )
 
 # Model selection (using faster/cheaper model for summaries)
@@ -189,15 +193,26 @@ def summarize_article(article: Dict, index: int, log_file: Path, trend_context: 
     
     # QUICK LINKS: Skip LLM, use description as one-liner
     if tier == 'quick':
+        import re
         log(f"⚡ Quick link {article_num}: {article['title'][:60]}...", log_file)
         
-        # Extract 2-3 sentences or use description
+        # Extract description or raw content
         description = article.get('description', '') or article.get('raw_content', '')
         
+        # 1. Strip all raw HTML tags (to prevent blue links and font breaks)
+        clean_desc = re.sub(r'<[^>]+>', '', description)
+        
+        # 2. Remove annoying automated RSS advertising footers (e.g. WordPress)
+        clean_desc = re.sub(r'The post.*?appeared first on.*', '', clean_desc, flags=re.IGNORECASE)
+        
+        # 3. Clean up whitespace
+        clean_desc = " ".join(clean_desc.split())
+        
         # Get first 2-3 sentences (up to 200 chars)
-        sentences = description.split('. ')
+        sentences = clean_desc.split('. ')
         snippet = ''
         for i, sent in enumerate(sentences[:3]):
+            if not sent: continue
             snippet += sent + '. '
             if len(snippet) > 200 or i >= 1:  # Stop after 2 sentences or 200 chars
                 break
@@ -206,13 +221,19 @@ def summarize_article(article: Dict, index: int, log_file: Path, trend_context: 
         if len(snippet) > 250:
             snippet = snippet[:247] + "..."
         
-        # Calculate read time from description word count
-        desc_word_count = len(description.split())
+        # 4. Calculate ACCURATE read time from FULL content, not this tiny snippet
+        full_content = (
+            article.get('full_content', '') or
+            article.get('raw_content', '') or
+            clean_desc
+        )
+        full_word_count = len(full_content.split())
+        
         article['summary'] = snippet
         article['key_takeaway'] = ''
-        article['read_time_minutes'] = calculate_read_time(desc_word_count)
+        article['read_time_minutes'] = calculate_read_time(full_word_count)
         
-        log(f"✅ Quick link {article_num} processed (no LLM needed)", log_file)
+        log(f"✅ Quick link {article_num} processed ({article['read_time_minutes']} min read, {full_word_count} words)", log_file)
         return article
     
     # FULL & TRENDING: Use LLM for summaries
@@ -221,9 +242,27 @@ def summarize_article(article: Dict, index: int, log_file: Path, trend_context: 
     start_time = time.time()
     
     try:
-        # Create prompt and get word count for fallback read time
-        prompt, word_count = create_summary_prompt(article, trend_context=trend_context)
-        calculated_read_time = calculate_read_time(word_count)
+        # NEW: Scrape full article on-the-fly if missing to guarantee accurate read time
+        if not article.get('full_content'):
+            url = article.get('url', '')
+            if url:
+                fallback = article.get('raw_content', '') or article.get('description', '')
+                log(f"  🔍 Fetching full article content for accurate read time...", log_file)
+                # Keep import local to avoid circular deps with multiprocessing
+                from scrape_articles import scrape_article 
+                article['full_content'] = scrape_article(url, fallback_content=fallback)
+
+        # Create prompt (content is truncated for the LLM, but we need full word count for read time)
+        prompt, _truncated_word_count = create_summary_prompt(article, trend_context=trend_context)
+        
+        # Calculate read time from FULL content, not the truncated prompt version
+        full_content = (
+            article.get('full_content', '') or
+            article.get('raw_content', '') or
+            article.get('description', '')
+        )
+        full_word_count = len(full_content.split())
+        calculated_read_time = calculate_read_time(full_word_count)
         
         # Get summary from LLM
         try:
@@ -239,7 +278,7 @@ def summarize_article(article: Dict, index: int, log_file: Path, trend_context: 
         article['read_time_minutes'] = calculated_read_time  # Always use our calculated value
         
         elapsed = time.time() - start_time
-        log(f"✅ Article {article_num} summarized in {elapsed:.2f}s ({article['read_time_minutes']} min read)", log_file)
+        log(f"✅ Article {article_num} summarized in {elapsed:.2f}s ({article['read_time_minutes']} min read, {full_word_count} words)", log_file)
         
         return article
         

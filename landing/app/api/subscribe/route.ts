@@ -4,7 +4,7 @@ import { supabase } from '../../../lib/supabase';
 
 export async function POST(request: NextRequest) {
     try {
-        const { email, segment, referrer } = await request.json();
+        const { email, segment, referrer, ab_variant_id } = await request.json();
 
         // Validate email
         if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
@@ -29,14 +29,45 @@ export async function POST(request: NextRequest) {
             .eq('email', email)
             .single();
 
+        let finalSegmentString = segment;
+
         if (existingUser) {
-            if (existingUser.status === 'confirmed') {
-                return NextResponse.json(
-                    { error: 'This email is already subscribed!' },
-                    { status: 400 }
-                );
+            const currentSegments = existingUser.segment ? existingUser.segment.split(',').map((s: string) => s.trim()) : [];
+
+            if (currentSegments.includes(segment)) {
+                if (existingUser.status === 'confirmed') {
+                    return NextResponse.json(
+                        { error: 'This email is already subscribed to this newsletter!' },
+                        { status: 400 }
+                    );
+                }
+                // If pending, proceed to resend verification without altering the segments
+                finalSegmentString = existingUser.segment;
+            } else {
+                // They aren't subscribed to this specific segment yet
+                finalSegmentString = [...currentSegments, segment].join(',');
+
+                // If they are already a confirmed subscriber, skip verification and instantly add the segment
+                if (existingUser.status === 'confirmed') {
+                    const { error: updateError } = await supabase
+                        .from('subscribers')
+                        .update({ segment: finalSegmentString })
+                        .eq('email', email);
+
+                    if (updateError) {
+                        console.error('Database error:', updateError);
+                        return NextResponse.json(
+                            { error: 'Failed to add new newsletter to subscription' },
+                            { status: 500 }
+                        );
+                    }
+
+                    return NextResponse.json({
+                        success: true,
+                        message: 'You are already a confirmed member! We instantly added this newsletter to your subscription. 🎉',
+                    });
+                }
             }
-            // If pending, we can resend verification
         }
 
         // Generate verification token
@@ -46,7 +77,7 @@ export async function POST(request: NextRequest) {
         // Create or update subscriber in database
         const subscriberData: Record<string, string> = {
             email,
-            segment,
+            segment: finalSegmentString,
             status: 'pending',
             verification_token: token,
             token_expires_at: expiresAt.toISOString(),
@@ -71,6 +102,15 @@ export async function POST(request: NextRequest) {
             );
         }
 
+        // Track A/B conversion (non-blocking)
+        if (ab_variant_id) {
+            supabase.rpc('increment_ab_conversions', {
+                p_variant_id: ab_variant_id,
+            }).then(({ error: abError }) => {
+                if (abError) console.error('AB conversion tracking error:', abError.message);
+            });
+        }
+
         // Send verification email using Resend
         const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || request.nextUrl.origin;
         const verificationUrl = `${baseUrl}/api/verify?token=${token}`;
@@ -83,7 +123,7 @@ export async function POST(request: NextRequest) {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({
-                    from: process.env.EMAIL_SENDER || 'Brief Delights <hello@brief.delights.pro>',
+                    from: process.env.EMAIL_SENDER || 'Brief Delights <hello@send.dreamvalidator.com>',
                     to: [email],
                     subject: 'Confirm your Brief Delights subscription',
                     html: `

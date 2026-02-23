@@ -106,8 +106,8 @@ def call_llm(prompt: str, model: str = "anthropic/claude-3.5-sonnet") -> str:
     headers = {
         "Authorization": f"Bearer {OPENROUTER_API_KEY}",
         "Content-Type": "application/json",
-        "HTTP-Referer": "https://dreamvalidator.com",
-        "X-Title": "Brief Delights Weekly Insights"
+        "HTTP-Referer": "https://brief.delights.pro",
+        "X-Title": "The Brief"
     }
     
     payload = {
