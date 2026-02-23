@@ -286,48 +286,8 @@ def personalize_referral(html_content: str, subscriber: dict) -> str:
     return html
 
 
-def send_email(subscriber: dict, html_content: str, segment_name: str, ab_enabled: bool = True) -> dict:
-    """Send email to individual subscriber"""
-    try:
-        # Personalize referral section for this subscriber
-        personalized_html = personalize_referral(html_content, subscriber)
-        
-        # A/B subject line
-        date_str = datetime.now().strftime('%B %d, %Y')
-        segment_short = segment_name.split()[0]
-        if ab_enabled:
-            variant = random.choice(['A', 'B'])
-            subject = SUBJECT_VARIANTS[variant].format(segment=segment_short, date=date_str)
-        else:
-            variant = 'none'
-            subject = SUBJECT_VARIANTS['A'].format(segment=segment_short, date=date_str)
-        
-        response = resend.Emails.send({
-            "from": EMAIL_SENDER,
-            "to": subscriber['email'],
-            "subject": subject,
-            "html": personalized_html
-        })
-        
-        return {
-            "email": subscriber['email'],
-            "status": "success",
-            "message_id": response.get('id'),
-            "subject_variant": variant,
-            "timestamp": datetime.now().isoformat()
-        }
-        
-    except Exception as e:
-        return {
-            "email": subscriber['email'],
-            "status": "failed",
-            "error": str(e),
-            "timestamp": datetime.now().isoformat()
-        }
-
-
 def send_to_segment(segment_id: str, subscribers: list, html_content: str, segment_name: str, ab_enabled: bool = True) -> dict:
-    """Send newsletter to all subscribers in a segment"""
+    """Send newsletter to all subscribers in a segment using Resend Batch API"""
     log(f"\n📧 Sending to {segment_name} segment ({len(subscribers)} subscribers)")
     
     results = {
@@ -336,7 +296,9 @@ def send_to_segment(segment_id: str, subscribers: list, html_content: str, segme
         "details": []
     }
     
-    # Process in batches
+    # Resend batch limit is 100 emails per request
+    BATCH_SIZE = min(getattr(sys.modules[__name__], 'BATCH_SIZE', 100), 100)
+    
     for i in range(0, len(subscribers), BATCH_SIZE):
         batch = subscribers[i:i + BATCH_SIZE]
         batch_num = (i // BATCH_SIZE) + 1
@@ -344,16 +306,80 @@ def send_to_segment(segment_id: str, subscribers: list, html_content: str, segme
         
         log(f"  Batch {batch_num}/{total_batches} ({len(batch)} emails)")
         
+        # Prepare batch payload
+        batch_payload = []
+        batch_metadata = [] # Keep track of who is who
+        
         for subscriber in batch:
-            result = send_email(subscriber, html_content, segment_name, ab_enabled=ab_enabled)
-            results['details'].append(result)
+            personalized_html = personalize_referral(html_content, subscriber)
             
-            if result['status'] == 'success':
-                results['sent'] += 1
-                log(f"    ✅ {subscriber['email']}")
+            date_str = datetime.now().strftime('%B %d, %Y')
+            segment_short = segment_name.split()[0]
+            if ab_enabled:
+                variant = random.choice(['A', 'B'])
+                subject = SUBJECT_VARIANTS[variant].format(segment=segment_short, date=date_str)
             else:
+                variant = 'none'
+                subject = SUBJECT_VARIANTS['A'].format(segment=segment_short, date=date_str)
+            
+            batch_payload.append({
+                "from": EMAIL_SENDER,
+                "to": subscriber['email'],
+                "subject": subject,
+                "html": personalized_html
+            })
+            batch_metadata.append({
+                "email": subscriber['email'],
+                "variant": variant
+            })
+            
+        # Send the batch
+        try:
+            response = resend.Batch.send(batch_payload)
+            # Response is a dict with 'data': [{'id': '...'}, {'id': '...'}, ...]
+            # or it might throw an Exception if the whole batch request fails
+            
+            returned_data = response.get('data', [])
+            
+            # Match responses back to subscribers
+            for idx, meta in enumerate(batch_metadata):
+                try:
+                    msg_id = returned_data[idx].get('id')
+                    result = {
+                        "email": meta['email'],
+                        "status": "success",
+                        "message_id": msg_id,
+                        "subject_variant": meta['variant'],
+                        "timestamp": datetime.now().isoformat()
+                    }
+                    results['details'].append(result)
+                    results['sent'] += 1
+                    log(f"    ✅ {meta['email']}")
+                except IndexError:
+                    # Rare: API returned fewer IDs than requested
+                    result = {
+                        "email": meta['email'],
+                        "status": "failed",
+                        "error": "Missing from batch response",
+                        "timestamp": datetime.now().isoformat()
+                    }
+                    results['details'].append(result)
+                    results['failed'] += 1
+                    log(f"    ❌ {meta['email']}: Missing from batch response")
+                    
+        except Exception as e:
+            # The entire HTTPS request failed (network, auth, rate limit)
+            log(f"    ❌ BATCH FAILURE: {str(e)}")
+            for meta in batch_metadata:
+                result = {
+                    "email": meta['email'],
+                    "status": "failed",
+                    "error": str(e),
+                    "timestamp": datetime.now().isoformat()
+                }
+                results['details'].append(result)
                 results['failed'] += 1
-                log(f"    ❌ {subscriber['email']}: {result['error']}")
+                log(f"    ❌ {meta['email']}: Batch request failed")
         
         # Rate limiting between batches
         if i + BATCH_SIZE < len(subscribers):
