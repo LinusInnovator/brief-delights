@@ -154,6 +154,17 @@ def validate_newsletter(segment_id: str, date: str = None) -> QualityReport:
 
     # ─── CHECK 4: No unrendered template placeholders ───
     unrendered = re.findall(r'\{\{[^}]+\}\}', html)
+    
+    # Whitelist placeholders intentionally left for send_newsletter.py to replace
+    allowed_placeholders = {
+        '{{ referral_code }}', '{{ referral_count }}', '{{ referral_count_plural }}',
+        '{{ referral_next_milestone }}', '{{ referral_next_reward }}', '{{ referral_remaining }}',
+        '{{ sponsor_cta_url }}'
+    }
+    
+    # Normalize spaces for comparison
+    unrendered = [p for p in unrendered if re.sub(r'\s+', ' ', p) not in allowed_placeholders]
+    
     if unrendered:
         report.fail("Template rendering", f"{len(unrendered)} unrendered placeholders: {unrendered[:3]}")
     else:

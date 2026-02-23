@@ -196,12 +196,19 @@ def compose_newsletter(articles: list, segment_id: str, segment_config: dict, lo
     # Fix read times from raw content word count
     articles = fix_read_times(articles, log_file)
     
-    # Separate articles by tier
-    full_articles = [a for a in articles if a.get('tier', 'full') == 'full']
-    quick_links = [a for a in articles if a.get('tier') == 'quick']
-    trending = [a for a in articles if a.get('tier') == 'trending']
+    # Separate articles by tier and drop any missing a URL
+    valid_articles = []
+    for a in articles:
+        if a.get('url'):
+            valid_articles.append(a)
+        else:
+            log(f"⚠️ Dropping article missing URL: '{a.get('title', 'Unknown')[:40]}'", log_file)
+            
+    full_articles = [a for a in valid_articles if a.get('tier', 'full') == 'full']
+    quick_links = [a for a in valid_articles if a.get('tier') == 'quick']
+    trending = [a for a in valid_articles if a.get('tier') == 'trending']
     
-    log(f"📊 Separated {len(articles)} articles: {len(full_articles)} full, {len(quick_links)} quick, {len(trending)} trending", log_file)
+    log(f"📊 Separated {len(valid_articles)} valid articles: {len(full_articles)} full, {len(quick_links)} quick, {len(trending)} trending", log_file)
     
     # Wrap article links with click tracking (GDPR-compliant)
     full_articles = wrap_article_links_for_tracking(full_articles, segment_id, TODAY)
