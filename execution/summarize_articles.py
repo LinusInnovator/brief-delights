@@ -193,15 +193,26 @@ def summarize_article(article: Dict, index: int, log_file: Path, trend_context: 
     
     # QUICK LINKS: Skip LLM, use description as one-liner
     if tier == 'quick':
+        import re
         log(f"⚡ Quick link {article_num}: {article['title'][:60]}...", log_file)
         
-        # Extract 2-3 sentences or use description
+        # Extract description or raw content
         description = article.get('description', '') or article.get('raw_content', '')
         
+        # 1. Strip all raw HTML tags (to prevent blue links and font breaks)
+        clean_desc = re.sub(r'<[^>]+>', '', description)
+        
+        # 2. Remove annoying automated RSS advertising footers (e.g. WordPress)
+        clean_desc = re.sub(r'The post.*?appeared first on.*', '', clean_desc, flags=re.IGNORECASE)
+        
+        # 3. Clean up whitespace
+        clean_desc = " ".join(clean_desc.split())
+        
         # Get first 2-3 sentences (up to 200 chars)
-        sentences = description.split('. ')
+        sentences = clean_desc.split('. ')
         snippet = ''
         for i, sent in enumerate(sentences[:3]):
+            if not sent: continue
             snippet += sent + '. '
             if len(snippet) > 200 or i >= 1:  # Stop after 2 sentences or 200 chars
                 break
@@ -210,13 +221,19 @@ def summarize_article(article: Dict, index: int, log_file: Path, trend_context: 
         if len(snippet) > 250:
             snippet = snippet[:247] + "..."
         
-        # Calculate read time from description word count
-        desc_word_count = len(description.split())
+        # 4. Calculate ACCURATE read time from FULL content, not this tiny snippet
+        full_content = (
+            article.get('full_content', '') or
+            article.get('raw_content', '') or
+            clean_desc
+        )
+        full_word_count = len(full_content.split())
+        
         article['summary'] = snippet
         article['key_takeaway'] = ''
-        article['read_time_minutes'] = calculate_read_time(desc_word_count)
+        article['read_time_minutes'] = calculate_read_time(full_word_count)
         
-        log(f"✅ Quick link {article_num} processed (no LLM needed)", log_file)
+        log(f"✅ Quick link {article_num} processed ({article['read_time_minutes']} min read, {full_word_count} words)", log_file)
         return article
     
     # FULL & TRENDING: Use LLM for summaries
