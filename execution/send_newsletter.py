@@ -75,8 +75,12 @@ def load_subscribers():
             if result.data and len(result.data) > 0:
                 by_segment = defaultdict(list)
                 for sub in result.data:
-                    segment = sub.get('segment', 'leaders')
-                    by_segment[segment].append(sub)
+                    segment_str = sub.get('segment', 'leaders')
+                    segments = [s.strip() for s in str(segment_str).split(',')]
+                    for seg in segments:
+                        if seg:
+                            by_segment[seg].append(sub)
+                
                 log(f"📊 Loaded {len(result.data)} subscribers from Supabase")
                 return dict(by_segment)
             else:
@@ -93,8 +97,11 @@ def load_subscribers():
         by_segment = defaultdict(list)
         for sub in data.get('subscribers', []):
             if sub.get('status') in ('active', 'confirmed'):
-                segment = sub.get('segment', 'leaders')
-                by_segment[segment].append(sub)
+                segment_str = sub.get('segment', 'leaders')
+                segments = [s.strip() for s in str(segment_str).split(',')]
+                for seg in segments:
+                    if seg:
+                        by_segment[seg].append(sub)
         
         return dict(by_segment)
     

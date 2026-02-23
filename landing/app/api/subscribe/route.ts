@@ -29,14 +29,45 @@ export async function POST(request: NextRequest) {
             .eq('email', email)
             .single();
 
+        let finalSegmentString = segment;
+
         if (existingUser) {
-            if (existingUser.status === 'confirmed') {
-                return NextResponse.json(
-                    { error: 'This email is already subscribed!' },
-                    { status: 400 }
-                );
+            const currentSegments = existingUser.segment ? existingUser.segment.split(',').map((s: string) => s.trim()) : [];
+
+            if (currentSegments.includes(segment)) {
+                if (existingUser.status === 'confirmed') {
+                    return NextResponse.json(
+                        { error: 'This email is already subscribed to this newsletter!' },
+                        { status: 400 }
+                    );
+                }
+                // If pending, proceed to resend verification without altering the segments
+                finalSegmentString = existingUser.segment;
+            } else {
+                // They aren't subscribed to this specific segment yet
+                finalSegmentString = [...currentSegments, segment].join(',');
+
+                // If they are already a confirmed subscriber, skip verification and instantly add the segment
+                if (existingUser.status === 'confirmed') {
+                    const { error: updateError } = await supabase
+                        .from('subscribers')
+                        .update({ segment: finalSegmentString })
+                        .eq('email', email);
+
+                    if (updateError) {
+                        console.error('Database error:', updateError);
+                        return NextResponse.json(
+                            { error: 'Failed to add new newsletter to subscription' },
+                            { status: 500 }
+                        );
+                    }
+
+                    return NextResponse.json({
+                        success: true,
+                        message: 'You are already a confirmed member! We instantly added this newsletter to your subscription. 🎉',
+                    });
+                }
             }
-            // If pending, we can resend verification
         }
 
         // Generate verification token
@@ -46,7 +77,7 @@ export async function POST(request: NextRequest) {
         // Create or update subscriber in database
         const subscriberData: Record<string, string> = {
             email,
-            segment,
+            segment: finalSegmentString,
             status: 'pending',
             verification_token: token,
             token_expires_at: expiresAt.toISOString(),
