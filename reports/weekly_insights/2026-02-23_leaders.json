@@ -1,0 +1,36 @@
+{
+  "date": "2026-02-23",
+  "segment": "leaders",
+  "trends": {
+    "categories": {
+      "Emerging Tech": 1
+    },
+    "sources": {
+      "AI News & Artificial Intelligence | TechCrunch": 1
+    },
+    "topics": [
+      "General Catalyst commits $5B to India over five years"
+    ],
+    "total_articles": 1
+  },
+  "article_count": 1,
+  "articles": [
+    {
+      "id": "29229f19df54377ff0c28be06e065804",
+      "title": "General Catalyst commits $5B to India over five years",
+      "url": "https://techcrunch.com/2026/02/19/general-catalyst-commits-5b-to-india-over-five-years/",
+      "published_date": "2026-02-23T08:54:55.404346",
+      "description": "The pledge marks a sharp jump from General Catalyst's earlier $500 million\u2013$1 billion India earmark.",
+      "source": "AI News & Artificial Intelligence | TechCrunch",
+      "category": "Emerging Tech",
+      "segment": "innovators",
+      "source_type": "secondary",
+      "raw_content": "The pledge marks a sharp jump from General Catalyst's earlier $500 million\u2013$1 billion India earmark.",
+      "tier": "full",
+      "selection_reason": "Major VC investment signals strategic opportunities in Indian market",
+      "audience_value": "Insights into global investment trends and market expansion opportunities",
+      "urgency_score": 9,
+      "category_tag": "\ud83d\udcb0 Funding & M&A"
+    }
+  ]
+}
