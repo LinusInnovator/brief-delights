@@ -242,6 +242,16 @@ def summarize_article(article: Dict, index: int, log_file: Path, trend_context: 
     start_time = time.time()
     
     try:
+        # NEW: Scrape full article on-the-fly if missing to guarantee accurate read time
+        if not article.get('full_content'):
+            url = article.get('url', '')
+            if url:
+                fallback = article.get('raw_content', '') or article.get('description', '')
+                log(f"  🔍 Fetching full article content for accurate read time...", log_file)
+                # Keep import local to avoid circular deps with multiprocessing
+                from scrape_articles import scrape_article 
+                article['full_content'] = scrape_article(url, fallback_content=fallback)
+
         # Create prompt (content is truncated for the LLM, but we need full word count for read time)
         prompt, _truncated_word_count = create_summary_prompt(article, trend_context=trend_context)
         
