@@ -12,12 +12,13 @@ import { discoverSponsors } from '@/lib/sponsorDiscovery';
  * Auth: requires CRON_SECRET header to prevent unauthorized access.
  */
 export async function POST(request: NextRequest) {
-    // Verify cron secret (prevents random hits)
     const cronSecret = request.headers.get('x-cron-secret')
         || request.headers.get('authorization')?.replace('Bearer ', '');
-    const expectedSecret = process.env.CRON_SECRET || process.env.SUPABASE_SERVICE_KEY;
 
-    if (!cronSecret || cronSecret !== expectedSecret) {
+    // Accept either Vercel's CRON_SECRET or the Supabase Service Key (as an admin override)
+    const validSecrets = [process.env.CRON_SECRET, process.env.SUPABASE_SERVICE_KEY].filter(Boolean);
+
+    if (!cronSecret || !validSecrets.includes(cronSecret)) {
         return NextResponse.json(
             { error: 'Unauthorized — missing or invalid cron secret' },
             { status: 401 }
