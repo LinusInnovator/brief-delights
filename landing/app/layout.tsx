@@ -28,6 +28,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         {children}
+        <script src="https://improve.delights.pro/api/sdk?key=brief-delights-pro"></script>
       </body>
     </html>
   );
