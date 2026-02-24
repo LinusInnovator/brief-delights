@@ -168,6 +168,12 @@ def main():
     segment_ids = list(segments.keys())
     log(f"\n📋 Configured segments: {', '.join(segment_ids)}")
     
+    # STEP 0: Generate Custom Feeds (v2.1)
+    log("\n\n▶️  Step 0/5: Generate Custom RSS Feeds")
+    log("─"*70)
+    if not run_script("generate_custom_feeds.py", timeout=60):
+        log("⚠️ Custom feed generation failed or timed out (continuing with existing)", "WARN")
+        
     # STEP 1: Aggregate RSS Feeds (same for all segments)
     log("\n\n▶️  Step 1/5: Aggregate RSS Feeds")
     log("─"*70)

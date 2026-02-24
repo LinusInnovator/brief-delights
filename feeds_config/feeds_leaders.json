@@ -1,44 +1,21 @@
 {
     "segment": "leaders",
-    "description": "CTOs, VPs, and business decision-makers",
+    "description": "Strategic + Market Competitive Direction",
     "categories": {
-        "Tech Business & Strategy": [
-            "https://techcrunch.com/feed/",
-            "https://www.theverge.com/rss/index.xml",
-            "https://www.bloomberg.com/feed/rss/technology",
-            "https://www.wsj.com/xml/rss/3_7455.xml"
+        "Platform Strategy": [
+            "https://stratechery.com/feed/"
         ],
-        "Venture Capital & Funding": [
-            "https://a16z.com/feed/",
-            "https://www.sequoiacap.com/feed/"
+        "Venture Capital & M&A": [
+            "/Users/linus/Library/Mobile Documents/com~apple~CloudDocs/projects/Dream Validator/Prototrying.com/Prototryers/antigravity/The letter/.tmp/custom_feed_theinformation.xml"
         ],
-        "Management & Leadership": [
-            "https://hbr.org/topic/technology.rss",
-            "https://sloanreview.mit.edu/feed/"
+        "Enterprise Strategy": [
+            "/Users/linus/Library/Mobile Documents/com~apple~CloudDocs/projects/Dream Validator/Prototrying.com/Prototryers/antigravity/The letter/.tmp/custom_feed_gartner.xml"
         ],
-        "Market Intelligence": [
-            "https://www.gartner.com/en/newsroom/rss",
-            "https://www.mckinsey.com/capabilities/mckinsey-digital/rss"
-        ],
-        "Enterprise Tech & Cloud": [
-            "https://aws.amazon.com/blogs/aws/feed/",
-            "https://cloud.google.com/blog/rss",
-            "https://azure.microsoft.com/en-us/blog/feed/",
-            "https://www.infoworld.com/index.rss",
-            "https://www.zdnet.com/news/rss.xml"
-        ],
-        "AI & Innovation": [
-            "https://openai.com/blog/rss/",
-            "https://www.technologyreview.com/feed/",
-            "https://www.wired.com/feed/rss"
-        ],
-        "Cybersecurity": [
-            "https://krebsonsecurity.com/feed/",
-            "https://www.schneier.com/blog/atom.xml",
-            "https://www.darkreading.com/rss.xml"
+        "Macro Trends": [
+            "https://www.mckinsey.com/featured-insights/rss"
         ]
     },
     "update_frequency": "daily",
-    "max_articles_per_feed": 10,
+    "max_articles_per_feed": 50,
     "lookback_hours": 24
 }

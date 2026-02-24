@@ -1,60 +1,24 @@
 {
     "segment": "builders",
-    "description": "Engineers, developers, and technical contributors",
+    "description": "Practical + Technical Implementation",
     "categories": {
-        "Developer & Engineering": [
-            "https://github.blog/feed/",
-            "https://stackoverflow.blog/feed/",
-            "https://dev.to/feed",
-            "https://hashnode.com/n/all/rss",
-            "https://martinfowler.com/feed.atom",
-            "https://blog.codinghorror.com/rss/"
+        "Discovery & Early Signals": [
+            "https://news.ycombinator.com/rss"
         ],
-        "Engineering Blogs": [
-            "https://engineering.fb.com/feed/",
-            "https://netflixtechblog.com/feed",
-            "https://engineeringblog.yelp.com/feed.xml",
-            "https://medium.com/feed/airbnb-engineering",
-            "https://eng.uber.com/feed/",
-            "https://stripe.com/blog/feed.rss"
+        "ML & Open Source": [
+            "https://huggingface.co/blog/feed.xml"
         ],
-        "AI & Machine Learning": [
-            "https://openai.com/blog/rss/",
-            "https://blog.google/technology/ai/rss/",
-            "https://huggingface.co/blog/feed.xml",
-            "https://machinelearningmastery.com/feed/"
+        "Infrastructure & Edge": [
+            "https://blog.cloudflare.com/rss/"
         ],
-        "Developer Tools & Platforms": [
-            "https://news.ycombinator.com/rss",
-            "https://www.infoworld.com/index.rss",
-            "https://vercel.com/blog/rss.xml",
-            "https://supabase.com/blog/rss.xml",
-            "https://railway.app/blog/rss.xml",
-            "https://fly.io/blog/feed.xml",
-            "https://render.com/blog/rss.xml"
+        "AI Safety & Interpretability": [
+            "/Users/linus/Library/Mobile Documents/com~apple~CloudDocs/projects/Dream Validator/Prototrying.com/Prototryers/antigravity/The letter/.tmp/custom_feed_anthropic.xml"
         ],
-        "Cloud & Infrastructure": [
-            "https://aws.amazon.com/blogs/aws/feed/",
-            "https://cloud.google.com/blog/rss",
-            "https://azure.microsoft.com/en-us/blog/feed/",
-            "https://blog.cloudflare.com/rss/",
-            "https://www.docker.com/blog/feed/",
-            "https://kubernetes.io/feed.xml",
-            "https://www.hashicorp.com/blog/feed.xml"
-        ],
-        "Database & Backend": [
-            "https://planetscale.com/blog/rss.xml",
-            "https://turso.tech/blog/rss.xml"
-        ],
-        "DevOps & SRE": [
-            "https://sreweekly.com/feed/"
-        ],
-        "Cybersecurity": [
-            "https://krebsonsecurity.com/feed/",
-            "https://www.schneier.com/blog/atom.xml"
+        "DevOps & Tools": [
+            "https://github.blog/feed/"
         ]
     },
     "update_frequency": "daily",
-    "max_articles_per_feed": 10,
+    "max_articles_per_feed": 50,
     "lookback_hours": 24
 }
