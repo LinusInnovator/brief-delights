@@ -9,13 +9,18 @@
             "https://huggingface.co/blog/feed.xml"
         ],
         "Infrastructure & Edge": [
-            "https://blog.cloudflare.com/rss/"
+            "https://blog.cloudflare.com/rss/",
+            "https://aws.amazon.com/blogs/aws/feed/",
+            "https://krebsonsecurity.com/feed/"
         ],
         "AI Safety & Interpretability": [
             "/Users/linus/Library/Mobile Documents/com~apple~CloudDocs/projects/Dream Validator/Prototrying.com/Prototryers/antigravity/The letter/.tmp/custom_feed_anthropic.xml"
         ],
         "DevOps & Tools": [
-            "https://github.blog/feed/"
+            "https://github.blog/feed/",
+            "https://engineering.fb.com/feed/",
+            "https://netflixtechblog.com/feed",
+            "https://stripe.com/blog/feed.rss"
         ]
     },
     "update_frequency": "daily",
