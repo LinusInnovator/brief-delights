@@ -67,7 +67,13 @@ def analyze_weekly_trends(week_data: list) -> dict:
         total_articles += day_data['article_count']
         
         # Count trend occurrences
-        for trend in day_data['trends'].get('detected_trends', []):
+        trends_list = day_data['trends'].get('detected_trends', [])
+        
+        # Backward compatibility for old format
+        if not trends_list and 'categories' in day_data['trends']:
+            trends_list = [{"keyword": k, "count": v} for k, v in day_data['trends']['categories'].items()]
+            
+        for trend in trends_list:
             keyword = trend['keyword']
             all_trends[keyword] += trend['count']
             trend_evolution[keyword].append({

@@ -71,6 +71,7 @@ def extract_trends_from_articles(articles: list) -> dict:
         "categories": dict(categories.most_common(10)),
         "sources": dict(sources.most_common(10)),
         "topics": topics,
+        "detected_trends": [{"keyword": k, "count": v} for k, v in categories.most_common(10)],
         "total_articles": len(articles)
     }
 
