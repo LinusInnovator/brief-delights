@@ -328,6 +328,10 @@ def main():
         # Save result
         save_newsletter(html, output_file, log_file)
         
+        # Update summaries JSON with tracked_url and fixed read times
+        with open(input_file, 'w') as f:
+            json.dump(data, f, indent=2)
+        
         # Log execution time
         elapsed = (datetime.now() - start_time).total_seconds()
         log(f"\n⏱️ Total execution time: {elapsed:.2f} seconds", log_file)
