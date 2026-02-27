@@ -353,12 +353,24 @@ def merge_selection_with_articles(raw_articles: list, selection: dict) -> list:
     """Merge LLM selection metadata with original article data"""
     articles_dict = {a['id']: a for a in raw_articles}
     
+    # Also create a 1-based index map in case the LLM returned row numbers
+    indexed_articles = {str(i): a for i, a in enumerate(raw_articles, 1)}
+    
     merged = []
     for selected in selection['selected_articles']:
-        article_id = selected['article_id']
+        article_id = str(selected['article_id'])
         
+        # Check if the returned ID is the actual ID or the 1-based index
         if article_id in articles_dict:
             article = articles_dict[article_id].copy()
+            found = True
+        elif article_id in indexed_articles:
+            article = indexed_articles[article_id].copy()
+            found = True
+        else:
+            found = False
+            
+        if found:
             article.update({
                 'tier': selected['tier'], 
                 'selection_reason': selected['selection_reason'],
