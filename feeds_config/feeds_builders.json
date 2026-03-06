@@ -3,24 +3,31 @@
     "description": "Practical + Technical Implementation",
     "categories": {
         "Discovery & Early Signals": [
-            "https://news.ycombinator.com/rss"
+            "https://news.ycombinator.com/rss",
+            "https://lobste.rs/rss"
         ],
-        "ML & Open Source": [
-            "https://huggingface.co/blog/feed.xml"
-        ],
-        "Infrastructure & Edge": [
+        "Architecture & System Design": [
             "https://blog.cloudflare.com/rss/",
             "https://aws.amazon.com/blogs/aws/feed/",
-            "https://krebsonsecurity.com/feed/"
+            "https://krebsonsecurity.com/feed/",
+            "https://eng.uber.com/feed/",
+            "https://fly.io/blog/feed.xml"
         ],
-        "AI Safety & Interpretability": [
-            "/Users/linus/Library/Mobile Documents/com~apple~CloudDocs/projects/Dream Validator/Prototrying.com/Prototryers/antigravity/The letter/.tmp/custom_feed_anthropic.xml"
-        ],
-        "DevOps & Tools": [
+        "Modern Stack & Tools": [
             "https://github.blog/feed/",
+            "https://stripe.com/blog/feed.rss",
+            "https://supabase.com/rss.xml",
+            "https://tailscale.com/blog/index.xml"
+        ],
+        "ML & Open Source": [
+            "https://huggingface.co/blog/feed.xml",
+            "/Users/linus/Library/Mobile Documents/com~apple~CloudDocs/projects/Dream Validator/Prototrying.com/Prototryers/antigravity/The letter/.tmp/custom_feed_anthropic.xml",
+            "https://replicate.com/blog/rss"
+        ],
+        "Engineering Leadership & Culture": [
             "https://engineering.fb.com/feed/",
             "https://netflixtechblog.com/feed",
-            "https://stripe.com/blog/feed.rss"
+            "https://newsletter.pragmaticengineer.com/feed"
         ]
     },
     "update_frequency": "daily",

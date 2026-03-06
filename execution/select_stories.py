@@ -167,8 +167,24 @@ For each selected article, provide:
 4. urgency_score: 1-10 (how time-sensitive for this audience)
 5. category_tag: One of ["🚀 AI & Innovation", "💼 Tech Business", "☁️ Enterprise Tech", "🔐 Security", "💰 Funding & M&A", "📊 Market Trends"]
 
+
 ARTICLES TO REVIEW:
 {article_text}
+
+Return ONLY valid JSON in this exact format (no markdown, no explanations):
+{{
+  "segment": "{segment_id}",
+  "selected_articles": [
+    {{
+      "article_id": "original_article_id_here",
+      "tier": "full",
+      "selection_reason": "Why {segment_name} needs this",
+      "audience_value": "Specific value for {segment_name}",
+      "urgency_score": 9,
+      "category_tag": "🚀 AI & Innovation"
+    }}
+  ]
+}}
 """
     
     return prompt
@@ -182,25 +198,40 @@ def call_llm(prompt: str, model: str, retries: int = 3) -> dict:
             
             schema = StorySelection.model_json_schema()
             
-            response = client.chat.completions.create(
-                model=model,
-                messages=[
+            
+            options = {
+                "model": model,
+                "messages": [
                     {"role": "user", "content": prompt}
                 ],
-                response_format={
+                "temperature": 0.3,
+                "max_tokens": 2000
+            }
+            
+            # Use structured outputs for models that support it
+            if "claude" in model.lower() or "gpt-4o" in model.lower():
+                options["response_format"] = {
                     "type": "json_schema",
                     "json_schema": {
                         "name": "story_selection",
                         "strict": True,
                         "schema": schema,
                     }
-                },
-                temperature=0.3,
-                max_tokens=2000
-            )
+                }
+            else:
+                options["response_format"] = {"type": "json_object"}
+            
+            response = client.chat.completions.create(**options)
             
             # Extract response
             content = response.choices[0].message.content.strip()
+            
+            # Try to parse JSON
+            # Remove markdown code blocks if present
+            if content.startswith("```"):
+                content = content.split("```")[1]
+                if content.startswith("json"):
+                    content = content[4:]
             
             result = json.loads(content)
             log(f"✅ LLM response parsed successfully")

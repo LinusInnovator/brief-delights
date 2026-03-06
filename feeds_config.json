@@ -11,7 +11,6 @@
     ],
     "Tech Business & Startups": [
       "https://techcrunch.com/feed/",
-      "https://www.theverge.com/rss/index.xml",
       "https://www.wsj.com/xml/rss/3_7455.xml",
       "https://feeds.arstechnica.com/arstechnica/index",
       "https://www.bloomberg.com/feed/rss/technology",
@@ -26,7 +25,6 @@
     ],
     "Developer & Engineering": [
       "https://github.blog/feed/",
-      "https://stackoverflow.blog/feed/",
       "https://engineeringblog.yelp.com/feed.xml",
       "https://netflixtechblog.com/feed",
       "https://engineering.fb.com/feed/"
