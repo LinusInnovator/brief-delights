@@ -9,6 +9,7 @@ import sys
 import json
 from pathlib import Path
 from datetime import datetime
+from bs4 import BeautifulSoup
 
 # Add parent directory to path
 sys.path.insert(0, str(Path(__file__).parent.parent.parent))
@@ -155,12 +156,27 @@ class RedditBot(AutomationModule):
     
     def _create_post_body(self, newsletter: dict, segment: str) -> str:
         """Create Reddit post body with newsletter highlights"""
-        # TODO: Parse HTML and extract top 3 stories
-        # For now, simple template
+        html = newsletter.get('html', '')
+        soup = BeautifulSoup(html, 'html.parser')
         
         today = datetime.now().strftime("%B %d, %Y")
         
+        # Extract top stories (assuming they are wrapped in an anchor inside an h3 or similar)
+        stories = []
+        for a in soup.find_all('a', href=True):
+            title = a.get_text().strip()
+            link = a['href']
+            # Skip short links or tracking links with no text
+            if len(title) > 15 and link.startswith('http') and 'unsubscribe' not in title.lower():
+                stories.append(f"- **{title}**\n  {link}")
+                if len(stories) >= 3:
+                    break
+                    
+        stories_text = "\n\n".join(stories) if stories else "• No top stories extracted today."
+        
         body = f"""Today's top tech stories curated for {segment}:
+
+{stories_text}
 
 📬 **Brief Delights** - Your daily dose of tech insights
 

@@ -98,6 +98,13 @@ def validate_newsletter(segment_id: str, date: str = None) -> QualityReport:
         data = json.load(f)
     articles = data.get("articles", [])
 
+    # ─── CHECK 0.5: Article Count ───
+    if not articles:
+        report.fail("Article count", "Newsletter is completely empty of articles!")
+        return report
+    else:
+        report.ok("Article count", f"Found {len(articles)} articles")
+
     # ─── CHECK 1: Links — tracked URLs contain valid URLs ───
     broken_links = []
     for article in articles:

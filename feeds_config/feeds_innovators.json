@@ -9,7 +9,9 @@
             "/Users/linus/Library/Mobile Documents/com~apple~CloudDocs/projects/Dream Validator/Prototrying.com/Prototryers/antigravity/The letter/.tmp/custom_feed_stanfordhai.xml"
         ],
         "Applied Science": [
-            "https://www.technologyreview.com/feed/"
+            "https://www.technologyreview.com/feed/",
+            "https://www.nature.com/subjects/computer-science.rss",
+            "https://www.wired.com/feed/rss"
         ],
         "Frontier AI & Neuroscience": [
             "https://deepmind.google/discover/blog/rss.xml"

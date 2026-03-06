@@ -108,6 +108,28 @@ def fetch_html(url: str) -> Optional[str]:
     return None
 
 
+def fetch_with_jina(url: str) -> Optional[str]:
+    """Fallback using Jina Reader API for difficult domains"""
+    jina_url = f"https://r.jina.ai/{url}"
+    headers = {
+        'User-Agent': USER_AGENT,
+        'Accept': 'text/plain',
+    }
+    
+    for attempt in range(MAX_RETRIES):
+        try:
+            logger.info(f"🔄 Trying Jina API fallback for {url}")
+            response = requests.get(jina_url, headers=headers, timeout=TIMEOUT_SECONDS * 2)
+            response.raise_for_status()
+            return response.text
+        except Exception as e:
+            if attempt < MAX_RETRIES - 1:
+                time.sleep(RETRY_DELAY_BASE * (2 ** attempt))
+            else:
+                logger.warning(f"⏳ Jina API failed for {url}: {e}")
+                
+    return None
+
 def extract_with_readability(html: str) -> Optional[str]:
     """Extract article content using readability-lxml"""
     try:
@@ -198,10 +220,21 @@ def scrape_article(url: str, fallback_content: str = '') -> str:
     """
     logger.info(f"Scraping: {url}")
     
+    # Check if domain is blacklisted, try Jina immediately if so
+    domain = urlparse(url).netloc
+    if domain in BLACKLISTED_DOMAINS:
+        logger.info(f"⏭️ Domain blacklisted natively, trying Jina directly for: {domain}")
+        jina_content = fetch_with_jina(url)
+        if jina_content and len(jina_content) > 100:
+            return clean_text(jina_content)
+            
     # Fetch HTML
     html = fetch_html(url)
     if not html:
-        logger.warning(f"Failed to fetch HTML, using fallback")
+        logger.warning(f"Failed to fetch HTML natively. Trying Jina Fallback.")
+        jina_content = fetch_with_jina(url)
+        if jina_content and len(jina_content) > 100:
+            return clean_text(jina_content)
         return fallback_content
     
     # Try extraction strategies in order
@@ -222,8 +255,15 @@ def scrape_article(url: str, fallback_content: str = '') -> str:
             logger.debug(f"{strategy_name} failed: {e}")
             continue
     
-    # All strategies failed
-    logger.warning(f"❌ All strategies failed, using fallback ({len(fallback_content)} chars)")
+    # All native strategies failed, try Jina as last resort
+    logger.warning(f"❌ Native extraction failed, attempting Jina API")
+    jina_content = fetch_with_jina(url)
+    if jina_content and len(jina_content) > 100:
+        cleaned = clean_text(jina_content)
+        logger.info(f"✅ Extracted {len(cleaned)} chars using jina_api")
+        return cleaned
+        
+    logger.warning(f"❌ All strategies and APIs failed, using fallback ({len(fallback_content)} chars)")
     return fallback_content
 
 

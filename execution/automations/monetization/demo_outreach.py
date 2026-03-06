@@ -14,6 +14,13 @@ from automations.monetization.smart_pricing import SmartPricingCalculator, Prici
 from automations.monetization.content_examples_generator import (
     ContentExamplesGenerator, ArticlePerformance
 )
+import os
+import resend
+from dotenv import load_dotenv
+
+# Load environment variables
+load_dotenv()
+resend.api_key = os.getenv("RESEND_API_KEY", "")
 
 def demo_outreach():
     """Demonstrate complete outreach email generation"""
@@ -81,14 +88,39 @@ def demo_outreach():
     print("✍️  STEP 2: Content Example Generation")
     print("-" * 70)
     
-    content_gen = ContentExamplesGenerator()
-    content_examples = content_gen.generate_examples(
-        sponsor_name=sponsor_name,
-        sponsor_domain=sponsor_domain,
-        sponsor_description=sponsor_industry,
-        segment=segment,
-        top_articles=top_articles
-    )
+    try:
+        content_gen = ContentExamplesGenerator()
+        content_examples = content_gen.generate_examples(
+            sponsor_name=sponsor_name,
+            sponsor_domain=sponsor_domain,
+            sponsor_description=sponsor_industry,
+            segment=segment,
+            top_articles=top_articles
+        )
+    except Exception as e:
+        print(f"⚠️ Could not generate content examples (Likely missing OPENROUTER_API_KEY): {e}")
+        print("Using fallback examples for demo purposes.")
+        from automations.monetization.content_examples_generator import ContentExample
+        content_examples = [
+            ContentExample(
+                headline="How Vercel cut our build times in half",
+                angle="case_study",
+                expected_clicks_min=20,
+                expected_clicks_max=35,
+                inspired_by_article="Docker 27.0 Performance Optimizations",
+                inspired_by_clicks=25,
+                talking_points=["Improved DX", "Faster deployments", "Edge caching built-in"]
+            ),
+            ContentExample(
+                headline="Why Frontend Infrastructure is the New Backend",
+                angle="industry_analysis",
+                expected_clicks_min=15,
+                expected_clicks_max=30,
+                inspired_by_article="AWS vs Cloudflare: Edge Computing Showdown",
+                inspired_by_clicks=18,
+                talking_points=["Rise of edge compute", "Vercel's strategic advantage", "Next.js dominance"]
+            )
+        ]
     
     for i, example in enumerate(content_examples, 1):
         print(f"\\nExample {i}: \"{example.headline}\"")
@@ -169,6 +201,32 @@ P.S. Next available slot is February 17. We only do 1 featured article per segme
     print(f"✅ Price: {pricing_calc.get_price_display(pricing.final_price)} ({pricing.tier} tier)")
     print(f"✅ Guaranteed: {pricing.min_guaranteed_clicks}+ clicks")
     print(f"✅ Proof: Based on real {top_articles[0].clicks} clicks from similar content")
+    print()
+    
+    # Step 4: Send via Resend
+    print("🚀 STEP 4: Sending via Resend API")
+    print("-" * 70)
+    if not resend.api_key:
+        print("⚠️ RESEND_API_KEY not found in environment. Skipping email dispatch.")
+    else:
+        try:
+            # For demo purposes, we send this to ourselves to review before forwarding
+            sender = "partnerships@brief.delights.pro"
+            recipient = "linus@brief.delights.pro" # Replace with actual target or yourself
+            
+            response = resend.Emails.send({
+                "from": f"Linus <{sender}>",
+                "to": recipient,
+                "subject": subject_b,
+                "text": email_body
+            })
+            print(f"✅ Email queued successfully!")
+            print(f"Resend Response ID: {response.get('id')}")
+            print(f"Sent to: {recipient}")
+        except Exception as e:
+            print(f"❌ Failed to send email via Resend: {e}")
+            print("Make sure you have a verified domain on Resend.")
+            
     print()
 
 

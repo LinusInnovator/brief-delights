@@ -12,6 +12,7 @@ from openai import OpenAI
 from dotenv import load_dotenv
 import time
 from collections import defaultdict
+from pydantic import BaseModel, Field
 
 # Load environment variables
 load_dotenv()
@@ -39,6 +40,18 @@ client = OpenAI(
 PRIMARY_MODEL = "anthropic/claude-3.5-sonnet"
 FALLBACK_MODEL = "openai/gpt-4-turbo"
 
+# Pydantic models for structured output
+class SelectedArticle(BaseModel):
+    article_id: str = Field(description="The original article ID string")
+    tier: str = Field(description="Must be exactly one of: full, quick, trending")
+    selection_reason: str = Field(description="One sentence on why the segment needs this")
+    audience_value: str = Field(description="What the segment will gain specifically")
+    urgency_score: int = Field(description="1-10 (how time-sensitive for this audience)")
+    category_tag: str = Field(description="One of: 🚀 AI & Innovation, 💼 Tech Business, ☁️ Enterprise Tech, 🔐 Security, 💰 Funding & M&A, 📊 Market Trends")
+
+class StorySelection(BaseModel):
+    segment: str
+    selected_articles: list[SelectedArticle]
 
 def log(message: str):
     """Log to both console and file"""
@@ -156,21 +169,6 @@ For each selected article, provide:
 
 ARTICLES TO REVIEW:
 {article_text}
-
-Return ONLY valid JSON in this exact format (no markdown, no explanations):
-{{
-  "segment": "{segment_id}",
-  "selected_articles": [
-    {{
-      "article_id": "original_article_id_here",
-      "tier": "full",
-      "selection_reason": "Why {segment_name} needs this",
-      "audience_value": "Specific value for {segment_name}",
-      "urgency_score": 9,
-      "category_tag": "🚀 AI & Innovation"
-    }}
-  ]
-}}
 """
     
     return prompt
@@ -182,24 +180,27 @@ def call_llm(prompt: str, model: str, retries: int = 3) -> dict:
         try:
             log(f"🤖 Calling {model} (attempt {attempt + 1}/{retries})")
             
+            schema = StorySelection.model_json_schema()
+            
             response = client.chat.completions.create(
                 model=model,
                 messages=[
                     {"role": "user", "content": prompt}
                 ],
+                response_format={
+                    "type": "json_schema",
+                    "json_schema": {
+                        "name": "story_selection",
+                        "strict": True,
+                        "schema": schema,
+                    }
+                },
                 temperature=0.3,
                 max_tokens=2000
             )
             
             # Extract response
             content = response.choices[0].message.content.strip()
-            
-            # Try to parse JSON
-            # Remove markdown code blocks if present
-            if content.startswith("```"):
-                content = content.split("```")[1]
-                if content.startswith("json"):
-                    content = content[4:]
             
             result = json.loads(content)
             log(f"✅ LLM response parsed successfully")
@@ -368,7 +369,14 @@ def merge_selection_with_articles(raw_articles: list, selection: dict) -> list:
             article = indexed_articles[article_id].copy()
             found = True
         else:
-            found = False
+            # Try to extract numbers in case LLM gave 'Article #1'
+            import re
+            digits = re.sub(r'\D', '', article_id)
+            if digits and digits in indexed_articles:
+                article = indexed_articles[digits].copy()
+                found = True
+            else:
+                found = False
             
         if found:
             article.update({
@@ -454,6 +462,11 @@ Total: 10-15 articles. Do NOT skimp on full articles."""
         if validate_selection(selection, segment_id):
             # Merge with original articles
             selected_articles = merge_selection_with_articles(articles, selection)
+            
+            if len(selected_articles) < 6:
+                last_error = f"Merged article list is too small ({len(selected_articles)} < 6). LLM likely hallucinated article_id values. Please use the exact ID format specified."
+                log(f"⚠️ {last_error}")
+                continue
             
             log(f"\n📈 Selected {len(selected_articles)} stories for {segment_config['name']}:")
             for i, article in enumerate(selected_articles, 1):

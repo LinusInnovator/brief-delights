@@ -11,6 +11,13 @@ from datetime import datetime, timedelta
 from pathlib import Path
 from typing import List, Dict
 from collections import Counter
+from supabase import create_client, Client
+from dotenv import load_dotenv
+
+# Load environment variables
+load_dotenv()
+SUPABASE_URL = os.getenv("NEXT_PUBLIC_SUPABASE_URL", "")
+SUPABASE_KEY = os.getenv("SUPABASE_SERVICE_KEY", "")
 
 # Add parent directories to path
 sys.path.append(str(Path(__file__).parent.parent.parent))
@@ -31,6 +38,12 @@ class SponsorMatcher(AutomationModule):
         super().__init__("sponsor_matcher")
         self.min_clicks = 10  # Minimum clicks to consider article successful
         self.lookback_days = 7  # Analyze last 7 days of content
+        
+        if SUPABASE_URL and SUPABASE_KEY:
+            self.supabase: Client = create_client(SUPABASE_URL, SUPABASE_KEY)
+        else:
+            self.supabase = None
+            self.log("⚠️ Supabase credentials not found. Sponsor matcher will fail to fetch actual database entries.")
     
     def run(self) -> Dict:
         """Main execution flow"""
@@ -133,58 +146,32 @@ class SponsorMatcher(AutomationModule):
         """Find potential sponsors based on topics - PRIORITIZE HUNGRY CHALLENGERS"""
         sponsors = []
         
-        # Sponsor database - CHALLENGERS ONLY (Series A-C, fast-moving)
-        # Avoid: Docker (public), AWS (too big), OpenAI (corporate)
-        sponsor_database = {
-            "DevOps": [
-                {"name": "Vercel", "domain": "vercel.com", "description": "Frontend hosting", 
-                 "stage": "series_b", "age": 6, "team": 100, "raised_m": 150},
-                {"name": "Render", "domain": "render.com", "description": "Cloud platform",
-                 "stage": "series_b", "age": 5, "team": 50, "raised_m": 85},
-                {"name": "Railway", "domain": "railway.app", "description": "Infrastructure",
-                 "stage": "series_a", "age": 3, "team": 25, "raised_m": 30},
-                {"name": "Fly.io", "domain": "fly.io", "description": "Edge compute",
-                 "stage": "series_a", "age": 4, "team": 30, "raised_m": 70}
-            ],
-            "AI/ML": [
-                {"name": "Anthropic", "domain": "anthropic.com", "description": "AI safety",
-                 "stage": "series_c", "age": 3, "team": 150, "raised_m": 1500},
-                {"name": "Perplexity", "domain": "perplexity.ai", "description": "AI search",
-                 "stage": "series_b", "age": 2, "team": 20, "raised_m": 73},
-                {"name": "Together AI", "domain": "together.ai", "description": "AI platform",
-                 "stage": "series_a", "age": 2, "team": 40, "raised_m": 100},
-                {"name": "Modal", "domain": "modal.com", "description": "Serverless AI",
-                 "stage": "series_a", "age": 3, "team": 15, "raised_m": 16},
-                {"name": "Replicate", "domain": "replicate.com", "description": "ML deployment",
-                 "stage": "series_b", "age": 4, "team": 25, "raised_m": 60}
-            ],
-            "Leadership": [
-                {"name": "First Round Review", "domain": "review.firstround.com", "description": "Startup advice",
-                 "stage": "series_a", "age": 5, "team": 30, "raised_m": 50},
-                {"name": "Pavilion", "domain": "joinpavilion.com", "description": "Executive network",
-                 "stage": "series_b", "age": 3, "team": 40, "raised_m": 35}
-            ],
-            "Cloud": [
-                {"name": "Supabase", "domain": "supabase.com", "description": "Database platform",
-                 "stage": "series_b", "age": 4, "team": 30, "raised_m": 116},
-                {"name": "Convex", "domain": "convex.dev", "description": "Backend platform",
-                 "stage": "series_a", "age": 2, "team": 20, "raised_m": 26},
-                {"name": "Neon", "domain": "neon.tech", "description": "Serverless Postgres",
-                 "stage": "series_b", "age": 2, "team": 35, "raised_m": 104},
-                {"name": "Turso", "domain": "turso.tech", "description": "Edge database",
-                 "stage": "series_a", "age": 2, "team": 8, "raised_m": 10},
-                {"name": "PlanetScale", "domain": "planetscale.com", "description": "MySQL platform",
-                 "stage": "series_b", "age": 4, "team": 50, "raised_m": 105}
-            ],
-            "Developer Tools": [
-                {"name": "Clerk", "domain": "clerk.com", "description": "Auth for developers",
-                 "stage": "series_b", "age": 3, "team": 35, "raised_m": 55},
-                {"name": "Resend", "domain": "resend.com", "description": "Email API",
-                 "stage": "series_a", "age": 2, "team": 12, "raised_m": 3},
-                {"name": "Inngest", "domain": "inngest.com", "description": "Workflow engine",
-                 "stage": "series_a", "age": 2, "team": 15, "raised_m": 6}
-            ]
-        }
+        if not self.supabase:
+            self.log("⚠️ Cannot fetch sponsors without Supabase connection.")
+            return []
+            
+        sponsor_database = {}
+        try:
+            result = self.supabase.table('sponsors_directory').select('*').execute()
+            for item in result.data:
+                topic = item['topic_category']
+                if topic not in sponsor_database:
+                    sponsor_database[topic] = []
+                    
+                # Transform DB snake_case names to match the script's expected schema
+                formatted_item = {
+                    "name": item['company_name'],
+                    "domain": item['domain'],
+                    "description": item['description'],
+                    "stage": item['funding_stage'],
+                    "age": item['company_age_years'],
+                    "team": item['team_size'],
+                    "raised_m": item['raised_m']
+                }
+                sponsor_database[topic].append(formatted_item)
+        except Exception as e:
+            self.log(f"⚠️ Error fetching sponsors from Supabase: {e}")
+            return []
         
         # Match sponsors to topics
         for topic, articles in topics.items():

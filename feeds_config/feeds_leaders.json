@@ -12,7 +12,9 @@
             "/Users/linus/Library/Mobile Documents/com~apple~CloudDocs/projects/Dream Validator/Prototrying.com/Prototryers/antigravity/The letter/.tmp/custom_feed_gartner.xml"
         ],
         "Macro Trends": [
-            "https://www.mckinsey.com/featured-insights/rss"
+            "https://www.mckinsey.com/featured-insights/rss",
+            "https://www.wsj.com/xml/rss/3_7455.xml",
+            "https://www.bloomberg.com/feed/rss/technology"
         ]
     },
     "update_frequency": "daily",
