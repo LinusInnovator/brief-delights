@@ -48,6 +48,7 @@ class SelectedArticle(BaseModel):
     audience_value: str = Field(description="What the segment will gain specifically")
     urgency_score: int = Field(description="1-10 (how time-sensitive for this audience)")
     category_tag: str = Field(description="One of: 🚀 AI & Innovation, 💼 Tech Business, ☁️ Enterprise Tech, 🔐 Security, 💰 Funding & M&A, 📊 Market Trends")
+    why_this_matters: str = Field(description="A concise, impactful one-liner that explicitly connects the article to the persona")
 
 class StorySelection(BaseModel):
     segment: str
@@ -138,15 +139,15 @@ SELECTION CRITERIA:
 
 **EDITORIAL PRIORITIZATION (Critical):**
 
-PRIMARY SOURCES FIRST (highest priority):
-- STRONGLY PREFER: Blog posts, research papers, product releases, official announcements
-- These are marked as source_type: "primary"
-- Examples: Company engineering blogs, arXiv papers, GitHub releases, official product pages
+NEWSWORTHINESS AND BROAD IMPACT (highest priority):
+- STRONGLY PREFER: Major industry shifts, highly impactful product launches, significant open-source releases, or broad market trends.
+- The article MUST matter to a wide audience within the segment.
+- DOWNRANK: Routine company engineering blogs (e.g., Stripe, Uber) unless they announce something of major industry-wide consequence. Minor changelogs or company-specific updates are NOT newsworthy.
 
 AVOID NEWS REWRITES (lowest priority):
-- DEPRIORITIZE: TechCrunch/Verge/Wired covering someone else's announcement
+- DEPRIORITIZE: TechCrunch/Verge/Wired covering someone else's announcement IF a primary source is available.
 - These are marked as source_type: "secondary"
-- Only select if the analysis adds unique value
+- EXCEPTIONS: Select secondary sources if they offer crucial analysis or summarize a trend uniquely well.
 
 BOOST TRENDING STORIES:
 - PREFER articles with on_hn: true and hn_comments > 15
@@ -154,11 +155,11 @@ BOOST TRENDING STORIES:
 - Especially for TIER 3 (Worth Your Attention)
 
 RANKING FORMULA:
-- Primary source + breaking news: 10/10
-- Primary source + analysis: 9/10
-- Primary source + tool/guide: 8/10
-- Secondary source with unique angle: 7/10
-- Secondary source covering primary: 5/10
+- Major industry announcement + Broad impact: 10/10
+- High newsworthiness + Deep analysis: 9/10
+- Important tool/guide release: 8/10
+- Secondary source with unique/valuable angle: 7/10
+- Routine company blog or Minor update: 3/10
 
 For each selected article, provide:
 1. tier: "full" | "quick" | "trending"
@@ -166,7 +167,7 @@ For each selected article, provide:
 3. audience_value: What {segment_name} will gain specifically
 4. urgency_score: 1-10 (how time-sensitive for this audience)
 5. category_tag: One of ["🚀 AI & Innovation", "💼 Tech Business", "☁️ Enterprise Tech", "🔐 Security", "💰 Funding & M&A", "📊 Market Trends"]
-
+6. why_this_matters: A concise, impactful one-liner starting with "Why this matters:" that explicitly connects the article to the {segment_name} persona.
 
 ARTICLES TO REVIEW:
 {article_text}
@@ -181,7 +182,8 @@ Return ONLY valid JSON in this exact format (no markdown, no explanations):
       "selection_reason": "Why {segment_name} needs this",
       "audience_value": "Specific value for {segment_name}",
       "urgency_score": 9,
-      "category_tag": "🚀 AI & Innovation"
+      "category_tag": "🚀 AI & Innovation",
+      "why_this_matters": "Why this matters: Example sentence explicitly connecting to the {segment_name} persona."
     }}
   ]
 }}
@@ -271,7 +273,7 @@ def validate_selection(selection: dict, segment_id: str) -> bool:
         return False
     
     # Check all required fields present
-    required_fields = ['article_id', 'tier', 'selection_reason', 'audience_value', 'urgency_score', 'category_tag']
+    required_fields = ['article_id', 'tier', 'selection_reason', 'audience_value', 'urgency_score', 'category_tag', 'why_this_matters']
     for article in selected:
         for field in required_fields:
             if field not in article:
@@ -415,7 +417,8 @@ def merge_selection_with_articles(raw_articles: list, selection: dict) -> list:
                 'selection_reason': selected['selection_reason'],
                 'audience_value': selected['audience_value'],
                 'urgency_score': selected['urgency_score'],
-                'category_tag': selected['category_tag']
+                'category_tag': selected['category_tag'],
+                'why_this_matters': selected.get('why_this_matters', '')
             })
             merged.append(article)
         else:
@@ -560,10 +563,7 @@ def main():
             data = json.load(f)
         
         raw_articles = data['articles']
-        log(f"📊 Loaded {len(raw_articles)} articles for analysis")
-        
-        # Pre-filter articles
-        filtered_articles = pre_filter_articles(raw_articles, max_articles=50)
+        log(f"📊 Loaded {len(raw_articles)} articles total")
         
         # Load segments configuration
         segments_data = load_segments_config()
@@ -575,6 +575,22 @@ def main():
         failed_segments = []
         for idx, (segment_id, segment_config) in enumerate(segment_list):
             try:
+                # STRICT ISOLATION: Filter raw articles for this specific segment ONLY
+                segment_articles = [
+                    a for a in raw_articles 
+                    if segment_id in a.get('segments', [a.get('segment')]) or a.get('segment') == 'all'
+                ]
+                
+                log(f"\n📊 [{segment_id}] Found {len(segment_articles)} segment-specific raw articles")
+                
+                if not segment_articles:
+                    log(f"⚠️ No articles found for segment {segment_id}. Skipping.")
+                    failed_segments.append(segment_id)
+                    continue
+                
+                # Pre-filter segment articles (reduce payload size)
+                filtered_articles = pre_filter_articles(segment_articles, max_articles=50)
+                
                 selected = select_stories_for_segment(filtered_articles, segment_id, segment_config)
                 save_segment_selection(segment_id, selected)
                 

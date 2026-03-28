@@ -1,0 +1,42 @@
+--- execution/automations/growth/reddit_bot.py
++++ execution/automations/growth/reddit_bot.py
+@@ -9,6 +9,7 @@
+ import json
+ from pathlib import Path
+ from datetime import datetime
++from bs4 import BeautifulSoup
+ 
+ # Add parent directory to path
+ sys.path.insert(0, str(Path(__file__).parent.parent.parent))
+@@ -155,14 +156,23 @@
+         
+     def _create_post_body(self, newsletter: dict, segment: str) -> str:
+         """Create Reddit post body with newsletter highlights"""
+-        # TODO: Parse HTML and extract top 3 stories
+-        # For now, simple template
++        html_content = newsletter['html']
++        soup = BeautifulSoup(html_content, 'html.parser')
+         
+         today = datetime.now().strftime("%B %d, %Y")
+         
+-        body = f"""Today's top tech stories curated for {segment}:
++        # Extract top stories (assuming they are wrapped in an anchor inside an h3 or similar)
++        stories = []
++        for a in soup.find_all('a', href=True):
++            title = a.get_text().strip()
++            link = a['href']
++            if len(title) > 20 and link.startswith('http'):
++                stories.append(f"- **{title}**\n  {link}")
++                if len(stories) == 3:
++                    break
+         
+-📬 **Brief Delights** - Your daily dose of tech insights
++        stories_text = "\n\n".join(stories) if stories else "- No top stories found today."
++        
++        body = f"""Today's top tech stories curated for {segment}:
++
++{stories_text}
++
++�� **Brief Delights** - Your daily dose of tech insights
+ 
+ We scan 1,000+ articles daily and curate the top stories that matter to you.

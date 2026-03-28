@@ -1,0 +1,66 @@
+--- execution/automations/monetization/demo_outreach.py
++++ execution/automations/monetization/demo_outreach.py
+@@ -3,11 +3,13 @@
+ Automated Outreach Demo
+-Shows end-to-end email generation with smart pricing and content examples
++Shows end-to-end email generation with smart pricing, content examples, and Resend integration
+ """
+ 
+ import sys
++import os
+ from pathlib import Path
++import resend
++from dotenv import load_dotenv
+ 
+ # Add to path
+ sys.path.insert(0, str(Path(__file__).parent.parent.parent))
+@@ -15,8 +17,11 @@
+ from automations.monetization.smart_pricing import SmartPricingCalculator, PricingInputs
+ from automations.monetization.content_examples_generator import (
+     ContentExamplesGenerator, ArticlePerformance
+ )
+ 
++# Load environment variables
++load_dotenv()
++resend.api_key = os.getenv("RESEND_API_KEY", "")
++
+ def demo_outreach():
+     """Demonstrate complete outreach email generation"""
+@@ -156,7 +161,28 @@
+ 
+ P.S. Next available slot is February 17. We only do 1 featured article per segment per day, so it'll fill up fast."""
+     
+     print(email_body)
+     print()
+     print("=" * 70)
+     print()
+     print(f"✅ Price: {pricing_calc.get_price_display(pricing.final_price)} ({pricing.tier} tier)")
+     print(f"✅ Guaranteed: {pricing.min_guaranteed_clicks}+ clicks")
+     print(f"✅ Proof: Based on real {top_articles[0].clicks} clicks from similar content")
+     print()
+     
++    # Step 4: Send via Resend
++    print("🚀 STEP 4: Sending via Resend API")
++    print("-" * 70)
++    if not resend.api_key:
++        print("⚠️ RESEND_API_KEY not found in environment. Skipping email dispatch.")
++    else:
++        try:
++            # For demo purposes, we usually send this to ourselves to review before forwarding
++            sender = "partnerships@brief.delights.pro"
++            recipient = "linus@brief.delights.pro" # Replace with actual target or yourself
++            
++            response = resend.Emails.send({
++                "from": f"Linus <{sender}>",
++                "to": recipient,
++                "subject": subject_b,
++                "text": email_body
++            })
++            print(f"✅ Email queued successfully!")
++            print(f"Resend Response ID: {response.get('id')}")
++            print(f"Sent to: {recipient}")
++        except Exception as e:
++            print(f"❌ Failed to send email via Resend: {e}")
++            print("Make sure you have a verified domain on Resend.")
+ 
+ if __name__ == "__main__":

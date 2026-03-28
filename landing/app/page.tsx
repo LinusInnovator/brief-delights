@@ -1,6 +1,7 @@
 import ClientPage from '../components/ClientPage';
 import { createClient } from '../lib/supabase';
 import { headers } from 'next/headers';
+import { unstable_cache } from 'next/cache';
 
 export interface ABVariantContent {
   banner_text?: string;
@@ -13,18 +14,22 @@ export interface ABVariantContent {
   cta_secondary?: string;
 }
 
-async function getSubscriberCount() {
-  const supabase = createClient();
-  try {
-    const { count } = await supabase
-      .from('subscribers')
-      .select('*', { count: 'exact', head: true })
-      .eq('status', 'confirmed');
-    return count || 0;
-  } catch {
-    return 0;
-  }
-}
+const getSubscriberCount = unstable_cache(
+  async () => {
+    const supabase = createClient();
+    try {
+      const { count } = await supabase
+        .from('subscribers')
+        .select('*', { count: 'exact', head: true })
+        .eq('status', 'confirmed');
+      return count || 0;
+    } catch {
+      return 0;
+    }
+  },
+  ['subscriber-count'],
+  { revalidate: 3600 }
+);
 
 export default async function Home({
   searchParams

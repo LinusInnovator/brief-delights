@@ -234,6 +234,12 @@ def main():
             continue
         log(f"✅ Summarization complete for {segment_name}")
         
+        # Detect Contrarian
+        log(f"\n\n▶️  Step 3.{i}b: Detect Contrarian ({segment_name})")
+        log("─"*70)
+        if not run_script("detect_contrarian.py", timeout=60, args=["--segment", segment_id]):
+            log(f"⚠️ Contrarian detection failed for {segment_id} (non-blocking)", "WARN")
+        
         # Compose
         log(f"\n\n▶️  Step 4.{i}: Compose Newsletter ({segment_name})")
         log("─"*70)
@@ -287,6 +293,19 @@ def main():
             log(f"⚠️ Weekly aggregation failed for {segment_id}", "WARN")
     
     log("✅ Weekly trend aggregation complete")
+    
+    # ========================================
+    # STEP 6b: Source Auto-Improvement (Sundays only)
+    # ========================================
+    if datetime.now().weekday() == 6:  # 6 = Sunday
+        log("\n" + "=" * 60)
+        log("STEP 6b: Source Auto-Improvement (Sunday Maintenance)", "INFO")
+        log("=" * 60)
+        log("🧹 Pruning bad feeds and scouting for new ones...")
+        if not run_script("auto_improve_sources.py", 600):  # LLM scouting takes time
+            log("⚠️ Source auto-improvement failed (non-blocking)", "WARN")
+        else:
+            log("✅ Source auto-improvement complete")
     
     # ========================================
     # STEP 7: Growth Engine (drip, win-back, repurposing)

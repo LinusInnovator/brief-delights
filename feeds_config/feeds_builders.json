@@ -4,20 +4,26 @@
     "categories": {
         "Discovery & Early Signals": [
             "https://news.ycombinator.com/rss",
-            "https://lobste.rs/rss"
+            "https://lobste.rs/rss",
+            "https://hnrss.org/frontpage?points=100"
         ],
         "Architecture & System Design": [
             "https://blog.cloudflare.com/rss/",
             "https://aws.amazon.com/blogs/aws/feed/",
             "https://krebsonsecurity.com/feed/",
             "https://eng.uber.com/feed/",
-            "https://fly.io/blog/feed.xml"
+            "https://fly.io/blog/feed.xml",
+            "https://discord.com/blog/rss"
         ],
         "Modern Stack & Tools": [
             "https://github.blog/feed/",
-            "https://stripe.com/blog/feed.rss",
+            "https://dev.to/feed",
+            "https://feed.infoq.com/",
             "https://supabase.com/rss.xml",
-            "https://tailscale.com/blog/index.xml"
+            "https://tailscale.com/blog/index.xml",
+            "https://vercel.com/atom",
+            "https://linear.app/blog/rss",
+            "https://www.figma.com/blog/feed/"
         ],
         "ML & Open Source": [
             "https://huggingface.co/blog/feed.xml",

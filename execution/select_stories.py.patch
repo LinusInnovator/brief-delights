@@ -1,0 +1,80 @@
+--- execution/select_stories.py
++++ execution/select_stories.py
+@@ -12,6 +12,7 @@
+ from dotenv import load_dotenv
+ import time
+ from collections import defaultdict
++from pydantic import BaseModel, Field
+ 
+ # Load environment variables
+ load_dotenv()
+@@ -40,6 +41,18 @@
+ PRIMARY_MODEL = "anthropic/claude-3.5-sonnet"
+ FALLBACK_MODEL = "openai/gpt-4-turbo"
+ 
++# Pydantic models for structured output
++class SelectedArticle(BaseModel):
++    article_id: str = Field(description="The original_article_id_here")
++    tier: str = Field(description="Must be one of: full, quick, trending")
++    selection_reason: str = Field(description="Why the segment needs this")
++    audience_value: str = Field(description="What the segment will gain specifically")
++    urgency_score: int = Field(description="1-10 (how time-sensitive for this audience)")
++    category_tag: str = Field(description="One of: 🚀 AI & Innovation, 💼 Tech Business, ☁️ Enterprise Tech, 🔐 Security, 💰 Funding & M&A, 📊 Market Trends")
++
++class StorySelection(BaseModel):
++    segment: str
++    selected_articles: list[SelectedArticle]
+ 
+ def log(message: str):
+     """Log to both console and file"""
+@@ -158,21 +171,6 @@
+ 
+ ARTICLES TO REVIEW:
+ {article_text}
+-
+-Return ONLY valid JSON in this exact format (no markdown, no explanations):
+-{{
+-  "segment": "{segment_id}",
+-  "selected_articles": [
+-    {{
+-      "article_id": "original_article_id_here",
+-      "tier": "full",
+-      "selection_reason": "Why {segment_name} needs this",
+-      "audience_value": "Specific value for {segment_name}",
+-      "urgency_score": 9,
+-      "category_tag": "🚀 AI & Innovation"
+-    }}
+-  ]
+-}}
+ """
+     
+     return prompt
+@@ -188,20 +186,18 @@
+                 messages=[
+                     {"role": "user", "content": prompt}
+                 ],
++                response_format={
++                    "type": "json_schema",
++                    "json_schema": {
++                        "name": "story_selection",
++                        "strict": True,
++                        "schema": StorySelection.model_json_schema()
++                    }
++                },
+                 temperature=0.3,
+                 max_tokens=2000
+             )
+             
+             # Extract response
+             content = response.choices[0].message.content.strip()
+-            
+-            # Try to parse JSON
+-            # Remove markdown code blocks if present
+-            if content.startswith("```"):
+-                content = content.split("```")[1]
+-                if content.startswith("json"):
+-                    content = content[4:]
+-            
+             result = json.loads(content)
+             log(f"✅ LLM response parsed successfully")
+             

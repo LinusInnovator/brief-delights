@@ -248,6 +248,19 @@ def compose_newsletter(articles: list, segment_id: str, segment_config: dict, lo
     # Get dynamic scanned count from aggregation data
     total_scanned = get_dynamic_scanned_count(segment_id, TODAY)
     
+    # Load contrarian section if it exists
+    contrarian_section = None
+    contrarian_file = TMP_DIR / f"contrarian_{segment_id}_{TODAY}.json"
+    if contrarian_file.exists():
+        try:
+            with open(contrarian_file, 'r') as f:
+                c_data = json.load(f)
+                contrarian_section = c_data.get('contrarian_section')
+                if contrarian_section:
+                    log("🤔 Loaded contrarian section for newsletter", log_file)
+        except Exception as e:
+            log(f"⚠️ Failed to load contrarian data: {e}", log_file)
+
     # Load template
     template = load_template()
     
@@ -262,6 +275,7 @@ def compose_newsletter(articles: list, segment_id: str, segment_config: dict, lo
         sections=sections,
         quick_links=quick_links,
         trending=trending,
+        contrarian_section=contrarian_section,
         total_scanned=total_scanned,
         total_enriched=f"~{len(articles) * 15}",  # Rough estimate of enriched pool
         total_selected=len(articles),

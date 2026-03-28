@@ -426,6 +426,29 @@
             {% endfor %}
         </div>
 
+        <!-- Contrarian Section -->
+        {% if contrarian_section %}
+        <div class="content" style="padding-top: 0; padding-bottom: 0;">
+            <div class="section" style="margin-bottom: 20px;">
+                <div class="editorial-context" style="background: #fdf2f8; border-left-color: #ec4899; color: #831843;">
+                    <div style="font-size: 18px; font-weight: 700; margin-bottom: 8px;">🤔 THE OTHER SIDE</div>
+                    <div style="font-size: 16px; font-weight: 600; margin-bottom: 6px;">{{ contrarian_section.title }}</div>
+                    <div style="margin-bottom: 8px;">{{ contrarian_section.body }}</div>
+                    {% if contrarian_section.source_articles %}
+                    <div style="font-size: 14px; font-style: normal; margin-top: 8px;">
+                        <strong>Sources:</strong>
+                        <ul style="margin: 4px 0 0 0; padding-left: 20px;">
+                        {% for src in contrarian_section.source_articles %}
+                            <li><a href="{{ src.url }}" style="color: #ec4899;">{{ src.title }}</a></li>
+                        {% endfor %}
+                        </ul>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        {% endif %}
+
         <!-- Quick Links Section -->
         {% if quick_links %}
         <div class="quick-links">

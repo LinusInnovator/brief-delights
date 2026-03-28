@@ -257,7 +257,16 @@ def aggregate_all_feeds() -> List[Dict]:
     for article in all_articles:
         article_id = article['id']
         if article_id not in unique_articles:
+            # Initialize segments array
+            article['segments'] = [article['segment']]
             unique_articles[article_id] = article
+        else:
+            # Merge segment if seen again in another feed
+            existing = unique_articles[article_id]
+            if 'segments' not in existing:
+                existing['segments'] = [existing.get('segment', 'unk')]
+            if article['segment'] not in existing['segments']:
+                existing['segments'].append(article['segment'])
     
     deduplicated = list(unique_articles.values())
     
