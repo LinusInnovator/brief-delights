@@ -38,6 +38,7 @@ export async function POST(req: Request) {
         // Enqueue mission in the database for the Python daemon to pick up
         const { data, error } = await supabase
             .from('research_missions')
+            // @ts-ignore: Supabase strictly types un-genericized tables as never
             .insert(mission)
             .select('id')
             .single();
@@ -49,7 +50,7 @@ export async function POST(req: Request) {
 
         return NextResponse.json({
             status: 'acknowledged',
-            research_id: data.id,
+            research_id: (data as any)?.id,
             message: 'Brief Engine dispatched. Awaiting intelligence gathering.'
         }, { status: 202 });
 
