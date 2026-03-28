@@ -17,11 +17,11 @@ export async function POST(req: Request) {
         }
 
         const body = await req.json();
-        const { query, node_id, webhook_url, format, depth } = body;
+        const { query, node_id, format, depth } = body;
 
-        if (!query || !node_id || !webhook_url) {
+        if (!query || !node_id) {
             return NextResponse.json(
-                { error: 'Missing required fields: query, node_id, webhook_url' },
+                { error: 'Missing required fields: query, node_id' },
                 { status: 400 }
             );
         }
@@ -29,7 +29,7 @@ export async function POST(req: Request) {
         const mission = {
             query,
             node_id,
-            webhook_url,
+            webhook_url: 'deprecated', // Kept for backwards compatibility with local table schema
             format: format || 'spatial_json',
             depth: depth || 'rapid',
             status: 'pending'

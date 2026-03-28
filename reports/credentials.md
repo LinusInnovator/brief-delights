@@ -10,7 +10,7 @@
 **Database Password:** `ekMTJTq3mYAS91fO`
 
 **Project URL:** `https://oufuhcqrhjdnnskmheuo.supabase.co`  
-**Anon Key:** `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im91ZnVoY3FyaGpkbm5za21oZXVvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzA3NTA5MDUsImV4cCI6MjA4NjMyNjkwNX0.y4Lp2r8khZ1kqpCqdgM3ISj9_Ae8RdgVdgAhipYmsPw`  
+**Anon Key:** `<REDACTED_SECURE_KEY_STORED_IN_ENV>`  
 **Publishable Key:** `sb_publishable_BpEgRJFVw4WgnM2Dj7cRzQ_U7rKyRBf`
 
 ---

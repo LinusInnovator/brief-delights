@@ -14,18 +14,29 @@ from dotenv import load_dotenv
 from supabase import create_client, Client
 from openai import OpenAI
 
-# Load env variables (assumes .env in the execution directory)
-load_dotenv()
+# Load env variables
+load_dotenv(dotenv_path=".env")
+load_dotenv(dotenv_path="execution/.env")
+load_dotenv(dotenv_path="landing/.env.local")
 
-# Setup Supabase client
-SUPABASE_URL: str = os.environ.get("SUPABASE_URL")
+# Setup Local Supabase client (for reading the queue)
+SUPABASE_URL: str = os.environ.get("SUPABASE_URL") or os.environ.get("NEXT_PUBLIC_SUPABASE_URL")
 SUPABASE_KEY: str = os.environ.get("SUPABASE_SERVICE_ROLE_KEY") or os.environ.get("SUPABASE_SERVICE_KEY")
 
 if not SUPABASE_URL or not SUPABASE_KEY:
-    print("❌ Fatal: Missing Supabase credentials in environment.")
+    print("❌ Fatal: Missing Local Supabase credentials in environment.")
     exit(1)
 
 supabase: Client = create_client(SUPABASE_URL, SUPABASE_KEY)
+
+# Setup Unified Forces Supabase client (for writing payload drops)
+UNIFIED_SUPABASE_URL = "https://gyjqbdhyxywlyzvwnwff.supabase.co"
+UNIFIED_SUPABASE_KEY = os.environ.get("UNIFIED_SUPABASE_KEY")
+if not UNIFIED_SUPABASE_KEY:
+    print("❌ Fatal: Missing SUPABASE_SERVICE_ROLE_KEY for Unified Vault.")
+    exit(1)
+
+unified_supabase: Client = create_client(UNIFIED_SUPABASE_URL, UNIFIED_SUPABASE_KEY)
 
 # Setup OpenRouter / OpenAI client
 OPENROUTER_API_KEY = os.environ.get("OPENROUTER_API_KEY")
@@ -78,15 +89,31 @@ Your task is to analyze massive amounts of raw web scraping data and distill it 
 
 You MUST return ONLY a valid JSON object matching exactly this schema (do not wrap in markdown tags like ```json):
 {
-  "core_thesis": "A 2-3 sentence overarching synthesis.",
+  "core_thesis": "A 1-sentence executive summary of the gathered research.",
   "insights": [
-    {"title": "...", "description": "...", "source_url": "..."}
+    {
+      "title": "Short catchy title",
+      "description": "Deep tactical implication of the insight",
+      "color": "blue"
+    }
   ],
   "risks": [
-    {"title": "...", "description": "...", "severity": "high"}
+    {
+      "title": "Identified Risk",
+      "description": "Details of the competitor/market risk",
+      "color": "red"
+    }
   ],
-  "key_quotes": ["...", "..."],
-  "anomalies": ["..."]
+  "key_quotes": [
+    "Raw text quote pulled directly from a Reddit AMA, G2 review, or technical doc."
+  ],
+  "anomalies": [
+    {
+      "title": "Weird Signal",
+      "description": "Something strange noticed that doesn't fit standard narrative.",
+      "color": "orange"
+    }
+  ]
 }"""
 
     user_prompt = f"""Target Query: "{query}"
@@ -145,23 +172,19 @@ def process_mission(mission: dict):
     print("   [2/3] Synthesizing spatial geometry (Claude)...")
     spatial_data = synthesize_spatial_payload(query, context)
     
-    # 4. Project back to Forces OS Webhook
-    print(f"   [3/3] Projecting payload to {webhook_url}...")
-    webhook_payload = {
-        "research_id": str(mission_id),
-        "node_id": node_id,
-        "status": "completed",
-        "spatial_payload": spatial_data
-    }
+    # 4. Project direct drop into Unified Supabase
+    print(f"   [3/3] Dropping payload natively into great_crm_brief_dossiers for node '{node_id}'...")
     
     status_to_set = "completed"
     try:
-        # We fire the webhook
-        res = requests.post(webhook_url, json=webhook_payload, timeout=15)
-        res.raise_for_status()
-        print("   ✅ Handshake positive. Webhook delivered successfully.")
+        # We drop the dataset into the Forces Vault
+        res = unified_supabase.table('great_crm_brief_dossiers').insert({
+            "node_id": node_id,
+            "spatial_payload": spatial_data
+        }).execute()
+        print("   ✅ Insertion positive. Canvas eruption imminent.")
     except Exception as e:
-        print(f"   ❌ Webhook handshake failed: {e}")
+        print(f"   ❌ Unified Vault drop failed: {e}")
         status_to_set = "failed"
         
     # 5. Mark Mission in DB
