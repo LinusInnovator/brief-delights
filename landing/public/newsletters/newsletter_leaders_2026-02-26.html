@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brief Delights 💼 - 2026-02-26</title>
+    <style>
+        /* Reset */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background-color: #f8f9fa;
+            color: #1a1a1a;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* Container */
+        .email-wrapper {
+            max-width: 680px;
+            margin: 0 auto;
+            background-color: #ffffff;
+        }
+
+        /* Top Bar (minimal, like TLDR) */
+        .top-bar {
+            padding: 16px 40px;
+            text-align: center;
+            border-bottom: 1px solid #e8e8e8;
+            background: #ffffff;
+        }
+
+        .top-bar a {
+            color: #666;
+            text-decoration: none;
+            font-size: 13px;
+            margin: 0 12px;
+            font-weight: 500;
+        }
+
+        .top-bar a:hover {
+            color: #000;
+        }
+
+        /* Header (Clean, no gradient!) */
+        .header {
+            background: #ffffff;
+            padding: 40px 40px 32px 40px;
+            text-align: center;
+            border-bottom: 1px solid #e8e8e8;
+        }
+
+        .logo {
+            font-size: 52px;
+            font-weight: 700;
+            letter-spacing: -1.5px;
+            margin: 0;
+            line-height: 1;
+            color: #000000;
+        }
+
+        .tagline {
+            font-size: 18px;
+            font-weight: 400;
+            color: #666666;
+            margin: 4px 0 12px 0;
+            letter-spacing: 2px;
+        }
+
+        .header .date {
+            margin: 0 0 8px 0;
+            font-size: 14px;
+            color: #999;
+            font-weight: 400;
+        }
+
+        .header .curation-stats {
+            margin: 0;
+            font-size: 12px;
+            color: #aaa;
+            font-weight: 400;
+            font-family: 'Courier New', monospace;
+        }
+
+        /* Sponsor Block (white background, tight integration) */
+        .sponsor {
+            background: #ffffff;
+            border-top: 1px solid #e8e8e8;
+            border-bottom: 1px solid #e8e8e8;
+            padding: 32px 40px;
+            margin: 0;
+        }
+
+        .sponsor-label {
+            font-size: 9px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #999;
+            margin: 0 0 12px 0;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        .sponsor h3 {
+            margin: 0 0 12px 0;
+            font-size: 20px;
+            font-weight: 700;
+            color: #000;
+            line-height: 1.3;
+        }
+
+        .sponsor h3 a {
+            color: #000;
+            text-decoration: none;
+        }
+
+        .sponsor h3 a:hover {
+            color: #4f46e5;
+        }
+
+        .sponsor p {
+            margin: 0;
+            font-size: 14px;
+            line-height: 1.5;
+            color: #666;
+        }
+
+        .sponsor a.cta {
+            display: inline-block;
+            margin-top: 12px;
+            color: #4f46e5;
+            font-weight: 600;
+            text-decoration: underline;
+            font-size: 15px;
+        }
+
+        /* Content */
+        .content {
+            padding: 40px 40px 20px 40px;
+        }
+
+        /* Section Headers */
+        .section {
+            margin-bottom: 40px;
+        }
+
+        .section-emoji {
+            text-align: center;
+            font-size: 20px;
+            margin: 0 0 12px 0;
+        }
+
+        .section h2 {
+            font-size: 20px;
+            font-weight: 700;
+            color: #000;
+            margin: 0 0 24px 0;
+            padding: 0;
+            border: none;
+            text-align: center;
+        }
+
+        /* Story Cards */
+        .story {
+            margin-bottom: 28px;
+            padding-bottom: 28px;
+            border-bottom: 1px solid #e8e8e8;
+        }
+
+        .story:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        /* Article Titles (slightly bigger than body) */
+        .story h3 {
+            margin: 0 0 10px 0;
+            font-size: 20px;
+            line-height: 1.4;
+            font-weight: 700;
+        }
+
+        .story h3 a {
+            color: #000;
+            text-decoration: underline;
+        }
+
+        .story h3 a:hover {
+            color: #1e40af;
+        }
+
+        /* Summary Text (close in size to titles) */
+        .story .summary {
+            margin: 10px 0;
+            font-size: 18px;
+            color: #444;
+            line-height: 1.6;
+        }
+
+        /* Meta Info */
+        .story .meta {
+            margin: 12px 0 0 0;
+            font-size: 14px;
+            color: #999;
+        }
+
+        .story .meta a {
+            color: #999;
+            text-decoration: none;
+        }
+
+        .story .meta a:hover {
+            color: #4f46e5;
+        }
+
+        /* Editorial Context - NEW: Why This Matters */
+        .editorial-context {
+            margin: 20px 0 12px 0;
+            padding: 12px 16px;
+            background: #eff6ff;
+            border-left: 3px solid #3b82f6;
+            font-size: 16px;
+            color: #1e40af;
+            font-style: italic;
+            line-height: 1.5;
+        }
+
+        .editorial-context-label {
+            font-weight: 600;
+            font-style: normal;
+            color: #1e40af;
+        }
+
+        /* Quick Links Section */
+        .quick-links {
+            margin: 40px 0;
+            padding: 0 40px;
+            border-top: 2px solid #e8e8e8;
+            padding-top: 32px;
+        }
+
+        .quick-item {
+            margin-bottom: 24px;
+            padding-bottom: 24px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .quick-item:last-child {
+            margin-bottom: 0;
+            border-bottom: none;
+        }
+
+        .quick-item h4 {
+            font-size: 16px;
+            font-weight: 600;
+            margin: 0 0 8px 0;
+            line-height: 1.4;
+        }
+
+        .quick-item h4 a {
+            color: #000;
+            text-decoration: underline;
+        }
+
+        .quick-item h4 a:hover {
+            color: #1e40af;
+        }
+
+        .quick-item .snippet {
+            font-size: 15px;
+            color: #555;
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        /* Footer */
+        .footer {
+            background: #ffffff;
+            padding: 40px;
+            text-align: center;
+            border-top: 1px solid #e8e8e8;
+        }
+
+        .footer .share {
+            margin: 0 0 24px 0;
+            font-size: 16px;
+            color: #444;
+        }
+
+        .footer .share a {
+            color: #4f46e5;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .footer .share a:hover {
+            text-decoration: underline;
+        }
+
+        .footer .links {
+            margin: 20px 0;
+            font-size: 14px;
+        }
+
+        .footer .links a {
+            color: #666;
+            text-decoration: none;
+            margin: 0 12px;
+        }
+
+        .footer .links a:hover {
+            color: #000;
+        }
+
+        .footer .legal {
+            margin-top: 24px;
+            font-size: 13px;
+            color: #999;
+            line-height: 1.6;
+        }
+
+        /* Mobile Responsive */
+        @media only screen and (max-width: 600px) {
+            .email-wrapper {
+                width: 100% !important;
+            }
+
+            .top-bar {
+                padding: 12px 20px !important;
+            }
+
+            .header {
+                padding: 24px 20px 20px 20px !important;
+            }
+
+            .header h1 {
+                font-size: 28px !important;
+            }
+
+            .header .tagline {
+                font-size: 15px !important;
+            }
+
+            .content,
+            .footer {
+                padding: 24px !important;
+            }
+
+            .sponsor {
+                padding: 24px 20px !important;
+            }
+
+            .story h3 {
+                font-size: 18px !important;
+            }
+
+            .story .summary {
+                font-size: 16px !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="email-wrapper">
+        <!-- Top Navigation Bar -->
+        <div class="top-bar">
+            <a href="https://brief.delights.pro">Sign Up</a> |
+            <a href="mailto:sponsors@brief.delights.pro?subject=Advertising%20Inquiry">Advertise</a> |
+            <a
+                href="https://brief.delights.pro/archive/2026-02-26-leaders">View
+                Online</a>
+        </div>
+
+        <!-- Header -->
+        <div class="header">
+            <div class="logo">Brief</div>
+            <div class="tagline">delights</div>
+            <p class="date">Leaders 💼 | 2026-02-26</p>
+            <p class="curation-stats">1,300+ news scanned → ~210 analyzed → 14
+                selected</p>
+        </div>
+
+        <!-- Sponsor Section -->
+        
+
+        <!-- Content Sections -->
+        <div class="content">
+            
+            <div class="section">
+                
+                
+                <div class="section-emoji">🚀</div>
+                <h2>AI & Innovation</h2>
+                
+
+                
+                <div class="story">
+                    <h3><a href="https://brief.delights.pro/api/track?url=https%3A%2F%2Fstratechery.com%2F2026%2Famazon-earnings-capex-concerns-commodity-ai%2F&s=leaders&d=2026-02-26&t=Amazon+Earnings%2C+CapEx+Concerns%2C+Commodity+AI">Amazon Earnings, CapEx Concerns, Commodity AI</a> <span
+                            style="color: #666; font-weight: 400;">(3 minute read)</span>
+                    </h3>
+                    <p class="summary">Amazon's massive $200B AI capex plan stuns Wall Street, raising concerns about returns on investment despite strong AWS growth.</p>
+
+                    
+                    <div class="editorial-context">
+                        <span class="editorial-context-label">Why this matters:</span> Forces reevaluation of build-vs-buy AI strategies as vendor models now exceed in-house capabilities.
+                    </div>
+                    
+
+                    <p class="meta"><a href="https://brief.delights.pro/api/track?url=https%3A%2F%2Fstratechery.com%2F2026%2Famazon-earnings-capex-concerns-commodity-ai%2F&s=leaders&d=2026-02-26&t=Amazon+Earnings%2C+CapEx+Concerns%2C+Commodity+AI">Stratechery by Ben Thompson</a></p>
+                </div>
+                
+                <div class="story">
+                    <h3><a href="https://brief.delights.pro/api/track?url=https%3A%2F%2Fstratechery.com%2F2026%2Fshopify-earnings-shopifys-ai-advantages%2F&s=leaders&d=2026-02-26&t=Shopify+Earnings%2C+Shopify%E2%80%99s+AI+Advantages">Shopify Earnings, Shopify’s AI Advantages</a> <span
+                            style="color: #666; font-weight: 400;">(3 minute read)</span>
+                    </h3>
+                    <p class="summary">Shopify is poised to be a big AI winner as it continues to invest in agentic commerce and AI-powered shopping experiences.</p>
+
+                    
+                    <div class="editorial-context">
+                        <span class="editorial-context-label">Why this matters:</span> Shopify's AI push signals a strategic shift that could reshape the e-commerce landscape, forcing competitors to reevaluate their own AI strategies.
+                    </div>
+                    
+
+                    <p class="meta"><a href="https://brief.delights.pro/api/track?url=https%3A%2F%2Fstratechery.com%2F2026%2Fshopify-earnings-shopifys-ai-advantages%2F&s=leaders&d=2026-02-26&t=Shopify+Earnings%2C+Shopify%E2%80%99s+AI+Advantages">Stratechery by Ben Thompson</a></p>
+                </div>
+                
+            </div>
+            
+            <div class="section">
+                
+                
+                <div class="section-emoji">💼</div>
+                <h2>Tech Business</h2>
+                
+
+                
+                <div class="story">
+                    <h3><a href="https://brief.delights.pro/api/track?url=https%3A%2F%2Fdocs.stripe.com%2Fpayouts%2Fnext-day-settlement&s=leaders&d=2026-02-26&t=Introducing+next-day+settlement%2C+a+faster+way+to+access+your+earnings">Introducing next-day settlement, a faster way to access your earnings</a> <span
+                            style="color: #666; font-weight: 400;">(2 minute read)</span>
+                    </h3>
+                    <p class="summary">Stripe's next-day settlement allows users to access funds from domestic transactions the next business day, accelerating cash flow and liquidity management.</p>
+
+                    
+                    <div class="editorial-context">
+                        <span class="editorial-context-label">Why this matters:</span> Faster access to funds could enable software engineers and technical builders to make more informed business decisions and optimize their runway and growth strategies.
+                    </div>
+                    
+
+                    <p class="meta"><a href="https://brief.delights.pro/api/track?url=https%3A%2F%2Fdocs.stripe.com%2Fpayouts%2Fnext-day-settlement&s=leaders&d=2026-02-26&t=Introducing+next-day+settlement%2C+a+faster+way+to+access+your+earnings">Stripe Blog</a></p>
+                </div>
+                
+            </div>
+            
+            <div class="section">
+                
+                
+                <div class="section-emoji">☁️</div>
+                <h2>Enterprise Tech</h2>
+                
+
+                
+                <div class="story">
+                    <h3><a href="https://brief.delights.pro/api/track?url=https%3A%2F%2Fstripe.com%2Fblog%2Fnew-features-to-help-saas-platforms-manage-risk-and-stay-compliant&s=leaders&d=2026-02-26&t=New+features+to+help+SaaS+platforms+manage+risk+and+stay+compliant">New features to help SaaS platforms manage risk and stay compliant</a> <span
+                            style="color: #666; font-weight: 400;">(3 minute read)</span>
+                    </h3>
+                    <p class="summary">Stripe launches new features to help SaaS platforms manage risk and stay compliant, including reserves on user funds and customized risk controls.</p>
+
+                    
+                    <div class="editorial-context">
+                        <span class="editorial-context-label">Why this matters:</span> These features enable SaaS platforms to mitigate financial risk and compliance issues, streamlining global expansion and user growth.
+                    </div>
+                    
+
+                    <p class="meta"><a href="https://brief.delights.pro/api/track?url=https%3A%2F%2Fstripe.com%2Fblog%2Fnew-features-to-help-saas-platforms-manage-risk-and-stay-compliant&s=leaders&d=2026-02-26&t=New+features+to+help+SaaS+platforms+manage+risk+and+stay+compliant">Stripe Blog</a></p>
+                </div>
+                
+            </div>
+            
+            <div class="section">
+                
+                
+                <div class="section-emoji">🔐</div>
+                <h2>Security</h2>
+                
+
+                
+                <div class="story">
+                    <h3><a href="https://brief.delights.pro/api/track?url=https%3A%2F%2Fkrebsonsecurity.com%2F2026%2F01%2Fkimwolf-botnet-lurking-in-corporate-govt-networks%2F&s=leaders&d=2026-02-26&t=Kimwolf+Botnet+Lurking+in+Corporate%2C+Govt.+Networks">Kimwolf Botnet Lurking in Corporate, Govt. Networks</a> <span
+                            style="color: #666; font-weight: 400;">(5 minute read)</span>
+                    </h3>
+                    <p class="summary">The Kimwolf botnet has infected over 2 million IoT devices, using them for DDoS attacks and malicious traffic relay, posing a serious threat to organizations.</p>
+
+                    
+                    <div class="editorial-context">
+                        <span class="editorial-context-label">Why this matters:</span> IT teams must re-evaluate network security assumptions and implement robust IoT device management to mitigate the Kimwolf botnet's impact.
+                    </div>
+                    
+
+                    <p class="meta"><a href="https://brief.delights.pro/api/track?url=https%3A%2F%2Fkrebsonsecurity.com%2F2026%2F01%2Fkimwolf-botnet-lurking-in-corporate-govt-networks%2F&s=leaders&d=2026-02-26&t=Kimwolf+Botnet+Lurking+in+Corporate%2C+Govt.+Networks">Krebs on Security</a></p>
+                </div>
+                
+            </div>
+            
+            <div class="section">
+                
+                
+                <div class="section-emoji">💰</div>
+                <h2>Funding & M&A</h2>
+                
+
+                
+                <div class="story">
+                    <h3><a href="https://brief.delights.pro/api/track?url=https%3A%2F%2Fstripe.com%2Fblog%2Fbusinesses-grow-revenue-on-stripe-faster-after-accepting-financing-through-stripe-capital&s=leaders&d=2026-02-26&t=Businesses+grow+revenue+on+Stripe+27+percentage+points+faster+after+accepting+financing+through+Stri">Businesses grow revenue on Stripe 27 percentage points faster after accepting financing through Stripe Capital</a> <span
+                            style="color: #666; font-weight: 400;">(6 minute read)</span>
+                    </h3>
+                    <p class="summary">Stripe's randomized trial found businesses that accepted Stripe Capital financing saw 27% faster revenue growth on average, with the top 10% seeing a 211% boost.</p>
+
+                    
+                    <div class="editorial-context">
+                        <span class="editorial-context-label">Why this matters:</span> This could prompt more small businesses to seek non-traditional financing options to fuel growth, challenging traditional lending models.
+                    </div>
+                    
+
+                    <p class="meta"><a href="https://brief.delights.pro/api/track?url=https%3A%2F%2Fstripe.com%2Fblog%2Fbusinesses-grow-revenue-on-stripe-faster-after-accepting-financing-through-stripe-capital&s=leaders&d=2026-02-26&t=Businesses+grow+revenue+on+Stripe+27+percentage+points+faster+after+accepting+financing+through+Stri">Stripe Blog</a></p>
+                </div>
+                
+                <div class="story">
+                    <h3><a href="https://brief.delights.pro/api/track?url=https%3A%2F%2Fwww.wired.com%2Fstory%2Fshould-you-be-taking-creatine-supplements%2F&s=leaders&d=2026-02-26&t=Creatine+Supplements+Are+Everywhere.+Do+I+Need+Them%3F+%282026%29">Creatine Supplements Are Everywhere. Do I Need Them? (2026)</a> <span
+                            style="color: #666; font-weight: 400;">(4 minute read)</span>
+                    </h3>
+                    <p class="summary">Creatine is a naturally occurring compound that can boost muscle performance and recovery, but it's not essential for general health. The best form is creatine monohydrate at 3-5g per day.</p>
+
+                    
+                    <div class="editorial-context">
+                        <span class="editorial-context-label">Why this matters:</span> Researchers and innovators should consider how creatine could enhance performance in their applications, beyond just sports and fitness.
+                    </div>
+                    
+
+                    <p class="meta"><a href="https://brief.delights.pro/api/track?url=https%3A%2F%2Fwww.wired.com%2Fstory%2Fshould-you-be-taking-creatine-supplements%2F&s=leaders&d=2026-02-26&t=Creatine+Supplements+Are+Everywhere.+Do+I+Need+Them%3F+%282026%29">WIRED</a></p>
+                </div>
+                
+            </div>
+            
+            <div class="section">
+                
+                
+                <div class="section-emoji">📊</div>
+                <h2>Market Trends</h2>
+                
+
+                
+                <div class="story">
+                    <h3><a href="https://brief.delights.pro/api/track?url=https%3A%2F%2Fstripe.com%2Fblog%2Fstripe-atlas-startups-in-2025-year-in-review&s=leaders&d=2026-02-26&t=Stripe+Atlas+startups+in+2025%3A+Year+in+review">Stripe Atlas startups in 2025: Year in review</a> <span
+                            style="color: #666; font-weight: 400;">(8 minute read)</span>
+                    </h3>
+                    <p class="summary">Startups incorporated through Stripe Atlas are generating revenue faster, with more global teams and customers, despite fewer funded startups.</p>
+
+                    
+                    <div class="editorial-context">
+                        <span class="editorial-context-label">Why this matters:</span> This data suggests new approaches to building and funding startups that could shift industry practices.
+                    </div>
+                    
+
+                    <p class="meta"><a href="https://brief.delights.pro/api/track?url=https%3A%2F%2Fstripe.com%2Fblog%2Fstripe-atlas-startups-in-2025-year-in-review&s=leaders&d=2026-02-26&t=Stripe+Atlas+startups+in+2025%3A+Year+in+review">Stripe Blog</a></p>
+                </div>
+                
+            </div>
+            
+        </div>
+
+        <!-- Quick Links Section -->
+        
+        <div class="quick-links">
+            <div class="section-emoji">⚡</div>
+            <h2>Quick Links</h2>
+
+            
+            <div class="quick-item">
+                <h4><a href="https://brief.delights.pro/api/track?url=https%3A%2F%2Fstripe.com%2Fblog%2Fagentic-commerce-suite&s=leaders&d=2026-02-26&t=Introducing+the+Agentic+Commerce+Suite%3A+A+complete+solution+for+selling+on+AI+agents">Introducing the Agentic Commerce Suite: A complete solution for selling on AI agents</a> <span
+                        style="color: #999; font-weight: 400; font-size: 14px;">(1
+                        min)</span></h4>
+                <p class="snippet">Today, we’re introducing the Agentic Commerce Suite: a new solution that gets your business agent-ready. It enables you to sell on AI agents more easily by making your products discoverable, simplifying your checkout, and allowing you to accept ag...</p>
+            </div>
+            
+            <div class="quick-item">
+                <h4><a href="https://brief.delights.pro/api/track?url=https%3A%2F%2Fstripe.com%2Fpayment-method%2Fpayto&s=leaders&d=2026-02-26&t=PayTo+available+in+Australia">PayTo available in Australia</a> <span
+                        style="color: #999; font-weight: 400; font-size: 14px;">(1
+                        min)</span></h4>
+                <p class="snippet">Businesses in Australia can now offer PayTo. Accept one-off and recurring direct debits with PayTo to get real-time payment confirmation and funds deposited into your Stripe balance instantly, 24 hours a day, every day of the year..</p>
+            </div>
+            
+            <div class="quick-item">
+                <h4><a href="https://brief.delights.pro/api/track?url=https%3A%2F%2Farxiv.org%2Fabs%2F2602.20946&s=leaders&d=2026-02-26&t=Some+Simple+Economics+of+AGI">Some Simple Economics of AGI</a> <span
+                        style="color: #999; font-weight: 400; font-size: 14px;">(1
+                        min)</span></h4>
+                <p class="snippet">arXiv:2602.20946v2 Announce Type: replace-cross Abstract: For millennia, human cognition was the primary engine of progress on Earth. As AI decouples cognition from biology, the marginal cost of measurable execution falls to zero, absorbing any la...</p>
+            </div>
+            
+            <div class="quick-item">
+                <h4><a href="https://brief.delights.pro/api/track?url=https%3A%2F%2Farxiv.org%2Fabs%2F2602.20292&s=leaders&d=2026-02-26&t=Quantifying+the+Expectation-Realisation+Gap+for+Agentic+AI+Systems">Quantifying the Expectation-Realisation Gap for Agentic AI Systems</a> <span
+                        style="color: #999; font-weight: 400; font-size: 14px;">(1
+                        min)</span></h4>
+                <p class="snippet">arXiv:2602.20292v2 Announce Type: replace-cross Abstract: Agentic AI systems are deployed with expectations of substantial productivity gains, yet rigorous empirical evidence reveals systematic discrepancies between pre-deployment expectations and...</p>
+            </div>
+            
+        </div>
+        
+
+        <!-- Worth Your Attention (Trending) Section -->
+        
+        <div class="content">
+            <div class="section">
+                <div class="section-emoji">🔥</div>
+                <h2>Worth Your Attention</h2>
+
+                
+                <div class="story">
+                    <h3><a href="https://brief.delights.pro/api/track?url=https%3A%2F%2Fstratechery.com%2F2026%2Fthin-is-in%2F&s=leaders&d=2026-02-26&t=Thin+Is+In">Thin Is In</a> <span
+                            style="color: #666; font-weight: 400;">(11 min)</span></h3>
+                    <p class="summary">The thin-vs-thick client debate has resurfaced with AI, where the interface is just a text field and all the computation happens remotely.</p>
+                    <p class="meta"><a href="https://brief.delights.pro/api/track?url=https%3A%2F%2Fstratechery.com%2F2026%2Fthin-is-in%2F&s=leaders&d=2026-02-26&t=Thin+Is+In">Stratechery by Ben Thompson</a></p>
+                </div>
+                
+                <div class="story">
+                    <h3><a href="https://brief.delights.pro/api/track?url=https%3A%2F%2Fkrebsonsecurity.com%2F2026%2F02%2Fplease-dont-feed-the-scattered-lapsus-shiny-hunters%2F&s=leaders&d=2026-02-26&t=Please+Don%E2%80%99t+Feed+the+Scattered+Lapsus+ShinyHunters">Please Don’t Feed the Scattered Lapsus ShinyHunters</a> <span
+                            style="color: #666; font-weight: 400;">(6 min)</span></h3>
+                    <p class="summary">A prolific ransomware gang, Scattered Lapsus ShinyHunters (SLSH), uses extreme harassment tactics to extort victims, but experts warn that engaging only encourages further abuse.</p>
+                    <p class="meta"><a href="https://brief.delights.pro/api/track?url=https%3A%2F%2Fkrebsonsecurity.com%2F2026%2F02%2Fplease-dont-feed-the-scattered-lapsus-shiny-hunters%2F&s=leaders&d=2026-02-26&t=Please+Don%E2%80%99t+Feed+the+Scattered+Lapsus+ShinyHunters">Krebs on Security</a></p>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <!-- Personalized Referral Section -->
+        
+        <div style="background: #f8f7ff; padding: 32px 40px; text-align: center; border-top: 2px solid #e8e8e8;">
+            <p style="font-size: 22px; font-weight: 700; margin: 0 0 4px 0; color: #000;">🎯 Share Brief Delights,
+                Unlock Rewards</p>
+            <p style="font-size: 14px; color: #666; margin: 0 0 20px 0;">You've referred <strong
+                    style="color: #4f46e5;">{{ referral_count }}</strong> reader{{ referral_count_plural }}. {{ referral_remaining }} more to unlock: <strong>{{ referral_next_reward }}</strong></p>
+
+            <!-- Milestone Progress Bar -->
+            <div style="max-width: 400px; margin: 0 auto 20px auto;">
+                <div
+                    style="display: flex; justify-content: space-between; margin-bottom: 6px; font-size: 11px; color: #999;">
+                    <span>0</span>
+                    <span style="MILESTONE_1_STYLE">1 🏅</span>
+                    <span style="MILESTONE_3_STYLE">3 📰</span>
+                    <span style="MILESTONE_5_STYLE">5 🔓</span>
+                    <span style="MILESTONE_10_STYLE">10 ⭐</span>
+                </div>
+                <div style="background: #e5e7eb; border-radius: 999px; height: 8px; overflow: hidden;">
+                    <div
+                        style="background: linear-gradient(90deg, #4f46e5, #7c3aed); height: 100%; border-radius: 999px; width: PROGRESS_BAR_WIDTH%;">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Referral Link Box -->
+            <div
+                style="background: #ffffff; border: 2px dashed #4f46e5; border-radius: 8px; padding: 12px 20px; margin: 0 auto 16px auto; max-width: 420px;">
+                <p
+                    style="font-size: 11px; color: #999; margin: 0 0 4px 0; text-transform: uppercase; letter-spacing: 1px;">
+                    Your personal link</p>
+                <p style="font-size: 16px; font-weight: 600; color: #4f46e5; margin: 0; word-break: break-all;">
+                    <a href="https://brief.delights.pro/?ref={{ referral_code }}"
+                        style="color: #4f46e5; text-decoration: none;">brief.delights.pro/?ref={{ referral_code }}</a>
+                </p>
+            </div>
+
+            <!-- Social Share Buttons -->
+            <p style="font-size: 13px; color: #999; margin: 0;">
+                <a href="https://twitter.com/intent/tweet?text=I%20read%20Brief%20Delights%20daily%20%E2%80%94%20AI-curated%20tech%20stories%20for%20your%20role.%20Free%20%26%20no%20spam.&url=https%3A%2F%2Fbrief.delights.pro%2F%3Fref%3D{{ referral_code }}"
+                    style="color: #666; text-decoration: none; margin: 0 8px; font-weight: 500;">𝕏 Twitter</a> ·
+                <a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fbrief.delights.pro%2F%3Fref%3D{{ referral_code }}"
+                    style="color: #666; text-decoration: none; margin: 0 8px; font-weight: 500;">LinkedIn</a> ·
+                <a href="mailto:?subject=Check%20out%20Brief%20Delights&body=I%20read%20this%20daily%20tech%20brief%20and%20thought%20you'd%20find%20it%20useful%3A%20https%3A%2F%2Fbrief.delights.pro%2F%3Fref%3D{{ referral_code }}"
+                    style="color: #666; text-decoration: none; margin: 0 8px; font-weight: 500;">📧 Email</a>
+            </p>
+        </div>
+        
+
+        <!-- Feedback Rating -->
+        <div style="background: #ffffff; padding: 28px 40px; text-align: center; border-top: 1px solid #e8e8e8;">
+            <p style="font-size: 15px; font-weight: 600; color: #000; margin: 0 0 4px 0;">How was today's Brief?</p>
+            <p style="font-size: 12px; color: #999; margin: 0 0 16px 0;">Your feedback shapes tomorrow's edition</p>
+            <div style="font-size: 28px;">
+                <a href="https://brief.delights.pro/feedback?rating=loved&date=2026-02-26&segment=leaders"
+                    style="text-decoration: none; margin: 0 12px;">🔥</a>
+                <a href="https://brief.delights.pro/feedback?rating=good&date=2026-02-26&segment=leaders"
+                    style="text-decoration: none; margin: 0 12px;">👍</a>
+                <a href="https://brief.delights.pro/feedback?rating=meh&date=2026-02-26&segment=leaders"
+                    style="text-decoration: none; margin: 0 12px;">😐</a>
+            </div>
+            <p style="font-size: 11px; color: #bbb; margin: 8px 0 0 0;">Loved it · Good · Meh</p>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p class="links">
+                <a href="https://brief.delights.pro">Website</a>
+                <a href="https://brief.delights.pro/archive">Archive</a>
+                <a href="mailto:sponsors@brief.delights.pro?subject=Advertising%20Inquiry">Advertise</a>
+                <a href="mailto:hello@brief.delights.pro?subject=Unsubscribe">Unsubscribe</a>
+            </p>
+
+            <p class="legal">
+                You're receiving this because you subscribed to Brief Delights.<br>
+                <strong>brief delights</strong><br>
+                © 2026 All rights reserved.<br>
+                Questions? <a href="mailto:hello@brief.delights.pro"
+                    style="color: #999; text-decoration: none;">hello@brief.delights.pro</a>
+            </p>
+        </div>
+    </div>
+</body>
+
+</html>

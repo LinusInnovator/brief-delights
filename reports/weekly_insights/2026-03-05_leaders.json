@@ -1,0 +1,36 @@
+{
+  "date": "2026-03-05",
+  "segment": "leaders",
+  "trends": {
+    "categories": {
+      "DevOps & Tools": 1
+    },
+    "sources": {
+      "Stripe Blog": 1
+    },
+    "topics": [
+      "Analyzing how SaaS platforms are shipping payments and finance products in days"
+    ],
+    "total_articles": 1
+  },
+  "article_count": 1,
+  "articles": [
+    {
+      "id": "6cbe3e5c8b1f3cbfa05e157df8d0bded",
+      "title": "Analyzing how SaaS platforms are shipping payments and finance products in days",
+      "url": "https://stripe.com/blog/analyzing-how-saas-platforms-are-shipping-payments-and-finance-products-in-days",
+      "published_date": "2026-03-05T06:52:04.184465",
+      "description": "Leading SaaS platforms across industries\u2014from Squarespace to Jobber\u2014are using embedded components to ship payments and finance features with minimal code. We analyzed the data to see which types of platforms are getting the most value.",
+      "source": "Stripe Blog",
+      "category": "DevOps & Tools",
+      "segment": "builders",
+      "source_type": "primary",
+      "raw_content": "Leading SaaS platforms across industries\u2014from Squarespace to Jobber\u2014are using embedded components to ship payments and finance features with minimal code. We analyzed the data to see which types of platforms are getting the most value.",
+      "tier": "full",
+      "selection_reason": "Critical market intelligence on SaaS platform monetization trends",
+      "audience_value": "Strategic insights for platform revenue diversification",
+      "urgency_score": 9,
+      "category_tag": "\ud83d\udcbc Tech Business"
+    }
+  ]
+}

@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brief Delights 🔧 - 2026-02-19</title>
+    <style>
+        /* Reset */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background-color: #f8f9fa;
+            color: #1a1a1a;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* Container */
+        .email-wrapper {
+            max-width: 680px;
+            margin: 0 auto;
+            background-color: #ffffff;
+        }
+
+        /* Top Bar (minimal, like TLDR) */
+        .top-bar {
+            padding: 16px 40px;
+            text-align: center;
+            border-bottom: 1px solid #e8e8e8;
+            background: #ffffff;
+        }
+
+        .top-bar a {
+            color: #666;
+            text-decoration: none;
+            font-size: 13px;
+            margin: 0 12px;
+            font-weight: 500;
+        }
+
+        .top-bar a:hover {
+            color: #000;
+        }
+
+        /* Header (Clean, no gradient!) */
+        .header {
+            background: #ffffff;
+            padding: 40px 40px 32px 40px;
+            text-align: center;
+            border-bottom: 1px solid #e8e8e8;
+        }
+
+        .logo {
+            font-size: 52px;
+            font-weight: 700;
+            letter-spacing: -1.5px;
+            margin: 0;
+            line-height: 1;
+            color: #000000;
+        }
+
+        .tagline {
+            font-size: 18px;
+            font-weight: 400;
+            color: #666666;
+            margin: 4px 0 12px 0;
+            letter-spacing: 2px;
+        }
+
+        .header .date {
+            margin: 0 0 8px 0;
+            font-size: 14px;
+            color: #999;
+            font-weight: 400;
+        }
+
+        .header .curation-stats {
+            margin: 0;
+            font-size: 12px;
+            color: #aaa;
+            font-weight: 400;
+            font-family: 'Courier New', monospace;
+        }
+
+        /* Sponsor Block (white background, tight integration) */
+        .sponsor {
+            background: #ffffff;
+            border-top: 1px solid #e8e8e8;
+            border-bottom: 1px solid #e8e8e8;
+            padding: 32px 40px;
+            margin: 0;
+        }
+
+        .sponsor-label {
+            font-size: 9px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #999;
+            margin: 0 0 12px 0;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        .sponsor h3 {
+            margin: 0 0 12px 0;
+            font-size: 20px;
+            font-weight: 700;
+            color: #000;
+            line-height: 1.3;
+        }
+
+        .sponsor h3 a {
+            color: #000;
+            text-decoration: none;
+        }
+
+        .sponsor h3 a:hover {
+            color: #4f46e5;
+        }
+
+        .sponsor p {
+            margin: 0;
+            font-size: 14px;
+            line-height: 1.5;
+            color: #666;
+        }
+
+        .sponsor a.cta {
+            display: inline-block;
+            margin-top: 12px;
+            color: #4f46e5;
+            font-weight: 600;
+            text-decoration: underline;
+            font-size: 15px;
+        }
+
+        /* Content */
+        .content {
+            padding: 40px 40px 20px 40px;
+        }
+
+        /* Section Headers */
+        .section {
+            margin-bottom: 40px;
+        }
+
+        .section-emoji {
+            text-align: center;
+            font-size: 20px;
+            margin: 0 0 12px 0;
+        }
+
+        .section h2 {
+            font-size: 20px;
+            font-weight: 700;
+            color: #000;
+            margin: 0 0 24px 0;
+            padding: 0;
+            border: none;
+            text-align: center;
+        }
+
+        /* Story Cards */
+        .story {
+            margin-bottom: 28px;
+            padding-bottom: 28px;
+            border-bottom: 1px solid #e8e8e8;
+        }
+
+        .story:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        /* Article Titles (slightly bigger than body) */
+        .story h3 {
+            margin: 0 0 10px 0;
+            font-size: 20px;
+            line-height: 1.4;
+            font-weight: 700;
+        }
+
+        .story h3 a {
+            color: #000;
+            text-decoration: underline;
+        }
+
+        .story h3 a:hover {
+            color: #1e40af;
+        }
+
+        /* Summary Text (close in size to titles) */
+        .story .summary {
+            margin: 10px 0;
+            font-size: 18px;
+            color: #444;
+            line-height: 1.6;
+        }
+
+        /* Meta Info */
+        .story .meta {
+            margin: 12px 0 0 0;
+            font-size: 14px;
+            color: #999;
+        }
+
+        .story .meta a {
+            color: #999;
+            text-decoration: none;
+        }
+
+        .story .meta a:hover {
+            color: #4f46e5;
+        }
+
+        /* Editorial Context - NEW: Why This Matters */
+        .editorial-context {
+            margin: 20px 0 12px 0;
+            padding: 12px 16px;
+            background: #eff6ff;
+            border-left: 3px solid #3b82f6;
+            font-size: 16px;
+            color: #1e40af;
+            font-style: italic;
+            line-height: 1.5;
+        }
+
+        .editorial-context-label {
+            font-weight: 600;
+            font-style: normal;
+            color: #1e40af;
+        }
+
+        /* Quick Links Section */
+        .quick-links {
+            margin: 40px 0;
+            padding: 0 40px;
+            border-top: 2px solid #e8e8e8;
+            padding-top: 32px;
+        }
+
+        .quick-item {
+            margin-bottom: 24px;
+            padding-bottom: 24px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .quick-item:last-child {
+            margin-bottom: 0;
+            border-bottom: none;
+        }
+
+        .quick-item h4 {
+            font-size: 16px;
+            font-weight: 600;
+            margin: 0 0 8px 0;
+            line-height: 1.4;
+        }
+
+        .quick-item h4 a {
+            color: #000;
+            text-decoration: underline;
+        }
+
+        .quick-item h4 a:hover {
+            color: #1e40af;
+        }
+
+        .quick-item .snippet {
+            font-size: 15px;
+            color: #555;
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        /* Footer */
+        .footer {
+            background: #ffffff;
+            padding: 40px;
+            text-align: center;
+            border-top: 1px solid #e8e8e8;
+        }
+
+        .footer .share {
+            margin: 0 0 24px 0;
+            font-size: 16px;
+            color: #444;
+        }
+
+        .footer .share a {
+            color: #4f46e5;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .footer .share a:hover {
+            text-decoration: underline;
+        }
+
+        .footer .links {
+            margin: 20px 0;
+            font-size: 14px;
+        }
+
+        .footer .links a {
+            color: #666;
+            text-decoration: none;
+            margin: 0 12px;
+        }
+
+        .footer .links a:hover {
+            color: #000;
+        }
+
+        .footer .legal {
+            margin-top: 24px;
+            font-size: 13px;
+            color: #999;
+            line-height: 1.6;
+        }
+
+        /* Mobile Responsive */
+        @media only screen and (max-width: 600px) {
+            .email-wrapper {
+                width: 100% !important;
+            }
+
+            .top-bar {
+                padding: 12px 20px !important;
+            }
+
+            .header {
+                padding: 24px 20px 20px 20px !important;
+            }
+
+            .header h1 {
+                font-size: 28px !important;
+            }
+
+            .header .tagline {
+                font-size: 15px !important;
+            }
+
+            .content,
+            .footer {
+                padding: 24px !important;
+            }
+
+            .sponsor {
+                padding: 24px 20px !important;
+            }
+
+            .story h3 {
+                font-size: 18px !important;
+            }
+
+            .story .summary {
+                font-size: 16px !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="email-wrapper">
+        <!-- Top Navigation Bar -->
+        <div class="top-bar">
+            <a href="https://brief.delights.pro">Sign Up</a> |
+            <a href="mailto:sponsors@brief.delights.pro?subject=Advertising%20Inquiry">Advertise</a> |
+            <a
+                href="https://brief.delights.pro/archive/2026-02-19-builders">View
+                Online</a>
+        </div>
+
+        <!-- Header -->
+        <div class="header">
+            <div class="logo">Brief</div>
+            <div class="tagline">delights</div>
+            <p class="date">Builders 🔧 | 2026-02-19</p>
+            <p class="curation-stats">1,300+ news scanned → ~195 analyzed → 13
+                selected</p>
+        </div>
+
+        <!-- Sponsor Section -->
+        
+
+        <!-- Content Sections -->
+        <div class="content">
+            
+            <div class="section">
+                
+                
+                <div class="section-emoji">🚀</div>
+                <h2>AI & Innovation</h2>
+                
+
+                
+                <div class="story">
+                    <h3><a href="https://brief.delights.pro/api/track?url=https%3A%2F%2Ffly.io%2Fblog%2Fgpu-ga%2F&s=builders&d=2026-02-19&t=GPUs+on+Fly.io+are+available+to+everyone%21">GPUs on Fly.io are available to everyone!</a> <span
+                            style="color: #666; font-weight: 400;">(3 minute read)</span>
+                    </h3>
+                    <p class="summary">Fly.io now offers GPU instances, enabling developers to harness the power of large language models, text transcription, and image generation on Fly's global infrastructure.</p>
+
+                    
+                    <div class="editorial-context">
+                        <span class="editorial-context-label">Why this matters:</span> Fly's GPU instances could enable software teams to build more sophisticated AI-driven features without the overhead of managing GPU infrastructure.
+                    </div>
+                    
+
+                    <p class="meta"><a href="https://brief.delights.pro/api/track?url=https%3A%2F%2Ffly.io%2Fblog%2Fgpu-ga%2F&s=builders&d=2026-02-19&t=GPUs+on+Fly.io+are+available+to+everyone%21">The Fly Blog</a></p>
+                </div>
+                
+                <div class="story">
+                    <h3><a href="https://brief.delights.pro/api/track?url=https%3A%2F%2Fblog.codinghorror.com%2Fthere-is-no-longer-any-such-thing-as-computer-security%2F&s=builders&d=2026-02-19&t=There+is+no+longer+any+such+thing+as+Computer+Security">There is no longer any such thing as Computer Security</a> <span
+                            style="color: #666; font-weight: 400;">(12 minute read)</span>
+                    </h3>
+                    <p class="summary">Phishing attacks have become so advanced that they can now rewrite history, blurring the line between digital and physical reality.</p>
+
+                    
+                    <div class="editorial-context">
+                        <span class="editorial-context-label">Why this matters:</span> Software engineers must rethink security assumptions and develop new techniques to defend against AI-powered phishing at scale.
+                    </div>
+                    
+
+                    <p class="meta"><a href="https://brief.delights.pro/api/track?url=https%3A%2F%2Fblog.codinghorror.com%2Fthere-is-no-longer-any-such-thing-as-computer-security%2F&s=builders&d=2026-02-19&t=There+is+no+longer+any+such+thing+as+Computer+Security">Coding Horror</a></p>
+                </div>
+                
+            </div>
+            
+            <div class="section">
+                
+                
+                <div class="section-emoji">☁️</div>
+                <h2>Enterprise Tech</h2>
+                
+
+                
+                <div class="story">
+                    <h3><a href="https://brief.delights.pro/api/track?url=https%3A%2F%2Fsreweekly.com%2Fsre-weekly-issue-504%2F&s=builders&d=2026-02-19&t=SRE+Weekly+Issue+%23504">SRE Weekly Issue #504</a> <span
+                            style="color: #666; font-weight: 400;">(2 minute read)</span>
+                    </h3>
+                    <p class="summary">AI agents are automating incident response, from detection to remediation, reducing MTTR by up to 80% and freeing up on-call engineers.</p>
+
+                    
+                    <div class="editorial-context">
+                        <span class="editorial-context-label">Why this matters:</span> SRE teams can focus on higher-value work instead of repetitive triage, improving reliability and developer experience.
+                    </div>
+                    
+
+                    <p class="meta"><a href="https://brief.delights.pro/api/track?url=https%3A%2F%2Fsreweekly.com%2Fsre-weekly-issue-504%2F&s=builders&d=2026-02-19&t=SRE+Weekly+Issue+%23504">SRE WEEKLY</a></p>
+                </div>
+                
+                <div class="story">
+                    <h3><a href="https://brief.delights.pro/api/track?url=https%3A%2F%2Fwww.hashicorp.com%2Fblog%2Fhybrid-cloud-explained-what-it-is-what-it-isn-t-and-why-having-a-plan-matters&s=builders&d=2026-02-19&t=Hybrid+cloud%2C+explained%3A+What+it+is%2C+what+it+isn%E2%80%99t%2C+and+why+having+a+plan+matters+in+2026">Hybrid cloud, explained: What it is, what it isn’t, and why having a plan matters in 2026</a> <span
+                            style="color: #666; font-weight: 400;">(4 minute read)</span>
+                    </h3>
+                    <p class="summary">Hybrid cloud is a strategic architecture that connects public and private cloud services, enabling data/AI innovation while maintaining security and compliance. Mastering hybrid is critical for infrastructure modernization.</p>
+
+                    
+                    <div class="editorial-context">
+                        <span class="editorial-context-label">Why this matters:</span> Enterprises must unify hybrid cloud management to accelerate innovation, reduce risk, and cut costs - or risk falling behind on data and AI priorities.
+                    </div>
+                    
+
+                    <p class="meta"><a href="https://brief.delights.pro/api/track?url=https%3A%2F%2Fwww.hashicorp.com%2Fblog%2Fhybrid-cloud-explained-what-it-is-what-it-isn-t-and-why-having-a-plan-matters&s=builders&d=2026-02-19&t=Hybrid+cloud%2C+explained%3A+What+it+is%2C+what+it+isn%E2%80%99t%2C+and+why+having+a+plan+matters+in+2026">HashiCorp Blog</a></p>
+                </div>
+                
+                <div class="story">
+                    <h3><a href="https://brief.delights.pro/api/track?url=https%3A%2F%2Ffly.io%2Fblog%2Fevent-driven-machines%2F&s=builders&d=2026-02-19&t=Event+Driven+Machines">Event Driven Machines</a> <span
+                            style="color: #666; font-weight: 400;">(10 minute read)</span>
+                    </h3>
+                    <p class="summary">Fly.io introduces 'Sprites', persistent VMs that enable stateful AI agent workflows with fast startup, automatic shutdown, and cost-effective usage-based billing.</p>
+
+                    
+                    <div class="editorial-context">
+                        <span class="editorial-context-label">Why this matters:</span> Developers can now scale AI resources on-demand without the overhead of rebuilding environments, enabling more cost-effective experimentation and development.
+                    </div>
+                    
+
+                    <p class="meta"><a href="https://brief.delights.pro/api/track?url=https%3A%2F%2Ffly.io%2Fblog%2Fevent-driven-machines%2F&s=builders&d=2026-02-19&t=Event+Driven+Machines">The Fly Blog</a></p>
+                </div>
+                
+                <div class="story">
+                    <h3><a href="https://brief.delights.pro/api/track?url=https%3A%2F%2Fengineering.fb.com%2F2025%2F12%2F19%2Fdata-infrastructure%2Fdrp-metas-root-cause-analysis-platform-at-scale%2F&s=builders&d=2026-02-19&t=DrP%3A+Meta%E2%80%99s+Root+Cause+Analysis+Platform+at+Scale">DrP: Meta’s Root Cause Analysis Platform at Scale</a> <span
+                            style="color: #666; font-weight: 400;">(7 minute read)</span>
+                    </h3>
+                    <p class="summary">DrP is Meta's automated root cause analysis platform that reduces incident resolution time by 20-80% through programmatic investigation and mitigation workflows.</p>
+
+                    
+                    <div class="editorial-context">
+                        <span class="editorial-context-label">Why this matters:</span> This sets a new standard for AI-powered observability that can transform reliability and on-call toil for complex, distributed systems.
+                    </div>
+                    
+
+                    <p class="meta"><a href="https://brief.delights.pro/api/track?url=https%3A%2F%2Fengineering.fb.com%2F2025%2F12%2F19%2Fdata-infrastructure%2Fdrp-metas-root-cause-analysis-platform-at-scale%2F&s=builders&d=2026-02-19&t=DrP%3A+Meta%E2%80%99s+Root+Cause+Analysis+Platform+at+Scale">Engineering at Meta</a></p>
+                </div>
+                
+                <div class="story">
+                    <h3><a href="https://brief.delights.pro/api/track?url=https%3A%2F%2Fplanetscale.com%2Fblog%2Facid-transactions-are-not-just-for-banks-vitess-approach&s=builders&d=2026-02-19&t=ACID+Transactions+are+not+just+for+banks+%E2%80%94+the+Vitess+approach">ACID Transactions are not just for banks — the Vitess approach</a> <span
+                            style="color: #666; font-weight: 400;">(5 minute read)</span>
+                    </h3>
+                    <p class="summary">Vitess provides a solution for ACID transactions beyond banking, enabling durability guarantees for modern applications like collaboration tools.</p>
+
+                    
+                    <div class="editorial-context">
+                        <span class="editorial-context-label">Why this matters:</span> Vitess could enable more reliable data pipelines and data-driven features for software engineers and technical builders.
+                    </div>
+                    
+
+                    <p class="meta"><a href="https://brief.delights.pro/api/track?url=https%3A%2F%2Fplanetscale.com%2Fblog%2Facid-transactions-are-not-just-for-banks-vitess-approach&s=builders&d=2026-02-19&t=ACID+Transactions+are+not+just+for+banks+%E2%80%94+the+Vitess+approach">Blog — PlanetScale</a></p>
+                </div>
+                
+            </div>
+            
+            <div class="section">
+                
+                
+                <div class="section-emoji">🔐</div>
+                <h2>Security</h2>
+                
+
+                
+                <div class="story">
+                    <h3><a href="https://brief.delights.pro/api/track?url=https%3A%2F%2Fwww.hashicorp.com%2Fblog%2Fhow-to-start-consolidating-your-cybersecurity-tools&s=builders&d=2026-02-19&t=How+to+start+consolidating+your+cybersecurity+tools">How to start consolidating your cybersecurity tools</a> <span
+                            style="color: #666; font-weight: 400;">(6 minute read)</span>
+                    </h3>
+                    <p class="summary">Cybersecurity tool consolidation is crucial to reduce costs, improve efficiency, and enhance security. This guide outlines the steps to start streamlining your cybersecurity toolset.</p>
+
+                    
+                    <div class="editorial-context">
+                        <span class="editorial-context-label">Why this matters:</span> Streamlining your cybersecurity tools can free up resources to focus on strategic initiatives and stay ahead of evolving threats.
+                    </div>
+                    
+
+                    <p class="meta"><a href="https://brief.delights.pro/api/track?url=https%3A%2F%2Fwww.hashicorp.com%2Fblog%2Fhow-to-start-consolidating-your-cybersecurity-tools&s=builders&d=2026-02-19&t=How+to+start+consolidating+your+cybersecurity+tools">HashiCorp Blog</a></p>
+                </div>
+                
+            </div>
+            
+        </div>
+
+        <!-- Quick Links Section -->
+        
+        <div class="quick-links">
+            <div class="section-emoji">⚡</div>
+            <h2>Quick Links</h2>
+
+            
+            <div class="quick-item">
+                <h4><a href="https://brief.delights.pro/api/track?url=https%3A%2F%2Fhuggingface.co%2Fblog%2Fhow-to-train&s=builders&d=2026-02-19&t=How+to+train+a+new+language+model+from+scratch+using+Transformers+and+Tokenizers">How to train a new language model from scratch using Transformers and Tokenizers</a> <span
+                        style="color: #999; font-weight: 400; font-size: 14px;">(1
+                        min)</span></h4>
+                <p class="snippet">.</p>
+            </div>
+            
+            <div class="quick-item">
+                <h4><a href="https://brief.delights.pro/api/track?url=https%3A%2F%2Fhuggingface.co%2Fblog%2Fhow-to-generate&s=builders&d=2026-02-19&t=How+to+generate+text%3A+using+different+decoding+methods+for+language+generation+with+Transformers">How to generate text: using different decoding methods for language generation with Transformers</a> <span
+                        style="color: #999; font-weight: 400; font-size: 14px;">(1
+                        min)</span></h4>
+                <p class="snippet">.</p>
+            </div>
+            
+            <div class="quick-item">
+                <h4><a href="https://brief.delights.pro/api/track?url=https%3A%2F%2Fplanetscale.com%2Fblog%2Fplanetscale-migrates-open-source-vitess-test-suite-from-python-to-go&s=builders&d=2026-02-19&t=PlanetScale+migrates+open+source+Vitess+test+suite+from+Python+to+Go">PlanetScale migrates open source Vitess test suite from Python to Go</a> <span
+                        style="color: #999; font-weight: 400; font-size: 14px;">(3
+                        min)</span></h4>
+                <p class="snippet">It’s easier than ever to contribute to Vitess. The test suite migration from Python to golang makes Vitess more developer friendly..</p>
+            </div>
+            
+            <div class="quick-item">
+                <h4><a href="https://brief.delights.pro/api/track?url=https%3A%2F%2Fplanetscale.com%2Fblog%2Fannouncing-vitess-7&s=builders&d=2026-02-19&t=Announcing+Vitess+7">Announcing Vitess 7</a> <span
+                        style="color: #999; font-weight: 400; font-size: 14px;">(1
+                        min)</span></h4>
+                <p class="snippet">On behalf of the Vitess maintainers team, I am pleased to announce the general availability of Vitess 7. Major themes include improved SQL support as we continue to progress towards (almost) full MySQL compatibility..</p>
+            </div>
+            
+        </div>
+        
+
+        <!-- Worth Your Attention (Trending) Section -->
+        
+        <div class="content">
+            <div class="section">
+                <div class="section-emoji">🔥</div>
+                <h2>Worth Your Attention</h2>
+
+                
+                <div class="story">
+                    <h3><a href="https://brief.delights.pro/api/track?url=https%3A%2F%2Fwww.darkreading.com%2Fcyberattacks-data-breaches%2Fbig-breach-or-nada-de-nada-mexican-govt-faces-leak-allegations&s=builders&d=2026-02-19&t=Big+Breach+or+Smooth+Sailing%3F+Mexican+Gov%27t+Faces+Leak+Allegations">Big Breach or Smooth Sailing? Mexican Gov't Faces Leak Allegations</a> <span
+                            style="color: #666; font-weight: 400;">(1 min)</span></h3>
+                    <p class="summary">Hacktivists claim massive 2.3TB breach of Mexican government data, but officials dispute severity, saying no sensitive accounts compromised.</p>
+                    <p class="meta"><a href="https://brief.delights.pro/api/track?url=https%3A%2F%2Fwww.darkreading.com%2Fcyberattacks-data-breaches%2Fbig-breach-or-nada-de-nada-mexican-govt-faces-leak-allegations&s=builders&d=2026-02-19&t=Big+Breach+or+Smooth+Sailing%3F+Mexican+Gov%27t+Faces+Leak+Allegations">darkreading</a></p>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <!-- Personalized Referral Section -->
+        <div style="background: #f8f7ff; padding: 32px 40px; text-align: center; border-top: 2px solid #e8e8e8;">
+            <p style="font-size: 22px; font-weight: 700; margin: 0 0 4px 0; color: #000;">🎯 Share Brief Delights,
+                Unlock Rewards</p>
+            <p style="font-size: 14px; color: #666; margin: 0 0 20px 0;">You've referred <strong
+                    style="color: #4f46e5;"></strong> reader.  more to unlock: <strong></strong>
+            </p>
+
+            <!-- Milestone Progress Bar -->
+            <div style="max-width: 400px; margin: 0 auto 20px auto;">
+                <div
+                    style="display: flex; justify-content: space-between; margin-bottom: 6px; font-size: 11px; color: #999;">
+                    <span>0</span>
+                    <span style="MILESTONE_1_STYLE">1 🏅</span>
+                    <span style="MILESTONE_3_STYLE">3 📰</span>
+                    <span style="MILESTONE_5_STYLE">5 🔓</span>
+                    <span style="MILESTONE_10_STYLE">10 ⭐</span>
+                </div>
+                <div style="background: #e5e7eb; border-radius: 999px; height: 8px; overflow: hidden;">
+                    <div
+                        style="background: linear-gradient(90deg, #4f46e5, #7c3aed); height: 100%; border-radius: 999px; width: PROGRESS_BAR_WIDTH%;">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Referral Link Box -->
+            <div
+                style="background: #ffffff; border: 2px dashed #4f46e5; border-radius: 8px; padding: 12px 20px; margin: 0 auto 16px auto; max-width: 420px;">
+                <p
+                    style="font-size: 11px; color: #999; margin: 0 0 4px 0; text-transform: uppercase; letter-spacing: 1px;">
+                    Your personal link</p>
+                <p style="font-size: 16px; font-weight: 600; color: #4f46e5; margin: 0; word-break: break-all;">
+                    <a href="https://brief.delights.pro/?ref="
+                        style="color: #4f46e5; text-decoration: none;">brief.delights.pro/?ref=</a>
+                </p>
+            </div>
+
+            <!-- Social Share Buttons -->
+            <p style="font-size: 13px; color: #999; margin: 0;">
+                <a href="https://twitter.com/intent/tweet?text=I%20read%20Brief%20Delights%20daily%20%E2%80%94%20AI-curated%20tech%20stories%20for%20your%20role.%20Free%20%26%20no%20spam.&url=https%3A%2F%2Fbrief.delights.pro%2F%3Fref%3D"
+                    style="color: #666; text-decoration: none; margin: 0 8px; font-weight: 500;">𝕏 Twitter</a> ·
+                <a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fbrief.delights.pro%2F%3Fref%3D"
+                    style="color: #666; text-decoration: none; margin: 0 8px; font-weight: 500;">LinkedIn</a> ·
+                <a href="mailto:?subject=Check%20out%20Brief%20Delights&body=I%20read%20this%20daily%20tech%20brief%20and%20thought%20you'd%20find%20it%20useful%3A%20https%3A%2F%2Fbrief.delights.pro%2F%3Fref%3D"
+                    style="color: #666; text-decoration: none; margin: 0 8px; font-weight: 500;">📧 Email</a>
+            </p>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p class="links">
+                <a href="https://brief.delights.pro">Website</a>
+                <a href="https://brief.delights.pro/archive">Archive</a>
+                <a href="mailto:sponsors@brief.delights.pro?subject=Advertising%20Inquiry">Advertise</a>
+                <a href="mailto:hello@brief.delights.pro?subject=Unsubscribe">Unsubscribe</a>
+            </p>
+
+            <p class="legal">
+                You're receiving this because you subscribed to Brief Delights.<br>
+                <strong>brief delights</strong><br>
+                © 2026 All rights reserved.<br>
+                Questions? <a href="mailto:hello@brief.delights.pro"
+                    style="color: #999; text-decoration: none;">hello@brief.delights.pro</a>
+            </p>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brief Delights 🚀 - 2026-02-20</title>
+    <style>
+        /* Reset */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background-color: #f8f9fa;
+            color: #1a1a1a;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* Container */
+        .email-wrapper {
+            max-width: 680px;
+            margin: 0 auto;
+            background-color: #ffffff;
+        }
+
+        /* Top Bar (minimal, like TLDR) */
+        .top-bar {
+            padding: 16px 40px;
+            text-align: center;
+            border-bottom: 1px solid #e8e8e8;
+            background: #ffffff;
+        }
+
+        .top-bar a {
+            color: #666;
+            text-decoration: none;
+            font-size: 13px;
+            margin: 0 12px;
+            font-weight: 500;
+        }
+
+        .top-bar a:hover {
+            color: #000;
+        }
+
+        /* Header (Clean, no gradient!) */
+        .header {
+            background: #ffffff;
+            padding: 40px 40px 32px 40px;
+            text-align: center;
+            border-bottom: 1px solid #e8e8e8;
+        }
+
+        .logo {
+            font-size: 52px;
+            font-weight: 700;
+            letter-spacing: -1.5px;
+            margin: 0;
+            line-height: 1;
+            color: #000000;
+        }
+
+        .tagline {
+            font-size: 18px;
+            font-weight: 400;
+            color: #666666;
+            margin: 4px 0 12px 0;
+            letter-spacing: 2px;
+        }
+
+        .header .date {
+            margin: 0 0 8px 0;
+            font-size: 14px;
+            color: #999;
+            font-weight: 400;
+        }
+
+        .header .curation-stats {
+            margin: 0;
+            font-size: 12px;
+            color: #aaa;
+            font-weight: 400;
+            font-family: 'Courier New', monospace;
+        }
+
+        /* Sponsor Block (white background, tight integration) */
+        .sponsor {
+            background: #ffffff;
+            border-top: 1px solid #e8e8e8;
+            border-bottom: 1px solid #e8e8e8;
+            padding: 32px 40px;
+            margin: 0;
+        }
+
+        .sponsor-label {
+            font-size: 9px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #999;
+            margin: 0 0 12px 0;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        .sponsor h3 {
+            margin: 0 0 12px 0;
+            font-size: 20px;
+            font-weight: 700;
+            color: #000;
+            line-height: 1.3;
+        }
+
+        .sponsor h3 a {
+            color: #000;
+            text-decoration: none;
+        }
+
+        .sponsor h3 a:hover {
+            color: #4f46e5;
+        }
+
+        .sponsor p {
+            margin: 0;
+            font-size: 14px;
+            line-height: 1.5;
+            color: #666;
+        }
+
+        .sponsor a.cta {
+            display: inline-block;
+            margin-top: 12px;
+            color: #4f46e5;
+            font-weight: 600;
+            text-decoration: underline;
+            font-size: 15px;
+        }
+
+        /* Content */
+        .content {
+            padding: 40px 40px 20px 40px;
+        }
+
+        /* Section Headers */
+        .section {
+            margin-bottom: 40px;
+        }
+
+        .section-emoji {
+            text-align: center;
+            font-size: 20px;
+            margin: 0 0 12px 0;
+        }
+
+        .section h2 {
+            font-size: 20px;
+            font-weight: 700;
+            color: #000;
+            margin: 0 0 24px 0;
+            padding: 0;
+            border: none;
+            text-align: center;
+        }
+
+        /* Story Cards */
+        .story {
+            margin-bottom: 28px;
+            padding-bottom: 28px;
+            border-bottom: 1px solid #e8e8e8;
+        }
+
+        .story:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        /* Article Titles (slightly bigger than body) */
+        .story h3 {
+            margin: 0 0 10px 0;
+            font-size: 20px;
+            line-height: 1.4;
+            font-weight: 700;
+        }
+
+        .story h3 a {
+            color: #000;
+            text-decoration: underline;
+        }
+
+        .story h3 a:hover {
+            color: #1e40af;
+        }
+
+        /* Summary Text (close in size to titles) */
+        .story .summary {
+            margin: 10px 0;
+            font-size: 18px;
+            color: #444;
+            line-height: 1.6;
+        }
+
+        /* Meta Info */
+        .story .meta {
+            margin: 12px 0 0 0;
+            font-size: 14px;
+            color: #999;
+        }
+
+        .story .meta a {
+            color: #999;
+            text-decoration: none;
+        }
+
+        .story .meta a:hover {
+            color: #4f46e5;
+        }
+
+        /* Editorial Context - NEW: Why This Matters */
+        .editorial-context {
+            margin: 20px 0 12px 0;
+            padding: 12px 16px;
+            background: #eff6ff;
+            border-left: 3px solid #3b82f6;
+            font-size: 16px;
+            color: #1e40af;
+            font-style: italic;
+            line-height: 1.5;
+        }
+
+        .editorial-context-label {
+            font-weight: 600;
+            font-style: normal;
+            color: #1e40af;
+        }
+
+        /* Quick Links Section */
+        .quick-links {
+            margin: 40px 0;
+            padding: 0 40px;
+            border-top: 2px solid #e8e8e8;
+            padding-top: 32px;
+        }
+
+        .quick-item {
+            margin-bottom: 24px;
+            padding-bottom: 24px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .quick-item:last-child {
+            margin-bottom: 0;
+            border-bottom: none;
+        }
+
+        .quick-item h4 {
+            font-size: 16px;
+            font-weight: 600;
+            margin: 0 0 8px 0;
+            line-height: 1.4;
+        }
+
+        .quick-item h4 a {
+            color: #000;
+            text-decoration: underline;
+        }
+
+        .quick-item h4 a:hover {
+            color: #1e40af;
+        }
+
+        .quick-item .snippet {
+            font-size: 15px;
+            color: #555;
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        /* Footer */
+        .footer {
+            background: #ffffff;
+            padding: 40px;
+            text-align: center;
+            border-top: 1px solid #e8e8e8;
+        }
+
+        .footer .share {
+            margin: 0 0 24px 0;
+            font-size: 16px;
+            color: #444;
+        }
+
+        .footer .share a {
+            color: #4f46e5;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .footer .share a:hover {
+            text-decoration: underline;
+        }
+
+        .footer .links {
+            margin: 20px 0;
+            font-size: 14px;
+        }
+
+        .footer .links a {
+            color: #666;
+            text-decoration: none;
+            margin: 0 12px;
+        }
+
+        .footer .links a:hover {
+            color: #000;
+        }
+
+        .footer .legal {
+            margin-top: 24px;
+            font-size: 13px;
+            color: #999;
+            line-height: 1.6;
+        }
+
+        /* Mobile Responsive */
+        @media only screen and (max-width: 600px) {
+            .email-wrapper {
+                width: 100% !important;
+            }
+
+            .top-bar {
+                padding: 12px 20px !important;
+            }
+
+            .header {
+                padding: 24px 20px 20px 20px !important;
+            }
+
+            .header h1 {
+                font-size: 28px !important;
+            }
+
+            .header .tagline {
+                font-size: 15px !important;
+            }
+
+            .content,
+            .footer {
+                padding: 24px !important;
+            }
+
+            .sponsor {
+                padding: 24px 20px !important;
+            }
+
+            .story h3 {
+                font-size: 18px !important;
+            }
+
+            .story .summary {
+                font-size: 16px !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="email-wrapper">
+        <!-- Top Navigation Bar -->
+        <div class="top-bar">
+            <a href="https://brief.delights.pro">Sign Up</a> |
+            <a href="mailto:sponsors@brief.delights.pro?subject=Advertising%20Inquiry">Advertise</a> |
+            <a
+                href="https://brief.delights.pro/archive/2026-02-20-innovators">View
+                Online</a>
+        </div>
+
+        <!-- Header -->
+        <div class="header">
+            <div class="logo">Brief</div>
+            <div class="tagline">delights</div>
+            <p class="date">Innovators 🚀 | 2026-02-20</p>
+            <p class="curation-stats">1,300+ news scanned → ~210 analyzed → 14
+                selected</p>
+        </div>
+
+        <!-- Sponsor Section -->
+        
+
+        <!-- Content Sections -->
+        <div class="content">
+            
+            <div class="section">
+                
+                
+                <div class="section-emoji">🚀</div>
+                <h2>AI & Innovation</h2>
+                
+
+                
+                <div class="story">
+                    <h3><a href="https://brief.delights.pro/api/track?url=https%3A%2F%2Ftechcrunch.com%2F2026%2F02%2F19%2Fopenai-reportedly-finalizing-100b-deal-at-more-than-850b-valuation%2F&s=innovators&d=2026-02-20&t=OpenAI+reportedly+finalizing+%24100B+deal+at+more+than+%24850B+valuation">OpenAI reportedly finalizing $100B deal at more than $850B valuation</a> <span
+                            style="color: #666; font-weight: 400;">(1 minute read)</span>
+                    </h3>
+                    <p class="summary">OpenAI is finalizing a $100B deal at an $850B valuation, backed by tech giants like Amazon, Nvidia, SoftBank, and Microsoft.</p>
+
+                    
+                    <div class="editorial-context">
+                        <span class="editorial-context-label">Why this matters:</span> This deal underscores the urgency for researchers and innovators to stay ahead of the curve on generative AI.
+                    </div>
+                    
+
+                    <p class="meta"><a href="https://brief.delights.pro/api/track?url=https%3A%2F%2Ftechcrunch.com%2F2026%2F02%2F19%2Fopenai-reportedly-finalizing-100b-deal-at-more-than-850b-valuation%2F&s=innovators&d=2026-02-20&t=OpenAI+reportedly+finalizing+%24100B+deal+at+more+than+%24850B+valuation">AI News & Artificial Intelligence | TechCrunch</a></p>
+                </div>
+                
+                <div class="story">
+                    <h3><a href="https://brief.delights.pro/api/track?url=https%3A%2F%2Farstechnica.com%2Fgoogle%2F2026%2F02%2Fgemini-can-now-generate-ai-music-for-you-no-lyrics-required%2F&s=innovators&d=2026-02-20&t=Record+scratch%E2%80%94Google%27s+Lyria+3+AI+music+model+is+coming+to+Gemini+today">Record scratch—Google's Lyria 3 AI music model is coming to Gemini today</a> <span
+                            style="color: #666; font-weight: 400;">(1 minute read)</span>
+                    </h3>
+                    <p class="summary">Google's Lyria 3 AI model can now generate 30-second music tracks with custom lyrics based on text prompts or images, vastly expanding AI-powered music creation in the Gemini app.</p>
+
+                    
+                    <div class="editorial-context">
+                        <span class="editorial-context-label">Why this matters:</span> This empowers researchers, practitioners and innovators to rapidly prototype and experiment with AI-generated music for a wide range of applications.
+                    </div>
+                    
+
+                    <p class="meta"><a href="https://brief.delights.pro/api/track?url=https%3A%2F%2Farstechnica.com%2Fgoogle%2F2026%2F02%2Fgemini-can-now-generate-ai-music-for-you-no-lyrics-required%2F&s=innovators&d=2026-02-20&t=Record+scratch%E2%80%94Google%27s+Lyria+3+AI+music+model+is+coming+to+Gemini+today">Ars Technica - All content</a></p>
+                </div>
+                
+                <div class="story">
+                    <h3><a href="https://brief.delights.pro/api/track?url=https%3A%2F%2Ftechcrunch.com%2F2026%2F02%2F19%2Ffreeform-raises-67m-series-b-to-scale-up-laser-ai-manufacturing%2F&s=innovators&d=2026-02-20&t=Freeform+raises+%2467M+Series+B+to+scale+up+laser+AI+manufacturing">Freeform raises $67M Series B to scale up laser AI manufacturing</a> <span
+                            style="color: #666; font-weight: 400;">(1 minute read)</span>
+                    </h3>
+                    <p class="summary">Freeform raises $67M to scale its AI-powered metal 3D printing system, aiming to boost throughput from 18 to hundreds of lasers.</p>
+
+                    
+                    <div class="editorial-context">
+                        <span class="editorial-context-label">Why this matters:</span> This breakthrough in AI-driven metal additive manufacturing could enable faster, cheaper, and more flexible production of critical components.
+                    </div>
+                    
+
+                    <p class="meta"><a href="https://brief.delights.pro/api/track?url=https%3A%2F%2Ftechcrunch.com%2F2026%2F02%2F19%2Ffreeform-raises-67m-series-b-to-scale-up-laser-ai-manufacturing%2F&s=innovators&d=2026-02-20&t=Freeform+raises+%2467M+Series+B+to+scale+up+laser+AI+manufacturing">AI News & Artificial Intelligence | TechCrunch</a></p>
+                </div>
+                
+                <div class="story">
+                    <h3><a href="https://brief.delights.pro/api/track?url=https%3A%2F%2Farstechnica.com%2Fscience%2F2026%2F02%2Fmicrosofts-new-10000-year-data-storage-medium-glass%2F&s=innovators&d=2026-02-20&t=Microsoft%27s+new+10%2C000-year+data+storage+medium%3A+glass">Microsoft's new 10,000-year data storage medium: glass</a> <span
+                            style="color: #666; font-weight: 400;">(1 minute read)</span>
+                    </h3>
+                    <p class="summary">Microsoft has developed a glass-based data storage system that can preserve information for over 10,000 years, offering a durable, high-capacity alternative to magnetic tapes and hard drives.</p>
+
+                    
+                    <div class="editorial-context">
+                        <span class="editorial-context-label">Why this matters:</span> This breakthrough enables researchers and organizations to reliably preserve critical data for future generations, transforming long-term storage strategies.
+                    </div>
+                    
+
+                    <p class="meta"><a href="https://brief.delights.pro/api/track?url=https%3A%2F%2Farstechnica.com%2Fscience%2F2026%2F02%2Fmicrosofts-new-10000-year-data-storage-medium-glass%2F&s=innovators&d=2026-02-20&t=Microsoft%27s+new+10%2C000-year+data+storage+medium%3A+glass">Ars Technica - All content</a></p>
+                </div>
+                
+                <div class="story">
+                    <h3><a href="https://brief.delights.pro/api/track?url=https%3A%2F%2Ftechcrunch.com%2F2026%2F02%2F19%2Fco-founders-behind-reface-and-prisma-join-hands-to-improve-on-device-model-inference-with-mirai%2F&s=innovators&d=2026-02-20&t=Co-founders+behind+Reface+and+Prisma+join+hands+to+improve+on-device+model+inference+with+Mirai">Co-founders behind Reface and Prisma join hands to improve on-device model inference with Mirai</a> <span
+                            style="color: #666; font-weight: 400;">(1 minute read)</span>
+                    </h3>
+                    <p class="summary">Mirai, founded by Reface and Prisma alumni, raised $10M to optimize on-device AI inference, addressing cloud costs and latency issues for real-time, private AI apps on consumer devices.</p>
+
+                    
+                    <div class="editorial-context">
+                        <span class="editorial-context-label">Why this matters:</span> This positions Mirai as a key enabler for AI teams looking to shift inference from the cloud to user devices, unlocking new product experiences.
+                    </div>
+                    
+
+                    <p class="meta"><a href="https://brief.delights.pro/api/track?url=https%3A%2F%2Ftechcrunch.com%2F2026%2F02%2F19%2Fco-founders-behind-reface-and-prisma-join-hands-to-improve-on-device-model-inference-with-mirai%2F&s=innovators&d=2026-02-20&t=Co-founders+behind+Reface+and+Prisma+join+hands+to+improve+on-device+model+inference+with+Mirai">AI News & Artificial Intelligence | TechCrunch</a></p>
+                </div>
+                
+                <div class="story">
+                    <h3><a href="https://brief.delights.pro/api/track?url=https%3A%2F%2Ftechcrunch.com%2F2026%2F02%2F19%2Freload-an-ai-employee-agent-management-platform-raises-2-275m-and-launches-an-ai-employee%2F&s=innovators&d=2026-02-20&t=Reload+wants+to+give+your+AI+agents+a+shared+memory">Reload wants to give your AI agents a shared memory</a> <span
+                            style="color: #666; font-weight: 400;">(1 minute read)</span>
+                    </h3>
+                    <p class="summary">Reload launches Epic, an AI agent with shared memory, to help enterprises manage their AI workforce and maintain consistent context across multi-agent systems.</p>
+
+                    
+                    <div class="editorial-context">
+                        <span class="editorial-context-label">Why this matters:</span> This enables enterprises to scale AI adoption while ensuring agents maintain alignment with project requirements and architectural decisions.
+                    </div>
+                    
+
+                    <p class="meta"><a href="https://brief.delights.pro/api/track?url=https%3A%2F%2Ftechcrunch.com%2F2026%2F02%2F19%2Freload-an-ai-employee-agent-management-platform-raises-2-275m-and-launches-an-ai-employee%2F&s=innovators&d=2026-02-20&t=Reload+wants+to+give+your+AI+agents+a+shared+memory">AI News & Artificial Intelligence | TechCrunch</a></p>
+                </div>
+                
+                <div class="story">
+                    <h3><a href="https://brief.delights.pro/api/track?url=https%3A%2F%2Ftechcrunch.com%2F2026%2F02%2F19%2Ffor-open-source-programs-ai-coding-tools-are-a-mixed-blessing%2F&s=innovators&d=2026-02-20&t=For+open+source+programs%2C+AI+coding+tools+are+a+mixed+blessing">For open source programs, AI coding tools are a mixed blessing</a> <span
+                            style="color: #666; font-weight: 400;">(1 minute read)</span>
+                    </h3>
+                    <p class="summary">AI coding tools flood open-source projects with low-quality code, making new features easy but maintenance challenging.</p>
+
+                    
+                    <div class="editorial-context">
+                        <span class="editorial-context-label">Why this matters:</span> Open-source maintainers must rethink their workflows to manage the influx of AI-generated code and ensure quality.
+                    </div>
+                    
+
+                    <p class="meta"><a href="https://brief.delights.pro/api/track?url=https%3A%2F%2Ftechcrunch.com%2F2026%2F02%2F19%2Ffor-open-source-programs-ai-coding-tools-are-a-mixed-blessing%2F&s=innovators&d=2026-02-20&t=For+open+source+programs%2C+AI+coding+tools+are+a+mixed+blessing">AI News & Artificial Intelligence | TechCrunch</a></p>
+                </div>
+                
+            </div>
+            
+            <div class="section">
+                
+                
+                <div class="section-emoji">💼</div>
+                <h2>Tech Business</h2>
+                
+
+                
+                <div class="story">
+                    <h3><a href="https://brief.delights.pro/api/track?url=https%3A%2F%2Ftechcrunch.com%2F2026%2F02%2F19%2Freliance-unveils-110b-ai-investment-plan-as-india-ramps-up-tech-ambitions%2F&s=innovators&d=2026-02-20&t=Reliance+unveils+%24110B+AI+investment+plan+as+India+ramps+up+tech+ambitions">Reliance unveils $110B AI investment plan as India ramps up tech ambitions</a> <span
+                            style="color: #666; font-weight: 400;">(1 minute read)</span>
+                    </h3>
+                    <p class="summary">Reliance plans to invest $110B over 7 years to build AI infrastructure, including gigawatt-scale data centers, to drive India's AI transformation.</p>
+
+                    
+                    <div class="editorial-context">
+                        <span class="editorial-context-label">Why this matters:</span> This signals India's intent to reduce reliance on foreign AI compute and catalyze domestic AI innovation and adoption.
+                    </div>
+                    
+
+                    <p class="meta"><a href="https://brief.delights.pro/api/track?url=https%3A%2F%2Ftechcrunch.com%2F2026%2F02%2F19%2Freliance-unveils-110b-ai-investment-plan-as-india-ramps-up-tech-ambitions%2F&s=innovators&d=2026-02-20&t=Reliance+unveils+%24110B+AI+investment+plan+as+India+ramps+up+tech+ambitions">AI News & Artificial Intelligence | TechCrunch</a></p>
+                </div>
+                
+            </div>
+            
+        </div>
+
+        <!-- Quick Links Section -->
+        
+        <div class="quick-links">
+            <div class="section-emoji">⚡</div>
+            <h2>Quick Links</h2>
+
+            
+            <div class="quick-item">
+                <h4><a href="https://brief.delights.pro/api/track?url=https%3A%2F%2Ftechcrunch.com%2F2026%2F02%2F18%2Fopenai-deepens-india-push-with-pine-labs-fintech-partnership%2F&s=innovators&d=2026-02-20&t=OpenAI+deepens+India+push+with+Pine+Labs+fintech+partnership">OpenAI deepens India push with Pine Labs fintech partnership</a> <span
+                        style="color: #999; font-weight: 400; font-size: 14px;">(1
+                        min)</span></h4>
+                <p class="snippet">OpenAI moves beyond ChatGPT in India with a Pine Labs deal targeting enterprise payments and AI-driven commerce..</p>
+            </div>
+            
+            <div class="quick-item">
+                <h4><a href="https://brief.delights.pro/api/track?url=https%3A%2F%2Ftechcrunch.com%2F2026%2F02%2F19%2Fopenai-reliance-partner-to-add-ai-search-to-jiohotstar%2F&s=innovators&d=2026-02-20&t=OpenAI%2C+Reliance+partner+to+add+AI+search+to+JioHotstar">OpenAI, Reliance partner to add AI search to JioHotstar</a> <span
+                        style="color: #999; font-weight: 400; font-size: 14px;">(1
+                        min)</span></h4>
+                <p class="snippet">The rollout includes two-way integration that surfaces streaming links directly inside ChatGPT..</p>
+            </div>
+            
+            <div class="quick-item">
+                <h4><a href="https://brief.delights.pro/api/track?url=https%3A%2F%2Ftechcrunch.com%2F2026%2F02%2F18%2Fopenai-taps-tata-for-100mw-ai-data-center-capacity-in-india-eyes-1gw%2F&s=innovators&d=2026-02-20&t=OpenAI+taps+Tata+for+100MW+AI+data+center+capacity+in+India%2C+eyes+1GW">OpenAI taps Tata for 100MW AI data center capacity in India, eyes 1GW</a> <span
+                        style="color: #999; font-weight: 400; font-size: 14px;">(1
+                        min)</span></h4>
+                <p class="snippet">OpenAI also plans to expand its presence in India with new offices in Mumbai and Bengaluru later this year..</p>
+            </div>
+            
+            <div class="quick-item">
+                <h4><a href="https://brief.delights.pro/api/track?url=https%3A%2F%2Ftechcrunch.com%2Fpodcast%2Fgoogle-clouds-vp-for-startups-on-reading-your-check-engine-light-before-its-too-late%2F&s=innovators&d=2026-02-20&t=Google+Cloud%E2%80%99s+VP+for+startups+on+reading+your+%E2%80%98check+engine+light%E2%80%99+before%C2%A0it%E2%80%99s%C2%A0too+late">Google Cloud’s VP for startups on reading your ‘check engine light’ before it’s too late</a> <span
+                        style="color: #999; font-weight: 400; font-size: 14px;">(1
+                        min)</span></h4>
+                <p class="snippet">Startup founders are being pushed to move faster than ever, using AI while facing tighter funding, rising infrastructure costs, and more pressure to show real traction early. Cloud credits, access to GPUs, and foundation models have made it easier...</p>
+            </div>
+            
+        </div>
+        
+
+        <!-- Worth Your Attention (Trending) Section -->
+        
+        <div class="content">
+            <div class="section">
+                <div class="section-emoji">🔥</div>
+                <h2>Worth Your Attention</h2>
+
+                
+                <div class="story">
+                    <h3><a href="https://brief.delights.pro/api/track?url=https%3A%2F%2Ftechcrunch.com%2F2026%2F02%2F19%2Faltman-and-amodei-share-a-moment-of-awkwardness-at-indias-big-ai-summit%2F&s=innovators&d=2026-02-20&t=Altman+and+Amodei+share+a+moment+of+awkwardness+at+India%E2%80%99s+big+AI+summit">Altman and Amodei share a moment of awkwardness at India’s big AI summit</a> <span
+                            style="color: #666; font-weight: 400;">(1 min)</span></h3>
+                    <p class="summary">Altman and Amodei, CEOs of rival AI firms OpenAI and Anthropic, refused to join hands during a unity photo-op, highlighting their fierce competition in the AI race.</p>
+                    <p class="meta"><a href="https://brief.delights.pro/api/track?url=https%3A%2F%2Ftechcrunch.com%2F2026%2F02%2F19%2Faltman-and-amodei-share-a-moment-of-awkwardness-at-indias-big-ai-summit%2F&s=innovators&d=2026-02-20&t=Altman+and+Amodei+share+a+moment+of+awkwardness+at+India%E2%80%99s+big+AI+summit">AI News & Artificial Intelligence | TechCrunch</a></p>
+                </div>
+                
+                <div class="story">
+                    <h3><a href="https://brief.delights.pro/api/track?url=https%3A%2F%2Fsloanreview.mit.edu%2Faudio%2Fconnecting-language-and-artificial-intelligence-princetons-tom-griffiths%2F&s=innovators&d=2026-02-20&t=Connecting+Language+and+%28Artificial%29+Intelligence%3A+Princeton%E2%80%99s+Tom+Griffiths">Connecting Language and (Artificial) Intelligence: Princeton’s Tom Griffiths</a> <span
+                            style="color: #666; font-weight: 400;">(15 min)</span></h3>
+                    <p class="summary">Princeton professor Tom Griffiths discusses how math and language shape human and machine intelligence, with insights on the limits of AI versus human cognition.</p>
+                    <p class="meta"><a href="https://brief.delights.pro/api/track?url=https%3A%2F%2Fsloanreview.mit.edu%2Faudio%2Fconnecting-language-and-artificial-intelligence-princetons-tom-griffiths%2F&s=innovators&d=2026-02-20&t=Connecting+Language+and+%28Artificial%29+Intelligence%3A+Princeton%E2%80%99s+Tom+Griffiths">MIT Sloan Management Review</a></p>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <!-- Personalized Referral Section -->
+        <div style="background: #f8f7ff; padding: 32px 40px; text-align: center; border-top: 2px solid #e8e8e8;">
+            <p style="font-size: 22px; font-weight: 700; margin: 0 0 4px 0; color: #000;">🎯 Share Brief Delights,
+                Unlock Rewards</p>
+            <p style="font-size: 14px; color: #666; margin: 0 0 20px 0;">You've referred <strong
+                    style="color: #4f46e5;"></strong> reader.  more to unlock: <strong></strong>
+            </p>
+
+            <!-- Milestone Progress Bar -->
+            <div style="max-width: 400px; margin: 0 auto 20px auto;">
+                <div
+                    style="display: flex; justify-content: space-between; margin-bottom: 6px; font-size: 11px; color: #999;">
+                    <span>0</span>
+                    <span style="MILESTONE_1_STYLE">1 🏅</span>
+                    <span style="MILESTONE_3_STYLE">3 📰</span>
+                    <span style="MILESTONE_5_STYLE">5 🔓</span>
+                    <span style="MILESTONE_10_STYLE">10 ⭐</span>
+                </div>
+                <div style="background: #e5e7eb; border-radius: 999px; height: 8px; overflow: hidden;">
+                    <div
+                        style="background: linear-gradient(90deg, #4f46e5, #7c3aed); height: 100%; border-radius: 999px; width: PROGRESS_BAR_WIDTH%;">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Referral Link Box -->
+            <div
+                style="background: #ffffff; border: 2px dashed #4f46e5; border-radius: 8px; padding: 12px 20px; margin: 0 auto 16px auto; max-width: 420px;">
+                <p
+                    style="font-size: 11px; color: #999; margin: 0 0 4px 0; text-transform: uppercase; letter-spacing: 1px;">
+                    Your personal link</p>
+                <p style="font-size: 16px; font-weight: 600; color: #4f46e5; margin: 0; word-break: break-all;">
+                    <a href="https://brief.delights.pro/?ref="
+                        style="color: #4f46e5; text-decoration: none;">brief.delights.pro/?ref=</a>
+                </p>
+            </div>
+
+            <!-- Social Share Buttons -->
+            <p style="font-size: 13px; color: #999; margin: 0;">
+                <a href="https://twitter.com/intent/tweet?text=I%20read%20Brief%20Delights%20daily%20%E2%80%94%20AI-curated%20tech%20stories%20for%20your%20role.%20Free%20%26%20no%20spam.&url=https%3A%2F%2Fbrief.delights.pro%2F%3Fref%3D"
+                    style="color: #666; text-decoration: none; margin: 0 8px; font-weight: 500;">𝕏 Twitter</a> ·
+                <a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fbrief.delights.pro%2F%3Fref%3D"
+                    style="color: #666; text-decoration: none; margin: 0 8px; font-weight: 500;">LinkedIn</a> ·
+                <a href="mailto:?subject=Check%20out%20Brief%20Delights&body=I%20read%20this%20daily%20tech%20brief%20and%20thought%20you'd%20find%20it%20useful%3A%20https%3A%2F%2Fbrief.delights.pro%2F%3Fref%3D"
+                    style="color: #666; text-decoration: none; margin: 0 8px; font-weight: 500;">📧 Email</a>
+            </p>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p class="links">
+                <a href="https://brief.delights.pro">Website</a>
+                <a href="https://brief.delights.pro/archive">Archive</a>
+                <a href="mailto:sponsors@brief.delights.pro?subject=Advertising%20Inquiry">Advertise</a>
+                <a href="mailto:hello@brief.delights.pro?subject=Unsubscribe">Unsubscribe</a>
+            </p>
+
+            <p class="legal">
+                You're receiving this because you subscribed to Brief Delights.<br>
+                <strong>brief delights</strong><br>
+                © 2026 All rights reserved.<br>
+                Questions? <a href="mailto:hello@brief.delights.pro"
+                    style="color: #999; text-decoration: none;">hello@brief.delights.pro</a>
+            </p>
+        </div>
+    </div>
+</body>
+
+</html>

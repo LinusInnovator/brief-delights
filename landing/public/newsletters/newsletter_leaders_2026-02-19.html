@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brief Delights 💼 - 2026-02-19</title>
+    <style>
+        /* Reset */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background-color: #f8f9fa;
+            color: #1a1a1a;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* Container */
+        .email-wrapper {
+            max-width: 680px;
+            margin: 0 auto;
+            background-color: #ffffff;
+        }
+
+        /* Top Bar (minimal, like TLDR) */
+        .top-bar {
+            padding: 16px 40px;
+            text-align: center;
+            border-bottom: 1px solid #e8e8e8;
+            background: #ffffff;
+        }
+
+        .top-bar a {
+            color: #666;
+            text-decoration: none;
+            font-size: 13px;
+            margin: 0 12px;
+            font-weight: 500;
+        }
+
+        .top-bar a:hover {
+            color: #000;
+        }
+
+        /* Header (Clean, no gradient!) */
+        .header {
+            background: #ffffff;
+            padding: 40px 40px 32px 40px;
+            text-align: center;
+            border-bottom: 1px solid #e8e8e8;
+        }
+
+        .logo {
+            font-size: 52px;
+            font-weight: 700;
+            letter-spacing: -1.5px;
+            margin: 0;
+            line-height: 1;
+            color: #000000;
+        }
+
+        .tagline {
+            font-size: 18px;
+            font-weight: 400;
+            color: #666666;
+            margin: 4px 0 12px 0;
+            letter-spacing: 2px;
+        }
+
+        .header .date {
+            margin: 0 0 8px 0;
+            font-size: 14px;
+            color: #999;
+            font-weight: 400;
+        }
+
+        .header .curation-stats {
+            margin: 0;
+            font-size: 12px;
+            color: #aaa;
+            font-weight: 400;
+            font-family: 'Courier New', monospace;
+        }
+
+        /* Sponsor Block (white background, tight integration) */
+        .sponsor {
+            background: #ffffff;
+            border-top: 1px solid #e8e8e8;
+            border-bottom: 1px solid #e8e8e8;
+            padding: 32px 40px;
+            margin: 0;
+        }
+
+        .sponsor-label {
+            font-size: 9px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #999;
+            margin: 0 0 12px 0;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        .sponsor h3 {
+            margin: 0 0 12px 0;
+            font-size: 20px;
+            font-weight: 700;
+            color: #000;
+            line-height: 1.3;
+        }
+
+        .sponsor h3 a {
+            color: #000;
+            text-decoration: none;
+        }
+
+        .sponsor h3 a:hover {
+            color: #4f46e5;
+        }
+
+        .sponsor p {
+            margin: 0;
+            font-size: 14px;
+            line-height: 1.5;
+            color: #666;
+        }
+
+        .sponsor a.cta {
+            display: inline-block;
+            margin-top: 12px;
+            color: #4f46e5;
+            font-weight: 600;
+            text-decoration: underline;
+            font-size: 15px;
+        }
+
+        /* Content */
+        .content {
+            padding: 40px 40px 20px 40px;
+        }
+
+        /* Section Headers */
+        .section {
+            margin-bottom: 40px;
+        }
+
+        .section-emoji {
+            text-align: center;
+            font-size: 20px;
+            margin: 0 0 12px 0;
+        }
+
+        .section h2 {
+            font-size: 20px;
+            font-weight: 700;
+            color: #000;
+            margin: 0 0 24px 0;
+            padding: 0;
+            border: none;
+            text-align: center;
+        }
+
+        /* Story Cards */
+        .story {
+            margin-bottom: 28px;
+            padding-bottom: 28px;
+            border-bottom: 1px solid #e8e8e8;
+        }
+
+        .story:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        /* Article Titles (slightly bigger than body) */
+        .story h3 {
+            margin: 0 0 10px 0;
+            font-size: 20px;
+            line-height: 1.4;
+            font-weight: 700;
+        }
+
+        .story h3 a {
+            color: #000;
+            text-decoration: underline;
+        }
+
+        .story h3 a:hover {
+            color: #1e40af;
+        }
+
+        /* Summary Text (close in size to titles) */
+        .story .summary {
+            margin: 10px 0;
+            font-size: 18px;
+            color: #444;
+            line-height: 1.6;
+        }
+
+        /* Meta Info */
+        .story .meta {
+            margin: 12px 0 0 0;
+            font-size: 14px;
+            color: #999;
+        }
+
+        .story .meta a {
+            color: #999;
+            text-decoration: none;
+        }
+
+        .story .meta a:hover {
+            color: #4f46e5;
+        }
+
+        /* Editorial Context - NEW: Why This Matters */
+        .editorial-context {
+            margin: 20px 0 12px 0;
+            padding: 12px 16px;
+            background: #eff6ff;
+            border-left: 3px solid #3b82f6;
+            font-size: 16px;
+            color: #1e40af;
+            font-style: italic;
+            line-height: 1.5;
+        }
+
+        .editorial-context-label {
+            font-weight: 600;
+            font-style: normal;
+            color: #1e40af;
+        }
+
+        /* Quick Links Section */
+        .quick-links {
+            margin: 40px 0;
+            padding: 0 40px;
+            border-top: 2px solid #e8e8e8;
+            padding-top: 32px;
+        }
+
+        .quick-item {
+            margin-bottom: 24px;
+            padding-bottom: 24px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .quick-item:last-child {
+            margin-bottom: 0;
+            border-bottom: none;
+        }
+
+        .quick-item h4 {
+            font-size: 16px;
+            font-weight: 600;
+            margin: 0 0 8px 0;
+            line-height: 1.4;
+        }
+
+        .quick-item h4 a {
+            color: #000;
+            text-decoration: underline;
+        }
+
+        .quick-item h4 a:hover {
+            color: #1e40af;
+        }
+
+        .quick-item .snippet {
+            font-size: 15px;
+            color: #555;
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        /* Footer */
+        .footer {
+            background: #ffffff;
+            padding: 40px;
+            text-align: center;
+            border-top: 1px solid #e8e8e8;
+        }
+
+        .footer .share {
+            margin: 0 0 24px 0;
+            font-size: 16px;
+            color: #444;
+        }
+
+        .footer .share a {
+            color: #4f46e5;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .footer .share a:hover {
+            text-decoration: underline;
+        }
+
+        .footer .links {
+            margin: 20px 0;
+            font-size: 14px;
+        }
+
+        .footer .links a {
+            color: #666;
+            text-decoration: none;
+            margin: 0 12px;
+        }
+
+        .footer .links a:hover {
+            color: #000;
+        }
+
+        .footer .legal {
+            margin-top: 24px;
+            font-size: 13px;
+            color: #999;
+            line-height: 1.6;
+        }
+
+        /* Mobile Responsive */
+        @media only screen and (max-width: 600px) {
+            .email-wrapper {
+                width: 100% !important;
+            }
+
+            .top-bar {
+                padding: 12px 20px !important;
+            }
+
+            .header {
+                padding: 24px 20px 20px 20px !important;
+            }
+
+            .header h1 {
+                font-size: 28px !important;
+            }
+
+            .header .tagline {
+                font-size: 15px !important;
+            }
+
+            .content,
+            .footer {
+                padding: 24px !important;
+            }
+
+            .sponsor {
+                padding: 24px 20px !important;
+            }
+
+            .story h3 {
+                font-size: 18px !important;
+            }
+
+            .story .summary {
+                font-size: 16px !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="email-wrapper">
+        <!-- Top Navigation Bar -->
+        <div class="top-bar">
+            <a href="https://brief.delights.pro">Sign Up</a> |
+            <a href="mailto:sponsors@brief.delights.pro?subject=Advertising%20Inquiry">Advertise</a> |
+            <a
+                href="https://brief.delights.pro/archive/2026-02-19-leaders">View
+                Online</a>
+        </div>
+
+        <!-- Header -->
+        <div class="header">
+            <div class="logo">Brief</div>
+            <div class="tagline">delights</div>
+            <p class="date">Leaders 💼 | 2026-02-19</p>
+            <p class="curation-stats">1,300+ news scanned → ~210 analyzed → 14
+                selected</p>
+        </div>
+
+        <!-- Sponsor Section -->
+        
+
+        <!-- Content Sections -->
+        <div class="content">
+            
+            <div class="section">
+                
+                
+                <div class="section-emoji">🚀</div>
+                <h2>AI & Innovation</h2>
+                
+
+                
+                <div class="story">
+                    <h3><a href="https://brief.delights.pro/api/track?url=https%3A%2F%2Fsloanreview.mit.edu%2Faudio%2Fconnecting-language-and-artificial-intelligence-princetons-tom-griffiths%2F&s=leaders&d=2026-02-19&t=Connecting+Language+and+%28Artificial%29+Intelligence%3A+Princeton%E2%80%99s+Tom+Griffiths">Connecting Language and (Artificial) Intelligence: Princeton’s Tom Griffiths</a> <span
+                            style="color: #666; font-weight: 400;">(15 minute read)</span>
+                    </h3>
+                    <p class="summary">Princeton AI researcher Tom Griffiths discusses how math has shaped human and machine intelligence, exploring rules, neural networks, and probability as frameworks for understanding cognition.</p>
+
+                    
+                    <div class="editorial-context">
+                        <span class="editorial-context-label">Why this matters:</span> Knowing how minds work, both human and machine, can inform better AI systems and decision-making.
+                    </div>
+                    
+
+                    <p class="meta"><a href="https://brief.delights.pro/api/track?url=https%3A%2F%2Fsloanreview.mit.edu%2Faudio%2Fconnecting-language-and-artificial-intelligence-princetons-tom-griffiths%2F&s=leaders&d=2026-02-19&t=Connecting+Language+and+%28Artificial%29+Intelligence%3A+Princeton%E2%80%99s+Tom+Griffiths">MIT Sloan Management Review</a></p>
+                </div>
+                
+            </div>
+            
+            <div class="section">
+                
+                
+                <div class="section-emoji">💼</div>
+                <h2>Tech Business</h2>
+                
+
+                
+                <div class="story">
+                    <h3><a href="https://brief.delights.pro/api/track?url=https%3A%2F%2Fstripe.com%2Fblog%2Fcreate-new-monetization-opportunities-with-recent-stripe-billing-upgrades&s=leaders&d=2026-02-19&t=Create+new+monetization+opportunities+with+Stripe+Billing%E2%80%99s+recent+upgrades">Create new monetization opportunities with Stripe Billing’s recent upgrades</a> <span
+                            style="color: #666; font-weight: 400;">(1 minute read)</span>
+                    </h3>
+                    <p class="summary">Stripe Billing now supports third-party payment processors, new analytics tools, and more flexible pricing models to help SaaS and AI companies optimize their revenue.</p>
+
+                    
+                    <div class="editorial-context">
+                        <span class="editorial-context-label">Why this matters:</span> Developers can now build more customized pricing and billing flows to better match their product's value and users' needs.
+                    </div>
+                    
+
+                    <p class="meta"><a href="https://brief.delights.pro/api/track?url=https%3A%2F%2Fstripe.com%2Fblog%2Fcreate-new-monetization-opportunities-with-recent-stripe-billing-upgrades&s=leaders&d=2026-02-19&t=Create+new+monetization+opportunities+with+Stripe+Billing%E2%80%99s+recent+upgrades">Stripe Blog</a></p>
+                </div>
+                
+            </div>
+            
+            <div class="section">
+                
+                
+                <div class="section-emoji">☁️</div>
+                <h2>Enterprise Tech</h2>
+                
+
+                
+                <div class="story">
+                    <h3><a href="https://brief.delights.pro/api/track?url=https%3A%2F%2Fwww.hashicorp.com%2Fblog%2Fhybrid-cloud-explained-what-it-is-what-it-isn-t-and-why-having-a-plan-matters&s=leaders&d=2026-02-19&t=Hybrid+cloud%2C+explained%3A+What+it+is%2C+what+it+isn%E2%80%99t%2C+and+why+having+a+plan+matters+in+2026">Hybrid cloud, explained: What it is, what it isn’t, and why having a plan matters in 2026</a> <span
+                            style="color: #666; font-weight: 400;">(4 minute read)</span>
+                    </h3>
+                    <p class="summary">Hybrid cloud is becoming the standard as companies leverage on-prem and public cloud to drive innovation. Unifying management is key to realizing the benefits and avoiding complexity.</p>
+
+                    
+                    <div class="editorial-context">
+                        <span class="editorial-context-label">Why this matters:</span> Adopting a unified hybrid cloud strategy can enable faster, more secure data and AI initiatives by 2026.
+                    </div>
+                    
+
+                    <p class="meta"><a href="https://brief.delights.pro/api/track?url=https%3A%2F%2Fwww.hashicorp.com%2Fblog%2Fhybrid-cloud-explained-what-it-is-what-it-isn-t-and-why-having-a-plan-matters&s=leaders&d=2026-02-19&t=Hybrid+cloud%2C+explained%3A+What+it+is%2C+what+it+isn%E2%80%99t%2C+and+why+having+a+plan+matters+in+2026">HashiCorp Blog</a></p>
+                </div>
+                
+            </div>
+            
+            <div class="section">
+                
+                
+                <div class="section-emoji">🔐</div>
+                <h2>Security</h2>
+                
+
+                
+                <div class="story">
+                    <h3><a href="https://brief.delights.pro/api/track?url=https%3A%2F%2Fwww.darkreading.com%2Fcyberattacks-data-breaches%2Fbig-breach-or-nada-de-nada-mexican-govt-faces-leak-allegations&s=leaders&d=2026-02-19&t=Big+Breach+or+Smooth+Sailing%3F+Mexican+Gov%27t+Faces+Leak+Allegations">Big Breach or Smooth Sailing? Mexican Gov't Faces Leak Allegations</a> <span
+                            style="color: #666; font-weight: 400;">(1 minute read)</span>
+                    </h3>
+                    <p class="summary">Hacktivist group alleges a 2.3TB breach exposing data of 36M Mexicans; government denies sensitive account risk.</p>
+
+                    
+                    <div class="editorial-context">
+                        <span class="editorial-context-label">Why this matters:</span> CTOs must verify breach impact independently to ensure data security and assess potential vulnerabilities (20-25 words)
+                    </div>
+                    
+
+                    <p class="meta"><a href="https://brief.delights.pro/api/track?url=https%3A%2F%2Fwww.darkreading.com%2Fcyberattacks-data-breaches%2Fbig-breach-or-nada-de-nada-mexican-govt-faces-leak-allegations&s=leaders&d=2026-02-19&t=Big+Breach+or+Smooth+Sailing%3F+Mexican+Gov%27t+Faces+Leak+Allegations">darkreading</a></p>
+                </div>
+                
+                <div class="story">
+                    <h3><a href="https://brief.delights.pro/api/track?url=https%3A%2F%2Fstripe.com%2Fblog%2Fnew-features-to-help-saas-platforms-manage-risk-and-stay-compliant&s=leaders&d=2026-02-19&t=New+features+to+help+SaaS+platforms+manage+risk+and+stay+compliant">New features to help SaaS platforms manage risk and stay compliant</a> <span
+                            style="color: #666; font-weight: 400;">(1 minute read)</span>
+                    </h3>
+                    <p class="summary">Stripe launched new features to help SaaS platforms manage risk and compliance, allowing more customization and use of Stripe's data.</p>
+
+                    
+                    <div class="editorial-context">
+                        <span class="editorial-context-label">Why this matters:</span> These features could help SaaS platforms strike a better balance between speed and safety when onboarding new businesses.
+                    </div>
+                    
+
+                    <p class="meta"><a href="https://brief.delights.pro/api/track?url=https%3A%2F%2Fstripe.com%2Fblog%2Fnew-features-to-help-saas-platforms-manage-risk-and-stay-compliant&s=leaders&d=2026-02-19&t=New+features+to+help+SaaS+platforms+manage+risk+and+stay+compliant">Stripe Blog</a></p>
+                </div>
+                
+                <div class="story">
+                    <h3><a href="https://brief.delights.pro/api/track?url=https%3A%2F%2Fwww.hashicorp.com%2Fblog%2Fhow-to-start-consolidating-your-cybersecurity-tools&s=leaders&d=2026-02-19&t=How+to+start+consolidating+your+cybersecurity+tools">How to start consolidating your cybersecurity tools</a> <span
+                            style="color: #666; font-weight: 400;">(6 minute read)</span>
+                    </h3>
+                    <p class="summary">Cybersecurity tool sprawl is a critical risk, but consolidation can simplify, reduce costs, and improve efficiency. This guide outlines the first steps toward a more unified, strategic approach.</p>
+
+                    
+                    <div class="editorial-context">
+                        <span class="editorial-context-label">Why this matters:</span> Consolidating tools can help security, compliance, and platform teams work together to make better-informed decisions and improve overall security posture.
+                    </div>
+                    
+
+                    <p class="meta"><a href="https://brief.delights.pro/api/track?url=https%3A%2F%2Fwww.hashicorp.com%2Fblog%2Fhow-to-start-consolidating-your-cybersecurity-tools&s=leaders&d=2026-02-19&t=How+to+start+consolidating+your+cybersecurity+tools">HashiCorp Blog</a></p>
+                </div>
+                
+            </div>
+            
+            <div class="section">
+                
+                
+                <div class="section-emoji">💰</div>
+                <h2>Funding & M&A</h2>
+                
+
+                
+                <div class="story">
+                    <h3><a href="https://brief.delights.pro/api/track?url=https%3A%2F%2Fplanetscale.com%2Fblog%2Fvideos-intro-to-vitess-its-powerful-capabilities-and-how-to-get-started&s=leaders&d=2026-02-19&t=Videos%3A+Intro+to+Vitess%E2%80%94its+powerful+capabilities+and+how+to+get+started">Videos: Intro to Vitess—its powerful capabilities and how to get started</a> <span
+                            style="color: #666; font-weight: 400;">(1 minute read)</span>
+                    </h3>
+                    <p class="summary">Vitess is an open-source horizontal sharding framework for MySQL, developed at YouTube to handle massive scale. PlanetScale offers videos and a free course to help developers get started with Vitess.</p>
+
+                    
+                    <div class="editorial-context">
+                        <span class="editorial-context-label">Why this matters:</span> Vitess could enable your team to scale your MySQL infrastructure more efficiently, potentially shifting your backend language and architecture decisions.
+                    </div>
+                    
+
+                    <p class="meta"><a href="https://brief.delights.pro/api/track?url=https%3A%2F%2Fplanetscale.com%2Fblog%2Fvideos-intro-to-vitess-its-powerful-capabilities-and-how-to-get-started&s=leaders&d=2026-02-19&t=Videos%3A+Intro+to+Vitess%E2%80%94its+powerful+capabilities+and+how+to+get+started">Blog — PlanetScale</a></p>
+                </div>
+                
+            </div>
+            
+            <div class="section">
+                
+                
+                <div class="section-emoji">📊</div>
+                <h2>Market Trends</h2>
+                
+
+                
+                <div class="story">
+                    <h3><a href="https://brief.delights.pro/api/track?url=https%3A%2F%2Fsloanreview.mit.edu%2Farticle%2Fturn-customer-complaints-into-innovation-blueprints%2F&s=leaders&d=2026-02-19&t=Turn+Customer+Complaints+Into+Innovation+Blueprints">Turn Customer Complaints Into Innovation Blueprints</a> <span
+                            style="color: #666; font-weight: 400;">(8 minute read)</span>
+                    </h3>
+                    <p class="summary">Hospitals are turning customer complaints into innovation blueprints, using feedback to drive fundamental changes and improve services, a model other industries could benefit from.</p>
+
+                    
+                    <div class="editorial-context">
+                        <span class="editorial-context-label">Why this matters:</span> Shifts complaints from a liability to a strategic advantage, unlocking new avenues for growth and competitive differentiation.
+                    </div>
+                    
+
+                    <p class="meta"><a href="https://brief.delights.pro/api/track?url=https%3A%2F%2Fsloanreview.mit.edu%2Farticle%2Fturn-customer-complaints-into-innovation-blueprints%2F&s=leaders&d=2026-02-19&t=Turn+Customer+Complaints+Into+Innovation+Blueprints">MIT Sloan Management Review</a></p>
+                </div>
+                
+            </div>
+            
+        </div>
+
+        <!-- Quick Links Section -->
+        
+        <div class="quick-links">
+            <div class="section-emoji">⚡</div>
+            <h2>Quick Links</h2>
+
+            
+            <div class="quick-item">
+                <h4><a href="https://brief.delights.pro/api/track?url=https%3A%2F%2Fblog.google%2Finnovation-and-ai%2Fmodels-and-research%2Fgoogle-deepmind%2Fdear-upstairs-neighbors%2F&s=leaders&d=2026-02-19&t=How+animators+and+AI+researchers+made+%E2%80%98Dear+Upstairs+Neighbors%E2%80%99">How animators and AI researchers made ‘Dear Upstairs Neighbors’</a> <span
+                        style="color: #999; font-weight: 400; font-size: 14px;">(1
+                        min)</span></h4>
+                <p class="snippet">A movie poster for a film titled “Dear Upstairs Neighbors”, hand-painted in a vivid expressionist style, featuring an exasperated cartoon woman clutching her ears, surrounded by neon-colored images of noisy things like howling dogs and stomping sh...</p>
+            </div>
+            
+            <div class="quick-item">
+                <h4><a href="https://brief.delights.pro/api/track?url=https%3A%2F%2Fblog.google%2Fproducts-and-platforms%2Fproducts%2Fgemini%2Frelease-notes-podcast-smokejumpers%2F&s=leaders&d=2026-02-19&t=In+our+latest+podcast%2C+hear+how+the+%E2%80%9CSmoke+Jumpers%E2%80%9D+team+brings+Gemini+to+billions+of+people.">In our latest podcast, hear how the “Smoke Jumpers” team brings Gemini to billions of people.</a> <span
+                        style="color: #999; font-weight: 400; font-size: 14px;">(1
+                        min)</span></h4>
+                <p class="snippet"><img src="https://storage.googleapis.com/gweb-uniblog-publish-prod/images/thumbnails_EP24_002_ccRelease_N.max-600x600.format-webp.webp" />Bringing Gemini to billions of users requires a massive, coordinated infrastructure effort.</p>
+            </div>
+            
+            <div class="quick-item">
+                <h4><a href="https://brief.delights.pro/api/track?url=https%3A%2F%2Fsequoiacap.com%2Farticle%2Fpartnering-with-sandstone-an-ai-native-platform-for-in-house-legal-teams%2F&s=leaders&d=2026-02-19&t=Partnering+with+Sandstone%3A+An+AI-Native+Platform+for+In-House+Legal+Teams">Partnering with Sandstone: An AI-Native Platform for In-House Legal Teams</a> <span
+                        style="color: #999; font-weight: 400; font-size: 14px;">(6
+                        min)</span></h4>
+                <p class="snippet"><p>The post <a href="https://sequoiacap.com/article/partnering-with-sandstone-an-ai-native-platform-for-in-house-legal-teams/">Partnering with Sandstone: An AI-Native Platform for In-House Legal Teams</a> appeared first on <a href="https://sequoia...</p>
+            </div>
+            
+            <div class="quick-item">
+                <h4><a href="https://brief.delights.pro/api/track?url=https%3A%2F%2Fwww.theverge.com%2Ftransportation%2F880808%2Fpolestar-four-new-models-ev-europe&s=leaders&d=2026-02-19&t=Polestar+aims+to+shake+off+EV+doldrums+with+4+new+models+in+3+years">Polestar aims to shake off EV doldrums with 4 new models in 3 years</a> <span
+                        style="color: #999; font-weight: 400; font-size: 14px;">(1
+                        min)</span></h4>
+                <p class="snippet">Polestar says it will release four new electric models over the next three years, including a new SUV and a revamped version of its Polestar 2 sedan. The Swedish automaker, which is owned by China's Geely, said it will start delivering its Polesta...</p>
+            </div>
+            
+        </div>
+        
+
+        <!-- Worth Your Attention (Trending) Section -->
+        
+        <div class="content">
+            <div class="section">
+                <div class="section-emoji">🔥</div>
+                <h2>Worth Your Attention</h2>
+
+                
+                <div class="story">
+                    <h3><a href="https://brief.delights.pro/api/track?url=https%3A%2F%2Fwww.wired.com%2Fstory%2Frobot-dogs-are-on-going-on-patrol-at-the-2026-world-cup-in-mexico%2F&s=leaders&d=2026-02-19&t=Robot+Dogs+Are+on+Going+on+Patrol+at+the+2026+World+Cup+in+Mexico">Robot Dogs Are on Going on Patrol at the 2026 World Cup in Mexico</a> <span
+                            style="color: #666; font-weight: 400;">(1 min)</span></h3>
+                    <p class="summary">Mexican police will deploy four-legged robot dogs to provide security and early threat detection during 2026 World Cup matches at BBVA Stadium in Guadalupe.</p>
+                    <p class="meta"><a href="https://brief.delights.pro/api/track?url=https%3A%2F%2Fwww.wired.com%2Fstory%2Frobot-dogs-are-on-going-on-patrol-at-the-2026-world-cup-in-mexico%2F&s=leaders&d=2026-02-19&t=Robot+Dogs+Are+on+Going+on+Patrol+at+the+2026+World+Cup+in+Mexico">WIRED</a></p>
+                </div>
+                
+                <div class="story">
+                    <h3><a href="https://brief.delights.pro/api/track?url=https%3A%2F%2Fblog.codinghorror.com%2Fthere-is-no-longer-any-such-thing-as-computer-security%2F&s=leaders&d=2026-02-19&t=There+is+no+longer+any+such+thing+as+Computer+Security">There is no longer any such thing as Computer Security</a> <span
+                            style="color: #666; font-weight: 400;">(12 min)</span></h3>
+                    <p class="summary">Phishing attacks are evolving to be more sophisticated, targeting individuals and organizations through harvested email contacts and content, undermining traditional cybersecurity measures.</p>
+                    <p class="meta"><a href="https://brief.delights.pro/api/track?url=https%3A%2F%2Fblog.codinghorror.com%2Fthere-is-no-longer-any-such-thing-as-computer-security%2F&s=leaders&d=2026-02-19&t=There+is+no+longer+any+such+thing+as+Computer+Security">Coding Horror</a></p>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <!-- Personalized Referral Section -->
+        <div style="background: #f8f7ff; padding: 32px 40px; text-align: center; border-top: 2px solid #e8e8e8;">
+            <p style="font-size: 22px; font-weight: 700; margin: 0 0 4px 0; color: #000;">🎯 Share Brief Delights,
+                Unlock Rewards</p>
+            <p style="font-size: 14px; color: #666; margin: 0 0 20px 0;">You've referred <strong
+                    style="color: #4f46e5;"></strong> reader.  more to unlock: <strong></strong>
+            </p>
+
+            <!-- Milestone Progress Bar -->
+            <div style="max-width: 400px; margin: 0 auto 20px auto;">
+                <div
+                    style="display: flex; justify-content: space-between; margin-bottom: 6px; font-size: 11px; color: #999;">
+                    <span>0</span>
+                    <span style="MILESTONE_1_STYLE">1 🏅</span>
+                    <span style="MILESTONE_3_STYLE">3 📰</span>
+                    <span style="MILESTONE_5_STYLE">5 🔓</span>
+                    <span style="MILESTONE_10_STYLE">10 ⭐</span>
+                </div>
+                <div style="background: #e5e7eb; border-radius: 999px; height: 8px; overflow: hidden;">
+                    <div
+                        style="background: linear-gradient(90deg, #4f46e5, #7c3aed); height: 100%; border-radius: 999px; width: PROGRESS_BAR_WIDTH%;">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Referral Link Box -->
+            <div
+                style="background: #ffffff; border: 2px dashed #4f46e5; border-radius: 8px; padding: 12px 20px; margin: 0 auto 16px auto; max-width: 420px;">
+                <p
+                    style="font-size: 11px; color: #999; margin: 0 0 4px 0; text-transform: uppercase; letter-spacing: 1px;">
+                    Your personal link</p>
+                <p style="font-size: 16px; font-weight: 600; color: #4f46e5; margin: 0; word-break: break-all;">
+                    <a href="https://brief.delights.pro/?ref="
+                        style="color: #4f46e5; text-decoration: none;">brief.delights.pro/?ref=</a>
+                </p>
+            </div>
+
+            <!-- Social Share Buttons -->
+            <p style="font-size: 13px; color: #999; margin: 0;">
+                <a href="https://twitter.com/intent/tweet?text=I%20read%20Brief%20Delights%20daily%20%E2%80%94%20AI-curated%20tech%20stories%20for%20your%20role.%20Free%20%26%20no%20spam.&url=https%3A%2F%2Fbrief.delights.pro%2F%3Fref%3D"
+                    style="color: #666; text-decoration: none; margin: 0 8px; font-weight: 500;">𝕏 Twitter</a> ·
+                <a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fbrief.delights.pro%2F%3Fref%3D"
+                    style="color: #666; text-decoration: none; margin: 0 8px; font-weight: 500;">LinkedIn</a> ·
+                <a href="mailto:?subject=Check%20out%20Brief%20Delights&body=I%20read%20this%20daily%20tech%20brief%20and%20thought%20you'd%20find%20it%20useful%3A%20https%3A%2F%2Fbrief.delights.pro%2F%3Fref%3D"
+                    style="color: #666; text-decoration: none; margin: 0 8px; font-weight: 500;">📧 Email</a>
+            </p>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p class="links">
+                <a href="https://brief.delights.pro">Website</a>
+                <a href="https://brief.delights.pro/archive">Archive</a>
+                <a href="mailto:sponsors@brief.delights.pro?subject=Advertising%20Inquiry">Advertise</a>
+                <a href="mailto:hello@brief.delights.pro?subject=Unsubscribe">Unsubscribe</a>
+            </p>
+
+            <p class="legal">
+                You're receiving this because you subscribed to Brief Delights.<br>
+                <strong>brief delights</strong><br>
+                © 2026 All rights reserved.<br>
+                Questions? <a href="mailto:hello@brief.delights.pro"
+                    style="color: #999; text-decoration: none;">hello@brief.delights.pro</a>
+            </p>
+        </div>
+    </div>
+</body>
+
+</html>
