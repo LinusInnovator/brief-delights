@@ -45,7 +45,7 @@ export async function POST(req: Request) {
 
         if (error) {
             console.error('Supabase queue error:', error);
-            return NextResponse.json({ error: 'Failed to queue research mission' }, { status: 500 });
+            return NextResponse.json({ error: `[DB Error] ${error.message || JSON.stringify(error)}` }, { status: 500 });
         }
 
         return NextResponse.json({
