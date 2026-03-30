@@ -10,9 +10,11 @@ import subprocess
 import json
 from datetime import datetime
 from pathlib import Path
+from dotenv import load_dotenv
 
 # Configuration
 PROJECT_ROOT = Path(__file__).parent.parent
+load_dotenv(dotenv_path=PROJECT_ROOT / ".env")
 EXECUTION_DIR = PROJECT_ROOT / "execution"
 TMP_DIR = PROJECT_ROOT / ".tmp"
 TMP_DIR.mkdir(exist_ok=True)
@@ -58,7 +60,8 @@ def run_script(script_name: str, timeout: int, args: list = None) -> bool:
             cwd=PROJECT_ROOT,
             capture_output=False,
             text=True,
-            timeout=timeout
+            timeout=timeout,
+            env=os.environ
         )
         
         if result.returncode == 0:
