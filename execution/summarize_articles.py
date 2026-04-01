@@ -160,29 +160,35 @@ Return ONLY valid JSON (no markdown, no explanations):
 
 
 
-def call_llm_for_summary(prompt: str, model: str = PRIMARY_MODEL) -> Dict:
-    """Call LLM to generate summary"""
-    try:
-        response = client.chat.completions.create(
-            model=model,
-            messages=[{"role": "user", "content": prompt}],
-            temperature=0.5,
-            max_tokens=300
-        )
-        
-        content = response.choices[0].message.content.strip()
-        
-        # Remove markdown if present
-        if content.startswith("```"):
-            content = content.split("```")[1]
-            if content.startswith("json"):
-                content = content[4:]
-        
-        return json.loads(content)
-        
-    except Exception as e:
-        log(f"❌ Error in LLM call: {str(e)}")
-        raise
+def call_llm_for_summary(prompt: str, model: str = PRIMARY_MODEL, retries: int = 4) -> Dict:
+    """Call LLM to generate summary with exponential backoff for rate limits"""
+    for attempt in range(retries):
+        try:
+            response = client.chat.completions.create(
+                model=model,
+                messages=[{"role": "user", "content": prompt}],
+                temperature=0.5,
+                max_tokens=300
+            )
+            
+            content = response.choices[0].message.content.strip()
+            
+            # Remove markdown if present
+            if content.startswith("```"):
+                content = content.split("```")[1]
+                if content.startswith("json"):
+                    content = content[4:]
+            
+            return json.loads(content)
+            
+        except Exception as e:
+            if attempt < retries - 1:
+                # Exponential backoff: 1s, 2s, 4s...
+                time.sleep(2 ** attempt)
+                continue
+            
+            log(f"❌ Error in LLM call after {retries} attempts: {str(e)}")
+            raise
 
 
 

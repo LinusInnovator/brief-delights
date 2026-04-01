@@ -180,9 +180,14 @@ def main():
     # STEP 1: Aggregate RSS Feeds (same for all segments)
     log("\n\n▶️  Step 1/5: Aggregate RSS Feeds")
     log("─"*70)
-    if not run_script("aggregate_feeds.py", timeout=120):
-        log("❌ Pipeline failed at aggregation", "ERROR")
-        return False
+    raw_articles_file = TMP_DIR / f"raw_articles_{TODAY}.json"
+    
+    if not raw_articles_file.exists():
+        if not run_script("aggregate_feeds.py", timeout=120):
+            log("❌ Pipeline failed at aggregation", "ERROR")
+            return False
+    else:
+        log("✅ Skipping aggregation: raw articles already exist")
     
     # Validation: Ensure raw articles file was created
     raw_articles_file = TMP_DIR / f"raw_articles_{TODAY}.json"
@@ -207,9 +212,20 @@ def main():
     # STEP 2: Select Stories (for all segments)
     log("\n\n▶️  Step 2/5: Select Top Stories (All Segments)")
     log("─"*70)
-    if not run_script("select_stories.py", timeout=300):  # Increased from 120s - LLM calls can take 2-3min with large datasets
-        log("❌ Pipeline failed at story selection", "ERROR")
-        return False
+    
+    # Check idempotency: Have we already selected stories for all segments?
+    all_selections_exist = True
+    for segment_id in segment_ids:
+        if not (TMP_DIR / f"selected_articles_{segment_id}_{TODAY}.json").exists():
+            all_selections_exist = False
+            break
+            
+    if not all_selections_exist:
+        if not run_script("select_stories.py", timeout=300):  # Increased from 120s
+            log("❌ Pipeline failed at story selection", "ERROR")
+            return False
+    else:
+        log("✅ Skipping story selection: files already exist for all segments")
     
     # Validation: Ensure selected articles files were created for each segment
     missing_segments = []
@@ -232,10 +248,14 @@ def main():
         # Summarize
         log(f"\n\n▶️  Step 3.{i}: Summarize Articles ({segment_name})")
         log("─"*70)
-        if not run_script("summarize_articles.py", timeout=90, args=["--segment", segment_id]):
-            log(f"❌ Failed to summarize for {segment_id}", "ERROR")
-            continue
-        log(f"✅ Summarization complete for {segment_name}")
+        summaries_file = TMP_DIR / f"summaries_{segment_id}_{TODAY}.json"
+        if not summaries_file.exists():
+            if not run_script("summarize_articles.py", timeout=90, args=["--segment", segment_id]):
+                log(f"❌ Failed to summarize for {segment_id}", "ERROR")
+                continue
+            log(f"✅ Summarization complete for {segment_name}")
+        else:
+            log(f"✅ Skipping summarization: already exists for {segment_name}")
         
         # Detect Contrarian
         log(f"\n\n▶️  Step 3.{i}b: Detect Contrarian ({segment_name})")
@@ -246,11 +266,16 @@ def main():
         # Compose
         log(f"\n\n▶️  Step 4.{i}: Compose Newsletter ({segment_name})")
         log("─"*70)
-        if not run_script("compose_newsletter.py", timeout=30, args=["--segment", segment_id]):
-            log(f"❌ Failed to compose for {segment_id}", "ERROR")
-            continue
-        log(f"✅ Newsletter composed for {segment_name}")
+        newsletter_file = TMP_DIR / f"newsletter_{segment_id}_{TODAY}.html"
         
+        if not newsletter_file.exists():
+            if not run_script("compose_newsletter.py", timeout=30, args=["--segment", segment_id]):
+                log(f"❌ Failed to compose for {segment_id}", "ERROR")
+                continue
+            log(f"✅ Newsletter composed for {segment_name}")
+        else:
+            log(f"✅ Skipping composition: already exists for {segment_name}")
+            
         # Quality Gate + Self-Healing Loop
         log(f"\n   🔍 Quality Gate ({segment_name}):")
         if not run_script("validate_newsletter.py", timeout=15, args=["--segment", segment_id]):
@@ -260,7 +285,8 @@ def main():
             else:
                 log(f"   ❌ Self-healing FAILED for {segment_id} — newsletter will NOT be sent", "ERROR")
                 log(f"      Check GitHub Issues for diagnostics", "ERROR")
-                return False
+                # SEGMENT ISOLATION: Continue to next segment instead of crashing everything!
+                continue
         
         # NEW: Archive successful newsletter for fallback
         newsletter_file = TMP_DIR / f"newsletter_{segment_id}_{TODAY}.html"
