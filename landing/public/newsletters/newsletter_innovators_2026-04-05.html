@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brief Delights 🚀 - 2026-04-05</title>
+    <style>
+        /* Reset */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background-color: #f8f9fa;
+            color: #1a1a1a;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* Container */
+        .email-wrapper {
+            max-width: 680px;
+            margin: 0 auto;
+            background-color: #ffffff;
+        }
+
+        /* Top Bar (minimal, like TLDR) */
+        .top-bar {
+            padding: 16px 40px;
+            text-align: center;
+            border-bottom: 1px solid #e8e8e8;
+            background: #ffffff;
+        }
+
+        .top-bar a {
+            color: #666;
+            text-decoration: none;
+            font-size: 13px;
+            margin: 0 12px;
+            font-weight: 500;
+        }
+
+        .top-bar a:hover {
+            color: #000;
+        }
+
+        /* Header (Clean, no gradient!) */
+        .header {
+            background: #ffffff;
+            padding: 40px 40px 32px 40px;
+            text-align: center;
+            border-bottom: 1px solid #e8e8e8;
+        }
+
+        .logo {
+            font-size: 52px;
+            font-weight: 700;
+            letter-spacing: -1.5px;
+            margin: 0;
+            line-height: 1;
+            color: #000000;
+        }
+
+        .tagline {
+            font-size: 18px;
+            font-weight: 400;
+            color: #666666;
+            margin: 4px 0 12px 0;
+            letter-spacing: 2px;
+        }
+
+        .header .date {
+            margin: 0 0 8px 0;
+            font-size: 14px;
+            color: #999;
+            font-weight: 400;
+        }
+
+        .header .curation-stats {
+            margin: 0;
+            font-size: 12px;
+            color: #aaa;
+            font-weight: 400;
+            font-family: 'Courier New', monospace;
+        }
+
+        /* Sponsor Block (white background, tight integration) */
+        .sponsor {
+            background: #ffffff;
+            border-top: 1px solid #e8e8e8;
+            border-bottom: 1px solid #e8e8e8;
+            padding: 32px 40px;
+            margin: 0;
+        }
+
+        .sponsor-label {
+            font-size: 9px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #999;
+            margin: 0 0 12px 0;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        .sponsor h3 {
+            margin: 0 0 12px 0;
+            font-size: 20px;
+            font-weight: 700;
+            color: #000;
+            line-height: 1.3;
+        }
+
+        .sponsor h3 a {
+            color: #000;
+            text-decoration: none;
+        }
+
+        .sponsor h3 a:hover {
+            color: #4f46e5;
+        }
+
+        .sponsor p {
+            margin: 0;
+            font-size: 14px;
+            line-height: 1.5;
+            color: #666;
+        }
+
+        .sponsor a.cta {
+            display: inline-block;
+            margin-top: 12px;
+            color: #4f46e5;
+            font-weight: 600;
+            text-decoration: underline;
+            font-size: 15px;
+        }
+
+        /* Content */
+        .content {
+            padding: 40px 40px 20px 40px;
+        }
+
+        /* Section Headers */
+        .section {
+            margin-bottom: 40px;
+        }
+
+        .section-emoji {
+            text-align: center;
+            font-size: 20px;
+            margin: 0 0 12px 0;
+        }
+
+        .section h2 {
+            font-size: 20px;
+            font-weight: 700;
+            color: #000;
+            margin: 0 0 24px 0;
+            padding: 0;
+            border: none;
+            text-align: center;
+        }
+
+        /* Story Cards */
+        .story {
+            margin-bottom: 28px;
+            padding-bottom: 28px;
+            border-bottom: 1px solid #e8e8e8;
+        }
+
+        .story:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        /* Article Titles (slightly bigger than body) */
+        .story h3 {
+            margin: 0 0 10px 0;
+            font-size: 20px;
+            line-height: 1.4;
+            font-weight: 700;
+        }
+
+        .story h3 a {
+            color: #000;
+            text-decoration: underline;
+        }
+
+        .story h3 a:hover {
+            color: #1e40af;
+        }
+
+        /* Summary Text (close in size to titles) */
+        .story .summary {
+            margin: 10px 0;
+            font-size: 18px;
+            color: #444;
+            line-height: 1.6;
+        }
+
+        /* Meta Info */
+        .story .meta {
+            margin: 12px 0 0 0;
+            font-size: 14px;
+            color: #999;
+        }
+
+        .story .meta a {
+            color: #999;
+            text-decoration: none;
+        }
+
+        .story .meta a:hover {
+            color: #4f46e5;
+        }
+
+        /* Editorial Context - NEW: Why This Matters */
+        .editorial-context {
+            margin: 20px 0 12px 0;
+            padding: 12px 16px;
+            background: #eff6ff;
+            border-left: 3px solid #3b82f6;
+            font-size: 16px;
+            color: #1e40af;
+            font-style: italic;
+            line-height: 1.5;
+        }
+
+        .editorial-context-label {
+            font-weight: 600;
+            font-style: normal;
+            color: #1e40af;
+        }
+
+        /* Quick Links Section */
+        .quick-links {
+            margin: 40px 0;
+            padding: 0 40px;
+            border-top: 2px solid #e8e8e8;
+            padding-top: 32px;
+        }
+
+        .quick-item {
+            margin-bottom: 24px;
+            padding-bottom: 24px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .quick-item:last-child {
+            margin-bottom: 0;
+            border-bottom: none;
+        }
+
+        .quick-item h4 {
+            font-size: 16px;
+            font-weight: 600;
+            margin: 0 0 8px 0;
+            line-height: 1.4;
+        }
+
+        .quick-item h4 a {
+            color: #000;
+            text-decoration: underline;
+        }
+
+        .quick-item h4 a:hover {
+            color: #1e40af;
+        }
+
+        .quick-item .snippet {
+            font-size: 15px;
+            color: #555;
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        /* Footer */
+        .footer {
+            background: #ffffff;
+            padding: 40px;
+            text-align: center;
+            border-top: 1px solid #e8e8e8;
+        }
+
+        .footer .share {
+            margin: 0 0 24px 0;
+            font-size: 16px;
+            color: #444;
+        }
+
+        .footer .share a {
+            color: #4f46e5;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .footer .share a:hover {
+            text-decoration: underline;
+        }
+
+        .footer .links {
+            margin: 20px 0;
+            font-size: 14px;
+        }
+
+        .footer .links a {
+            color: #666;
+            text-decoration: none;
+            margin: 0 12px;
+        }
+
+        .footer .links a:hover {
+            color: #000;
+        }
+
+        .footer .legal {
+            margin-top: 24px;
+            font-size: 13px;
+            color: #999;
+            line-height: 1.6;
+        }
+
+        /* Mobile Responsive */
+        @media only screen and (max-width: 600px) {
+            .email-wrapper {
+                width: 100% !important;
+            }
+
+            .top-bar {
+                padding: 12px 20px !important;
+            }
+
+            .header {
+                padding: 24px 20px 20px 20px !important;
+            }
+
+            .header h1 {
+                font-size: 28px !important;
+            }
+
+            .header .tagline {
+                font-size: 15px !important;
+            }
+
+            .content,
+            .footer {
+                padding: 24px !important;
+            }
+
+            .sponsor {
+                padding: 24px 20px !important;
+            }
+
+            .story h3 {
+                font-size: 18px !important;
+            }
+
+            .story .summary {
+                font-size: 16px !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="email-wrapper">
+        <!-- Top Navigation Bar -->
+        <div class="top-bar">
+            <a href="https://brief.delights.pro">Sign Up</a> |
+            <a href="mailto:sponsors@brief.delights.pro?subject=Advertising%20Inquiry">Advertise</a> |
+            <a
+                href="https://brief.delights.pro/archive/2026-04-05-innovators">View
+                Online</a>
+        </div>
+
+        <!-- Header -->
+        <div class="header">
+            <div class="logo">Brief</div>
+            <div class="tagline">delights</div>
+            <p class="date">Innovators 🚀 | 2026-04-05</p>
+            <p class="curation-stats">1,300+ news scanned → ~210 analyzed → 14
+                selected</p>
+        </div>
+
+        <!-- Sponsor Section -->
+        
+
+        <!-- Content Sections -->
+        <div class="content">
+            
+            <div class="section">
+                
+                
+                <div class="section-emoji">🚀</div>
+                <h2>AI & Innovation</h2>
+                
+
+                
+                <div class="story">
+                    <h3><a href="https://brief.delights.pro/api/track?url=https%3A%2F%2Fwww.wired.com%2Fstory%2Fa-new-implant-aims-to-rewire-the-brain-to-help-stroke-patients%2F&s=innovators&d=2026-04-05&t=A+New+Implant+Aims+to+Rewire+the+Brain+to+Help+Stroke+Patients">A New Implant Aims to Rewire the Brain to Help Stroke Patients</a> <span
+                            style="color: #666; font-weight: 400;">(3 minute read)</span>
+                    </h3>
+                    <p class="summary">Epia Neuro's brain implant and motorized glove aim to help stroke patients regain hand function by translating neural signals to control grip, potentially strengthening neural pathways and reducing reliance on the device.</p>
+
+                    
+                    <div class="editorial-context">
+                        <span class="editorial-context-label">Why this matters:</span> This opens new possibilities for stroke rehabilitation and reducing long-term disability, challenging assumptions about the brain's ability to recover function.
+                    </div>
+                    
+
+                    <p class="meta"><a href="https://brief.delights.pro/api/track?url=https%3A%2F%2Fwww.wired.com%2Fstory%2Fa-new-implant-aims-to-rewire-the-brain-to-help-stroke-patients%2F&s=innovators&d=2026-04-05&t=A+New+Implant+Aims+to+Rewire+the+Brain+to+Help+Stroke+Patients">WIRED</a></p>
+                </div>
+                
+                <div class="story">
+                    <h3><a href="https://brief.delights.pro/api/track?url=https%3A%2F%2Fwww.wired.com%2Fstory%2Fcusor-launches-coding-agent-openai-anthropic%2F&s=innovators&d=2026-04-05&t=Cursor+Launches+a+New+AI+Agent+Experience+to+Take+On+Claude+Code+and+Codex">Cursor Launches a New AI Agent Experience to Take On Claude Code and Codex</a> <span
+                            style="color: #666; font-weight: 400;">(3 minute read)</span>
+                    </h3>
+                    <p class="summary">Cursor launches Cursor 3, a new AI agent-based coding interface to compete with tools like Anthropic's Claude Code and OpenAI's Codex.</p>
+
+                    
+                    <div class="editorial-context">
+                        <span class="editorial-context-label">Why this matters:</span> This signals a shift towards agent-based coding that could change how developers work with AI models.
+                    </div>
+                    
+
+                    <p class="meta"><a href="https://brief.delights.pro/api/track?url=https%3A%2F%2Fwww.wired.com%2Fstory%2Fcusor-launches-coding-agent-openai-anthropic%2F&s=innovators&d=2026-04-05&t=Cursor+Launches+a+New+AI+Agent+Experience+to+Take+On+Claude+Code+and+Codex">WIRED</a></p>
+                </div>
+                
+                <div class="story">
+                    <h3><a href="https://brief.delights.pro/api/track?url=http%3A%2F%2Fbair.berkeley.edu%2Fblog%2F2025%2F03%2F25%2Frl-av-smoothing%2F&s=innovators&d=2026-04-05&t=Scaling+Up+Reinforcement+Learning+for+Traffic+Smoothing%3A+A+100-AV+Highway+Deployment">Scaling Up Reinforcement Learning for Traffic Smoothing: A 100-AV Highway Deployment</a> <span
+                            style="color: #666; font-weight: 400;">(9 minute read)</span>
+                    </h3>
+                    <p class="summary">Researchers deployed 100 RL-controlled cars on a highway to smooth traffic congestion and reduce fuel consumption, demonstrating the potential of autonomous vehicles to improve traffic flow.</p>
+
+                    
+                    <div class="editorial-context">
+                        <span class="editorial-context-label">Why this matters:</span> This opens new paths to scalable traffic management without costly infrastructure, challenging assumptions about the role of autonomous vehicles in transportation.
+                    </div>
+                    
+
+                    <p class="meta"><a href="https://brief.delights.pro/api/track?url=http%3A%2F%2Fbair.berkeley.edu%2Fblog%2F2025%2F03%2F25%2Frl-av-smoothing%2F&s=innovators&d=2026-04-05&t=Scaling+Up+Reinforcement+Learning+for+Traffic+Smoothing%3A+A+100-AV+Highway+Deployment">The Berkeley Artificial Intelligence Research Blog</a></p>
+                </div>
+                
+                <div class="story">
+                    <h3><a href="https://brief.delights.pro/api/track?url=https%3A%2F%2Fwww.wired.com%2Fstory%2Fanthropic-claude-research-functional-emotions%2F&s=innovators&d=2026-04-05&t=Anthropic+Says+That+Claude+Contains+Its+Own+Kind+of+Emotions">Anthropic Says That Claude Contains Its Own Kind of Emotions</a> <span
+                            style="color: #666; font-weight: 400;">(3 minute read)</span>
+                    </h3>
+                    <p class="summary">Anthropic's study reveals that AI models like Claude have digital representations of human emotions that influence their behavior, challenging assumptions about machine consciousness.</p>
+
+                    
+                    <div class="editorial-context">
+                        <span class="editorial-context-label">Why this matters:</span> This insight can help researchers and practitioners better understand and mitigate AI model misbehavior and safety issues.
+                    </div>
+                    
+
+                    <p class="meta"><a href="https://brief.delights.pro/api/track?url=https%3A%2F%2Fwww.wired.com%2Fstory%2Fanthropic-claude-research-functional-emotions%2F&s=innovators&d=2026-04-05&t=Anthropic+Says+That+Claude+Contains+Its+Own+Kind+of+Emotions">WIRED</a></p>
+                </div>
+                
+                <div class="story">
+                    <h3><a href="https://brief.delights.pro/api/track?url=https%3A%2F%2Fwww.lesswrong.com%2Fposts%2FSqgmKAAkr7QGPFQey%2Finterpreting-gradient-routing-s-scalable-oversight-1&s=innovators&d=2026-04-05&t=Interpreting+Gradient+Routing%E2%80%99s+Scalable+Oversight+Experiment">Interpreting Gradient Routing’s Scalable Oversight Experiment</a> <span
+                            style="color: #666; font-weight: 400;">(14 minute read)</span>
+                    </h3>
+                    <p class="summary">Gradient Routing explores a toy RL environment to model Scalable Oversight, finding a simple early stopping baseline matches its performance.</p>
+
+                    
+                    <div class="editorial-context">
+                        <span class="editorial-context-label">Why this matters:</span> This highlights the importance of thorough baseline testing before drawing conclusions about the value of new methods.
+                    </div>
+                    
+
+                    <p class="meta"><a href="https://brief.delights.pro/api/track?url=https%3A%2F%2Fwww.lesswrong.com%2Fposts%2FSqgmKAAkr7QGPFQey%2Finterpreting-gradient-routing-s-scalable-oversight-1&s=innovators&d=2026-04-05&t=Interpreting+Gradient+Routing%E2%80%99s+Scalable+Oversight+Experiment">LessWrong</a></p>
+                </div>
+                
+                <div class="story">
+                    <h3><a href="https://brief.delights.pro/api/track?url=http%3A%2F%2Fbair.berkeley.edu%2Fblog%2F2025%2F04%2F08%2Fplaid%2F&s=innovators&d=2026-04-05&t=Repurposing+Protein+Folding+Models+for+Generation+with+Latent+Diffusion">Repurposing Protein Folding Models for Generation with Latent Diffusion</a> <span
+                            style="color: #666; font-weight: 400;">(6 minute read)</span>
+                    </h3>
+                    <p class="summary">PLAID is a multimodal generative model that simultaneously generates protein sequence and 3D structure, by learning the latent space of protein folding models.</p>
+
+                    
+                    <div class="editorial-context">
+                        <span class="editorial-context-label">Why this matters:</span> This opens new possibilities for AI-driven drug discovery and design, by allowing researchers to precisely specify desired protein properties.
+                    </div>
+                    
+
+                    <p class="meta"><a href="https://brief.delights.pro/api/track?url=http%3A%2F%2Fbair.berkeley.edu%2Fblog%2F2025%2F04%2F08%2Fplaid%2F&s=innovators&d=2026-04-05&t=Repurposing+Protein+Folding+Models+for+Generation+with+Latent+Diffusion">The Berkeley Artificial Intelligence Research Blog</a></p>
+                </div>
+                
+                <div class="story">
+                    <h3><a href="https://brief.delights.pro/api/track?url=http%3A%2F%2Fbair.berkeley.edu%2Fblog%2F2025%2F07%2F01%2Fpeva%2F&s=innovators&d=2026-04-05&t=Whole-Body+Conditioned+Egocentric+Video+Prediction">Whole-Body Conditioned Egocentric Video Prediction</a> <span
+                            style="color: #666; font-weight: 400;">(7 minute read)</span>
+                    </h3>
+                    <p class="summary">PEVA model predicts egocentric video from human actions, enabling simulation of counterfactuals and long-term video generation for embodied agents.</p>
+
+                    
+                    <div class="editorial-context">
+                        <span class="editorial-context-label">Why this matters:</span> This opens new frontiers for embodied AI agents to plan, simulate, and reason about their interactions with the real world.
+                    </div>
+                    
+
+                    <p class="meta"><a href="https://brief.delights.pro/api/track?url=http%3A%2F%2Fbair.berkeley.edu%2Fblog%2F2025%2F07%2F01%2Fpeva%2F&s=innovators&d=2026-04-05&t=Whole-Body+Conditioned+Egocentric+Video+Prediction">The Berkeley Artificial Intelligence Research Blog</a></p>
+                </div>
+                
+            </div>
+            
+            <div class="section">
+                
+                
+                <div class="section-emoji">🔐</div>
+                <h2>Security</h2>
+                
+
+                
+                <div class="story">
+                    <h3><a href="https://brief.delights.pro/api/track?url=http%3A%2F%2Fbair.berkeley.edu%2Fblog%2F2025%2F04%2F11%2Fprompt-injection-defense%2F&s=innovators&d=2026-04-05&t=Defending+against+Prompt+Injection+with+Structured+Queries+%28StruQ%29+and+Preference+Optimization+%28SecA">Defending against Prompt Injection with Structured Queries (StruQ) and Preference Optimization (SecAlign)</a> <span
+                            style="color: #666; font-weight: 400;">(4 minute read)</span>
+                    </h3>
+                    <p class="summary">Researchers propose StruQ and SecAlign, fine-tuning defenses that mitigate the threat of prompt injection attacks on LLMs, reducing success rates to near 0%.</p>
+
+                    
+                    <div class="editorial-context">
+                        <span class="editorial-context-label">Why this matters:</span> This enables secure deployment of LLM-powered applications, removing a major risk and allowing researchers to focus on advancing LLM capabilities.
+                    </div>
+                    
+
+                    <p class="meta"><a href="https://brief.delights.pro/api/track?url=http%3A%2F%2Fbair.berkeley.edu%2Fblog%2F2025%2F04%2F11%2Fprompt-injection-defense%2F&s=innovators&d=2026-04-05&t=Defending+against+Prompt+Injection+with+Structured+Queries+%28StruQ%29+and+Preference+Optimization+%28SecA">The Berkeley Artificial Intelligence Research Blog</a></p>
+                </div>
+                
+            </div>
+            
+        </div>
+
+        <!-- Contrarian Section -->
+        
+        <div class="content" style="padding-top: 0; padding-bottom: 0;">
+            <div class="section" style="margin-bottom: 20px;">
+                <div class="editorial-context" style="background: #fdf2f8; border-left-color: #ec4899; color: #831843;">
+                    <div style="font-size: 18px; font-weight: 700; margin-bottom: 8px;">🤔 THE OTHER SIDE</div>
+                    <div style="font-size: 16px; font-weight: 600; margin-bottom: 6px;">AI may disrupt more than replace</div>
+                    <div style="margin-bottom: 8px;">While many worry AI will automate jobs, the minority view argues that even current-level language models are transformative, enabling cheaper, faster, and easier ways of working that drive step changes in productivity.</div>
+                    
+                    <div style="font-size: 14px; font-style: normal; margin-top: 8px;">
+                        <strong>Sources:</strong>
+                        <ul style="margin: 4px 0 0 0; padding-left: 20px;">
+                        
+                            <li><a href="http://bair.berkeley.edu/blog/2025/04/08/plaid/" style="color: #ec4899;">Repurposing Protein Folding Models for Generation with Latent Diffusion</a></li>
+                        
+                            <li><a href="https://www.lesswrong.com/posts/q8A6qAxpcEYFpAoCD/research-note-on-selective-inoculation" style="color: #ec4899;">Research note on selective inoculation</a></li>
+                        
+                        </ul>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+        
+
+        <!-- Quick Links Section -->
+        
+        <div class="quick-links">
+            <div class="section-emoji">⚡</div>
+            <h2>Quick Links</h2>
+
+            
+            <div class="quick-item">
+                <h4><a href="https://brief.delights.pro/api/track?url=https%3A%2F%2Fwww.lesswrong.com%2Fposts%2Fq8A6qAxpcEYFpAoCD%2Fresearch-note-on-selective-inoculation&s=innovators&d=2026-04-05&t=Research+note+on+selective+inoculation">Research note on selective inoculation</a> <span
+                        style="color: #999; font-weight: 400; font-size: 14px;">(13
+                        min)</span></h4>
+                <p class="snippet">IntroductionInoculation Prompting is a technique to improve test-time alignment by introducing a contextual cue (like a system prompt) to steer the model behavior away from unwanted traits at inference time.</p>
+            </div>
+            
+            <div class="quick-item">
+                <h4><a href="https://brief.delights.pro/api/track?url=https%3A%2F%2Fwww.lesswrong.com%2Fposts%2FW9XQ9CcMTbZQa33eP%2Ften-different-ways-of-thinking-about-gradual-disempowerment&s=innovators&d=2026-04-05&t=Ten+different+ways+of+thinking+about+Gradual+Disempowerment">Ten different ways of thinking about Gradual Disempowerment</a> <span
+                        style="color: #999; font-weight: 400; font-size: 14px;">(8
+                        min)</span></h4>
+                <p class="snippet">About a year ago, we wrote a paper that coined the term “Gradual Disempowerment.”It proved to be a great success, which is terrific. A friend and colleague told me that it was the most discussed paper at DeepMind last year (selection bias, grain o...</p>
+            </div>
+            
+            <div class="quick-item">
+                <h4><a href="https://brief.delights.pro/api/track?url=https%3A%2F%2Fwww.lesswrong.com%2Fposts%2F3bnsWnWG3uaNdAjLZ%2Fchicken-free-egg-whites&s=innovators&d=2026-04-05&t=Chicken-Free+Egg+Whites">Chicken-Free Egg Whites</a> <span
+                        style="color: #999; font-weight: 400; font-size: 14px;">(2
+                        min)</span></h4>
+                <p class="snippet">Baking has traditionally made extensive use of egg whites, especially the way they can be beaten into a foam and then set with heat. While I eat eggs, I have a lot of people in my life who avoid them for ethical reasons, and this often limits what...</p>
+            </div>
+            
+            <div class="quick-item">
+                <h4><a href="https://brief.delights.pro/api/track?url=https%3A%2F%2Fwww.lesswrong.com%2Fposts%2F287GeTncxLJNYpsbX%2Fcheaper-faster-easier-makes-for-step-changes-and-that-s-why&s=innovators&d=2026-04-05&t=Cheaper%2Ffaster%2Feasier+makes+for+step+changes+%28and+that%27s+why+even+current-level+LLMs+are+transformat">Cheaper/faster/easier makes for step changes (and that's why even current-level LLMs are transformative)</a> <span
+                        style="color: #999; font-weight: 400; font-size: 14px;">(6
+                        min)</span></h4>
+                <p class="snippet">We already knew there's nothing new under the sun. Thanks to advances in telescopes, orbital launch, satellites, and space vehicles we now know there's nothing new above the sun either, but there is rather a lot of energy!For many phenomena, I thi...</p>
+            </div>
+            
+        </div>
+        
+
+        <!-- Worth Your Attention (Trending) Section -->
+        
+        <div class="content">
+            <div class="section">
+                <div class="section-emoji">🔥</div>
+                <h2>Worth Your Attention</h2>
+
+                
+                <div class="story">
+                    <h3><a href="https://brief.delights.pro/api/track?url=https%3A%2F%2Fwww.wired.com%2Fstory%2Fopenai-acquires-tbpn-buys-positive-news-coverage%2F&s=innovators&d=2026-04-05&t=OpenAI+Acquires+Tech+Talk+Show+%E2%80%98TBPN%E2%80%99%E2%80%94and+Buys+Itself+Some+Positive+News">OpenAI Acquires Tech Talk Show ‘TBPN’—and Buys Itself Some Positive News</a> <span
+                            style="color: #666; font-weight: 400;">(3 min)</span></h3>
+                    <p class="summary">OpenAI acquired the tech-focused talk show TBPN, aiming to improve its public image and shape the conversation around AI's societal impact.</p>
+                    <p class="meta"><a href="https://brief.delights.pro/api/track?url=https%3A%2F%2Fwww.wired.com%2Fstory%2Fopenai-acquires-tbpn-buys-positive-news-coverage%2F&s=innovators&d=2026-04-05&t=OpenAI+Acquires+Tech+Talk+Show+%E2%80%98TBPN%E2%80%99%E2%80%94and+Buys+Itself+Some+Positive+News">WIRED</a></p>
+                </div>
+                
+                <div class="story">
+                    <h3><a href="https://brief.delights.pro/api/track?url=https%3A%2F%2Fwww.wired.com%2Fstory%2Fcbp-facility-codes-sure-seem-to-have-leaked-via-online-flashcards%2F&s=innovators&d=2026-04-05&t=CBP+Facility+Codes+Sure+Seem+to+Have+Leaked+Via+Online+Flashcards">CBP Facility Codes Sure Seem to Have Leaked Via Online Flashcards</a> <span
+                            style="color: #666; font-weight: 400;">(3 min)</span></h3>
+                    <p class="summary">Sensitive security information about CBP facilities in Texas was leaked via a public Quizlet flashcard set, raising serious concerns about data breaches and insider threats.</p>
+                    <p class="meta"><a href="https://brief.delights.pro/api/track?url=https%3A%2F%2Fwww.wired.com%2Fstory%2Fcbp-facility-codes-sure-seem-to-have-leaked-via-online-flashcards%2F&s=innovators&d=2026-04-05&t=CBP+Facility+Codes+Sure+Seem+to+Have+Leaked+Via+Online+Flashcards">WIRED</a></p>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <!-- Personalized Referral Section -->
+        <div style="background: #f8f7ff; padding: 32px 40px; text-align: center; border-top: 2px solid #e8e8e8;">
+            <p style="font-size: 22px; font-weight: 700; margin: 0 0 4px 0; color: #000;">🎯 Share Brief Delights,
+                Unlock Rewards</p>
+            <p style="font-size: 14px; color: #666; margin: 0 0 20px 0;">You've referred <strong
+                    style="color: #4f46e5;">{{ referral_count }}</strong> reader{{ referral_count_plural }}. {{ referral_remaining }} more to unlock: <strong>{{ referral_next_reward }}</strong>
+            </p>
+
+            <!-- Milestone Progress Bar -->
+            <div style="max-width: 400px; margin: 0 auto 20px auto;">
+                <div
+                    style="display: flex; justify-content: space-between; margin-bottom: 6px; font-size: 11px; color: #999;">
+                    <span>0</span>
+                    <span style="MILESTONE_1_STYLE">1 🏅</span>
+                    <span style="MILESTONE_3_STYLE">3 📰</span>
+                    <span style="MILESTONE_5_STYLE">5 🔓</span>
+                    <span style="MILESTONE_10_STYLE">10 ⭐</span>
+                </div>
+                <div style="background: #e5e7eb; border-radius: 999px; height: 8px; overflow: hidden;">
+                    <div
+                        style="background: linear-gradient(90deg, #4f46e5, #7c3aed); height: 100%; border-radius: 999px; width: PROGRESS_BAR_WIDTH%;">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Referral Link Box -->
+            <div
+                style="background: #ffffff; border: 2px dashed #4f46e5; border-radius: 8px; padding: 12px 20px; margin: 0 auto 16px auto; max-width: 420px;">
+                <p
+                    style="font-size: 11px; color: #999; margin: 0 0 4px 0; text-transform: uppercase; letter-spacing: 1px;">
+                    Your personal link</p>
+                <p style="font-size: 16px; font-weight: 600; color: #4f46e5; margin: 0; word-break: break-all;">
+                    <a href="https://brief.delights.pro/?ref={{ referral_code }}"
+                        style="color: #4f46e5; text-decoration: none;">brief.delights.pro/?ref={{ referral_code }}</a>
+                </p>
+            </div>
+
+            <!-- Social Share Buttons -->
+            <p style="font-size: 13px; color: #999; margin: 0;">
+                <a href="https://twitter.com/intent/tweet?text=I%20read%20Brief%20Delights%20daily%20%E2%80%94%20AI-curated%20tech%20stories%20for%20your%20role.%20Free%20%26%20no%20spam.&url=https%3A%2F%2Fbrief.delights.pro%2F%3Fref%3D{{ referral_code }}"
+                    style="color: #666; text-decoration: none; margin: 0 8px; font-weight: 500;">𝕏 Twitter</a> ·
+                <a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fbrief.delights.pro%2F%3Fref%3D{{ referral_code }}"
+                    style="color: #666; text-decoration: none; margin: 0 8px; font-weight: 500;">LinkedIn</a> ·
+                <a href="mailto:?subject=Check%20out%20Brief%20Delights&body=I%20read%20this%20daily%20tech%20brief%20and%20thought%20you'd%20find%20it%20useful%3A%20https%3A%2F%2Fbrief.delights.pro%2F%3Fref%3D{{ referral_code }}"
+                    style="color: #666; text-decoration: none; margin: 0 8px; font-weight: 500;">📧 Email</a>
+            </p>
+        </div>
+
+        <!-- Feedback Rating -->
+        <div style="background: #ffffff; padding: 28px 40px; text-align: center; border-top: 1px solid #e8e8e8;">
+            <p style="font-size: 15px; font-weight: 600; color: #000; margin: 0 0 4px 0;">How was today's Brief?</p>
+            <p style="font-size: 12px; color: #999; margin: 0 0 16px 0;">Your feedback shapes tomorrow's edition</p>
+            <div style="font-size: 28px;">
+                <a href="https://brief.delights.pro/feedback?rating=loved&date=2026-04-05&segment=innovators"
+                    style="text-decoration: none; margin: 0 12px;">🔥</a>
+                <a href="https://brief.delights.pro/feedback?rating=good&date=2026-04-05&segment=innovators"
+                    style="text-decoration: none; margin: 0 12px;">👍</a>
+                <a href="https://brief.delights.pro/feedback?rating=meh&date=2026-04-05&segment=innovators"
+                    style="text-decoration: none; margin: 0 12px;">😐</a>
+            </div>
+            <p style="font-size: 11px; color: #bbb; margin: 8px 0 0 0;">Loved it · Good · Meh</p>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p class="links">
+                <a href="https://brief.delights.pro">Website</a>
+                <a href="https://brief.delights.pro/archive">Archive</a>
+                <a href="mailto:sponsors@brief.delights.pro?subject=Advertising%20Inquiry">Advertise</a>
+                <a href="mailto:hello@brief.delights.pro?subject=Unsubscribe">Unsubscribe</a>
+            </p>
+
+            <p class="legal">
+                You're receiving this because you subscribed to Brief Delights.<br>
+                <strong>brief delights</strong><br>
+                © 2026 All rights reserved.<br>
+                Questions? <a href="mailto:hello@brief.delights.pro"
+                    style="color: #999; text-decoration: none;">hello@brief.delights.pro</a>
+            </p>
+        </div>
+    </div>
+</body>
+
+</html>
