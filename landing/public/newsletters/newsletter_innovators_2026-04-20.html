@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brief Delights 🚀 - 2026-04-20</title>
+    <style>
+        /* Reset */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background-color: #f8f9fa;
+            color: #1a1a1a;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* Container */
+        .email-wrapper {
+            max-width: 680px;
+            margin: 0 auto;
+            background-color: #ffffff;
+        }
+
+        /* Top Bar (minimal, like TLDR) */
+        .top-bar {
+            padding: 16px 40px;
+            text-align: center;
+            border-bottom: 1px solid #e8e8e8;
+            background: #ffffff;
+        }
+
+        .top-bar a {
+            color: #666;
+            text-decoration: none;
+            font-size: 13px;
+            margin: 0 12px;
+            font-weight: 500;
+        }
+
+        .top-bar a:hover {
+            color: #000;
+        }
+
+        /* Header (Clean, no gradient!) */
+        .header {
+            background: #ffffff;
+            padding: 40px 40px 32px 40px;
+            text-align: center;
+            border-bottom: 1px solid #e8e8e8;
+        }
+
+        .logo {
+            font-size: 52px;
+            font-weight: 700;
+            letter-spacing: -1.5px;
+            margin: 0;
+            line-height: 1;
+            color: #000000;
+        }
+
+        .tagline {
+            font-size: 18px;
+            font-weight: 400;
+            color: #666666;
+            margin: 4px 0 12px 0;
+            letter-spacing: 2px;
+        }
+
+        .header .date {
+            margin: 0 0 8px 0;
+            font-size: 14px;
+            color: #999;
+            font-weight: 400;
+        }
+
+        .header .curation-stats {
+            margin: 0;
+            font-size: 12px;
+            color: #aaa;
+            font-weight: 400;
+            font-family: 'Courier New', monospace;
+        }
+
+        /* Sponsor Block (white background, tight integration) */
+        .sponsor {
+            background: #ffffff;
+            border-top: 1px solid #e8e8e8;
+            border-bottom: 1px solid #e8e8e8;
+            padding: 32px 40px;
+            margin: 0;
+        }
+
+        .sponsor-label {
+            font-size: 9px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #999;
+            margin: 0 0 12px 0;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        .sponsor h3 {
+            margin: 0 0 12px 0;
+            font-size: 20px;
+            font-weight: 700;
+            color: #000;
+            line-height: 1.3;
+        }
+
+        .sponsor h3 a {
+            color: #000;
+            text-decoration: none;
+        }
+
+        .sponsor h3 a:hover {
+            color: #4f46e5;
+        }
+
+        .sponsor p {
+            margin: 0;
+            font-size: 14px;
+            line-height: 1.5;
+            color: #666;
+        }
+
+        .sponsor a.cta {
+            display: inline-block;
+            margin-top: 12px;
+            color: #4f46e5;
+            font-weight: 600;
+            text-decoration: underline;
+            font-size: 15px;
+        }
+
+        /* Content */
+        .content {
+            padding: 40px 40px 20px 40px;
+        }
+
+        /* Section Headers */
+        .section {
+            margin-bottom: 40px;
+        }
+
+        .section-emoji {
+            text-align: center;
+            font-size: 20px;
+            margin: 0 0 12px 0;
+        }
+
+        .section h2 {
+            font-size: 20px;
+            font-weight: 700;
+            color: #000;
+            margin: 0 0 24px 0;
+            padding: 0;
+            border: none;
+            text-align: center;
+        }
+
+        /* Story Cards */
+        .story {
+            margin-bottom: 28px;
+            padding-bottom: 28px;
+            border-bottom: 1px solid #e8e8e8;
+        }
+
+        .story:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        /* Article Titles (slightly bigger than body) */
+        .story h3 {
+            margin: 0 0 10px 0;
+            font-size: 20px;
+            line-height: 1.4;
+            font-weight: 700;
+        }
+
+        .story h3 a {
+            color: #000;
+            text-decoration: underline;
+        }
+
+        .story h3 a:hover {
+            color: #1e40af;
+        }
+
+        /* Summary Text (close in size to titles) */
+        .story .summary {
+            margin: 10px 0;
+            font-size: 18px;
+            color: #444;
+            line-height: 1.6;
+        }
+
+        /* Meta Info */
+        .story .meta {
+            margin: 12px 0 0 0;
+            font-size: 14px;
+            color: #999;
+        }
+
+        .story .meta a {
+            color: #999;
+            text-decoration: none;
+        }
+
+        .story .meta a:hover {
+            color: #4f46e5;
+        }
+
+        /* Editorial Context - NEW: Why This Matters */
+        .editorial-context {
+            margin: 20px 0 12px 0;
+            padding: 12px 16px;
+            background: #eff6ff;
+            border-left: 3px solid #3b82f6;
+            font-size: 16px;
+            color: #1e40af;
+            font-style: italic;
+            line-height: 1.5;
+        }
+
+        .editorial-context-label {
+            font-weight: 600;
+            font-style: normal;
+            color: #1e40af;
+        }
+
+        /* Quick Links Section */
+        .quick-links {
+            margin: 40px 0;
+            padding: 0 40px;
+            border-top: 2px solid #e8e8e8;
+            padding-top: 32px;
+        }
+
+        .quick-item {
+            margin-bottom: 24px;
+            padding-bottom: 24px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .quick-item:last-child {
+            margin-bottom: 0;
+            border-bottom: none;
+        }
+
+        .quick-item h4 {
+            font-size: 16px;
+            font-weight: 600;
+            margin: 0 0 8px 0;
+            line-height: 1.4;
+        }
+
+        .quick-item h4 a {
+            color: #000;
+            text-decoration: underline;
+        }
+
+        .quick-item h4 a:hover {
+            color: #1e40af;
+        }
+
+        .quick-item .snippet {
+            font-size: 15px;
+            color: #555;
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        /* Footer */
+        .footer {
+            background: #ffffff;
+            padding: 40px;
+            text-align: center;
+            border-top: 1px solid #e8e8e8;
+        }
+
+        .footer .share {
+            margin: 0 0 24px 0;
+            font-size: 16px;
+            color: #444;
+        }
+
+        .footer .share a {
+            color: #4f46e5;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .footer .share a:hover {
+            text-decoration: underline;
+        }
+
+        .footer .links {
+            margin: 20px 0;
+            font-size: 14px;
+        }
+
+        .footer .links a {
+            color: #666;
+            text-decoration: none;
+            margin: 0 12px;
+        }
+
+        .footer .links a:hover {
+            color: #000;
+        }
+
+        .footer .legal {
+            margin-top: 24px;
+            font-size: 13px;
+            color: #999;
+            line-height: 1.6;
+        }
+
+        /* Mobile Responsive */
+        @media only screen and (max-width: 600px) {
+            .email-wrapper {
+                width: 100% !important;
+            }
+
+            .top-bar {
+                padding: 12px 20px !important;
+            }
+
+            .header {
+                padding: 24px 20px 20px 20px !important;
+            }
+
+            .header h1 {
+                font-size: 28px !important;
+            }
+
+            .header .tagline {
+                font-size: 15px !important;
+            }
+
+            .content,
+            .footer {
+                padding: 24px !important;
+            }
+
+            .sponsor {
+                padding: 24px 20px !important;
+            }
+
+            .story h3 {
+                font-size: 18px !important;
+            }
+
+            .story .summary {
+                font-size: 16px !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="email-wrapper">
+        <!-- Top Navigation Bar -->
+        <div class="top-bar">
+            <a href="https://brief.delights.pro">Sign Up</a> |
+            <a href="mailto:sponsors@brief.delights.pro?subject=Advertising%20Inquiry">Advertise</a> |
+            <a
+                href="https://brief.delights.pro/archive/2026-04-20-innovators">View
+                Online</a>
+        </div>
+
+        <!-- Header -->
+        <div class="header">
+            <div class="logo">Brief</div>
+            <div class="tagline">delights</div>
+            <p class="date">Innovators 🚀 | 2026-04-20</p>
+            <p class="curation-stats">1,300+ news scanned → ~225 analyzed → 15
+                selected</p>
+        </div>
+
+        <!-- Sponsor Section -->
+        
+
+        <!-- Content Sections -->
+        <div class="content">
+            
+            <div class="section">
+                
+                
+                <div class="section-emoji">🚀</div>
+                <h2>AI & Innovation</h2>
+                
+
+                
+                <div class="story">
+                    <h3><a href="https://brief.delights.pro/api/track?url=https%3A%2F%2Fwww.wired.com%2Fstory%2Fmusk-v-altman-trial-openai-xai%2F&s=innovators&d=2026-04-20&t=Musk+v.+Altman+Is+a+Battle+for+OpenAI%E2%80%99s+Soul">Musk v. Altman Is a Battle for OpenAI’s Soul</a> <span
+                            style="color: #666; font-weight: 400;">(4 minute read)</span>
+                    </h3>
+                    <p class="summary">Elon Musk sues OpenAI over its shift from nonprofit to for-profit, alleging breach of charitable trust and fraud. The case could impact OpenAI's IPO plans and AI technology distribution.</p>
+
+                    
+                    <div class="editorial-context">
+                        <span class="editorial-context-label">Why this matters:</span> This case could set precedents for how leading AI labs balance open access and commercial interests, with consequences for researchers and practitioners.
+                    </div>
+                    
+
+                    <p class="meta"><a href="https://brief.delights.pro/api/track?url=https%3A%2F%2Fwww.wired.com%2Fstory%2Fmusk-v-altman-trial-openai-xai%2F&s=innovators&d=2026-04-20&t=Musk+v.+Altman+Is+a+Battle+for+OpenAI%E2%80%99s+Soul">WIRED</a></p>
+                </div>
+                
+                <div class="story">
+                    <h3><a href="https://brief.delights.pro/api/track?url=https%3A%2F%2Fwww.wired.com%2Fstory%2Fthe-uk-launches-its-dollar675-million-sovereign-ai-fund%2F&s=innovators&d=2026-04-20&t=The+UK+Launches+Its+%24675+Million+Sovereign+AI+Fund">The UK Launches Its $675 Million Sovereign AI Fund</a> <span
+                            style="color: #666; font-weight: 400;">(3 minute read)</span>
+                    </h3>
+                    <p class="summary">The UK has launched a $675 million Sovereign AI fund to invest in domestic AI startups and reduce reliance on foreign-made technology.</p>
+
+                    
+                    <div class="editorial-context">
+                        <span class="editorial-context-label">Why this matters:</span> This signals a strategic shift towards AI self-sufficiency, which could impact global AI power dynamics and technology procurement decisions.
+                    </div>
+                    
+
+                    <p class="meta"><a href="https://brief.delights.pro/api/track?url=https%3A%2F%2Fwww.wired.com%2Fstory%2Fthe-uk-launches-its-dollar675-million-sovereign-ai-fund%2F&s=innovators&d=2026-04-20&t=The+UK+Launches+Its+%24675+Million+Sovereign+AI+Fund">WIRED</a></p>
+                </div>
+                
+                <div class="story">
+                    <h3><a href="https://brief.delights.pro/api/track?url=http%3A%2F%2Fbair.berkeley.edu%2Fblog%2F2025%2F03%2F25%2Frl-av-smoothing%2F&s=innovators&d=2026-04-20&t=Scaling+Up+Reinforcement+Learning+for+Traffic+Smoothing%3A+A+100-AV+Highway+Deployment">Scaling Up Reinforcement Learning for Traffic Smoothing: A 100-AV Highway Deployment</a> <span
+                            style="color: #666; font-weight: 400;">(9 minute read)</span>
+                    </h3>
+                    <p class="summary">Researchers deployed 100 RL-controlled autonomous vehicles on a highway to smooth traffic flow and reduce fuel consumption, demonstrating the potential of decentralized, sensor-based controllers.</p>
+
+                    
+                    <div class="editorial-context">
+                        <span class="editorial-context-label">Why this matters:</span> This opens a scalable path to mitigating traffic congestion and energy waste without costly infrastructure, challenging assumptions about the requirements for autonomous coordination.
+                    </div>
+                    
+
+                    <p class="meta"><a href="https://brief.delights.pro/api/track?url=http%3A%2F%2Fbair.berkeley.edu%2Fblog%2F2025%2F03%2F25%2Frl-av-smoothing%2F&s=innovators&d=2026-04-20&t=Scaling+Up+Reinforcement+Learning+for+Traffic+Smoothing%3A+A+100-AV+Highway+Deployment">The Berkeley Artificial Intelligence Research Blog</a></p>
+                </div>
+                
+                <div class="story">
+                    <h3><a href="https://brief.delights.pro/api/track?url=https%3A%2F%2Farxiv.org%2Fabs%2F2604.14967&s=innovators&d=2026-04-20&t=UniDoc-RL%3A+Coarse-to-Fine+Visual+RAG+with+Hierarchical+Actions+and+Dense+Rewards">UniDoc-RL: Coarse-to-Fine Visual RAG with Hierarchical Actions and Dense Rewards</a> <span
+                            style="color: #666; font-weight: 400;">(1 minute read)</span>
+                    </h3>
+                    <p class="summary">UniDoc-RL is a reinforcement learning framework that enables large vision-language models to perform fine-grained visual reasoning by progressively refining retrieval and perception.</p>
+
+                    
+                    <div class="editorial-context">
+                        <span class="editorial-context-label">Why this matters:</span> This opens new frontiers for vision-language models, allowing them to tackle complex reasoning tasks that were previously thought impossible.
+                    </div>
+                    
+
+                    <p class="meta"><a href="https://brief.delights.pro/api/track?url=https%3A%2F%2Farxiv.org%2Fabs%2F2604.14967&s=innovators&d=2026-04-20&t=UniDoc-RL%3A+Coarse-to-Fine+Visual+RAG+with+Hierarchical+Actions+and+Dense+Rewards">cs.AI updates on arXiv.org</a></p>
+                </div>
+                
+                <div class="story">
+                    <h3><a href="https://brief.delights.pro/api/track?url=http%3A%2F%2Fbair.berkeley.edu%2Fblog%2F2025%2F07%2F01%2Fpeva%2F&s=innovators&d=2026-04-20&t=Whole-Body+Conditioned+Egocentric+Video+Prediction">Whole-Body Conditioned Egocentric Video Prediction</a> <span
+                            style="color: #666; font-weight: 400;">(7 minute read)</span>
+                    </h3>
+                    <p class="summary">PEVA predicts egocentric video from human actions, enabling simulation of counterfactuals and long-term video generation for embodied agents.</p>
+
+                    
+                    <div class="editorial-context">
+                        <span class="editorial-context-label">Why this matters:</span> This enables researchers to build more realistic and capable AI agents that can plan and act in complex, dynamic environments.
+                    </div>
+                    
+
+                    <p class="meta"><a href="https://brief.delights.pro/api/track?url=http%3A%2F%2Fbair.berkeley.edu%2Fblog%2F2025%2F07%2F01%2Fpeva%2F&s=innovators&d=2026-04-20&t=Whole-Body+Conditioned+Egocentric+Video+Prediction">The Berkeley Artificial Intelligence Research Blog</a></p>
+                </div>
+                
+                <div class="story">
+                    <h3><a href="https://brief.delights.pro/api/track?url=https%3A%2F%2Farxiv.org%2Fabs%2F2604.14373&s=innovators&d=2026-04-20&t=SatBLIP%3A+Context+Understanding+and+Feature+Identification+from+Satellite+Imagery+with+Vision-Languag">SatBLIP: Context Understanding and Feature Identification from Satellite Imagery with Vision-Language Learning</a> <span
+                            style="color: #666; font-weight: 400;">(1 minute read)</span>
+                    </h3>
+                    <p class="summary">SatBLIP uses vision-language learning to extract contextual features from satellite imagery, enabling interpretable mapping of rural risk environments and prediction of social vulnerability indices.</p>
+
+                    
+                    <div class="editorial-context">
+                        <span class="editorial-context-label">Why this matters:</span> This enables researchers and policymakers to target interventions more effectively by understanding place-based drivers of rural vulnerability.
+                    </div>
+                    
+
+                    <p class="meta"><a href="https://brief.delights.pro/api/track?url=https%3A%2F%2Farxiv.org%2Fabs%2F2604.14373&s=innovators&d=2026-04-20&t=SatBLIP%3A+Context+Understanding+and+Feature+Identification+from+Satellite+Imagery+with+Vision-Languag">cs.AI updates on arXiv.org</a></p>
+                </div>
+                
+            </div>
+            
+            <div class="section">
+                
+                
+                <div class="section-emoji">💼</div>
+                <h2>Tech Business</h2>
+                
+
+                
+                <div class="story">
+                    <h3><a href="https://brief.delights.pro/api/track?url=https%3A%2F%2Farxiv.org%2Fabs%2F2604.14892&s=innovators&d=2026-04-20&t=Can+LLMs+Score+Medical+Diagnoses+and+Clinical+Reasoning+as+well+as+Expert+Panels%3F">Can LLMs Score Medical Diagnoses and Clinical Reasoning as well as Expert Panels?</a> <span
+                            style="color: #666; font-weight: 400;">(2 minute read)</span>
+                    </h3>
+                    <p class="summary">LLMs can match expert clinician panels in scoring medical diagnoses, differential diagnoses, clinical reasoning, and treatment risk with better concordance and lower severe error rates.</p>
+
+                    
+                    <div class="editorial-context">
+                        <span class="editorial-context-label">Why this matters:</span> This enables faster, more scalable medical AI testing and validation, accelerating development of safer, more capable AI healthcare systems.
+                    </div>
+                    
+
+                    <p class="meta"><a href="https://brief.delights.pro/api/track?url=https%3A%2F%2Farxiv.org%2Fabs%2F2604.14892&s=innovators&d=2026-04-20&t=Can+LLMs+Score+Medical+Diagnoses+and+Clinical+Reasoning+as+well+as+Expert+Panels%3F">cs.AI updates on arXiv.org</a></p>
+                </div>
+                
+            </div>
+            
+            <div class="section">
+                
+                
+                <div class="section-emoji">🔐</div>
+                <h2>Security</h2>
+                
+
+                
+                <div class="story">
+                    <h3><a href="https://brief.delights.pro/api/track?url=http%3A%2F%2Fbair.berkeley.edu%2Fblog%2F2025%2F04%2F11%2Fprompt-injection-defense%2F&s=innovators&d=2026-04-20&t=Defending+against+Prompt+Injection+with+Structured+Queries+%28StruQ%29+and+Preference+Optimization+%28SecA">Defending against Prompt Injection with Structured Queries (StruQ) and Preference Optimization (SecAlign)</a> <span
+                            style="color: #666; font-weight: 400;">(4 minute read)</span>
+                    </h3>
+                    <p class="summary">Researchers propose StruQ and SecAlign, fine-tuning defenses that reduce prompt injection attack success rates to near 0% without added cost or human labor.</p>
+
+                    
+                    <div class="editorial-context">
+                        <span class="editorial-context-label">Why this matters:</span> These defenses enable secure deployment of LLMs in high-stakes applications, removing a critical vulnerability that could lead to malicious manipulation.
+                    </div>
+                    
+
+                    <p class="meta"><a href="https://brief.delights.pro/api/track?url=http%3A%2F%2Fbair.berkeley.edu%2Fblog%2F2025%2F04%2F11%2Fprompt-injection-defense%2F&s=innovators&d=2026-04-20&t=Defending+against+Prompt+Injection+with+Structured+Queries+%28StruQ%29+and+Preference+Optimization+%28SecA">The Berkeley Artificial Intelligence Research Blog</a></p>
+                </div>
+                
+            </div>
+            
+        </div>
+
+        <!-- Contrarian Section -->
+        
+        <div class="content" style="padding-top: 0; padding-bottom: 0;">
+            <div class="section" style="margin-bottom: 20px;">
+                <div class="editorial-context" style="background: #fdf2f8; border-left-color: #ec4899; color: #831843;">
+                    <div style="font-size: 18px; font-weight: 700; margin-bottom: 8px;">🤔 THE OTHER SIDE</div>
+                    <div style="font-size: 16px; font-weight: 600; margin-bottom: 6px;">AI's future is more than scale</div>
+                    <div style="margin-bottom: 8px;">The AI world is abuzz with ever-bigger models and deployments. But the real innovation may come from smarter, more efficient agents that excel at specific tasks, not general dominance.</div>
+                    
+                    <div style="font-size: 14px; font-style: normal; margin-top: 8px;">
+                        <strong>Sources:</strong>
+                        <ul style="margin: 4px 0 0 0; padding-left: 20px;">
+                        
+                            <li><a href="https://engineering.fb.com/2026/03/18/ml-applications/friend-bubbles-enhancing-social-discovery-on-facebook-reels/" style="color: #ec4899;">Friend Bubbles: Enhancing Social Discovery on Facebook Reels</a></li>
+                        
+                            <li><a href="https://engineering.fb.com/2026/04/16/developer-tools/capacity-efficiency-at-meta-how-unified-ai-agents-optimize-performance-at-hyperscale/" style="color: #ec4899;">Capacity Efficiency at Meta: How Unified AI Agents Optimize Performance at Hyperscale</a></li>
+                        
+                        </ul>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+        
+
+        <!-- Quick Links Section -->
+        
+        <div class="quick-links">
+            <div class="section-emoji">⚡</div>
+            <h2>Quick Links</h2>
+
+            
+            <div class="quick-item">
+                <h4><a href="https://brief.delights.pro/api/track?url=https%3A%2F%2Fwww.wired.com%2Fstory%2Fanthropic-plots-major-london-expansion%2F&s=innovators&d=2026-04-20&t=Anthropic+Plots+Major+London+Expansion">Anthropic Plots Major London Expansion</a> <span
+                        style="color: #999; font-weight: 400; font-size: 14px;">(1
+                        min)</span></h4>
+                <p class="snippet">As tensions with the US government mount, Anthropic has leased a new office with enough space to quadruple its 200-person head count in London..</p>
+            </div>
+            
+            <div class="quick-item">
+                <h4><a href="https://brief.delights.pro/api/track?url=https%3A%2F%2Fwww.wired.com%2Fstory%2Funder-the-pacific-japan-seeks-independence-from-china-on-rare-earths%2F&s=innovators&d=2026-04-20&t=6%2C000+Meters+Under+the+Pacific%2C+Japan+Seeks+Independence+From+China+on+Rare+Earths">6,000 Meters Under the Pacific, Japan Seeks Independence From China on Rare Earths</a> <span
+                        style="color: #999; font-weight: 400; font-size: 14px;">(1
+                        min)</span></h4>
+                <p class="snippet">Tokyo is succeeding where the rest of the world has failed, reducing its reliance on Beijing for crucial rare earth elements—thanks to an enormous underwater deposit discovered on a remote island..</p>
+            </div>
+            
+            <div class="quick-item">
+                <h4><a href="https://brief.delights.pro/api/track?url=https%3A%2F%2Fwww.wired.com%2Fstory%2Fgoogle-ai-mode-update-tries-to-kill-tab-hopping-in-chrome%2F&s=innovators&d=2026-04-20&t=Google%27s+AI+Mode+Update+Tries+to+Kill+Tab+Hopping+in+Chrome">Google's AI Mode Update Tries to Kill Tab Hopping in Chrome</a> <span
+                        style="color: #999; font-weight: 400; font-size: 14px;">(1
+                        min)</span></h4>
+                <p class="snippet">Google latest update to AI Mode in its Chrome browser is designed to keep the chatbot-style search tool always around once you start an online search journey..</p>
+            </div>
+            
+            <div class="quick-item">
+                <h4><a href="https://brief.delights.pro/api/track?url=https%3A%2F%2Fwww.wired.com%2Fstory%2Fthis-beanie-is-designed-to-read-your-thoughts%2F&s=innovators&d=2026-04-20&t=This+Beanie+Is+Designed+to+Read+Your+Thoughts">This Beanie Is Designed to Read Your Thoughts</a> <span
+                        style="color: #999; font-weight: 400; font-size: 14px;">(1
+                        min)</span></h4>
+                <p class="snippet">California-based startup Sabi is developing a thought-to-text wearable that could usher in the cyborg future..</p>
+            </div>
+            
+        </div>
+        
+
+        <!-- Worth Your Attention (Trending) Section -->
+        
+        <div class="content">
+            <div class="section">
+                <div class="section-emoji">🔥</div>
+                <h2>Worth Your Attention</h2>
+
+                
+                <div class="story">
+                    <h3><a href="https://brief.delights.pro/api/track?url=https%3A%2F%2Fwww.lesswrong.com%2Fposts%2FEvhdZ9tkAvw7LBDid%2Fstop-ai-now&s=innovators&d=2026-04-20&t=Stop+AI+Now">Stop AI Now</a> <span
+                            style="color: #666; font-weight: 400;">(8 min)</span></h3>
+                    <p class="summary">The article argues for urgently stopping AI development, warning of unknown risks and the potential for sudden, unpredictable progress that could spiral out of control.</p>
+                    <p class="meta"><a href="https://brief.delights.pro/api/track?url=https%3A%2F%2Fwww.lesswrong.com%2Fposts%2FEvhdZ9tkAvw7LBDid%2Fstop-ai-now&s=innovators&d=2026-04-20&t=Stop+AI+Now">LessWrong</a></p>
+                </div>
+                
+                <div class="story">
+                    <h3><a href="https://brief.delights.pro/api/track?url=https%3A%2F%2Fwww.wired.com%2Fstory%2Fmade-in-china-what-chinas-sci-fi-boom-is-really-selling%2F&s=innovators&d=2026-04-20&t=The+Online+Fiction+Boom+Reimagining+China%E2%80%99s+History">The Online Fiction Boom Reimagining China’s History</a> <span
+                            style="color: #666; font-weight: 400;">(4 min)</span></h3>
+                    <p class="summary">Researchers examine a popular Chinese sci-fi genre where characters travel back in time to rewrite Chinese history, reflecting nationalist themes and government influence.</p>
+                    <p class="meta"><a href="https://brief.delights.pro/api/track?url=https%3A%2F%2Fwww.wired.com%2Fstory%2Fmade-in-china-what-chinas-sci-fi-boom-is-really-selling%2F&s=innovators&d=2026-04-20&t=The+Online+Fiction+Boom+Reimagining+China%E2%80%99s+History">WIRED</a></p>
+                </div>
+                
+                <div class="story">
+                    <h3><a href="https://brief.delights.pro/api/track?url=https%3A%2F%2Fwww.wired.com%2Fstory%2Fdark-matter-may-be-made-of-black-holes-from-another-universe%2F&s=innovators&d=2026-04-20&t=Dark+Matter+May+Be+Made+of+Black+Holes+From+Another+Universe">Dark Matter May Be Made of Black Holes From Another Universe</a> <span
+                            style="color: #666; font-weight: 400;">(3 min)</span></h3>
+                    <p class="summary">Researchers propose dark matter may be made of black holes from a previous universe, solving two cosmic mysteries at once.</p>
+                    <p class="meta"><a href="https://brief.delights.pro/api/track?url=https%3A%2F%2Fwww.wired.com%2Fstory%2Fdark-matter-may-be-made-of-black-holes-from-another-universe%2F&s=innovators&d=2026-04-20&t=Dark+Matter+May+Be+Made+of+Black+Holes+From+Another+Universe">WIRED</a></p>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <!-- Personalized Referral Section -->
+        <div style="background: #f8f7ff; padding: 32px 40px; text-align: center; border-top: 2px solid #e8e8e8;">
+            <p style="font-size: 22px; font-weight: 700; margin: 0 0 4px 0; color: #000;">🎯 Share Brief Delights,
+                Unlock Rewards</p>
+            <p style="font-size: 14px; color: #666; margin: 0 0 20px 0;">You've referred <strong
+                    style="color: #4f46e5;">{{ referral_count }}</strong> reader{{ referral_count_plural }}. {{ referral_remaining }} more to unlock: <strong>{{ referral_next_reward }}</strong>
+            </p>
+
+            <!-- Milestone Progress Bar -->
+            <div style="max-width: 400px; margin: 0 auto 20px auto;">
+                <div
+                    style="display: flex; justify-content: space-between; margin-bottom: 6px; font-size: 11px; color: #999;">
+                    <span>0</span>
+                    <span style="MILESTONE_1_STYLE">1 🏅</span>
+                    <span style="MILESTONE_3_STYLE">3 📰</span>
+                    <span style="MILESTONE_5_STYLE">5 🔓</span>
+                    <span style="MILESTONE_10_STYLE">10 ⭐</span>
+                </div>
+                <div style="background: #e5e7eb; border-radius: 999px; height: 8px; overflow: hidden;">
+                    <div
+                        style="background: linear-gradient(90deg, #4f46e5, #7c3aed); height: 100%; border-radius: 999px; width: PROGRESS_BAR_WIDTH%;">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Referral Link Box -->
+            <div
+                style="background: #ffffff; border: 2px dashed #4f46e5; border-radius: 8px; padding: 12px 20px; margin: 0 auto 16px auto; max-width: 420px;">
+                <p
+                    style="font-size: 11px; color: #999; margin: 0 0 4px 0; text-transform: uppercase; letter-spacing: 1px;">
+                    Your personal link</p>
+                <p style="font-size: 16px; font-weight: 600; color: #4f46e5; margin: 0; word-break: break-all;">
+                    <a href="https://brief.delights.pro/?ref={{ referral_code }}"
+                        style="color: #4f46e5; text-decoration: none;">brief.delights.pro/?ref={{ referral_code }}</a>
+                </p>
+            </div>
+
+            <!-- Social Share Buttons -->
+            <p style="font-size: 13px; color: #999; margin: 0;">
+                <a href="https://twitter.com/intent/tweet?text=I%20read%20Brief%20Delights%20daily%20%E2%80%94%20AI-curated%20tech%20stories%20for%20your%20role.%20Free%20%26%20no%20spam.&url=https%3A%2F%2Fbrief.delights.pro%2F%3Fref%3D{{ referral_code }}"
+                    style="color: #666; text-decoration: none; margin: 0 8px; font-weight: 500;">𝕏 Twitter</a> ·
+                <a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fbrief.delights.pro%2F%3Fref%3D{{ referral_code }}"
+                    style="color: #666; text-decoration: none; margin: 0 8px; font-weight: 500;">LinkedIn</a> ·
+                <a href="mailto:?subject=Check%20out%20Brief%20Delights&body=I%20read%20this%20daily%20tech%20brief%20and%20thought%20you'd%20find%20it%20useful%3A%20https%3A%2F%2Fbrief.delights.pro%2F%3Fref%3D{{ referral_code }}"
+                    style="color: #666; text-decoration: none; margin: 0 8px; font-weight: 500;">📧 Email</a>
+            </p>
+        </div>
+
+        <!-- Feedback Rating -->
+        <div style="background: #ffffff; padding: 28px 40px; text-align: center; border-top: 1px solid #e8e8e8;">
+            <p style="font-size: 15px; font-weight: 600; color: #000; margin: 0 0 4px 0;">How was today's Brief?</p>
+            <p style="font-size: 12px; color: #999; margin: 0 0 16px 0;">Your feedback shapes tomorrow's edition</p>
+            <div style="font-size: 28px;">
+                <a href="https://brief.delights.pro/feedback?rating=loved&date=2026-04-20&segment=innovators"
+                    style="text-decoration: none; margin: 0 12px;">🔥</a>
+                <a href="https://brief.delights.pro/feedback?rating=good&date=2026-04-20&segment=innovators"
+                    style="text-decoration: none; margin: 0 12px;">👍</a>
+                <a href="https://brief.delights.pro/feedback?rating=meh&date=2026-04-20&segment=innovators"
+                    style="text-decoration: none; margin: 0 12px;">😐</a>
+            </div>
+            <p style="font-size: 11px; color: #bbb; margin: 8px 0 0 0;">Loved it · Good · Meh</p>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p class="links">
+                <a href="https://brief.delights.pro">Website</a>
+                <a href="https://brief.delights.pro/archive">Archive</a>
+                <a href="mailto:sponsors@brief.delights.pro?subject=Advertising%20Inquiry">Advertise</a>
+                <a href="mailto:hello@brief.delights.pro?subject=Unsubscribe">Unsubscribe</a>
+            </p>
+
+            <p class="legal">
+                You're receiving this because you subscribed to Brief Delights.<br>
+                <strong>brief delights</strong><br>
+                © 2026 All rights reserved.<br>
+                Questions? <a href="mailto:hello@brief.delights.pro"
+                    style="color: #999; text-decoration: none;">hello@brief.delights.pro</a>
+            </p>
+        </div>
+    </div>
+</body>
+
+</html>
