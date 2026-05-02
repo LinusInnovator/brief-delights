@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brief Delights 🔧 - 2026-05-02</title>
+    <style>
+        /* Reset */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background-color: #f8f9fa;
+            color: #1a1a1a;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* Container */
+        .email-wrapper {
+            max-width: 680px;
+            margin: 0 auto;
+            background-color: #ffffff;
+        }
+
+        /* Top Bar (minimal, like TLDR) */
+        .top-bar {
+            padding: 16px 40px;
+            text-align: center;
+            border-bottom: 1px solid #e8e8e8;
+            background: #ffffff;
+        }
+
+        .top-bar a {
+            color: #666;
+            text-decoration: none;
+            font-size: 13px;
+            margin: 0 12px;
+            font-weight: 500;
+        }
+
+        .top-bar a:hover {
+            color: #000;
+        }
+
+        /* Header (Clean, no gradient!) */
+        .header {
+            background: #ffffff;
+            padding: 40px 40px 32px 40px;
+            text-align: center;
+            border-bottom: 1px solid #e8e8e8;
+        }
+
+        .logo {
+            font-size: 52px;
+            font-weight: 700;
+            letter-spacing: -1.5px;
+            margin: 0;
+            line-height: 1;
+            color: #000000;
+        }
+
+        .tagline {
+            font-size: 18px;
+            font-weight: 400;
+            color: #666666;
+            margin: 4px 0 12px 0;
+            letter-spacing: 2px;
+        }
+
+        .header .date {
+            margin: 0 0 8px 0;
+            font-size: 14px;
+            color: #999;
+            font-weight: 400;
+        }
+
+        .header .curation-stats {
+            margin: 0;
+            font-size: 12px;
+            color: #aaa;
+            font-weight: 400;
+            font-family: 'Courier New', monospace;
+        }
+
+        /* Sponsor Block (white background, tight integration) */
+        .sponsor {
+            background: #ffffff;
+            border-top: 1px solid #e8e8e8;
+            border-bottom: 1px solid #e8e8e8;
+            padding: 32px 40px;
+            margin: 0;
+        }
+
+        .sponsor-label {
+            font-size: 9px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #999;
+            margin: 0 0 12px 0;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        .sponsor h3 {
+            margin: 0 0 12px 0;
+            font-size: 20px;
+            font-weight: 700;
+            color: #000;
+            line-height: 1.3;
+        }
+
+        .sponsor h3 a {
+            color: #000;
+            text-decoration: none;
+        }
+
+        .sponsor h3 a:hover {
+            color: #4f46e5;
+        }
+
+        .sponsor p {
+            margin: 0;
+            font-size: 14px;
+            line-height: 1.5;
+            color: #666;
+        }
+
+        .sponsor a.cta {
+            display: inline-block;
+            margin-top: 12px;
+            color: #4f46e5;
+            font-weight: 600;
+            text-decoration: underline;
+            font-size: 15px;
+        }
+
+        /* Content */
+        .content {
+            padding: 40px 40px 20px 40px;
+        }
+
+        /* Section Headers */
+        .section {
+            margin-bottom: 40px;
+        }
+
+        .section-emoji {
+            text-align: center;
+            font-size: 20px;
+            margin: 0 0 12px 0;
+        }
+
+        .section h2 {
+            font-size: 20px;
+            font-weight: 700;
+            color: #000;
+            margin: 0 0 24px 0;
+            padding: 0;
+            border: none;
+            text-align: center;
+        }
+
+        /* Story Cards */
+        .story {
+            margin-bottom: 28px;
+            padding-bottom: 28px;
+            border-bottom: 1px solid #e8e8e8;
+        }
+
+        .story:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        /* Article Titles (slightly bigger than body) */
+        .story h3 {
+            margin: 0 0 10px 0;
+            font-size: 20px;
+            line-height: 1.4;
+            font-weight: 700;
+        }
+
+        .story h3 a {
+            color: #000;
+            text-decoration: underline;
+        }
+
+        .story h3 a:hover {
+            color: #1e40af;
+        }
+
+        /* Summary Text (close in size to titles) */
+        .story .summary {
+            margin: 10px 0;
+            font-size: 18px;
+            color: #444;
+            line-height: 1.6;
+        }
+
+        /* Meta Info */
+        .story .meta {
+            margin: 12px 0 0 0;
+            font-size: 14px;
+            color: #999;
+        }
+
+        .story .meta a {
+            color: #999;
+            text-decoration: none;
+        }
+
+        .story .meta a:hover {
+            color: #4f46e5;
+        }
+
+        /* Editorial Context - NEW: Why This Matters */
+        .editorial-context {
+            margin: 20px 0 12px 0;
+            padding: 12px 16px;
+            background: #eff6ff;
+            border-left: 3px solid #3b82f6;
+            font-size: 16px;
+            color: #1e40af;
+            font-style: italic;
+            line-height: 1.5;
+        }
+
+        .editorial-context-label {
+            font-weight: 600;
+            font-style: normal;
+            color: #1e40af;
+        }
+
+        /* Quick Links Section */
+        .quick-links {
+            margin: 40px 0;
+            padding: 0 40px;
+            border-top: 2px solid #e8e8e8;
+            padding-top: 32px;
+        }
+
+        .quick-item {
+            margin-bottom: 24px;
+            padding-bottom: 24px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .quick-item:last-child {
+            margin-bottom: 0;
+            border-bottom: none;
+        }
+
+        .quick-item h4 {
+            font-size: 16px;
+            font-weight: 600;
+            margin: 0 0 8px 0;
+            line-height: 1.4;
+        }
+
+        .quick-item h4 a {
+            color: #000;
+            text-decoration: underline;
+        }
+
+        .quick-item h4 a:hover {
+            color: #1e40af;
+        }
+
+        .quick-item .snippet {
+            font-size: 15px;
+            color: #555;
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        /* Footer */
+        .footer {
+            background: #ffffff;
+            padding: 40px;
+            text-align: center;
+            border-top: 1px solid #e8e8e8;
+        }
+
+        .footer .share {
+            margin: 0 0 24px 0;
+            font-size: 16px;
+            color: #444;
+        }
+
+        .footer .share a {
+            color: #4f46e5;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .footer .share a:hover {
+            text-decoration: underline;
+        }
+
+        .footer .links {
+            margin: 20px 0;
+            font-size: 14px;
+        }
+
+        .footer .links a {
+            color: #666;
+            text-decoration: none;
+            margin: 0 12px;
+        }
+
+        .footer .links a:hover {
+            color: #000;
+        }
+
+        .footer .legal {
+            margin-top: 24px;
+            font-size: 13px;
+            color: #999;
+            line-height: 1.6;
+        }
+
+        /* Mobile Responsive */
+        @media only screen and (max-width: 600px) {
+            .email-wrapper {
+                width: 100% !important;
+            }
+
+            .top-bar {
+                padding: 12px 20px !important;
+            }
+
+            .header {
+                padding: 24px 20px 20px 20px !important;
+            }
+
+            .header h1 {
+                font-size: 28px !important;
+            }
+
+            .header .tagline {
+                font-size: 15px !important;
+            }
+
+            .content,
+            .footer {
+                padding: 24px !important;
+            }
+
+            .sponsor {
+                padding: 24px 20px !important;
+            }
+
+            .story h3 {
+                font-size: 18px !important;
+            }
+
+            .story .summary {
+                font-size: 16px !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="email-wrapper">
+        <!-- Top Navigation Bar -->
+        <div class="top-bar">
+            <a href="https://brief.delights.pro">Sign Up</a> |
+            <a href="mailto:sponsors@brief.delights.pro?subject=Advertising%20Inquiry">Advertise</a> |
+            <a
+                href="https://brief.delights.pro/archive/2026-05-02-builders">View
+                Online</a>
+        </div>
+
+        <!-- Header -->
+        <div class="header">
+            <div class="logo">Brief</div>
+            <div class="tagline">delights</div>
+            <p class="date">Builders 🔧 | 2026-05-02</p>
+            <p class="curation-stats">1,300+ news scanned → ~225 analyzed → 15
+                selected</p>
+        </div>
+
+        <!-- Sponsor Section -->
+        
+
+        <!-- Content Sections -->
+        <div class="content">
+            
+            <div class="section">
+                
+                
+                <div class="section-emoji">🚀</div>
+                <h2>AI & Innovation</h2>
+                
+
+                
+                <div class="story">
+                    <h3><a href="https://brief.delights.pro/api/track?url=https%3A%2F%2Fnewsletter.pragmaticengineer.com%2Fp%2Fwhat-is-inference-engineering&s=builders&d=2026-05-02&t=What+is+inference+engineering%3F+Deepdive">What is inference engineering? Deepdive</a> <span
+                            style="color: #666; font-weight: 400;">(15 minute read)</span>
+                    </h3>
+                    <p class="summary">Inference engineering is becoming crucial as open AI models proliferate, requiring techniques like quantization, caching, and parallelism to optimize performance.</p>
+
+                    
+                    <div class="editorial-context">
+                        <span class="editorial-context-label">Why this matters:</span> Investing in inference engineering can give your products a significant performance edge over competitors relying on off-the-shelf solutions.
+                    </div>
+                    
+
+                    <p class="meta"><a href="https://brief.delights.pro/api/track?url=https%3A%2F%2Fnewsletter.pragmaticengineer.com%2Fp%2Fwhat-is-inference-engineering&s=builders&d=2026-05-02&t=What+is+inference+engineering%3F+Deepdive">The Pragmatic Engineer</a></p>
+                </div>
+                
+            </div>
+            
+            <div class="section">
+                
+                
+                <div class="section-emoji">☁️</div>
+                <h2>Enterprise Tech</h2>
+                
+
+                
+                <div class="story">
+                    <h3><a href="https://brief.delights.pro/api/track?url=https%3A%2F%2Fnewsletter.pragmaticengineer.com%2Fp%2Fscaling-uber-with-thuan-pham-ubers&s=builders&d=2026-05-02&t=Scaling+Uber+with+Thuan+Pham+%28Uber%E2%80%99s+first+CTO%29">Scaling Uber with Thuan Pham (Uber’s first CTO)</a> <span
+                            style="color: #666; font-weight: 400;">(8 minute read)</span>
+                    </h3>
+                    <p class="summary">Uber's first CTO Thuan Pham shares how he scaled the company's engineering org from 40 engineers to thousands, including the rationale behind Uber's pioneering program/platform split.</p>
+
+                    
+                    <div class="editorial-context">
+                        <span class="editorial-context-label">Why this matters:</span> Pham's insights on managing rapid growth and organizational scaling can inform strategic decisions for high-growth tech companies.
+                    </div>
+                    
+
+                    <p class="meta"><a href="https://brief.delights.pro/api/track?url=https%3A%2F%2Fnewsletter.pragmaticengineer.com%2Fp%2Fscaling-uber-with-thuan-pham-ubers&s=builders&d=2026-05-02&t=Scaling+Uber+with+Thuan+Pham+%28Uber%E2%80%99s+first+CTO%29">The Pragmatic Engineer</a></p>
+                </div>
+                
+                <div class="story">
+                    <h3><a href="https://brief.delights.pro/api/track?url=https%3A%2F%2Ffly.io%2Fblog%2Fgpu-ga%2F&s=builders&d=2026-05-02&t=GPUs+on+Fly.io+are+available+to+everyone%21">GPUs on Fly.io are available to everyone!</a> <span
+                            style="color: #666; font-weight: 400;">(2 minute read)</span>
+                    </h3>
+                    <p class="summary">Fly.io now offers powerful GPU instances, enabling software engineers to leverage large language models, text transcription, and image generation capabilities.</p>
+
+                    
+                    <div class="editorial-context">
+                        <span class="editorial-context-label">Why this matters:</span> This could shift backend language and framework choices, empowering developers to build more advanced applications with GPU-accelerated processing.
+                    </div>
+                    
+
+                    <p class="meta"><a href="https://brief.delights.pro/api/track?url=https%3A%2F%2Ffly.io%2Fblog%2Fgpu-ga%2F&s=builders&d=2026-05-02&t=GPUs+on+Fly.io+are+available+to+everyone%21">The Fly Blog</a></p>
+                </div>
+                
+                <div class="story">
+                    <h3><a href="https://brief.delights.pro/api/track?url=https%3A%2F%2Ffly.io%2Fblog%2Ftigris-public-beta%2F&s=builders&d=2026-05-02&t=Globally+Distributed+Object+Storage+with+Tigris">Globally Distributed Object Storage with Tigris</a> <span
+                            style="color: #666; font-weight: 400;">(8 minute read)</span>
+                    </h3>
+                    <p class="summary">Tigris, a globally distributed object storage service, could shift backend architecture decisions for software teams building applications with geographically dispersed users and frequent file uploads/downloads.</p>
+
+                    
+                    <div class="editorial-context">
+                        <span class="editorial-context-label">Why this matters:</span> Tigris may enable software teams to simplify their architecture and improve user experience for applications with geographically diverse users and high file storage needs.
+                    </div>
+                    
+
+                    <p class="meta"><a href="https://brief.delights.pro/api/track?url=https%3A%2F%2Ffly.io%2Fblog%2Ftigris-public-beta%2F&s=builders&d=2026-05-02&t=Globally+Distributed+Object+Storage+with+Tigris">The Fly Blog</a></p>
+                </div>
+                
+                <div class="story">
+                    <h3><a href="https://brief.delights.pro/api/track?url=https%3A%2F%2Ffly.io%2Fblog%2Ffks-beta-live%2F&s=builders&d=2026-05-02&t=Fly+Kubernetes+does+more+now">Fly Kubernetes does more now</a> <span
+                            style="color: #666; font-weight: 400;">(7 minute read)</span>
+                    </h3>
+                    <p class="summary">Fly Kubernetes, Fly.io's managed Kubernetes service, now offers a streamlined, opinionated approach to running Kubernetes, simplifying the complexity of the Kubernetes ecosystem.</p>
+
+                    
+                    <div class="editorial-context">
+                        <span class="editorial-context-label">Why this matters:</span> Fly Kubernetes could enable teams to focus on application development rather than Kubernetes infrastructure, potentially boosting productivity and reducing operational burden.
+                    </div>
+                    
+
+                    <p class="meta"><a href="https://brief.delights.pro/api/track?url=https%3A%2F%2Ffly.io%2Fblog%2Ffks-beta-live%2F&s=builders&d=2026-05-02&t=Fly+Kubernetes+does+more+now">The Fly Blog</a></p>
+                </div>
+                
+                <div class="story">
+                    <h3><a href="https://brief.delights.pro/api/track?url=https%3A%2F%2Fvercel.com%2Fblog%2Fnext5&s=builders&d=2026-05-02&t=Next.js+5%3A+Universal+Webpack%2C+CSS+Imports%2C+Plugins+and+Zones">Next.js 5: Universal Webpack, CSS Imports, Plugins and Zones</a> <span
+                            style="color: #666; font-weight: 400;">(11 minute read)</span>
+                    </h3>
+                    <p class="summary">Next.js 5.0 introduces Universal Webpack, enabling powerful new extensibility through plugins and CSS imports, significantly expanding the framework's capabilities.</p>
+
+                    
+                    <div class="editorial-context">
+                        <span class="editorial-context-label">Why this matters:</span> Next.js 5.0 empowers developers to tailor the framework to their specific needs, improving performance and developer experience.
+                    </div>
+                    
+
+                    <p class="meta"><a href="https://brief.delights.pro/api/track?url=https%3A%2F%2Fvercel.com%2Fblog%2Fnext5&s=builders&d=2026-05-02&t=Next.js+5%3A+Universal+Webpack%2C+CSS+Imports%2C+Plugins+and+Zones">Vercel News</a></p>
+                </div>
+                
+                <div class="story">
+                    <h3><a href="https://brief.delights.pro/api/track?url=https%3A%2F%2Fvercel.com%2Fblog%2Fnext2&s=builders&d=2026-05-02&t=Next.js+2.0">Next.js 2.0</a> <span
+                            style="color: #666; font-weight: 400;">(7 minute read)</span>
+                    </h3>
+                    <p class="summary">Next.js 2.0 introduces powerful new features like custom server code, fancy URLs, and scoped CSS support, making it a more flexible and customizable React framework.</p>
+
+                    
+                    <div class="editorial-context">
+                        <span class="editorial-context-label">Why this matters:</span> The new features in Next.js 2.0 enable developers to create more complex web applications with better control over routing, caching, and styling.
+                    </div>
+                    
+
+                    <p class="meta"><a href="https://brief.delights.pro/api/track?url=https%3A%2F%2Fvercel.com%2Fblog%2Fnext2&s=builders&d=2026-05-02&t=Next.js+2.0">Vercel News</a></p>
+                </div>
+                
+            </div>
+            
+            <div class="section">
+                
+                
+                <div class="section-emoji">🔐</div>
+                <h2>Security</h2>
+                
+
+                
+                <div class="story">
+                    <h3><a href="https://brief.delights.pro/api/track?url=https%3A%2F%2Ffly.io%2Fblog%2Fjit-wireguard-peers%2F&s=builders&d=2026-05-02&t=JIT+WireGuard">JIT WireGuard</a> <span
+                            style="color: #666; font-weight: 400;">(9 minute read)</span>
+                    </h3>
+                    <p class="summary">Fly.io has developed a JIT (just-in-time) WireGuard implementation to improve performance and scalability for its customers using WireGuard-based VPN connections.</p>
+
+                    
+                    <div class="editorial-context">
+                        <span class="editorial-context-label">Why this matters:</span> This could allow software teams to rethink their VPN architecture and optimize for performance, reducing production issues and improving developer experience.
+                    </div>
+                    
+
+                    <p class="meta"><a href="https://brief.delights.pro/api/track?url=https%3A%2F%2Ffly.io%2Fblog%2Fjit-wireguard-peers%2F&s=builders&d=2026-05-02&t=JIT+WireGuard">The Fly Blog</a></p>
+                </div>
+                
+            </div>
+            
+        </div>
+
+        <!-- Contrarian Section -->
+        
+        <div class="content" style="padding-top: 0; padding-bottom: 0;">
+            <div class="section" style="margin-bottom: 20px;">
+                <div class="editorial-context" style="background: #fdf2f8; border-left-color: #ec4899; color: #831843;">
+                    <div style="font-size: 18px; font-weight: 700; margin-bottom: 8px;">🤔 THE OTHER SIDE</div>
+                    <div style="font-size: 16px; font-weight: 600; margin-bottom: 6px;">Careful, the AI hype train is speeding</div>
+                    <div style="margin-bottom: 8px;">While AI seems to be the talk of the town, some experts warn that the market may be overheating. Perhaps it's time to look beyond the flashy demos and consider the more practical, distributed storage solutions that enable global-scale data processing.</div>
+                    
+                    <div style="font-size: 14px; font-style: normal; margin-top: 8px;">
+                        <strong>Sources:</strong>
+                        <ul style="margin: 4px 0 0 0; padding-left: 20px;">
+                        
+                            <li><a href="https://fly.io/blog/gpu-ga/" style="color: #ec4899;">GPUs on Fly.io are available to everyone!</a></li>
+                        
+                            <li><a href="https://fly.io/blog/fks-beta-live/" style="color: #ec4899;">Fly Kubernetes does more now</a></li>
+                        
+                        </ul>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+        
+
+        <!-- Quick Links Section -->
+        
+        <div class="quick-links">
+            <div class="section-emoji">⚡</div>
+            <h2>Quick Links</h2>
+
+            
+            <div class="quick-item">
+                <h4><a href="https://brief.delights.pro/api/track?url=https%3A%2F%2Fvercel.com%2Fblog%2Fnext&s=builders&d=2026-05-02&t=Next.js">Next.js</a> <span
+                        style="color: #999; font-weight: 400; font-size: 14px;">(1
+                        min)</span></h4>
+                <p class="snippet">We're very proud to open-source Next.js, a small framework for server-rendered universal JavaScript webapps, built on top of React, Webpack and Babel, which powers this very site! Read more.</p>
+            </div>
+            
+            <div class="quick-item">
+                <h4><a href="https://brief.delights.pro/api/track?url=https%3A%2F%2Fvercel.com%2Fblog%2Fnext5-1&s=builders&d=2026-05-02&t=Next.js+5.1%3A+Faster+Page+Resolution">Next.js 5.1: Faster Page Resolution</a> <span
+                        style="color: #999; font-weight: 400; font-size: 14px;">(1
+                        min)</span></h4>
+                <p class="snippet">We are happy to introduce Next.js 5.1, which features support for environment configuration, phases, source maps, and new Next.js plugins.Major performance improvements are introduced: resolving pages is 102x faster, and error pages are loaded mor...</p>
+            </div>
+            
+            <div class="quick-item">
+                <h4><a href="https://brief.delights.pro/api/track?url=https%3A%2F%2Fvercel.com%2Fblog%2Fnext6&s=builders&d=2026-05-02&t=Next.js+6+and+Nextjs.org">Next.js 6 and Nextjs.org</a> <span
+                        style="color: #999; font-weight: 400; font-size: 14px;">(1
+                        min)</span></h4>
+                <p class="snippet">This year, the ZEIT Day Keynote started by highlighting our Open Source projects including showing the metrics of Next.js. With over 25000 stars on GitHub and over 10000 websites are already powered by it, we're incredibly amazed at its growth and...</p>
+            </div>
+            
+            <div class="quick-item">
+                <h4><a href="https://brief.delights.pro/api/track?url=https%3A%2F%2Fvercel.com%2Fblog%2Fnext-canary&s=builders&d=2026-05-02&t=Towards+Next.js+5%3A+Introducing+Canary+Updates">Towards Next.js 5: Introducing Canary Updates</a> <span
+                        style="color: #999; font-weight: 400; font-size: 14px;">(1
+                        min)</span></h4>
+                <p class="snippet">On the heels of the announcements of canary releases for Hyper, Now CLI, and Now Desktop, we are glad to announce the immediate availability of a canary channel for Next.js.In addition, we are excited to share some of the goals we are currently wo...</p>
+            </div>
+            
+        </div>
+        
+
+        <!-- Worth Your Attention (Trending) Section -->
+        
+        <div class="content">
+            <div class="section">
+                <div class="section-emoji">🔥</div>
+                <h2>Worth Your Attention</h2>
+
+                
+                <div class="story">
+                    <h3><a href="https://brief.delights.pro/api/track?url=https%3A%2F%2Fjacobharr.is%2Fpersonal%2Fllm-not-junior-engineer&s=builders&d=2026-05-02&t=The+LLM+Is+Not+a+Junior+Engineer">The LLM Is Not a Junior Engineer</a> <span
+                            style="color: #666; font-weight: 400;">(15 min)</span></h3>
+                    <p class="summary">The author cautions against over-relying on large language models (LLMs) in software development, as they can introduce risks and challenges that may not be apparent in low-stakes projects.</p>
+                    <p class="meta"><a href="https://brief.delights.pro/api/track?url=https%3A%2F%2Fjacobharr.is%2Fpersonal%2Fllm-not-junior-engineer&s=builders&d=2026-05-02&t=The+LLM+Is+Not+a+Junior+Engineer">Lobsters</a></p>
+                </div>
+                
+                <div class="story">
+                    <h3><a href="https://brief.delights.pro/api/track?url=https%3A%2F%2Flemire.me%2Fblog%2F2026%2F04%2F27%2Fyou-can-beat-the-binary-search%2F&s=builders&d=2026-05-02&t=You+can+beat+the+binary+search">You can beat the binary search</a> <span
+                            style="color: #666; font-weight: 400;">(8 min)</span></h3>
+                    <p class="summary">A new SIMD-based search algorithm for sorted arrays of 16-bit integers outperforms binary search by leveraging modern processor capabilities.</p>
+                    <p class="meta"><a href="https://brief.delights.pro/api/track?url=https%3A%2F%2Flemire.me%2Fblog%2F2026%2F04%2F27%2Fyou-can-beat-the-binary-search%2F&s=builders&d=2026-05-02&t=You+can+beat+the+binary+search">Lobsters</a></p>
+                </div>
+                
+                <div class="story">
+                    <h3><a href="https://brief.delights.pro/api/track?url=https%3A%2F%2Fgcc.gnu.org%2Fgcc-16%2Fchanges.html&s=builders&d=2026-05-02&t=GCC+16+Release+Series%3A+Changes%2C+New+Features%2C+and+Fixes">GCC 16 Release Series: Changes, New Features, and Fixes</a> <span
+                            style="color: #666; font-weight: 400;">(13 min)</span></h3>
+                    <p class="summary">GCC 16 introduces major improvements to performance, vectorization, and developer experience, with changes that could impact language choices and migration efforts.</p>
+                    <p class="meta"><a href="https://brief.delights.pro/api/track?url=https%3A%2F%2Fgcc.gnu.org%2Fgcc-16%2Fchanges.html&s=builders&d=2026-05-02&t=GCC+16+Release+Series%3A+Changes%2C+New+Features%2C+and+Fixes">Lobsters</a></p>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <!-- Personalized Referral Section -->
+        <div style="background: #f8f7ff; padding: 32px 40px; text-align: center; border-top: 2px solid #e8e8e8;">
+            <p style="font-size: 22px; font-weight: 700; margin: 0 0 4px 0; color: #000;">🎯 Share Brief Delights,
+                Unlock Rewards</p>
+            <p style="font-size: 14px; color: #666; margin: 0 0 20px 0;">You've referred <strong
+                    style="color: #4f46e5;">{{ referral_count }}</strong> reader{{ referral_count_plural }}. {{ referral_remaining }} more to unlock: <strong>{{ referral_next_reward }}</strong>
+            </p>
+
+            <!-- Milestone Progress Bar -->
+            <div style="max-width: 400px; margin: 0 auto 20px auto;">
+                <div
+                    style="display: flex; justify-content: space-between; margin-bottom: 6px; font-size: 11px; color: #999;">
+                    <span>0</span>
+                    <span style="MILESTONE_1_STYLE">1 🏅</span>
+                    <span style="MILESTONE_3_STYLE">3 📰</span>
+                    <span style="MILESTONE_5_STYLE">5 🔓</span>
+                    <span style="MILESTONE_10_STYLE">10 ⭐</span>
+                </div>
+                <div style="background: #e5e7eb; border-radius: 999px; height: 8px; overflow: hidden;">
+                    <div
+                        style="background: linear-gradient(90deg, #4f46e5, #7c3aed); height: 100%; border-radius: 999px; width: PROGRESS_BAR_WIDTH%;">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Referral Link Box -->
+            <div
+                style="background: #ffffff; border: 2px dashed #4f46e5; border-radius: 8px; padding: 12px 20px; margin: 0 auto 16px auto; max-width: 420px;">
+                <p
+                    style="font-size: 11px; color: #999; margin: 0 0 4px 0; text-transform: uppercase; letter-spacing: 1px;">
+                    Your personal link</p>
+                <p style="font-size: 16px; font-weight: 600; color: #4f46e5; margin: 0; word-break: break-all;">
+                    <a href="https://brief.delights.pro/?ref={{ referral_code }}"
+                        style="color: #4f46e5; text-decoration: none;">brief.delights.pro/?ref={{ referral_code }}</a>
+                </p>
+            </div>
+
+            <!-- Social Share Buttons -->
+            <p style="font-size: 13px; color: #999; margin: 0;">
+                <a href="https://twitter.com/intent/tweet?text=I%20read%20Brief%20Delights%20daily%20%E2%80%94%20AI-curated%20tech%20stories%20for%20your%20role.%20Free%20%26%20no%20spam.&url=https%3A%2F%2Fbrief.delights.pro%2F%3Fref%3D{{ referral_code }}"
+                    style="color: #666; text-decoration: none; margin: 0 8px; font-weight: 500;">𝕏 Twitter</a> ·
+                <a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fbrief.delights.pro%2F%3Fref%3D{{ referral_code }}"
+                    style="color: #666; text-decoration: none; margin: 0 8px; font-weight: 500;">LinkedIn</a> ·
+                <a href="mailto:?subject=Check%20out%20Brief%20Delights&body=I%20read%20this%20daily%20tech%20brief%20and%20thought%20you'd%20find%20it%20useful%3A%20https%3A%2F%2Fbrief.delights.pro%2F%3Fref%3D{{ referral_code }}"
+                    style="color: #666; text-decoration: none; margin: 0 8px; font-weight: 500;">📧 Email</a>
+            </p>
+        </div>
+
+        <!-- Feedback Rating -->
+        <div style="background: #ffffff; padding: 28px 40px; text-align: center; border-top: 1px solid #e8e8e8;">
+            <p style="font-size: 15px; font-weight: 600; color: #000; margin: 0 0 4px 0;">How was today's Brief?</p>
+            <p style="font-size: 12px; color: #999; margin: 0 0 16px 0;">Your feedback shapes tomorrow's edition</p>
+            <div style="font-size: 28px;">
+                <a href="https://brief.delights.pro/feedback?rating=loved&date=2026-05-02&segment=builders"
+                    style="text-decoration: none; margin: 0 12px;">🔥</a>
+                <a href="https://brief.delights.pro/feedback?rating=good&date=2026-05-02&segment=builders"
+                    style="text-decoration: none; margin: 0 12px;">👍</a>
+                <a href="https://brief.delights.pro/feedback?rating=meh&date=2026-05-02&segment=builders"
+                    style="text-decoration: none; margin: 0 12px;">😐</a>
+            </div>
+            <p style="font-size: 11px; color: #bbb; margin: 8px 0 0 0;">Loved it · Good · Meh</p>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p class="links">
+                <a href="https://brief.delights.pro">Website</a>
+                <a href="https://brief.delights.pro/archive">Archive</a>
+                <a href="mailto:sponsors@brief.delights.pro?subject=Advertising%20Inquiry">Advertise</a>
+                <a href="mailto:hello@brief.delights.pro?subject=Unsubscribe">Unsubscribe</a>
+            </p>
+
+            <p class="legal">
+                You're receiving this because you subscribed to Brief Delights.<br>
+                <strong>brief delights</strong><br>
+                © 2026 All rights reserved.<br>
+                Questions? <a href="mailto:hello@brief.delights.pro"
+                    style="color: #999; text-decoration: none;">hello@brief.delights.pro</a>
+            </p>
+        </div>
+    </div>
+</body>
+
+</html>
