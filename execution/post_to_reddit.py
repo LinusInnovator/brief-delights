@@ -50,15 +50,14 @@ def format_reddit_post(segment: str, article: dict) -> tuple:
     if why_it_matters.lower().startswith("strategic takeaway"):
         why_it_matters = re.sub(r'^strategic takeaway for [^:]+:\s*', '', why_it_matters, flags=re.IGNORECASE).strip()
     
-    # High-signal persona default insights if why_it_matters was missing or a duplicate
-    role_insights = {
-        "leaders": "Risk & Resource Allocation: Remote-work endpoints and consumer IoT on employee home networks are now active attack vectors requiring strict zero-trust segmentation.",
-        "builders": "Architecture Impact: Exposes unpatched Linux/Android IoT daemons and unencrypted proxy tunnels; audit network egress and block untrusted residential proxy ranges.",
-        "innovators": "Market Shift: Escalating botnet scale highlights how residential proxy networks are being weaponized for distributed scraping and DDoS."
-    }
-    
+    # If why_it_matters is missing or redundant, construct a contextual strategic insight directly from the article's takeaway
     if not why_it_matters or why_it_matters.lower() == key_takeaway.lower():
-        why_it_matters = role_insights.get(segment, key_takeaway)
+        if segment == "leaders":
+            why_it_matters = f"Executive & Business Impact: {key_takeaway} — Forces decision-makers to evaluate operational risk and vendor reliance."
+        elif segment == "builders":
+            why_it_matters = f"Engineering & Stack Impact: {key_takeaway} — Directly impacts architecture design, latency budgets, and tooling integration."
+        else:  # innovators
+            why_it_matters = f"Frontier & AI Research Impact: {key_takeaway} — Accelerates state-of-the-art capabilities and challenges existing model deployment benchmarks."
 
     segment_badges = {
         "leaders": "💼 [Leaders & Strategy]",
