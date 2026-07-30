@@ -84,8 +84,7 @@ Source: {source} | Category: {segment.capitalize()} | Date: {TODAY}
 We scan 1,340+ tech & AI articles daily across engineering, strategy, and frontier research so you don't have to.
 
 • Read full 14-story daily issue: https://brief.delights.pro/archive/{TODAY}-{segment}
-• Join free for daily email briefs: https://brief.delights.pro
-"""
+• Join free for daily email briefs: https://brief.delights.pro"""
     return reddit_title, reddit_body
 
 
