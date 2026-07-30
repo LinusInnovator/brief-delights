@@ -56,28 +56,28 @@ def format_reddit_post(segment: str, article: dict) -> tuple:
     
     reddit_title = f"{segment_badges.get(segment, '[Daily Brief]')} {title} — Strategic Breakdown ({TODAY})"
     
-    reddit_body = f"""# {title}
+    reddit_body = f"""{title}
 
-**Source:** {source} | **Category:** {segment.capitalize()} | **Date:** {TODAY}
+Source: {source} | Category: {segment.capitalize()} | Date: {TODAY}
 
----
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-### 📌 What Happened
+📌 WHAT HAPPENED
 {summary}
 
-### 💡 Key Takeaway
-> **{key_takeaway}**
+💡 KEY TAKEAWAY
+• {key_takeaway}
 
-### 🎯 Strategic View (Why It Matters to Your Role)
+🎯 STRATEGIC VIEW (Why It Matters to Your Role)
 {why_it_matters}
 
----
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-### 📰 About Brief Delights
-*We scan 1,340+ tech & AI articles daily across engineering, strategy, and frontier research so you don't have to.*
+📰 ABOUT BRIEF DELIGHTS
+We scan 1,340+ tech & AI articles daily across engineering, strategy, and frontier research so you don't have to.
 
-* Read the full 14-story daily issue: [https://brief.delights.pro/archive/{TODAY}-{segment}](https://brief.delights.pro/archive/{TODAY}-{segment})
-* Join free for daily email briefs: [https://brief.delights.pro](https://brief.delights.pro)
+• Read full 14-story daily issue: https://brief.delights.pro/archive/{TODAY}-{segment}
+• Join free for daily email briefs: https://brief.delights.pro
 """
     return reddit_title, reddit_body
 
