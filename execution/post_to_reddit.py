@@ -132,13 +132,13 @@ def publish_via_session(username: str, password: str, title: str, body: str) -> 
 
 
 def publish_to_reddit(title: str, body: str):
-    """Attempt Reddit posting via PRAW API or direct Web Session (No developer app keys needed)"""
+    """Attempt Reddit posting via PRAW API or direct Web Session"""
     client_id = os.getenv("REDDIT_CLIENT_ID")
     client_secret = os.getenv("REDDIT_CLIENT_SECRET")
     username = os.getenv("REDDIT_USERNAME")
     password = os.getenv("REDDIT_PASSWORD")
     
-    # Method 1: PRAW API (if app keys exist)
+    # Method 1: PRAW API (Recommended for Reddit Bot API compliance)
     if client_id and client_secret and username and password:
         try:
             import praw
@@ -147,19 +147,22 @@ def publish_to_reddit(title: str, body: str):
                 client_secret=client_secret,
                 username=username,
                 password=password,
-                user_agent="BriefDelightsBot/1.0"
+                user_agent="BriefDelightsBot/1.0 (by /u/Disrupt-Linus)"
             )
             submission = reddit.subreddit(SUBREDDIT).submit(title=title, selftext=body)
-            print(f"✅ Auto-posted to r/{SUBREDDIT}: {submission.url}")
+            print(f"✅ Auto-posted to r/{SUBREDDIT}: https://reddit.com{submission.permalink}")
             return True
         except Exception as e:
             print(f"⚠️ Reddit PRAW API error: {e}")
     
-    # Method 2: Direct Web Session (No API app keys needed!)
+    # Method 2: Direct Web Session Fallback
     if username and password:
-        return publish_via_session(username, password, title, body)
+        success = publish_via_session(username, password, title, body)
+        if not success:
+            print("⚠️ Session login blocked by Reddit anti-bot policy. Please set REDDIT_CLIENT_ID & REDDIT_CLIENT_SECRET from https://www.reddit.com/prefs/apps")
+        return success
     
-    print(f"ℹ️ Reddit login not set in env. Saved post to .tmp/reddit_posts_{TODAY}.md")
+    print(f"ℹ️ Reddit credentials missing in env. Saved draft post to .tmp/reddit_posts_{TODAY}.md")
     return False
 
 
