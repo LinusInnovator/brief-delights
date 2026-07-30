@@ -178,15 +178,16 @@ def main():
         
         top_article = articles[0]
         title, body = format_reddit_post(segment, top_article)
-        
-        combined_md += f"## {title}\n\n{body}\n\n---\n\n"
+        import urllib.parse
+        submit_url = f"https://www.reddit.com/r/{SUBREDDIT}/submit?title={urllib.parse.quote(title)}&text={urllib.parse.quote(body)}"
+        combined_md += f"## {title}\n\n**Direct 1-Click Submit Link**: [Click to Post to r/{SUBREDDIT}]({submit_url})\n\n{body}\n\n---\n\n"
         publish_to_reddit(title, body)
     
     md_out = TMP_DIR / f"reddit_posts_{TODAY}.md"
     with open(md_out, "w", encoding="utf-8") as f:
         f.write(combined_md)
     
-    print(f"✅ Reddit strategic posts ready: {md_out}")
+    print(f"✅ Reddit strategic posts & 1-click links ready: {md_out}")
 
 
 if __name__ == "__main__":
