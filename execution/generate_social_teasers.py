@@ -8,6 +8,7 @@ social media posts for X/Twitter, LinkedIn, and Bluesky.
 import json
 import os
 import glob
+import re
 from datetime import datetime
 from pathlib import Path
 
@@ -53,9 +54,17 @@ def format_social_post(segment: str, article: dict) -> str:
     why_it_matters = article.get('why_it_matters', '').strip()
     source = article.get('source', '')
     
-    # If why_it_matters is missing, use key_takeaway to construct strategic view (our USP!)
-    if not why_it_matters:
-        why_it_matters = f"Strategic takeaway for {segment}: {key_takeaway}"
+    # Strip generic fallback prefix if present
+    if why_it_matters.lower().startswith("strategic takeaway"):
+        why_it_matters = re.sub(r'^strategic takeaway for [^:]+:\s*', '', why_it_matters, flags=re.IGNORECASE).strip()
+    
+    if not why_it_matters or why_it_matters.lower() == key_takeaway.lower():
+        if segment == "leaders":
+            why_it_matters = f"Executive & Business Impact: {key_takeaway}"
+        elif segment == "builders":
+            why_it_matters = f"Engineering & Stack Impact: {key_takeaway}"
+        else:
+            why_it_matters = f"Frontier & AI Research Impact: {key_takeaway}"
     
     post = f"""{SEGMENT_TITLES.get(segment, segment.upper())} | {TODAY}
 
@@ -68,7 +77,7 @@ Source: {source}
 💡 KEY TAKEAWAY:
 {key_takeaway}
 
-🎯 STRATEGIC VIEW (WHY IT MATTERS TO YOUR ROLE):
+🎯 WHY IT MATTERS:
 {why_it_matters}
 
 ---

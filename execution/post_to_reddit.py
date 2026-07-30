@@ -77,7 +77,7 @@ Source: {source} | Category: {segment.capitalize()} | Date: {TODAY}
 💡 KEY TAKEAWAY
 • {key_takeaway}
 
-🎯 STRATEGIC VIEW
+🎯 WHY IT MATTERS
 • {why_it_matters}
 
 📰 ABOUT BRIEF DELIGHTS
