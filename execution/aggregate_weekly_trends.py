@@ -33,14 +33,20 @@ def ensure_weekly_directory():
 
 def load_daily_selections(segment: str) -> dict:
     """Load today's selected articles (matches select_stories.py output format)"""
+    import glob
     selections_file = TMP_DIR / f"selected_articles_{segment}_{TODAY}.json"
     
     if not selections_file.exists():
-        log(f"⚠️  No selections found for {segment} on {TODAY}")
-        log(f"   Expected file: {selections_file}")
-        return None
+        pattern = str(TMP_DIR / f"selected_articles_{segment}_*.json")
+        matches = sorted(glob.glob(pattern), reverse=True)
+        if matches:
+            selections_file = Path(matches[0])
+            log(f"ℹ️ Loaded latest selections file: {selections_file}")
+        else:
+            log(f"⚠️  No selections found for {segment}")
+            return None
     
-    with open(selections_file, 'r') as f:
+    with open(selections_file, 'r', encoding='utf-8') as f:
         return json.load(f)
 
 def extract_trends_from_articles(articles: list) -> dict:
