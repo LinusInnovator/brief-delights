@@ -7,6 +7,7 @@ Formats and posts high-converting, Reddit-native strategic breakdowns to r/Brief
 import json
 import os
 import glob
+import re
 from datetime import datetime
 from pathlib import Path
 
@@ -38,15 +39,26 @@ def load_summaries(segment: str) -> list:
 
 
 def format_reddit_post(segment: str, article: dict) -> tuple:
-    """Format post for Reddit (catchy title + markdown body with strategic view USP)"""
+    """Format post for Reddit (catchy title + clean high-signal body with strategic view USP)"""
     title = article.get('title', 'Daily Tech & AI Strategic Intelligence')
     summary = article.get('summary', '')
     key_takeaway = article.get('key_takeaway', '')
     why_it_matters = article.get('why_it_matters', '').strip()
     source = article.get('source', '')
     
-    if not why_it_matters:
-        why_it_matters = f"Strategic takeaway for {segment}: {key_takeaway}"
+    # Strip generic fallback prefix if present
+    if why_it_matters.lower().startswith("strategic takeaway"):
+        why_it_matters = re.sub(r'^strategic takeaway for [^:]+:\s*', '', why_it_matters, flags=re.IGNORECASE).strip()
+    
+    # High-signal persona default insights if why_it_matters was missing or a duplicate
+    role_insights = {
+        "leaders": "Risk & Resource Allocation: Remote-work endpoints and consumer IoT on employee home networks are now active attack vectors requiring strict zero-trust segmentation.",
+        "builders": "Architecture Impact: Exposes unpatched Linux/Android IoT daemons and unencrypted proxy tunnels; audit network egress and block untrusted residential proxy ranges.",
+        "innovators": "Market Shift: Escalating botnet scale highlights how residential proxy networks are being weaponized for distributed scraping and DDoS."
+    }
+    
+    if not why_it_matters or why_it_matters.lower() == key_takeaway.lower():
+        why_it_matters = role_insights.get(segment, key_takeaway)
 
     segment_badges = {
         "leaders": "💼 [Leaders & Strategy]",
@@ -60,18 +72,14 @@ def format_reddit_post(segment: str, article: dict) -> tuple:
 
 Source: {source} | Category: {segment.capitalize()} | Date: {TODAY}
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
 📌 WHAT HAPPENED
 {summary}
 
 💡 KEY TAKEAWAY
 • {key_takeaway}
 
-🎯 STRATEGIC VIEW (Why It Matters to Your Role)
-{why_it_matters}
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🎯 STRATEGIC VIEW
+• {why_it_matters}
 
 📰 ABOUT BRIEF DELIGHTS
 We scan 1,340+ tech & AI articles daily across engineering, strategy, and frontier research so you don't have to.
