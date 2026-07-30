@@ -3,59 +3,42 @@
   "segment": "leaders",
   "trends": {
     "categories": {
-      "Platform Strategy": 10
+      "Platform Strategy": 14
     },
     "sources": {
-      "Stratechery by Ben Thompson": 10
+      "Stratechery by Ben Thompson": 14
     },
     "topics": [
-      "2026.28: XBOX On the Rocks",
       "Apple Sues OpenAI, Apple\u2019s Real Problem",
       "The OpenAI Super App, ChatGPT = Codex, Whither Chat",
       "IBM Misses, IBM\u2019s Mainframe Moat, IBM\u2019s Many AI Problems",
       "Who\u2019s Afraid of Chinese Models?",
       "OpenAI Hacks Hugging Face, What Happened, Alignment and Paper Clips",
-      "2026.30: The Copium Wars",
       "Netflix Earnings, Is Netflix Washed?, Additional Notes",
+      "2026.28: XBOX On the Rocks",
+      "2026.30: The Copium Wars",
       "2026.29: Mainframes and Main Characters",
-      "Vacation: Week of July 27"
+      "Vacation: Week of July 27",
+      "2026.30: The Copium Wars",
+      "Vacation: Week of July 27",
+      "2026.29: Mainframes and Main Characters",
+      "Netflix Earnings, Is Netflix Washed?, Additional Notes"
     ],
     "detected_trends": [
       {
         "keyword": "Platform Strategy",
-        "count": 10
+        "count": 14
       }
     ],
-    "total_articles": 10
+    "total_articles": 14
   },
-  "article_count": 10,
+  "article_count": 14,
   "articles": [
-    {
-      "id": "2ac7d356b5fd48e7cbf01d73ed12cc91",
-      "title": "2026.28: XBOX On the Rocks",
-      "url": "https://stratechery.com/2026/xbox-on-the-rocks/",
-      "published_date": "2026-07-30T08:23:49.956131",
-      "description": "The best Stratechery content from the week of July 6, 2026, including a word from Mark Zuckerberg*, pulling the plug on XBOX, and toilet talk.",
-      "source": "Stratechery by Ben Thompson",
-      "category": "Platform Strategy",
-      "segment": "leaders",
-      "source_type": "secondary",
-      "raw_content": "<figure class=\"wp-block-image size-large\"><img alt=\"\" class=\"wp-image-19484\" height=\"1136\" src=\"https://i0.wp.com/stratechery.com/wp-content/uploads/2026/07/GettyImages-669589.jpg?resize=1700%2C1136&#038;ssl=1\" width=\"1700\" /><figcaption class=\"wp-element-caption\">(Photo by Jeff Christensen/Liaison)</figcaption></figure>\n\n\n\n<p class=\"wp-block-paragraph\">Welcome back to This Week in Stratechery!</p>\n\n\n\n<p class=\"wp-block-paragraph\">As a reminder, each week, every Friday, we&#8217;re sending out this overview of content in the Stratechery bundle; <span class=\"passport-tokenized-link\">highlighted links are free for everyone</span>. Additionally, you have complete control over what we send to you. If you don&#8217;t want to receive This Week in Stratechery emails (there is no podcast), please uncheck the box in <a href=\"https://stratechery.passport.online/member/account/delivery\">your delivery settings</a>.</p>\n\n\n\n<p class=\"wp-block-paragraph\">On that note, here were a few of our favorites this week.</p>\n\n\n\n<ol class=\"wp-block-list is-style-default\">\n<li><strong>A Word from Mark Zuckerberg*.&nbsp;</strong>I was delighted to see <a href=\"https://stratechery.com/2026/a-script-for-mark-zuckerberg/\"><span class=\"passport-tokenized-link\">Ben insert himself into the CEO chair at Meta on Tuesday</span></a> and write a script for Mark Zuckerberg as he tells the story of Meta and its AI investments in 2026. That article traces past Meta mistakes as well as those of investors who doubted the company, all to frame current investments in AI and the massive opportunities that remain central to the Meta&#8217;s future. A combination of history, analysis of the future, and fun, it&#8217;s a perfect summer read. As for a summer listen, we doubled back on all of it, plus Meta&#8217;s Muse-Spark release, for <a href=\"https://sharptech.fm/member/episode/meta-and-its-messaging-problem-the-xbox-reset-q-a-on-token-costs-american-soccer-starlink-in-nature\">this week&#8217;s episode of Sharp Tech</a>.&nbsp;<em>\u2014</em> <em><em>Andrew Sharp</em></em><br /></li>\n</ol>\n\n\n\n<span id=\"more-19470\"></span>\n\n\n\n<ol class=\"wp-block-list is-style-default\" start=\"2\">\n<li><strong>Pulling the Plug on XBOX? </strong>It&#8217;s been years since there was good news&nbsp;coming out of the XBOX division at Microsoft and that trend continued this week, as XBOX CEO Asha Sharma announced plans to eliminate 3,200 jobs, or around 20% of its staff over the next 12 months. <a href=\"https://stratechery.com/2026/xbox-cuts-bundling-and-the-internet-solvent-transaction-coordination-and-sunk-costs/\" rel=\"noreferrer noopener\" target=\"_blank\">Wednesday&#8217;s Daily Update explores how Microsoft arrived at this point</a> and why, in particular, the Game Pass initiative that was the last great hope for XBOX has been a failure. I&#8217;m not a gamer, but Ben&#8217;s rendering of the XBOX story <em>\u2014</em> and the Game Pass story <em>\u2014</em> is a great case study of both internet&nbsp;economics and management mistakes (and analyst ones!). <em>\u2014</em> <em>AS</em><br /><br /></li>\n\n\n\n<li><strong>Toilet Talk</strong>. Look, I get that&#8217;s a little weird, but if there is one brand of household appliances that I cannot imagine living without, it is in the bathroom. Specifically, I absolutely love my Toto toilet, and was delighted that <a href=\"https://youtu.be/CIB49e_r1OI?si=Ucjrh4paF3MZWYZh\">Jon made a video</a> about the company on <a href=\"https://asianometry.passport.online/member/episode/toto-from-toilets-to-e-chucks\">Asianometry</a>. Here&#8217;s the twist: the reason why Toto is a subject of interest isn&#8217;t their toilets, but rather the fact the Japanese company also plays a critical role in the AI supply chain. <em>\u2014</em> <em>Ben Thompson</em><br /><br /></li>\n</ol>\n\n\n\n<hr class=\"wp-block-separator has-alpha-channel-opacity\" />\n\n\n\n<h3 class=\"wp-block-heading\">Stratechery Articles and Updates</h3>\n\n\n\n<ul class=\"wp-block-list\">\n<li><a href=\"https://stratechery.com/2026/a-script-for-mark-zuckerberg/\"><span class=\"passport-tokenized-link\">A Script for Mark Zuckerberg</span></a> <em>\u2014 A script for what Mark Zuckerberg should say on Meta\u2019s next earnings call.</em></li>\n\n\n\n<li><a href=\"https://stratechery.com/2026/xbox-cuts-bundling-and-the-internet-solvent-transaction-coordination-and-sunk-costs/\">XBOX Cuts; Bundling and the Internet Solvent; Transaction, Coordination, and Sunk Costs</a> <em>\u2014 Microsoft\u2019s Xbox division is conducting big layoffs, as the company deals with abject failure of its Game Pass strategy.</em></li>\n\n\n\n<li><a href=\"https://stratechery.com/2026/muse-image-grok-4-5-alex-karp-on-cnbc/\">Muse Image, Grok 4.5, Alex Karp on CNBC</a> <em>\u2014 The battle for verifiable data is increasingly defining the AI race, from Meta to Grok to the frontier labs.</em></li>\n</ul>\n\n\n\n<h3 class=\"wp-block-heading\">Sharp Text by Andrew Sharp</h3>\n\n\n\n<ul class=\"wp-block-list\">\n<li><a href=\"https://sharptext.net/2026/online-insanity-and-its-counterpoint/\"><span class=\"passport-tokenized-link\">Online Insanity and Its Counterpoint</span></a> \u2014 <em>What we can and can&#8217;t achieve in response to paranoia and extremism online.</em></li>\n</ul>\n\n\n\n<h3 class=\"wp-block-heading\">Dithering with Ben Thompson and Daring Fireball&#8217;s John Gruber</h3>\n\n\n\n<ul class=\"wp-block-list\">\n<li><a href=\"https://dithering.passport.online/member/episode/ai-ux\">AI UX</a></li>\n\n\n\n<li><a href=\"https://dithering.passport.online/member/episode/the-new-chat-gpt-app\">The New ChatGPT App</a></li>\n</ul>\n\n\n\n<h3 class=\"wp-block-heading\">Asianometry with Jon Yu</h3>\n\n\n\n<ul class=\"wp-block-list\">\n<li><a href=\"https://asianometry.passport.online/member/episode/the-debt-fueled-collapse-of-chinas-top-machine-tool-maker\">The Debt-Fueled Collapse of China\u2019s Top Machine Tool Maker</a></li>\n\n\n\n<li><a href=\"https://asianometry.passport.online/member/episode/rca-and-the-vacuum-tubes-last-stand\">RCA and the Vacuum Tube\u2019s Last Stand</a></li>\n</ul>\n\n\n\n<h3 class=\"wp-block-heading\">Sharp China with Andrew Sharp and Sinocism&#8217;s Bill Bishop</h3>\n\n\n\n<ul class=\"wp-block-list\">\n<li><a href=\"https://sharpchina.fm/member/episode/a-missile-test-and-new-pla-generals-the-citic-plane-crash-americas-taiwan-interests-guo-wengui-jailed-and-ezra-jin-released\"><span class=\"passport-tokenized-link\">A Missile Test and New PLA Generals; The CITIC Plane Crash; America\u2019s Taiwan Interests; Guo Wengui Jailed and Ezra Jin Released</span></a></li>\n</ul>\n\n\n\n<h3 class=\"wp-block-heading\">Greatest of All Talk</h3>\n\n\n\n<ul class=\"wp-block-list\">\n<li><a href=\"https://goat.passport.online/member/episode/a-tale-of-two-cities-and-jaylen-brown-minnesotas-bet-on-la-melo-peterson-arrives-and-mitchell-cashes-out\">A Tale of Two Cities and Jaylen Brown, Minnesota\u2019s Bet on LaMelo, Peterson Arrives and Mitchell Cashes Out</a></li>\n</ul>\n\n\n\n<h3 class=\"wp-block-heading\">Sharp Tech with Andrew Sharp and Ben Thompson</h3>\n\n\n\n<ul class=\"wp-block-list\">\n<li><a href=\"https://sharptech.fm/member/episode/meta-and-its-messaging-problem-the-xbox-reset-q-a-on-token-costs-american-soccer-starlink-in-nature\">Meta and Its Messaging Problem, The XBOX Reset, Q&amp;A on Token Costs, American Soccer, Starlink in Nature</a></li>\n</ul>\n\n\n\n<p class=\"wp-block-paragraph\">This week&#8217;s Asianometry video is on <a href=\"https://asianometry.passport.online/member/episode/toto-from-toilets-to-e-chucks\">TOTO: From Toilets to E-Chucks</a>.</p>\n\n\n\n<figure class=\"wp-block-embed is-type-video is-provider-youtube wp-block-embed-youtube wp-embed-aspect-16-9 wp-has-aspect-ratio\"><div class=\"wp-block-embed__wrapper\">\n\n</div></figure>\n\n\n\n<p class=\"wp-block-paragraph\"></p>",
-      "segments": [
-        "leaders"
-      ],
-      "tier": "full",
-      "selection_reason": "Strategic implications of Microsoft's decision to discontinue Xbox.",
-      "audience_value": "Insights into platform strategy shifts and market adaptation.",
-      "urgency_score": 9,
-      "category_tag": "\ud83d\udcbc Tech Business",
-      "why_this_matters": "Why this matters: Leaders must understand the implications of major platform changes on market dynamics and competitive strategy."
-    },
     {
       "id": "847963af5fc4090df9023bbbc7cf96ea",
       "title": "Apple Sues OpenAI, Apple\u2019s Real Problem",
       "url": "https://stratechery.com/2026/apple-sues-openai-apples-real-problem/",
-      "published_date": "2026-07-30T08:23:49.956107",
+      "published_date": "2026-07-30T15:11:19.164537",
       "description": "Apple is suing AI for stealing trade secrets; there is one guilty employee, but this mostly feels like lashing out.",
       "source": "Stratechery by Ben Thompson",
       "category": "Platform Strategy",
@@ -66,17 +49,17 @@
         "leaders"
       ],
       "tier": "full",
-      "selection_reason": "Highlights the escalating tensions between major tech companies over AI and intellectual property.",
-      "audience_value": "Understanding the legal landscape and its impact on AI strategy and operations.",
+      "selection_reason": "This article highlights a major legal battle involving Apple and OpenAI, crucial for strategic decision-making.",
+      "audience_value": "Insight into potential impacts on AI and tech industry regulations.",
       "urgency_score": 9,
-      "category_tag": "\ud83d\ude80 AI & Innovation",
-      "why_this_matters": "Why this matters: Leaders need to navigate the complexities of AI development and intellectual property rights in a competitive tech environment."
+      "category_tag": "\ud83d\udcbc Tech Business",
+      "why_this_matters": "Why this matters: Understanding the legal landscape helps leaders navigate potential risks and opportunities in AI."
     },
     {
       "id": "6ce90d4cc504af557590bff9c7f07bbf",
       "title": "The OpenAI Super App, ChatGPT = Codex, Whither Chat",
       "url": "https://stratechery.com/2026/the-openai-super-app-chatgpt-codex-whither-chat/",
-      "published_date": "2026-07-30T08:23:49.956084",
+      "published_date": "2026-07-30T15:11:19.164490",
       "description": "OpenAI has refashioned Codex as the new ChatGPT; is the company abandoning the chat category they pioneered?",
       "source": "Stratechery by Ben Thompson",
       "category": "Platform Strategy",
@@ -87,17 +70,17 @@
         "leaders"
       ],
       "tier": "full",
-      "selection_reason": "Discusses significant shifts in AI applications and market strategies by OpenAI.",
-      "audience_value": "Strategic insights into AI market trends and product evolution.",
+      "selection_reason": "OpenAI's strategic pivot in product offerings is critical for leaders to understand market trends and competitive dynamics.",
+      "audience_value": "Insights into AI market evolution and strategic positioning.",
       "urgency_score": 9,
       "category_tag": "\ud83d\ude80 AI & Innovation",
-      "why_this_matters": "Why this matters: Understanding shifts in AI applications is crucial for leaders to make informed decisions about their own AI strategies."
+      "why_this_matters": "Why this matters: Staying ahead in AI advancements ensures competitive advantage and market leadership."
     },
     {
       "id": "1ae38fd5e63f47bf61aba8fef0151d6f",
       "title": "IBM Misses, IBM\u2019s Mainframe Moat, IBM\u2019s Many AI Problems",
       "url": "https://stratechery.com/2026/ibm-misses-ibms-mainframe-moat-ibms-many-ai-problems/",
-      "published_date": "2026-07-30T08:23:49.956060",
+      "published_date": "2026-07-30T15:11:19.164465",
       "description": "IBM announced preliminary results that spooked the software market generally; this is a story, however, specifically about IBM and its mainframe franchise.",
       "source": "Stratechery by Ben Thompson",
       "category": "Platform Strategy",
@@ -108,17 +91,17 @@
         "leaders"
       ],
       "tier": "full",
-      "selection_reason": "Covers IBM's challenges and strategic decisions impacting the broader software and AI market.",
-      "audience_value": "Insight into how legacy companies are navigating AI integration and market pressures.",
-      "urgency_score": 9,
-      "category_tag": "\ud83d\udcbc Tech Business",
-      "why_this_matters": "Why this matters: Leaders can gain insights into managing legacy systems and innovation challenges in a rapidly evolving tech landscape."
+      "selection_reason": "IBM's financial performance and strategic challenges in AI are crucial for understanding broader market impacts.",
+      "audience_value": "Awareness of potential market shifts and strategic responses in enterprise tech.",
+      "urgency_score": 8,
+      "category_tag": "\u2601\ufe0f Enterprise Tech",
+      "why_this_matters": "Why this matters: Leaders need to anticipate and react to market disruptions caused by tech giants."
     },
     {
       "id": "b91616d24ab7318ceea5ec2dbda423ca",
       "title": "Who\u2019s Afraid of Chinese Models?",
       "url": "https://stratechery.com/2026/whos-afraid-of-chinese-models/",
-      "published_date": "2026-07-30T08:23:49.956013",
+      "published_date": "2026-07-30T15:11:19.164415",
       "description": "Everyone is worried about Chinese models, but the frontier labs will be fine; we need to enable open U.S. alternatives.",
       "source": "Stratechery by Ben Thompson",
       "category": "Platform Strategy",
@@ -129,17 +112,17 @@
         "leaders"
       ],
       "tier": "full",
-      "selection_reason": "Addresses the competitive dynamics between U.S. and Chinese AI technologies.",
-      "audience_value": "Strategic considerations for geopolitical and technological competition in AI.",
-      "urgency_score": 9,
+      "selection_reason": "Discussion on Chinese AI models and U.S. alternatives is vital for strategic planning in global tech development.",
+      "audience_value": "Understanding geopolitical tech trends to strategize on innovation and market entry.",
+      "urgency_score": 8,
       "category_tag": "\ud83d\ude80 AI & Innovation",
-      "why_this_matters": "Why this matters: Leaders need to be aware of international AI developments to strategically position their companies in a global context."
+      "why_this_matters": "Why this matters: Navigating international tech developments is crucial for maintaining competitive edge."
     },
     {
       "id": "beb9ac6c8defa266ad13b691efef3f55",
       "title": "OpenAI Hacks Hugging Face, What Happened, Alignment and Paper Clips",
       "url": "https://stratechery.com/2026/openai-hacks-hugging-face-what-happened-alignment-and-paper-clips/",
-      "published_date": "2026-07-30T08:23:49.955961",
+      "published_date": "2026-07-30T15:11:19.164362",
       "description": "OpenAI accidentally hacked Hugging Face, but the takeaways are more encouraging than people realize.",
       "source": "Stratechery by Ben Thompson",
       "category": "Platform Strategy",
@@ -150,38 +133,17 @@
         "leaders"
       ],
       "tier": "full",
-      "selection_reason": "Examines the repercussions of a major security incident involving AI technologies.",
-      "audience_value": "Insights into AI security, ethical considerations, and corporate responsibility.",
-      "urgency_score": 9,
+      "selection_reason": "The incident between OpenAI and Hugging Face reveals significant insights into AI security and ethics.",
+      "audience_value": "Leaders can evaluate risks and ethical considerations in AI deployments.",
+      "urgency_score": 8,
       "category_tag": "\ud83d\udd10 Security",
-      "why_this_matters": "Why this matters: Understanding the security implications of AI is critical for leaders to safeguard their technologies and reputation."
-    },
-    {
-      "id": "0c577711dacfd86f55341dac8d544b8f",
-      "title": "2026.30: The Copium Wars",
-      "url": "https://stratechery.com/2026/the-copium-wars/",
-      "published_date": "2026-07-30T08:23:49.955932",
-      "description": "The best Stratechery content from the week of July 20, 2026 including Chinese models and frontier futures, what happened to Hugging Face, and the NBA and its second apron bet.",
-      "source": "Stratechery by Ben Thompson",
-      "category": "Platform Strategy",
-      "segment": "leaders",
-      "source_type": "secondary",
-      "raw_content": "<figure class=\"wp-block-image size-full\"><img alt=\"\" class=\"wp-image-19589\" height=\"683\" src=\"https://i0.wp.com/stratechery.com/wp-content/uploads/2026/07/GettyImages-2285789209.jpg?resize=1024%2C683&#038;ssl=1\" width=\"1024\" /><figcaption class=\"wp-element-caption\">(Photo by Ng Han Guan-Pool/Getty Images)</figcaption></figure>\n\n\n\n<p class=\"wp-block-paragraph\">Welcome back to This Week in Stratechery!</p>\n\n\n\n<p class=\"wp-block-paragraph\">As a reminder, each week, every Friday, we&#8217;re sending out this overview of content in the Stratechery bundle; <span class=\"passport-tokenized-link\">highlighted links are free for everyone</span>. Additionally, you have complete control over what we send to you. If you don&#8217;t want to receive This Week in Stratechery emails (there is no podcast), please uncheck the box in <a href=\"https://stratechery.passport.online/member/account/delivery\">your delivery settings</a>.</p>\n\n\n\n<p class=\"wp-block-paragraph\">On that note, here were a few of our favorites this week.</p>\n\n\n\n<ol class=\"wp-block-list is-style-default\">\n<li><strong>Chinese Models and Frontier Futures</strong>. Kimi K3 is a very good model \u2014 so good that everyone from Wall Street to the U.S. government is suddenly worried about the U.S.&#8217;s position in AI. In fact, the threat isn&#8217;t new \u2014 and the frontier labs advantage is still real. In this week&#8217;s <a href=\"https://stratechery.com/2026/whos-afraid-of-chinese-models/\"><span class=\"passport-tokenized-link\">Stratechery Article</span></a> and <a href=\"https://sharptech.fm/member/episode/an-open-ai-model-escapes-sandboxing-intelligence-will-be-a-commodity-market-the-chinese-model-conundrum\">Sharp Tech</a> episode I break down what has and hasn&#8217;t changed in AI, and explain why the biggest danger is U.S. policy around cybersecurity. Solving that problem will require understanding and accepting the reality and nature of Chinese competition, even if that leaves OpenAI and Anthropic to fend for themselves. <em>\u2014 Ben Thompson</em> <br /></li>\n</ol>\n\n\n\n<span id=\"more-19572\"></span>\n\n\n\n<ol class=\"wp-block-list is-style-default\" start=\"2\">\n<li><strong>What Happened to Hugging Face? </strong>As Sharp Tech&#8217;s resident normie I&#8217;m often baffled by the lingua franca of frontier technology, and this week&#8217;s controversy around OpenAI and its cybersecurity snafu introduced several terms that have amused and confounded me for years: everything centered the &#8220;Hugging Face&#8221; platform and the concept of &#8220;sandboxing,&#8221; and we were revisiting &#8220;the paper clip problem.&#8221; Thankfully, <a href=\"https://stratechery.com/2026/openai-hacks-hugging-face-what-happened-alignment-and-paper-clips/\">Wednesday&#8217;s Update</a> synthesized the story in a way that was a bit more legible for the rest of us. Come to understand what happened, and stay to learn where OpenAI appears to have erred and why this mess is arguably reassuring with regard to alignment fears around LLMs.&nbsp; <em>\u2014</em> <em>Andrew Sharp</em><br /><br /></li>\n\n\n\n<li><strong>The NBA And Its Second Apron Bet.\u00a0</strong>If you&#8217;ve been online for the past month and even half-paying attention to the NBA, you&#8217;ve probably encountered complaints about the league&#8217;s imposition of a &#8220;second apron&#8221; salary threshold that&#8217;s effectively functioning as a hard salary cap. Contenders are being forced to part ways with homegrown stars, others\u00a0teams have limited room to improve, and fans almost unanimously hate these changes. With the offseason winding down, <a href=\"https://sharptext.net/2026/two-more-cents-on-the-nbas-second-apron-era/\"><span class=\"passport-tokenized-link\">this week&#8217;s Sharp Text explains precisely what the NBA is trying to accomplish</span></a>, why I hate it, and the stakes for the league as it bets on parity in the shadow of shrinking local TV money, slowing growth, and heavy reliance on national TV revenue.\u00a0<em>\u2014</em> <em>AS</em></li>\n</ol>\n\n\n\n<hr class=\"wp-block-separator has-alpha-channel-opacity\" />\n\n\n\n<h3 class=\"wp-block-heading\">Stratechery Articles and Updates</h3>\n\n\n\n<ul class=\"wp-block-list\">\n<li><a href=\"https://stratechery.com/2026/whos-afraid-of-chinese-models/\"><span class=\"passport-tokenized-link\">Who\u2019s Afraid of Chinese Models?</span></a> <em>\u2014 Everyone is worried about Chinese models, but the frontier labs will be fine; we need to enable open U.S. alternatives.</em></li>\n\n\n\n<li><a href=\"https://stratechery.com/2026/netflix-earnings-is-netflix-washed-additional-notes/\">Netflix Earnings, Is Netflix Washed?, Additional Notes</a> <em>\u2014 Netflix\u2019s earnings were fine, and befitting a mature company whose most exciting days are likely behind them.</em></li>\n\n\n\n<li><a href=\"https://stratechery.com/2026/openai-hacks-hugging-face-what-happened-alignment-and-paper-clips/\">OpenAI Hacks Hugging Face, What Happened, Alignment and Paper Clips</a> <em>\u2014 OpenAI accidentally hacked Hugging Face, but the takeaways are more encouraging than people realize.</em></li>\n</ul>\n\n\n\n<h3 class=\"wp-block-heading\">Sharp Text by Andrew Sharp</h3>\n\n\n\n<ul class=\"wp-block-list\">\n<li><a href=\"https://sharptext.net/2026/two-more-cents-on-the-nbas-second-apron-era/\"><span class=\"passport-tokenized-link\">Two More Cents on the NBA&#8217;s Second Apron Era</span></a> \u2014 The problem with the second apron is that it&#8217;s working. Plus: July reading recs!</li>\n</ul>\n\n\n\n<h3 class=\"wp-block-heading\">Dithering with Ben Thompson and Daring Fireball&#8217;s John Gruber</h3>\n\n\n\n<ul class=\"wp-block-list\">\n<li><a href=\"https://dithering.passport.online/member/episode/dst-and-kimi\">DST and Kimi</a></li>\n\n\n\n<li><a href=\"https://dithering.passport.online/member/episode/android-ai-and-the-eu\">Android, AI, and the EU</a></li>\n</ul>\n\n\n\n<h3 class=\"wp-block-heading\">Asianometry with Jon Yu</h3>\n\n\n\n<ul class=\"wp-block-list\">\n<li><a href=\"https://asianometry.passport.online/member/episode/france-sold-its-nuclear-steam-turbine-champion-then-bought-it-back\">France Sold Its Nuclear Steam Turbine Champion. Then Bought It Back.</a></li>\n</ul>\n\n\n\n<h3 class=\"wp-block-heading\">Sharp China with Andrew Sharp and Sinocism&#8217;s Bill Bishop</h3>\n\n\n\n<ul class=\"wp-block-list\">\n<li><a href=\"https://sharpchina.fm/member/episode/kimi-madness-xis-ai-vision-and-us-questions-trumps-election-data-claims-the-connected-vehicle-security-act\">Kimi Madness; Xi\u2019s AI Vision and US Questions; Trump\u2019s Election Data Claims; The Connected Vehicle Security Act</a></li>\n</ul>\n\n\n\n<h3 class=\"wp-block-heading\">Greatest of All Talk</h3>\n\n\n\n<ul class=\"wp-block-list\">\n<li><a href=\"https://goat.passport.online/member/episode/summer-top-fives-coaches-or-g-ms-to-get-a-beer-with-and-state-flags\">Summer Top Fives: Coaches or GMs to Get a Beer With and State Flags</a></li>\n</ul>\n\n\n\n<h3 class=\"wp-block-heading\">Sharp Tech with Andrew Sharp and Ben Thompson</h3>\n\n\n\n<ul class=\"wp-block-list\">\n<li><a href=\"https://sharptech.fm/member/episode/an-open-ai-model-escapes-sandboxing-intelligence-will-be-a-commodity-market-the-chinese-model-conundrum\">An OpenAI Model Escapes Sandboxing, Intelligence Will Be a Commodity Market, The Chinese Model Conundrum</a></li>\n</ul>\n\n\n\n<p class=\"wp-block-paragraph\">This week&#8217;s Sharp Tech video is on <a href=\"https://sharptech.fm/member/episode/meta-and-its-messaging-problem-the-xbox-reset-q-a-on-token-costs-american-soccer-starlink-in-nature\">Meta&#8217;s maddening messaging</a>.</p>\n\n\n\n<figure class=\"wp-block-embed is-type-video is-provider-youtube wp-block-embed-youtube wp-embed-aspect-16-9 wp-has-aspect-ratio\"><div class=\"wp-block-embed__wrapper\">\n\n</div></figure>\n\n\n\n<p class=\"wp-block-paragraph\"></p>",
-      "segments": [
-        "leaders"
-      ],
-      "tier": "full",
-      "selection_reason": "Discusses emerging trends and strategic shifts in the tech industry related to AI and market competition.",
-      "audience_value": "Awareness of new market trends and competitive strategies in AI.",
-      "urgency_score": 9,
-      "category_tag": "\ud83d\udcca Market Trends",
-      "why_this_matters": "Why this matters: Staying informed on emerging trends is essential for leaders to maintain competitive advantage."
+      "why_this_matters": "Why this matters: Ensuring AI security and ethical integrity is paramount in sustaining trust and compliance."
     },
     {
       "id": "2932d28cb6ce91919ac01abe92a90f92",
       "title": "Netflix Earnings, Is Netflix Washed?, Additional Notes",
       "url": "https://stratechery.com/2026/netflix-earnings-is-netflix-washed-additional-notes/",
-      "published_date": "2026-07-30T08:23:49.955988",
+      "published_date": "2026-07-30T15:11:19.164390",
       "description": "Netflix's earnings were fine, and befitting a mature company whose most exciting days are likely behind them.",
       "source": "Stratechery by Ben Thompson",
       "category": "Platform Strategy",
@@ -192,17 +154,59 @@
         "leaders"
       ],
       "tier": "full",
-      "selection_reason": "Provides insights into Netflix's current market position and future outlook.",
-      "audience_value": "Understanding market dynamics and strategic positioning of major players in the entertainment tech industry.",
+      "selection_reason": "Netflix's earnings report provides a benchmark for tech leaders in evaluating market trends and company performance.",
+      "audience_value": "Insights into the entertainment tech sector's financial health and strategic direction.",
       "urgency_score": 8,
       "category_tag": "\ud83d\udcbc Tech Business",
-      "why_this_matters": "Why this matters: Leaders can learn from Netflix's adaptation strategies in a mature market to apply similar tactics in their own sectors."
+      "why_this_matters": "Why this matters: Understanding sector-specific performance aids in strategic decision-making and forecasting."
+    },
+    {
+      "id": "2ac7d356b5fd48e7cbf01d73ed12cc91",
+      "title": "2026.28: XBOX On the Rocks",
+      "url": "https://stratechery.com/2026/xbox-on-the-rocks/",
+      "published_date": "2026-07-30T15:11:19.164566",
+      "description": "The best Stratechery content from the week of July 6, 2026, including a word from Mark Zuckerberg*, pulling the plug on XBOX, and toilet talk.",
+      "source": "Stratechery by Ben Thompson",
+      "category": "Platform Strategy",
+      "segment": "leaders",
+      "source_type": "secondary",
+      "raw_content": "<figure class=\"wp-block-image size-large\"><img alt=\"\" class=\"wp-image-19484\" height=\"1136\" src=\"https://i0.wp.com/stratechery.com/wp-content/uploads/2026/07/GettyImages-669589.jpg?resize=1700%2C1136&#038;ssl=1\" width=\"1700\" /><figcaption class=\"wp-element-caption\">(Photo by Jeff Christensen/Liaison)</figcaption></figure>\n\n\n\n<p class=\"wp-block-paragraph\">Welcome back to This Week in Stratechery!</p>\n\n\n\n<p class=\"wp-block-paragraph\">As a reminder, each week, every Friday, we&#8217;re sending out this overview of content in the Stratechery bundle; <span class=\"passport-tokenized-link\">highlighted links are free for everyone</span>. Additionally, you have complete control over what we send to you. If you don&#8217;t want to receive This Week in Stratechery emails (there is no podcast), please uncheck the box in <a href=\"https://stratechery.passport.online/member/account/delivery\">your delivery settings</a>.</p>\n\n\n\n<p class=\"wp-block-paragraph\">On that note, here were a few of our favorites this week.</p>\n\n\n\n<ol class=\"wp-block-list is-style-default\">\n<li><strong>A Word from Mark Zuckerberg*.&nbsp;</strong>I was delighted to see <a href=\"https://stratechery.com/2026/a-script-for-mark-zuckerberg/\"><span class=\"passport-tokenized-link\">Ben insert himself into the CEO chair at Meta on Tuesday</span></a> and write a script for Mark Zuckerberg as he tells the story of Meta and its AI investments in 2026. That article traces past Meta mistakes as well as those of investors who doubted the company, all to frame current investments in AI and the massive opportunities that remain central to the Meta&#8217;s future. A combination of history, analysis of the future, and fun, it&#8217;s a perfect summer read. As for a summer listen, we doubled back on all of it, plus Meta&#8217;s Muse-Spark release, for <a href=\"https://sharptech.fm/member/episode/meta-and-its-messaging-problem-the-xbox-reset-q-a-on-token-costs-american-soccer-starlink-in-nature\">this week&#8217;s episode of Sharp Tech</a>.&nbsp;<em>\u2014</em> <em><em>Andrew Sharp</em></em><br /></li>\n</ol>\n\n\n\n<span id=\"more-19470\"></span>\n\n\n\n<ol class=\"wp-block-list is-style-default\" start=\"2\">\n<li><strong>Pulling the Plug on XBOX? </strong>It&#8217;s been years since there was good news&nbsp;coming out of the XBOX division at Microsoft and that trend continued this week, as XBOX CEO Asha Sharma announced plans to eliminate 3,200 jobs, or around 20% of its staff over the next 12 months. <a href=\"https://stratechery.com/2026/xbox-cuts-bundling-and-the-internet-solvent-transaction-coordination-and-sunk-costs/\" rel=\"noreferrer noopener\" target=\"_blank\">Wednesday&#8217;s Daily Update explores how Microsoft arrived at this point</a> and why, in particular, the Game Pass initiative that was the last great hope for XBOX has been a failure. I&#8217;m not a gamer, but Ben&#8217;s rendering of the XBOX story <em>\u2014</em> and the Game Pass story <em>\u2014</em> is a great case study of both internet&nbsp;economics and management mistakes (and analyst ones!). <em>\u2014</em> <em>AS</em><br /><br /></li>\n\n\n\n<li><strong>Toilet Talk</strong>. Look, I get that&#8217;s a little weird, but if there is one brand of household appliances that I cannot imagine living without, it is in the bathroom. Specifically, I absolutely love my Toto toilet, and was delighted that <a href=\"https://youtu.be/CIB49e_r1OI?si=Ucjrh4paF3MZWYZh\">Jon made a video</a> about the company on <a href=\"https://asianometry.passport.online/member/episode/toto-from-toilets-to-e-chucks\">Asianometry</a>. Here&#8217;s the twist: the reason why Toto is a subject of interest isn&#8217;t their toilets, but rather the fact the Japanese company also plays a critical role in the AI supply chain. <em>\u2014</em> <em>Ben Thompson</em><br /><br /></li>\n</ol>\n\n\n\n<hr class=\"wp-block-separator has-alpha-channel-opacity\" />\n\n\n\n<h3 class=\"wp-block-heading\">Stratechery Articles and Updates</h3>\n\n\n\n<ul class=\"wp-block-list\">\n<li><a href=\"https://stratechery.com/2026/a-script-for-mark-zuckerberg/\"><span class=\"passport-tokenized-link\">A Script for Mark Zuckerberg</span></a> <em>\u2014 A script for what Mark Zuckerberg should say on Meta\u2019s next earnings call.</em></li>\n\n\n\n<li><a href=\"https://stratechery.com/2026/xbox-cuts-bundling-and-the-internet-solvent-transaction-coordination-and-sunk-costs/\">XBOX Cuts; Bundling and the Internet Solvent; Transaction, Coordination, and Sunk Costs</a> <em>\u2014 Microsoft\u2019s Xbox division is conducting big layoffs, as the company deals with abject failure of its Game Pass strategy.</em></li>\n\n\n\n<li><a href=\"https://stratechery.com/2026/muse-image-grok-4-5-alex-karp-on-cnbc/\">Muse Image, Grok 4.5, Alex Karp on CNBC</a> <em>\u2014 The battle for verifiable data is increasingly defining the AI race, from Meta to Grok to the frontier labs.</em></li>\n</ul>\n\n\n\n<h3 class=\"wp-block-heading\">Sharp Text by Andrew Sharp</h3>\n\n\n\n<ul class=\"wp-block-list\">\n<li><a href=\"https://sharptext.net/2026/online-insanity-and-its-counterpoint/\"><span class=\"passport-tokenized-link\">Online Insanity and Its Counterpoint</span></a> \u2014 <em>What we can and can&#8217;t achieve in response to paranoia and extremism online.</em></li>\n</ul>\n\n\n\n<h3 class=\"wp-block-heading\">Dithering with Ben Thompson and Daring Fireball&#8217;s John Gruber</h3>\n\n\n\n<ul class=\"wp-block-list\">\n<li><a href=\"https://dithering.passport.online/member/episode/ai-ux\">AI UX</a></li>\n\n\n\n<li><a href=\"https://dithering.passport.online/member/episode/the-new-chat-gpt-app\">The New ChatGPT App</a></li>\n</ul>\n\n\n\n<h3 class=\"wp-block-heading\">Asianometry with Jon Yu</h3>\n\n\n\n<ul class=\"wp-block-list\">\n<li><a href=\"https://asianometry.passport.online/member/episode/the-debt-fueled-collapse-of-chinas-top-machine-tool-maker\">The Debt-Fueled Collapse of China\u2019s Top Machine Tool Maker</a></li>\n\n\n\n<li><a href=\"https://asianometry.passport.online/member/episode/rca-and-the-vacuum-tubes-last-stand\">RCA and the Vacuum Tube\u2019s Last Stand</a></li>\n</ul>\n\n\n\n<h3 class=\"wp-block-heading\">Sharp China with Andrew Sharp and Sinocism&#8217;s Bill Bishop</h3>\n\n\n\n<ul class=\"wp-block-list\">\n<li><a href=\"https://sharpchina.fm/member/episode/a-missile-test-and-new-pla-generals-the-citic-plane-crash-americas-taiwan-interests-guo-wengui-jailed-and-ezra-jin-released\"><span class=\"passport-tokenized-link\">A Missile Test and New PLA Generals; The CITIC Plane Crash; America\u2019s Taiwan Interests; Guo Wengui Jailed and Ezra Jin Released</span></a></li>\n</ul>\n\n\n\n<h3 class=\"wp-block-heading\">Greatest of All Talk</h3>\n\n\n\n<ul class=\"wp-block-list\">\n<li><a href=\"https://goat.passport.online/member/episode/a-tale-of-two-cities-and-jaylen-brown-minnesotas-bet-on-la-melo-peterson-arrives-and-mitchell-cashes-out\">A Tale of Two Cities and Jaylen Brown, Minnesota\u2019s Bet on LaMelo, Peterson Arrives and Mitchell Cashes Out</a></li>\n</ul>\n\n\n\n<h3 class=\"wp-block-heading\">Sharp Tech with Andrew Sharp and Ben Thompson</h3>\n\n\n\n<ul class=\"wp-block-list\">\n<li><a href=\"https://sharptech.fm/member/episode/meta-and-its-messaging-problem-the-xbox-reset-q-a-on-token-costs-american-soccer-starlink-in-nature\">Meta and Its Messaging Problem, The XBOX Reset, Q&amp;A on Token Costs, American Soccer, Starlink in Nature</a></li>\n</ul>\n\n\n\n<p class=\"wp-block-paragraph\">This week&#8217;s Asianometry video is on <a href=\"https://asianometry.passport.online/member/episode/toto-from-toilets-to-e-chucks\">TOTO: From Toilets to E-Chucks</a>.</p>\n\n\n\n<figure class=\"wp-block-embed is-type-video is-provider-youtube wp-block-embed-youtube wp-embed-aspect-16-9 wp-has-aspect-ratio\"><div class=\"wp-block-embed__wrapper\">\n\n</div></figure>\n\n\n\n<p class=\"wp-block-paragraph\"></p>",
+      "segments": [
+        "leaders"
+      ],
+      "tier": "full",
+      "selection_reason": "The strategic decision to discontinue XBOX has broad implications on market dynamics and competitive strategies.",
+      "audience_value": "Insight into significant shifts in consumer tech and entertainment industries.",
+      "urgency_score": 9,
+      "category_tag": "\ud83d\udcbc Tech Business",
+      "why_this_matters": "Why this matters: Leaders must adapt strategies in response to major industry changes to maintain relevance."
+    },
+    {
+      "id": "0c577711dacfd86f55341dac8d544b8f",
+      "title": "2026.30: The Copium Wars",
+      "url": "https://stratechery.com/2026/the-copium-wars/",
+      "published_date": "2026-07-30T15:11:19.164332",
+      "description": "The best Stratechery content from the week of July 20, 2026 including Chinese models and frontier futures, what happened to Hugging Face, and the NBA and its second apron bet.",
+      "source": "Stratechery by Ben Thompson",
+      "category": "Platform Strategy",
+      "segment": "leaders",
+      "source_type": "secondary",
+      "raw_content": "<figure class=\"wp-block-image size-full\"><img alt=\"\" class=\"wp-image-19589\" height=\"683\" src=\"https://i0.wp.com/stratechery.com/wp-content/uploads/2026/07/GettyImages-2285789209.jpg?resize=1024%2C683&#038;ssl=1\" width=\"1024\" /><figcaption class=\"wp-element-caption\">(Photo by Ng Han Guan-Pool/Getty Images)</figcaption></figure>\n\n\n\n<p class=\"wp-block-paragraph\">Welcome back to This Week in Stratechery!</p>\n\n\n\n<p class=\"wp-block-paragraph\">As a reminder, each week, every Friday, we&#8217;re sending out this overview of content in the Stratechery bundle; <span class=\"passport-tokenized-link\">highlighted links are free for everyone</span>. Additionally, you have complete control over what we send to you. If you don&#8217;t want to receive This Week in Stratechery emails (there is no podcast), please uncheck the box in <a href=\"https://stratechery.passport.online/member/account/delivery\">your delivery settings</a>.</p>\n\n\n\n<p class=\"wp-block-paragraph\">On that note, here were a few of our favorites this week.</p>\n\n\n\n<ol class=\"wp-block-list is-style-default\">\n<li><strong>Chinese Models and Frontier Futures</strong>. Kimi K3 is a very good model \u2014 so good that everyone from Wall Street to the U.S. government is suddenly worried about the U.S.&#8217;s position in AI. In fact, the threat isn&#8217;t new \u2014 and the frontier labs advantage is still real. In this week&#8217;s <a href=\"https://stratechery.com/2026/whos-afraid-of-chinese-models/\"><span class=\"passport-tokenized-link\">Stratechery Article</span></a> and <a href=\"https://sharptech.fm/member/episode/an-open-ai-model-escapes-sandboxing-intelligence-will-be-a-commodity-market-the-chinese-model-conundrum\">Sharp Tech</a> episode I break down what has and hasn&#8217;t changed in AI, and explain why the biggest danger is U.S. policy around cybersecurity. Solving that problem will require understanding and accepting the reality and nature of Chinese competition, even if that leaves OpenAI and Anthropic to fend for themselves. <em>\u2014 Ben Thompson</em> <br /></li>\n</ol>\n\n\n\n<span id=\"more-19572\"></span>\n\n\n\n<ol class=\"wp-block-list is-style-default\" start=\"2\">\n<li><strong>What Happened to Hugging Face? </strong>As Sharp Tech&#8217;s resident normie I&#8217;m often baffled by the lingua franca of frontier technology, and this week&#8217;s controversy around OpenAI and its cybersecurity snafu introduced several terms that have amused and confounded me for years: everything centered the &#8220;Hugging Face&#8221; platform and the concept of &#8220;sandboxing,&#8221; and we were revisiting &#8220;the paper clip problem.&#8221; Thankfully, <a href=\"https://stratechery.com/2026/openai-hacks-hugging-face-what-happened-alignment-and-paper-clips/\">Wednesday&#8217;s Update</a> synthesized the story in a way that was a bit more legible for the rest of us. Come to understand what happened, and stay to learn where OpenAI appears to have erred and why this mess is arguably reassuring with regard to alignment fears around LLMs.&nbsp; <em>\u2014</em> <em>Andrew Sharp</em><br /><br /></li>\n\n\n\n<li><strong>The NBA And Its Second Apron Bet.\u00a0</strong>If you&#8217;ve been online for the past month and even half-paying attention to the NBA, you&#8217;ve probably encountered complaints about the league&#8217;s imposition of a &#8220;second apron&#8221; salary threshold that&#8217;s effectively functioning as a hard salary cap. Contenders are being forced to part ways with homegrown stars, others\u00a0teams have limited room to improve, and fans almost unanimously hate these changes. With the offseason winding down, <a href=\"https://sharptext.net/2026/two-more-cents-on-the-nbas-second-apron-era/\"><span class=\"passport-tokenized-link\">this week&#8217;s Sharp Text explains precisely what the NBA is trying to accomplish</span></a>, why I hate it, and the stakes for the league as it bets on parity in the shadow of shrinking local TV money, slowing growth, and heavy reliance on national TV revenue.\u00a0<em>\u2014</em> <em>AS</em></li>\n</ol>\n\n\n\n<hr class=\"wp-block-separator has-alpha-channel-opacity\" />\n\n\n\n<h3 class=\"wp-block-heading\">Stratechery Articles and Updates</h3>\n\n\n\n<ul class=\"wp-block-list\">\n<li><a href=\"https://stratechery.com/2026/whos-afraid-of-chinese-models/\"><span class=\"passport-tokenized-link\">Who\u2019s Afraid of Chinese Models?</span></a> <em>\u2014 Everyone is worried about Chinese models, but the frontier labs will be fine; we need to enable open U.S. alternatives.</em></li>\n\n\n\n<li><a href=\"https://stratechery.com/2026/netflix-earnings-is-netflix-washed-additional-notes/\">Netflix Earnings, Is Netflix Washed?, Additional Notes</a> <em>\u2014 Netflix\u2019s earnings were fine, and befitting a mature company whose most exciting days are likely behind them.</em></li>\n\n\n\n<li><a href=\"https://stratechery.com/2026/openai-hacks-hugging-face-what-happened-alignment-and-paper-clips/\">OpenAI Hacks Hugging Face, What Happened, Alignment and Paper Clips</a> <em>\u2014 OpenAI accidentally hacked Hugging Face, but the takeaways are more encouraging than people realize.</em></li>\n</ul>\n\n\n\n<h3 class=\"wp-block-heading\">Sharp Text by Andrew Sharp</h3>\n\n\n\n<ul class=\"wp-block-list\">\n<li><a href=\"https://sharptext.net/2026/two-more-cents-on-the-nbas-second-apron-era/\"><span class=\"passport-tokenized-link\">Two More Cents on the NBA&#8217;s Second Apron Era</span></a> \u2014 The problem with the second apron is that it&#8217;s working. Plus: July reading recs!</li>\n</ul>\n\n\n\n<h3 class=\"wp-block-heading\">Dithering with Ben Thompson and Daring Fireball&#8217;s John Gruber</h3>\n\n\n\n<ul class=\"wp-block-list\">\n<li><a href=\"https://dithering.passport.online/member/episode/dst-and-kimi\">DST and Kimi</a></li>\n\n\n\n<li><a href=\"https://dithering.passport.online/member/episode/android-ai-and-the-eu\">Android, AI, and the EU</a></li>\n</ul>\n\n\n\n<h3 class=\"wp-block-heading\">Asianometry with Jon Yu</h3>\n\n\n\n<ul class=\"wp-block-list\">\n<li><a href=\"https://asianometry.passport.online/member/episode/france-sold-its-nuclear-steam-turbine-champion-then-bought-it-back\">France Sold Its Nuclear Steam Turbine Champion. Then Bought It Back.</a></li>\n</ul>\n\n\n\n<h3 class=\"wp-block-heading\">Sharp China with Andrew Sharp and Sinocism&#8217;s Bill Bishop</h3>\n\n\n\n<ul class=\"wp-block-list\">\n<li><a href=\"https://sharpchina.fm/member/episode/kimi-madness-xis-ai-vision-and-us-questions-trumps-election-data-claims-the-connected-vehicle-security-act\">Kimi Madness; Xi\u2019s AI Vision and US Questions; Trump\u2019s Election Data Claims; The Connected Vehicle Security Act</a></li>\n</ul>\n\n\n\n<h3 class=\"wp-block-heading\">Greatest of All Talk</h3>\n\n\n\n<ul class=\"wp-block-list\">\n<li><a href=\"https://goat.passport.online/member/episode/summer-top-fives-coaches-or-g-ms-to-get-a-beer-with-and-state-flags\">Summer Top Fives: Coaches or GMs to Get a Beer With and State Flags</a></li>\n</ul>\n\n\n\n<h3 class=\"wp-block-heading\">Sharp Tech with Andrew Sharp and Ben Thompson</h3>\n\n\n\n<ul class=\"wp-block-list\">\n<li><a href=\"https://sharptech.fm/member/episode/an-open-ai-model-escapes-sandboxing-intelligence-will-be-a-commodity-market-the-chinese-model-conundrum\">An OpenAI Model Escapes Sandboxing, Intelligence Will Be a Commodity Market, The Chinese Model Conundrum</a></li>\n</ul>\n\n\n\n<p class=\"wp-block-paragraph\">This week&#8217;s Sharp Tech video is on <a href=\"https://sharptech.fm/member/episode/meta-and-its-messaging-problem-the-xbox-reset-q-a-on-token-costs-american-soccer-starlink-in-nature\">Meta&#8217;s maddening messaging</a>.</p>\n\n\n\n<figure class=\"wp-block-embed is-type-video is-provider-youtube wp-block-embed-youtube wp-embed-aspect-16-9 wp-has-aspect-ratio\"><div class=\"wp-block-embed__wrapper\">\n\n</div></figure>\n\n\n\n<p class=\"wp-block-paragraph\"></p>",
+      "segments": [
+        "leaders"
+      ],
+      "tier": "full",
+      "selection_reason": "Coverage on Chinese models and AI trends is critical for leaders to understand global tech advancements and threats.",
+      "audience_value": "Strategic insights into global AI developments and competitive positioning.",
+      "urgency_score": 8,
+      "category_tag": "\ud83d\ude80 AI & Innovation",
+      "why_this_matters": "Why this matters: Global tech insights empower leaders to make informed strategic decisions in a competitive landscape."
     },
     {
       "id": "faffd7f7883fd9250ff14a8bbc50a9d7",
       "title": "2026.29: Mainframes and Main Characters",
       "url": "https://stratechery.com/2026/mainframes-and-main-characters/",
-      "published_date": "2026-07-30T08:23:49.956037",
+      "published_date": "2026-07-30T15:11:19.164440",
       "description": "The best Stratechery content from the week of July 13, 2026, including the end of the mainframe, the continuing adventures of OpenAI, and answering the question, \"Is Netflix Washed?\".",
       "source": "Stratechery by Ben Thompson",
       "category": "Platform Strategy",
@@ -213,17 +217,17 @@
         "leaders"
       ],
       "tier": "quick",
-      "selection_reason": "Summarizes key developments in AI and mainframe technologies.",
-      "audience_value": "Quick update on significant tech developments.",
-      "urgency_score": 7,
-      "category_tag": "\ud83d\ude80 AI & Innovation",
-      "why_this_matters": "Why this matters: Keeps leaders informed on critical tech updates without needing deep engagement."
+      "selection_reason": "Provides a snapshot of key tech and AI developments, useful for keeping leaders informed on multiple fronts.",
+      "audience_value": "Quick updates on significant tech trends and company news.",
+      "urgency_score": 6,
+      "category_tag": "\ud83d\udcbc Tech Business",
+      "why_this_matters": "Why this matters: Staying updated with broad tech developments ensures informed leadership."
     },
     {
       "id": "db4a1160d12cfe89ad19ce926ac28e12",
       "title": "Vacation: Week of July 27",
       "url": "https://stratechery.com/2026/vacation-week-of-july-27/",
-      "published_date": "2026-07-30T08:23:49.955866",
+      "published_date": "2026-07-30T15:11:19.164267",
       "description": "Stratechery is on vacation the week of July 27. There will be no Weekly Article or Updates. The next Update will be on Monday, August 3. Sharp Tech, and Greatest of All Talk&#160;&#160;will also return the week of August 3.&#160;Sharp China&#160;and&#160;Asianometry&#160;will continue to publish, and there will be one episode of Dithering next week. The [&#8230;]",
       "source": "Stratechery by Ben Thompson",
       "category": "Platform Strategy",
@@ -234,11 +238,95 @@
         "leaders"
       ],
       "tier": "quick",
-      "selection_reason": "Notifies of a publication break, relevant for followers of this influential tech analysis source.",
-      "audience_value": "Scheduling awareness for regular content consumers.",
+      "selection_reason": "Notification of publication breaks is crucial for planning and expectation management in content consumption.",
+      "audience_value": "Leaders can plan their information intake and stay prepared for content gaps.",
       "urgency_score": 6,
       "category_tag": "\ud83d\udcbc Tech Business",
-      "why_this_matters": "Why this matters: Leaders need to manage their information sources efficiently; knowing when key insights are unavailable helps in planning."
+      "why_this_matters": "Why this matters: Effective time management and planning are key leadership traits."
+    },
+    {
+      "id": "0c577711dacfd86f55341dac8d544b8f",
+      "title": "2026.30: The Copium Wars",
+      "url": "https://stratechery.com/2026/the-copium-wars/",
+      "published_date": "2026-07-30T15:11:19.164332",
+      "description": "The best Stratechery content from the week of July 20, 2026 including Chinese models and frontier futures, what happened to Hugging Face, and the NBA and its second apron bet.",
+      "source": "Stratechery by Ben Thompson",
+      "category": "Platform Strategy",
+      "segment": "leaders",
+      "source_type": "secondary",
+      "raw_content": "<figure class=\"wp-block-image size-full\"><img alt=\"\" class=\"wp-image-19589\" height=\"683\" src=\"https://i0.wp.com/stratechery.com/wp-content/uploads/2026/07/GettyImages-2285789209.jpg?resize=1024%2C683&#038;ssl=1\" width=\"1024\" /><figcaption class=\"wp-element-caption\">(Photo by Ng Han Guan-Pool/Getty Images)</figcaption></figure>\n\n\n\n<p class=\"wp-block-paragraph\">Welcome back to This Week in Stratechery!</p>\n\n\n\n<p class=\"wp-block-paragraph\">As a reminder, each week, every Friday, we&#8217;re sending out this overview of content in the Stratechery bundle; <span class=\"passport-tokenized-link\">highlighted links are free for everyone</span>. Additionally, you have complete control over what we send to you. If you don&#8217;t want to receive This Week in Stratechery emails (there is no podcast), please uncheck the box in <a href=\"https://stratechery.passport.online/member/account/delivery\">your delivery settings</a>.</p>\n\n\n\n<p class=\"wp-block-paragraph\">On that note, here were a few of our favorites this week.</p>\n\n\n\n<ol class=\"wp-block-list is-style-default\">\n<li><strong>Chinese Models and Frontier Futures</strong>. Kimi K3 is a very good model \u2014 so good that everyone from Wall Street to the U.S. government is suddenly worried about the U.S.&#8217;s position in AI. In fact, the threat isn&#8217;t new \u2014 and the frontier labs advantage is still real. In this week&#8217;s <a href=\"https://stratechery.com/2026/whos-afraid-of-chinese-models/\"><span class=\"passport-tokenized-link\">Stratechery Article</span></a> and <a href=\"https://sharptech.fm/member/episode/an-open-ai-model-escapes-sandboxing-intelligence-will-be-a-commodity-market-the-chinese-model-conundrum\">Sharp Tech</a> episode I break down what has and hasn&#8217;t changed in AI, and explain why the biggest danger is U.S. policy around cybersecurity. Solving that problem will require understanding and accepting the reality and nature of Chinese competition, even if that leaves OpenAI and Anthropic to fend for themselves. <em>\u2014 Ben Thompson</em> <br /></li>\n</ol>\n\n\n\n<span id=\"more-19572\"></span>\n\n\n\n<ol class=\"wp-block-list is-style-default\" start=\"2\">\n<li><strong>What Happened to Hugging Face? </strong>As Sharp Tech&#8217;s resident normie I&#8217;m often baffled by the lingua franca of frontier technology, and this week&#8217;s controversy around OpenAI and its cybersecurity snafu introduced several terms that have amused and confounded me for years: everything centered the &#8220;Hugging Face&#8221; platform and the concept of &#8220;sandboxing,&#8221; and we were revisiting &#8220;the paper clip problem.&#8221; Thankfully, <a href=\"https://stratechery.com/2026/openai-hacks-hugging-face-what-happened-alignment-and-paper-clips/\">Wednesday&#8217;s Update</a> synthesized the story in a way that was a bit more legible for the rest of us. Come to understand what happened, and stay to learn where OpenAI appears to have erred and why this mess is arguably reassuring with regard to alignment fears around LLMs.&nbsp; <em>\u2014</em> <em>Andrew Sharp</em><br /><br /></li>\n\n\n\n<li><strong>The NBA And Its Second Apron Bet.\u00a0</strong>If you&#8217;ve been online for the past month and even half-paying attention to the NBA, you&#8217;ve probably encountered complaints about the league&#8217;s imposition of a &#8220;second apron&#8221; salary threshold that&#8217;s effectively functioning as a hard salary cap. Contenders are being forced to part ways with homegrown stars, others\u00a0teams have limited room to improve, and fans almost unanimously hate these changes. With the offseason winding down, <a href=\"https://sharptext.net/2026/two-more-cents-on-the-nbas-second-apron-era/\"><span class=\"passport-tokenized-link\">this week&#8217;s Sharp Text explains precisely what the NBA is trying to accomplish</span></a>, why I hate it, and the stakes for the league as it bets on parity in the shadow of shrinking local TV money, slowing growth, and heavy reliance on national TV revenue.\u00a0<em>\u2014</em> <em>AS</em></li>\n</ol>\n\n\n\n<hr class=\"wp-block-separator has-alpha-channel-opacity\" />\n\n\n\n<h3 class=\"wp-block-heading\">Stratechery Articles and Updates</h3>\n\n\n\n<ul class=\"wp-block-list\">\n<li><a href=\"https://stratechery.com/2026/whos-afraid-of-chinese-models/\"><span class=\"passport-tokenized-link\">Who\u2019s Afraid of Chinese Models?</span></a> <em>\u2014 Everyone is worried about Chinese models, but the frontier labs will be fine; we need to enable open U.S. alternatives.</em></li>\n\n\n\n<li><a href=\"https://stratechery.com/2026/netflix-earnings-is-netflix-washed-additional-notes/\">Netflix Earnings, Is Netflix Washed?, Additional Notes</a> <em>\u2014 Netflix\u2019s earnings were fine, and befitting a mature company whose most exciting days are likely behind them.</em></li>\n\n\n\n<li><a href=\"https://stratechery.com/2026/openai-hacks-hugging-face-what-happened-alignment-and-paper-clips/\">OpenAI Hacks Hugging Face, What Happened, Alignment and Paper Clips</a> <em>\u2014 OpenAI accidentally hacked Hugging Face, but the takeaways are more encouraging than people realize.</em></li>\n</ul>\n\n\n\n<h3 class=\"wp-block-heading\">Sharp Text by Andrew Sharp</h3>\n\n\n\n<ul class=\"wp-block-list\">\n<li><a href=\"https://sharptext.net/2026/two-more-cents-on-the-nbas-second-apron-era/\"><span class=\"passport-tokenized-link\">Two More Cents on the NBA&#8217;s Second Apron Era</span></a> \u2014 The problem with the second apron is that it&#8217;s working. Plus: July reading recs!</li>\n</ul>\n\n\n\n<h3 class=\"wp-block-heading\">Dithering with Ben Thompson and Daring Fireball&#8217;s John Gruber</h3>\n\n\n\n<ul class=\"wp-block-list\">\n<li><a href=\"https://dithering.passport.online/member/episode/dst-and-kimi\">DST and Kimi</a></li>\n\n\n\n<li><a href=\"https://dithering.passport.online/member/episode/android-ai-and-the-eu\">Android, AI, and the EU</a></li>\n</ul>\n\n\n\n<h3 class=\"wp-block-heading\">Asianometry with Jon Yu</h3>\n\n\n\n<ul class=\"wp-block-list\">\n<li><a href=\"https://asianometry.passport.online/member/episode/france-sold-its-nuclear-steam-turbine-champion-then-bought-it-back\">France Sold Its Nuclear Steam Turbine Champion. Then Bought It Back.</a></li>\n</ul>\n\n\n\n<h3 class=\"wp-block-heading\">Sharp China with Andrew Sharp and Sinocism&#8217;s Bill Bishop</h3>\n\n\n\n<ul class=\"wp-block-list\">\n<li><a href=\"https://sharpchina.fm/member/episode/kimi-madness-xis-ai-vision-and-us-questions-trumps-election-data-claims-the-connected-vehicle-security-act\">Kimi Madness; Xi\u2019s AI Vision and US Questions; Trump\u2019s Election Data Claims; The Connected Vehicle Security Act</a></li>\n</ul>\n\n\n\n<h3 class=\"wp-block-heading\">Greatest of All Talk</h3>\n\n\n\n<ul class=\"wp-block-list\">\n<li><a href=\"https://goat.passport.online/member/episode/summer-top-fives-coaches-or-g-ms-to-get-a-beer-with-and-state-flags\">Summer Top Fives: Coaches or GMs to Get a Beer With and State Flags</a></li>\n</ul>\n\n\n\n<h3 class=\"wp-block-heading\">Sharp Tech with Andrew Sharp and Ben Thompson</h3>\n\n\n\n<ul class=\"wp-block-list\">\n<li><a href=\"https://sharptech.fm/member/episode/an-open-ai-model-escapes-sandboxing-intelligence-will-be-a-commodity-market-the-chinese-model-conundrum\">An OpenAI Model Escapes Sandboxing, Intelligence Will Be a Commodity Market, The Chinese Model Conundrum</a></li>\n</ul>\n\n\n\n<p class=\"wp-block-paragraph\">This week&#8217;s Sharp Tech video is on <a href=\"https://sharptech.fm/member/episode/meta-and-its-messaging-problem-the-xbox-reset-q-a-on-token-costs-american-soccer-starlink-in-nature\">Meta&#8217;s maddening messaging</a>.</p>\n\n\n\n<figure class=\"wp-block-embed is-type-video is-provider-youtube wp-block-embed-youtube wp-embed-aspect-16-9 wp-has-aspect-ratio\"><div class=\"wp-block-embed__wrapper\">\n\n</div></figure>\n\n\n\n<p class=\"wp-block-paragraph\"></p>",
+      "segments": [
+        "leaders"
+      ],
+      "tier": "quick",
+      "selection_reason": "Insight into ongoing tech and cultural discussions is valuable for leaders to stay culturally and technologically relevant.",
+      "audience_value": "Awareness of cultural and tech intersections that might influence business and market strategies.",
+      "urgency_score": 6,
+      "category_tag": "\ud83d\udcca Market Trends",
+      "why_this_matters": "Why this matters: Understanding cultural trends aids in aligning business strategies with market expectations."
+    },
+    {
+      "id": "db4a1160d12cfe89ad19ce926ac28e12",
+      "title": "Vacation: Week of July 27",
+      "url": "https://stratechery.com/2026/vacation-week-of-july-27/",
+      "published_date": "2026-07-30T15:11:19.164267",
+      "description": "Stratechery is on vacation the week of July 27. There will be no Weekly Article or Updates. The next Update will be on Monday, August 3. Sharp Tech, and Greatest of All Talk&#160;&#160;will also return the week of August 3.&#160;Sharp China&#160;and&#160;Asianometry&#160;will continue to publish, and there will be one episode of Dithering next week. The [&#8230;]",
+      "source": "Stratechery by Ben Thompson",
+      "category": "Platform Strategy",
+      "segment": "leaders",
+      "source_type": "secondary",
+      "raw_content": "<p class=\"wp-block-paragraph\">Stratechery is on vacation the week of July 27. There will be no Weekly Article or Updates. The next Update will be on Monday, August 3.</p>\n\n\n\n<p class=\"wp-block-paragraph\"><a href=\"http://sharptech.fm/\">Sharp Tech</a>, and <a href=\"https://goat.passport.online/member\">Greatest of All Talk</a>&nbsp;&nbsp;will also return the week of August 3.&nbsp;<a href=\"https://goat.passport.online/member\"></a><a href=\"http://sharpchina.fm/\">Sharp China</a>&nbsp;and&nbsp;<a href=\"https://asianometry.passport.online/member\">Asianometry&nbsp;</a>will continue to publish, and there will be one episode of <a href=\"http://dithering.fm/\">Dithering</a> next week.</p>\n\n\n\n<p class=\"wp-block-paragraph\">The full Stratechery posting schedule is&nbsp;<a href=\"https://stratechery.com/daily-update/daily-update-schedule/\">here</a>.</p>\n\n\n\n<p class=\"wp-block-paragraph\"></p>",
+      "segments": [
+        "leaders"
+      ],
+      "tier": "quick",
+      "selection_reason": "Awareness of publication schedules helps in strategic planning and maintaining a steady flow of industry insights.",
+      "audience_value": "Leaders can better schedule their strategic review sessions around content availability.",
+      "urgency_score": 6,
+      "category_tag": "\ud83d\udcbc Tech Business",
+      "why_this_matters": "Why this matters: Efficient planning of information consumption is crucial for effective leadership."
+    },
+    {
+      "id": "faffd7f7883fd9250ff14a8bbc50a9d7",
+      "title": "2026.29: Mainframes and Main Characters",
+      "url": "https://stratechery.com/2026/mainframes-and-main-characters/",
+      "published_date": "2026-07-30T15:11:19.164440",
+      "description": "The best Stratechery content from the week of July 13, 2026, including the end of the mainframe, the continuing adventures of OpenAI, and answering the question, \"Is Netflix Washed?\".",
+      "source": "Stratechery by Ben Thompson",
+      "category": "Platform Strategy",
+      "segment": "leaders",
+      "source_type": "secondary",
+      "raw_content": "<figure class=\"wp-block-image size-full is-resized\"><img alt=\"\" class=\"wp-image-19530\" height=\"564\" src=\"https://i0.wp.com/stratechery.com/wp-content/uploads/2026/07/twis-ibm-openai-1.png?resize=1330%2C564&#038;ssl=1\" style=\"width: 665px; height: auto;\" width=\"1330\" /><figcaption class=\"wp-element-caption\">Jean Pigozzi via Andy Hertzfeld on left, GenAI via Muse Image on right</figcaption></figure>\n\n\n\n<p class=\"wp-block-paragraph\">Welcome back to This Week in Stratechery!</p>\n\n\n\n<p class=\"wp-block-paragraph\">As a reminder, each week, every Friday, we&#8217;re sending out this overview of content in the Stratechery bundle; <span class=\"passport-tokenized-link\">highlighted links are free for everyone</span>. Additionally, you have complete control over what we send to you. If you don&#8217;t want to receive This Week in Stratechery emails (there is no podcast), please uncheck the box in <a href=\"https://stratechery.passport.online/member/account/delivery\">your delivery settings</a>.</p>\n\n\n\n<p class=\"wp-block-paragraph\">On that note, here were a few of our favorites this week.</p>\n\n\n\n<ol class=\"wp-block-list is-style-default\">\n<li><strong>The End of the Mainframe?</strong> IBM&#8217;s stock experienced the worst day in its history, which is saying something considering the company has been a public stock for 115 years. The product most synonymous with that history is the mainframe computer; mainframes defined <a href=\"https://stratechery.com/2024/enterprise-philosophy-and-the-first-wave-of-ai/\"><span class=\"passport-tokenized-link\">the first wave of IT</span></a>, and they are so useful and essential that IBM&#8217;s customer base is largely the same as it was half a century ago. Now, however, mainframe sales and the software that runs on them are faltering; management blamed AI spend, but as I argued in <a href=\"https://stratechery.com/2026/ibm-misses-ibms-mainframe-moat-ibms-many-ai-problems/\">Wednesday&#8217;s Update</a>, the real concern for IBM is that AI&#8217;s ability to port the essential backend programs that run on archaic technology will mean those missed sales never come back. <em>\u2014</em> <em>Ben Thompson</em></li>\n</ol>\n\n\n\n<span id=\"more-19520\"></span>\n\n\n\n<ol class=\"wp-block-list is-style-default\" start=\"2\">\n<li><strong>The Continuing Adventures of OpenAI.&nbsp;</strong>The fun with OpenAI never ends, and the middle of the summer is no exception. In <a href=\"https://stratechery.com/2026/apple-sues-openai-apples-real-problem/\">Monday&#8217;s Update</a> Ben parsed a new lawsuit from Apple that looks like more smoke than fire, and in <a href=\"https://stratechery.com/2026/the-openai-super-app-chatgpt-codex-whither-chat/\">Tuesday&#8217;s Update</a> he doubled back to cover the revamped ChatGPT app on the Mac and what it signals about the company&#8217;s priorities going forward. On <a href=\"https://sharptech.fm/member/episode/the-continuing-adventures-of-open-ai-apples-trade-secrets-lawsuit-q-a-on-mainframes-meta-daylight-savings-time\">this week&#8217;s episode of Sharp Tech</a>, and <a href=\"https://dithering.passport.online/member/episode/open-ai-hardware\">both episodes of Dithering</a>, we discussed all these topics, as well the reports of OpenAI&#8217;s new hardware product <em>\u2014</em> an ambient speaker, with robotic components <em>\u2014</em> and why that idea sounds like a great first experiment in the hardware category.&nbsp;<em>\u2014</em> <em>Andrew Sharp</em><br /><br /></li>\n\n\n\n<li><strong>Is Netflix Washed? </strong>It was only last December that Netflix was set to buy Warner Bros. Discovery, dominate Hollywood in perpetuity, and compete with YouTube using a massive library of hit franchises and HBO IP. That idea was abandoned in February and it&#8217;s been a rocky year ever since, including another hit to the stock on Thursday and Friday. <a href=\"https://sharptext.net/2026/is-netflix-washed-now/\"><span class=\"passport-tokenized-link\">I wrote about all of it on Sharp Text this week</span></a>, where I marvel at how disposable the original content has become and argue that the attempts to retain attention by mimicking YouTube (and possibly Tubi?) have left the biggest premium\u00a0platform in the world looking more mortal than ever.\u00a0<em>\u2014</em> <em>AS</em></li>\n</ol>\n\n\n\n<hr class=\"wp-block-separator has-alpha-channel-opacity\" />\n\n\n\n<h3 class=\"wp-block-heading\">Stratechery Articles and Updates</h3>\n\n\n\n<ul class=\"wp-block-list\">\n<li><a href=\"https://stratechery.com/2026/apple-sues-openai-apples-real-problem/\">Apple Sues OpenAI, Apple\u2019s Real Problem</a> <em>\u2014 Apple is suing AI for stealing trade secrets; there is one guilty employee, but this mostly feels like lashing out.</em></li>\n\n\n\n<li><a href=\"https://stratechery.com/2026/the-openai-super-app-chatgpt-codex-whither-chat/\">The OpenAI Super App, ChatGPT = Codex, Whither Chat</a> <em>\u2014 OpenAI has refashioned Codex as the new ChatGPT; is the company abandoning the chat category they pioneered?</em></li>\n\n\n\n<li><a href=\"https://stratechery.com/2026/ibm-misses-ibms-mainframe-moat-ibms-many-ai-problems/\">IBM Misses, IBM\u2019s Mainframe Moat, IBM\u2019s Many AI Problems</a> <em>\u2014 IBM announced preliminary results that spooked the software market generally; this is a story, however, specifically about IBM and its mainframe franchise.</em></li>\n</ul>\n\n\n\n<h3 class=\"wp-block-heading\">Sharp Text by Andrew Sharp</h3>\n\n\n\n<ul class=\"wp-block-list\">\n<li><a href=\"https://sharptext.net/2026/is-netflix-washed-now/\"><span class=\"passport-tokenized-link\">Is Netflix Washed Now?</span></a> \u2014 <em>Watching Netflix as the platform exits its prime.</em></li>\n</ul>\n\n\n\n<h3 class=\"wp-block-heading\">Dithering with Ben Thompson and Daring Fireball&#8217;s John Gruber</h3>\n\n\n\n<ul class=\"wp-block-list\">\n<li><a href=\"https://dithering.passport.online/member/episode/apple-sues-open-ai\"><span class=\"passport-tokenized-link\">Apple Sues OpenAI</span></a></li>\n\n\n\n<li><a href=\"https://dithering.passport.online/member/episode/open-ai-hardware\">OpenAI Hardware</a></li>\n</ul>\n\n\n\n<h3 class=\"wp-block-heading\">Asianometry with Jon Yu</h3>\n\n\n\n<ul class=\"wp-block-list\">\n<li><a href=\"https://asianometry.passport.online/member/episode/the-cochlear-ear-miracle\">The Cochlear Ear Miracle</a></li>\n</ul>\n\n\n\n<h3 class=\"wp-block-heading\">Sharp China with Andrew Sharp and Sinocism&#8217;s Bill Bishop</h3>\n\n\n\n<ul class=\"wp-block-list\">\n<li><a href=\"https://sharpchina.fm/member/episode/k-shaped-economic-data-and-its-implications-ma-xingrui-news-closing-window-for-open-source-ai-the-scs-and-international-law\">K-Shaped Economic Data And Its Implications; Ma Xingrui News; Closing Window for Open Source AI?; The SCS and International Law</a></li>\n</ul>\n\n\n\n<h3 class=\"wp-block-heading\">Greatest of All Talk</h3>\n\n\n\n<ul class=\"wp-block-list\">\n<li><a href=\"https://goat.passport.online/member/episode/everyone-at-summer-league-is-thrilled-the-summer-of-second-apron-angst-how-to-be-an-nba-gm\">Everyone at Summer League Is Thrilled, The Summer of Second Apron Angst, How to Be an NBA GM</a></li>\n</ul>\n\n\n\n<h3 class=\"wp-block-heading\">Sharp Tech with Andrew Sharp and Ben Thompson</h3>\n\n\n\n<ul class=\"wp-block-list\">\n<li><a href=\"https://sharptech.fm/member/episode/the-continuing-adventures-of-open-ai-apples-trade-secrets-lawsuit-q-a-on-mainframes-meta-daylight-savings-time\">The Continuing Adventures of OpenAI, Apple\u2019s Trade Secrets Lawsuit, Q&amp;A on Mainframes, Meta, Daylight Savings Time</a></li>\n</ul>\n\n\n\n<p class=\"wp-block-paragraph\">This week&#8217;s Stratechery video is on <a href=\"https://stratechery.com/2026/a-script-for-mark-zuckerberg/\"><span class=\"passport-tokenized-link\">A Script for Mark Zuckerberg</span></a>.</p>\n\n\n\n<figure class=\"wp-block-embed is-type-video is-provider-youtube wp-block-embed-youtube wp-embed-aspect-16-9 wp-has-aspect-ratio\"><div class=\"wp-block-embed__wrapper\">\n\n</div></figure>\n\n\n\n<p class=\"wp-block-paragraph\"></p>",
+      "segments": [
+        "leaders"
+      ],
+      "tier": "trending",
+      "selection_reason": "The article discusses significant tech and cultural topics that are currently trending, relevant for strategic insights.",
+      "audience_value": "Engagement with current tech and cultural discussions to inform broader strategic thinking.",
+      "urgency_score": 7,
+      "category_tag": "\ud83d\udcca Market Trends",
+      "why_this_matters": "Why this matters: Leaders thrive on understanding and leveraging current trends for future growth."
+    },
+    {
+      "id": "2932d28cb6ce91919ac01abe92a90f92",
+      "title": "Netflix Earnings, Is Netflix Washed?, Additional Notes",
+      "url": "https://stratechery.com/2026/netflix-earnings-is-netflix-washed-additional-notes/",
+      "published_date": "2026-07-30T15:11:19.164390",
+      "description": "Netflix's earnings were fine, and befitting a mature company whose most exciting days are likely behind them.",
+      "source": "Stratechery by Ben Thompson",
+      "category": "Platform Strategy",
+      "segment": "leaders",
+      "source_type": "secondary",
+      "raw_content": "<p>Netflix's earnings were fine, and befitting a mature company whose most exciting days are likely behind them.</p>",
+      "segments": [
+        "leaders"
+      ],
+      "tier": "trending",
+      "selection_reason": "Netflix's strategic and market position discussions are trending, offering critical insights for similar tech sectors.",
+      "audience_value": "Understanding of market dynamics and strategic positioning in the entertainment tech sector.",
+      "urgency_score": 7,
+      "category_tag": "\ud83d\udcbc Tech Business",
+      "why_this_matters": "Why this matters: Insights into competitive strategies and market dynamics aid in informed decision-making."
     }
   ]
 }
