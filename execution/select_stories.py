@@ -16,7 +16,10 @@ from pydantic import BaseModel, Field
 
 import sys
 sys.path.insert(0, str(Path(__file__).parent.parent))
-from config.niche_schema import load_niche_config
+try:
+    from config.niche_schema import load_niche_config
+except ImportError:
+    load_niche_config = None
 
 # Load environment variables
 load_dotenv()
