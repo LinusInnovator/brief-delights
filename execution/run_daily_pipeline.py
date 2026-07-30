@@ -11,6 +11,12 @@ import json
 from datetime import datetime
 from pathlib import Path
 from dotenv import load_dotenv
+import execution.prism_router as prism_router
+import execution.ledger as ledger
+
+import sys
+sys.path.insert(0, str(Path(__file__).parent.parent))
+from config.niche_schema import load_niche_config
 
 # Configuration
 PROJECT_ROOT = Path(__file__).parent.parent
@@ -79,7 +85,25 @@ def run_script(script_name: str, timeout: int, args: list = None) -> bool:
 
 
 def load_segments():
-    """Load segment configurations"""
+    """Load segment configurations or the active niche configuration"""
+    niche_file = os.environ.get("ACTIVE_NICHE")
+    
+    if niche_file and os.path.exists(niche_file):
+        config = load_niche_config(niche_file)
+        segments_dict = {}
+        for seg in config.output_segments:
+            seg_id = seg.title.lower().replace(' ', '_')
+            segments_dict[seg_id] = {
+                "name": seg.title,
+                "emoji": "🎯",
+                "description": config.audience,
+                "selection_criteria": config.tone,
+                "focus_keywords": [],
+                "skip_keywords": []
+            }
+        return segments_dict
+    
+    # Fallback to legacy behavior
     with open(SEGMENTS_CONFIG_FILE, 'r') as f:
         data = json.load(f)
     return data['segments']
@@ -180,14 +204,9 @@ def main():
     # STEP 1: Aggregate RSS Feeds (same for all segments)
     log("\n\n▶️  Step 1/5: Aggregate RSS Feeds")
     log("─"*70)
-    raw_articles_file = TMP_DIR / f"raw_articles_{TODAY}.json"
-    
-    if not raw_articles_file.exists():
-        if not run_script("aggregate_feeds.py", timeout=120):
-            log("❌ Pipeline failed at aggregation", "ERROR")
-            return False
-    else:
-        log("✅ Skipping aggregation: raw articles already exist")
+    if not run_script("aggregate_feeds.py", timeout=120):
+        log("❌ Pipeline failed at aggregation", "ERROR")
+        return False
     
     # Validation: Ensure raw articles file was created
     raw_articles_file = TMP_DIR / f"raw_articles_{TODAY}.json"
@@ -212,20 +231,9 @@ def main():
     # STEP 2: Select Stories (for all segments)
     log("\n\n▶️  Step 2/5: Select Top Stories (All Segments)")
     log("─"*70)
-    
-    # Check idempotency: Have we already selected stories for all segments?
-    all_selections_exist = True
-    for segment_id in segment_ids:
-        if not (TMP_DIR / f"selected_articles_{segment_id}_{TODAY}.json").exists():
-            all_selections_exist = False
-            break
-            
-    if not all_selections_exist:
-        if not run_script("select_stories.py", timeout=300):  # Increased from 120s
-            log("❌ Pipeline failed at story selection", "ERROR")
-            return False
-    else:
-        log("✅ Skipping story selection: files already exist for all segments")
+    if not run_script("select_stories.py", timeout=300):  # Increased from 120s - LLM calls can take 2-3min with large datasets
+        log("❌ Pipeline failed at story selection", "ERROR")
+        return False
     
     # Validation: Ensure selected articles files were created for each segment
     missing_segments = []
@@ -248,14 +256,10 @@ def main():
         # Summarize
         log(f"\n\n▶️  Step 3.{i}: Summarize Articles ({segment_name})")
         log("─"*70)
-        summaries_file = TMP_DIR / f"summaries_{segment_id}_{TODAY}.json"
-        if not summaries_file.exists():
-            if not run_script("summarize_articles.py", timeout=90, args=["--segment", segment_id]):
-                log(f"❌ Failed to summarize for {segment_id}", "ERROR")
-                continue
-            log(f"✅ Summarization complete for {segment_name}")
-        else:
-            log(f"✅ Skipping summarization: already exists for {segment_name}")
+        if not run_script("summarize_articles.py", timeout=90, args=["--segment", segment_id]):
+            log(f"❌ Failed to summarize for {segment_id}", "ERROR")
+            continue
+        log(f"✅ Summarization complete for {segment_name}")
         
         # Detect Contrarian
         log(f"\n\n▶️  Step 3.{i}b: Detect Contrarian ({segment_name})")
@@ -266,16 +270,25 @@ def main():
         # Compose
         log(f"\n\n▶️  Step 4.{i}: Compose Newsletter ({segment_name})")
         log("─"*70)
-        newsletter_file = TMP_DIR / f"newsletter_{segment_id}_{TODAY}.html"
+        if not run_script("compose_newsletter.py", timeout=30, args=["--segment", segment_id]):
+            log(f"❌ Failed to compose for {segment_id}", "ERROR")
+            continue
+        # Log to ledger
+        active_niche_path = os.environ.get("ACTIVE_NICHE", "unknown")
+        niche_id = Path(active_niche_path).stem if active_niche_path != "unknown" else segment_id
+        ledger.log_generation(niche_id, "newsletter", {"segment": segment_id})
         
-        if not newsletter_file.exists():
-            if not run_script("compose_newsletter.py", timeout=30, args=["--segment", segment_id]):
-                log(f"❌ Failed to compose for {segment_id}", "ERROR")
-                continue
-            log(f"✅ Newsletter composed for {segment_name}")
-        else:
-            log(f"✅ Skipping composition: already exists for {segment_name}")
-            
+        # Display the final package in the terminal UI
+        newsletter_file = TMP_DIR / f"newsletter_{segment_id}_{TODAY}.html"
+        if newsletter_file.exists():
+            with open(newsletter_file, 'r') as f:
+                content = f.read()
+            print("\n" + "="*50)
+            print(f"📦 FINAL PACKAGE GENERATED ({segment_name}):")
+            print("="*50)
+            print(content)
+            print("="*50)
+            print("\n✅ Run complete. Output saved to internal memory.")
         # Quality Gate + Self-Healing Loop
         log(f"\n   🔍 Quality Gate ({segment_name}):")
         if not run_script("validate_newsletter.py", timeout=15, args=["--segment", segment_id]):
@@ -285,8 +298,7 @@ def main():
             else:
                 log(f"   ❌ Self-healing FAILED for {segment_id} — newsletter will NOT be sent", "ERROR")
                 log(f"      Check GitHub Issues for diagnostics", "ERROR")
-                # SEGMENT ISOLATION: Continue to next segment instead of crashing everything!
-                continue
+                return False
         
         # NEW: Archive successful newsletter for fallback
         newsletter_file = TMP_DIR / f"newsletter_{segment_id}_{TODAY}.html"

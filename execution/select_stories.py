@@ -14,6 +14,10 @@ import time
 from collections import defaultdict
 from pydantic import BaseModel, Field
 
+import sys
+sys.path.insert(0, str(Path(__file__).parent.parent))
+from config.niche_schema import load_niche_config
+
 # Load environment variables
 load_dotenv()
 
@@ -64,7 +68,24 @@ def log(message: str):
 
 
 def load_segments_config():
-    """Load segment configurations"""
+    """Load segment configurations or active niche"""
+    niche_file = os.environ.get("ACTIVE_NICHE")
+    
+    if niche_file and os.path.exists(niche_file):
+        config = load_niche_config(niche_file)
+        segments_dict = {}
+        for seg in config.output_segments:
+            seg_id = seg.title.lower().replace(' ', '_')
+            segments_dict[seg_id] = {
+                "name": seg.title,
+                "emoji": "🎯",
+                "description": config.audience,
+                "selection_criteria": config.tone,
+                "focus_keywords": [],
+                "skip_keywords": []
+            }
+        return {"segments": segments_dict}
+
     with open(SEGMENTS_CONFIG_FILE, 'r') as f:
         return json.load(f)
 
