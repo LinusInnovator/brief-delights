@@ -437,6 +437,61 @@ If ${companyName} wants the spot, just reply "yes" and I'll lock it in. Otherwis
 
 // ─── Main Discovery Engine ──────────────────────────────────────────────────
 
+async function fetchChallengersFromLLM(domain: string, title: string, segment: string): Promise<ChallengerCompany[]> {
+    const apiKey = process.env.OPENROUTER_API_KEY || process.env.NEXT_PUBLIC_OPENROUTER_API_KEY;
+    if (!apiKey) return [];
+    
+    // Quick heuristic: ignore major news sites to save tokens
+    const IGNORED = ['techcrunch.com', 'bloomberg.com', 'wsj.com', 'nytimes.com', 'wired.com', 'theverge.com', 'cnbc.com', 'forbes.com', 'reuters.com'];
+    if (IGNORED.some(ig => domain.includes(ig))) return [];
+
+    const prompt = `You are a B2B SaaS startup researcher. A tech newsletter just drove significant engagement from the "${segment}" audience to an article titled: "${title}" published on/about ${domain}.
+
+We need to find sponsors who want to steal attention from this incumbent.
+Identify 2-3 aggressive, hungry Series A or Series B startups that directly compete with ${domain} or provide a modern alternative to their core offering.
+Do NOT suggest massive public companies (like Microsoft, Google, AWS) as challengers. We want hungry startups.
+
+Return ONLY a valid JSON object with a "challengers" array containing objects with this exact structure:
+{
+  "challengers": [
+    {
+      "name": "StartupName",
+      "domain": "startupdomain.com",
+      "description": "Short 3-4 word description",
+      "stage": "series_a", // enum: seed, series_a, series_b, series_c
+      "age": 3,
+      "team": 25,
+      "raised_m": 15
+    }
+  ]
+}`;
+
+    try {
+        const res = await fetch('https://openrouter.ai/api/v1/chat/completions', {
+            method: 'POST',
+            headers: {
+                'Authorization': `Bearer ${apiKey}`,
+                'Content-Type': 'application/json',
+                'HTTP-Referer': 'https://brief.delights.pro',
+                'X-Title': 'Sponsor Discovery Engine'
+            },
+            body: JSON.stringify({
+                model: 'anthropic/claude-3-haiku',
+                messages: [{ role: 'user', content: prompt }],
+                response_format: { type: "json_object" }
+            })
+        });
+        const data = await res.json();
+        if (!data.choices || !data.choices[0]) return [];
+        const content = data.choices[0].message.content;
+        const parsed = JSON.parse(content);
+        return Array.isArray(parsed.challengers) ? parsed.challengers : [];
+    } catch (e) {
+        console.error('LLM fetch failed:', e);
+        return [];
+    }
+}
+
 export async function discoverSponsors(supabaseClient?: SupabaseClient): Promise<DiscoveryResult> {
     try {
         const supabase = supabaseClient ?? getDefaultClient();
@@ -487,14 +542,39 @@ export async function discoverSponsors(supabaseClient?: SupabaseClient): Promise
 
         for (const article of articles) {
             const domain = article.source_domain;
+            const topic = detectTopic(article.article_title, article.source_domain);
 
-            // Check if this is an incumbent
+            let incumbentName = domain;
+            let challengers: ChallengerCompany[] = [];
+
+            // 1. Check static map
             if (COMPETITIVE_MAP[domain]) {
                 const incumbent = COMPETITIVE_MAP[domain];
+                incumbentName = incumbent.name;
+                challengers = incumbent.challengers;
                 incumbentsDetected.push(incumbent.name);
+            } 
+            // 2. Dynamic LLM discovery (if strong signal and not in static map)
+            else if (article.total_clicks >= 5 && topic !== 'General' && domain.includes('.')) {
+                // Fast domain formatting
+                incumbentName = domain.replace('www.', '').split('.')[0];
+                incumbentName = incumbentName.charAt(0).toUpperCase() + incumbentName.slice(1);
+                
+                // Fetch from LLM
+                try {
+                    const llmChallengers = await fetchChallengersFromLLM(domain, article.article_title, article.segment);
+                    if (llmChallengers.length > 0) {
+                        challengers = llmChallengers;
+                        incumbentsDetected.push(`${incumbentName} (Auto-Discovered)`);
+                    }
+                } catch (e) {
+                    console.error('LLM discovery failed:', e);
+                }
+            }
 
-                // Find challengers for this incumbent
-                for (const challenger of incumbent.challengers) {
+            // 3. Process challengers if any
+            if (challengers.length > 0) {
+                for (const challenger of challengers) {
                     if (seenDomains.has(challenger.domain) || existingDomains.has(challenger.domain)) continue;
                     seenDomains.add(challenger.domain);
 
@@ -502,10 +582,9 @@ export async function discoverSponsors(supabaseClient?: SupabaseClient): Promise
                     const matchScore = calculateMatchScore(article.total_clicks, article.segment);
                     const finalScore = Math.round(eagerness * 0.5 + matchScore * 0.3 + (challenger.raised_m >= 50 ? 100 : challenger.raised_m >= 10 ? 80 : 60) * 0.2);
                     const pricing = calculatePricing(article.total_clicks);
-                    const topic = detectTopic(article.article_title, article.source_domain);
 
                     const emailDraft = generateEmailDraft(
-                        challenger.name, incumbent.name, article.total_clicks,
+                        challenger.name, incumbentName, article.total_clicks,
                         article.segment, article.article_title, pricing,
                     );
 
@@ -517,11 +596,11 @@ export async function discoverSponsors(supabaseClient?: SupabaseClient): Promise
                         matched_segment: article.segment,
                         match_score: finalScore,
                         eagerness_score: eagerness,
-                        match_reason: `${incumbent.name} article got ${article.total_clicks} clicks from ${article.segment}. ${challenger.name} is a hungry ${challenger.stage.replace('_', ' ')} challenger.`,
-                        competitor_mentioned: incumbent.name,
+                        match_reason: `${incumbentName} article got ${article.total_clicks} clicks from ${article.segment}. ${challenger.name} is a hungry ${challenger.stage.replace('_', ' ')} challenger.`,
+                        competitor_mentioned: incumbentName,
                         discovery_method: 'competitive_challenger',
                         competitive_context: {
-                            incumbent_name: incumbent.name,
+                            incumbent_name: incumbentName,
                             incumbent_domain: domain,
                             pitch_angle: 'beat_the_incumbent',
                             trigger_article: article.article_title,
@@ -543,7 +622,6 @@ export async function discoverSponsors(supabaseClient?: SupabaseClient): Promise
             }
 
             // Also do topic-based matching for non-incumbent articles
-            const topic = detectTopic(article.article_title, article.source_domain);
             if (topic !== 'General' && TOPIC_SPONSORS[topic]) {
                 for (const sponsor of TOPIC_SPONSORS[topic]) {
                     if (seenDomains.has(sponsor.domain) || existingDomains.has(sponsor.domain)) continue;

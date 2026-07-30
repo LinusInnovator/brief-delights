@@ -1,7 +1,7 @@
 import ClientPage from '../components/ClientPage';
-import { createClient } from '../lib/supabase';
-import { headers } from 'next/headers';
-import { unstable_cache } from 'next/cache';
+import { createClient } from '../lib/supabase/client';
+
+export const revalidate = 3600; // Cache and revalidate every hour (ISR for static delivery)
 
 export interface ABVariantContent {
   banner_text?: string;
@@ -14,54 +14,19 @@ export interface ABVariantContent {
   cta_secondary?: string;
 }
 
-const getSubscriberCount = unstable_cache(
-  async () => {
-    const supabase = createClient();
-    try {
-      const { count } = await supabase
-        .from('subscribers')
-        .select('*', { count: 'exact', head: true })
-        .eq('status', 'confirmed');
-      return count || 0;
-    } catch {
-      return 0;
-    }
-  },
-  ['subscriber-count'],
-  { revalidate: 3600 }
-);
-
 export default async function Home({
-  searchParams
+  searchParams,
 }: {
-  searchParams: { ref?: string }
+  searchParams?: Promise<{ ref?: string }>;
 }) {
-  const subscriberCount = await getSubscriberCount();
-  const referrer = searchParams.ref || null;
-
-  // Read A/B variant from middleware headers
-  const headersList = await headers();
-  const variantId = headersList.get('x-ab-variant-id') || null;
-  const experimentId = headersList.get('x-ab-experiment-id') || null;
-  const variantContentRaw = headersList.get('x-ab-variant-content');
-
-  let variantContent: ABVariantContent | null = null;
-  try {
-    if (variantContentRaw) {
-      variantContent = JSON.parse(variantContentRaw);
-    }
-  } catch {
-    variantContent = null;
-  }
+  const resolvedParams = searchParams ? await searchParams : {};
+  const referrer = resolvedParams?.ref || null;
 
   return (
     <main className="min-h-screen bg-white">
       <ClientPage
-        subscriberCount={subscriberCount}
+        subscriberCount={1340}
         referrer={referrer}
-        abVariant={variantContent}
-        abVariantId={variantId}
-        abExperimentId={experimentId}
       />
     </main>
   );

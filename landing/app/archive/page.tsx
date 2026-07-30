@@ -104,6 +104,17 @@ export const metadata = {
     },
 };
 
+function isLockedDate(dateStr: string): boolean {
+    try {
+        const editionDate = new Date(dateStr + 'T00:00:00Z');
+        const now = new Date();
+        const diffDays = (now.getTime() - editionDate.getTime()) / (1000 * 60 * 60 * 24);
+        return diffDays < 2.5;
+    } catch {
+        return false;
+    }
+}
+
 export default async function ArchivePage() {
     const newsletters = await getNewsletters();
     const subscriberCount = await getSubscriberCount();
@@ -156,35 +167,47 @@ export default async function ArchivePage() {
                             })}
                         </h2>
                         <div className="grid md:grid-cols-3 gap-4">
-                            {latestNewsletters.map(newsletter => (
-                                <Link
-                                    key={newsletter.slug}
-                                    href={`/archive/${newsletter.slug}`}
-                                    className="bg-white rounded-xl border-2 border-gray-200 p-6 hover:border-gray-400 hover:shadow-lg transition-all group relative overflow-hidden"
-                                >
-                                    {/* Gradient accent */}
-                                    <div className={`absolute top-0 left-0 right-0 h-1 ${segmentColors[newsletter.segment]}`} />
+                            {latestNewsletters.map(newsletter => {
+                                const locked = isLockedDate(newsletter.date);
+                                return (
+                                    <Link
+                                        key={newsletter.slug}
+                                        href={`/archive/${newsletter.slug}`}
+                                        className="bg-white rounded-xl border-2 border-gray-200 p-6 hover:border-gray-400 hover:shadow-lg transition-all group relative overflow-hidden flex flex-col justify-between"
+                                    >
+                                        {/* Gradient accent */}
+                                        <div className={`absolute top-0 left-0 right-0 h-1 ${segmentColors[newsletter.segment]}`} />
 
-                                    <div className="flex items-center gap-2 mb-3">
-                                        <span className={`${segmentColors[newsletter.segment]} text-white px-3 py-1 rounded-full text-xs font-bold`}>
-                                            {segmentEmojis[newsletter.segment]} {newsletter.segment}
-                                        </span>
-                                        <span className="text-xs text-green-600 font-semibold">NEW</span>
-                                    </div>
+                                        <div>
+                                            <div className="flex items-center justify-between mb-3">
+                                                <span className={`${segmentColors[newsletter.segment]} text-white px-3 py-1 rounded-full text-xs font-bold`}>
+                                                    {segmentEmojis[newsletter.segment]} {newsletter.segment}
+                                                </span>
+                                                {locked ? (
+                                                    <span className="bg-amber-100 text-amber-800 border border-amber-200 px-2 py-0.5 rounded-full text-[10px] font-bold flex items-center gap-1">
+                                                        🔒 Subscriber Only
+                                                    </span>
+                                                ) : (
+                                                    <span className="text-xs text-green-600 font-semibold">NEW</span>
+                                                )}
+                                            </div>
 
-                                    <p className="text-sm text-gray-600 mb-3">
-                                        {segmentDescriptions[newsletter.segment]}
-                                    </p>
+                                            <p className="text-sm text-gray-600 mb-3">
+                                                {segmentDescriptions[newsletter.segment]}
+                                            </p>
 
-                                    <p className="text-base font-semibold text-black group-hover:text-gray-700 mb-2 line-clamp-2">
-                                        {newsletter.topHeadline}
-                                    </p>
+                                            <p className="text-base font-semibold text-black group-hover:text-gray-700 mb-2 line-clamp-2">
+                                                {newsletter.topHeadline}
+                                            </p>
+                                        </div>
 
-                                    <p className="text-xs text-gray-400 mt-auto">
-                                        {newsletter.storyCount} stories • {newsletter.size}
-                                    </p>
-                                </Link>
-                            ))}
+                                        <div className="pt-3 border-t border-gray-100 flex justify-between items-center text-xs text-gray-400 mt-3">
+                                            <span>{newsletter.storyCount} stories • {newsletter.size}</span>
+                                            {locked && <span className="text-indigo-600 font-semibold">Subscribe to read →</span>}
+                                        </div>
+                                    </Link>
+                                );
+                            })}
                         </div>
                     </section>
                 )}

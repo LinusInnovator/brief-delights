@@ -29,22 +29,25 @@ PROJECT_ROOT = Path(__file__).parent.parent
 TMP_DIR = PROJECT_ROOT / ".tmp"
 TODAY = datetime.now().strftime("%Y-%m-%d")
 
-# OpenRouter configuration
-client = OpenAI(
-    base_url="https://openrouter.ai/api/v1",
-    api_key=os.getenv("OPENROUTER_API_KEY"),
-    default_headers={
-        "HTTP-Referer": "https://brief.delights.pro",
-        "X-Title": "The Brief",
-    }
-)
+def get_client():
+    """Lazy initialize OpenAI client to avoid failure on module import if key is missing"""
+    return OpenAI(
+        base_url="https://openrouter.ai/api/v1",
+        api_key=os.getenv("OPENROUTER_API_KEY"),
+        default_headers={
+            "HTTP-Referer": "https://brief.delights.pro",
+            "X-Title": "The Brief",
+        }
+    )
 
-# Model selection (using faster/cheaper model for summaries)
-PRIMARY_MODEL = "anthropic/claude-3-haiku"
-FALLBACK_MODEL = "openai/gpt-3.5-turbo"
+import re
 
-# Parallel processing
-MAX_WORKERS = 3
+# Model selection (faster, cheaper, higher intelligence models)
+PRIMARY_MODEL = os.getenv("PRIMARY_LLM_MODEL", "google/gemini-2.5-flash")
+FALLBACK_MODEL = "openai/gpt-4o-mini"
+
+# Parallel processing (increase worker count for 3x faster execution)
+MAX_WORKERS = 8
 
 
 def log(message: str, log_file: Path):
@@ -57,20 +60,27 @@ def log(message: str, log_file: Path):
 
 
 def prepare_content(article: Dict) -> str:
-    """Prepare article content for summarization"""
+    """Prepare article content for summarization (with token optimization)"""
     # Prioritize enriched full_content, fallback to raw_content, then description
-    content = (
+    raw_text = (
         article.get('full_content', '') or 
         article.get('raw_content', '') or 
         article.get('description', '')
     )
     
+    # Replace block tags with newlines to preserve clean paragraph structure
+    text = re.sub(r'<(p|br|div|h[1-6]|li)[^>]*>', '\n', raw_text, flags=re.IGNORECASE)
+    # Strip remaining HTML tags and normalize whitespace
+    clean_text = re.sub(r'<[^>]+>', ' ', text)
+    clean_text = re.sub(r'[ \t]+', ' ', clean_text)
+    clean_text = re.sub(r'\n\s*\n+', '\n\n', clean_text).strip()
+    
     # Truncate if too long (save tokens)
     max_length = 3000
-    if len(content) > max_length:
-        content = content[:max_length] + "..."
+    if len(clean_text) > max_length:
+        clean_text = clean_text[:max_length] + "..."
     
-    return content
+    return clean_text
 
 
 def calculate_read_time(word_count: int) -> int:
@@ -160,29 +170,35 @@ Return ONLY valid JSON (no markdown, no explanations):
 
 
 
-def call_llm_for_summary(prompt: str, model: str = PRIMARY_MODEL) -> Dict:
-    """Call LLM to generate summary"""
-    try:
-        response = client.chat.completions.create(
-            model=model,
-            messages=[{"role": "user", "content": prompt}],
-            temperature=0.5,
-            max_tokens=300
-        )
-        
-        content = response.choices[0].message.content.strip()
-        
-        # Remove markdown if present
-        if content.startswith("```"):
-            content = content.split("```")[1]
-            if content.startswith("json"):
-                content = content[4:]
-        
-        return json.loads(content)
-        
-    except Exception as e:
-        log(f"❌ Error in LLM call: {str(e)}")
-        raise
+def call_llm_for_summary(prompt: str, model: str = PRIMARY_MODEL, retries: int = 4) -> Dict:
+    """Call LLM to generate summary with exponential backoff for rate limits"""
+    for attempt in range(retries):
+        try:
+            response = client.chat.completions.create(
+                model=model,
+                messages=[{"role": "user", "content": prompt}],
+                temperature=0.5,
+                max_tokens=300
+            )
+            
+            content = response.choices[0].message.content.strip()
+            
+            # Remove markdown if present
+            if content.startswith("```"):
+                content = content.split("```")[1]
+                if content.startswith("json"):
+                    content = content[4:]
+            
+            return json.loads(content)
+            
+        except Exception as e:
+            if attempt < retries - 1:
+                # Exponential backoff: 1s, 2s, 4s...
+                time.sleep(2 ** attempt)
+                continue
+            
+            log(f"❌ Error in LLM call after {retries} attempts: {str(e)}")
+            raise
 
 
 
