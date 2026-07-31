@@ -43,8 +43,8 @@ client = OpenAI(
     }
 )
 
-# Model selection
-PRIMARY_MODEL = os.getenv("PRIMARY_LLM_MODEL", "google/gemini-2.5-flash")
+# Model selection (using OpenRouter auto-updating latest alias)
+PRIMARY_MODEL = os.getenv("PRIMARY_LLM_MODEL", "google/gemini-flash-latest")
 FALLBACK_MODEL = "openai/gpt-4o-mini"
 
 # Pydantic models for structured output

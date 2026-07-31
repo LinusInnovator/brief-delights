@@ -43,7 +43,7 @@ def get_client():
 import re
 
 # Model selection (faster, cheaper, higher intelligence models)
-PRIMARY_MODEL = os.getenv("PRIMARY_LLM_MODEL", "google/gemini-2.5-flash")
+PRIMARY_MODEL = os.getenv("PRIMARY_LLM_MODEL", "google/gemini-flash-latest")
 FALLBACK_MODEL = "openai/gpt-4o-mini"
 
 # Parallel processing (increase worker count for 3x faster execution)
