@@ -48,10 +48,10 @@ def render_cobranded_html(brand: dict, articles: list) -> str:
         .subtitle {{ font-size: 14px; color: #94a3b8; margin: 0; }}
         .content {{ padding: 32px 24px; }}
         .card {{ background-color: #0f172a; border-radius: 12px; padding: 20px; margin-bottom: 20px; border: 1px solid #334155; }}
-        .card-tag {{ color: {palette['brand_hex']}; font-size: 12px; font-weight: bold; text-transform: uppercase; margin-bottom: 8px; display: block; letter-spacing: 0.5px; }}
+        .card-tag {{ color: {palette['tag_color']}; font-size: 12px; font-weight: bold; text-transform: uppercase; margin-bottom: 8px; display: block; letter-spacing: 0.5px; }}
         .card-title {{ font-size: 18px; color: #ffffff; margin: 0 0 10px 0; text-decoration: none; display: block; font-weight: 700; line-height: 1.4; }}
         .card-desc {{ font-size: 14px; color: #cbd5e1; line-height: 1.6; margin-bottom: 14px; }}
-        .why-box {{ background-color: #1e293b; padding: 14px 16px; border-radius: 8px; border-left: 3px solid {palette['brand_hex']}; font-size: 13px; color: #e2e8f0; line-height: 1.5; }}
+        .why-box {{ background-color: #1e293b; padding: 14px 16px; border-radius: 8px; border-left: 3px solid {palette['border_accent']}; font-size: 13px; color: #e2e8f0; line-height: 1.5; }}
         .footer {{ text-align: center; padding: 24px; font-size: 13px; color: #64748b; border-top: 1px solid #334155; }}
         .cta-btn {{ display: inline-block; background-color: {palette['brand_hex']}; color: {palette['text_on_brand']}; padding: 14px 28px; border-radius: 10px; font-weight: bold; text-decoration: none; font-size: 15px; box-shadow: 0 4px 14px rgba(0,0,0,0.25); }}
     </style>
