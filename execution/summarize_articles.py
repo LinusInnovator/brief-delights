@@ -380,7 +380,10 @@ def main():
         with open(input_file, 'r') as f:
             data = json.load(f)
         
-        articles = data['selected_articles']
+        articles = data.get('selected_articles') or data.get('articles') or []
+        if not articles:
+            log(f"⚠️ No articles found in {input_file}", log_file)
+            return False
         
         # Load trend context if enabled
         trend_context = ""

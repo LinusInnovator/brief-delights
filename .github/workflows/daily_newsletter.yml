@@ -85,18 +85,23 @@ jobs:
           git config --local user.name "GitHub Action Bot"
           git add landing/public/newsletters/
           # Only commit if there are changes
-          git diff --staged --quiet || git commit -m "📰 Auto-generated newsletters $(date +%Y-%m-%d)"
-          git push
+          if ! git diff --staged --quiet; then
+            git commit -m "📰 Auto-generated newsletters $(date +%Y-%m-%d)"
+            git pull --rebase origin main
+            git push origin main
+          fi
       
       - name: Commit weekly insights data
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action Bot"
-          # Add weekly insights snapshots for Sunday synthesis
           git add reports/weekly_insights/
           # Only commit if there are changes
-          git diff --staged --quiet || git commit -m "📊 Weekly insights data $(date +%Y-%m-%d)"
-          git push
+          if ! git diff --staged --quiet; then
+            git commit -m "📊 Weekly insights data $(date +%Y-%m-%d)"
+            git pull --rebase origin main
+            git push origin main
+          fi
       
       - name: Upload artifacts
         if: always()
