@@ -72,17 +72,22 @@ export default function AdminSidebar() {
 
     return (
         <aside
-            className={`fixed left-0 top-0 h-screen bg-[#0f172a] text-white flex flex-col z-50 transition-all duration-300 ${collapsed ? 'w-[68px]' : 'w-[240px]'
+            className={`fixed left-0 top-0 h-screen bg-[#3D0A11] text-white flex flex-col z-50 transition-all duration-300 border-r border-[#C5A059]/20 ${collapsed ? 'w-[68px]' : 'w-[240px]'
                 }`}
         >
             {/* Logo */}
-            <div className="px-4 py-5 flex items-center justify-between border-b border-white/10">
+            <div className="px-4 py-5 flex items-center justify-between border-b border-[#C5A059]/20 bg-[#2D070C]">
                 {!collapsed && (
-                    <a href="/dashboard" className="flex items-center gap-2 group">
-                        <span className="text-xl">✉️</span>
-                        <span className="font-bold text-sm tracking-tight group-hover:text-blue-300 transition">
-                            Brief Delights
-                        </span>
+                    <a href="/dashboard" className="flex items-center gap-2.5 group">
+                        <div className="w-8 h-8 rounded-lg bg-white/10 border border-[#C5A059]/30 flex items-center justify-center p-1">
+                            <img src="/bd_seal_logo.png" alt="Brief Delights" className="w-6 h-6 object-contain" />
+                        </div>
+                        <div className="flex flex-col">
+                            <span className="font-serif font-bold text-sm tracking-tight text-white group-hover:text-[#C5A059] transition">
+                                Brief Delights
+                            </span>
+                            <span className="text-[9px] text-[#C5A059] font-mono tracking-widest uppercase">Studio</span>
+                        </div>
                     </a>
                 )}
                 <button
@@ -114,15 +119,15 @@ export default function AdminSidebar() {
                                         className={`
                                             flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium transition-all
                                             ${active
-                                                ? 'bg-blue-600/20 text-blue-300 shadow-[inset_2px_0_0_#3b82f6]'
-                                                : 'text-white/60 hover:text-white hover:bg-white/5'
+                                                ? 'bg-[#58111A] text-white font-bold border-l-2 border-[#C5A059] shadow-sm'
+                                                : 'text-white/70 hover:text-white hover:bg-white/5'
                                             }
                                         `}
                                     >
                                         <span className="text-base flex-shrink-0">{item.icon}</span>
                                         {!collapsed && <span>{item.label}</span>}
                                         {!collapsed && item.badge && (
-                                            <span className="ml-auto bg-blue-500/20 text-blue-300 text-[10px] font-bold px-1.5 py-0.5 rounded-full">
+                                            <span className="ml-auto bg-[#C5A059]/20 text-[#C5A059] border border-[#C5A059]/30 text-[10px] font-bold px-1.5 py-0.5 rounded-full">
                                                 {item.badge}
                                             </span>
                                         )}

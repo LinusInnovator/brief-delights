@@ -52,23 +52,28 @@ export default function DashboardPage() {
     }
 
     return (
-        <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100">
+        <div className="min-h-screen bg-[#FAF8F5]">
 
-            <main className="max-w-7xl mx-auto px-6 py-8">
-                {/* Header */}
-                <div className="flex items-center justify-between mb-8">
-                    <div>
-                        <h1 className="text-3xl font-bold text-slate-900">Analytics Dashboard</h1>
-                        <p className="text-slate-600 mt-1">Real-time newsletter performance metrics</p>
+            <main className="max-w-7xl mx-auto px-6 py-10">
+                {/* Editorial Header */}
+                <div className="flex items-center justify-between mb-10 pb-6 border-b border-[#121212]/10">
+                    <div className="flex items-center gap-4">
+                        <div className="w-12 h-12 rounded-2xl bg-white border border-[#4A0E17]/20 shadow-md flex items-center justify-center p-1.5">
+                            <img src="/bd_seal_logo.png" alt="Brief Delights Wax Seal" className="w-8 h-8 object-contain" />
+                        </div>
+                        <div>
+                            <h1 className="text-3xl font-serif text-[#121212] font-bold">Analytics Studio</h1>
+                            <p className="text-xs text-[#58111A] font-medium tracking-widest uppercase mt-0.5">Real-Time Knowledge & Delivery Intelligence</p>
+                        </div>
                     </div>
                     <div className="flex items-center gap-4">
                         <button
                             onClick={() => { setLoading(true); loadData(); }}
-                            className="text-sm text-slate-500 hover:text-slate-700 transition"
+                            className="text-xs font-bold text-gray-600 hover:text-[#58111A] transition bg-white border border-gray-200 px-3 py-1.5 rounded-lg shadow-sm"
                         >
-                            ↻ Refresh
+                            ↻ Refresh Data
                         </button>
-                        <span className="text-sm text-slate-500">Last updated: {lastUpdated}</span>
+                        <span className="text-xs text-gray-500 font-mono">Updated: {lastUpdated}</span>
                         <div className="h-2 w-2 bg-green-500 rounded-full animate-pulse" />
                     </div>
                 </div>
