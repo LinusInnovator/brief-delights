@@ -68,25 +68,25 @@ jobs:
           INTERNAL_GOD_KEY: ${{ secrets.INTERNAL_GOD_KEY }}
           SITE_URL: https://brief.delights.pro
       
-      - name: Move newsletters to public folder
+      - name: Move newsletters and previews to public folder
         run: |
-          mkdir -p landing/public/newsletters
-          # Copy any generated newsletters from .tmp to public
+          mkdir -p landing/public/newsletters landing/public/previews
           if ls .tmp/newsletter_*.html 1> /dev/null 2>&1; then
             cp .tmp/newsletter_*.html landing/public/newsletters/
             echo "✅ Moved newsletters to public folder"
-          else
-            echo "⚠️ No newsletters generated"
+          fi
+          if ls landing/public/previews/*.html 1> /dev/null 2>&1; then
+            echo "✅ Previews ready in public folder"
           fi
       
-      - name: Commit and push newsletters
+      - name: Commit and push newsletters & previews
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action Bot"
-          git add landing/public/newsletters/
+          git add landing/public/newsletters/ landing/public/previews/
           # Only commit if there are changes
           if ! git diff --staged --quiet; then
-            git commit -m "📰 Auto-generated newsletters $(date +%Y-%m-%d)"
+            git commit -m "📰 Auto-generated newsletters & previews $(date +%Y-%m-%d)"
             git pull --rebase origin main
             git push origin main
           fi
