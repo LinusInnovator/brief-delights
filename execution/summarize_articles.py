@@ -41,9 +41,14 @@ client = OpenAI(
 
 import re
 
-# Model selection (faster, cheaper, higher intelligence models)
-PRIMARY_MODEL = os.getenv("PRIMARY_LLM_MODEL", "google/gemini-flash-latest")
-FALLBACK_MODEL = "openai/gpt-4o-mini"
+from execution.snell_router import get_recommended_models
+
+# Dynamic Model Selection via Snell Router Gateway
+PRIMARY_MODEL, FALLBACK_MODEL = get_recommended_models(
+    intent="summarization",
+    default_primary=os.getenv("PRIMARY_LLM_MODEL", "google/gemini-2.5-flash"),
+    default_fallback="openai/gpt-4o-mini"
+)
 
 # Parallel processing (increase worker count for 3x faster execution)
 MAX_WORKERS = 8

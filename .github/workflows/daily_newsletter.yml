@@ -65,6 +65,7 @@ jobs:
           REDDIT_CLIENT_ID: ${{ secrets.REDDIT_CLIENT_ID }}
           REDDIT_CLIENT_SECRET: ${{ secrets.REDDIT_CLIENT_SECRET }}
           REDDIT_SESSION_COOKIE: ${{ secrets.REDDIT_SESSION_COOKIE }}
+          INTERNAL_GOD_KEY: ${{ secrets.INTERNAL_GOD_KEY }}
           SITE_URL: https://brief.delights.pro
       
       - name: Move newsletters to public folder

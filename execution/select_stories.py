@@ -43,9 +43,14 @@ client = OpenAI(
     }
 )
 
-# Model selection
-PRIMARY_MODEL = os.getenv("PRIMARY_LLM_MODEL", "google/gemini-2.5-flash")
-FALLBACK_MODEL = "openai/gpt-4o-mini"
+from execution.snell_router import get_recommended_models
+
+# Dynamic Model Selection via Snell Router Gateway
+PRIMARY_MODEL, FALLBACK_MODEL = get_recommended_models(
+    intent="drafting",
+    default_primary=os.getenv("PRIMARY_LLM_MODEL", "google/gemini-2.5-flash"),
+    default_fallback="openai/gpt-4o-mini"
+)
 
 # Pydantic models for structured output
 class SelectedArticle(BaseModel):
