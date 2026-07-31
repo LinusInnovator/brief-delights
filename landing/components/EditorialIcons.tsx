@@ -90,3 +90,49 @@ export function IconEditoriallyCurated({ className = "w-8 h-8 text-[#58111A]" }:
     </svg>
   );
 }
+
+// Role Stream Edition Icons (Monocle Standard)
+
+export function IconStreamBuilders({ className = "w-8 h-8 text-[#58111A]" }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+      {/* Crossed Drafting Wrenches / Calipers */}
+      <path d="M7 25L17 15M15 17L25 7" stroke="currentColor" strokeWidth="1.25" strokeLinecap="round" />
+      <circle cx="24" cy="8" r="3" stroke="currentColor" strokeWidth="1.25" />
+      <circle cx="8" cy="24" r="3" stroke="currentColor" strokeWidth="1.25" />
+      <path d="M12 8L24 20" stroke="currentColor" strokeWidth="1.25" strokeLinecap="round" />
+      <circle cx="12" cy="8" r="1.5" fill="currentColor" />
+      <circle cx="20" cy="24" r="1.5" stroke="currentColor" strokeWidth="1" />
+    </svg>
+  );
+}
+
+export function IconStreamLeaders({ className = "w-8 h-8 text-[#58111A]" }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+      {/* Executive Leather Briefcase */}
+      <rect x="5" y="10" width="22" height="16" rx="3" stroke="currentColor" strokeWidth="1.25" />
+      {/* Handle */}
+      <path d="M12 10V7C12 5.9 12.9 5 14 5H18C19.1 5 20 5.9 20 7V10" stroke="currentColor" strokeWidth="1.25" strokeLinecap="round" />
+      {/* Brass Clasp & Straps */}
+      <line x1="11" y1="10" x2="11" y2="26" stroke="currentColor" strokeWidth="0.75" />
+      <line x1="21" y1="10" x2="21" y2="26" stroke="currentColor" strokeWidth="0.75" />
+      <rect x="14.5" y="15" width="3" height="3" rx="0.5" stroke="currentColor" strokeWidth="1" fill="#FAF8F5" />
+    </svg>
+  );
+}
+
+export function IconStreamInnovators({ className = "w-8 h-8 text-[#58111A]" }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+      {/* Vintage Rocket / Frontier Impulse Mark */}
+      <path d="M16 4C16 4 23 9 23 18L16 23L9 18C9 9 16 4 16 4Z" stroke="currentColor" strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round" />
+      <circle cx="16" cy="13" r="2.5" stroke="currentColor" strokeWidth="1" fill="#FAF8F5" />
+      {/* Fins */}
+      <path d="M9 18L5 22L9 23" stroke="currentColor" strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M23 18L27 22L23 23" stroke="currentColor" strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round" />
+      {/* Exhaust Impulse Rays */}
+      <path d="M14 26L16 29L18 26" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}

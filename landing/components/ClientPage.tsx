@@ -8,7 +8,10 @@ import {
     IconDataDriven, 
     IconSundaySynthesis, 
     IconFreeForever, 
-    IconEditoriallyCurated 
+    IconEditoriallyCurated,
+    IconStreamBuilders,
+    IconStreamLeaders,
+    IconStreamInnovators
 } from './EditorialIcons';
 import SignupForm, { SignupFormRef } from './SignupForm';
 
@@ -164,7 +167,9 @@ export default function ClientPage({
                         <div className="bg-white border border-[#121212]/10 rounded-2xl p-8 hover:border-[#58111A] hover:shadow-xl transition cursor-pointer group flex flex-col justify-between">
                             <div>
                                 <div className="flex items-center justify-between mb-4">
-                                    <span className="text-4xl">🛠️</span>
+                                    <div className="w-12 h-12 rounded-xl bg-[#58111A]/10 border border-[#58111A]/20 flex items-center justify-center">
+                                        <IconStreamBuilders className="w-6 h-6 text-[#58111A]" />
+                                    </div>
                                     <span className="bg-[#C5A059]/15 text-[#8C6D2B] border border-[#C5A059]/30 text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full">TECHNICAL STREAM</span>
                                 </div>
                                 <h4 className="text-2xl font-serif font-bold mb-2 text-[#121212] group-hover:text-[#58111A] transition">Builders</h4>
@@ -186,7 +191,9 @@ export default function ClientPage({
                             <div className="absolute top-0 right-0 bg-[#58111A] text-white text-[9px] font-bold uppercase tracking-widest px-3 py-1 rounded-bl-lg">POPULAR</div>
                             <div>
                                 <div className="flex items-center justify-between mb-4">
-                                    <span className="text-4xl">💼</span>
+                                    <div className="w-12 h-12 rounded-xl bg-[#58111A]/10 border border-[#58111A]/20 flex items-center justify-center">
+                                        <IconStreamLeaders className="w-6 h-6 text-[#58111A]" />
+                                    </div>
                                     <span className="bg-[#58111A]/10 text-[#58111A] border border-[#58111A]/20 text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full">STRATEGY STREAM</span>
                                 </div>
                                 <h4 className="text-2xl font-serif font-bold mb-2 text-[#121212] group-hover:text-[#58111A] transition">Leaders</h4>
@@ -207,7 +214,9 @@ export default function ClientPage({
                         <div className="bg-white border border-[#121212]/10 rounded-2xl p-8 hover:border-[#58111A] hover:shadow-xl transition cursor-pointer group flex flex-col justify-between">
                             <div>
                                 <div className="flex items-center justify-between mb-4">
-                                    <span className="text-4xl">🚀</span>
+                                    <div className="w-12 h-12 rounded-xl bg-[#58111A]/10 border border-[#58111A]/20 flex items-center justify-center">
+                                        <IconStreamInnovators className="w-6 h-6 text-[#58111A]" />
+                                    </div>
                                     <span className="bg-[#C5A059]/15 text-[#8C6D2B] border border-[#C5A059]/30 text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full">FRONTIER STREAM</span>
                                 </div>
                                 <h4 className="text-2xl font-serif font-bold mb-2 text-[#121212] group-hover:text-[#58111A] transition">Innovators</h4>
