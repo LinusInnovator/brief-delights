@@ -210,18 +210,30 @@ def load_template() -> Template:
             margin: 32px 0;
         }
 
-        /* Charts */
+        /* Strict Image & Diagram Container System */
+        img {
+            max-width: 480px !important;
+            max-height: 240px !important;
+            width: auto !important;
+            height: auto !important;
+            object-fit: contain !important;
+            border-radius: 8px !important;
+            margin: 24px auto !important;
+            display: block !important;
+            box-shadow: 0 4px 14px rgba(0,0,0,0.08) !important;
+        }
+
         .chart-container {
             margin: 32px 0;
             text-align: center;
         }
 
         .chart-container img {
-            max-width: 100%;
-            height: auto;
-            display: block;
-            margin: 0 auto;
+            max-width: 480px !important;
+            max-height: 240px !important;
+            height: auto !important;
             border-radius: 8px;
+            border: 1px solid #e8e8e8;
         }
 
         /* Footer */

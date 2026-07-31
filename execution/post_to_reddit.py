@@ -47,8 +47,8 @@ def format_reddit_post(segment: str, article: dict) -> tuple:
     source = article.get('source', '')
     
     # Strip generic fallback prefix if present
-    if why_it_matters.lower().startswith("strategic takeaway"):
-        why_it_matters = re.sub(r'^strategic takeaway for [^:]+:\s*', '', why_it_matters, flags=re.IGNORECASE).strip()
+    # Clean duplicate "Why it matters:" or "Strategic Takeaway" prefixes
+    why_it_matters = re.sub(r'^(why\s+(it|this)\s+matters:?\s*|strategic\s+takeaway\s+(for\s+[^:]+:?\s*)?)+', '', why_it_matters, flags=re.IGNORECASE).strip()
     
     # If why_it_matters is missing or redundant, construct a contextual strategic insight directly from the article's takeaway
     if not why_it_matters or why_it_matters.lower() == key_takeaway.lower():

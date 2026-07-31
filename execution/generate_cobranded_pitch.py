@@ -53,6 +53,7 @@ def render_cobranded_html(brand: dict, articles: list) -> str:
         .card-title {{ font-size: 18px; color: #ffffff; margin: 0 0 10px 0; text-decoration: none; display: block; font-weight: 700; line-height: 1.4; }}
         .card-desc {{ font-size: 14px; color: #cbd5e1; line-height: 1.6; margin-bottom: 14px; }}
         .why-box {{ background-color: #1e293b; padding: 14px 16px; border-radius: 8px; border-left: 3px solid {palette['border_accent']}; font-size: 13px; color: #e2e8f0; line-height: 1.5; }}
+        img {{ max-width: 480px !important; max-height: 240px !important; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px !important; margin: 20px auto !important; display: block !important; box-shadow: 0 4px 14px rgba(0,0,0,0.15) !important; }}
         .footer {{ text-align: center; padding: 24px; font-size: 13px; color: #64748b; border-top: 1px solid #334155; }}
         .cta-btn {{ display: inline-block; background-color: {palette['brand_hex']}; color: {palette['text_on_brand']}; padding: 14px 28px; border-radius: 10px; font-weight: bold; text-decoration: none; font-size: 15px; box-shadow: 0 4px 14px rgba(0,0,0,0.25); }}
     </style>
@@ -82,15 +83,15 @@ def render_cobranded_html(brand: dict, articles: list) -> str:
         raw_desc = a.get('description', '').strip()
         desc_text = raw_desc if len(raw_desc) > 20 else sample_summaries[i % len(sample_summaries)]
         cat_name = a.get('category', 'RESEARCH & SIGNAL')
-        art_title = a.get('title', 'Untitled Signal')
-        why_text = get_company_specific_insight(company_name, cat_name, art_title)
+        why_raw = get_company_specific_insight(company_name, cat_name, art_title)
+        why_clean = re.sub(r'^(why\s+this\s+matters:?\s*)+', '', why_raw, flags=re.IGNORECASE).strip()
 
         html_content += f"""
             <div class="card">
                 <span class="card-tag">{cat_name}</span>
                 <a href="{a.get('url', '#')}" target="_blank" class="card-title">{art_title}</a>
                 <p class="card-desc">{desc_text}</p>
-                <div class="why-box">💡 <strong>Why This Matters to {company_name} Users:</strong> {why_text}</div>
+                <div class="why-box">💡 <strong>Why This Matters to {company_name} Users:</strong> {why_clean}</div>
             </div>"""
 
     html_content += f"""

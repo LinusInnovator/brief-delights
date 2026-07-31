@@ -156,8 +156,22 @@ def fix_read_times(articles: list, log_file: Path) -> list:
         elif not summary:
             article['summary'] = description
 
-        if not article.get('why_this_matters'):
-            article['why_this_matters'] = why or "Provides actionable strategic value for enterprise infrastructure."
+        # Strip duplicate "Why this matters:" prefixes
+        why_clean = re.sub(r'^(why\s+this\s+matters:?\s*)+', '', why, flags=re.IGNORECASE).strip()
+        article['why_this_matters'] = why_clean or "Provides actionable strategic value for enterprise infrastructure."
+
+        # Constrain or strip raw unstyled RSS images from article summaries
+        def constrain_image(match):
+            img_tag = match.group(0)
+            src_match = re.search(r'src=["\']([^"\']+)["\']', img_tag)
+            if not src_match:
+                return ''
+            src = src_match.group(1)
+            # Only keep high-signal diagrams, wrapped in a strict 480x240 max container
+            return f'<div style="text-align:center;margin:24px 0;"><img src="{src}" style="max-width:480px;max-height:240px;width:auto;height:auto;object-fit:contain;border-radius:8px;box-shadow:0 4px 14px rgba(0,0,0,0.08);display:block;margin:0 auto;" /></div>'
+
+        summary = re.sub(r'<img[^>]*>', constrain_image, summary)
+        article['summary'] = summary
 
         # 2. Read time fix
         old_rt = article.get('read_time_minutes', 0) or 0
