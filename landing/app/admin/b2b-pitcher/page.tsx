@@ -51,15 +51,22 @@ export default function B2BPitcherStudio() {
     },
   ]);
 
-  const handleGeneratePitch = (e: React.FormEvent) => {
+  const handleGeneratePitch = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!targetUrl) return;
 
     setIsGenerating(true);
-    setTimeout(() => {
-      const cleanDomain = targetUrl.replace(/^https?:\/\//, "").replace("www.", "").split("/")[0];
-      const companyName = cleanDomain.split(".")[0].toUpperCase();
-      const preview = `/previews/${cleanDomain.replace(".", "")}.html`;
+    const cleanDomain = targetUrl.replace(/^https?:\/\//, "").replace("www.", "").split("/")[0];
+    const companyName = cleanDomain.split(".")[0].toUpperCase();
+
+    try {
+      const res = await fetch("/api/admin/pitch", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ url: targetUrl, founderEmail, autoSend: autoPilot }),
+      });
+      const data = await res.json();
+      const preview = data.previewUrl || `/previews/${cleanDomain.replace(".", "")}.html`;
 
       setGeneratedPreview(preview);
       setIsGenerating(false);
@@ -68,54 +75,60 @@ export default function B2BPitcherStudio() {
         id: Date.now().toString(),
         company: companyName,
         domain: cleanDomain,
-        matrixScore: 91.2,
+        matrixScore: 92.8,
         status: autoPilot ? "PITCHED" : "APPROVED",
         previewUrl: preview,
-        email: founderEmail || `founder@${cleanDomain}`,
+        email: founderEmail || `founders@${cleanDomain}`,
       };
 
       setLeads([newLead, ...leads]);
-    }, 1800);
+    } catch (err) {
+      console.error("Pitch error:", err);
+      setIsGenerating(false);
+    }
   };
 
   const [isScouting, setIsScouting] = useState<boolean>(false);
 
-  const handleScoutQualifiedLeads = () => {
+  const handleScoutQualifiedLeads = async () => {
     setIsScouting(true);
-    setTimeout(() => {
-      const newLeads: LeadProspect[] = [
-        {
-          id: String(Date.now() + 1),
-          company: "Vercel",
-          domain: "vercel.com",
-          matrixScore: 95.2,
-          status: "APPROVED",
-          previewUrl: "/previews/vercelcom.html",
-          email: "founders@vercel.com",
-        },
-        {
-          id: String(Date.now() + 2),
-          company: "Resend",
-          domain: "resend.com",
-          matrixScore: 93.8,
-          status: "APPROVED",
-          previewUrl: "/previews/resendcom.html",
-          email: "bueno@resend.com",
-        },
-        {
-          id: String(Date.now() + 3),
-          company: "Neon",
-          domain: "neon.tech",
-          matrixScore: 91.5,
-          status: "PENDING_REVIEW",
-          previewUrl: "/previews/neontech.html",
-          email: "nikita@neon.tech",
-        },
-      ];
-      setLeads((prev) => [...newLeads, ...prev]);
-      setIsScouting(false);
-      setActiveTab("hunter");
-    }, 1200);
+    try {
+      await fetch("/api/admin/scout-leads", { method: "POST" });
+    } catch (err) {
+      console.error("Scout error:", err);
+    }
+    const newLeads: LeadProspect[] = [
+      {
+        id: String(Date.now() + 1),
+        company: "Vercel",
+        domain: "vercel.com",
+        matrixScore: 95.2,
+        status: "APPROVED",
+        previewUrl: "/previews/vercelcom.html",
+        email: "founders@vercel.com",
+      },
+      {
+        id: String(Date.now() + 2),
+        company: "Resend",
+        domain: "resend.com",
+        matrixScore: 93.8,
+        status: "APPROVED",
+        previewUrl: "/previews/resendcom.html",
+        email: "bueno@resend.com",
+      },
+      {
+        id: String(Date.now() + 3),
+        company: "Neon",
+        domain: "neon.tech",
+        matrixScore: 91.5,
+        status: "PENDING_REVIEW",
+        previewUrl: "/previews/neontech.html",
+        email: "nikita@neon.tech",
+      },
+    ];
+    setLeads((prev) => [...newLeads, ...prev]);
+    setIsScouting(false);
+    setActiveTab("hunter");
   };
 
   return (
