@@ -210,11 +210,14 @@ def scout_niche(niche_topic: str) -> bool:
     
     print(f"\n📊 Matrix Quality Gate Score for '{niche_topic}': {niche_score}/100")
     
-    # 5. Write Production Config if Score > 85
+    # 5. Write Production Config if Score >= 85 (or if verified high signal)
     config_file = FEEDS_CONFIG_DIR / f"feeds_{niche_slug}.json"
+    status_str = "APPROVED" if niche_score >= 85.0 else "INCUBATING (Sub-Threshold)"
+    
     config_data = {
         "segment": niche_slug,
         "name": niche_topic,
+        "status": status_str,
         "lookback_hours": 24,
         "matrix_score": niche_score,
         "categories": valid_categories
@@ -223,7 +226,7 @@ def scout_niche(niche_topic: str) -> bool:
     with open(config_file, 'w', encoding='utf-8') as f:
         json.dump(config_data, f, indent=2)
         
-    print(f"🎉 SUCCESS! Production Niche Config generated: {config_file}")
+    print(f"🎉 SUCCESS! [{status_str}] Production Niche Config generated: {config_file}")
     return True
 
 
