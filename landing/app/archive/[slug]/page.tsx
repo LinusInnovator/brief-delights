@@ -2,11 +2,56 @@ import Link from 'next/link';
 import { readFileSync, existsSync } from 'fs';
 import { join } from 'path';
 import { notFound } from 'next/navigation';
+import type { Metadata } from 'next';
 
 export const revalidate = 3600;
 
 interface PageProps {
   params: Promise<{ slug: string }>;
+}
+
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const resolvedParams = await params;
+  const { slug } = resolvedParams;
+
+  const match = slug.match(/^(\d{4}-\d{2}-\d{2})-(\w+)$/);
+  if (!match) return {};
+
+  const [, date, segment] = match;
+  const capitalizedSegment = segment.charAt(0).toUpperCase() + segment.slice(1);
+  const title = `${capitalizedSegment} Brief (${date}) — Daily Tech & AI Intelligence`;
+  const description = `Read the ${capitalizedSegment} Edition of Brief Delights for ${date}. Role-curated AI research, developer tooling benchmarks, and market strategy takeaways.`;
+  const canonicalUrl = `https://brief.delights.pro/archive/${slug}`;
+
+  return {
+    title,
+    description,
+    alternates: {
+      canonical: canonicalUrl,
+    },
+    openGraph: {
+      title,
+      description,
+      url: canonicalUrl,
+      siteName: 'Brief Delights',
+      type: 'article',
+      publishedTime: date,
+      images: [
+        {
+          url: 'https://brief.delights.pro/bd_seal_logo.png',
+          width: 1200,
+          height: 630,
+          alt: 'Brief Delights - Knowledge Refined',
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description,
+      images: ['https://brief.delights.pro/bd_seal_logo.png'],
+    },
+  };
 }
 
 function isLockedDate(dateStr: string): boolean {
@@ -63,8 +108,37 @@ export default async function NewsletterSlugPage({ params }: PageProps) {
     `;
   }
 
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'TechArticle',
+    'headline': `${segment.charAt(0).toUpperCase() + segment.slice(1)} Brief (${date}) — Daily Tech & AI Intelligence`,
+    'datePublished': date,
+    'inLanguage': 'en-US',
+    'author': {
+      '@type': 'Organization',
+      'name': 'Brief Delights',
+      'url': 'https://brief.delights.pro',
+    },
+    'publisher': {
+      '@type': 'Organization',
+      'name': 'Brief Delights',
+      'logo': {
+        '@type': 'ImageObject',
+        'url': 'https://brief.delights.pro/bd_seal_logo.png',
+      },
+    },
+    'mainEntityOfPage': {
+      '@type': 'WebPage',
+      '@id': `https://brief.delights.pro/archive/${slug}`,
+    },
+  };
+
   return (
-    <div className="min-h-screen bg-gray-50 flex flex-col">
+    <div className="min-h-screen bg-[#FAF8F5] flex flex-col font-sans">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       {/* Top Banner */}
       <header className="bg-black text-white py-3 px-6 flex justify-between items-center text-sm sticky top-0 z-50">
         <Link href="/archive" className="hover:text-gray-300 font-medium">
