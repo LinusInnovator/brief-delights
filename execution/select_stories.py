@@ -252,31 +252,11 @@ def call_llm(prompt: str, model: str, retries: int = 3) -> dict:
                     {"role": "user", "content": prompt}
                 ],
                 "temperature": 0.3,
-                "max_tokens": 2000
+                "max_tokens": 2000,
+                "response_format": {"type": "json_object"}
             }
             
-            # Use structured outputs for models that support it
-            if "claude" in model.lower() or "gpt-4o" in model.lower():
-                options["response_format"] = {
-                    "type": "json_schema",
-                    "json_schema": {
-                        "name": "story_selection",
-                        "strict": True,
-                        "schema": schema,
-                    }
-                }
-            else:
-                options["response_format"] = {"type": "json_object"}
-            
-            try:
-                response = client.chat.completions.create(**options)
-            except Exception as req_err:
-                if "json_schema" in str(options.get("response_format", "")):
-                    log(f"⚠️ Strict json_schema error ({req_err}), falling back to json_object format...")
-                    options["response_format"] = {"type": "json_object"}
-                    response = client.chat.completions.create(**options)
-                else:
-                    raise req_err
+            response = client.chat.completions.create(**options)
             
             # Extract response
             content = response.choices[0].message.content.strip()
