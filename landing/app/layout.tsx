@@ -12,6 +12,7 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+// Brief Delights White-Label Signal Engine & B2B Studio Layout
 export const metadata: Metadata = {
   title: "Brief Delights - Daily AI Intelligence for Builders, Leaders & Innovators",
   description: "Get the top 14 tech stories that matter to your role—curated daily. Plus weekly strategic insights. Join builders, leaders, and innovators getting Brief Delights.",
