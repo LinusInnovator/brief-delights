@@ -78,6 +78,46 @@ export default function B2BPitcherStudio() {
     }, 1800);
   };
 
+  const [isScouting, setIsScouting] = useState<boolean>(false);
+
+  const handleScoutQualifiedLeads = () => {
+    setIsScouting(true);
+    setTimeout(() => {
+      const newLeads: LeadProspect[] = [
+        {
+          id: String(Date.now() + 1),
+          company: "Vercel",
+          domain: "vercel.com",
+          matrixScore: 95.2,
+          status: "APPROVED",
+          previewUrl: "/previews/vercelcom.html",
+          email: "founders@vercel.com",
+        },
+        {
+          id: String(Date.now() + 2),
+          company: "Resend",
+          domain: "resend.com",
+          matrixScore: 93.8,
+          status: "APPROVED",
+          previewUrl: "/previews/resendcom.html",
+          email: "bueno@resend.com",
+        },
+        {
+          id: String(Date.now() + 3),
+          company: "Neon",
+          domain: "neon.tech",
+          matrixScore: 91.5,
+          status: "PENDING_REVIEW",
+          previewUrl: "/previews/neontech.html",
+          email: "nikita@neon.tech",
+        },
+      ];
+      setLeads((prev) => [...newLeads, ...prev]);
+      setIsScouting(false);
+      setActiveTab("hunter");
+    }, 1200);
+  };
+
   return (
     <div className="min-h-screen bg-slate-950 text-slate-100 p-8 font-sans">
       <div className="max-w-6xl mx-auto space-y-8">
@@ -91,35 +131,46 @@ export default function B2BPitcherStudio() {
               <span className="text-slate-500 text-sm">v1.0 Release</span>
             </div>
             <h1 className="text-3xl font-extrabold text-white mt-2">
-              Universal Business Signal Engine & Growth Studio
+              Engine Pitcher & Growth Studio
             </h1>
             <p className="text-slate-400 text-sm mt-1">
               Autonomous co-branded newsletter preview generator & outreach platform for any company, agency, VC, or brand.
             </p>
           </div>
 
-          {/* Trust Switch (Auto-Pilot Toggle) */}
-          <div className="flex items-center gap-4 bg-slate-900 border border-slate-800 p-3 rounded-xl">
-            <div className="text-right">
-              <div className="text-xs font-bold text-slate-300 uppercase tracking-wider">
-                Outreach Trust Switch
-              </div>
-              <div className="text-xs text-slate-500">
-                {autoPilot ? "⚡ Auto-Pilot Active (Auto-Send)" : "🛡️ Review First (Manual Gate)"}
-              </div>
-            </div>
+          <div className="flex items-center gap-3">
+            {/* Find Qualified Leads Action Button */}
             <button
-              onClick={() => setAutoPilot(!autoPilot)}
-              className={`relative inline-flex h-7 w-14 items-center rounded-full transition-colors ${
-                autoPilot ? "bg-indigo-600" : "bg-slate-700"
-              }`}
+              onClick={handleScoutQualifiedLeads}
+              disabled={isScouting}
+              className="bg-emerald-600 hover:bg-emerald-500 disabled:opacity-50 text-white font-bold px-4 py-2.5 rounded-xl text-sm transition-all flex items-center gap-2 shadow-lg shadow-emerald-900/30"
             >
-              <span
-                className={`inline-block h-5 w-5 transform rounded-full bg-white transition-transform ${
-                  autoPilot ? "translate-x-8" : "translate-x-1"
-                }`}
-              />
+              {isScouting ? "🔄 Scouting Directories..." : "🔍 Find Qualified Leads"}
             </button>
+
+            {/* Trust Switch (Auto-Pilot Toggle) */}
+            <div className="flex items-center gap-4 bg-slate-900 border border-slate-800 p-3 rounded-xl">
+              <div className="text-right">
+                <div className="text-xs font-bold text-slate-300 uppercase tracking-wider">
+                  Outreach Trust Switch
+                </div>
+                <div className="text-xs text-slate-500">
+                  {autoPilot ? "⚡ Auto-Pilot Active (Auto-Send)" : "🛡️ Review First (Manual Gate)"}
+                </div>
+              </div>
+              <button
+                onClick={() => setAutoPilot(!autoPilot)}
+                className={`relative inline-flex h-7 w-14 items-center rounded-full transition-colors ${
+                  autoPilot ? "bg-indigo-600" : "bg-slate-700"
+                }`}
+              >
+                <span
+                  className={`inline-block h-5 w-5 transform rounded-full bg-white transition-transform ${
+                    autoPilot ? "translate-x-8" : "translate-x-1"
+                  }`}
+                />
+              </button>
+            </div>
           </div>
         </div>
 
