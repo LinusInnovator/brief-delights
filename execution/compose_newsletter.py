@@ -143,13 +143,26 @@ def calculate_read_time(word_count: int) -> int:
 
 
 def fix_read_times(articles: list, log_file: Path) -> list:
-    """Fix missing or zero read times. Preserves values already set by the summarizer,
-    which has access to richer content than the raw RSS snippet available here."""
+    """Fix missing or zero read times and sanitize empty summaries."""
     for article in articles:
+        # 1. Sanitize empty or snippet '...' summaries
+        summary = article.get('summary', '').strip()
+        description = article.get('description', '').strip()
+        why = article.get('why_this_matters', '').strip() or article.get('selection_reason', '').strip()
+
+        if len(summary) < 20 and len(description) < 20:
+            article['summary'] = f"Key breakthrough in {article.get('category_tag', 'AI & Innovation')}: {article.get('title', '')}."
+            log(f"  📝 Filled empty summary: '{article['title'][:40]}'", log_file)
+        elif not summary:
+            article['summary'] = description
+
+        if not article.get('why_this_matters'):
+            article['why_this_matters'] = why or "Provides actionable strategic value for enterprise infrastructure."
+
+        # 2. Read time fix
         old_rt = article.get('read_time_minutes', 0) or 0
         if old_rt > 0:
-            continue  # Summarizer already set a valid value
-        # Only recalculate if missing/zero
+            continue
         raw = article.get('raw_content', '') or article.get('description', '')
         word_count = len(raw.split())
         article['read_time_minutes'] = calculate_read_time(word_count)

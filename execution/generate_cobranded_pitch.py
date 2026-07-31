@@ -103,33 +103,31 @@ def render_cobranded_html(brand: dict, articles: list) -> str:
     return html_content
 
 
-def send_pitch_email(brand: dict, preview_url: str, recipient_email: str) -> bool:
-    """Send personalized cold pitch via Resend API"""
+def send_pitch_email(brand: dict, preview_url: str, recipient_email: str, html_preview_code: str = "") -> bool:
+    """Send personalized cold pitch via Resend API with embedded co-branded HTML email body"""
     resend_key = os.getenv("RESEND_API_KEY")
     if not resend_key:
         print("⚠️ RESEND_API_KEY not found in environment. Skipping email dispatch.")
         return False
 
     company_name = brand.get("name", "there")
-    email_body = f"""Hi team at {company_name},
+    
+    # Linus Personal Intro Banner (HTML)
+    intro_html = f"""<div style="font-family: sans-serif; background-color: #0f172a; color: #f8fafc; padding: 24px; border-radius: 12px; margin-bottom: 24px; border: 1px solid #334155;">
+        <p style="font-size: 16px; margin-top: 0;">Hi team at <strong>{company_name}</strong>,</p>
+        <p style="font-size: 15px; color: #cbd5e1; line-height: 1.6;">
+            I noticed what you're building at {brand.get('url', company_name)}. We built an autonomous white-label <strong>Signal Engine</strong> that automatically curates, validates, and formats top 1% industry news for your users without your team writing a single line.
+        </p>
+        <p style="font-size: 15px; color: #cbd5e1;">Below is a live, co-branded demonstration created specifically for <strong>{company_name}</strong>:</p>
+        <div style="margin: 20px 0;">
+            <a href="{preview_url}" target="_blank" style="background-color: #3b82f6; color: #ffffff; padding: 12px 24px; border-radius: 8px; font-weight: bold; text-decoration: none; display: inline-block;">
+                👉 View Live Demo on Web &rarr;
+            </a>
+        </div>
+    </div>
+    """
 
-I noticed what you're building at {brand.get('url', company_name)} for {brand.get('icp_keyword', 'your audience')}.
-
-We built an autonomous white-label Signal Engine for SaaS platforms like yours. It automatically curates, validates, and formats top 1% industry news for your users without your team spending a single hour writing.
-
-We put together a live co-branded demonstration created specifically for {company_name}:
-
-👉 View Live {company_name} Signal Demo: {preview_url}
-
-It runs 100% on auto-pilot under your brand and logo.
-
-Would you be open to an 8-minute demo to see how this can drive engagement and retain users for {company_name}?
-
-Best regards,
-Linus Innovator
-Founder, Brief Delights Signal Engine
-https://brief.delights.pro
-"""
+    full_email_html = intro_html + html_preview_code if html_preview_code else intro_html
 
     try:
         resp = requests.post(
@@ -142,12 +140,13 @@ https://brief.delights.pro
                 "from": "Linus <hello@brief.delights.pro>",
                 "to": [recipient_email],
                 "subject": f"Custom Signal Engine Demo for {company_name} (White-Label)",
-                "text": email_body
+                "html": full_email_html,
+                "text": f"Hi team at {company_name},\n\nCheck out your custom Signal Engine demo here: {preview_url}"
             },
             timeout=10
         )
         if resp.status_code in [200, 201]:
-            print(f"📧 Cold pitch email sent successfully to {recipient_email}!")
+            print(f"📧 Cold pitch email with embedded co-branded preview sent successfully to {recipient_email}!")
             return True
         else:
             print(f"⚠️ Resend API response ({resp.status_code}): {resp.text}")
@@ -190,7 +189,7 @@ def generate_cobranded_pitch(url: str, recipient_email: str = None, auto_send: b
     email_status = "QUEUED_FOR_REVIEW"
 
     if auto_send and target_email:
-        sent = send_pitch_email(brand, preview_url, target_email)
+        sent = send_pitch_email(brand, preview_url, target_email, html_preview_code=html_code)
         email_status = "PITCHED" if sent else "SEND_FAILED"
 
     result = {
