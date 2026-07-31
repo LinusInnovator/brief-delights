@@ -90,7 +90,7 @@ export default function B2BPitcherStudio() {
               </span>
               <span className="text-slate-500 text-sm">v1.0 Release</span>
             </div>
-            <h1 class="text-3xl font-extrabold text-white mt-2">
+            <h1 className="text-3xl font-extrabold text-white mt-2">
               Universal Business Signal Engine & Growth Studio
             </h1>
             <p className="text-slate-400 text-sm mt-1">
