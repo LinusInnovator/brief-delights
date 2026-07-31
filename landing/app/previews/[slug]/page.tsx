@@ -8,9 +8,22 @@ interface PreviewPageProps {
 
 export default async function DynamicPreviewPage({ params }: PreviewPageProps) {
   const { slug } = await params;
-  const companyName = slug.replace(/(com|app|io|org|net)$/i, "").toUpperCase() || "Target Brand";
-  const brandColor = slug.includes("linear") ? "#5e6ad2" : slug.includes("supabase") ? "#3ecf8e" : "#f54e00";
-  const logoUrl = `https://www.google.com/s2/favicons?domain=${slug.replace(/com|app|io/i, ".com")}&sz=128`;
+  const cleanSlug = (slug || "").replace(/\.html?$/i, "").toLowerCase();
+
+  const domainMap: Record<string, { name: string; domain: string; color: string }> = {
+    neontech: { name: "Neon", domain: "neon.tech", color: "#00e599" },
+    vercelcom: { name: "Vercel", domain: "vercel.com", color: "#ffffff" },
+    resendcom: { name: "Resend", domain: "resend.com", color: "#000000" },
+    posthogcom: { name: "PostHog", domain: "posthog.com", color: "#f54e00" },
+    linearapp: { name: "Linear", domain: "linear.app", color: "#5e6ad2" },
+    supabasecom: { name: "Supabase", domain: "supabase.com", color: "#3ecf8e" },
+  };
+
+  const matched = domainMap[cleanSlug];
+  const companyName = matched?.name || cleanSlug.replace(/(com|app|io|org|net|tech|dev|co)$/i, "").toUpperCase() || "Target Brand";
+  const brandColor = matched?.color || (cleanSlug.includes("neon") ? "#00e599" : cleanSlug.includes("linear") ? "#5e6ad2" : cleanSlug.includes("supabase") ? "#3ecf8e" : "#f54e00");
+  const cleanDomain = matched?.domain || `${cleanSlug.replace(/(com|app|io|tech|dev|co)$/i, "")}.com`;
+  const logoUrl = `https://www.google.com/s2/favicons?domain=${cleanDomain}&sz=128`;
 
   return (
     <div style={{ backgroundColor: "#0f172a", color: "#f8fafc", minHeight: "100vh", padding: "40px 20px", fontFamily: "sans-serif" }}>
