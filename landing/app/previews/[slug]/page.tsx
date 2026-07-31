@@ -18,7 +18,7 @@ export default function DynamicPreviewPage({ params }: PreviewPageProps) {
         
         {/* Header */}
         <div style={{ backgroundColor: "#0f172a", padding: "32px 24px", textAlign: "center", borderBottom: `3px solid ${brandColor}` }}>
-          <img src={logoUrl} alt={companyName} style={{ maxHeight: "48px", borderRadius: "8px", marginBottom: "12px" }} />
+          <img src={logoUrl} alt={companyName} style={{ maxHeight: "44px", maxWidth: "220px", width: "auto", height: "auto", objectFit: "contain", marginBottom: "14px", display: "inline-block" }} />
           <div style={{ display: "inline-block", backgroundColor: brandColor, color: "#ffffff", padding: "4px 14px", borderRadius: "9999px", fontSize: "11px", fontWeight: "bold", textTransform: "uppercase", letterSpacing: "1px" }}>
             POWERED BY BRIEF DELIGHTS SIGNAL ENGINE
           </div>
