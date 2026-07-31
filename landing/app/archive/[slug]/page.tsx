@@ -3,6 +3,7 @@ import { readFileSync, existsSync } from 'fs';
 import { join } from 'path';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
+import ArchiveLockGate from './ArchiveLockGate';
 
 export const revalidate = 3600;
 
@@ -165,46 +166,12 @@ export default async function NewsletterSlugPage({ params }: PageProps) {
             dangerouslySetInnerHTML={{ __html: fullHtml }}
           />
         ) : (
-          <div className="relative bg-white rounded-2xl shadow-sm border border-gray-200 p-4 md:p-8 overflow-hidden min-h-[500px]">
-            {/* Blurred Preview Content */}
-            <div
-              className="select-none pointer-events-none opacity-40 blur-[3px]"
-              dangerouslySetInnerHTML={{ __html: bodyContent }}
-            />
-
-            {/* Lock Glassmorphism Overlay - Knowledge Refined Brand */}
-            <div className="absolute inset-0 bg-gradient-to-b from-white/70 via-white/95 to-white flex flex-col items-center justify-center p-6 text-center z-10 backdrop-blur-md">
-              <div className="w-16 h-16 bg-[#58111A]/10 border border-[#58111A]/20 rounded-2xl flex items-center justify-center shadow-sm mb-5">
-                <img src="/bd_seal_logo.png" alt="Brief Delights Seal" className="w-10 h-10 object-contain" />
-              </div>
-              <h1 className="text-2xl md:text-3xl font-serif font-bold text-[#121212] mb-2">
-                Subscriber-Only Intelligence
-              </h1>
-              <p className="text-gray-600 max-w-md mb-6 text-sm leading-relaxed">
-                Today&apos;s and yesterday&apos;s editions are reserved for active subscribers.
-                Subscribe free now to read this issue and receive future daily letters.
-              </p>
-
-              <form action="/" method="GET" className="w-full max-w-sm flex flex-col gap-3">
-                <input
-                  type="email"
-                  placeholder="Enter your work email"
-                  className="w-full px-5 py-3.5 border-2 border-gray-200 rounded-xl focus:border-[#58111A] focus:outline-none text-sm text-gray-900 bg-white"
-                  required
-                />
-                <button
-                  type="submit"
-                  className="w-full bg-[#121212] text-white font-bold py-4 px-6 rounded-xl hover:bg-[#58111A] transition text-sm shadow-lg shadow-[#58111A]/10"
-                >
-                  Subscribe Free to Read Latest Issue &rarr;
-                </button>
-              </form>
-
-              <p className="text-xs text-gray-400 mt-4 font-mono">
-                Editions older than 2 days automatically unlock for public archive browsing.
-              </p>
-            </div>
-          </div>
+          <ArchiveLockGate
+            fullHtml={fullHtml}
+            bodyContent={bodyContent}
+            segment={segment}
+            date={date}
+          />
         )}
       </main>
     </div>
