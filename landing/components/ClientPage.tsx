@@ -59,7 +59,7 @@ export default function ClientPage({
         badge_text: abVariant?.badge_text || 'Tech Intelligence, Curated for Your Role',
         headline: abVariant?.headline || 'Brief',
         headline_accent: abVariant?.headline_accent || 'delights',
-        subheadline: abVariant?.subheadline || "Get the top 14 stories that matter to your role—daily. Plus weekly strategic insights that connect the dots. We read 1,340+ articles so you don't have to.",
+        subheadline: abVariant?.subheadline || "Get the top 14 stories that matter to your role. Daily. Plus weekly strategic insights that connect the dots. We read 1,340+ articles so you don't have to.",
         cta_primary: abVariant?.cta_primary || 'Subscribe Free',
         cta_secondary: abVariant?.cta_secondary || 'See Archive',
     };
