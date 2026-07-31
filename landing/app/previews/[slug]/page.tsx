@@ -1,13 +1,13 @@
 import React from "react";
 
 interface PreviewPageProps {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 }
 
-export default function DynamicPreviewPage({ params }: PreviewPageProps) {
-  const { slug } = params;
+export default async function DynamicPreviewPage({ params }: PreviewPageProps) {
+  const { slug } = await params;
   const companyName = slug.replace(/(com|app|io|org|net)$/i, "").toUpperCase() || "Target Brand";
   const brandColor = slug.includes("linear") ? "#5e6ad2" : slug.includes("supabase") ? "#3ecf8e" : "#f54e00";
   const logoUrl = `https://www.google.com/s2/favicons?domain=${slug.replace(/com|app|io/i, ".com")}&sz=128`;
