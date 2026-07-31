@@ -158,16 +158,32 @@ def publish_via_playwright(title: str, body: str) -> bool:
             )
             
             if session_cookie:
-                context.add_cookies([{
-                    'name': 'reddit_session',
-                    'value': session_cookie,
-                    'domain': '.reddit.com',
-                    'path': '/',
-                    'httpOnly': True,
-                    'secure': True
-                }])
+                clean_cookie = session_cookie.strip().strip('"').strip("'")
+                if clean_cookie.startswith("reddit_session="):
+                    clean_cookie = clean_cookie.replace("reddit_session=", "", 1).strip()
+                    
+                context.add_cookies([
+                    {
+                        'name': 'reddit_session',
+                        'value': clean_cookie,
+                        'domain': '.reddit.com',
+                        'path': '/',
+                        'httpOnly': True,
+                        'secure': True
+                    },
+                    {
+                        'name': 'reddit_session',
+                        'value': clean_cookie,
+                        'domain': 'www.reddit.com',
+                        'path': '/',
+                        'httpOnly': True,
+                        'secure': True
+                    }
+                ])
             
             page = context.new_page()
+            page.goto('https://www.reddit.com/')
+            page.wait_for_timeout(2000)
             
             if not session_cookie and username and password:
                 page.goto('https://www.reddit.com/login/')
