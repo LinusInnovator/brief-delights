@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { readdirSync, statSync, readFileSync } from 'fs';
 import { join } from 'path';
 import { createClient } from '../../lib/supabase';
+import { IconStreamBuilders, IconStreamLeaders, IconStreamInnovators, IconEditoriallyCurated } from '../../components/EditorialIcons';
 
 interface Newsletter {
     slug: string;
@@ -76,33 +77,14 @@ async function getNewsletters(): Promise<Newsletter[]> {
     }
 }
 
-const segmentColors: Record<string, string> = {
-    builders: 'bg-orange-500',
-    leaders: 'bg-blue-600',
-    innovators: 'bg-purple-600',
-};
-
-const segmentEmojis: Record<string, string> = {
-    builders: '🛠️',
-    leaders: '💼',
-    innovators: '🚀',
-};
-
-const segmentDescriptions: Record<string, string> = {
-    builders: 'Engineering, infrastructure & developer tools',
-    leaders: 'Strategy, funding & market trends',
-    innovators: 'AI research, breakthroughs & emerging tech',
-};
-
-export const metadata = {
-    title: 'Newsletter Archive - Brief Delights',
-    description: 'Browse past editions of Brief Delights. AI-curated daily tech intelligence for builders, leaders, and innovators.',
-    openGraph: {
-        title: 'Newsletter Archive - Brief Delights',
-        description: 'Browse past editions of Brief Delights. AI-curated daily tech intelligence.',
-        url: 'https://brief.delights.pro/archive',
-    },
-};
+function renderSegmentIcon(segment: string) {
+    switch (segment) {
+        case 'builders': return <IconStreamBuilders className="w-4 h-4 text-[#58111A]" />;
+        case 'leaders': return <IconStreamLeaders className="w-4 h-4 text-[#58111A]" />;
+        case 'innovators': return <IconStreamInnovators className="w-4 h-4 text-[#58111A]" />;
+        default: return <IconEditoriallyCurated className="w-4 h-4 text-[#58111A]" />;
+    }
+}
 
 function isLockedDate(dateStr: string): boolean {
     try {
@@ -115,44 +97,46 @@ function isLockedDate(dateStr: string): boolean {
     }
 }
 
+const segmentDescriptions: Record<string, string> = {
+    builders: 'Engineering, infrastructure & developer tools',
+    leaders: 'Strategy, funding & market trends',
+    innovators: 'AI research, breakthroughs & emerging tech',
+};
+
+export const metadata = {
+    title: 'Newsletter Archive — Brief Delights',
+    description: 'Browse past editions of Brief Delights. AI-curated daily tech intelligence for builders, leaders, and innovators.',
+};
+
 export default async function ArchivePage() {
     const newsletters = await getNewsletters();
     const subscriberCount = await getSubscriberCount();
 
-    // Group by date for a cleaner display
     const dates = [...new Set(newsletters.map(n => n.date))];
     const latestDate = dates[0];
     const latestNewsletters = newsletters.filter(n => n.date === latestDate);
     const olderNewsletters = newsletters.filter(n => n.date !== latestDate);
 
     return (
-        <main className="min-h-screen bg-gray-50">
-            {/* Sticky Subscribe Banner */}
-            <div className="bg-black text-white py-3 text-center text-sm sticky top-0 z-50">
-                <span className="opacity-80">Get this in your inbox daily →</span>{' '}
-                <Link href="/" className="underline font-semibold hover:text-blue-300 transition">
-                    Subscribe free
-                </Link>
-            </div>
-
-            {/* Header */}
-            <header className="bg-white border-b border-gray-200">
+        <main className="min-h-screen bg-[#FAF8F5] text-gray-900">
+            {/* Header Masthead */}
+            <header className="bg-white border-b border-[#121212]/10">
                 <div className="max-w-5xl mx-auto px-6 py-8">
-                    <Link href="/" className="inline-block mb-4 text-gray-500 hover:text-black text-sm transition">
-                        ← Back to Home
+                    <Link href="/" className="inline-block mb-4 text-xs font-bold text-[#58111A] hover:underline uppercase tracking-wider">
+                        &larr; Back to Brief Delights
                     </Link>
-                    <div className="flex items-end justify-between">
-                        <div>
-                            <h1 className="text-4xl font-bold tracking-tight">Newsletter Archive</h1>
-                            <p className="text-gray-500 mt-1">
-                                Browse past editions • {newsletters.length} editions published
-                            </p>
+                    <div className="flex items-center justify-between">
+                        <div className="flex items-center gap-4">
+                            <div className="w-12 h-12 rounded-2xl bg-[#58111A]/10 border border-[#58111A]/20 flex items-center justify-center p-1.5">
+                                <img src="/bd_seal_logo.png" alt="Brief Delights Seal" className="w-8 h-8 object-contain" />
+                            </div>
+                            <div>
+                                <h1 className="text-3xl md:text-4xl font-serif font-bold text-[#121212]">Intelligence Archive</h1>
+                                <p className="text-xs text-gray-500 mt-1">
+                                    Knowledge Refined &bull; {newsletters.length} daily editions published
+                                </p>
+                            </div>
                         </div>
-                        {subscriberCount >= 100 && (
-                            <p className="text-sm text-gray-400 hidden md:block">
-                                📬 {subscriberCount.toLocaleString()} subscriber{subscriberCount !== 1 ? 's' : ''}
-                            </p>
-                        )}
                     </div>
                 </div>
             </header>
@@ -161,49 +145,49 @@ export default async function ArchivePage() {
                 {/* Featured: Latest Edition */}
                 {latestNewsletters.length > 0 && (
                     <section className="mb-12">
-                        <h2 className="text-xs font-bold uppercase tracking-widest text-gray-400 mb-4">
-                            📰 Latest Edition — {new Date(latestDate + 'T00:00:00').toLocaleDateString('en-US', {
+                        <h2 className="text-xs font-bold uppercase tracking-widest text-[#58111A] mb-4">
+                            Latest Edition &mdash; {new Date(latestDate + 'T00:00:00').toLocaleDateString('en-US', {
                                 weekday: 'long', month: 'long', day: 'numeric', year: 'numeric'
                             })}
                         </h2>
-                        <div className="grid md:grid-cols-3 gap-4">
+                        <div className="grid md:grid-cols-3 gap-6">
                             {latestNewsletters.map(newsletter => {
                                 const locked = isLockedDate(newsletter.date);
                                 return (
                                     <Link
                                         key={newsletter.slug}
                                         href={`/archive/${newsletter.slug}`}
-                                        className="bg-white rounded-xl border-2 border-gray-200 p-6 hover:border-gray-400 hover:shadow-lg transition-all group relative overflow-hidden flex flex-col justify-between"
+                                        className="bg-white rounded-2xl border border-[#121212]/10 p-6 hover:border-[#58111A] hover:shadow-xl transition-all group relative overflow-hidden flex flex-col justify-between"
                                     >
-                                        {/* Gradient accent */}
-                                        <div className={`absolute top-0 left-0 right-0 h-1 ${segmentColors[newsletter.segment]}`} />
-
                                         <div>
-                                            <div className="flex items-center justify-between mb-3">
-                                                <span className={`${segmentColors[newsletter.segment]} text-white px-3 py-1 rounded-full text-xs font-bold`}>
-                                                    {segmentEmojis[newsletter.segment]} {newsletter.segment}
-                                                </span>
+                                            <div className="flex items-center justify-between mb-4">
+                                                <div className="flex items-center gap-2 bg-[#58111A]/10 border border-[#58111A]/20 px-3 py-1 rounded-full">
+                                                    {renderSegmentIcon(newsletter.segment)}
+                                                    <span className="text-xs font-bold text-[#58111A] uppercase tracking-wider">
+                                                        {newsletter.segment}
+                                                    </span>
+                                                </div>
                                                 {locked ? (
-                                                    <span className="bg-amber-100 text-amber-800 border border-amber-200 px-2 py-0.5 rounded-full text-[10px] font-bold flex items-center gap-1">
-                                                        🔒 Subscriber Only
+                                                    <span className="bg-[#C5A059]/15 text-[#8C6D2B] border border-[#C5A059]/30 px-2.5 py-0.5 rounded-full text-[10px] font-bold">
+                                                        Subscriber Only
                                                     </span>
                                                 ) : (
-                                                    <span className="text-xs text-green-600 font-semibold">NEW</span>
+                                                    <span className="text-xs text-emerald-700 font-bold">UNLOCKED</span>
                                                 )}
                                             </div>
 
-                                            <p className="text-sm text-gray-600 mb-3">
+                                            <p className="text-xs text-gray-500 mb-3">
                                                 {segmentDescriptions[newsletter.segment]}
                                             </p>
 
-                                            <p className="text-base font-semibold text-black group-hover:text-gray-700 mb-2 line-clamp-2">
+                                            <p className="text-base font-serif font-bold text-[#121212] group-hover:text-[#58111A] transition mb-3 line-clamp-2">
                                                 {newsletter.topHeadline}
                                             </p>
                                         </div>
 
-                                        <div className="pt-3 border-t border-gray-100 flex justify-between items-center text-xs text-gray-400 mt-3">
-                                            <span>{newsletter.storyCount} stories • {newsletter.size}</span>
-                                            {locked && <span className="text-indigo-600 font-semibold">Subscribe to read →</span>}
+                                        <div className="pt-3 border-t border-gray-100 flex justify-between items-center text-xs text-gray-500 mt-4">
+                                            <span>{newsletter.storyCount} stories &bull; {newsletter.size}</span>
+                                            {locked && <span className="text-[#58111A] font-bold">Subscribe to read &rarr;</span>}
                                         </div>
                                     </Link>
                                 );
@@ -212,49 +196,52 @@ export default async function ArchivePage() {
                     </section>
                 )}
 
-                {/* Subscribe CTA */}
-                <section className="bg-gradient-to-r from-indigo-600 to-purple-600 rounded-2xl p-8 mb-12 text-white text-center">
-                    <h2 className="text-2xl font-bold mb-2">Don&apos;t miss tomorrow&apos;s edition</h2>
-                    <p className="text-white/80 mb-4">We scan 1,340+ articles so you don&apos;t have to. Get the top stories in your inbox daily.</p>
+                {/* Subscribe CTA Banner */}
+                <section className="bg-[#58111A] rounded-3xl p-8 md:p-10 mb-12 text-white text-center shadow-xl">
+                    <h2 className="text-2xl md:text-3xl font-serif font-bold mb-2">Never Miss Tomorrow&apos;s Intelligence Dispatch</h2>
+                    <p className="text-white/80 max-w-xl mx-auto mb-6 text-sm">We scan 1,340+ articles daily so you don&apos;t have to. Get the top role-curated insights in your inbox every morning.</p>
                     <Link
                         href="/"
-                        className="inline-block bg-white text-indigo-700 font-bold py-3 px-8 rounded-lg hover:bg-gray-100 transition text-sm"
+                        className="inline-block bg-white text-[#121212] font-bold px-8 py-3.5 rounded-xl hover:bg-gray-100 transition text-sm shadow-md"
                     >
-                        Subscribe Free →
+                        Subscribe Free Now &rarr;
                     </Link>
                 </section>
 
                 {/* Previous Editions */}
                 {olderNewsletters.length > 0 && (
                     <section>
-                        <h2 className="text-xs font-bold uppercase tracking-widest text-gray-400 mb-4">
-                            📚 Previous Editions
+                        <h2 className="text-xs font-bold uppercase tracking-widest text-[#58111A] mb-4">
+                            Previous Editions
                         </h2>
                         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
                             {olderNewsletters.map(newsletter => (
                                 <Link
                                     key={newsletter.slug}
                                     href={`/archive/${newsletter.slug}`}
-                                    className="bg-white rounded-xl border border-gray-200 p-5 hover:border-gray-300 hover:shadow-md transition-all group"
+                                    className="bg-white rounded-2xl border border-[#121212]/10 p-5 hover:border-[#58111A] hover:shadow-md transition-all group"
                                 >
-                                    <div className="flex items-center gap-2 mb-2">
-                                        <span className={`${segmentColors[newsletter.segment]} text-white px-2 py-0.5 rounded-full text-xs font-semibold`}>
-                                            {segmentEmojis[newsletter.segment]} {newsletter.segment}
-                                        </span>
+                                    <div className="flex items-center gap-2 mb-3">
+                                        <div className="flex items-center gap-1.5 bg-[#58111A]/10 border border-[#58111A]/20 px-2.5 py-0.5 rounded-full">
+                                            {renderSegmentIcon(newsletter.segment)}
+                                            <span className="text-[11px] font-bold text-[#58111A] uppercase tracking-wider">
+                                                {newsletter.segment}
+                                            </span>
+                                        </div>
                                     </div>
 
-                                    <h3 className="text-sm font-bold mb-1 text-gray-800 group-hover:text-black">
+                                    <h3 className="text-sm font-serif font-bold mb-1 text-[#121212] group-hover:text-[#58111A] transition">
                                         {new Date(newsletter.date + 'T00:00:00').toLocaleDateString('en-US', {
-                                            weekday: 'short', month: 'short', day: 'numeric'
+                                            weekday: 'short', month: 'short', day: 'numeric', year: 'numeric'
                                         })}
                                     </h3>
 
-                                    <p className="text-xs text-gray-500 line-clamp-1">
+                                    <p className="text-xs text-gray-500 line-clamp-2 mb-2 leading-relaxed">
                                         {newsletter.topHeadline}
                                     </p>
 
-                                    <p className="text-xs text-gray-400 mt-2">
-                                        {newsletter.storyCount} stories
+                                    <p className="text-[11px] text-gray-400 font-mono mt-2 pt-2 border-t border-gray-100">
+                                        {newsletter.storyCount} stories &bull; {newsletter.size}
                                     </p>
                                 </Link>
                             ))}

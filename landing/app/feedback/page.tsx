@@ -66,7 +66,7 @@ function FeedbackContent() {
     return (
         <div style={{
             minHeight: '100vh',
-            background: '#f8f9fa',
+            background: '#FAF8F5',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
@@ -77,24 +77,43 @@ function FeedbackContent() {
                 maxWidth: '480px',
                 width: '100%',
                 background: '#ffffff',
-                borderRadius: '16px',
+                borderRadius: '24px',
                 padding: '48px 40px',
                 textAlign: 'center',
-                boxShadow: '0 4px 24px rgba(0,0,0,0.06)',
+                boxShadow: '0 10px 40px rgba(0,0,0,0.06)',
+                border: '1px solid rgba(18,18,18,0.1)',
             }}>
-                {/* Logo */}
+                {/* Logo & Seal */}
                 <div style={{ marginBottom: '32px' }}>
                     <div style={{
-                        fontSize: '36px',
-                        fontWeight: 700,
-                        letterSpacing: '-1px',
-                        color: '#000',
-                    }}>Brief</div>
+                        width: '56px',
+                        height: '56px',
+                        borderRadius: '16px',
+                        background: 'rgba(88,17,26,0.1)',
+                        border: '1px solid rgba(88,17,26,0.2)',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        margin: '0 auto 16px auto',
+                        padding: '6px'
+                    }}>
+                        <img src="/bd_seal_logo.png" alt="Brief Delights Seal" style={{ width: '40px', height: '40px', objectFit: 'contain' }} />
+                    </div>
                     <div style={{
-                        fontSize: '14px',
-                        color: '#666',
+                        fontSize: '28px',
+                        fontFamily: 'Georgia, serif',
+                        fontWeight: 700,
+                        letterSpacing: '-0.5px',
+                        color: '#121212',
+                    }}>Brief Delights</div>
+                    <div style={{
+                        fontSize: '11px',
+                        color: '#8C6D2B',
                         letterSpacing: '2px',
-                    }}>delights</div>
+                        textTransform: 'uppercase',
+                        fontWeight: 700,
+                        marginTop: '4px'
+                    }}>Knowledge, Refined</div>
                 </div>
 
                 {/* Rating emoji */}

@@ -172,35 +172,35 @@ export default async function NewsletterSlugPage({ params }: PageProps) {
               dangerouslySetInnerHTML={{ __html: bodyContent }}
             />
 
-            {/* Lock Glassmorphism Overlay */}
-            <div className="absolute inset-0 bg-gradient-to-b from-white/60 via-white/90 to-white flex flex-col items-center justify-center p-6 text-center z-10 backdrop-blur-sm">
-              <div className="w-16 h-16 bg-gradient-to-tr from-indigo-600 to-purple-600 rounded-2xl flex items-center justify-center text-3xl shadow-lg mb-4 text-white">
-                🔒
+            {/* Lock Glassmorphism Overlay - Knowledge Refined Brand */}
+            <div className="absolute inset-0 bg-gradient-to-b from-white/70 via-white/95 to-white flex flex-col items-center justify-center p-6 text-center z-10 backdrop-blur-md">
+              <div className="w-16 h-16 bg-[#58111A]/10 border border-[#58111A]/20 rounded-2xl flex items-center justify-center shadow-sm mb-5">
+                <img src="/bd_seal_logo.png" alt="Brief Delights Seal" className="w-10 h-10 object-contain" />
               </div>
-              <h1 className="text-2xl md:text-3xl font-bold text-gray-900 mb-2">
-                Subscriber Only Access
+              <h1 className="text-2xl md:text-3xl font-serif font-bold text-[#121212] mb-2">
+                Subscriber-Only Intelligence
               </h1>
-              <p className="text-gray-600 max-w-md mb-6 text-sm md:text-base leading-relaxed">
+              <p className="text-gray-600 max-w-md mb-6 text-sm leading-relaxed">
                 Today&apos;s and yesterday&apos;s editions are reserved for active subscribers.
-                Subscribe free now to read the full issue and get future letters daily!
+                Subscribe free now to read this issue and receive future daily letters.
               </p>
 
               <form action="/" method="GET" className="w-full max-w-sm flex flex-col gap-3">
                 <input
                   type="email"
                   placeholder="Enter your work email"
-                  className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:outline-none text-sm text-gray-900"
+                  className="w-full px-5 py-3.5 border-2 border-gray-200 rounded-xl focus:border-[#58111A] focus:outline-none text-sm text-gray-900 bg-white"
                   required
                 />
                 <button
                   type="submit"
-                  className="w-full bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-bold py-3.5 px-6 rounded-xl hover:opacity-95 transition text-sm shadow-md"
+                  className="w-full bg-[#121212] text-white font-bold py-4 px-6 rounded-xl hover:bg-[#58111A] transition text-sm shadow-lg shadow-[#58111A]/10"
                 >
-                  Subscribe Free to Read Latest News →
+                  Subscribe Free to Read Latest Issue &rarr;
                 </button>
               </form>
 
-              <p className="text-xs text-gray-400 mt-4">
+              <p className="text-xs text-gray-400 mt-4 font-mono">
                 Editions older than 2 days automatically unlock for public archive browsing.
               </p>
             </div>
