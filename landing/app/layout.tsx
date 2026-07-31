@@ -16,6 +16,31 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Brief Delights - Daily AI Intelligence for Builders, Leaders & Innovators",
   description: "Get the top 14 tech stories that matter to your role—curated daily. Plus weekly strategic insights. Join builders, leaders, and innovators getting Brief Delights.",
+  openGraph: {
+    title: "Brief Delights - Daily AI Intelligence & White-Label Signal Engine",
+    description: "Autonomous co-branded newsletter preview generator & outreach platform for any business, VC, or brand.",
+    url: "https://brief.delights.pro",
+    siteName: "Brief Delights",
+    images: [
+      {
+        url: "https://brief.delights.pro/bd_seal_logo.png",
+        width: 1200,
+        height: 1200,
+        alt: "Brief Delights Official Wax Seal Logo Mark",
+      },
+    ],
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Brief Delights - Daily AI Intelligence & White-Label Signal Engine",
+    description: "Autonomous co-branded newsletter preview generator & outreach platform.",
+    images: ["https://brief.delights.pro/bd_seal_logo.png"],
+  },
+  icons: {
+    icon: "/bd_seal_logo.png",
+    apple: "/bd_seal_logo.png",
+  },
 };
 
 export default function RootLayout({

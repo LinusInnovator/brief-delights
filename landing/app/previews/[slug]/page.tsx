@@ -1,9 +1,46 @@
-import React from "react";
+import type { Metadata } from "next";
 
 interface PreviewPageProps {
   params: Promise<{
     slug: string;
   }>;
+}
+
+export async function generateMetadata({ params }: PreviewPageProps): Promise<Metadata> {
+  const { slug } = await params;
+  const cleanSlug = (slug || "").replace(/\.html?$/i, "").toLowerCase();
+  const nameMap: Record<string, string> = {
+    resendcom: "Resend",
+    neontech: "Neon",
+    vercelcom: "Vercel",
+    posthogcom: "PostHog",
+    linearapp: "Linear",
+    supabasecom: "Supabase",
+  };
+  const companyName = nameMap[cleanSlug] || cleanSlug.replace(/(com|app|io|org|net|tech|dev|co)$/i, "").toUpperCase() || "Target Brand";
+
+  return {
+    title: `${companyName} Weekly Signal Brief | Brief Delights Engine`,
+    description: `Curated high-impact AI intelligence & strategic takeaways for ${companyName} users & ecosystem.`,
+    openGraph: {
+      title: `${companyName} Weekly Signal Brief | Brief Delights Engine`,
+      description: `Curated high-impact AI intelligence & strategic takeaways for ${companyName} users & ecosystem.`,
+      images: [
+        {
+          url: "https://brief.delights.pro/bd_seal_logo.png",
+          width: 1200,
+          height: 1200,
+          alt: "Brief Delights Official Wax Seal Logo Mark",
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${companyName} Weekly Signal Brief | Brief Delights Engine`,
+      description: `Curated high-impact AI intelligence & strategic takeaways for ${companyName} users & ecosystem.`,
+      images: ["https://brief.delights.pro/bd_seal_logo.png"],
+    },
+  };
 }
 
 export default async function DynamicPreviewPage({ params }: PreviewPageProps) {
