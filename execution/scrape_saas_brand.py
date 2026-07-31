@@ -54,17 +54,28 @@ def extract_brand_assets(url: str) -> dict:
         if resp.status_code == 200:
             soup = BeautifulSoup(resp.text, 'html.parser')
 
-            # 1. Look for theme-color meta tag
+            # 1. Look for theme-color meta tag or primary CSS colors
             theme_meta = soup.find('meta', attrs={'name': 'theme-color'})
             if theme_meta and theme_meta.get('content'):
                 brand_color = theme_meta['content']
+            else:
+                # Search for primary CSS variables in inline styles or style tags
+                style_text = " ".join([s.get_text() for s in soup.find_all('style')])
+                color_match = re.search(r'--(?:primary|brand|accent)[-a-z]*:\s*(#[0-9a-fA-F]{3,6}|rgb\([^)]+\))', style_text)
+                if color_match:
+                    brand_color = color_match.group(1)
 
-            # 2. Look for high-res logo or og:image
-            og_img = soup.find('meta', property='og:image')
-            if og_img and og_img.get('content'):
-                candidate_logo = og_img['content']
-                if candidate_logo.startswith('http'):
-                    logo_url = candidate_logo
+            # 2. Look for high-res logo, icon link, or og:image
+            icon_link = soup.find('link', rel=lambda x: x and ('icon' in x or 'apple-touch-icon' in x))
+            if icon_link and icon_link.get('href'):
+                href = icon_link['href']
+                logo_url = urljoin(url, href)
+            else:
+                og_img = soup.find('meta', property='og:image')
+                if og_img and og_img.get('content'):
+                    candidate_logo = og_img['content']
+                    if candidate_logo.startswith('http'):
+                        logo_url = candidate_logo
 
             # Extract page text for ICP analysis
             page_text = soup.get_text(separator=' ', strip=True)[:3000]
