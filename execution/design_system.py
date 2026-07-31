@@ -95,3 +95,71 @@ def normalize_logo_url(domain: str, scraped_logo: str = None) -> str:
         return scraped_logo
 
     return f"https://www.google.com/s2/favicons?domain={clean_domain}&sz=128"
+
+
+def get_company_specific_insight(company_name: str, category: str, title: str) -> str:
+    """
+    Company Strategic Insight Engine
+    Generates deeply product-tailored 'Why This Matters' strategic takeaways for any SaaS brand.
+    """
+    comp = company_name.lower()
+    cat = category.lower()
+    title_lower = title.lower()
+
+    # Supabase (Postgres, Realtime, pgvector, Edge Functions)
+    if "supabase" in comp:
+        if "ai" in cat or "claude" in title_lower or "agent" in title_lower:
+            return "Enables zero-latency pgvector similarity search inside Supabase Edge Functions for high-concurrency RAG workflows."
+        elif "infra" in cat or "gpu" in title_lower or "edge" in title_lower:
+            return "Cuts cold-start latency for Supabase Deno Edge Functions connecting to serverless Postgres connection pools."
+        else:
+            return "Hardens Supabase Row Level Security (RLS) policies and JWT validation against automated API escalation."
+
+    # PostHog (Product Analytics, ClickHouse, Feature Flags, Session Replay)
+    elif "posthog" in comp:
+        if "ai" in cat or "claude" in title_lower:
+            return "Enforces high-concurrency LLM event tracking in PostHog session replays without spiking ingestion latency."
+        elif "infra" in cat or "gpu" in title_lower:
+            return "Optimizes edge ClickHouse query performance for real-time PostHog user cohort segmentation."
+        else:
+            return "Secures custom PostHog event webhooks against unauthorized API key exposure in high-scale client apps."
+
+    # Linear (Issue Tracking, GraphQL, Cycle Planning)
+    elif "linear" in comp:
+        if "ai" in cat or "claude" in title_lower:
+            return "Automates cycle planning and PR triage directly inside Linear GraphQL workflows using agentic tools."
+        elif "infra" in cat or "gpu" in title_lower:
+            return "Accelerates real-time Sync Engine latency for Linear desktop and web client applications."
+        else:
+            return "Ensures SOC2 audit trail integrity for enterprise Linear integration webhooks."
+
+    # Resend (Transactional Email API, DKIM/SPF)
+    elif "resend" in comp:
+        if "ai" in cat or "claude" in title_lower:
+            return "Integrates automated AI email deliverability monitoring and DKIM/SPF verification into Resend dispatches."
+        elif "infra" in cat or "gpu" in title_lower:
+            return "Reduces API response latency for high-volume transactional email dispatches across global edge nodes."
+        else:
+            return "Prevents phishing spoofing via strict domain authentication and automated abuse filtering."
+
+    # Neon (Serverless Postgres, Database Branching)
+    elif "neon" in comp:
+        if "ai" in cat or "claude" in title_lower:
+            return "Unlocks instant database branching for isolated AI agent evaluation and schema migrations."
+        elif "infra" in cat or "gpu" in title_lower:
+            return "Scales serverless Postgres compute endpoints to zero when idle to minimize cloud database spend."
+        else:
+            return "Protects Neon connection pooler credentials during high-concurrency serverless application spikes."
+
+    # Vercel (Next.js, Fluid Compute, AI SDK)
+    elif "vercel" in comp:
+        if "ai" in cat or "claude" in title_lower:
+            return "Optimizes Vercel AI SDK streaming responses for low-latency multi-modal Next.js applications."
+        elif "infra" in cat or "gpu" in title_lower:
+            return "Reduces Fluid Compute cold starts across Vercel Next.js App Router edge deployments."
+        else:
+            return "Secures Vercel Edge Middleware environment variables against client-side exposure."
+
+    # Generic Fallback
+    return f"Accelerates product development velocity and optimizes technical architecture for {company_name} engineering teams."
+

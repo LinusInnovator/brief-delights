@@ -63,7 +63,14 @@ export default async function DynamicPreviewPage({ params }: PreviewPageProps) {
               New benchmarking reveals 30% reduction in agent failure rates for structured JSON extraction and multi-turn workflows.
             </p>
             <div style={{ backgroundColor: "#1e293b", padding: "12px 16px", borderRadius: "8px", borderLeft: `3px solid ${tagColor}`, fontSize: "13px", color: "#e2e8f0" }}>
-              💡 <strong>Why This Matters to {companyName} Users:</strong> Enables direct integration of high-reliability autonomous agents.
+              💡 <strong>Why This Matters to {companyName} Users:</strong> {
+                companyName === "Supabase" ? "Enables zero-latency pgvector similarity search inside Supabase Edge Functions for RAG workflows." :
+                companyName === "PostHog" ? "Enforces high-concurrency LLM event tracking in PostHog session replays without spiking ingestion latency." :
+                companyName === "Linear" ? "Automates cycle planning and PR triage directly inside Linear GraphQL workflows using agentic tools." :
+                companyName === "Resend" ? "Integrates automated AI email deliverability monitoring and DKIM/SPF verification into Resend dispatches." :
+                companyName === "Neon" ? "Unlocks instant database branching for isolated AI agent evaluation and schema migrations." :
+                "Enables direct integration of high-reliability autonomous agents into client applications."
+              }
             </div>
           </div>
 
@@ -78,7 +85,14 @@ export default async function DynamicPreviewPage({ params }: PreviewPageProps) {
               Developers can now execute local zero-latency model inference across 300+ global edge locations natively.
             </p>
             <div style={{ backgroundColor: "#1e293b", padding: "12px 16px", borderRadius: "8px", borderLeft: `3px solid ${tagColor}`, fontSize: "13px", color: "#e2e8f0" }}>
-              💡 <strong>Why This Matters to {companyName} Users:</strong> Cuts global API latency for client-side applications.
+              💡 <strong>Why This Matters to {companyName} Users:</strong> {
+                companyName === "Supabase" ? "Cuts cold-start latency for Supabase Deno Edge Functions connecting to serverless Postgres pools." :
+                companyName === "PostHog" ? "Optimizes edge ClickHouse query performance for real-time PostHog user cohort segmentation." :
+                companyName === "Linear" ? "Accelerates real-time Sync Engine latency for Linear desktop and web client applications." :
+                companyName === "Resend" ? "Reduces API response latency for high-volume transactional email dispatches across global edge nodes." :
+                companyName === "Neon" ? "Scales serverless Postgres compute endpoints to zero when idle to minimize cloud database spend." :
+                "Cuts global API latency for client-side applications."
+              }
             </div>
           </div>
 
@@ -93,7 +107,14 @@ export default async function DynamicPreviewPage({ params }: PreviewPageProps) {
               Enterprise API security frameworks must migrate to quantum-resistant encryption algorithms over the next 18 months.
             </p>
             <div style={{ backgroundColor: "#1e293b", padding: "12px 16px", borderRadius: "8px", borderLeft: `3px solid ${tagColor}`, fontSize: "13px", color: "#e2e8f0" }}>
-              💡 <strong>Why This Matters to {companyName} Users:</strong> Ensures long-term enterprise compliance and end-to-end security guarantees.
+              💡 <strong>Why This Matters to {companyName} Users:</strong> {
+                companyName === "Supabase" ? "Hardens Supabase Row Level Security (RLS) policies and JWT validation against automated API escalation." :
+                companyName === "PostHog" ? "Secures custom PostHog event webhooks against unauthorized API key exposure in high-scale client apps." :
+                companyName === "Linear" ? "Ensures SOC2 audit trail integrity for enterprise Linear integration webhooks." :
+                companyName === "Resend" ? "Prevents phishing spoofing via strict domain authentication and automated abuse filtering." :
+                companyName === "Neon" ? "Protects Neon connection pooler credentials during high-concurrency serverless application spikes." :
+                "Ensures long-term enterprise compliance and end-to-end security guarantees."
+              }
             </div>
           </div>
 

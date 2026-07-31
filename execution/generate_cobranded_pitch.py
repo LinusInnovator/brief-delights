@@ -23,7 +23,7 @@ sys.path.insert(0, str(PROJECT_ROOT))
 from execution.scrape_saas_brand import extract_brand_assets
 from execution.scout_niche_sources import scout_niche, slugify
 from execution.eval_matrix import run_matrix_evaluation
-from execution.design_system import get_smart_brand_palette, normalize_logo_url
+from execution.design_system import get_smart_brand_palette, normalize_logo_url, get_company_specific_insight
 
 
 def render_cobranded_html(brand: dict, articles: list) -> str:
@@ -79,12 +79,14 @@ def render_cobranded_html(brand: dict, articles: list) -> str:
     for i, a in enumerate(articles[:6]):
         raw_desc = a.get('description', '').strip()
         desc_text = raw_desc if len(raw_desc) > 20 else sample_summaries[i % len(sample_summaries)]
-        why_text = f"Accelerates engineering velocity and optimizes infrastructure strategy for {company_name} users."
+        cat_name = a.get('category', 'RESEARCH & SIGNAL')
+        art_title = a.get('title', 'Untitled Signal')
+        why_text = get_company_specific_insight(company_name, cat_name, art_title)
 
         html_content += f"""
             <div class="card">
-                <span class="card-tag">{a.get('category', 'RESEARCH & SIGNAL')}</span>
-                <a href="{a.get('url', '#')}" target="_blank" class="card-title">{a.get('title', 'Untitled Signal')}</a>
+                <span class="card-tag">{cat_name}</span>
+                <a href="{a.get('url', '#')}" target="_blank" class="card-title">{art_title}</a>
                 <p class="card-desc">{desc_text}</p>
                 <div class="why-box">💡 <strong>Why This Matters to {company_name} Users:</strong> {why_text}</div>
             </div>"""
