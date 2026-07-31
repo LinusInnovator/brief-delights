@@ -148,7 +148,7 @@ export default async function ArchivePage() {
                                 Browse past editions • {newsletters.length} editions published
                             </p>
                         </div>
-                        {subscriberCount > 0 && (
+                        {subscriberCount >= 100 && (
                             <p className="text-sm text-gray-400 hidden md:block">
                                 📬 {subscriberCount.toLocaleString()} subscriber{subscriberCount !== 1 ? 's' : ''}
                             </p>
