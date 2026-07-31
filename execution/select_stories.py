@@ -36,7 +36,7 @@ LOG_FILE = TMP_DIR / f"story_selection_log_{TODAY}.txt"
 # OpenRouter configuration
 client = OpenAI(
     base_url="https://openrouter.ai/api/v1",
-    api_key=os.getenv("OPENROUTER_API_KEY"),
+    api_key=os.getenv("OPENROUTER_API_KEY") or "dummy_key_for_init",
     default_headers={
         "HTTP-Referer": "https://brief.delights.pro",
         "X-Title": "The Brief",

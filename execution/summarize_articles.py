@@ -29,16 +29,15 @@ PROJECT_ROOT = Path(__file__).parent.parent
 TMP_DIR = PROJECT_ROOT / ".tmp"
 TODAY = datetime.now().strftime("%Y-%m-%d")
 
-def get_client():
-    """Lazy initialize OpenAI client to avoid failure on module import if key is missing"""
-    return OpenAI(
-        base_url="https://openrouter.ai/api/v1",
-        api_key=os.getenv("OPENROUTER_API_KEY"),
-        default_headers={
-            "HTTP-Referer": "https://brief.delights.pro",
-            "X-Title": "The Brief",
-        }
-    )
+# OpenRouter configuration
+client = OpenAI(
+    base_url="https://openrouter.ai/api/v1",
+    api_key=os.getenv("OPENROUTER_API_KEY") or "dummy_key_for_init",
+    default_headers={
+        "HTTP-Referer": "https://brief.delights.pro",
+        "X-Title": "The Brief",
+    }
+)
 
 import re
 
