@@ -43,8 +43,8 @@ client = OpenAI(
     }
 )
 
-# Model selection (using OpenRouter auto-updating latest alias)
-PRIMARY_MODEL = os.getenv("PRIMARY_LLM_MODEL", "google/gemini-flash-latest")
+# Model selection
+PRIMARY_MODEL = os.getenv("PRIMARY_LLM_MODEL", "google/gemini-2.5-flash")
 FALLBACK_MODEL = "openai/gpt-4o-mini"
 
 # Pydantic models for structured output
@@ -68,6 +68,23 @@ def log(message: str):
     print(log_entry)
     with open(LOG_FILE, "a") as f:
         f.write(log_entry + "\n")
+
+
+def make_schema_strict(schema: dict) -> dict:
+    """Recursively inject additionalProperties: False into JSON schema for OpenAI strict mode compliance"""
+    import copy
+    s = copy.deepcopy(schema)
+    def _apply(obj):
+        if isinstance(obj, dict):
+            if obj.get("type") == "object":
+                obj["additionalProperties"] = False
+            for v in obj.values():
+                _apply(v)
+        elif isinstance(obj, list):
+            for item in obj:
+                _apply(item)
+    _apply(s)
+    return s
 
 
 def load_segments_config():
@@ -222,8 +239,7 @@ def call_llm(prompt: str, model: str, retries: int = 3) -> dict:
         try:
             log(f"🤖 Calling {model} (attempt {attempt + 1}/{retries})")
             
-            schema = StorySelection.model_json_schema()
-            
+            schema = make_schema_strict(StorySelection.model_json_schema())
             
             options = {
                 "model": model,
@@ -247,7 +263,15 @@ def call_llm(prompt: str, model: str, retries: int = 3) -> dict:
             else:
                 options["response_format"] = {"type": "json_object"}
             
-            response = client.chat.completions.create(**options)
+            try:
+                response = client.chat.completions.create(**options)
+            except Exception as req_err:
+                if "json_schema" in str(options.get("response_format", "")):
+                    log(f"⚠️ Strict json_schema error ({req_err}), falling back to json_object format...")
+                    options["response_format"] = {"type": "json_object"}
+                    response = client.chat.completions.create(**options)
+                else:
+                    raise req_err
             
             # Extract response
             content = response.choices[0].message.content.strip()

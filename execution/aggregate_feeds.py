@@ -9,6 +9,7 @@ import os
 from datetime import datetime, timedelta
 from pathlib import Path
 import feedparser
+import requests
 from typing import List, Dict
 import hashlib
 
@@ -152,12 +153,34 @@ def detect_source_type(url: str, source: str, category: str) -> str:
 
 
 def fetch_feed(feed_url: str, category: str, segment: str, lookback_hours: int = 24) -> List[Dict]:
-    """Fetch and parse a single RSS feed"""
+    """Fetch and parse a single RSS feed with custom user-agent and path resolution"""
     articles = []
     
+    # Resolve synthetic local custom feeds
+    if ".tmp/custom_feed_" in feed_url or "custom_feed_" in feed_url:
+        filename = feed_url.split("/")[-1]
+        local_file = PROJECT_ROOT / ".tmp" / filename
+        if local_file.exists():
+            feed_url = str(local_file)
+    
     try:
-        # Parse feed with timeout
-        feed = feedparser.parse(feed_url)
+        # Fetch HTTP/HTTPS feeds using requests with custom User-Agent to avoid 403 blocks
+        if feed_url.startswith("http://") or feed_url.startswith("https://"):
+            headers = {
+                'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
+            }
+            try:
+                resp = requests.get(feed_url, headers=headers, timeout=8)
+                if resp.status_code == 200:
+                    feed = feedparser.parse(resp.content)
+                else:
+                    log(f"⚠️ HTTP {resp.status_code} fetching feed {feed_url}")
+                    return articles
+            except Exception as http_err:
+                log(f"⚠️ Request failed for {feed_url}: {http_err}")
+                return articles
+        else:
+            feed = feedparser.parse(feed_url)
         
         # Check if feed parsed successfully
         if feed.bozo and not feed.entries:
