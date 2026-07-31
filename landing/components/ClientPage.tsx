@@ -1,6 +1,7 @@
 'use client';
 
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect, Suspense } from 'react';
+import { useSearchParams } from 'next/navigation';
 import SignupForm, { SignupFormRef } from './SignupForm';
 
 type Segment = 'builders' | 'leaders' | 'innovators';
