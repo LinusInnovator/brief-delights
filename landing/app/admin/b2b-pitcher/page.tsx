@@ -90,11 +90,11 @@ export default function B2BPitcherStudio() {
               </span>
               <span className="text-slate-500 text-sm">v1.0 Release</span>
             </div>
-            <h1 className="text-3xl font-extrabold text-white mt-2">
-              B2B Signal Pitcher & Growth Studio
+            <h1 class="text-3xl font-extrabold text-white mt-2">
+              Universal Business Signal Engine & Growth Studio
             </h1>
             <p className="text-slate-400 text-sm mt-1">
-              Autonomous co-branded newsletter preview generator & cold outreach platform.
+              Autonomous co-branded newsletter preview generator & outreach platform for any company, agency, VC, or brand.
             </p>
           </div>
 
@@ -133,7 +133,7 @@ export default function B2BPitcherStudio() {
                 : "text-slate-400 hover:text-slate-200"
             }`}
           >
-            🎯 On-Demand SaaS Pitcher
+            🎯 On-Demand Brand Pitcher
           </button>
           <button
             onClick={() => setActiveTab("hunter")}
@@ -143,27 +143,27 @@ export default function B2BPitcherStudio() {
                 : "text-slate-400 hover:text-slate-200"
             }`}
           >
-            🔍 Lead Hunter Queue ({leads.length})
+            🔍 Target Business Queue ({leads.length})
           </button>
         </div>
 
-        {/* TAB 1: ON-DEMAND SAAS PITCHER */}
+        {/* TAB 1: ON-DEMAND BRAND PITCHER */}
         {activeTab === "pitch" && (
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             <div className="bg-slate-900/60 border border-slate-800 rounded-2xl p-6 backdrop-blur-xl">
               <h2 className="text-xl font-bold text-white mb-2">Generate Co-Branded Pitch</h2>
               <p className="text-slate-400 text-sm mb-6">
-                Enter any SaaS domain. The engine scrapes their logo & brand colors, scouts candidate feeds, passes the Matrix Quality Gate (≥85), and builds a live demo.
+                Enter any business domain (SaaS, VC, Law Firm, Agency, E-Commerce). The engine scrapes their logo & brand colors, scouts candidate feeds, passes the Matrix Quality Gate (≥85), and builds a live demo.
               </p>
 
               <form onSubmit={handleGeneratePitch} className="space-y-5">
                 <div>
                   <label className="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">
-                    Target SaaS Domain URL
+                    Target Company / Brand Website URL
                   </label>
                   <input
                     type="text"
-                    placeholder="https://posthog.com"
+                    placeholder="https://a16z.com or https://posthog.com"
                     value={targetUrl}
                     onChange={(e) => setTargetUrl(e.target.value)}
                     required
