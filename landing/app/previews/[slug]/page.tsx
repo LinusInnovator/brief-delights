@@ -80,7 +80,7 @@ export default async function DynamicPreviewPage({ params }: PreviewPageProps) {
 
           <div style={{ textAlign: "center", marginTop: "36px" }}>
             <a
-              href={`https://${slug.replace(/com|app|io/i, ".com")}`}
+              href={`https://${cleanDomain}`}
               target="_blank"
               rel="noreferrer"
               style={{ display: "inline-block", backgroundColor: brandColor, color: "#ffffff", padding: "14px 28px", borderRadius: "10px", fontWeight: "bold", textDecoration: "none", fontSize: "15px" }}
