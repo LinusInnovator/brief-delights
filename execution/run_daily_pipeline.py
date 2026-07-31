@@ -345,10 +345,10 @@ def main():
     else:
         log("✅ Daily social teasers ready in .tmp/social_posts_YYYY-MM-DD.txt")
         
-    if not run_script("post_to_reddit.py", 30):
-        log("⚠️ Reddit post preparation skipped", "WARN")
+    if not run_script("post_to_reddit.py", 120):
+        log("⚠️ Reddit post preparation or Playwright auto-posting skipped", "WARN")
     else:
-        log("✅ Reddit strategic posts ready in .tmp/reddit_posts_YYYY-MM-DD.md")
+        log("✅ Reddit strategic post published / 1-Click link ready")
 
     if datetime.now().weekday() == 6:  # 6 = Sunday
         log("\n" + "=" * 60)
