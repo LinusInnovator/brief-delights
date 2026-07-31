@@ -2,6 +2,7 @@
 
 import { useRef, useEffect, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
+import { Clock, Target, BarChart3, Calendar, ShieldCheck, Sparkles } from 'lucide-react';
 import SignupForm, { SignupFormRef } from './SignupForm';
 
 type Segment = 'builders' | 'leaders' | 'innovators';
@@ -219,95 +220,117 @@ export default function ClientPage({
                 </div>
             </section>
 
-            {/* Signup Section */}
-            <section id="signup" className="max-w-6xl mx-auto px-6 py-20 bg-gray-50 scroll-mt-8">
-                <h3 className="text-3xl font-bold text-center mb-4 text-gray-900">
-                    Start Getting Brief
-                </h3>
-                <p className="text-center text-gray-600 mb-8 max-w-2xl mx-auto">
-                    {subscriberCount >= 5000 ? (
-                        <span className="font-semibold text-gray-900">
-                            🔥 {subscriberCount.toLocaleString()} readers strong — you&apos;re late to the party
-                        </span>
-                    ) : subscriberCount >= 1000 ? (
-                        <span className="font-semibold text-gray-900">
-                            Join {subscriberCount.toLocaleString()} readers getting smarter every morning
-                        </span>
-                    ) : subscriberCount >= 500 ? (
-                        <span className="font-semibold text-gray-900">
-                            {subscriberCount.toLocaleString()} early adopters and counting 📈
-                        </span>
-                    ) : subscriberCount >= 100 ? (
-                        <span className="font-semibold text-gray-900">
-                            Join {subscriberCount.toLocaleString()} subscribers getting curated intelligence daily
-                        </span>
-                    ) : (
-                        <span className="font-semibold text-gray-900">
-                            We&apos;d show our subscriber count, but our abacus only goes to 💯
-                        </span>
-                    )}
-                </p>
+            {/* Signup Section - Warm Alabaster Card */}
+            <section id="signup" className="bg-[#FAF8F5] py-24 border-b border-[#121212]/10 scroll-mt-8">
+                <div className="max-w-4xl mx-auto px-6">
+                    <div className="bg-white border border-[#121212]/10 rounded-3xl p-10 md:p-14 shadow-xl text-center">
+                        <div className="w-14 h-14 rounded-2xl bg-[#58111A]/10 border border-[#58111A]/20 flex items-center justify-center mx-auto mb-6">
+                            <Sparkles className="w-7 h-7 text-[#58111A]" />
+                        </div>
 
-                <SignupForm ref={signupFormRef} referrer={referrer} abVariantId={abVariantId} />
-            </section>
+                        <h3 className="text-3xl md:text-4xl font-serif text-[#121212] mb-3">
+                            Start Receiving Daily Intelligence
+                        </h3>
+                        <p className="text-gray-600 mb-8 max-w-xl mx-auto text-sm leading-relaxed">
+                            {subscriberCount >= 5000 ? (
+                                <span className="font-semibold text-[#121212]">
+                                    🔥 {subscriberCount.toLocaleString()} readers strong — join the industry standard
+                                </span>
+                            ) : subscriberCount >= 1000 ? (
+                                <span className="font-semibold text-[#121212]">
+                                    Join {subscriberCount.toLocaleString()} executives and engineers getting smarter every morning
+                                </span>
+                            ) : subscriberCount >= 100 ? (
+                                <span className="font-semibold text-[#121212]">
+                                    Join {subscriberCount.toLocaleString()} subscribers receiving role-curated intelligence daily
+                                </span>
+                            ) : (
+                                <span className="font-semibold text-[#121212]">
+                                    Curated daily intelligence delivered to your inbox every morning
+                                </span>
+                            )}
+                        </p>
 
-            {/* Value Props */}
-            <section className="max-w-6xl mx-auto px-6 py-20">
-                <h3 className="text-3xl font-bold text-center mb-12 text-gray-900">
-                    Why Brief Delights?
-                </h3>
-
-                <div className="grid md:grid-cols-3 gap-8">
-                    <div className="text-center">
-                        <div className="text-4xl mb-4">⏱️</div>
-                        <h4 className="text-xl font-bold mb-2 text-gray-900">10 min daily read</h4>
-                        <p className="text-gray-600">Not 2 hours of scrolling</p>
-                    </div>
-
-                    <div className="text-center">
-                        <div className="text-4xl mb-4">🎯</div>
-                        <h4 className="text-xl font-bold mb-2 text-gray-900">Personalized for your role</h4>
-                        <p className="text-gray-600">Builder, Leader, or Innovator</p>
-                    </div>
-
-                    <div className="text-center">
-                        <div className="text-4xl mb-4">📊</div>
-                        <h4 className="text-xl font-bold mb-2 text-gray-900">Data-driven insights</h4>
-                        <p className="text-gray-600">Trend detection, not just news</p>
-                    </div>
-
-                    <div className="text-center">
-                        <div className="text-4xl mb-4">📅</div>
-                        <h4 className="text-xl font-bold mb-2 text-gray-900">Sunday synthesis</h4>
-                        <p className="text-gray-600">Strategic context for the week</p>
-                    </div>
-
-                    <div className="text-center">
-                        <div className="text-4xl mb-4">💎</div>
-                        <h4 className="text-xl font-bold mb-2 text-gray-900">Free forever</h4>
-                        <p className="text-gray-600">No paywalls, no upsells</p>
-                    </div>
-
-                    <div className="text-center">
-                        <div className="text-4xl mb-4">✨</div>
-                        <h4 className="text-xl font-bold mb-2 text-gray-900">Editorially curated</h4>
-                        <p className="text-gray-600">Premium quality, every story</p>
+                        <SignupForm ref={signupFormRef} referrer={referrer} abVariantId={abVariantId} />
                     </div>
                 </div>
             </section>
 
-            {/* Footer */}
-            <footer className="border-t border-gray-200 mt-20 py-8">
-                <div className="max-w-6xl mx-auto px-6 text-center text-gray-600 text-sm">
-                    <p><span className="font-semibold">brief delights</span> | A DreamValidator brand</p>
-                    <p className="mt-3 space-x-4">
-                        <a href="https://sell.delights.pro" className="hover:text-gray-900 transition">Sell Delights</a>
-                        <span className="text-gray-300">·</span>
-                        <a href="https://share.delights.pro" className="hover:text-gray-900 transition">Share Delights</a>
-                        <span className="text-gray-300">·</span>
-                        <a href="/archive" className="hover:text-gray-900 transition">Archive</a>
+            {/* Value Props - Premium Editorial Icons */}
+            <section className="bg-[#FAF8F5] py-24">
+                <div className="max-w-6xl mx-auto px-6">
+                    <h3 className="text-3xl md:text-4xl font-serif text-center mb-4 text-[#121212]">
+                        Why Brief Delights?
+                    </h3>
+                    <p className="text-center text-gray-600 mb-16 max-w-lg mx-auto text-sm">
+                        Built for leaders and engineers who value signal over noise.
                     </p>
-                    <p className="mt-2 text-gray-400">© 2026 All rights reserved</p>
+
+                    <div className="grid md:grid-cols-3 gap-8">
+                        <div className="bg-white border border-[#121212]/10 rounded-2xl p-8 text-center hover:border-[#58111A] hover:shadow-lg transition">
+                            <div className="w-14 h-14 rounded-2xl bg-[#58111A]/10 border border-[#58111A]/20 text-[#58111A] flex items-center justify-center mx-auto mb-5 shadow-sm">
+                                <Clock className="w-6 h-6 stroke-[1.75]" />
+                            </div>
+                            <h4 className="text-xl font-serif font-bold mb-2 text-[#121212]">10 min daily read</h4>
+                            <p className="text-gray-600 text-sm leading-relaxed">High-density signal. Not 2 hours of feed scrolling.</p>
+                        </div>
+
+                        <div className="bg-white border border-[#121212]/10 rounded-2xl p-8 text-center hover:border-[#58111A] hover:shadow-lg transition">
+                            <div className="w-14 h-14 rounded-2xl bg-[#58111A]/10 border border-[#58111A]/20 text-[#58111A] flex items-center justify-center mx-auto mb-5 shadow-sm">
+                                <Target className="w-6 h-6 stroke-[1.75]" />
+                            </div>
+                            <h4 className="text-xl font-serif font-bold mb-2 text-[#121212]">Personalized for your role</h4>
+                            <p className="text-gray-600 text-sm leading-relaxed">Dedicated Builder, Leader, or Innovator streams.</p>
+                        </div>
+
+                        <div className="bg-white border border-[#121212]/10 rounded-2xl p-8 text-center hover:border-[#58111A] hover:shadow-lg transition">
+                            <div className="w-14 h-14 rounded-2xl bg-[#58111A]/10 border border-[#58111A]/20 text-[#58111A] flex items-center justify-center mx-auto mb-5 shadow-sm">
+                                <BarChart3 className="w-6 h-6 stroke-[1.75]" />
+                            </div>
+                            <h4 className="text-xl font-serif font-bold mb-2 text-[#121212]">Data-driven insights</h4>
+                            <p className="text-gray-600 text-sm leading-relaxed">Automated trend detection & strategic takeaways.</p>
+                        </div>
+
+                        <div className="bg-white border border-[#121212]/10 rounded-2xl p-8 text-center hover:border-[#58111A] hover:shadow-lg transition">
+                            <div className="w-14 h-14 rounded-2xl bg-[#58111A]/10 border border-[#58111A]/20 text-[#58111A] flex items-center justify-center mx-auto mb-5 shadow-sm">
+                                <Calendar className="w-6 h-6 stroke-[1.75]" />
+                            </div>
+                            <h4 className="text-xl font-serif font-bold mb-2 text-[#121212]">Sunday synthesis</h4>
+                            <p className="text-gray-600 text-sm leading-relaxed">Deep strategic macro context for the upcoming week.</p>
+                        </div>
+
+                        <div className="bg-white border border-[#121212]/10 rounded-2xl p-8 text-center hover:border-[#58111A] hover:shadow-lg transition">
+                            <div className="w-14 h-14 rounded-2xl bg-[#58111A]/10 border border-[#58111A]/20 text-[#58111A] flex items-center justify-center mx-auto mb-5 shadow-sm">
+                                <ShieldCheck className="w-6 h-6 stroke-[1.75]" />
+                            </div>
+                            <h4 className="text-xl font-serif font-bold mb-2 text-[#121212]">Free & independent</h4>
+                            <p className="text-gray-600 text-sm leading-relaxed">Zero paywalls, zero sponsored noise in core briefs.</p>
+                        </div>
+
+                        <div className="bg-white border border-[#121212]/10 rounded-2xl p-8 text-center hover:border-[#58111A] hover:shadow-lg transition">
+                            <div className="w-14 h-14 rounded-2xl bg-[#58111A]/10 border border-[#58111A]/20 text-[#58111A] flex items-center justify-center mx-auto mb-5 shadow-sm">
+                                <Sparkles className="w-6 h-6 stroke-[1.75]" />
+                            </div>
+                            <h4 className="text-xl font-serif font-bold mb-2 text-[#121212]">Editorially refined</h4>
+                            <p className="text-gray-600 text-sm leading-relaxed">Scanned across 1,340+ sources for highest signal.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* Footer - Editorial Masthead Footer */}
+            <footer className="bg-[#FAF8F5] border-t border-[#121212]/10 py-12">
+                <div className="max-w-6xl mx-auto px-6 text-center text-gray-600 text-sm">
+                    <p className="font-serif font-bold text-[#121212] tracking-wider text-base mb-1">BRIEF DELIGHTS</p>
+                    <p className="text-xs text-[#58111A] font-medium tracking-widest uppercase mb-4">Knowledge, Refined • A DreamValidator Brand</p>
+                    <p className="space-x-6 text-xs font-semibold text-gray-700">
+                        <a href="https://sell.delights.pro" className="hover:text-[#58111A] transition">Sell Delights</a>
+                        <span className="text-gray-300">·</span>
+                        <a href="https://share.delights.pro" className="hover:text-[#58111A] transition">Share Delights</a>
+                        <span className="text-gray-300">·</span>
+                        <a href="/archive" className="hover:text-[#58111A] transition">Archive</a>
+                    </p>
+                    <p className="mt-4 text-xs text-gray-400">© 2026 All rights reserved</p>
                 </div>
             </footer>
         </>
