@@ -62,33 +62,33 @@ export default async function DynamicPreviewPage({ params }: PreviewPageProps) {
   const tagColor = matched?.tagColor || (brandColor === "#ffffff" || brandColor === "#000000" ? "#38bdf8" : brandColor);
   const badgeTextColor = (brandColor === "#ffffff" || matched?.name === "Resend" || matched?.name === "Vercel") ? "#0f172a" : "#ffffff";
   const cleanDomain = matched?.domain || `${cleanSlug.replace(/(com|app|io|tech|dev|co)$/i, "")}.com`;
-  const logoUrl = `https://www.google.com/s2/favicons?domain=${cleanDomain}&sz=128`;
+  const logoUrl = `https://www.google.com/s2/favicons?domain=${cleanDomain}&sz=256`;
 
   return (
     <div style={{ backgroundColor: "#0f172a", color: "#f8fafc", minHeight: "100vh", padding: "40px 20px", fontFamily: "sans-serif" }}>
       <div style={{ maxWidth: "680px", margin: "0 auto", backgroundColor: "#1e293b", borderRadius: "16px", overflow: "hidden", border: "1px solid #334155" }}>
         
         {/* Header */}
-        <div style={{ backgroundColor: "#0f172a", padding: "40px 24px 32px 24px", textAlign: "center", borderBottom: `3px solid ${brandColor}` }}>
+        <div style={{ backgroundColor: "#0f172a", padding: "44px 24px 36px 24px", textAlign: "center", borderBottom: `3px solid ${brandColor}` }}>
           <div style={{
-            width: "68px",
-            height: "68px",
-            borderRadius: "18px",
+            width: "120px",
+            height: "120px",
+            borderRadius: "28px",
             backgroundColor: "rgba(255, 255, 255, 0.08)",
-            border: "1px solid rgba(255, 255, 255, 0.15)",
+            border: "2px solid rgba(255, 255, 255, 0.18)",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            margin: "0 auto 20px auto",
-            boxShadow: "0 10px 25px rgba(0, 0, 0, 0.35)",
-            padding: "8px"
+            margin: "0 auto 24px auto",
+            boxShadow: "0 12px 30px rgba(0, 0, 0, 0.45)",
+            padding: "14px"
           }}>
-            <img src={logoUrl} alt={companyName} style={{ maxHeight: "42px", maxWidth: "42px", width: "auto", height: "auto", objectFit: "contain" }} />
+            <img src={logoUrl} alt={companyName} style={{ maxHeight: "84px", maxWidth: "84px", width: "84px", height: "84px", objectFit: "contain" }} />
           </div>
-          <div style={{ display: "inline-block", backgroundColor: brandColor, color: badgeTextColor, padding: "5px 14px", borderRadius: "9999px", fontSize: "11px", fontWeight: "bold", textTransform: "uppercase", letterSpacing: "1px" }}>
+          <div style={{ display: "inline-block", backgroundColor: brandColor, color: badgeTextColor, padding: "6px 16px", borderRadius: "9999px", fontSize: "11px", fontWeight: "bold", textTransform: "uppercase", letterSpacing: "1px" }}>
             POWERED BY BRIEF DELIGHTS SIGNAL ENGINE
           </div>
-          <h1 style={{ fontSize: "28px", margin: "16px 0 6px 0", color: "#ffffff", fontWeight: 800 }}>{companyName} Weekly Signal Brief</h1>
+          <h1 style={{ fontSize: "30px", margin: "18px 0 8px 0", color: "#ffffff", fontWeight: 800 }}>{companyName} Weekly Signal Brief</h1>
           <p style={{ fontSize: "14px", color: "#94a3b8", margin: 0 }}>
             Curated high-impact intelligence tailored for {companyName} users & ecosystem.
           </p>

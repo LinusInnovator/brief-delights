@@ -41,9 +41,9 @@ def render_cobranded_html(brand: dict, articles: list) -> str:
     <style>
         body {{ font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background-color: #0f172a; color: #f8fafc; margin: 0; padding: 20px; }}
         .container {{ max-width: 680px; margin: 0 auto; background-color: #1e293b; border-radius: 16px; overflow: hidden; border: 1px solid #334155; }}
-        .header {{ background-color: #0f172a; padding: 40px 24px 32px 24px; text-align: center; border-bottom: 3px solid {palette['brand_hex']}; }}
-        .logo-box {{ width: 68px; height: 68px; border-radius: 18px; background-color: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.15); display: inline-flex; align-items: center; justify-content: center; margin: 0 auto 20px auto; box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35); padding: 8px; }}
-        .logo {{ max-height: 42px; max-width: 42px; width: auto; height: auto; object-fit: contain; }}
+        .header {{ background-color: #0f172a; padding: 44px 24px 36px 24px; text-align: center; border-bottom: 3px solid {palette['brand_hex']}; }}
+        .logo-box {{ width: 120px; height: 120px; border-radius: 28px; background-color: rgba(255, 255, 255, 0.08); border: 2px solid rgba(255, 255, 255, 0.18); display: inline-flex; align-items: center; justify-content: center; margin: 0 auto 24px auto; box-shadow: 0 12px 30px rgba(0, 0, 0, 0.45); padding: 14px; }}
+        .logo {{ max-height: 84px; max-width: 84px; width: 84px; height: 84px; object-fit: contain; }}
         .badge {{ display: inline-block; background-color: {palette['brand_hex']}; color: {palette['text_on_brand']}; padding: 6px 14px; border-radius: 9999px; font-size: 11px; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; }}
         .title {{ font-size: 28px; margin: 16px 0 6px 0; color: #ffffff; font-weight: 800; }}
         .subtitle {{ font-size: 14px; color: #94a3b8; margin: 0; }}

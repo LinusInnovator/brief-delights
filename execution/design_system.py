@@ -82,19 +82,19 @@ def get_smart_brand_palette(hex_color: str) -> Dict[str, str]:
 def normalize_logo_url(domain: str, scraped_logo: str = None) -> str:
     """
     Logo Aspect Ratio Normalizer
-    Ensures brand logos display as crisp square/icon marks (128px) rather than warped banners.
+    Ensures brand logos display as crisp, high-res icon marks (256px) rather than warped banners.
     """
     clean_domain = domain.replace("http://", "").replace("https://", "").replace("www.", "").split("/")[0]
     
     # Filter out social og:images, promotional banners, and framework graphics
     banner_keywords = ['og/', 'og_', 'og-', 'og.png', 'banner', 'share', 'default.png', 'frameworks', 'accordion', 'weekend']
     if scraped_logo and any(kw in scraped_logo.lower() for kw in banner_keywords):
-        return f"https://www.google.com/s2/favicons?domain={clean_domain}&sz=128"
+        return f"https://www.google.com/s2/favicons?domain={clean_domain}&sz=256"
 
     if scraped_logo and scraped_logo.startswith("http"):
         return scraped_logo
 
-    return f"https://www.google.com/s2/favicons?domain={clean_domain}&sz=128"
+    return f"https://www.google.com/s2/favicons?domain={clean_domain}&sz=256"
 
 
 def get_company_specific_insight(company_name: str, category: str, title: str) -> str:
