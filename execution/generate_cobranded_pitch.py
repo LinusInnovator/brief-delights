@@ -23,13 +23,14 @@ sys.path.insert(0, str(PROJECT_ROOT))
 from execution.scrape_saas_brand import extract_brand_assets
 from execution.scout_niche_sources import scout_niche, slugify
 from execution.eval_matrix import run_matrix_evaluation
+from execution.design_system import get_smart_brand_palette, normalize_logo_url
 
 
 def render_cobranded_html(brand: dict, articles: list) -> str:
-    """Render co-branded newsletter preview HTML with SaaS logo & brand colors"""
-    brand_color = brand.get("brand_color", "#3b82f6")
-    company_name = brand.get("name", "Target SaaS")
-    logo_url = brand.get("logo_url", "")
+    """Render co-branded newsletter preview HTML with smart 80/20 design system"""
+    palette = get_smart_brand_palette(brand.get("brand_color", "#3b82f6"))
+    company_name = brand.get("name", "Target Brand")
+    logo_url = normalize_logo_url(brand.get("domain", "example.com"), brand.get("logo_url"))
 
     html_content = f"""<!DOCTYPE html>
 <html lang="en">
@@ -39,33 +40,33 @@ def render_cobranded_html(brand: dict, articles: list) -> str:
     <title>{company_name} Signal Brief — Co-Branded White-Label Demo</title>
     <style>
         body {{ font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background-color: #0f172a; color: #f8fafc; margin: 0; padding: 20px; }}
-        .container {{ max-width: 680px; margin: 0 auto; background-color: #1e293b; border-radius: 12px; overflow: hidden; border: 1px solid #334155; }}
-        .header {{ background-color: #0f172a; padding: 24px; text-align: center; border-bottom: 3px solid {brand_color}; }}
-        .logo {{ max-height: 48px; margin-bottom: 12px; }}
-        .badge {{ background-color: {brand_color}; color: #ffffff; padding: 4px 12px; border-radius: 9999px; font-size: 12px; font-weight: bold; text-transform: uppercase; }}
-        .title {{ font-size: 24px; margin: 12px 0 4px 0; color: #ffffff; }}
+        .container {{ max-width: 680px; margin: 0 auto; background-color: #1e293b; border-radius: 16px; overflow: hidden; border: 1px solid #334155; }}
+        .header {{ background-color: #0f172a; padding: 32px 24px; text-align: center; border-bottom: 3px solid {palette['brand_hex']}; }}
+        .logo {{ height: 48px; width: 48px; border-radius: 10px; object-fit: contain; margin-bottom: 12px; }}
+        .badge {{ display: inline-block; background-color: {palette['brand_hex']}; color: {palette['text_on_brand']}; padding: 6px 14px; border-radius: 9999px; font-size: 11px; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; }}
+        .title {{ font-size: 26px; margin: 16px 0 6px 0; color: #ffffff; }}
         .subtitle {{ font-size: 14px; color: #94a3b8; margin: 0; }}
-        .content {{ padding: 24px; }}
-        .card {{ background-color: #0f172a; border-radius: 8px; padding: 16px; margin-bottom: 16px; border: 1px solid #334155; }}
-        .card-tag {{ color: {brand_color}; font-size: 12px; font-weight: bold; text-transform: uppercase; margin-bottom: 6px; display: block; }}
-        .card-title {{ font-size: 18px; color: #ffffff; margin: 0 0 8px 0; text-decoration: none; display: block; }}
-        .card-desc {{ font-size: 14px; color: #cbd5e1; line-height: 1.5; margin-bottom: 10px; }}
-        .why-box {{ background-color: #1e293b; padding: 10px 14px; border-radius: 6px; border-left: 3px solid {brand_color}; font-size: 13px; color: #e2e8f0; }}
+        .content {{ padding: 32px 24px; }}
+        .card {{ background-color: #0f172a; border-radius: 12px; padding: 20px; margin-bottom: 20px; border: 1px solid #334155; }}
+        .card-tag {{ color: {palette['brand_hex']}; font-size: 12px; font-weight: bold; text-transform: uppercase; margin-bottom: 6px; display: block; }}
+        .card-title {{ font-size: 18px; color: #ffffff; margin: 0 0 10px 0; text-decoration: none; display: block; }}
+        .card-desc {{ font-size: 14px; color: #cbd5e1; line-height: 1.6; margin-bottom: 12px; }}
+        .why-box {{ background-color: #1e293b; padding: 12px 16px; border-radius: 8px; border-left: 3px solid {palette['brand_hex']}; font-size: 13px; color: #e2e8f0; }}
         .footer {{ text-align: center; padding: 24px; font-size: 13px; color: #64748b; border-top: 1px solid #334155; }}
-        .cta-btn {{ display: inline-block; background-color: {brand_color}; color: #ffffff; padding: 12px 24px; border-radius: 8px; font-weight: bold; text-decoration: none; margin-top: 16px; }}
+        .cta-btn {{ display: inline-block; background-color: {palette['brand_hex']}; color: {palette['text_on_brand']}; padding: 14px 28px; border-radius: 10px; font-weight: bold; text-decoration: none; font-size: 15px; }}
     </style>
 </head>
 <body>
     <div class="container">
         <div class="header">
-            <img src="{logo_url}" alt="{company_name}" class="logo" onerror="this.style.display='none'">
+            <img src="{logo_url}" alt="{company_name}" class="logo">
+            <br>
             <span class="badge">POWERED BY BRIEF DELIGHTS ENGINE</span>
             <h1 class="title">{company_name} Weekly Signal Brief</h1>
             <p class="subtitle">Curated high-impact intelligence for {brand.get('icp_keyword', 'Tech Engineering')}</p>
         </div>
         <div class="content">
-            <h3 style="color: #94a3b8; text-transform: uppercase; font-size: 12px; letter-spacing: 1px;">Top Curated Signals This Week</h3>
-"""
+            <h3 style="color: #94a3b8; text-transform: uppercase; font-size: 12px; letter-spacing: 1px; margin-bottom: 20px;">Top Curated Signals This Week</h3>"""
 
     for a in articles[:6]:
         html_content += f"""
@@ -74,8 +75,7 @@ def render_cobranded_html(brand: dict, articles: list) -> str:
                 <a href="{a.get('url', '#')}" target="_blank" class="card-title">{a.get('title', 'Untitled Signal')}</a>
                 <p class="card-desc">{a.get('description', '')[:200]}...</p>
                 <div class="why-box">💡 <strong>Why This Matters to Your Users:</strong> High-impact development in {brand.get('icp_keyword', 'tech')}.</div>
-            </div>
-"""
+            </div>"""
 
     html_content += f"""
             <div style="text-align: center; margin-top: 32px;">
