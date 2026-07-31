@@ -103,6 +103,15 @@ jobs:
             git push origin main
           fi
       
+      - name: Auto-post #1 Featured Breakdown to Reddit (Playwright)
+        run: python3 execution/post_to_reddit.py
+        timeout-minutes: 5
+        env:
+          PYTHONPATH: .
+          REDDIT_SESSION_COOKIE: ${{ secrets.REDDIT_SESSION_COOKIE }}
+          REDDIT_USERNAME: ${{ secrets.REDDIT_USERNAME }}
+          REDDIT_PASSWORD: ${{ secrets.REDDIT_PASSWORD }}
+
       - name: Upload artifacts
         if: always()
         uses: actions/upload-artifact@v4
