@@ -54,23 +54,25 @@ export default function ArchiveLockGate({
 
       const data = await res.json();
 
-      if (res.ok) {
+      if (res.ok || data.success || data.already_subscribed) {
         // Unlock content immediately!
         setUnlocked(true);
         setStatus('unlocked');
-        setMessage(data.message || 'Access granted! Welcome to Brief Delights.');
+        setMessage(data.message || 'Welcome back! Issue unlocked.');
         try {
           localStorage.setItem('bd_subscriber_active', 'true');
           localStorage.setItem('bd_subscriber_email', email);
         } catch {}
       } else {
-        // If already subscribed, unlock anyway!
-        if (res.status === 409 || data.error?.toLowerCase().includes('already')) {
+        // If already subscribed error string returned, unlock anyway!
+        const errStr = (data.error || '').toLowerCase();
+        if (errStr.includes('already') || errStr.includes('subscriber') || errStr.includes('confirmed')) {
           setUnlocked(true);
           setStatus('unlocked');
           setMessage('Welcome back! Issue unlocked.');
           try {
             localStorage.setItem('bd_subscriber_active', 'true');
+            localStorage.setItem('bd_subscriber_email', email);
           } catch {}
         } else {
           setStatus('error');

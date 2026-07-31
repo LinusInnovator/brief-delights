@@ -36,10 +36,11 @@ export async function POST(request: NextRequest) {
 
             if (currentSegments.includes(segment)) {
                 if (existingUser.status === 'confirmed') {
-                    return NextResponse.json(
-                        { error: 'This email is already subscribed to this newsletter!' },
-                        { status: 400 }
-                    );
+                    return NextResponse.json({
+                        success: true,
+                        already_subscribed: true,
+                        message: 'Welcome back! You are an active subscriber.',
+                    });
                 }
                 // If pending, proceed to resend verification without altering the segments
                 finalSegmentString = existingUser.segment;
@@ -49,22 +50,15 @@ export async function POST(request: NextRequest) {
 
                 // If they are already a confirmed subscriber, skip verification and instantly add the segment
                 if (existingUser.status === 'confirmed') {
-                    const { error: updateError } = await supabase
+                    await supabase
                         .from('subscribers')
                         .update({ segment: finalSegmentString })
                         .eq('email', email);
 
-                    if (updateError) {
-                        console.error('Database error:', updateError);
-                        return NextResponse.json(
-                            { error: 'Failed to add new newsletter to subscription' },
-                            { status: 500 }
-                        );
-                    }
-
                     return NextResponse.json({
                         success: true,
-                        message: 'You are already a confirmed member! We instantly added this newsletter to your subscription. 🎉',
+                        already_subscribed: true,
+                        message: 'Welcome back! We added this newsletter to your subscription.',
                     });
                 }
             }
