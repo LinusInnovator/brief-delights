@@ -34,8 +34,9 @@ export async function GET(request: NextRequest) {
         }
 
         // Validate it's a proper URL
+        let parsedUrl: URL;
         try {
-            new URL(targetUrl);
+            parsedUrl = new URL(targetUrl);
         } catch {
             return NextResponse.json(
                 { error: 'Invalid url parameter' },
@@ -56,8 +57,8 @@ export async function GET(request: NextRequest) {
                 });
         }
 
-        // Redirect to actual URL
-        return NextResponse.redirect(targetUrl);
+        // Redirect safely to actual destination URL (302 Found)
+        return NextResponse.redirect(parsedUrl.href, 302);
 
     } catch (error) {
         console.error('Track redirect error:', error);
