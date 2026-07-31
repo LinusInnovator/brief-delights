@@ -41,10 +41,11 @@ def render_cobranded_html(brand: dict, articles: list) -> str:
     <style>
         body {{ font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background-color: #0f172a; color: #f8fafc; margin: 0; padding: 20px; }}
         .container {{ max-width: 680px; margin: 0 auto; background-color: #1e293b; border-radius: 16px; overflow: hidden; border: 1px solid #334155; }}
-        .header {{ background-color: #0f172a; padding: 32px 24px; text-align: center; border-bottom: 3px solid {palette['brand_hex']}; }}
-        .logo {{ max-height: 44px; max-width: 220px; width: auto; height: auto; object-fit: contain; margin-bottom: 14px; display: inline-block; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3)); }}
+        .header {{ background-color: #0f172a; padding: 40px 24px 32px 24px; text-align: center; border-bottom: 3px solid {palette['brand_hex']}; }}
+        .logo-box {{ width: 68px; height: 68px; border-radius: 18px; background-color: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.15); display: inline-flex; align-items: center; justify-content: center; margin: 0 auto 20px auto; box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35); padding: 8px; }}
+        .logo {{ max-height: 42px; max-width: 42px; width: auto; height: auto; object-fit: contain; }}
         .badge {{ display: inline-block; background-color: {palette['brand_hex']}; color: {palette['text_on_brand']}; padding: 6px 14px; border-radius: 9999px; font-size: 11px; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; }}
-        .title {{ font-size: 26px; margin: 12px 0 6px 0; color: #ffffff; font-weight: 800; }}
+        .title {{ font-size: 28px; margin: 16px 0 6px 0; color: #ffffff; font-weight: 800; }}
         .subtitle {{ font-size: 14px; color: #94a3b8; margin: 0; }}
         .content {{ padding: 32px 24px; }}
         .card {{ background-color: #0f172a; border-radius: 12px; padding: 20px; margin-bottom: 20px; border: 1px solid #334155; }}
@@ -59,9 +60,10 @@ def render_cobranded_html(brand: dict, articles: list) -> str:
 <body>
     <div class="container">
         <div class="header">
-            <div style="margin-bottom: 16px;">
+            <div class="logo-box">
                 <img src="{logo_url}" alt="{company_name}" class="logo">
             </div>
+            <br>
             <span class="badge">POWERED BY BRIEF DELIGHTS ENGINE</span>
             <h1 class="title">{company_name} Weekly Signal Brief</h1>
             <p class="subtitle">Curated high-impact intelligence for {brand.get('icp_keyword', 'Tech Engineering')}</p>
