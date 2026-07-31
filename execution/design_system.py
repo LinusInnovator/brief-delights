@@ -86,8 +86,9 @@ def normalize_logo_url(domain: str, scraped_logo: str = None) -> str:
     """
     clean_domain = domain.replace("http://", "").replace("https://", "").replace("www.", "").split("/")[0]
     
-    # If scraped logo is an og:image banner (contains 'og', 'banner', 'share', 'default.png'), default to square favicon
-    if scraped_logo and any(keyword in scraped_logo.lower() for keyword in ['og/', 'og_', 'banner', 'share', 'default.png']):
+    # Filter out social og:images, promotional banners, and framework graphics
+    banner_keywords = ['og/', 'og_', 'og-', 'og.png', 'banner', 'share', 'default.png', 'frameworks', 'accordion', 'weekend']
+    if scraped_logo and any(kw in scraped_logo.lower() for kw in banner_keywords):
         return f"https://www.google.com/s2/favicons?domain={clean_domain}&sz=128"
 
     if scraped_logo and scraped_logo.startswith("http"):

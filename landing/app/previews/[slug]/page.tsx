@@ -82,6 +82,21 @@ export default async function DynamicPreviewPage({ params }: PreviewPageProps) {
             </div>
           </div>
 
+          <div style={{ backgroundColor: "#0f172a", borderRadius: "12px", padding: "20px", marginBottom: "20px", border: "1px solid #334155" }}>
+            <span style={{ color: tagColor, fontSize: "12px", fontWeight: "bold", textTransform: "uppercase", display: "block", marginBottom: "6px" }}>
+              🛡️ SECURITY & COMPLIANCE
+            </span>
+            <h4 style={{ fontSize: "18px", color: "#ffffff", margin: "0 0 10px 0" }}>
+              NIST Finalizes Post-Quantum Cryptographic Standards
+            </h4>
+            <p style={{ fontSize: "14px", color: "#cbd5e1", lineHeight: "1.6", marginBottom: "12px" }}>
+              Enterprise API security frameworks must migrate to quantum-resistant encryption algorithms over the next 18 months.
+            </p>
+            <div style={{ backgroundColor: "#1e293b", padding: "12px 16px", borderRadius: "8px", borderLeft: `3px solid ${tagColor}`, fontSize: "13px", color: "#e2e8f0" }}>
+              💡 <strong>Why This Matters to {companyName} Users:</strong> Ensures long-term enterprise compliance and end-to-end security guarantees.
+            </div>
+          </div>
+
           <div style={{ textAlign: "center", marginTop: "36px" }}>
             <a
               href={`https://${cleanDomain}`}
