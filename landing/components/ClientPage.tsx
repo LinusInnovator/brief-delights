@@ -2,7 +2,14 @@
 
 import { useRef, useEffect, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
-import { Clock, Target, BarChart3, Calendar, ShieldCheck, Sparkles } from 'lucide-react';
+import { 
+    IconDailyRead, 
+    IconPersonalizedRole, 
+    IconDataDriven, 
+    IconSundaySynthesis, 
+    IconFreeForever, 
+    IconEditoriallyCurated 
+} from './EditorialIcons';
 import SignupForm, { SignupFormRef } from './SignupForm';
 
 type Segment = 'builders' | 'leaders' | 'innovators';
@@ -225,7 +232,7 @@ export default function ClientPage({
                 <div className="max-w-4xl mx-auto px-6">
                     <div className="bg-white border border-[#121212]/10 rounded-3xl p-10 md:p-14 shadow-xl text-center">
                         <div className="w-14 h-14 rounded-2xl bg-[#58111A]/10 border border-[#58111A]/20 flex items-center justify-center mx-auto mb-6">
-                            <Sparkles className="w-7 h-7 text-[#58111A]" />
+                            <IconEditoriallyCurated className="w-7 h-7 text-[#58111A]" />
                         </div>
 
                         <h3 className="text-3xl md:text-4xl font-serif text-[#121212] mb-3">
@@ -256,7 +263,7 @@ export default function ClientPage({
                 </div>
             </section>
 
-            {/* Value Props - Premium Editorial Icons */}
+            {/* Value Props - Monocle Standard Engraved Micro-Vectors */}
             <section className="bg-[#FAF8F5] py-24">
                 <div className="max-w-6xl mx-auto px-6">
                     <h3 className="text-3xl md:text-4xl font-serif text-center mb-4 text-[#121212]">
@@ -269,7 +276,7 @@ export default function ClientPage({
                     <div className="grid md:grid-cols-3 gap-8">
                         <div className="bg-white border border-[#121212]/10 rounded-2xl p-8 text-center hover:border-[#58111A] hover:shadow-lg transition">
                             <div className="w-14 h-14 rounded-2xl bg-[#58111A]/10 border border-[#58111A]/20 text-[#58111A] flex items-center justify-center mx-auto mb-5 shadow-sm">
-                                <Clock className="w-6 h-6 stroke-[1.75]" />
+                                <IconDailyRead className="w-7 h-7 text-[#58111A]" />
                             </div>
                             <h4 className="text-xl font-serif font-bold mb-2 text-[#121212]">10 min daily read</h4>
                             <p className="text-gray-600 text-sm leading-relaxed">High-density signal. Not 2 hours of feed scrolling.</p>
@@ -277,7 +284,7 @@ export default function ClientPage({
 
                         <div className="bg-white border border-[#121212]/10 rounded-2xl p-8 text-center hover:border-[#58111A] hover:shadow-lg transition">
                             <div className="w-14 h-14 rounded-2xl bg-[#58111A]/10 border border-[#58111A]/20 text-[#58111A] flex items-center justify-center mx-auto mb-5 shadow-sm">
-                                <Target className="w-6 h-6 stroke-[1.75]" />
+                                <IconPersonalizedRole className="w-7 h-7 text-[#58111A]" />
                             </div>
                             <h4 className="text-xl font-serif font-bold mb-2 text-[#121212]">Personalized for your role</h4>
                             <p className="text-gray-600 text-sm leading-relaxed">Dedicated Builder, Leader, or Innovator streams.</p>
@@ -285,7 +292,7 @@ export default function ClientPage({
 
                         <div className="bg-white border border-[#121212]/10 rounded-2xl p-8 text-center hover:border-[#58111A] hover:shadow-lg transition">
                             <div className="w-14 h-14 rounded-2xl bg-[#58111A]/10 border border-[#58111A]/20 text-[#58111A] flex items-center justify-center mx-auto mb-5 shadow-sm">
-                                <BarChart3 className="w-6 h-6 stroke-[1.75]" />
+                                <IconDataDriven className="w-7 h-7 text-[#58111A]" />
                             </div>
                             <h4 className="text-xl font-serif font-bold mb-2 text-[#121212]">Data-driven insights</h4>
                             <p className="text-gray-600 text-sm leading-relaxed">Automated trend detection & strategic takeaways.</p>
@@ -293,7 +300,7 @@ export default function ClientPage({
 
                         <div className="bg-white border border-[#121212]/10 rounded-2xl p-8 text-center hover:border-[#58111A] hover:shadow-lg transition">
                             <div className="w-14 h-14 rounded-2xl bg-[#58111A]/10 border border-[#58111A]/20 text-[#58111A] flex items-center justify-center mx-auto mb-5 shadow-sm">
-                                <Calendar className="w-6 h-6 stroke-[1.75]" />
+                                <IconSundaySynthesis className="w-7 h-7 text-[#58111A]" />
                             </div>
                             <h4 className="text-xl font-serif font-bold mb-2 text-[#121212]">Sunday synthesis</h4>
                             <p className="text-gray-600 text-sm leading-relaxed">Deep strategic macro context for the upcoming week.</p>
@@ -301,7 +308,7 @@ export default function ClientPage({
 
                         <div className="bg-white border border-[#121212]/10 rounded-2xl p-8 text-center hover:border-[#58111A] hover:shadow-lg transition">
                             <div className="w-14 h-14 rounded-2xl bg-[#58111A]/10 border border-[#58111A]/20 text-[#58111A] flex items-center justify-center mx-auto mb-5 shadow-sm">
-                                <ShieldCheck className="w-6 h-6 stroke-[1.75]" />
+                                <IconFreeForever className="w-7 h-7 text-[#58111A]" />
                             </div>
                             <h4 className="text-xl font-serif font-bold mb-2 text-[#121212]">Free & independent</h4>
                             <p className="text-gray-600 text-sm leading-relaxed">Zero paywalls, zero sponsored noise in core briefs.</p>
@@ -309,7 +316,7 @@ export default function ClientPage({
 
                         <div className="bg-white border border-[#121212]/10 rounded-2xl p-8 text-center hover:border-[#58111A] hover:shadow-lg transition">
                             <div className="w-14 h-14 rounded-2xl bg-[#58111A]/10 border border-[#58111A]/20 text-[#58111A] flex items-center justify-center mx-auto mb-5 shadow-sm">
-                                <Sparkles className="w-6 h-6 stroke-[1.75]" />
+                                <IconEditoriallyCurated className="w-7 h-7 text-[#58111A]" />
                             </div>
                             <h4 className="text-xl font-serif font-bold mb-2 text-[#121212]">Editorially refined</h4>
                             <p className="text-gray-600 text-sm leading-relaxed">Scanned across 1,340+ sources for highest signal.</p>
