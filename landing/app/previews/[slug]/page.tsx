@@ -10,18 +10,20 @@ export default async function DynamicPreviewPage({ params }: PreviewPageProps) {
   const { slug } = await params;
   const cleanSlug = (slug || "").replace(/\.html?$/i, "").toLowerCase();
 
-  const domainMap: Record<string, { name: string; domain: string; color: string }> = {
-    neontech: { name: "Neon", domain: "neon.tech", color: "#00e599" },
-    vercelcom: { name: "Vercel", domain: "vercel.com", color: "#ffffff" },
-    resendcom: { name: "Resend", domain: "resend.com", color: "#000000" },
-    posthogcom: { name: "PostHog", domain: "posthog.com", color: "#f54e00" },
-    linearapp: { name: "Linear", domain: "linear.app", color: "#5e6ad2" },
-    supabasecom: { name: "Supabase", domain: "supabase.com", color: "#3ecf8e" },
+  const domainMap: Record<string, { name: string; domain: string; color: string; tagColor?: string }> = {
+    resendcom: { name: "Resend", domain: "resend.com", color: "#ffffff", tagColor: "#38bdf8" },
+    neontech: { name: "Neon", domain: "neon.tech", color: "#00e599", tagColor: "#00e599" },
+    vercelcom: { name: "Vercel", domain: "vercel.com", color: "#ffffff", tagColor: "#38bdf8" },
+    posthogcom: { name: "PostHog", domain: "posthog.com", color: "#f54e00", tagColor: "#f54e00" },
+    linearapp: { name: "Linear", domain: "linear.app", color: "#5e6ad2", tagColor: "#5e6ad2" },
+    supabasecom: { name: "Supabase", domain: "supabase.com", color: "#3ecf8e", tagColor: "#3ecf8e" },
   };
 
   const matched = domainMap[cleanSlug];
   const companyName = matched?.name || cleanSlug.replace(/(com|app|io|org|net|tech|dev|co)$/i, "").toUpperCase() || "Target Brand";
   const brandColor = matched?.color || (cleanSlug.includes("neon") ? "#00e599" : cleanSlug.includes("linear") ? "#5e6ad2" : cleanSlug.includes("supabase") ? "#3ecf8e" : "#f54e00");
+  const tagColor = matched?.tagColor || (brandColor === "#ffffff" || brandColor === "#000000" ? "#38bdf8" : brandColor);
+  const badgeTextColor = (brandColor === "#ffffff" || matched?.name === "Resend" || matched?.name === "Vercel") ? "#0f172a" : "#ffffff";
   const cleanDomain = matched?.domain || `${cleanSlug.replace(/(com|app|io|tech|dev|co)$/i, "")}.com`;
   const logoUrl = `https://www.google.com/s2/favicons?domain=${cleanDomain}&sz=128`;
 
@@ -34,7 +36,7 @@ export default async function DynamicPreviewPage({ params }: PreviewPageProps) {
           <div style={{ marginBottom: "16px" }}>
             <img src={logoUrl} alt={companyName} style={{ maxHeight: "48px", maxWidth: "220px", width: "auto", height: "auto", objectFit: "contain", margin: "0 auto", display: "block" }} />
           </div>
-          <div style={{ display: "inline-block", backgroundColor: brandColor, color: "#ffffff", padding: "5px 14px", borderRadius: "9999px", fontSize: "11px", fontWeight: "bold", textTransform: "uppercase", letterSpacing: "1px" }}>
+          <div style={{ display: "inline-block", backgroundColor: brandColor, color: badgeTextColor, padding: "5px 14px", borderRadius: "9999px", fontSize: "11px", fontWeight: "bold", textTransform: "uppercase", letterSpacing: "1px" }}>
             POWERED BY BRIEF DELIGHTS SIGNAL ENGINE
           </div>
           <h1 style={{ fontSize: "26px", margin: "16px 0 6px 0", color: "#ffffff" }}>{companyName} Weekly Signal Brief</h1>
@@ -51,7 +53,7 @@ export default async function DynamicPreviewPage({ params }: PreviewPageProps) {
 
           {/* Sample Signal Cards */}
           <div style={{ backgroundColor: "#0f172a", borderRadius: "12px", padding: "20px", marginBottom: "20px", border: "1px solid #334155" }}>
-            <span style={{ color: brandColor, fontSize: "12px", fontWeight: "bold", textTransform: "uppercase", display: "block", marginBottom: "6px" }}>
+            <span style={{ color: tagColor, fontSize: "12px", fontWeight: "bold", textTransform: "uppercase", display: "block", marginBottom: "6px" }}>
               🚀 AI & AGENTIC ARCHITECTURE
             </span>
             <h4 style={{ fontSize: "18px", color: "#ffffff", margin: "0 0 10px 0" }}>
@@ -60,13 +62,13 @@ export default async function DynamicPreviewPage({ params }: PreviewPageProps) {
             <p style={{ fontSize: "14px", color: "#cbd5e1", lineHeight: "1.6", marginBottom: "12px" }}>
               New benchmarking reveals 30% reduction in agent failure rates for structured JSON extraction and multi-turn workflows.
             </p>
-            <div style={{ backgroundColor: "#1e293b", padding: "12px 16px", borderRadius: "8px", borderLeft: `3px solid ${brandColor}`, fontSize: "13px", color: "#e2e8f0" }}>
+            <div style={{ backgroundColor: "#1e293b", padding: "12px 16px", borderRadius: "8px", borderLeft: `3px solid ${tagColor}`, fontSize: "13px", color: "#e2e8f0" }}>
               💡 <strong>Why This Matters to {companyName} Users:</strong> Enables direct integration of high-reliability autonomous agents.
             </div>
           </div>
 
           <div style={{ backgroundColor: "#0f172a", borderRadius: "12px", padding: "20px", marginBottom: "20px", border: "1px solid #334155" }}>
-            <span style={{ color: brandColor, fontSize: "12px", fontWeight: "bold", textTransform: "uppercase", display: "block", marginBottom: "6px" }}>
+            <span style={{ color: tagColor, fontSize: "12px", fontWeight: "bold", textTransform: "uppercase", display: "block", marginBottom: "6px" }}>
               ⚡ SYSTEMS & INFRASTRUCTURE
             </span>
             <h4 style={{ fontSize: "18px", color: "#ffffff", margin: "0 0 10px 0" }}>
@@ -75,7 +77,7 @@ export default async function DynamicPreviewPage({ params }: PreviewPageProps) {
             <p style={{ fontSize: "14px", color: "#cbd5e1", lineHeight: "1.6", marginBottom: "12px" }}>
               Developers can now execute local zero-latency model inference across 300+ global edge locations natively.
             </p>
-            <div style={{ backgroundColor: "#1e293b", padding: "12px 16px", borderRadius: "8px", borderLeft: `3px solid ${brandColor}`, fontSize: "13px", color: "#e2e8f0" }}>
+            <div style={{ backgroundColor: "#1e293b", padding: "12px 16px", borderRadius: "8px", borderLeft: `3px solid ${tagColor}`, fontSize: "13px", color: "#e2e8f0" }}>
               💡 <strong>Why This Matters to {companyName} Users:</strong> Cuts global API latency for client-side applications.
             </div>
           </div>

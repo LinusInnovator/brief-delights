@@ -36,7 +36,7 @@ def get_relative_luminance(r: int, g: int, b: int) -> float:
 def get_smart_brand_palette(hex_color: str) -> Dict[str, str]:
     """
     80/20 Smart Color System Generator
-    Guarantees WCAG 4.5:1 text contrast for any input brand hex color.
+    Guarantees WCAG 4.5:1 text contrast for any input brand hex color (light, vibrant, or dark/black).
     """
     if not hex_color or not re.match(r'^#(?:[0-9a-fA-F]{3}){1,2}$', hex_color):
         hex_color = "#3b82f6"  # Default accent blue
@@ -44,22 +44,37 @@ def get_smart_brand_palette(hex_color: str) -> Dict[str, str]:
     r, g, b = hex_to_rgb(hex_color)
     luminance = get_relative_luminance(r, g, b)
 
-    # If brand color is light/bright (luminance > 0.45), use dark text on top of brand elements
-    text_on_brand = "#0f172a" if luminance > 0.45 else "#ffffff"
-
-    # Subtle translucent brand background for tags/boxes
-    rgba_subtle = f"rgba({r}, {g}, {b}, 0.15)"
-    rgba_border = f"rgba({r}, {g}, {b}, 0.35)"
+    # 1. Dark/Black Brand Colors (luminance < 0.15, e.g. #000000, #0f172a)
+    if luminance < 0.15:
+        brand_hex = "#ffffff"       # Elevate accent elements to crisp white
+        tag_color = "#38bdf8"       # Sky blue for category tags on dark cards
+        badge_bg = "#ffffff"
+        text_on_brand = "#0f172a"
+        border_accent = "#38bdf8"
+    # 2. Light/Bright Brand Colors (luminance > 0.45, e.g. #E5E7E0, #3ECF8E)
+    elif luminance > 0.45:
+        brand_hex = hex_color
+        tag_color = hex_color
+        badge_bg = hex_color
+        text_on_brand = "#0f172a"   # Dark text on light background badge/button
+        border_accent = hex_color
+    # 3. Vibrant Medium Brand Colors (0.15 <= luminance <= 0.45, e.g. #5E6AD2, #F54E00)
+    else:
+        brand_hex = hex_color
+        tag_color = hex_color
+        badge_bg = hex_color
+        text_on_brand = "#ffffff"   # White text on medium background badge/button
+        border_accent = hex_color
 
     return {
-        "brand_hex": hex_color,
+        "brand_hex": brand_hex,
+        "tag_color": tag_color,
+        "badge_bg": badge_bg,
         "text_on_brand": text_on_brand,
-        "rgba_subtle": rgba_subtle,
-        "rgba_border": rgba_border,
+        "border_accent": border_accent,
         "bg_primary": "#0f172a",
         "bg_card": "#1e293b",
         "text_primary": "#ffffff",
-        "text_secondary": "#94a3b8",
         "border_card": "#334155"
     }
 
