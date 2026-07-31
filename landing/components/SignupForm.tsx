@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useRef, useImperativeHandle, forwardRef } from 'react';
+import { IconStreamBuilders, IconStreamLeaders, IconStreamInnovators } from './EditorialIcons';
 
 type Segment = 'builders' | 'leaders' | 'innovators';
 
@@ -52,7 +53,7 @@ const SignupForm = forwardRef<SignupFormRef, {
 
             if (response.ok) {
                 setStatus('success');
-                setMessage(data.message || 'Check your email to confirm your subscription! 📧');
+                setMessage(data.message || 'Check your email to confirm your subscription!');
                 setEmail('');
             } else {
                 setStatus('error');
@@ -77,49 +78,52 @@ const SignupForm = forwardRef<SignupFormRef, {
                         placeholder="your@email.com"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
-                        className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-black focus:outline-none text-lg placeholder:text-gray-500 placeholder:opacity-100"
+                        className="w-full px-5 py-3.5 border-2 border-gray-200 rounded-xl focus:border-[#58111A] focus:outline-none text-base placeholder:text-gray-400 placeholder:opacity-100 text-gray-900 bg-white"
                         disabled={status === 'loading'}
                         aria-label="Email address"
                         aria-required="true"
                     />
                 </div>
 
-                {/* Segment Selector */}
-                <div className="grid grid-cols-3 gap-2">
+                {/* Segment Selector - Monocle Standard Micro-Vectors & Midnight Oxide */}
+                <div className="grid grid-cols-3 gap-3">
                     <button
                         type="button"
                         onClick={() => setSegment('builders')}
-                        className={`py-2 px-3 rounded-lg border-2 font-semibold transition ${segment === 'builders'
-                            ? 'bg-orange-500 text-white border-orange-500'
-                            : 'bg-white text-gray-700 border-gray-300 hover:border-orange-500'
+                        className={`py-3 px-3 rounded-xl border-2 font-bold text-xs tracking-wider transition flex items-center justify-center gap-2 ${segment === 'builders'
+                            ? 'bg-[#58111A] text-white border-[#58111A] shadow-md'
+                            : 'bg-white text-gray-700 border-gray-200 hover:border-[#58111A]'
                             }`}
                         disabled={status === 'loading'}
                     >
-                        🛠️ Builder
+                        <IconStreamBuilders className={`w-4 h-4 ${segment === 'builders' ? 'text-white' : 'text-[#58111A]'}`} />
+                        <span>Builder</span>
                     </button>
 
                     <button
                         type="button"
                         onClick={() => setSegment('leaders')}
-                        className={`py-2 px-3 rounded-lg border-2 font-semibold transition ${segment === 'leaders'
-                            ? 'bg-blue-600 text-white border-blue-600'
-                            : 'bg-white text-gray-700 border-gray-300 hover:border-blue-600'
+                        className={`py-3 px-3 rounded-xl border-2 font-bold text-xs tracking-wider transition flex items-center justify-center gap-2 ${segment === 'leaders'
+                            ? 'bg-[#58111A] text-white border-[#58111A] shadow-md'
+                            : 'bg-white text-gray-700 border-gray-200 hover:border-[#58111A]'
                             }`}
                         disabled={status === 'loading'}
                     >
-                        💼 Leader
+                        <IconStreamLeaders className={`w-4 h-4 ${segment === 'leaders' ? 'text-white' : 'text-[#58111A]'}`} />
+                        <span>Leader</span>
                     </button>
 
                     <button
                         type="button"
                         onClick={() => setSegment('innovators')}
-                        className={`py-2 px-3 rounded-lg border-2 font-semibold transition ${segment === 'innovators'
-                            ? 'bg-purple-600 text-white border-purple-600'
-                            : 'bg-white text-gray-700 border-gray-300 hover:border-purple-600'
+                        className={`py-3 px-3 rounded-xl border-2 font-bold text-xs tracking-wider transition flex items-center justify-center gap-2 ${segment === 'innovators'
+                            ? 'bg-[#58111A] text-white border-[#58111A] shadow-md'
+                            : 'bg-white text-gray-700 border-gray-200 hover:border-[#58111A]'
                             }`}
                         disabled={status === 'loading'}
                     >
-                        🚀 Innovator
+                        <IconStreamInnovators className={`w-4 h-4 ${segment === 'innovators' ? 'text-white' : 'text-[#58111A]'}`} />
+                        <span>Innovator</span>
                     </button>
                 </div>
 
@@ -127,7 +131,7 @@ const SignupForm = forwardRef<SignupFormRef, {
                 <button
                     type="submit"
                     disabled={status === 'loading'}
-                    className="w-full bg-black text-white py-3 rounded-lg font-semibold text-lg hover:bg-gray-800 transition disabled:bg-gray-400 disabled:cursor-not-allowed"
+                    className="w-full bg-[#121212] text-white py-4 rounded-xl font-bold tracking-wide hover:bg-[#58111A] transition shadow-lg shadow-[#58111A]/10 disabled:bg-gray-400 disabled:cursor-not-allowed"
                 >
                     {status === 'loading' ? 'Subscribing...' : 'Get Brief Daily'}
                 </button>
