@@ -30,6 +30,7 @@ const NAV_SECTIONS: NavSection[] = [
         items: [
             { href: '/admin/sponsors', label: 'Sponsors', icon: '💰' },
             { href: '/admin/partnerships', label: 'Partnerships', icon: '🤝' },
+            { href: '/admin/b2b-pitcher', label: 'Signal Engine Pitcher', icon: '🎯', badge: 'NEW' },
         ],
     },
     {
