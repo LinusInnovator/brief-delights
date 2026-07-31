@@ -44,8 +44,8 @@ client = OpenAI(
 )
 
 # Model selection
-PRIMARY_MODEL = "anthropic/claude-3.5-sonnet"
-FALLBACK_MODEL = "openai/gpt-4-turbo"
+PRIMARY_MODEL = os.getenv("PRIMARY_LLM_MODEL", "google/gemini-2.5-flash")
+FALLBACK_MODEL = "openai/gpt-4o-mini"
 
 # Pydantic models for structured output
 class SelectedArticle(BaseModel):

@@ -27,7 +27,7 @@ client = OpenAI(
     }
 )
 
-MODEL = "anthropic/claude-3.5-sonnet"
+MODEL = os.getenv("PRIMARY_LLM_MODEL", "google/gemini-2.5-flash")
 
 
 def create_trend_synthesis_prompt(trend_analysis: Dict, segment: str) -> str:
