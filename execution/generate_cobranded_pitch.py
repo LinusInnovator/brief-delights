@@ -59,8 +59,9 @@ def render_cobranded_html(brand: dict, articles: list) -> str:
 <body>
     <div class="container">
         <div class="header">
-            <img src="{logo_url}" alt="{company_name}" class="logo">
-            <br>
+            <div style="margin-bottom: 16px;">
+                <img src="{logo_url}" alt="{company_name}" class="logo">
+            </div>
             <span class="badge">POWERED BY BRIEF DELIGHTS ENGINE</span>
             <h1 class="title">{company_name} Weekly Signal Brief</h1>
             <p class="subtitle">Curated high-impact intelligence for {brand.get('icp_keyword', 'Tech Engineering')}</p>

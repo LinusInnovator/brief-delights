@@ -30,9 +30,11 @@ export default async function DynamicPreviewPage({ params }: PreviewPageProps) {
       <div style={{ maxWidth: "680px", margin: "0 auto", backgroundColor: "#1e293b", borderRadius: "16px", overflow: "hidden", border: "1px solid #334155" }}>
         
         {/* Header */}
-        <div style={{ backgroundColor: "#0f172a", padding: "32px 24px", textAlign: "center", borderBottom: `3px solid ${brandColor}` }}>
-          <img src={logoUrl} alt={companyName} style={{ maxHeight: "44px", maxWidth: "220px", width: "auto", height: "auto", objectFit: "contain", marginBottom: "14px", display: "inline-block" }} />
-          <div style={{ display: "inline-block", backgroundColor: brandColor, color: "#ffffff", padding: "4px 14px", borderRadius: "9999px", fontSize: "11px", fontWeight: "bold", textTransform: "uppercase", letterSpacing: "1px" }}>
+        <div style={{ backgroundColor: "#0f172a", padding: "36px 24px", textAlign: "center", borderBottom: `3px solid ${brandColor}` }}>
+          <div style={{ marginBottom: "16px" }}>
+            <img src={logoUrl} alt={companyName} style={{ maxHeight: "48px", maxWidth: "220px", width: "auto", height: "auto", objectFit: "contain", margin: "0 auto", display: "block" }} />
+          </div>
+          <div style={{ display: "inline-block", backgroundColor: brandColor, color: "#ffffff", padding: "5px 14px", borderRadius: "9999px", fontSize: "11px", fontWeight: "bold", textTransform: "uppercase", letterSpacing: "1px" }}>
             POWERED BY BRIEF DELIGHTS SIGNAL ENGINE
           </div>
           <h1 style={{ fontSize: "26px", margin: "16px 0 6px 0", color: "#ffffff" }}>{companyName} Weekly Signal Brief</h1>
