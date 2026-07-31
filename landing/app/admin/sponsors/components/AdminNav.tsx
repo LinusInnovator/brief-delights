@@ -10,6 +10,7 @@ const NAV_ITEMS = [
     { href: '/admin/growth', label: 'Growth', icon: '🚀' },
     { href: '/admin/sponsors', label: 'Sponsors', icon: '💰' },
     { href: '/admin/partnerships', label: 'Partnerships', icon: '🤝' },
+    { href: '/admin/b2b-pitcher', label: 'Signal Engine Pitcher', icon: '🎯' },
     { href: '/admin/sponsors/insights', label: 'Insights', icon: '🔍' },
     { href: '/admin/sponsors/analytics', label: 'Analytics', icon: '📈' },
 ];
