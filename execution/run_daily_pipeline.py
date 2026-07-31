@@ -247,8 +247,12 @@ def main():
     if missing_segments:
         log(f"❌ CRITICAL: Story selection failed for segments: {', '.join(missing_segments)}", "ERROR")
         return False
-    
     log("✅ Story selection complete for all segments")
+    
+    # STEP 2b: Accuracy & Smartness Matrix Evaluation
+    log("\n\n▶️  Step 2b/5: Accuracy & Smartness Matrix Evaluation")
+    log("─"*70)
+    run_script("eval_matrix.py", timeout=30)
     
     # STEP 3 & 4: Summarize and Compose for each segment
     for i, segment_id in enumerate(segment_ids, 1):
