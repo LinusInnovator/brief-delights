@@ -49,11 +49,34 @@ def format_date() -> str:
     return datetime.now().strftime("%B %d, %Y")
 
 
+import re
+
+def clean_article_title(title: str) -> str:
+    """Clean title of concatenated metadata (e.g. 'Introducing Claude Opus 5ProductJul 24, 2026Opus 5 is...')"""
+    if not title:
+        return ""
+
+    # Strip concatenated category/date markers (e.g. 'ProductJul 24, 2026...', 'ResearchAug 01, 2026...')
+    cleaned = re.sub(r'(Product|Research|Announcement|News|Blog)[A-Z][a-z]{2}\s+\d{1,2},\s+\d{4}.*$', '', title)
+
+    # If title is still unusually long (>110 chars), take the first headline portion before description text
+    if len(cleaned) > 110:
+        parts = re.split(r'\.|\n| - ', cleaned)
+        if len(parts) > 1 and len(parts[0].strip()) >= 15:
+            cleaned = parts[0].strip()
+        else:
+            cleaned = cleaned[:105].rsplit(' ', 1)[0] + '...'
+
+    return cleaned.strip()
+
+
 def wrap_article_links_for_tracking(articles: list, segment: str, date: str) -> list:
-    """Wrap article links with click tracking URLs"""
+    """Wrap article links with click tracking URLs and clean article titles"""
     base_url = "https://brief.delights.pro/api/track"
     
     for article in articles:
+        raw_title = article.get('title', '')
+        article['title'] = clean_article_title(raw_title)
         original_url = article.get('url', '')  # The actual article URL (not 'source' which is the publisher name)
         title = article.get('title', '')[:100]  # Truncate long titles
         

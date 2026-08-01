@@ -65,12 +65,22 @@ def scrape_anthropic():
         # Anthropic news links
         for a in soup.find_all('a', href=True):
             if '/news/' in a['href'] and len(a['href']) > 15:
-                title = a.get_text(strip=True)
-                if not title or title.lower() in ['read more', 'news']:
-                    continue
                 link = a['href']
                 if link.startswith('/'):
                     link = 'https://www.anthropic.com' + link
+
+                # Find heading tag inside anchor if available
+                heading = a.find(['h1', 'h2', 'h3', 'h4'])
+                if heading:
+                    title = heading.get_text(strip=True)
+                else:
+                    # Fallback to first line or line-break separated text
+                    text_blocks = [t.strip() for t in a.stripped_strings if t.strip()]
+                    title = text_blocks[0] if text_blocks else a.get_text(strip=True)
+
+                if not title or title.lower() in ['read more', 'news', 'product', 'research']:
+                    continue
+
                 if not any(i['link'] == link for i in items):
                     items.append({"title": title, "link": link})
     
