@@ -65,8 +65,8 @@ def load_template() -> Template:
             margin: 0;
             padding: 0;
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            background-color: #f8f9fa;
-            color: #1a1a1a;
+            background-color: #FAF8F5;
+            color: #121212;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
         }
@@ -76,38 +76,40 @@ def load_template() -> Template:
             max-width: 680px;
             margin: 0 auto;
             background-color: #ffffff;
+            border: 1px solid rgba(18, 18, 18, 0.1);
         }
 
-        /* Top Bar (minimal, like TLDR) */
+        /* Top Bar */
         .top-bar {
             padding: 16px 40px;
             text-align: center;
-            border-bottom: 1px solid #e8e8e8;
-            background: #ffffff;
+            border-bottom: 1px solid rgba(18, 18, 18, 0.1);
+            background: #FAF8F5;
         }
 
         .top-bar a {
-            color: #666;
+            color: #58111A;
             text-decoration: none;
             font-size: 13px;
             margin: 0 12px;
-            font-weight: 500;
+            font-weight: 600;
         }
 
         .top-bar a:hover {
-            color: #000;
+            color: #3D0A11;
         }
 
-        /* Header (Clean, no gradient!) */
+        /* Header */
         .header {
-            background: #ffffff;
+            background: #FAF8F5;
             padding: 40px 40px 32px 40px;
             text-align: center;
-            border-bottom: 1px solid #e8e8e8;
+            border-bottom: 1px solid rgba(18, 18, 18, 0.1);
         }
 
         .logo {
-            font-size: 52px;
+            font-family: 'Georgia', serif;
+            font-size: 42px;
             font-weight: 700;
             letter-spacing: -1.5px;
             margin: 0;

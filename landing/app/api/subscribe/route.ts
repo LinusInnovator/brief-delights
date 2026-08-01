@@ -124,41 +124,50 @@ export async function POST(request: NextRequest) {
                         <!DOCTYPE html>
                         <html>
                         <head>
+                            <meta charset="utf-8">
+                            <meta name="viewport" content="width=device-width, initial-scale=1.0">
                             <style>
-                                body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }
+                                body { margin: 0; padding: 0; background-color: #FAF8F5; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; color: #121212; }
                                 .container { max-width: 600px; margin: 0 auto; padding: 40px 20px; }
-                                .logo { font-size: 48px; font-weight: 700; text-align: center; margin-bottom: 8px; }
-                                .tagline { font-size: 16px; color: #666; text-align: center; letter-spacing: 2px; margin-bottom: 32px; }
-                                .content { background: #f8f9fa; padding: 32px; border-radius: 8px; }
-                                .button { display: inline-block; background: #000; color: #fff; padding: 16px 32px; text-decoration: none; border-radius: 8px; font-weight: 600; margin: 24px 0; }
-                                .footer { color: #999; font-size: 14px; text-align: center; margin-top: 32px; }
+                                .brand-box { text-align: center; margin-bottom: 24px; }
+                                .logo-seal { width: 56px; height: 56px; margin-bottom: 12px; }
+                                .masthead { font-family: 'Georgia', serif; font-size: 28px; font-weight: 700; letter-spacing: 2px; color: #121212; margin: 0; }
+                                .tagline { font-size: 11px; font-weight: 700; color: #C5A059; letter-spacing: 3px; text-transform: uppercase; margin-top: 6px; }
+                                .content { background: #FFFFFF; border: 1px solid rgba(18, 18, 18, 0.1); padding: 36px; border-radius: 16px; box-shadow: 0 4px 12px rgba(0,0,0,0.03); }
+                                .heading { font-family: 'Georgia', serif; font-size: 22px; color: #58111A; margin-top: 0; margin-bottom: 16px; }
+                                .body-text { font-size: 15px; line-height: 1.6; color: #333333; margin-bottom: 20px; }
+                                .button { display: inline-block; background-color: #58111A; color: #FFFFFF !important; padding: 16px 32px; text-decoration: none; border-radius: 12px; font-weight: 700; font-size: 15px; border: 1px solid #C5A059; margin: 20px 0; }
+                                .footer { color: #888888; font-size: 12px; text-align: center; margin-top: 32px; line-height: 1.5; }
                             </style>
                         </head>
                         <body>
                             <div class="container">
-                                <div class="logo">Brief</div>
-                                <div class="tagline">delights</div>
+                                <div class="brand-box">
+                                    <img src="${baseUrl}/bd_seal_logo.png" alt="Brief Delights Seal" class="logo-seal" />
+                                    <h1 class="masthead">BRIEF DELIGHTS</h1>
+                                    <div class="tagline">KNOWLEDGE, REFINED</div>
+                                </div>
                                 
                                 <div class="content">
-                                    <h2>Welcome to Brief Delights! 🎉</h2>
-                                    <p>You're one step away from getting curated tech intelligence delivered daily.</p>
-                                    <p>Click the button below to confirm your subscription:</p>
+                                    <h2 class="heading">Confirm Your Intelligence Briefing Subscription</h2>
+                                    <p class="body-text">You are one step away from receiving curated daily executive insights directly in your inbox.</p>
+                                    <p class="body-text">Please click below to verify your email address and activate instant access:</p>
                                     <center>
                                         <a href="${verificationUrl}" class="button">
-                                            Confirm Email Address
+                                            Confirm Subscription &rarr;
                                         </a>
                                     </center>
-                                    <p style="color: #666; font-size: 14px; margin-top: 24px;">
-                                        Or copy and paste this link: <br/>
-                                        <a href="${verificationUrl}">${verificationUrl}</a>
+                                    <p style="color: #666666; font-size: 13px; margin-top: 24px; word-break: break-all;">
+                                        Direct verification link:<br/>
+                                        <a href="${verificationUrl}" style="color: #58111A;">${verificationUrl}</a>
                                     </p>
                                 </div>
                                 
                                 <div class="footer">
-                                    <p>You're receiving this because someone (hopefully you!) signed up for Brief Delights.</p>
-                                    <p>This link will expire in 24 hours.</p>
+                                    <p>Brief Delights &bull; Executive Intelligence Engine</p>
+                                    <p>This verification link expires in 24 hours.</p>
                                 </div>
-                            </div>
+                                </div>
                         </body>
                         </html>
                     `,
