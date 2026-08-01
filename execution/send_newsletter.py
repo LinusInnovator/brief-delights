@@ -293,8 +293,32 @@ def personalize_referral(html_content: str, subscriber: dict) -> str:
     return html
 
 
+def get_sent_emails_today(segment_id: str) -> set:
+    """Read today's send log to find subscribers who already received today's email"""
+    sent_set = set()
+    if LOG_FILE.exists():
+        try:
+            with open(LOG_FILE, 'r') as f:
+                data = json.load(f)
+            seg_data = data.get(segment_id, {})
+            for detail in seg_data.get('details', []):
+                if detail.get('status') == 'sent' and detail.get('email'):
+                    sent_set.add(detail['email'].lower())
+        except Exception:
+            pass
+    return sent_set
+
+
 def send_to_segment(segment_id: str, subscribers: list, html_content: str, segment_name: str, ab_enabled: bool = True) -> dict:
-    """Send newsletter to all subscribers in a segment using Resend Batch API"""
+    """Send newsletter to all subscribers in a segment using Resend Batch API with Strict Idempotency Lock"""
+    already_sent = get_sent_emails_today(segment_id)
+    if already_sent:
+        unsent_subscribers = [s for s in subscribers if s.get('email', '').lower() not in already_sent]
+        skipped_count = len(subscribers) - len(unsent_subscribers)
+        if skipped_count > 0:
+            log(f"🔒 IDEMPOTENCY GUARD: {skipped_count} subscribers already received today's dispatch. Skipping duplicate sends.")
+        subscribers = unsent_subscribers
+
     log(f"\n📧 Sending to {segment_name} segment ({len(subscribers)} subscribers)")
     
     results = {
