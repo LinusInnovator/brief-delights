@@ -1,573 +1,230 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ newsletter_name }} {{ segment_emoji }} - {{ date }}</title>
-    <style>
-        /* Reset */
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            background-color: #f8f9fa;
-            color: #1a1a1a;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-        }
-
-        /* Container */
-        .email-wrapper {
-            max-width: 680px;
-            margin: 0 auto;
-            background-color: #ffffff;
-        }
-
-        /* Top Bar (minimal, like TLDR) */
-        .top-bar {
-            padding: 16px 40px;
-            text-align: center;
-            border-bottom: 1px solid #e8e8e8;
-            background: #ffffff;
-        }
-
-        .top-bar a {
-            color: #666;
-            text-decoration: none;
-            font-size: 13px;
-            margin: 0 12px;
-            font-weight: 500;
-        }
-
-        .top-bar a:hover {
-            color: #000;
-        }
-
-        /* Header (Clean, no gradient!) */
-        .header {
-            background: #ffffff;
-            padding: 40px 40px 32px 40px;
-            text-align: center;
-            border-bottom: 1px solid #e8e8e8;
-        }
-
-        .logo {
-            font-size: 52px;
-            font-weight: 700;
-            letter-spacing: -1.5px;
-            margin: 0;
-            line-height: 1;
-            color: #000000;
-        }
-
-        .tagline {
-            font-size: 18px;
-            font-weight: 400;
-            color: #666666;
-            margin: 4px 0 12px 0;
-            letter-spacing: 2px;
-        }
-
-        .header .date {
-            margin: 0 0 8px 0;
-            font-size: 14px;
-            color: #999;
-            font-weight: 400;
-        }
-
-        .header .curation-stats {
-            margin: 0;
-            font-size: 12px;
-            color: #aaa;
-            font-weight: 400;
-            font-family: 'Courier New', monospace;
-        }
-
-        /* Sponsor Block (white background, tight integration) */
-        .sponsor {
-            background: #ffffff;
-            border-top: 1px solid #e8e8e8;
-            border-bottom: 1px solid #e8e8e8;
-            padding: 32px 40px;
-            margin: 0;
-        }
-
-        .sponsor-label {
-            font-size: 9px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: #999;
-            margin: 0 0 12px 0;
-            font-weight: 600;
-            text-align: center;
-        }
-
-        .sponsor h3 {
-            margin: 0 0 12px 0;
-            font-size: 20px;
-            font-weight: 700;
-            color: #000;
-            line-height: 1.3;
-        }
-
-        .sponsor h3 a {
-            color: #000;
-            text-decoration: none;
-        }
-
-        .sponsor h3 a:hover {
-            color: #4f46e5;
-        }
-
-        .sponsor p {
-            margin: 0;
-            font-size: 14px;
-            line-height: 1.5;
-            color: #666;
-        }
-
-        .sponsor a.cta {
-            display: inline-block;
-            margin-top: 12px;
-            color: #4f46e5;
-            font-weight: 600;
-            text-decoration: underline;
-            font-size: 15px;
-        }
-
-        /* Content */
-        .content {
-            padding: 40px 40px 20px 40px;
-        }
-
-        /* Section Headers */
-        .section {
-            margin-bottom: 40px;
-        }
-
-        .section-emoji {
-            text-align: center;
-            font-size: 20px;
-            margin: 0 0 12px 0;
-        }
-
-        .section h2 {
-            font-size: 20px;
-            font-weight: 700;
-            color: #000;
-            margin: 0 0 24px 0;
-            padding: 0;
-            border: none;
-            text-align: center;
-        }
-
-        /* Story Cards */
-        .story {
-            margin-bottom: 28px;
-            padding-bottom: 28px;
-            border-bottom: 1px solid #e8e8e8;
-        }
-
-        .story:last-child {
-            border-bottom: none;
-            padding-bottom: 0;
-        }
-
-        /* Article Titles (slightly bigger than body) */
-        .story h3 {
-            margin: 0 0 10px 0;
-            font-size: 20px;
-            line-height: 1.4;
-            font-weight: 700;
-        }
-
-        .story h3 a {
-            color: #000;
-            text-decoration: underline;
-        }
-
-        .story h3 a:hover {
-            color: #1e40af;
-        }
-
-        /* Summary Text (close in size to titles) */
-        .story .summary {
-            margin: 10px 0;
-            font-size: 18px;
-            color: #444;
-            line-height: 1.6;
-        }
-
-        /* Meta Info */
-        .story .meta {
-            margin: 12px 0 0 0;
-            font-size: 14px;
-            color: #999;
-        }
-
-        .story .meta a {
-            color: #999;
-            text-decoration: none;
-        }
-
-        .story .meta a:hover {
-            color: #4f46e5;
-        }
-
-        /* Editorial Context - NEW: Why This Matters */
-        .editorial-context {
-            margin: 20px 0 12px 0;
-            padding: 12px 16px;
-            background: #eff6ff;
-            border-left: 3px solid #3b82f6;
-            font-size: 16px;
-            color: #1e40af;
-            font-style: italic;
-            line-height: 1.5;
-        }
-
-        .editorial-context-label {
-            font-weight: 600;
-            font-style: normal;
-            color: #1e40af;
-        }
-
-        /* Quick Links Section */
-        .quick-links {
-            margin: 40px 0;
-            padding: 0 40px;
-            border-top: 2px solid #e8e8e8;
-            padding-top: 32px;
-        }
-
-        .quick-item {
-            margin-bottom: 24px;
-            padding-bottom: 24px;
-            border-bottom: 1px solid #f0f0f0;
-        }
-
-        .quick-item:last-child {
-            margin-bottom: 0;
-            border-bottom: none;
-        }
-
-        .quick-item h4 {
-            font-size: 16px;
-            font-weight: 600;
-            margin: 0 0 8px 0;
-            line-height: 1.4;
-        }
-
-        .quick-item h4 a {
-            color: #000;
-            text-decoration: underline;
-        }
-
-        .quick-item h4 a:hover {
-            color: #1e40af;
-        }
-
-        .quick-item .snippet {
-            font-size: 15px;
-            color: #555;
-            margin: 0;
-            line-height: 1.6;
-        }
-
-        /* Footer */
-        .footer {
-            background: #ffffff;
-            padding: 40px;
-            text-align: center;
-            border-top: 1px solid #e8e8e8;
-        }
-
-        .footer .share {
-            margin: 0 0 24px 0;
-            font-size: 16px;
-            color: #444;
-        }
-
-        .footer .share a {
-            color: #4f46e5;
-            text-decoration: none;
-            font-weight: 600;
-        }
-
-        .footer .share a:hover {
-            text-decoration: underline;
-        }
-
-        .footer .links {
-            margin: 20px 0;
-            font-size: 14px;
-        }
-
-        .footer .links a {
-            color: #666;
-            text-decoration: none;
-            margin: 0 12px;
-        }
-
-        .footer .links a:hover {
-            color: #000;
-        }
-
-        .footer .legal {
-            margin-top: 24px;
-            font-size: 13px;
-            color: #999;
-            line-height: 1.6;
-        }
-
-        /* Mobile Responsive */
-        @media only screen and (max-width: 600px) {
-            .email-wrapper {
-                width: 100% !important;
-            }
-
-            .top-bar {
-                padding: 12px 20px !important;
-            }
-
-            .header {
-                padding: 24px 20px 20px 20px !important;
-            }
-
-            .header h1 {
-                font-size: 28px !important;
-            }
-
-            .header .tagline {
-                font-size: 15px !important;
-            }
-
-            .content,
-            .footer {
-                padding: 24px !important;
-            }
-
-            .sponsor {
-                padding: 24px 20px !important;
-            }
-
-            .story h3 {
-                font-size: 18px !important;
-            }
-
-            .story .summary {
-                font-size: 16px !important;
-            }
-        }
-    </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ newsletter_name }} — {{ segment_name }}</title>
+  <style type="text/css">
+    /* Reset & Base */
+    body, table, td, p, a, li, blockquote {
+      -webkit-text-size-adjust: 100%;
+      -ms-text-size-adjust: 100%;
+    }
+    body {
+      margin: 0 !important;
+      padding: 0 !important;
+      width: 100% !important;
+      background-color: #FAF8F5;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      color: #121212;
+      -webkit-font-smoothing: antialiased;
+    }
+    table {
+      border-collapse: collapse !important;
+    }
+    a {
+      color: #58111A;
+      text-decoration: underline;
+    }
+    /* Dark Mode Fallbacks */
+    @media (prefers-color-scheme: dark) {
+      .email-bg { background-color: #FAF8F5 !important; }
+      .card-bg { background-color: #FFFFFF !important; }
+      .header-title { color: #121212 !important; }
+      .body-text { color: #334155 !important; }
+    }
+  </style>
 </head>
+<body style="margin: 0; padding: 0; background-color: #FAF8F5;" class="email-bg">
 
-<body>
-    <div class="email-wrapper">
-        <!-- Top Navigation Bar -->
-        <div class="top-bar">
-            <a href="https://brief.delights.pro">Sign Up</a> |
-            <a href="mailto:sponsors@brief.delights.pro?subject=Advertising%20Inquiry">Advertise</a> |
-            <a
-                href="https://brief.delights.pro/archive/{{ date }}-{{ segment_name.split()[0]|lower|default('builders') }}">View
-                Online</a>
-        </div>
+  <!-- Top Accent Bar -->
+  <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="background-color: #58111A;">
+    <tr>
+      <td height="4" style="line-height: 4px; font-size: 4px;">&nbsp;</td>
+    </tr>
+  </table>
 
-        <!-- Header -->
-        <div class="header">
-            <div class="logo">Brief</div>
-            <div class="tagline">delights</div>
-            <p class="date">{{ segment_name }} | {{ date }}</p>
-            <p class="curation-stats">{{ total_scanned }} news scanned → {{ total_enriched }} analyzed → {{
-                total_selected }}
-                selected</p>
-        </div>
+  <!-- Main Container -->
+  <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="background-color: #FAF8F5;" class="email-bg">
+    <tr>
+      <td align="center" style="padding: 24px 12px 40px 12px;">
+        
+        <!-- Max-Width Container (600px) -->
+        <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="max-width: 600px; width: 100%;">
+          
+          <!-- Header Masthead -->
+          <tr>
+            <td align="center" style="padding-bottom: 24px; border-b: 1px solid #E5DCD3;">
+              <table role="presentation" cellspacing="0" cellpadding="0" border="0">
+                <tr>
+                  <td align="center" style="padding-bottom: 12px;">
+                    <a href="{{ website_url }}" target="_blank" style="text-decoration: none;">
+                      <img src="https://brief.delights.pro/bd_seal_logo.png" alt="Brief Delights Wax Seal" width="56" height="56" style="display: block; border: 0; width: 56px; height: 56px; margin: 0 auto;" />
+                    </a>
+                  </td>
+                </tr>
+                <tr>
+                  <td align="center">
+                    <a href="{{ website_url }}" target="_blank" style="text-decoration: none; color: #121212;">
+                      <h1 class="header-title" style="margin: 0; font-family: Georgia, 'Times New Roman', serif; font-size: 26px; line-height: 32px; font-weight: 700; letter-spacing: -0.5px; color: #121212; text-align: center;">
+                        BRIEF DELIGHTS
+                      </h1>
+                    </a>
+                  </td>
+                </tr>
+                <tr>
+                  <td align="center" style="padding-top: 6px;">
+                    <span style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 11px; line-height: 14px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: #8C6D2B; display: inline-block;">
+                      KNOWLEDGE, REFINED &bull; {{ segment_name }} &bull; {{ formatted_date }}
+                    </span>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
 
-        <!-- Sponsor Section -->
-        {% if sponsor_headline %}
-        <div class="sponsor">
-            <p class="sponsor-label">Together With Our Sponsor</p>
-            <h3><a href="{{ sponsor_cta_url }}">{{ sponsor_headline }}</a></h3>
-            <p>{{ sponsor_description }}</p>
-            <a href="{{ sponsor_cta_url }}" class="cta">{{ sponsor_cta_text }}</a>
-        </div>
-        {% endif %}
+          <!-- Daily Scan Summary Banner -->
+          <tr>
+            <td style="padding: 16px 0 24px 0;">
+              <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="background-color: #F4EFEB; border: 1px solid #E5DCD3; border-radius: 10px;">
+                <tr>
+                  <td style="padding: 12px 16px; text-align: center; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 12px; line-height: 16px; color: #58111A; font-weight: 600;">
+                    📊 Scanned <strong>{{ total_scanned }}</strong> articles &bull; Selected top <strong>{{ total_selected }}</strong> role-critical insights for today.
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
 
-        <!-- Content Sections -->
-        <div class="content">
-            {% for section in sections %}
-            <div class="section">
-                {% set category_parts = section.category.split(' ', 1) %}
-                {% if category_parts|length > 1 %}
-                <div class="section-emoji">{{ category_parts[0] }}</div>
-                <h2>{{ category_parts[1] }}</h2>
-                {% else %}
-                <h2>{{ section.category }}</h2>
-                {% endif %}
-
-                {% for article in section.articles %}
-                <div class="story">
-                    <h3><a href="{{ article.tracked_url }}">{{ article.title }}</a> <span
-                            style="color: #666; font-weight: 400;">({{ article.read_time_minutes }} minute read)</span>
+          {% if contrarian_section %}
+          <!-- Contrarian Insight Block -->
+          <tr>
+            <td style="padding-bottom: 24px;">
+              <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="background-color: #3D0A11; border-radius: 12px; color: #ffffff;">
+                <tr>
+                  <td style="padding: 20px;">
+                    <span style="font-family: -apple-system, BlinkMacSystemFont, sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: #C5A059; display: block; margin-bottom: 8px;">
+                      🤔 CONTRARIAN TAKEAWAY
+                    </span>
+                    <h3 style="margin: 0 0 10px 0; font-family: Georgia, serif; font-size: 18px; line-height: 24px; color: #ffffff;">
+                      {{ contrarian_section.title }}
                     </h3>
-                    <p class="summary">{{ article.summary }}</p>
+                    <p style="margin: 0; font-family: -apple-system, sans-serif; font-size: 14px; line-height: 20px; color: #e2e8f0;">
+                      {{ contrarian_section.body }}
+                    </p>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          {% endif %}
+
+          <!-- News Sections -->
+          {% for section in sections %}
+          <tr>
+            <td style="padding-top: 12px; padding-bottom: 8px;">
+              <h2 style="margin: 0; font-family: Georgia, 'Times New Roman', serif; font-size: 20px; line-height: 26px; font-weight: 700; color: #58111A; border-bottom: 2px solid #58111A; padding-bottom: 6px;">
+                {{ section.category }}
+              </h2>
+            </td>
+          </tr>
+
+          {% for article in section.articles %}
+          <!-- Single Article Card -->
+          <tr>
+            <td style="padding-bottom: 20px;">
+              <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="background-color: #FFFFFF; border: 1px solid #E5DCD3; border-radius: 12px; width: 100%;" class="card-bg">
+                <tr>
+                  <td style="padding: 20px;">
+                    
+                    <!-- Meta Row: Tag & Source -->
+                    <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="margin-bottom: 10px;">
+                      <tr>
+                        <td align="left">
+                          <span style="background-color: #58111A; color: #FFFFFF; font-family: -apple-system, sans-serif; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; padding: 3px 8px; border-radius: 4px; display: inline-block;">
+                            {{ article.category_tag | default('INSIGHT') }}
+                          </span>
+                          <span style="font-family: -apple-system, sans-serif; font-size: 12px; color: #64748b; margin-left: 8px;">
+                            via <strong>{{ article.source | default('Research') }}</strong> &bull; {{ article.read_time_minutes | default(3) }} min read
+                          </span>
+                        </td>
+                      </tr>
+                    </table>
+
+                    <!-- Article Headline -->
+                    <h3 style="margin: 0 0 10px 0; font-family: Georgia, 'Times New Roman', serif; font-size: 19px; line-height: 25px; font-weight: 700;">
+                      <a href="{{ article.tracked_url | default(article.url) }}" target="_blank" style="color: #121212; text-decoration: none;" class="header-title">
+                        {{ article.title }}
+                      </a>
+                    </h3>
+
+                    <!-- Article Summary Body -->
+                    <p class="body-text" style="margin: 0 0 14px 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 15px; line-height: 24px; color: #334155;">
+                      {{ article.summary }}
+                    </p>
 
                     {% if article.why_this_matters %}
-                    <div class="editorial-context">
-                        <span class="editorial-context-label">Why this matters:</span> {{ article.why_this_matters }}
-                    </div>
+                    <!-- Strategic Takeaway Box -->
+                    <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="background-color: #FAF8F5; border-left: 3px solid #58111A; border-radius: 0 8px 8px 0;">
+                      <tr>
+                        <td style="padding: 12px 14px;">
+                          <div style="font-family: -apple-system, sans-serif; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: #58111A; margin-bottom: 4px;">
+                            💡 WHY THIS MATTERS FOR YOUR ROLE
+                          </div>
+                          <div style="font-family: -apple-system, sans-serif; font-size: 13px; line-height: 19px; color: #1e293b; font-weight: 500;">
+                            {{ article.why_this_matters }}
+                          </div>
+                        </td>
+                      </tr>
+                    </table>
                     {% endif %}
 
-                    <p class="meta"><a href="{{ article.tracked_url }}">{{ article.source }}</a></p>
-                </div>
-                {% endfor %}
-            </div>
-            {% endfor %}
-        </div>
-
-        <!-- Contrarian Section -->
-        {% if contrarian_section %}
-        <div class="content" style="padding-top: 0; padding-bottom: 0;">
-            <div class="section" style="margin-bottom: 20px;">
-                <div class="editorial-context" style="background: #fdf2f8; border-left-color: #ec4899; color: #831843;">
-                    <div style="font-size: 18px; font-weight: 700; margin-bottom: 8px;">🤔 THE OTHER SIDE</div>
-                    <div style="font-size: 16px; font-weight: 600; margin-bottom: 6px;">{{ contrarian_section.title }}</div>
-                    <div style="margin-bottom: 8px;">{{ contrarian_section.body }}</div>
-                    {% if contrarian_section.source_articles %}
-                    <div style="font-size: 14px; font-style: normal; margin-top: 8px;">
-                        <strong>Sources:</strong>
-                        <ul style="margin: 4px 0 0 0; padding-left: 20px;">
-                        {% for src in contrarian_section.source_articles %}
-                            <li><a href="{{ src.url }}" style="color: #ec4899;">{{ src.title }}</a></li>
-                        {% endfor %}
-                        </ul>
+                    <!-- Read Original Link -->
+                    <div style="margin-top: 14px; text-align: right;">
+                      <a href="{{ article.tracked_url | default(article.url) }}" target="_blank" style="font-family: -apple-system, sans-serif; font-size: 13px; font-weight: 700; color: #58111A; text-decoration: none;">
+                        Read Full Analysis &rarr;
+                      </a>
                     </div>
-                    {% endif %}
-                </div>
-            </div>
-        </div>
-        {% endif %}
 
-        <!-- Quick Links Section -->
-        {% if quick_links %}
-        <div class="quick-links">
-            <div class="section-emoji">⚡</div>
-            <h2>Quick Links</h2>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          {% endfor %}
+          {% endfor %}
 
-            {% for article in quick_links %}
-            <div class="quick-item">
-                <h4><a href="{{ article.tracked_url }}">{{ article.title }}</a> <span
-                        style="color: #999; font-weight: 400; font-size: 14px;">({{ article.read_time_minutes }}
-                        min)</span></h4>
-                <p class="snippet">{{ article.summary }}</p>
-            </div>
-            {% endfor %}
-        </div>
-        {% endif %}
+          <!-- Footer Section -->
+          <tr>
+            <td style="padding-top: 30px; padding-bottom: 20px; border-t: 1px solid #E5DCD3; text-align: center;">
+              <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0">
+                <tr>
+                  <td align="center" style="padding-bottom: 12px;">
+                    <img src="https://brief.delights.pro/bd_seal_logo.png" alt="Brief Delights Monogram" width="36" height="36" style="display: block; border: 0; width: 36px; height: 36px; opacity: 0.8;" />
+                  </td>
+                </tr>
+                <tr>
+                  <td align="center" style="font-family: -apple-system, sans-serif; font-size: 12px; line-height: 18px; color: #64748b;">
+                    <strong>BRIEF DELIGHTS</strong> &bull; brief delights &bull; Knowledge, Refined.<br />
+                    Executive & Engineering Daily Intelligence dispatches.
+                  </td>
+                </tr>
+                <tr>
+                  <td align="center" style="padding-top: 14px; font-family: -apple-system, sans-serif; font-size: 12px; color: #64748b;">
+                    <a href="{{ website_url }}/archive" target="_blank" style="color: #58111A; text-decoration: underline; margin: 0 8px;">View Online Archive</a> &bull;
+                    <a href="{{ unsubscribe_url }}" style="color: #64748b; text-decoration: underline; margin: 0 8px;">Unsubscribe</a> &bull;
+                    <a href="{{ website_url }}" target="_blank" style="color: #58111A; text-decoration: underline; margin: 0 8px;">brief.delights.pro</a>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
 
-        <!-- Worth Your Attention (Trending) Section -->
-        {% if trending %}
-        <div class="content">
-            <div class="section">
-                <div class="section-emoji">🔥</div>
-                <h2>Worth Your Attention</h2>
+        </table>
 
-                {% for article in trending %}
-                <div class="story">
-                    <h3><a href="{{ article.tracked_url }}">{{ article.title }}</a> <span
-                            style="color: #666; font-weight: 400;">({{ article.read_time_minutes }} min)</span></h3>
-                    <p class="summary">{{ article.summary }}</p>
-                    <p class="meta"><a href="{{ article.tracked_url }}">{{ article.source }}</a></p>
-                </div>
-                {% endfor %}
-            </div>
-        </div>
-        {% endif %}
+      </td>
+    </tr>
+  </table>
 
-        <!-- Personalized Referral Section -->
-        <div style="background: #f8f7ff; padding: 32px 40px; text-align: center; border-top: 2px solid #e8e8e8;">
-            <p style="font-size: 22px; font-weight: 700; margin: 0 0 4px 0; color: #000;">🎯 Share Brief Delights,
-                Unlock Rewards</p>
-            <p style="font-size: 14px; color: #666; margin: 0 0 20px 0;">You've referred <strong
-                    style="color: #4f46e5;">{{ '{{ referral_count }}' }}</strong> reader{{ '{{ referral_count_plural }}'
-                }}. {{ '{{ referral_remaining }}' }} more to unlock: <strong>{{ '{{ referral_next_reward }}' }}</strong>
-            </p>
-
-            <!-- Milestone Progress Bar -->
-            <div style="max-width: 400px; margin: 0 auto 20px auto;">
-                <div
-                    style="display: flex; justify-content: space-between; margin-bottom: 6px; font-size: 11px; color: #999;">
-                    <span>0</span>
-                    <span style="{{ 'MILESTONE_1_STYLE' }}">1 🏅</span>
-                    <span style="{{ 'MILESTONE_3_STYLE' }}">3 📰</span>
-                    <span style="{{ 'MILESTONE_5_STYLE' }}">5 🔓</span>
-                    <span style="{{ 'MILESTONE_10_STYLE' }}">10 ⭐</span>
-                </div>
-                <div style="background: #e5e7eb; border-radius: 999px; height: 8px; overflow: hidden;">
-                    <div
-                        style="background: linear-gradient(90deg, #4f46e5, #7c3aed); height: 100%; border-radius: 999px; width: {{ 'PROGRESS_BAR_WIDTH' }}%;">
-                    </div>
-                </div>
-            </div>
-
-            <!-- Referral Link Box -->
-            <div
-                style="background: #ffffff; border: 2px dashed #4f46e5; border-radius: 8px; padding: 12px 20px; margin: 0 auto 16px auto; max-width: 420px;">
-                <p
-                    style="font-size: 11px; color: #999; margin: 0 0 4px 0; text-transform: uppercase; letter-spacing: 1px;">
-                    Your personal link</p>
-                <p style="font-size: 16px; font-weight: 600; color: #4f46e5; margin: 0; word-break: break-all;">
-                    <a href="https://brief.delights.pro/?ref={{ '{{ referral_code }}' }}"
-                        style="color: #4f46e5; text-decoration: none;">brief.delights.pro/?ref={{ '{{ referral_code }}'
-                        }}</a>
-                </p>
-            </div>
-
-            <!-- Social Share Buttons -->
-            <p style="font-size: 13px; color: #999; margin: 0;">
-                <a href="https://twitter.com/intent/tweet?text=I%20read%20Brief%20Delights%20daily%20%E2%80%94%20AI-curated%20tech%20stories%20for%20your%20role.%20Free%20%26%20no%20spam.&url=https%3A%2F%2Fbrief.delights.pro%2F%3Fref%3D{{ '{{ referral_code }}' }}"
-                    style="color: #666; text-decoration: none; margin: 0 8px; font-weight: 500;">𝕏 Twitter</a> ·
-                <a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fbrief.delights.pro%2F%3Fref%3D{{ '{{ referral_code }}' }}"
-                    style="color: #666; text-decoration: none; margin: 0 8px; font-weight: 500;">LinkedIn</a> ·
-                <a href="mailto:?subject=Check%20out%20Brief%20Delights&body=I%20read%20this%20daily%20tech%20brief%20and%20thought%20you'd%20find%20it%20useful%3A%20https%3A%2F%2Fbrief.delights.pro%2F%3Fref%3D{{ '{{ referral_code }}' }}"
-                    style="color: #666; text-decoration: none; margin: 0 8px; font-weight: 500;">📧 Email</a>
-            </p>
-        </div>
-
-        <!-- Feedback Rating -->
-        <div style="background: #ffffff; padding: 28px 40px; text-align: center; border-top: 1px solid #e8e8e8;">
-            <p style="font-size: 15px; font-weight: 600; color: #000; margin: 0 0 4px 0;">How was today's Brief?</p>
-            <p style="font-size: 12px; color: #999; margin: 0 0 16px 0;">Your feedback shapes tomorrow's edition</p>
-            <div style="font-size: 28px;">
-                <a href="https://brief.delights.pro/feedback?rating=loved&date={{ date }}&segment={{ segment_name.split()[0]|lower|default('builders') }}"
-                    style="text-decoration: none; margin: 0 12px;">🔥</a>
-                <a href="https://brief.delights.pro/feedback?rating=good&date={{ date }}&segment={{ segment_name.split()[0]|lower|default('builders') }}"
-                    style="text-decoration: none; margin: 0 12px;">👍</a>
-                <a href="https://brief.delights.pro/feedback?rating=meh&date={{ date }}&segment={{ segment_name.split()[0]|lower|default('builders') }}"
-                    style="text-decoration: none; margin: 0 12px;">😐</a>
-            </div>
-            <p style="font-size: 11px; color: #bbb; margin: 8px 0 0 0;">Loved it · Good · Meh</p>
-        </div>
-
-        <!-- Footer -->
-        <div class="footer">
-            <p class="links">
-                <a href="https://brief.delights.pro">Website</a>
-                <a href="https://brief.delights.pro/archive">Archive</a>
-                <a href="mailto:sponsors@brief.delights.pro?subject=Advertising%20Inquiry">Advertise</a>
-                <a href="mailto:hello@brief.delights.pro?subject=Unsubscribe">Unsubscribe</a>
-            </p>
-
-            <p class="legal">
-                You're receiving this because you subscribed to Brief Delights.<br>
-                <strong>brief delights</strong><br>
-                © 2026 All rights reserved.<br>
-                Questions? <a href="mailto:hello@brief.delights.pro"
-                    style="color: #999; text-decoration: none;">hello@brief.delights.pro</a>
-            </p>
-        </div>
-    </div>
 </body>
-
 </html>
