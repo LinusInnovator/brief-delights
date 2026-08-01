@@ -312,7 +312,7 @@ def get_sent_emails_today(segment_id: str) -> set:
 def send_to_segment(segment_id: str, subscribers: list, html_content: str, segment_name: str, ab_enabled: bool = True) -> dict:
     """Send newsletter to all subscribers in a segment using Resend Batch API with Strict Idempotency Lock"""
     already_sent = get_sent_emails_today(segment_id)
-    if already_sent:
+    if already_sent and not os.environ.get("FORCE_RESEND"):
         unsent_subscribers = [s for s in subscribers if s.get('email', '').lower() not in already_sent]
         skipped_count = len(subscribers) - len(unsent_subscribers)
         if skipped_count > 0:
