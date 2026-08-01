@@ -1,379 +1,141 @@
 'use client';
 
+import { Suspense, useState, useEffect } from 'react';
+import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
-import { useState, useEffect, Suspense } from 'react';
-
-const SEGMENT_META: Record<string, { emoji: string; label: string; description: string }> = {
-    builders: {
-        emoji: '🛠️',
-        label: 'Builders',
-        description: 'engineering leaders and developers',
-    },
-    leaders: {
-        emoji: '💼',
-        label: 'Leaders',
-        description: 'tech executives and decision-makers',
-    },
-    innovators: {
-        emoji: '🚀',
-        label: 'Innovators',
-        description: 'founders and product thinkers',
-    },
-};
-
-/* ── Recommended newsletters for cross-promotion ── */
-const RECOMMENDATIONS = [
-    {
-        name: 'TLDR',
-        description: 'Byte-sized tech news, 5 min daily',
-        url: 'https://tldr.tech',
-        emoji: '📧',
-    },
-    {
-        name: 'The Rundown AI',
-        description: 'AI news and how to apply it, 5 min daily',
-        url: 'https://www.therundown.ai',
-        emoji: '🤖',
-    },
-    {
-        name: 'Pragmatic Engineer',
-        description: 'Big Tech and high-growth startup insights',
-        url: 'https://newsletter.pragmaticengineer.com',
-        emoji: '⚙️',
-    },
-];
+import { IconStreamBuilders, IconStreamLeaders, IconStreamInnovators, IconEditoriallyCurated } from '../../components/EditorialIcons';
 
 function WelcomeContent() {
     const searchParams = useSearchParams();
-    const segment = searchParams.get('segment') || 'builders';
-    const referralCode = searchParams.get('ref') || '';
+    const segment = searchParams.get('segment') || 'innovators';
+    const refCode = searchParams.get('ref') || '';
     const [copied, setCopied] = useState(false);
-    const [shareUrl, setShareUrl] = useState('');
 
-    const meta = SEGMENT_META[segment] || SEGMENT_META.builders;
+    const shareUrl = typeof window !== 'undefined'
+        ? `${window.location.origin}?ref=${refCode}`
+        : `https://brief.delights.pro?ref=${refCode}`;
 
-    useEffect(() => {
-        if (referralCode) {
-            setShareUrl(`${window.location.origin}?ref=${referralCode}`);
-        }
-    }, [referralCode]);
-
-    const copyReferralLink = () => {
-        if (shareUrl) {
+    const handleCopyRef = () => {
+        if (navigator.clipboard) {
             navigator.clipboard.writeText(shareUrl);
             setCopied(true);
-            setTimeout(() => setCopied(false), 2000);
+            setTimeout(() => setCopied(false), 2500);
         }
     };
 
-    const shareOnTwitter = () => {
-        const text = encodeURIComponent(
-            `Just subscribed to Brief Delights — an AI-curated daily newsletter for ${meta.description}. 1,340+ articles scanned, best 14 picked. Try it:`
-        );
-        window.open(`https://twitter.com/intent/tweet?text=${text}&url=${encodeURIComponent(shareUrl)}`, '_blank');
-    };
+    function getSegmentTitle(seg: string) {
+        switch (seg) {
+            case 'builders': return 'Builders Brief (Technical Stream)';
+            case 'leaders': return 'Leaders Brief (Strategy Stream)';
+            case 'innovators': return 'Innovators Brief (Frontier Stream)';
+            default: return 'Daily Intelligence Brief';
+        }
+    }
 
-    const shareOnLinkedIn = () => {
-        window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareUrl)}`, '_blank');
-    };
+    function renderStreamIcon(seg: string) {
+        switch (seg) {
+            case 'builders': return <IconStreamBuilders className="w-8 h-8 text-[#58111A]" />;
+            case 'leaders': return <IconStreamLeaders className="w-4 h-4 text-[#58111A]" />;
+            case 'innovators': return <IconStreamInnovators className="w-8 h-8 text-[#58111A]" />;
+            default: return <IconEditoriallyCurated className="w-8 h-8 text-[#58111A]" />;
+        }
+    }
 
     return (
-        <div style={{
-            minHeight: '100vh',
-            background: 'linear-gradient(135deg, #fafafa 0%, #f0f4f8 50%, #e8ecf0 100%)',
-            fontFamily: 'var(--font-geist-sans), -apple-system, BlinkMacSystemFont, sans-serif',
-        }}>
-            {/* Confetti-style header accent */}
-            <div style={{
-                height: '4px',
-                background: 'linear-gradient(90deg, #10b981, #3b82f6, #8b5cf6, #ec4899)',
-            }} />
+        <div className="min-h-screen bg-[#FAF8F5] text-[#121212] py-16 px-4 flex flex-col items-center justify-center">
+            <div className="max-w-2xl w-full bg-white border border-[#121212]/10 rounded-3xl p-8 md:p-12 shadow-xl text-center">
+                
+                {/* BD Wax Seal Monogram */}
+                <div className="w-20 h-20 bg-[#58111A]/10 border border-[#58111A]/20 rounded-2xl flex items-center justify-center mx-auto mb-6 p-2 shadow-sm">
+                    <img src="/bd_seal_logo.png" alt="Brief Delights Seal" className="w-12 h-12 object-contain" />
+                </div>
 
-            <div style={{
-                maxWidth: '640px',
-                margin: '0 auto',
-                padding: '48px 24px 64px',
-            }}>
-                {/* ── Hero ── */}
-                <div style={{ textAlign: 'center', marginBottom: '48px' }}>
-                    <div style={{
-                        fontSize: '64px',
-                        marginBottom: '16px',
-                        animation: 'bounce 0.6s ease-out',
-                    }}>
-                        🎉
+                <div className="inline-flex items-center gap-2 bg-[#58111A]/10 border border-[#58111A]/20 px-3.5 py-1 rounded-full text-xs font-bold text-[#58111A] uppercase tracking-wider mb-4">
+                    {renderStreamIcon(segment)}
+                    <span>{segment} EDITION CONFIRMED</span>
+                </div>
+
+                <h1 className="text-3xl md:text-4xl font-serif font-bold text-[#121212] mb-3">
+                    Subscription Confirmed!
+                </h1>
+
+                <p className="text-gray-600 text-base leading-relaxed max-w-lg mx-auto mb-8">
+                    Your email has been verified. You will receive the <strong>{getSegmentTitle(segment)}</strong> directly in your inbox every morning at 6:00 AM.
+                </p>
+
+                {/* SparkLoop Widget Container */}
+                <div className="my-8 p-6 bg-[#FAF8F5] border border-[#121212]/10 rounded-2xl text-left">
+                    <div className="text-xs font-bold text-[#58111A] uppercase tracking-widest mb-2">
+                        RECOMMENDED BY BRIEF DELIGHTS
                     </div>
-                    <h1 style={{
-                        fontSize: '36px',
-                        fontWeight: 800,
-                        letterSpacing: '-0.03em',
-                        color: '#111',
-                        marginBottom: '8px',
-                        lineHeight: 1.2,
-                    }}>
-                        You&apos;re in!
-                    </h1>
-                    <p style={{
-                        fontSize: '18px',
-                        color: '#6b7280',
-                        lineHeight: 1.6,
-                    }}>
-                        Welcome to <strong style={{ color: '#111' }}>Brief Delights</strong> for {meta.emoji} {meta.label}.
-                        <br />
-                        Your first brief arrives at <strong style={{ color: '#111' }}>6 AM UTC</strong> tomorrow.
+                    <h3 className="text-lg font-serif font-bold text-[#121212] mb-1">
+                        Hand-Picked Executive Newsletters
+                    </h3>
+                    <p className="text-xs text-gray-500 mb-4">
+                        Discover trusted publications read by founders, VCs, and engineers.
                     </p>
-                </div>
 
-                {/* ── What you'll get ── */}
-                <div style={{
-                    background: 'white',
-                    borderRadius: '16px',
-                    padding: '32px',
-                    boxShadow: '0 1px 3px rgba(0,0,0,0.06), 0 8px 24px rgba(0,0,0,0.04)',
-                    marginBottom: '24px',
-                }}>
-                    <h2 style={{
-                        fontSize: '14px',
-                        fontWeight: 700,
-                        textTransform: 'uppercase',
-                        letterSpacing: '0.1em',
-                        color: '#9ca3af',
-                        marginBottom: '20px',
-                    }}>
-                        What you'll receive
-                    </h2>
-                    <div style={{ display: 'grid', gap: '16px' }}>
-                        {[
-                            { icon: '📊', title: 'Daily Brief', desc: '14 hand-picked stories from 1,340+ scanned' },
-                            { icon: '🧠', title: 'Why This Matters', desc: 'Strategic context on every article' },
-                            { icon: '🤔', title: 'The Other Side', desc: 'Contrarian signals when the herd agrees' },
-                            { icon: '📡', title: 'Sunday Synthesis', desc: 'Weekly trend analysis and developing arcs' },
-                        ].map((item) => (
-                            <div key={item.title} style={{ display: 'flex', gap: '12px', alignItems: 'flex-start' }}>
-                                <span style={{ fontSize: '24px', lineHeight: 1 }}>{item.icon}</span>
-                                <div>
-                                    <strong style={{ fontSize: '15px', color: '#111' }}>{item.title}</strong>
-                                    <p style={{ fontSize: '14px', color: '#6b7280', margin: '2px 0 0' }}>{item.desc}</p>
-                                </div>
-                            </div>
-                        ))}
+                    {/* SparkLoop Script Embed */}
+                    <div id="sparkloop-widget-container" className="min-h-[120px] flex items-center justify-center">
+                        <script
+                            src="https://dash.sparkloop.app/widget/b3b25cc980/embed.js"
+                            data-sparkloop-widget="b3b25cc980"
+                            async
+                        />
+                        <a
+                            href="https://upscribe.page/b3b25cc980"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-block w-full bg-[#58111A] text-white text-center font-bold py-3.5 px-6 rounded-xl hover:bg-[#3D0A11] transition text-sm shadow-md"
+                        >
+                            Explore Recommended Partner Digests &rarr;
+                        </a>
                     </div>
                 </div>
 
-                {/* ── Referral Ask: 1-reward system ── */}
-                {referralCode && (
-                    <div style={{
-                        background: 'linear-gradient(135deg, #1e1b4b, #312e81)',
-                        borderRadius: '16px',
-                        padding: '32px',
-                        color: 'white',
-                        marginBottom: '24px',
-                    }}>
-                        <h2 style={{
-                            fontSize: '20px',
-                            fontWeight: 700,
-                            marginBottom: '8px',
-                        }}>
-                            🎁 Share with 1 friend, unlock our toolkit
-                        </h2>
-                        <p style={{
-                            fontSize: '15px',
-                            opacity: 0.85,
-                            lineHeight: 1.6,
-                            marginBottom: '20px',
-                        }}>
-                            Refer just <strong>1 person</strong> and get instant access to our{' '}
-                            <strong>200-source curated RSS feed list</strong> — the exact sources our AI scans daily.
-                        </p>
-
-                        {/* Copy link button */}
-                        <div style={{
-                            display: 'flex',
-                            gap: '8px',
-                            marginBottom: '16px',
-                        }}>
-                            <div style={{
-                                flex: 1,
-                                background: 'rgba(255,255,255,0.1)',
-                                borderRadius: '10px',
-                                padding: '12px 16px',
-                                fontSize: '14px',
-                                fontFamily: 'var(--font-geist-mono), monospace',
-                                overflow: 'hidden',
-                                textOverflow: 'ellipsis',
-                                whiteSpace: 'nowrap',
-                                border: '1px solid rgba(255,255,255,0.15)',
-                            }}>
-                                {shareUrl}
-                            </div>
-                            <button
-                                onClick={copyReferralLink}
-                                style={{
-                                    background: copied ? '#10b981' : 'white',
-                                    color: copied ? 'white' : '#1e1b4b',
-                                    border: 'none',
-                                    borderRadius: '10px',
-                                    padding: '12px 20px',
-                                    fontWeight: 700,
-                                    fontSize: '14px',
-                                    cursor: 'pointer',
-                                    transition: 'all 0.2s ease',
-                                    whiteSpace: 'nowrap',
-                                }}
-                            >
-                                {copied ? '✓ Copied' : 'Copy'}
-                            </button>
+                {/* Referral Link Container */}
+                {refCode && (
+                    <div className="mb-8 p-6 bg-white border border-[#C5A059]/40 rounded-2xl text-left shadow-sm">
+                        <div className="text-xs font-bold text-[#8C6D2B] uppercase tracking-widest mb-1">
+                            YOUR PERSONAL REFERRAL LINK
                         </div>
-
-                        {/* Social share buttons */}
-                        <div style={{ display: 'flex', gap: '8px' }}>
+                        <p className="text-xs text-gray-600 mb-3">
+                            Invite colleagues and earn exclusive executive perks and research reports.
+                        </p>
+                        <div className="flex items-center gap-2">
+                            <input
+                                type="text"
+                                readOnly
+                                value={shareUrl}
+                                className="flex-1 bg-[#FAF8F5] border border-gray-200 px-4 py-2.5 rounded-xl text-xs font-mono text-gray-800"
+                            />
                             <button
-                                onClick={shareOnTwitter}
-                                style={{
-                                    flex: 1,
-                                    background: 'rgba(255,255,255,0.1)',
-                                    border: '1px solid rgba(255,255,255,0.2)',
-                                    borderRadius: '10px',
-                                    padding: '12px',
-                                    color: 'white',
-                                    fontWeight: 600,
-                                    fontSize: '14px',
-                                    cursor: 'pointer',
-                                    transition: 'all 0.2s ease',
-                                }}
+                                onClick={handleCopyRef}
+                                className="bg-[#121212] text-white px-4 py-2.5 rounded-xl font-bold text-xs hover:bg-[#58111A] transition"
                             >
-                                𝕏 Share on Twitter
-                            </button>
-                            <button
-                                onClick={shareOnLinkedIn}
-                                style={{
-                                    flex: 1,
-                                    background: 'rgba(255,255,255,0.1)',
-                                    border: '1px solid rgba(255,255,255,0.2)',
-                                    borderRadius: '10px',
-                                    padding: '12px',
-                                    color: 'white',
-                                    fontWeight: 600,
-                                    fontSize: '14px',
-                                    cursor: 'pointer',
-                                    transition: 'all 0.2s ease',
-                                }}
-                            >
-                                💼 Share on LinkedIn
+                                {copied ? 'Copied!' : 'Copy Link'}
                             </button>
                         </div>
                     </div>
                 )}
 
-                {/* ── Recommended newsletters (SparkLoop-ready) ── */}
-                <div style={{
-                    background: 'white',
-                    borderRadius: '16px',
-                    padding: '32px',
-                    boxShadow: '0 1px 3px rgba(0,0,0,0.06), 0 8px 24px rgba(0,0,0,0.04)',
-                    marginBottom: '24px',
-                }}>
-                    <h2 style={{
-                        fontSize: '14px',
-                        fontWeight: 700,
-                        textTransform: 'uppercase',
-                        letterSpacing: '0.1em',
-                        color: '#9ca3af',
-                        marginBottom: '8px',
-                    }}>
-                        You might also enjoy
-                    </h2>
-                    <p style={{
-                        fontSize: '14px',
-                        color: '#9ca3af',
-                        marginBottom: '20px',
-                    }}>
-                        Newsletters our readers also subscribe to:
-                    </p>
-                    <div style={{ display: 'grid', gap: '12px' }}>
-                        {RECOMMENDATIONS.map((rec) => (
-                            <a
-                                key={rec.name}
-                                href={rec.url}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                id={`rec-${rec.name.toLowerCase().replace(/\s+/g, '-')}`}
-                                style={{
-                                    display: 'flex',
-                                    alignItems: 'center',
-                                    gap: '12px',
-                                    padding: '14px 16px',
-                                    borderRadius: '12px',
-                                    border: '1px solid #f0f0f0',
-                                    textDecoration: 'none',
-                                    color: '#111',
-                                    transition: 'all 0.2s ease',
-                                }}
-                                onMouseEnter={(e) => {
-                                    (e.currentTarget as HTMLElement).style.borderColor = '#3b82f6';
-                                    (e.currentTarget as HTMLElement).style.background = '#f8fafc';
-                                }}
-                                onMouseLeave={(e) => {
-                                    (e.currentTarget as HTMLElement).style.borderColor = '#f0f0f0';
-                                    (e.currentTarget as HTMLElement).style.background = 'transparent';
-                                }}
-                            >
-                                <span style={{ fontSize: '28px' }}>{rec.emoji}</span>
-                                <div style={{ flex: 1 }}>
-                                    <strong style={{ fontSize: '15px' }}>{rec.name}</strong>
-                                    <p style={{ fontSize: '13px', color: '#6b7280', margin: '2px 0 0' }}>{rec.description}</p>
-                                </div>
-                                <span style={{ fontSize: '18px', color: '#d1d5db' }}>→</span>
-                            </a>
-                        ))}
-                    </div>
-
-                    {/* SparkLoop integration point */}
-                    {/* 
-            To enable paid recommendations via SparkLoop:
-            1. Sign up at sparkloop.app
-            2. Add <script src="https://sparkloop.app/widget.js" data-sparkloop-key="YOUR_KEY" />
-            3. Replace the static RECOMMENDATIONS above with SparkLoop's dynamic widget
-            Revenue: $1-3 per new subscriber
-          */}
+                {/* Action Buttons */}
+                <div className="flex flex-col sm:flex-row gap-3 justify-center">
+                    <Link
+                        href="/archive"
+                        className="bg-[#121212] text-white font-bold py-3.5 px-8 rounded-xl hover:bg-[#58111A] transition text-sm shadow-md"
+                    >
+                        Browse Today&apos;s Issue Archive &rarr;
+                    </Link>
+                    <Link
+                        href="/"
+                        className="bg-white text-gray-700 font-bold py-3.5 px-6 rounded-xl border border-gray-200 hover:border-gray-400 transition text-sm"
+                    >
+                        Back to Homepage
+                    </Link>
                 </div>
 
-                {/* ── Footer ── */}
-                <div style={{ textAlign: 'center', marginTop: '48px' }}>
-                    <p style={{
-                        fontSize: '32px',
-                        fontWeight: 800,
-                        letterSpacing: '-0.03em',
-                        color: '#111',
-                        margin: '0 0 4px',
-                    }}>
-                        Brief
-                    </p>
-                    <p style={{
-                        fontSize: '14px',
-                        color: '#9ca3af',
-                        letterSpacing: '0.2em',
-                    }}>
-                        delights
-                    </p>
-                    <p style={{
-                        fontSize: '13px',
-                        color: '#d1d5db',
-                        marginTop: '16px',
-                    }}>
-                        © 2026 Brief Delights · A DreamValidator brand
-                    </p>
-                </div>
             </div>
-
-            <style>{`
-        @keyframes bounce {
-          0% { transform: scale(0.3); opacity: 0; }
-          50% { transform: scale(1.1); }
-          70% { transform: scale(0.95); }
-          100% { transform: scale(1); opacity: 1; }
-        }
-      `}</style>
         </div>
     );
 }
@@ -381,17 +143,8 @@ function WelcomeContent() {
 export default function WelcomePage() {
     return (
         <Suspense fallback={
-            <div style={{
-                minHeight: '100vh',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                background: '#fafafa',
-                fontFamily: 'system-ui, sans-serif',
-                fontSize: '18px',
-                color: '#666',
-            }}>
-                Loading...
+            <div className="min-h-screen bg-[#FAF8F5] flex items-center justify-center p-6">
+                <div className="w-12 h-12 rounded-full border-4 border-[#58111A] border-t-transparent animate-spin" />
             </div>
         }>
             <WelcomeContent />
