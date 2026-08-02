@@ -137,19 +137,12 @@ export default async function NewsletterSlugPage({ params }: PageProps) {
 
       {/* Main Container */}
       <main className="max-w-4xl mx-auto w-full px-4 py-8 flex-1 relative">
-        {!locked ? (
-          <div
-            className="bg-white rounded-2xl shadow-sm border border-gray-200 p-4 md:p-8 overflow-hidden"
-            dangerouslySetInnerHTML={{ __html: fullHtml }}
-          />
-        ) : (
-          <ArchiveLockGate
-            fullHtml={fullHtml}
-            bodyContent={bodyContent}
-            segment={segment}
-            date={date}
-          />
-        )}
+        <ArchiveLockGate
+          fullHtml={fullHtml}
+          bodyContent={fullHtml}
+          segment={segment}
+          date={date}
+        />
       </main>
     </div>
   );

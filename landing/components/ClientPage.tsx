@@ -14,6 +14,7 @@ import {
     IconStreamInnovators
 } from './EditorialIcons';
 import SignupForm, { SignupFormRef } from './SignupForm';
+import AISearchSection from './AISearchSection';
 
 type Segment = 'builders' | 'leaders' | 'innovators';
 
@@ -103,6 +104,9 @@ export default function ClientPage({
                     </button>
                 </span>
             </div>
+
+            {/* Ask Brief Delights AI Vector Search & Freemium Pro Gate */}
+            <AISearchSection />
 
             {/* Hero Section - Alabaster & Editorial Serif */}
             <section className="bg-[#FAF8F5] py-24 border-b border-[#121212]/10">
