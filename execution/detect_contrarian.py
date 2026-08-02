@@ -36,7 +36,7 @@ client = OpenAI(
         "X-Title": "The Brief",
     }
 )
-CHEAP_MODEL = "anthropic/claude-3-haiku"
+CHEAP_MODEL = "deepseek/deepseek-v4-flash-0731"
 
 
 def log(message: str):

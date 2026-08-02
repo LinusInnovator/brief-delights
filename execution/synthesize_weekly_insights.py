@@ -126,7 +126,7 @@ def analyze_weekly_trends(week_data: list) -> dict:
 def call_llm(prompt: str, model: str = None) -> str:
     """Call OpenRouter API for synthesis with fallback models"""
     if not model:
-        model = os.getenv("PRIMARY_LLM_MODEL", "google/gemini-2.5-flash")
+        model = os.getenv("PRIMARY_LLM_MODEL", "deepseek/deepseek-v4-flash-0731")
         
     api_key = os.getenv("OPENROUTER_API_KEY")
     if not api_key:
