@@ -11,6 +11,10 @@ import re
 from datetime import datetime
 from pathlib import Path
 
+from dotenv import load_dotenv
+
+load_dotenv()
+
 PROJECT_ROOT = Path(__file__).parent.parent
 TMP_DIR = PROJECT_ROOT / ".tmp"
 TODAY = datetime.now().strftime("%Y-%m-%d")
