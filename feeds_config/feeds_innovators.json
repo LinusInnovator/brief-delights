@@ -3,7 +3,7 @@
     "description": "Frontier Research + Future Signals",
     "categories": {
         "Raw Research (Machine Learning & AI)": [
-            "https://arxiv.org/rss/cs.AI",
+            "http://export.arxiv.org/rss/cs.AI",
             "https://arxiv.org/rss/cs.CL",
             "https://arxiv.org/rss/cs.CV",
             "https://arxiv.org/rss/cs.LG",
@@ -11,14 +11,16 @@
             "https://paperswithcode.com/rss/latest"
         ],
         "Frontier AI Labs & Research": [
-            "https://deepmind.google/blog/rss.xml",
-            ".tmp/custom_feed_anthropic.xml",
             "https://openai.com/news/rss.xml",
+            "https://deepmind.google/blog/feed/basic/",
+            "https://rsshub.bestblogs.dev/anthropic/news",
+            "https://huggingface.co/blog/feed.xml",
             "https://research.google/blog/rss/",
             "https://www.microsoft.com/en-us/research/feed/",
-            "https://venturebeat.com/category/ai/feed"
+            "https://techcrunch.com/category/artificial-intelligence/feed/"
         ],
         "Human-Centered AI, Policy & Ethics": [
+            "https://www.technologyreview.com/topic/artificial-intelligence/feed/",
             ".tmp/custom_feed_stanfordhai.xml",
             "https://www.lesswrong.com/feed.xml",
             "https://www.alignmentforum.org/feed.xml",
@@ -33,9 +35,9 @@
             "https://arxiv.org/rss/cs.GR"
         ],
         "Applied Science & Frontier Tech": [
-            "https://www.technologyreview.com/feed/",
+            "https://spectrum.ieee.org/feeds/topic/artificial-intelligence.rss",
+            "https://www.wired.com/feed/tag/ai/latest",
             "https://www.nature.com/subjects/computer-science.rss",
-            "https://www.wired.com/feed/rss",
             "https://arstechnica.com/feed/",
             "https://www.quantamagazine.org/feed/"
         ]

@@ -33,7 +33,8 @@
         ],
         "ML Engineering & AI Systems": [
             "https://huggingface.co/blog/feed.xml",
-            ".tmp/custom_feed_anthropic.xml",
+            "https://rsshub.bestblogs.dev/anthropic/news",
+            "https://spectrum.ieee.org/feeds/topic/semiconductors.rss",
             "https://replicate.com/blog/rss",
             "https://lilianweng.github.io/index.xml",
             "https://eugeneyan.com/rss",
