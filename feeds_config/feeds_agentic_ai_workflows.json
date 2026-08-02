@@ -1,0 +1,23 @@
+{
+  "segment": "agentic_ai_workflows",
+  "name": "Agentic AI Workflows",
+  "lookback_hours": 24,
+  "matrix_score": 66.5,
+  "categories": [
+    {
+      "name": "Agentic Infrastructure & Frameworks",
+      "feeds": [
+        {
+          "title": "Hugging Face Blog",
+          "url": "https://huggingface.co/blog/feed.xml",
+          "source_type": "primary"
+        },
+        {
+          "title": "OpenAI Research",
+          "url": "https://openai.com/news/rss.xml",
+          "source_type": "primary"
+        }
+      ]
+    }
+  ]
+}

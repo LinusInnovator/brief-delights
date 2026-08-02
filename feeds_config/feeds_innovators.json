@@ -2,22 +2,42 @@
     "segment": "innovators",
     "description": "Frontier Research + Future Signals",
     "categories": {
-        "Raw Research (Machine Learning)": [
+        "Raw Research (Machine Learning & AI)": [
             "https://arxiv.org/rss/cs.AI",
-            "https://bair.berkeley.edu/blog/feed.xml"
+            "https://arxiv.org/rss/cs.CL",
+            "https://arxiv.org/rss/cs.CV",
+            "https://arxiv.org/rss/cs.LG",
+            "https://bair.berkeley.edu/blog/feed.xml",
+            "https://paperswithcode.com/rss/latest"
         ],
-        "Human-Centered AI & Policy": [
-            "/Users/linus/Library/Mobile Documents/com~apple~CloudDocs/projects/Dream Validator/Prototrying.com/Prototryers/antigravity/The letter/.tmp/custom_feed_stanfordhai.xml",
-            "https://www.lesswrong.com/feed.xml"
+        "Frontier AI Labs & Research": [
+            "https://deepmind.google/blog/rss.xml",
+            ".tmp/custom_feed_anthropic.xml",
+            "https://openai.com/news/rss.xml",
+            "https://research.google/blog/rss/",
+            "https://www.microsoft.com/en-us/research/feed/",
+            "https://venturebeat.com/category/ai/feed"
         ],
-        "Applied Science": [
+        "Human-Centered AI, Policy & Ethics": [
+            ".tmp/custom_feed_stanfordhai.xml",
+            "https://www.lesswrong.com/feed.xml",
+            "https://www.alignmentforum.org/feed.xml",
+            "https://futureoflife.org/feed/"
+        ],
+        "Generative Media (Image, Video, Audio & 3D)": [
+            "https://stability.ai/news?format=rss",
+            "https://runwayml.com/blog/rss.xml",
+            "https://elevenlabs.io/blog/rss",
+            "https://huggingface.co/blog/feed.xml",
+            "https://arxiv.org/rss/cs.CV",
+            "https://arxiv.org/rss/cs.GR"
+        ],
+        "Applied Science & Frontier Tech": [
             "https://www.technologyreview.com/feed/",
             "https://www.nature.com/subjects/computer-science.rss",
-            "https://www.wired.com/feed/rss"
-        ],
-        "Frontier AI & Neuroscience": [
-            "https://deepmind.google/discover/blog/rss.xml",
-            "/Users/linus/Library/Mobile Documents/com~apple~CloudDocs/projects/Dream Validator/Prototrying.com/Prototryers/antigravity/The letter/.tmp/custom_feed_anthropic.xml"
+            "https://www.wired.com/feed/rss",
+            "https://arstechnica.com/feed/",
+            "https://www.quantamagazine.org/feed/"
         ]
     },
     "update_frequency": "daily",

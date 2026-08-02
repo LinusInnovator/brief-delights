@@ -2,22 +2,33 @@
     "segment": "leaders",
     "description": "Strategic + Market Competitive Direction",
     "categories": {
-        "Platform Strategy": [
-            "https://stratechery.com/feed/"
+        "Platform & Growth Strategy": [
+            "https://stratechery.com/feed/",
+            "https://eugenewei.substack.com/feed",
+            "https://www.notboring.co/feed",
+            "https://www.theverge.com/rss/index.xml"
         ],
         "Venture Capital & M&A": [
-            "/Users/linus/Library/Mobile Documents/com~apple~CloudDocs/projects/Dream Validator/Prototrying.com/Prototryers/antigravity/The letter/.tmp/custom_feed_theinformation.xml",
-            "https://a16z.com/feed/",
-            "http://www.paulgraham.com/rss.html"
+            ".tmp/custom_feed_theinformation.xml",
+            "https://a16z.substack.com/feed",
+            "http://www.paulgraham.com/rss.html",
+            "https://tomtunguz.com/index.xml",
+            "https://techcrunch.com/category/venture/feed/",
+            "https://www.economist.com/business/rss.xml",
+            "https://sifted.eu/feed"
         ],
-        "Enterprise Strategy": [
-            "/Users/linus/Library/Mobile Documents/com~apple~CloudDocs/projects/Dream Validator/Prototrying.com/Prototryers/antigravity/The letter/.tmp/custom_feed_gartner.xml",
-            "https://hbr.org/feed"
+        "Enterprise Strategy & SaaS": [
+            ".tmp/custom_feed_gartner.xml",
+            "https://techcrunch.com/category/enterprise/feed/",
+            "https://saastr.com/feed/",
+            "https://www.economist.com/finance-and-economics/rss.xml"
         ],
-        "Macro Trends": [
-            "https://www.mckinsey.com/featured-insights/rss",
-            "https://www.wsj.com/xml/rss/3_7455.xml",
-            "https://www.bloomberg.com/feed/rss/technology"
+        "Macro Trends & Tech Economy": [
+            "https://www.mckinsey.com/insights/rss",
+            "https://rss.nytimes.com/services/xml/rss/nyt/Technology.xml",
+            "https://www.cnbc.com/id/19854910/device/rss/rss.html",
+            "https://ft.com/tech?format=rss",
+            "https://restofworld.org/feed/"
         ]
     },
     "update_frequency": "daily",

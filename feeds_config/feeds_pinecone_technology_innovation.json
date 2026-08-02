@@ -1,0 +1,24 @@
+{
+  "segment": "pinecone_technology_innovation",
+  "name": "Pinecone Technology & Innovation",
+  "status": "INCUBATING (Sub-Threshold)",
+  "lookback_hours": 24,
+  "matrix_score": 69.5,
+  "categories": [
+    {
+      "name": "Agentic Infrastructure & Frameworks",
+      "feeds": [
+        {
+          "title": "Hugging Face Blog",
+          "url": "https://huggingface.co/blog/feed.xml",
+          "source_type": "primary"
+        },
+        {
+          "title": "OpenAI Research",
+          "url": "https://openai.com/news/rss.xml",
+          "source_type": "primary"
+        }
+      ]
+    }
+  ]
+}

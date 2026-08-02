@@ -5,34 +5,45 @@
         "Discovery & Early Signals": [
             "https://news.ycombinator.com/rss",
             "https://lobste.rs/rss",
-            "https://hnrss.org/frontpage?points=100"
+            "https://hnrss.org/frontpage?points=100",
+            "https://producthunt.com/feed"
         ],
         "Architecture & System Design": [
             "https://blog.cloudflare.com/rss/",
             "https://aws.amazon.com/blogs/aws/feed/",
             "https://krebsonsecurity.com/feed/",
-            "https://eng.uber.com/feed/",
             "https://fly.io/blog/feed.xml",
-            "https://discord.com/blog/rss"
+            "https://discord.com/blog/rss",
+            "https://stripe.com/blog/feed.rss",
+            "https://www.datadoghq.com/blog/index.xml",
+            "https://netflixtechblog.com/feed",
+            "https://engineering.fb.com/feed/",
+            "https://slack.engineering/feed/"
         ],
         "Modern Stack & Tools": [
             "https://github.blog/feed/",
-            "https://stripe.com/blog/feed.rss",
+            "https://dev.to/feed",
+            "https://feed.infoq.com/",
             "https://supabase.com/rss.xml",
             "https://tailscale.com/blog/index.xml",
             "https://vercel.com/atom",
-            "https://linear.app/blog/rss",
-            "https://www.figma.com/blog/feed/"
+            "https://feeds.feedburner.com/oreilly/radar/atom",
+            "https://posthog.com/rss.xml",
+            "https://deno.com/feed"
         ],
-        "ML & Open Source": [
+        "ML Engineering & AI Systems": [
             "https://huggingface.co/blog/feed.xml",
-            "/Users/linus/Library/Mobile Documents/com~apple~CloudDocs/projects/Dream Validator/Prototrying.com/Prototryers/antigravity/The letter/.tmp/custom_feed_anthropic.xml",
-            "https://replicate.com/blog/rss"
+            ".tmp/custom_feed_anthropic.xml",
+            "https://replicate.com/blog/rss",
+            "https://lilianweng.github.io/index.xml",
+            "https://eugeneyan.com/rss",
+            "https://chiphuyen.com/feed.xml"
         ],
         "Engineering Leadership & Culture": [
-            "https://engineering.fb.com/feed/",
-            "https://netflixtechblog.com/feed",
-            "https://newsletter.pragmaticengineer.com/feed"
+            "https://newsletter.pragmaticengineer.com/feed",
+            "https://lethain.com/feeds/",
+            "https://staffeng.com/index.xml",
+            "https://charity.wtf/feed/"
         ]
     },
     "update_frequency": "daily",
