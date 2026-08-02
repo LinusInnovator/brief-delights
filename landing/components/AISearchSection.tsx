@@ -124,6 +124,19 @@ export default function AISearchSection() {
     }
   }
 
+  function handleResetBeta() {
+    try {
+      localStorage.setItem('bd_search_count', '1');
+      localStorage.setItem('bd_subscriber_email', 'beta@delights.pro');
+      localStorage.setItem('bd_subscriber_active', 'true');
+    } catch {}
+    setEmail('beta@delights.pro');
+    setSearchAttempt(1);
+    setCreditsRemaining(10);
+    setLimitReached(false);
+    setLimitReason(null);
+  }
+
   return (
     <div className="w-full bg-[#3D0A11] text-white border-b border-[#C5A059]/30 py-10 px-4 sm:px-6 shadow-2xl">
       <div className="max-w-4xl mx-auto space-y-6">
@@ -141,13 +154,13 @@ export default function AISearchSection() {
             </span>
           </div>
 
-          {/* 5/5 Credit Ticker Pill */}
+          {/* 5/5 Credit Ticker Pill & Reset Beta */}
           <div className="flex items-center gap-2">
             {email ? (
               <div className="bg-[#2D070C] border border-[#C5A059]/40 px-3 py-1 rounded-full text-[11px] font-mono flex items-center gap-2">
                 <span className={`w-2 h-2 rounded-full ${creditsRemaining > 2 ? 'bg-emerald-400' : creditsRemaining > 0 ? 'bg-amber-400' : 'bg-red-400 animate-pulse'}`}></span>
-                <span className="text-[#C5A059] font-bold">{creditsRemaining} / 5</span>
-                <span className="text-white/70">AI Search Credits Remaining</span>
+                <span className="text-[#C5A059] font-bold">{creditsRemaining} / {creditsRemaining > 5 ? creditsRemaining : 5}</span>
+                <span className="text-white/70">AI Search Credits</span>
               </div>
             ) : (
               <span className="text-[11px] font-mono text-[#C5A059] flex items-center gap-1">
@@ -155,6 +168,17 @@ export default function AISearchSection() {
                 <span>1 Free Guest Search Teaser</span>
               </span>
             )}
+
+            {/* Reset Beta Testing Button */}
+            <button
+              type="button"
+              onClick={handleResetBeta}
+              className="px-2.5 py-1 bg-[#C5A059]/20 hover:bg-[#C5A059]/30 border border-[#C5A059]/40 text-[#C5A059] hover:text-white text-[10px] font-mono rounded-full transition flex items-center gap-1 shadow-sm"
+              title="Reset Beta Tester Credits to 10/10"
+            >
+              <svg className="w-3 h-3 text-[#C5A059]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+              <span>Reset Beta (10/10)</span>
+            </button>
           </div>
         </div>
 
