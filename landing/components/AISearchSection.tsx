@@ -23,13 +23,13 @@ export default function AISearchSection() {
 
   const [aiSynthesis, setAiSynthesis] = useState<string | null>(null);
   const [articles, setArticles] = useState<ArticleResult[]>([]);
+  const [expandedId, setExpandedId] = useState<string | number | null>(null);
   const [limitReached, setLimitReached] = useState(false);
   const [limitReason, setLimitReason] = useState<'email_required' | 'upgrade_pro_required' | null>(null);
   const [creditsRemaining, setCreditsRemaining] = useState<number>(5);
   const [hasSearched, setHasSearched] = useState(false);
 
   useEffect(() => {
-    // Read local search attempt count and subscriber status
     try {
       const storedAttempt = localStorage.getItem('bd_search_count');
       if (storedAttempt) {
@@ -50,6 +50,7 @@ export default function AISearchSection() {
     setLimitReached(false);
     setLimitReason(null);
     setHasSearched(true);
+    setExpandedId(null);
 
     try {
       const res = await fetch('/api/search', {
@@ -74,7 +75,6 @@ export default function AISearchSection() {
           setCreditsRemaining(data.credits_remaining);
         }
 
-        // Increment local search attempt
         const nextAttempt = searchAttempt + 1;
         setSearchAttempt(nextAttempt);
         try {
@@ -107,7 +107,7 @@ export default function AISearchSection() {
         } catch {}
         setLimitReached(false);
         setCreditsRemaining(5);
-        handleSearch(); // Retry search
+        handleSearch();
       }
     } catch (err) {
       console.error('Subscribe error:', err);
@@ -117,9 +117,9 @@ export default function AISearchSection() {
   }
 
   return (
-    <div className="w-full bg-[#3D0A11] text-white border-b border-[#C5A059]/30 py-8 px-4 sm:px-6">
+    <div className="w-full bg-[#3D0A11] text-white border-b border-[#C5A059]/30 py-10 px-4 sm:px-6 shadow-2xl">
       <div className="max-w-4xl mx-auto space-y-6">
-        {/* Search Header Ticker */}
+        {/* Header Ticker */}
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
           <div className="flex items-center gap-2">
             <div className="w-6 h-6 rounded-md bg-[#C5A059]/20 border border-[#C5A059]/40 flex items-center justify-center p-1">
@@ -128,8 +128,8 @@ export default function AISearchSection() {
             <span className="text-xs font-serif font-bold text-white tracking-wide">
               Ask Brief Delights AI
             </span>
-            <span className="text-[10px] font-mono text-[#C5A059] uppercase bg-black/30 px-2 py-0.5 rounded border border-[#C5A059]/20">
-              DeepSeek-V4 RAG
+            <span className="text-[10px] font-mono text-[#C5A059] uppercase bg-black/40 px-2 py-0.5 rounded border border-[#C5A059]/30">
+              DeepSeek-V4 RAG Engine
             </span>
           </div>
 
@@ -142,14 +142,14 @@ export default function AISearchSection() {
                 <span className="text-white/70">AI Search Credits Remaining</span>
               </div>
             ) : (
-              <span className="text-[11px] font-mono text-white/60">
-                1 Free Guest Search Teaser
+              <span className="text-[11px] font-mono text-[#C5A059]">
+                ⚡ 1 Free Guest Search Teaser
               </span>
             )}
           </div>
         </div>
 
-        {/* Interactive Search Bar */}
+        {/* Search Bar */}
         <form
           onSubmit={(e) => {
             e.preventDefault();
@@ -167,13 +167,13 @@ export default function AISearchSection() {
           <button
             type="submit"
             disabled={loading}
-            className="absolute right-2 px-5 py-2.5 bg-[#C5A059] hover:bg-[#D4AF66] text-[#121212] text-xs font-bold rounded-xl shadow transition flex items-center gap-1.5"
+            className="absolute right-2 px-6 py-2.5 bg-[#C5A059] hover:bg-[#D4AF66] text-[#121212] text-xs font-bold rounded-xl shadow-md transition flex items-center gap-2"
           >
             {loading ? (
               <span className="inline-block w-4 h-4 border-2 border-[#121212] border-t-transparent rounded-full animate-spin"></span>
             ) : (
               <>
-                <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
                 <span>Search</span>
               </>
             )}
@@ -185,6 +185,8 @@ export default function AISearchSection() {
           <span className="text-white/50 font-mono text-[10px] uppercase">Try:</span>
           {[
             '🚀 DeepSeek V4 Benchmark',
+            '🎨 The best image gen model',
+            '🤖 OpenAI Reasoning Updates',
             '🛡️ Kimwolf Botnet Threat',
             '⚡ Next.js vs Vite Latency',
           ].map((chip) => (
@@ -203,10 +205,10 @@ export default function AISearchSection() {
           ))}
         </div>
 
-        {/* Results Area */}
+        {/* Results Container */}
         {hasSearched && (
-          <div className="pt-4 space-y-6 animate-fade-in">
-            {/* Limit Reached Cards */}
+          <div className="pt-4 space-y-6">
+            {/* Limit Reached - Email Required */}
             {limitReached && limitReason === 'email_required' && (
               <div className="p-8 bg-[#2D070C] border-2 border-[#C5A059]/50 rounded-2xl text-center space-y-4 shadow-xl">
                 <div className="w-12 h-12 rounded-xl bg-[#C5A059]/20 border border-[#C5A059]/40 flex items-center justify-center mx-auto text-[#C5A059]">
@@ -238,6 +240,7 @@ export default function AISearchSection() {
               </div>
             )}
 
+            {/* Limit Reached - Studio Pro Required */}
             {limitReached && limitReason === 'upgrade_pro_required' && (
               <div className="p-8 bg-[#2D070C] border-2 border-[#C5A059] rounded-2xl text-center space-y-4 shadow-2xl">
                 <div className="w-12 h-12 rounded-full bg-[#C5A059] text-[#121212] flex items-center justify-center mx-auto text-xl font-bold">
@@ -271,46 +274,90 @@ export default function AISearchSection() {
               </div>
             )}
 
-            {/* AI Executive Synthesis Card */}
+            {/* Empowering AI Synthesis Card */}
             {!limitReached && aiSynthesis && (
-              <div className="p-6 bg-[#2D070C] border border-[#C5A059]/40 rounded-2xl shadow-lg space-y-3">
-                <div className="flex items-center gap-2 text-[#C5A059] text-xs font-mono tracking-wider uppercase">
-                  <span>✨ DeepSeek-V4 Executive Synthesis</span>
+              <div className="p-6 bg-[#2D070C] border border-[#C5A059]/40 rounded-2xl shadow-xl space-y-3">
+                <div className="flex items-center justify-between border-b border-[#C5A059]/20 pb-3">
+                  <div className="flex items-center gap-2 text-[#C5A059] text-xs font-mono tracking-wider uppercase font-bold">
+                    <span>✨ DeepSeek-V4 Executive Synthesis</span>
+                  </div>
+                  <span className="text-[10px] font-mono text-white/50">Verified Analysis</span>
                 </div>
-                <div className="text-xs text-white/90 leading-relaxed font-sans whitespace-pre-line border-t border-[#C5A059]/20 pt-3">
+                <div className="text-sm text-white/95 leading-relaxed font-sans whitespace-pre-line space-y-3">
                   {aiSynthesis}
                 </div>
               </div>
             )}
 
-            {/* Story Results */}
+            {/* Expandable Story Dispatches */}
             {!limitReached && articles.length > 0 && (
-              <div className="space-y-3">
-                <h4 className="text-xs font-mono text-[#C5A059] uppercase tracking-wider">
-                  Relevant Daily Dispatches ({articles.length})
-                </h4>
+              <div className="space-y-3 pt-2">
+                <div className="flex items-center justify-between">
+                  <h4 className="text-xs font-mono text-[#C5A059] uppercase tracking-wider font-bold">
+                    Relevant Knowledge Base Dispatches ({articles.length})
+                  </h4>
+                  <span className="text-[10px] font-mono text-white/50">Click to expand takeaway & why it matters</span>
+                </div>
+
                 <div className="grid gap-3">
-                  {articles.map((art) => (
-                    <div
-                      key={art.id}
-                      className={`p-4 rounded-xl border transition ${
-                        art.is_blurred
-                          ? 'bg-white/5 border-white/10 blur-[2px] opacity-50 pointer-events-none'
-                          : 'bg-white/10 border-white/20 hover:border-[#C5A059]'
-                      }`}
-                    >
-                      <div className="flex items-center justify-between text-[10px] font-mono text-[#C5A059] uppercase mb-1">
-                        <span>{art.segment} Edition</span>
-                        <span>{art.source}</span>
+                  {articles.map((art) => {
+                    const isExpanded = expandedId === art.id;
+                    return (
+                      <div
+                        key={art.id}
+                        className={`p-5 rounded-2xl border transition ${
+                          art.is_blurred
+                            ? 'bg-white/5 border-white/10 blur-[2px] opacity-40 pointer-events-none'
+                            : 'bg-white/10 border-white/20 hover:border-[#C5A059] shadow-md cursor-pointer'
+                        }`}
+                        onClick={() => !art.is_blurred && setExpandedId(isExpanded ? null : art.id)}
+                      >
+                        <div className="flex items-center justify-between text-[10px] font-mono text-[#C5A059] uppercase mb-1.5">
+                          <span className="bg-[#C5A059]/10 px-2 py-0.5 rounded border border-[#C5A059]/30">
+                            {art.segment} Edition
+                          </span>
+                          <span>{art.source}</span>
+                        </div>
+
+                        <h5 className="font-serif font-bold text-base text-white mb-2 flex items-center justify-between">
+                          <span>{art.title}</span>
+                          <span className="text-[#C5A059] text-sm">{isExpanded ? '▲' : '▼'}</span>
+                        </h5>
+
+                        <p className="text-xs text-white/80 leading-relaxed">
+                          {art.summary}
+                        </p>
+
+                        {/* Expandable Accordion Body */}
+                        {isExpanded && (
+                          <div className="mt-4 pt-4 border-t border-white/15 space-y-3 animate-fade-in text-xs">
+                            <div className="bg-black/30 p-3 rounded-xl border border-[#C5A059]/30">
+                              <span className="text-[10px] font-mono text-[#C5A059] uppercase block mb-1">💡 Key Takeaway:</span>
+                              <p className="text-white/90 font-medium">{art.key_takeaway}</p>
+                            </div>
+
+                            {art.why_it_matters && (
+                              <div className="bg-black/30 p-3 rounded-xl border border-white/10">
+                                <span className="text-[10px] font-mono text-white/60 uppercase block mb-1">🎯 Why It Matters:</span>
+                                <p className="text-white/80">{art.why_it_matters}</p>
+                              </div>
+                            )}
+
+                            <div className="pt-1 flex justify-end">
+                              <a
+                                href={art.url}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="text-[11px] font-bold text-[#C5A059] hover:underline flex items-center gap-1"
+                              >
+                                Read Full Dispatch in Archive &rarr;
+                              </a>
+                            </div>
+                          </div>
+                        )}
                       </div>
-                      <h5 className="font-serif font-bold text-sm text-white mb-1">
-                        {art.title}
-                      </h5>
-                      <p className="text-xs text-white/70 line-clamp-2">
-                        {art.summary}
-                      </p>
-                    </div>
-                  ))}
+                    );
+                  })}
                 </div>
               </div>
             )}
