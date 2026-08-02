@@ -70,18 +70,39 @@ def load_subscribers():
     if SUPABASE_URL and SUPABASE_KEY:
         try:
             supabase: Client = create_client(SUPABASE_URL, SUPABASE_KEY)
-            result = supabase.table('subscribers').select('email, segment, referral_code, referral_count, timezone').eq('status', 'confirmed').execute()
+            result = supabase.table('subscribers').select('email, segment, referral_code, referral_count, timezone, preferences, verification_token').eq('status', 'confirmed').execute()
             
             if result.data and len(result.data) > 0:
                 by_segment = defaultdict(list)
+                now_iso = datetime.now(dt_timezone.utc).isoformat()
+                is_sunday = datetime.now().weekday() == 6
+                day_ordinal = datetime.now().toordinal()
+
                 for sub in result.data:
+                    prefs = sub.get('preferences') or {}
+                    pause_until = prefs.get('pause_until')
+                    if pause_until and pause_until > now_iso:
+                        continue  # Skip subscriber if paused
+
+                    stream_prefs = prefs.get('stream_preferences') or {}
                     segment_str = sub.get('segment', 'leaders')
                     segments = [s.strip() for s in str(segment_str).split(',')]
+
                     for seg in segments:
-                        if seg:
-                            by_segment[seg].append(sub)
+                        if not seg:
+                            continue
+                        freq = stream_prefs.get(seg, 'daily')
+
+                        if freq == 'off':
+                            continue
+                        if freq == 'weekly' and not is_sunday:
+                            continue
+                        if freq == 'alternate' and (day_ordinal % 2 != 0):
+                            continue
+
+                        by_segment[seg].append(sub)
                 
-                log(f"📊 Loaded {len(result.data)} subscribers from Supabase")
+                log(f"📊 Loaded {len(result.data)} subscribers from Supabase with active stream frequency filters")
                 return dict(by_segment)
             else:
                 log("⚠️ No confirmed subscribers found in Supabase")

@@ -85,29 +85,6 @@ export default async function NewsletterSlugPage({ params }: PageProps) {
   }
 
   const fullHtml = readFileSync(filePath, 'utf-8');
-  const locked = isLockedDate(date);
-
-  // If locked, truncate content and show preview blur
-  let bodyContent = fullHtml;
-  if (locked) {
-    // Keep first 1500 characters or head/style tags for styling
-    const styleMatch = fullHtml.match(/<style[\s\S]*?<\/style>/gi);
-    const styles = styleMatch ? styleMatch.join('\n') : '';
-    
-    // Extract early body preview
-    const bodyMatch = fullHtml.match(/<body[\s\S]*?>([\s\S]*?)<\/body>/i);
-    const rawBody = bodyMatch ? bodyMatch[1] : fullHtml;
-    const previewBody = rawBody.substring(0, 800);
-
-    bodyContent = `
-      <html>
-        <head>${styles}</head>
-        <body style="font-family: system-ui, sans-serif; background: #f9fafb; margin:0; padding:20px;">
-          <div>${previewBody}...</div>
-        </body>
-      </html>
-    `;
-  }
 
   const jsonLd = {
     '@context': 'https://schema.org',

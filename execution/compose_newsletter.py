@@ -322,7 +322,8 @@ def compose_newsletter(articles: list, segment_id: str, segment_config: dict, lo
         total_enriched=f"~{len(articles) * 15}",  # Rough estimate of enriched pool
         total_selected=len(articles),
         website_url=WEBSITE_URL,
-        unsubscribe_url=UNSUBSCRIBE_URL
+        unsubscribe_url=UNSUBSCRIBE_URL,
+        preferences_url=f"{WEBSITE_URL}/preferences"
     )
     
     # Calculate size
