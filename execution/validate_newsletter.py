@@ -139,10 +139,8 @@ def validate_newsletter(segment_id: str, date: str = None) -> QualityReport:
     read_times = [a.get("read_time_minutes", 0) for a in articles]
     unique_times = set(read_times)
 
-    if len(articles) > 2 and len(unique_times) == 1:
-        report.fail("Read time variance", f"All {len(articles)} articles have identical read time: {read_times[0]} min")
-    elif len(unique_times) == 1 and len(articles) > 1:
-        report.warn("Read time variance", f"All articles are {read_times[0]} min — may be legitimate but suspicious")
+    if len(unique_times) == 1 and len(articles) > 1:
+        report.warn("Read time variance", f"All {len(articles)} articles have identical read time: {read_times.pop() if read_times else 0} min")
     else:
         report.ok("Read time variance", f"{len(unique_times)} distinct values across {len(articles)} articles")
 

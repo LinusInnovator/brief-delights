@@ -263,7 +263,7 @@ def main():
         log("─"*70)
         summaries_file = TMP_DIR / f"summaries_{segment_id}_{TODAY}.json"
         if not summaries_file.exists():
-            if not run_script("summarize_articles.py", timeout=90, args=["--segment", segment_id]):
+            if not run_script("summarize_articles.py", timeout=180, args=["--segment", segment_id]):
                 log(f"❌ Failed to summarize for {segment_id}", "ERROR")
                 continue
             log(f"✅ Summarization complete for {segment_name}")
