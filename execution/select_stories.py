@@ -427,8 +427,12 @@ def merge_selection_with_articles(raw_articles: list, selection: dict) -> list:
     indexed_articles = {str(i): a for i, a in enumerate(raw_articles, 1)}
     
     merged = []
-    for selected in selection['selected_articles']:
-        article_id = str(selected['article_id'])
+    for selected in selection.get('selected_articles', []):
+        if not isinstance(selected, dict):
+            continue
+        article_id = str(selected.get('article_id') or selected.get('id') or selected.get('index') or '').strip()
+        if not article_id:
+            continue
         
         # Check if the returned ID is the actual ID or the 1-based index
         if article_id in articles_dict:
