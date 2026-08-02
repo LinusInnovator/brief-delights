@@ -209,32 +209,34 @@
             <td style="padding-top: 12px; padding-bottom: 24px;">
               <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="background-color: #FFFFFF; border: 1px solid #E5DCD3; border-radius: 12px; text-align: center;" class="card-bg">
                 <tr>
-                  <td style="padding: 20px;">
-                    <div style="font-family: Georgia, 'Times New Roman', serif; font-size: 17px; font-weight: 700; color: #121212; margin-bottom: 4px;">
+                  <td align="center" style="padding: 24px 16px; text-align: center;">
+                    <div style="font-family: Georgia, 'Times New Roman', serif; font-size: 18px; font-weight: 700; color: #121212; margin-bottom: 4px; text-align: center;">
                       How was today's dispatch?
                     </div>
-                    <div style="font-family: -apple-system, sans-serif; font-size: 12px; color: #64748b; margin-bottom: 14px;">
+                    <div style="font-family: -apple-system, sans-serif; font-size: 12px; color: #64748b; margin-bottom: 16px; text-align: center;">
                       Your 1-click feedback tunes our story selection algorithms for tomorrow.
                     </div>
-                    <table role="presentation" align="center" cellspacing="0" cellpadding="0" border="0">
-                      <tr>
-                        <td style="padding: 0 4px;">
-                          <a href="{{ website_url }}/api/feedback?rating=mindblown&s={{ segment_id }}&d={{ date }}" target="_blank" style="display: inline-block; background-color: #FAF8F5; border: 1px solid #E5DCD3; border-radius: 20px; padding: 8px 14px; font-family: -apple-system, sans-serif; font-size: 13px; font-weight: 600; color: #121212; text-decoration: none;">
-                            🤯 Mindblown
-                          </a>
-                        </td>
-                        <td style="padding: 0 4px;">
-                          <a href="{{ website_url }}/api/feedback?rating=insightful&s={{ segment_id }}&d={{ date }}" target="_blank" style="display: inline-block; background-color: #FAF8F5; border: 1px solid #E5DCD3; border-radius: 20px; padding: 8px 14px; font-family: -apple-system, sans-serif; font-size: 13px; font-weight: 600; color: #121212; text-decoration: none;">
-                            💡 Insightful
-                          </a>
-                        </td>
-                        <td style="padding: 0 4px;">
-                          <a href="{{ website_url }}/api/feedback?rating=needs_work&s={{ segment_id }}&d={{ date }}" target="_blank" style="display: inline-block; background-color: #FAF8F5; border: 1px solid #E5DCD3; border-radius: 20px; padding: 8px 14px; font-family: -apple-system, sans-serif; font-size: 13px; font-weight: 600; color: #121212; text-decoration: none;">
-                            👎 Needs Work
-                          </a>
-                        </td>
-                      </tr>
-                    </table>
+                    <center>
+                      <table role="presentation" align="center" cellspacing="0" cellpadding="0" border="0" style="margin: 0 auto; text-align: center;">
+                        <tr>
+                          <td align="center" style="padding: 0 4px;">
+                            <a href="{{ website_url }}/api/feedback?rating=mindblown&s={{ segment_id }}&d={{ date }}" target="_blank" style="display: inline-block; background-color: #FAF8F5; border: 1px solid #E5DCD3; border-radius: 20px; padding: 9px 16px; font-family: -apple-system, sans-serif; font-size: 13px; font-weight: 600; color: #121212; text-decoration: none;">
+                              🤯 Mindblown
+                            </a>
+                          </td>
+                          <td align="center" style="padding: 0 4px;">
+                            <a href="{{ website_url }}/api/feedback?rating=insightful&s={{ segment_id }}&d={{ date }}" target="_blank" style="display: inline-block; background-color: #FAF8F5; border: 1px solid #E5DCD3; border-radius: 20px; padding: 9px 16px; font-family: -apple-system, sans-serif; font-size: 13px; font-weight: 600; color: #121212; text-decoration: none;">
+                              💡 Insightful
+                            </a>
+                          </td>
+                          <td align="center" style="padding: 0 4px;">
+                            <a href="{{ website_url }}/api/feedback?rating=needs_work&s={{ segment_id }}&d={{ date }}" target="_blank" style="display: inline-block; background-color: #FAF8F5; border: 1px solid #E5DCD3; border-radius: 20px; padding: 9px 16px; font-family: -apple-system, sans-serif; font-size: 13px; font-weight: 600; color: #121212; text-decoration: none;">
+                              👎 Needs Work
+                            </a>
+                          </td>
+                        </tr>
+                      </table>
+                    </center>
                   </td>
                 </tr>
               </table>
