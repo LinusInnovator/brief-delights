@@ -11,10 +11,10 @@ SNELL_ROUTER_URL = os.getenv("MODEL_DELIGHTS_BASE_URL", "https://model.delights.
 SNELL_GOD_KEY = os.getenv("INTERNAL_GOD_KEY")
 
 
-def get_recommended_models(intent: str = "drafting", default_primary: str = "google/gemini-2.5-flash", default_fallback: str = "openai/gpt-4o-mini") -> tuple:
+def get_recommended_models(intent: str = "drafting", default_primary: str = "deepseek/deepseek-v4-flash-0731", default_fallback: str = "google/gemini-2.5-flash") -> tuple:
     """
     Fetch (primary_model, fallback_model) from Snell API Gateway.
-    Falls back gracefully to default models if gateway key or endpoint is unreachable.
+    Falls back gracefully to DeepSeek-V4-Flash / Gemini 2.5 Flash if gateway key or endpoint is unreachable.
     """
     if not SNELL_GOD_KEY:
         print(f"ℹ️ INTERNAL_GOD_KEY secret not set, using default models: {default_primary}, {default_fallback}")

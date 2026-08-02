@@ -46,8 +46,8 @@ from execution.snell_router import get_recommended_models
 # Dynamic Model Selection via Snell Router Gateway
 PRIMARY_MODEL, FALLBACK_MODEL = get_recommended_models(
     intent="summarization",
-    default_primary=os.getenv("PRIMARY_LLM_MODEL", "google/gemini-2.5-flash"),
-    default_fallback="openai/gpt-4o-mini"
+    default_primary=os.getenv("PRIMARY_LLM_MODEL", "deepseek/deepseek-v4-flash-0731"),
+    default_fallback="google/gemini-2.5-flash"
 )
 
 # Parallel processing (increase worker count for 3x faster execution)
