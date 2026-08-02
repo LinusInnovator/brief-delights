@@ -12,35 +12,64 @@ interface NavSection {
 interface NavItem {
     href: string;
     label: string;
-    icon: string;
+    iconId: string;
     badge?: string;
+}
+
+function getNavIcon(id: string) {
+  switch (id) {
+    case 'dashboard':
+      return <svg className="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.75" d="M9 19v-6a2 2 0 012-2h2a2 2 0 012 2v6a2 2 0 01-2 2h-2a2 2 0 01-2-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>;
+    case 'subscribers':
+      return <svg className="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.75" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/></svg>;
+    case 'growth':
+      return <svg className="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.75" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>;
+    case 'social':
+      return <svg className="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.75" d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.684A1.761 1.761 0 013 12V8a1.761 1.761 0 012.436-1.684l4.58-1.527A1.76 1.76 0 0112 6.471v11.058a1.76 1.76 0 01-1.984 1.742l-4.58-1.587z"/></svg>;
+    case 'sponsors':
+      return <svg className="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.75" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>;
+    case 'partnerships':
+      return <svg className="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.75" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>;
+    case 'pitcher':
+      return <svg className="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.75" d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122"/></svg>;
+    case 'insights':
+      return <svg className="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.75" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>;
+    case 'analytics':
+      return <svg className="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.75" d="M9 19v-6a2 2 0 012-2h2a2 2 0 012 2v6a2 2 0 01-2 2h-2a2 2 0 01-2-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>;
+    case 'feedback':
+      return <svg className="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.75" d="M8 10h.01M12 10h.01M16 10h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>;
+    case 'abtesting':
+      return <svg className="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.75" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L5.595 15.12a2 2 0 00-1.802.77M15.428 19.428a2 2 0 00.547-1.022l.477-2.387a6 6 0 00-.517-3.86l-.158-.318a6 6 0 01-.517-3.86L15.12 5.595a2 2 0 00-.77-1.802M12 3v1m0 16v1m9-9h-1M4 12H3"/></svg>;
+    default:
+      return null;
+  }
 }
 
 const NAV_SECTIONS: NavSection[] = [
     {
         label: 'Overview',
         items: [
-            { href: '/dashboard', label: 'Dashboard', icon: '📊' },
-            { href: '/admin/subscribers', label: 'Subscribers', icon: '👥' },
-            { href: '/admin/growth', label: 'Growth', icon: '🚀' },
+            { href: '/dashboard', label: 'Dashboard', iconId: 'dashboard' },
+            { href: '/admin/subscribers', label: 'Subscribers', iconId: 'subscribers' },
+            { href: '/admin/growth', label: 'Growth', iconId: 'growth' },
         ],
     },
     {
         label: 'Monetization & Distribution',
         items: [
-            { href: '/admin/social-publisher', label: 'Reddit & Social', icon: '📢', badge: '1-CLICK' },
-            { href: '/admin/sponsors', label: 'Sponsors', icon: '💰' },
-            { href: '/admin/partnerships', label: 'Partnerships', icon: '🤝' },
-            { href: '/admin/b2b-pitcher', label: 'Engine Pitcher', icon: '🎯', badge: 'NEW' },
+            { href: '/admin/social-publisher', label: 'Reddit & Social', iconId: 'social', badge: '1-CLICK' },
+            { href: '/admin/sponsors', label: 'Sponsors', iconId: 'sponsors' },
+            { href: '/admin/partnerships', label: 'Partnerships', iconId: 'partnerships' },
+            { href: '/admin/b2b-pitcher', label: 'Engine Pitcher', iconId: 'pitcher', badge: 'NEW' },
         ],
     },
     {
         label: 'Intelligence',
         items: [
-            { href: '/admin/sponsors/insights', label: 'Insights', icon: '🔍' },
-            { href: '/admin/sponsors/analytics', label: 'Analytics', icon: '📈' },
-            { href: '/admin/feedback', label: 'Feedback', icon: '💬' },
-            { href: '/admin/ab-testing', label: 'A/B Testing', icon: '🧪' },
+            { href: '/admin/sponsors/insights', label: 'Insights', iconId: 'insights' },
+            { href: '/admin/sponsors/analytics', label: 'Analytics', iconId: 'analytics' },
+            { href: '/admin/feedback', label: 'Feedback', iconId: 'feedback' },
+            { href: '/admin/ab-testing', label: 'A/B Testing', iconId: 'abtesting' },
         ],
     },
 ];
@@ -125,7 +154,7 @@ export default function AdminSidebar() {
                                             }
                                         `}
                                     >
-                                        <span className="text-base flex-shrink-0">{item.icon}</span>
+                                        <span className="flex-shrink-0">{getNavIcon(item.iconId)}</span>
                                         {!collapsed && <span>{item.label}</span>}
                                         {!collapsed && item.badge && (
                                             <span className="ml-auto bg-[#C5A059]/20 text-[#C5A059] border border-[#C5A059]/30 text-[10px] font-bold px-1.5 py-0.5 rounded-full">

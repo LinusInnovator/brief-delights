@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import AdminSidebar from '../components/AdminSidebar';
+import { IconStreamLeaders, IconStreamBuilders, IconStreamInnovators } from '@/components/EditorialIcons';
 
 interface SocialPost {
   segment: string;
@@ -15,6 +16,19 @@ interface SocialPost {
   linkedin_share_url: string;
   archive_url: string;
   date: string;
+}
+
+function getSegmentIcon(segment: string) {
+  switch (segment) {
+    case 'leaders':
+      return <IconStreamLeaders className="w-6 h-6 text-[#C5A059]" />;
+    case 'builders':
+      return <IconStreamBuilders className="w-6 h-6 text-[#C5A059]" />;
+    case 'innovators':
+      return <IconStreamInnovators className="w-6 h-6 text-[#C5A059]" />;
+    default:
+      return null;
+  }
 }
 
 export default function SocialPublisherPage() {
@@ -58,7 +72,7 @@ export default function SocialPublisherPage() {
         <div className="mb-8 flex items-center justify-between border-b border-[#E5DCD3] pb-6">
           <div>
             <div className="flex items-center gap-2 text-xs font-mono tracking-widest text-[#8C6D2B] uppercase mb-1">
-              <span>📢 Distribution & Growth</span>
+              <span>Distribution & Growth</span>
               <span>&bull;</span>
               <span>{date || 'Today'}</span>
             </div>
@@ -74,7 +88,8 @@ export default function SocialPublisherPage() {
             onClick={fetchPosts}
             className="px-4 py-2 bg-white border border-[#E5DCD3] hover:border-[#58111A] text-xs font-semibold rounded-lg shadow-sm transition flex items-center gap-2 text-[#58111A]"
           >
-            🔄 Refresh Breakdown Posts
+            <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+            Refresh Breakdown Posts
           </button>
         </div>
 
@@ -86,7 +101,9 @@ export default function SocialPublisherPage() {
           </div>
         ) : posts.length === 0 ? (
           <div className="p-12 bg-white border border-[#E5DCD3] rounded-xl text-center">
-            <span className="text-4xl mb-3 block">📭</span>
+            <div className="w-12 h-12 rounded-full bg-[#FAF8F5] border border-[#E5DCD3] flex items-center justify-center mx-auto mb-3 text-[#58111A]">
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4"/></svg>
+            </div>
             <h3 className="font-serif text-lg font-bold text-[#121212]">No Posts Available For Today</h3>
             <p className="text-sm text-slate-500 mt-1 max-w-md mx-auto">
               Run the daily newsletter pipeline to generate today's story selection and strategic summaries.
@@ -102,7 +119,9 @@ export default function SocialPublisherPage() {
                 {/* Card Top Banner */}
                 <div className="bg-[#3D0A11] px-6 py-4 text-white flex items-center justify-between border-b border-[#C5A059]/20">
                   <div className="flex items-center gap-3">
-                    <span className="text-xl">{post.segment_emoji}</span>
+                    <div className="w-9 h-9 rounded-lg bg-white/10 border border-[#C5A059]/30 flex items-center justify-center">
+                      {getSegmentIcon(post.segment)}
+                    </div>
                     <div>
                       <span className="text-[10px] font-mono tracking-widest text-[#C5A059] uppercase block">
                         Segment #{idx + 1}
@@ -121,7 +140,8 @@ export default function SocialPublisherPage() {
                       rel="noopener noreferrer"
                       className="px-4 py-2 bg-[#C5A059] hover:bg-[#D4AF66] text-[#121212] text-xs font-bold rounded-lg shadow transition flex items-center gap-1.5"
                     >
-                      ⚡ Open & Post to r/BriefDelights
+                      <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                      Open & Post to r/BriefDelights
                     </a>
                   </div>
                 </div>
@@ -137,9 +157,16 @@ export default function SocialPublisherPage() {
                       <span>{post.reddit_title}</span>
                       <button
                         onClick={() => handleCopy(post.reddit_title, idx * 10)}
-                        className="text-xs font-sans text-[#58111A] font-semibold hover:underline ml-4 whitespace-nowrap"
+                        className="text-xs font-sans text-[#58111A] font-semibold hover:underline ml-4 whitespace-nowrap flex items-center gap-1"
                       >
-                        {copiedIndex === idx * 10 ? '✅ Copied Title' : '📋 Copy Title'}
+                        {copiedIndex === idx * 10 ? (
+                          <>
+                            <svg className="w-3.5 h-3.5 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"/></svg>
+                            <span>Copied Title</span>
+                          </>
+                        ) : (
+                          <span>Copy Title</span>
+                        )}
                       </button>
                     </div>
                   </div>
@@ -152,9 +179,16 @@ export default function SocialPublisherPage() {
                       </label>
                       <button
                         onClick={() => handleCopy(post.reddit_body, idx * 10 + 1)}
-                        className="text-xs font-sans text-[#58111A] font-semibold hover:underline"
+                        className="text-xs font-sans text-[#58111A] font-semibold hover:underline flex items-center gap-1"
                       >
-                        {copiedIndex === idx * 10 + 1 ? '✅ Copied Body' : '📋 Copy Markdown Body'}
+                        {copiedIndex === idx * 10 + 1 ? (
+                          <>
+                            <svg className="w-3.5 h-3.5 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"/></svg>
+                            <span>Copied Body</span>
+                          </>
+                        ) : (
+                          <span>Copy Markdown Body</span>
+                        )}
                       </button>
                     </div>
                     <pre className="p-4 bg-[#121316] text-[#E2E8F0] rounded-lg font-mono text-xs leading-relaxed overflow-x-auto max-h-[260px] border border-slate-800">

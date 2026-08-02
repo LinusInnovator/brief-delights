@@ -44,8 +44,11 @@ export const metadata: Metadata = {
     images: ["https://brief.delights.pro/bd_seal_logo.png"],
   },
   icons: {
-    icon: "/bd_seal_logo.png",
-    apple: "/bd_seal_logo.png",
+    icon: [
+      { url: '/bd_seal_logo.png', type: 'image/png' },
+      { url: '/favicon.ico' },
+    ],
+    apple: '/bd_seal_logo.png',
   },
 };
 
