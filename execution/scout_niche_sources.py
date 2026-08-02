@@ -107,8 +107,38 @@ Return ONLY a JSON object with this exact structure:
         ]
 
 
+def discover_rss_from_domain(domain_url: str, headers: Dict) -> str:
+    """
+    Empirically inspects homepage HTML <head> for <link rel="alternate" type="application/rss+xml">
+    or application/atom+xml tag to find official feed URL with ZERO URL guessing.
+    """
+    try:
+        if not domain_url.startswith('http'):
+            domain_url = f'https://{domain_url}'
+        
+        resp = requests.get(domain_url, headers=headers, timeout=5)
+        if resp.status_code == 200:
+            # Parse <link rel="alternate" type="application/rss+xml" href="...">
+            rss_matches = re.findall(r'<link[^>]+type=["\']application/(?:rss|atom)\+xml["\'][^>]+href=["\']([^"\']+)["\']', resp.text, re.IGNORECASE)
+            if not rss_matches:
+                rss_matches = re.findall(r'<link[^>]+href=["\']([^"\']+)["\'][^>]+type=["\']application/(?:rss|atom)\+xml["\']', resp.text, re.IGNORECASE)
+            
+            if rss_matches:
+                feed_path = rss_matches[0]
+                if feed_path.startswith('/'):
+                    from urllib.parse import urlparse
+                    parsed_domain = urlparse(domain_url)
+                    return f"{parsed_domain.scheme}://{parsed_domain.netloc}{feed_path}"
+                elif not feed_path.startswith('http'):
+                    return f"{domain_url.rstrip('/')}/{feed_path.lstrip('/')}"
+                return feed_path
+    except Exception:
+        pass
+    return domain_url
+
+
 def probe_and_validate_feeds(categories: List[Dict]) -> Dict:
-    """Probe candidate feeds via HTTP request + feedparser"""
+    """Probe candidate feeds via HTTP request + empirical HTML link tag fallback + feedparser"""
     print("📡 [SCOUT ENGINE] Probing feed URLs for active articles...")
     
     headers = {
@@ -130,30 +160,40 @@ def probe_and_validate_feeds(categories: List[Dict]) -> Dict:
                 continue
                 
             try:
+                # 1. First probe exact URL
                 resp = requests.get(url, headers=headers, timeout=6)
-                if resp.status_code == 200:
-                    parsed = feedparser.parse(resp.content)
-                    if parsed.entries:
-                        valid_feeds.append({
-                            "title": title,
-                            "url": url,
-                            "source_type": feed.get("source_type", "primary")
-                        })
-                        total_valid_feeds += 1
-                        print(f"  ✅ Active Feed ({len(parsed.entries)} items): {title} ({url})")
+                parsed = feedparser.parse(resp.content) if resp.status_code == 200 else None
+                
+                # 2. If 404 or 0 entries, attempt empirical HTML <head> RSS link discovery on domain
+                if not parsed or not parsed.entries:
+                    discovered_feed_url = discover_rss_from_domain(url, headers)
+                    if discovered_feed_url != url:
+                        print(f"  🔍 [EMPIRICAL SCOUT] Auto-discovered RSS link from homepage HTML: {discovered_feed_url}")
+                        resp = requests.get(discovered_feed_url, headers=headers, timeout=6)
+                        parsed = feedparser.parse(resp.content) if resp.status_code == 200 else None
+                        url = discovered_feed_url
+
+                if resp.status_code == 200 and parsed and parsed.entries:
+                    valid_feeds.append({
+                        "title": title,
+                        "url": url,
+                        "source_type": feed.get("source_type", "primary")
+                    })
+                    total_valid_feeds += 1
+                    print(f"  ✅ Active Verified Feed ({len(parsed.entries)} items): {title} ({url})")
                         
-                        # Ingest top 5 recent articles for dry-run evaluation
-                        for entry in parsed.entries[:5]:
-                            collected_articles.append({
-                                "id": entry.get("link", url),
-                                "title": entry.get("title", "Untitled"),
-                                "url": entry.get("link", url),
-                                "description": entry.get("summary", ""),
-                                "source": title,
-                                "category": cat_name,
-                                "source_type": feed.get("source_type", "primary"),
-                                "published_date": TODAY
-                            })
+                    # Ingest top 5 recent articles for dry-run evaluation
+                    for entry in parsed.entries[:5]:
+                        collected_articles.append({
+                            "id": entry.get("link", url),
+                            "title": entry.get("title", "Untitled"),
+                            "url": entry.get("link", url),
+                            "description": entry.get("summary", ""),
+                            "source": title,
+                            "category": cat_name,
+                            "source_type": feed.get("source_type", "primary"),
+                            "published_date": TODAY
+                        })
                     else:
                         print(f"  ⚠️ Zero entries parsed: {title}")
                 else:
