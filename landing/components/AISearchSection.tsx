@@ -32,12 +32,17 @@ export default function AISearchSection() {
   useEffect(() => {
     try {
       const storedAttempt = localStorage.getItem('bd_search_count');
+      let currentAttempt = 1;
       if (storedAttempt) {
-        setSearchAttempt(parseInt(storedAttempt, 10));
+        currentAttempt = parseInt(storedAttempt, 10);
+        setSearchAttempt(currentAttempt);
       }
+
       const savedEmail = localStorage.getItem('bd_subscriber_email');
       if (savedEmail) {
         setEmail(savedEmail);
+        const computedCredits = Math.max(0, 5 - (currentAttempt - 1));
+        setCreditsRemaining(computedCredits);
       }
     } catch {}
   }, []);
