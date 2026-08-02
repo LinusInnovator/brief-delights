@@ -26,8 +26,9 @@ const NAV_SECTIONS: NavSection[] = [
         ],
     },
     {
-        label: 'Monetization',
+        label: 'Monetization & Distribution',
         items: [
+            { href: '/admin/social-publisher', label: 'Reddit & Social', icon: '📢', badge: '1-CLICK' },
             { href: '/admin/sponsors', label: 'Sponsors', icon: '💰' },
             { href: '/admin/partnerships', label: 'Partnerships', icon: '🤝' },
             { href: '/admin/b2b-pitcher', label: 'Engine Pitcher', icon: '🎯', badge: 'NEW' },
