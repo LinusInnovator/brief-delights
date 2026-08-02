@@ -78,6 +78,9 @@ export default function AISearchSection() {
         setArticles(data.articles || []);
         if (typeof data.credits_remaining === 'number') {
           setCreditsRemaining(data.credits_remaining);
+          try {
+            localStorage.setItem('bd_search_credits_remaining', data.credits_remaining.toString());
+          } catch {}
         }
 
         const nextAttempt = searchAttempt + 1;
@@ -147,8 +150,9 @@ export default function AISearchSection() {
                 <span className="text-white/70">AI Search Credits Remaining</span>
               </div>
             ) : (
-              <span className="text-[11px] font-mono text-[#C5A059]">
-                ⚡ 1 Free Guest Search Teaser
+              <span className="text-[11px] font-mono text-[#C5A059] flex items-center gap-1">
+                <svg className="w-3 h-3 text-[#C5A059]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                <span>1 Free Guest Search Teaser</span>
               </span>
             )}
           </div>
@@ -185,27 +189,27 @@ export default function AISearchSection() {
           </button>
         </form>
 
-        {/* Prompt Chips */}
+        {/* Vector SVG Prompt Chips */}
         <div className="flex flex-wrap items-center gap-2 text-xs">
           <span className="text-white/50 font-mono text-[10px] uppercase">Try:</span>
           {[
-            '🚀 DeepSeek V4 Benchmark',
-            '🎨 The best image gen model',
-            '🤖 OpenAI Reasoning Updates',
-            '🛡️ Kimwolf Botnet Threat',
-            '⚡ Next.js vs Vite Latency',
+            { label: 'DeepSeek V4 Benchmark', icon: 'M13 10V3L4 14h7v7l9-11h-7z' },
+            { label: 'The best image gen model', icon: 'M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z' },
+            { label: 'OpenAI Reasoning Updates', icon: 'M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z' },
+            { label: 'Kimwolf Botnet Threat', icon: 'M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z' },
+            { label: 'Next.js vs Vite Latency', icon: 'M13 10V3L4 14h7v7l9-11h-7z' },
           ].map((chip) => (
             <button
-              key={chip}
+              key={chip.label}
               type="button"
               onClick={() => {
-                const clean = chip.replace(/^[^\s]+\s+/, '');
-                setQuery(clean);
-                handleSearch(clean);
+                setQuery(chip.label);
+                handleSearch(chip.label);
               }}
-              className="px-3 py-1 bg-white/5 hover:bg-white/15 border border-white/10 rounded-full text-white/80 hover:text-white text-[11px] transition"
+              className="px-3 py-1 bg-white/5 hover:bg-white/15 border border-white/10 rounded-full text-white/80 hover:text-white text-[11px] transition flex items-center gap-1.5"
             >
-              {chip}
+              <svg className="w-3 h-3 text-[#C5A059]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d={chip.icon}/></svg>
+              <span>{chip.label}</span>
             </button>
           ))}
         </div>
@@ -248,8 +252,9 @@ export default function AISearchSection() {
             {/* Limit Reached - Studio Pro Required */}
             {limitReached && limitReason === 'upgrade_pro_required' && (
               <div className="p-8 bg-[#2D070C] border-2 border-[#C5A059] rounded-2xl text-center space-y-4 shadow-2xl">
-                <div className="w-12 h-12 rounded-full bg-[#C5A059] text-[#121212] flex items-center justify-center mx-auto text-xl font-bold">
-                  💎
+                {/* Clean Vector Crown Icon */}
+                <div className="w-12 h-12 rounded-full bg-[#C5A059]/20 border border-[#C5A059] text-[#C5A059] flex items-center justify-center mx-auto">
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/></svg>
                 </div>
                 <h3 className="font-serif text-2xl font-bold text-white">
                   0 / 5 Credits Remaining — Upgrade to Studio Pro
@@ -272,9 +277,11 @@ export default function AISearchSection() {
 
                 <a
                   href="/preferences?upgrade=pro"
-                  className="inline-block px-8 py-3.5 bg-[#C5A059] hover:bg-[#D4AF66] text-[#121212] font-bold text-xs rounded-xl shadow-lg transition"
+                  className="inline-flex items-center gap-2 px-8 py-3.5 bg-[#C5A059] hover:bg-[#D4AF66] text-[#121212] font-bold text-xs rounded-xl shadow-lg transition"
                 >
-                  ⚡ Upgrade to Studio Pro Now &rarr;
+                  <svg className="w-4 h-4 text-[#121212]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                  <span>Upgrade to Studio Pro Now</span>
+                  <span>&rarr;</span>
                 </a>
               </div>
             )}
@@ -284,7 +291,8 @@ export default function AISearchSection() {
               <div className="p-6 bg-[#2D070C] border border-[#C5A059]/40 rounded-2xl shadow-xl space-y-3">
                 <div className="flex items-center justify-between border-b border-[#C5A059]/20 pb-3">
                   <div className="flex items-center gap-2 text-[#C5A059] text-xs font-mono tracking-wider uppercase font-bold">
-                    <span>✨ DeepSeek-V4 Executive Synthesis</span>
+                    <svg className="w-4 h-4 text-[#C5A059]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/></svg>
+                    <span>DeepSeek-V4 Executive Synthesis</span>
                   </div>
                   <span className="text-[10px] font-mono text-white/50">Verified Analysis</span>
                 </div>
@@ -337,13 +345,19 @@ export default function AISearchSection() {
                         {isExpanded && (
                           <div className="mt-4 pt-4 border-t border-white/15 space-y-3 animate-fade-in text-xs">
                             <div className="bg-black/30 p-3 rounded-xl border border-[#C5A059]/30">
-                              <span className="text-[10px] font-mono text-[#C5A059] uppercase block mb-1">💡 Key Takeaway:</span>
+                              <span className="text-[10px] font-mono text-[#C5A059] uppercase block mb-1 flex items-center gap-1">
+                                <svg className="w-3 h-3 text-[#C5A059]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
+                                <span>Key Takeaway:</span>
+                              </span>
                               <p className="text-white/90 font-medium">{art.key_takeaway}</p>
                             </div>
 
                             {art.why_it_matters && (
                               <div className="bg-black/30 p-3 rounded-xl border border-white/10">
-                                <span className="text-[10px] font-mono text-white/60 uppercase block mb-1">🎯 Why It Matters:</span>
+                                <span className="text-[10px] font-mono text-white/60 uppercase block mb-1 flex items-center gap-1">
+                                  <svg className="w-3 h-3 text-white/70" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                                  <span>Why It Matters:</span>
+                                </span>
                                 <p className="text-white/80">{art.why_it_matters}</p>
                               </div>
                             )}
