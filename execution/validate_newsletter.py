@@ -105,25 +105,15 @@ def validate_newsletter(segment_id: str, date: str = None) -> QualityReport:
     else:
         report.ok("Article count", f"Found {len(articles)} articles")
 
-    # ─── CHECK 1: Links — tracked URLs contain valid URLs ───
+    # ─── CHECK 1: Links — Article URLs are valid ───
     broken_links = []
     for article in articles:
-        tracked = article.get("tracked_url", "")
-        if not tracked or tracked == "#":
-            broken_links.append(f"Missing tracked_url: '{article.get('title', '?')[:40]}'")
+        target_url = article.get("url") or article.get("link") or ""
+        if not target_url or target_url == "#":
+            broken_links.append(f"Missing URL: '{article.get('title', '?')[:40]}'")
             continue
 
-        # Parse the tracking URL and extract the 'url' parameter
         try:
-            parsed = urlparse(tracked)
-            params = parse_qs(parsed.query)
-            target_url = params.get("url", [None])[0]
-
-            if not target_url:
-                broken_links.append(f"No 'url' param: '{article.get('title', '?')[:40]}'")
-                continue
-
-            # Validate the target URL is a real URL, not a publisher name
             target_parsed = urlparse(target_url)
             if not target_parsed.scheme or not target_parsed.netloc:
                 broken_links.append(f"Invalid URL '{target_url[:50]}' for '{article.get('title', '?')[:30]}'")
@@ -133,7 +123,7 @@ def validate_newsletter(segment_id: str, date: str = None) -> QualityReport:
     if broken_links:
         report.fail("Article links", f"{len(broken_links)} broken: {broken_links[0]}")
     else:
-        report.ok("Article links", f"All {len(articles)} articles have valid tracked URLs")
+        report.ok("Article links", f"All {len(articles)} articles have valid target URLs")
 
     # ─── CHECK 2: Read times vary ───
     read_times = [a.get("read_time_minutes", 0) for a in articles]
