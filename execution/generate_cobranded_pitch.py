@@ -24,12 +24,12 @@ sys.path.insert(0, str(PROJECT_ROOT))
 from execution.scrape_saas_brand import extract_brand_assets
 from execution.scout_niche_sources import scout_niche, slugify
 from execution.eval_matrix import run_matrix_evaluation
-from execution.design_system import get_smart_brand_palette, normalize_logo_url, get_company_specific_insight
+from execution.design_system import detect_brand_archetype, normalize_logo_url, get_company_specific_insight
 
 
 def render_cobranded_html(brand: dict, articles: list) -> str:
-    """Render co-branded newsletter preview HTML with smart 80/20 design system"""
-    palette = get_smart_brand_palette(brand.get("brand_color", "#3b82f6"))
+    """Render co-branded newsletter preview HTML using Dynamic Brand Archetype Engine"""
+    palette = detect_brand_archetype(brand.get("domain", ""), brand.get("brand_color", "#3b82f6"), brand.get("name", ""))
     company_name = brand.get("name", "Target Brand")
     logo_url = normalize_logo_url(brand.get("domain", "example.com"), brand.get("logo_url"))
 
@@ -40,22 +40,22 @@ def render_cobranded_html(brand: dict, articles: list) -> str:
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{company_name} Signal Brief — Co-Branded White-Label Demo</title>
     <style>
-        body {{ font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background-color: #0f172a; color: #f8fafc; margin: 0; padding: 20px; }}
-        .container {{ max-width: 680px; margin: 0 auto; background-color: #1e293b; border-radius: 16px; overflow: hidden; border: 1px solid #334155; }}
-        .header {{ background-color: #0f172a; padding: 36px 24px 28px 24px; text-align: center; border-bottom: 3px solid {palette['brand_hex']}; }}
-        .logo-box {{ width: 72px; height: 72px; border-radius: 16px; background-color: rgba(255, 255, 255, 0.08); border: 1.5px solid rgba(255, 255, 255, 0.15); display: inline-flex; align-items: center; justify-content: center; margin: 0 auto 16px auto; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35); padding: 8px; box-sizing: border-box; }}
+        body {{ font-family: {palette['font_family_body']}; background-color: {palette['bg_primary']}; color: {palette['text_primary']}; margin: 0; padding: 20px; }}
+        .container {{ max-width: 680px; margin: 0 auto; background-color: {palette['bg_card']}; border-radius: {palette['border_radius']}; overflow: hidden; border: {palette['border_width']} solid {palette['border_card']}; box-shadow: {palette['card_shadow']}; }}
+        .header {{ background-color: {palette['bg_primary']}; padding: 36px 24px 28px 24px; text-align: center; border-bottom: {palette['border_width']} solid {palette['border_accent']}; }}
+        .logo-box {{ width: 72px; height: 72px; border-radius: {palette['border_radius']}; background-color: {palette['logo_bg']}; border: {palette['logo_border']}; display: inline-flex; align-items: center; justify-content: center; margin: 0 auto 16px auto; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35); padding: 8px; box-sizing: border-box; }}
         .logo {{ max-height: 48px !important; max-width: 48px !important; width: 48px !important; height: 48px !important; object-fit: contain !important; display: block !important; margin: 0 !important; border-radius: 6px !important; box-shadow: none !important; }}
-        .badge {{ display: inline-block; background-color: {palette['brand_hex']}; color: {palette['text_on_brand']}; padding: 5px 12px; border-radius: 9999px; font-size: 11px; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px; }}
-        .title {{ font-size: 26px; margin: 12px 0 6px 0; color: #ffffff; font-weight: 800; }}
+        .badge {{ display: inline-block; background-color: {palette['badge_bg']}; color: {palette['text_on_brand']}; padding: 5px 12px; border-radius: 9999px; font-size: 11px; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px; }}
+        .title {{ font-family: {palette['font_family_heading']}; font-size: 26px; margin: 12px 0 6px 0; color: #ffffff; font-weight: 800; }}
         .subtitle {{ font-size: 14px; color: #94a3b8; margin: 0; }}
         .content {{ padding: 32px 24px; }}
-        .card {{ background-color: #0f172a; border-radius: 12px; padding: 20px; margin-bottom: 20px; border: 1px solid #334155; }}
-        .card-tag {{ color: {palette['tag_color']}; font-size: 12px; font-weight: bold; text-transform: uppercase; margin-bottom: 8px; display: block; letter-spacing: 0.5px; }}
-        .card-title {{ font-size: 18px; color: #ffffff; margin: 0 0 10px 0; text-decoration: none; display: block; font-weight: 700; line-height: 1.4; }}
+        .card {{ background-color: {palette['bg_primary']}; border-radius: {palette['border_radius']}; padding: 20px; margin-bottom: 20px; border: {palette['border_width']} solid {palette['border_card']}; box-shadow: {palette['card_shadow']}; }}
+        .card-tag {{ color: {palette['tag_color']}; font-size: 12px; font-weight: bold; text-transform: uppercase; margin-bottom: 8px; display: block; letter-spacing: 0.5px; font-family: {palette['font_family_body']}; }}
+        .card-title {{ font-family: {palette['font_family_heading']}; font-size: 18px; color: #ffffff; margin: 0 0 10px 0; text-decoration: none; display: block; font-weight: 700; line-height: 1.4; }}
         .card-desc {{ font-size: 14px; color: #cbd5e1; line-height: 1.6; margin-bottom: 14px; }}
-        .why-box {{ background-color: #1e293b; padding: 14px 16px; border-radius: 8px; border-left: 3px solid {palette['border_accent']}; font-size: 13px; color: #e2e8f0; line-height: 1.5; }}
+        .why-box {{ background-color: {palette['bg_card']}; padding: 14px 16px; border-radius: 8px; border-left: 3px solid {palette['border_accent']}; font-size: 13px; color: #e2e8f0; line-height: 1.5; }}
         .card img {{ max-width: 480px !important; max-height: 240px !important; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px !important; margin: 20px auto !important; display: block !important; box-shadow: 0 4px 14px rgba(0,0,0,0.15) !important; }}
-        .footer {{ text-align: center; padding: 24px; font-size: 13px; color: #64748b; border-top: 1px solid #334155; }}
+        .footer {{ text-align: center; padding: 24px; font-size: 13px; color: #64748b; border-top: {palette['border_width']} solid {palette['border_card']}; }}
         .cta-btn {{ display: inline-block; background-color: {palette['brand_hex']}; color: {palette['text_on_brand']}; padding: 14px 28px; border-radius: 10px; font-weight: bold; text-decoration: none; font-size: 15px; box-shadow: 0 4px 14px rgba(0,0,0,0.25); }}
     </style>
 </head>

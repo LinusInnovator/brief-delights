@@ -33,6 +33,113 @@ def get_relative_luminance(r: int, g: int, b: int) -> float:
     return 0.2126 * r_adj + 0.7152 * g_adj + 0.0722 * b_adj
 
 
+def detect_brand_archetype(domain: str, hex_color: str = "", brand_name: str = "") -> Dict[str, str]:
+    """
+    Dynamic Brand Archetype Engine
+    Synthesizes bespoke Canvas, Typography, Geometry, and Shadow/Glow profiles per brand.
+    
+    Archetypes:
+    1. DEVTOOL_BRUTALISM (PostHog, Vercel, Resend)
+    2. MINIMALIST_STEALTH (Linear, Raycast, Notion)
+    3. EMERALD_HACKER (Supabase, Pinecone, Neon)
+    4. EXECUTIVE_LUXURY (Ramp, Stripe, Brex)
+    5. VIBRANT_TECH (Dynamic custom brand hex fallback)
+    """
+    dom = (domain or "").lower()
+    name = (brand_name or "").lower()
+
+    # 1. DevTool Brutalism (PostHog, Vercel, Resend)
+    if any(k in dom or k in name for k in ['posthog', 'vercel', 'resend', 'github']):
+        return {
+            "archetype_name": "DEVTOOL_BRUTALISM",
+            "brand_hex": "#f54e00",
+            "tag_color": "#ff6b2b",
+            "badge_bg": "#f54e00",
+            "text_on_brand": "#ffffff",
+            "border_accent": "#f54e00",
+            "bg_primary": "#121316",
+            "bg_card": "#1e2025",
+            "text_primary": "#ffffff",
+            "border_card": "#373a43",
+            "border_width": "2px",
+            "border_radius": "6px",
+            "font_family_heading": "'Space Grotesk', -apple-system, sans-serif",
+            "font_family_body": "'JetBrains Mono', monospace, sans-serif",
+            "card_shadow": "4px 4px 0px rgba(0,0,0,0.9)",
+            "logo_bg": "rgba(245, 78, 0, 0.12)",
+            "logo_border": "2px solid #f54e00"
+        }
+
+    # 2. Minimalist Stealth (Linear, Raycast, Notion, Figma)
+    elif any(k in dom or k in name for k in ['linear', 'raycast', 'notion', 'figma']):
+        return {
+            "archetype_name": "MINIMALIST_STEALTH",
+            "brand_hex": "#5e6ad2",
+            "tag_color": "#8b95f6",
+            "badge_bg": "#5e6ad2",
+            "text_on_brand": "#ffffff",
+            "border_accent": "#5e6ad2",
+            "bg_primary": "#08090a",
+            "bg_card": "#121316",
+            "text_primary": "#f7f8f8",
+            "border_card": "rgba(255, 255, 255, 0.08)",
+            "border_width": "1px",
+            "border_radius": "12px",
+            "font_family_heading": "Inter, -apple-system, sans-serif",
+            "font_family_body": "Inter, -apple-system, sans-serif",
+            "card_shadow": "0 20px 40px rgba(0, 0, 0, 0.6)",
+            "logo_bg": "rgba(94, 106, 210, 0.1)",
+            "logo_border": "1px solid rgba(255, 255, 255, 0.15)"
+        }
+
+    # 3. Emerald Hacker (Supabase, Pinecone, Neon, LangChain)
+    elif any(k in dom or k in name for k in ['supabase', 'pinecone', 'neon', 'langchain']):
+        return {
+            "archetype_name": "EMERALD_HACKER",
+            "brand_hex": "#3ecf8e",
+            "tag_color": "#3ecf8e",
+            "badge_bg": "#3ecf8e",
+            "text_on_brand": "#0f172a",
+            "border_accent": "#3ecf8e",
+            "bg_primary": "#121212",
+            "bg_card": "#1c1c1c",
+            "text_primary": "#ededed",
+            "border_card": "rgba(62, 207, 142, 0.25)",
+            "border_width": "1px",
+            "border_radius": "10px",
+            "font_family_heading": "'Fira Code', 'Segoe UI', monospace",
+            "font_family_body": "-apple-system, BlinkMacSystemFont, sans-serif",
+            "card_shadow": "0 0 20px rgba(62, 207, 142, 0.15)",
+            "logo_bg": "rgba(62, 207, 142, 0.1)",
+            "logo_border": "1px solid #3ecf8e"
+        }
+
+    # 4. Executive Luxury (Ramp, Stripe, Brex, Mercury)
+    elif any(k in dom or k in name for k in ['ramp', 'stripe', 'brex', 'mercury']):
+        return {
+            "archetype_name": "EXECUTIVE_LUXURY",
+            "brand_hex": "#e2f952",
+            "tag_color": "#e2f952",
+            "badge_bg": "#e2f952",
+            "text_on_brand": "#0b132b",
+            "border_accent": "#e2f952",
+            "bg_primary": "#0b132b",
+            "bg_card": "#1c2541",
+            "text_primary": "#ffffff",
+            "border_card": "rgba(226, 249, 82, 0.25)",
+            "border_width": "1px",
+            "border_radius": "16px",
+            "font_family_heading": "'Georgia', serif",
+            "font_family_body": "-apple-system, sans-serif",
+            "card_shadow": "0 10px 30px rgba(0,0,0,0.5)",
+            "logo_bg": "rgba(226, 249, 82, 0.12)",
+            "logo_border": "1.5px solid #e2f952"
+        }
+
+    # 5. Dynamic Fallback Generator
+    return get_smart_brand_palette(hex_color)
+
+
 def get_smart_brand_palette(hex_color: str) -> Dict[str, str]:
     """
     80/20 Smart Color System Generator
@@ -44,29 +151,27 @@ def get_smart_brand_palette(hex_color: str) -> Dict[str, str]:
     r, g, b = hex_to_rgb(hex_color)
     luminance = get_relative_luminance(r, g, b)
 
-    # 1. Dark/Black Brand Colors (luminance < 0.15, e.g. #000000, #0f172a)
     if luminance < 0.15:
-        brand_hex = "#ffffff"       # Elevate accent elements to crisp white
-        tag_color = "#38bdf8"       # Sky blue for category tags on dark cards
+        brand_hex = "#ffffff"
+        tag_color = "#38bdf8"
         badge_bg = "#ffffff"
         text_on_brand = "#0f172a"
         border_accent = "#38bdf8"
-    # 2. Light/Bright Brand Colors (luminance > 0.45, e.g. #E5E7E0, #3ECF8E)
     elif luminance > 0.45:
         brand_hex = hex_color
         tag_color = hex_color
         badge_bg = hex_color
-        text_on_brand = "#0f172a"   # Dark text on light background badge/button
+        text_on_brand = "#0f172a"
         border_accent = hex_color
-    # 3. Vibrant Medium Brand Colors (0.15 <= luminance <= 0.45, e.g. #5E6AD2, #F54E00)
     else:
         brand_hex = hex_color
         tag_color = hex_color
         badge_bg = hex_color
-        text_on_brand = "#ffffff"   # White text on medium background badge/button
+        text_on_brand = "#ffffff"
         border_accent = hex_color
 
     return {
+        "archetype_name": "VIBRANT_TECH",
         "brand_hex": brand_hex,
         "tag_color": tag_color,
         "badge_bg": badge_bg,
@@ -75,7 +180,14 @@ def get_smart_brand_palette(hex_color: str) -> Dict[str, str]:
         "bg_primary": "#0f172a",
         "bg_card": "#1e293b",
         "text_primary": "#ffffff",
-        "border_card": "#334155"
+        "border_card": "#334155",
+        "border_width": "1px",
+        "border_radius": "12px",
+        "font_family_heading": "-apple-system, BlinkMacSystemFont, sans-serif",
+        "font_family_body": "-apple-system, BlinkMacSystemFont, sans-serif",
+        "card_shadow": "0 4px 14px rgba(0,0,0,0.2)",
+        "logo_bg": "rgba(255, 255, 255, 0.08)",
+        "logo_border": "1.5px solid rgba(255, 255, 255, 0.15)"
     }
 
 
