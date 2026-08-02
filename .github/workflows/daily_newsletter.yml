@@ -90,7 +90,9 @@ jobs:
           # Only commit if there are changes
           if ! git diff --staged --quiet; then
             git commit -m "📰 Auto-generated newsletters & previews $(date +%Y-%m-%d)"
+            git stash || true
             git pull --rebase origin main
+            git stash pop || true
             git push origin main
           fi
       
@@ -98,11 +100,13 @@ jobs:
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action Bot"
-          git add reports/weekly_insights/
+          git add data/insights/ 2>/dev/null || true
           # Only commit if there are changes
           if ! git diff --staged --quiet; then
             git commit -m "📊 Weekly insights data $(date +%Y-%m-%d)"
+            git stash || true
             git pull --rebase origin main
+            git stash pop || true
             git push origin main
           fi
       
