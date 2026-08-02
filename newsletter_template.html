@@ -179,12 +179,22 @@
                     </table>
                     {% endif %}
 
-                    <!-- Read Original Link -->
-                    <div style="margin-top: 14px; text-align: right;">
-                      <a href="{{ article.tracked_url | default(article.url) }}" target="_blank" style="font-family: -apple-system, sans-serif; font-size: 13px; font-weight: 700; color: #58111A; text-decoration: none;">
-                        Read Full Analysis &rarr;
-                      </a>
-                    </div>
+                    <!-- Article Action Row: Social Share & Read Link -->
+                    <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="margin-top: 14px; padding-top: 10px; border-top: 1px dashed #E5DCD3;">
+                      <tr>
+                        <td align="left" style="font-family: -apple-system, sans-serif; font-size: 12px; color: #64748b;">
+                          Share: 
+                          <a href="https://twitter.com/intent/tweet?text={{ article.title | urlencode }}&url={{ (article.tracked_url | default(article.url)) | urlencode }}" target="_blank" style="color: #58111A; text-decoration: none; font-weight: 600; margin-left: 4px; margin-right: 8px;">𝕏 Post</a>
+                          <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ (article.tracked_url | default(article.url)) | urlencode }}" target="_blank" style="color: #58111A; text-decoration: none; font-weight: 600; margin-right: 8px;">LinkedIn</a>
+                          <a href="mailto:?subject={{ article.title | urlencode }}&body=Check%20out%20this%20insight%20from%20Brief%20Delights:%20{{ (article.tracked_url | default(article.url)) | urlencode }}" style="color: #64748b; text-decoration: none;">Email</a>
+                        </td>
+                        <td align="right">
+                          <a href="{{ article.tracked_url | default(article.url) }}" target="_blank" style="font-family: -apple-system, sans-serif; font-size: 13px; font-weight: 700; color: #58111A; text-decoration: none;">
+                            Read Full Analysis &rarr;
+                          </a>
+                        </td>
+                      </tr>
+                    </table>
 
                   </td>
                 </tr>
@@ -193,6 +203,101 @@
           </tr>
           {% endfor %}
           {% endfor %}
+
+          <!-- 1-Click Issue Rating & Feedback Widget -->
+          <tr>
+            <td style="padding-top: 12px; padding-bottom: 24px;">
+              <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="background-color: #FFFFFF; border: 1px solid #E5DCD3; border-radius: 12px; text-align: center;" class="card-bg">
+                <tr>
+                  <td style="padding: 20px;">
+                    <div style="font-family: Georgia, 'Times New Roman', serif; font-size: 17px; font-weight: 700; color: #121212; margin-bottom: 4px;">
+                      How was today's dispatch?
+                    </div>
+                    <div style="font-family: -apple-system, sans-serif; font-size: 12px; color: #64748b; margin-bottom: 14px;">
+                      Your 1-click feedback tunes our story selection algorithms for tomorrow.
+                    </div>
+                    <table role="presentation" align="center" cellspacing="0" cellpadding="0" border="0">
+                      <tr>
+                        <td style="padding: 0 4px;">
+                          <a href="{{ website_url }}/api/feedback?rating=mindblown&s={{ segment_id }}&d={{ date }}" target="_blank" style="display: inline-block; background-color: #FAF8F5; border: 1px solid #E5DCD3; border-radius: 20px; padding: 8px 14px; font-family: -apple-system, sans-serif; font-size: 13px; font-weight: 600; color: #121212; text-decoration: none;">
+                            🤯 Mindblown
+                          </a>
+                        </td>
+                        <td style="padding: 0 4px;">
+                          <a href="{{ website_url }}/api/feedback?rating=insightful&s={{ segment_id }}&d={{ date }}" target="_blank" style="display: inline-block; background-color: #FAF8F5; border: 1px solid #E5DCD3; border-radius: 20px; padding: 8px 14px; font-family: -apple-system, sans-serif; font-size: 13px; font-weight: 600; color: #121212; text-decoration: none;">
+                            💡 Insightful
+                          </a>
+                        </td>
+                        <td style="padding: 0 4px;">
+                          <a href="{{ website_url }}/api/feedback?rating=needs_work&s={{ segment_id }}&d={{ date }}" target="_blank" style="display: inline-block; background-color: #FAF8F5; border: 1px solid #E5DCD3; border-radius: 20px; padding: 8px 14px; font-family: -apple-system, sans-serif; font-size: 13px; font-weight: 600; color: #121212; text-decoration: none;">
+                            👎 Needs Work
+                          </a>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <!-- Referral Program & VIP Milestone Status Card -->
+          <tr>
+            <td style="padding-bottom: 24px;">
+              <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="background-color: #3D0A11; border-radius: 12px; color: #FFFFFF;">
+                <tr>
+                  <td style="padding: 22px;">
+                    <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0">
+                      <tr>
+                        <td>
+                          <span style="font-family: -apple-system, sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: #C5A059; display: block; margin-bottom: 6px;">
+                            🎁 VIP REFERRAL PROGRAM
+                          </span>
+                          <h3 style="margin: 0 0 6px 0; font-family: Georgia, serif; font-size: 18px; line-height: 24px; color: #FFFFFF;">
+                            Invite Colleagues, Unlock Executive Intelligence Pro
+                          </h3>
+                          <p style="margin: 0 0 14px 0; font-family: -apple-system, sans-serif; font-size: 13px; line-height: 19px; color: #CBD5E1;">
+                            You have referred <strong>{{ referral_count | default(0) }}</strong> colleagues. 
+                            {% if referral_remaining is defined and referral_remaining > 0 %}
+                            Only <strong>{{ referral_remaining }}</strong> more invite{% if referral_remaining > 1 %}s{% endif %} until <strong>{{ referral_next_reward | default('Brief Delights Pro') }}</strong>!
+                            {% else %}
+                            Share your personal link to climb the reader leaderboard:
+                            {% endif %}
+                          </p>
+                          <div style="background-color: rgba(255,255,255,0.08); border: 1px solid rgba(197,160,89,0.3); border-radius: 6px; padding: 10px 14px; font-family: monospace; font-size: 12px; color: #C5A059; word-break: break-all; margin-bottom: 14px;">
+                            https://brief.delights.pro/join?ref={{ referral_code | default('VIP') }}
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td align="right">
+                          <a href="mailto:?subject={{ 'Discover Brief Delights Daily Intelligence' | urlencode }}&body={{ ('Hey! Check out Brief Delights - curated daily executive & engineering intelligence. Subscribe with my VIP link: https://brief.delights.pro/join?ref=' ~ (referral_code | default('VIP'))) | urlencode }}" style="display: inline-block; background-color: #C5A059; color: #121212; font-family: -apple-system, sans-serif; font-size: 12px; font-weight: 700; text-decoration: none; padding: 8px 16px; border-radius: 6px;">
+                            Share Your VIP Invite &rarr;
+                          </a>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <!-- Sponsor / Partner Spotlight Banner -->
+          <tr>
+            <td style="padding-bottom: 24px;">
+              <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="background-color: #F4EFEB; border: 1px solid #E5DCD3; border-radius: 10px;">
+                <tr>
+                  <td style="padding: 14px 18px; text-align: center; font-family: -apple-system, sans-serif; font-size: 12px; line-height: 18px; color: #58111A;">
+                    📢 <strong>Partner Spotlight</strong>: Reach 5,000+ technical founders, VP Engs, and AI leaders. 
+                    <a href="{{ sponsor_cta_url | default('https://brief.delights.pro/sponsors') }}" target="_blank" style="color: #58111A; font-weight: 700; text-decoration: underline; margin-left: 4px;">
+                      Reserve a Partner Spot &rarr;
+                    </a>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
 
           <!-- Footer Section -->
           <tr>

@@ -308,6 +308,7 @@ def compose_newsletter(articles: list, segment_id: str, segment_config: dict, lo
     # Render HTML
     html = template.render(
         newsletter_name=NEWSLETTER_NAME,
+        segment_id=segment_id,
         segment_name=f"{segment_config['name']} {segment_config['emoji']}",
         segment_emoji=segment_config['emoji'],
         segment_description=segment_config['description'],
