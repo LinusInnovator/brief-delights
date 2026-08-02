@@ -4,10 +4,12 @@ import { useState, useEffect } from 'react';
 
 interface ArticleResult {
   id: string | number;
+  date?: string;
   title: string;
   summary: string;
   key_takeaway: string;
   why_it_matters?: string;
+  verbatim_quote?: string;
   source: string;
   segment: string;
   url: string;
@@ -386,14 +388,25 @@ export default function AISearchSection() {
                               </div>
                             )}
 
-                            <div className="pt-1 flex justify-end">
+                            {art.verbatim_quote && (
+                              <div className="bg-[#2D070C] p-3 rounded-xl border border-[#C5A059]/40 italic text-white/90">
+                                <span className="text-[10px] font-mono text-[#C5A059] not-italic uppercase block mb-1 flex items-center gap-1 font-bold">
+                                  <svg className="w-3 h-3 text-[#C5A059]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z"/></svg>
+                                  <span>Verbatim Quote Citation:</span>
+                                </span>
+                                <p className="text-white/95">"{art.verbatim_quote}"</p>
+                              </div>
+                            )}
+
+                            <div className="pt-2 flex justify-end">
                               <a
                                 href={art.url}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="text-[11px] font-bold text-[#C5A059] hover:underline flex items-center gap-1"
+                                className="text-[11px] font-bold text-[#C5A059] hover:underline flex items-center gap-1.5 bg-[#C5A059]/10 px-3 py-1.5 rounded-lg border border-[#C5A059]/30 hover:bg-[#C5A059]/20 transition"
                               >
-                                Read Full Dispatch in Archive &rarr;
+                                <span>Read Full Dispatch in Archive ({art.date})</span>
+                                <svg className="w-3 h-3 text-[#C5A059]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
                               </a>
                             </div>
                           </div>

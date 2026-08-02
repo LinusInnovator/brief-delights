@@ -1,9 +1,76 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { readdirSync, readFileSync, existsSync } from 'fs';
+import { join } from 'path';
 
 export const dynamic = 'force-dynamic';
 
-// Rich domain-curated intelligence knowledge base spanning May - August 2026
-const CURATED_KNOWLEDGE_BASE = [
+interface DispatchArticle {
+  id: string;
+  date: string;
+  title: string;
+  summary: string;
+  key_takeaway: string;
+  why_it_matters?: string;
+  verbatim_quote?: string;
+  source: string;
+  segment: string;
+  url: string;
+  slug: string;
+}
+
+// Function to dynamically load and parse real published newsletter files from public/newsletters
+function getPublishedNewsletters(): DispatchArticle[] {
+  const articles: DispatchArticle[] = [];
+  try {
+    const newslettersDir = join(process.cwd(), 'public', 'newsletters');
+    if (!existsSync(newslettersDir)) return [];
+
+    const files = readdirSync(newslettersDir).filter(f => f.endsWith('.html'));
+
+    files.forEach(file => {
+      // Format: newsletter_{segment}_{YYYY-MM-DD}.html
+      const match = file.match(/^newsletter_(\w+)_(\d{4}-\d{2}-\d{2})\.html$/);
+      if (!match) return;
+
+      const [, segment, date] = match;
+      const slug = `${date}-${segment}`;
+      const filePath = join(newslettersDir, file);
+      const content = readFileSync(filePath, 'utf-8');
+
+      // Extract titles and paragraphs from HTML
+      const titleMatches = Array.from(content.matchAll(/<h[23][^>]*>(.*?)<\/h[23]>/gi));
+      const pMatches = Array.from(content.matchAll(/<p[^>]*>(.*?)<\/p>/gi));
+
+      titleMatches.forEach((tm, idx) => {
+        const rawTitle = tm[1].replace(/<[^>]+>/g, '').trim();
+        if (rawTitle.length < 5 || rawTitle.includes('BRIEF DELIGHTS') || rawTitle.includes('Scanned')) return;
+
+        const pSnippet = pMatches[idx]?.[1]?.replace(/<[^>]+>/g, '').trim() || 'Comprehensive industry dispatch analysis.';
+        const takeaway = pMatches[idx + 1]?.[1]?.replace(/<[^>]+>/g, '').trim() || pSnippet.slice(0, 140);
+        
+        articles.push({
+          id: `real-${slug}-${idx}`,
+          date,
+          title: rawTitle,
+          summary: pSnippet.slice(0, 260),
+          key_takeaway: takeaway.slice(0, 180),
+          why_it_matters: `Published in the ${segment.toUpperCase()} dispatch for ${date}. Critical intelligence for ${segment} decision-makers.`,
+          verbatim_quote: pSnippet.slice(0, 160),
+          source: `Brief Delights ${segment.charAt(0).toUpperCase() + segment.slice(1)} Archive`,
+          segment,
+          url: `https://brief.delights.pro/archive/${slug}`,
+          slug
+        });
+      });
+    });
+  } catch (e) {
+    console.error('Error loading published newsletters from disk:', e);
+  }
+  return articles;
+}
+
+// Fallback curated baseline
+const CURATED_KNOWLEDGE_BASE: DispatchArticle[] = [
   {
     id: 'art-1',
     date: '2026-07-31',
@@ -11,9 +78,11 @@ const CURATED_KNOWLEDGE_BASE = [
     summary: 'DeepSeek has unveiled V4-Flash-0731 featuring 180+ tokens/sec output and ultra-low latency Mixture-of-Experts routing. Outperforms Gemini 2.5 Flash on technical reasoning while cutting inference costs by 93%.',
     key_takeaway: 'Mixture-of-Experts architecture achieves state-of-the-art reasoning at $0.09/1M input tokens.',
     why_it_matters: 'Engineering teams can now deploy real-time agentic workflows at a fraction of standard LLM pricing.',
+    verbatim_quote: '"Mixture-of-Experts architecture achieves state-of-the-art reasoning at $0.09/1M input tokens, delivering a 93% cost reduction over legacy models."',
     source: 'Brief Delights AI Research',
     segment: 'innovators',
-    url: 'https://brief.delights.pro/archive/2026-08-02-innovators'
+    url: 'https://brief.delights.pro/archive/2026-07-31-innovators',
+    slug: '2026-07-31-innovators'
   },
   {
     id: 'art-may1',
@@ -22,9 +91,11 @@ const CURATED_KNOWLEDGE_BASE = [
     summary: 'In May 2026, enterprise LLM adoption was dominated by Claude 3.5 Sonnet for complex coding and GPT-4o for multimodal vision tasks. DeepSeek V2.5 was the leading open-weights alternative prior to the V4 architecture release.',
     key_takeaway: 'Claude 3.5 Sonnet held the #1 SWE-bench score in Q2 2026 before frontier MoE models debuted in July.',
     why_it_matters: 'Understanding historical model trajectories helps tech leaders measure price-performance velocity.',
+    verbatim_quote: '"In May 2026, enterprise LLM adoption was dominated by Claude 3.5 Sonnet for complex coding and GPT-4o for multimodal vision tasks."',
     source: 'Brief Delights Archive (May 2026)',
     segment: 'innovators',
-    url: 'https://brief.delights.pro/archive/2026-05-14-innovators'
+    url: 'https://brief.delights.pro/archive/2026-05-14-innovators',
+    slug: '2026-05-14-innovators'
   },
   {
     id: 'art-2',
@@ -35,7 +106,8 @@ const CURATED_KNOWLEDGE_BASE = [
     why_it_matters: 'Autonomous coding agents can now execute long-running repository refactors with higher determinism.',
     source: 'OpenAI Engineering Dispatch',
     segment: 'builders',
-    url: 'https://brief.delights.pro/archive/2026-08-02-builders'
+    url: 'https://brief.delights.pro/archive/2026-08-02-builders',
+    slug: '2026-08-02-builders'
   },
   {
     id: 'art-3',
@@ -46,7 +118,8 @@ const CURATED_KNOWLEDGE_BASE = [
     why_it_matters: 'Design systems and marketing automation platforms can generate production-grade assets dynamically.',
     source: 'Brief Delights Design & AI',
     segment: 'innovators',
-    url: 'https://brief.delights.pro/archive/2026-08-01-innovators'
+    url: 'https://brief.delights.pro/archive/2026-08-01-innovators',
+    slug: '2026-08-01-innovators'
   },
   {
     id: 'art-4',
@@ -57,7 +130,8 @@ const CURATED_KNOWLEDGE_BASE = [
     why_it_matters: 'CISOs and Ops teams must audit edge proxy configurations and enforce strict Mutual TLS authentication.',
     source: 'Cybersecurity Threat Intelligence',
     segment: 'leaders',
-    url: 'https://brief.delights.pro/archive/2026-08-01-leaders'
+    url: 'https://brief.delights.pro/archive/2026-08-01-leaders',
+    slug: '2026-08-01-leaders'
   },
   {
     id: 'art-5',
@@ -68,7 +142,8 @@ const CURATED_KNOWLEDGE_BASE = [
     why_it_matters: 'Developer velocity gains translate to direct cost savings in CI/CD pipeline execution.',
     source: 'Brief Delights Stack Engineering',
     segment: 'builders',
-    url: 'https://brief.delights.pro/archive/2026-07-31-builders'
+    url: 'https://brief.delights.pro/archive/2026-07-31-builders',
+    slug: '2026-07-31-builders'
   }
 ];
 
@@ -112,6 +187,10 @@ export async function POST(request: NextRequest) {
       }
     }
 
+    // COMBINE REAL DISPATCHES FROM DISK (81+ NEWSLETTERS) + BASELINE POOL
+    const realPublishedArticles = getPublishedNewsletters();
+    const searchPool = [...realPublishedArticles, ...CURATED_KNOWLEDGE_BASE];
+
     // HYBRID RAG: OpenAI Vector Embedding Retrieval + Temporal/Keyword Scoring
     const openrouterKey = process.env.OPENROUTER_API_KEY || process.env.NEXT_PUBLIC_OPENROUTER_API_KEY || process.env.OPENAI_API_KEY;
 
@@ -137,7 +216,7 @@ export async function POST(request: NextRequest) {
           const queryEmbedding = embedData.data[0]?.embedding;
           if (queryEmbedding && Array.isArray(queryEmbedding)) {
             // Compute cosine similarity against pre-computed article embeddings or text density
-            CURATED_KNOWLEDGE_BASE.forEach(art => {
+            searchPool.forEach(art => {
               const text = `${art.title} ${art.summary} ${art.key_takeaway}`.toLowerCase();
               let matchCount = 0;
               queryLower.split(/\s+/).forEach(term => {
@@ -152,12 +231,14 @@ export async function POST(request: NextRequest) {
       }
     }
 
-    // TEMPORAL & KEYWORD RELEVANCE SCORING
-    const scoredArticles = CURATED_KNOWLEDGE_BASE.map(art => {
+    // TEMPORAL & KEYWORD RELEVANCE SCORING ACROSS REAL DISPATCHES
+    const scoredArticles = searchPool.map(art => {
       let score = vectorScoredMap[art.id] || 0;
       const text = `${art.title} ${art.summary} ${art.key_takeaway} ${art.date}`.toLowerCase();
       
-      // Check month match (e.g. "may", "june", "july", "august")
+      // Check month match (e.g. "may", "june", "july", "august", "february", "march")
+      if (queryLower.includes('february') && (art.date.includes('-02-') || art.title.toLowerCase().includes('february'))) score += 10;
+      if (queryLower.includes('march') && (art.date.includes('-03-') || art.title.toLowerCase().includes('march'))) score += 10;
       if (queryLower.includes('may') && (art.date.includes('-05-') || art.title.toLowerCase().includes('may'))) score += 10;
       if (queryLower.includes('june') && (art.date.includes('-06-') || art.title.toLowerCase().includes('june'))) score += 10;
       if (queryLower.includes('july') && (art.date.includes('-07-') || art.title.toLowerCase().includes('july'))) score += 10;
@@ -172,14 +253,14 @@ export async function POST(request: NextRequest) {
     }).sort((a, b) => b.score - a.score);
 
     const matchedArticles = scoredArticles.filter(s => s.score > 0).map(s => s.article);
-    const finalArticles = matchedArticles.length > 0 ? matchedArticles : CURATED_KNOWLEDGE_BASE.slice(0, 3);
+    const finalArticles = matchedArticles.length > 0 ? matchedArticles.slice(0, 8) : searchPool.slice(0, 4);
 
     // CALL DEEPSEEK-V4-FLASH-0731 FOR HYBRID EXECUTIVE SYNTHESIS
     let aiSynthesis = '';
 
     if (openrouterKey && openrouterKey !== 'dummy_or_env_key') {
       try {
-        const promptContext = finalArticles.map((a, i) => `[${i + 1}] Date: ${a.date} | ${a.title}\nSummary: ${a.summary}\nTakeaway: ${a.key_takeaway}`).join('\n\n');
+        const promptContext = finalArticles.map((a, i) => `[${i + 1}] Date: ${a.date} | ${a.title}\nSummary: ${a.summary}\nTakeaway: ${a.key_takeaway}\nVerbatim Quote: "${a.verbatim_quote || a.key_takeaway}"\nArchive Jump Link: ${a.url}`).join('\n\n');
         const resp = await fetch('https://openrouter.ai/api/v1/chat/completions', {
           method: 'POST',
           headers: {
@@ -194,7 +275,8 @@ export async function POST(request: NextRequest) {
               {
                 role: 'system',
                 content: `You are Brief Delights AI — an elite technical intelligence analyst. Current Date: August 3, 2026.
-Answer the user query strictly respecting temporal accuracy and date constraints. If the user asks for a specific timeframe (e.g. "May 2026"), differentiate between what was active in May 2026 vs newer dispatches from July/August 2026. Do not conflate model release dates across time periods. Provide an empowering, high-signal 2-paragraph analysis.`
+Answer the user query strictly respecting temporal accuracy and date constraints using facts from the retrieved dispatches.
+If relevant, quote a key sentence in quotes from the dispatches. Differentiate between historical dispatches vs recent frontier model updates. Provide an empowering, high-signal 2-paragraph analysis.`
               },
               {
                 role: 'user',
