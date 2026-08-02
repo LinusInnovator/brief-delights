@@ -93,7 +93,8 @@ export default function ArchiveLockGate({
 
           <Link
             href="/preferences"
-            className="px-4 py-2.5 bg-white/10 hover:bg-white/20 text-white text-xs font-semibold rounded-xl border border-white/20 transition whitespace-nowrap text-center"
+            style={{ color: '#FFFFFF' }}
+            className="px-5 py-2.5 bg-white/10 hover:bg-white/20 !text-white text-xs font-bold rounded-xl border border-[#C5A059]/40 transition whitespace-nowrap text-center shadow-sm"
           >
             Manage Frequencies
           </Link>
