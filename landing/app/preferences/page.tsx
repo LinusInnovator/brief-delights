@@ -399,9 +399,10 @@ function PreferenceStudioContent() {
             <div className="pt-6 border-t border-[#E5DCD3] flex flex-col md:flex-row items-center justify-between gap-4">
               <button
                 onClick={handlePauseAll}
-                className="text-xs font-semibold text-amber-800 hover:text-amber-900 bg-amber-50 hover:bg-amber-100 border border-amber-200 px-4 py-2.5 rounded-xl transition"
+                className="text-xs font-semibold text-amber-800 hover:text-amber-900 bg-amber-50 hover:bg-amber-100 border border-amber-200 px-4 py-2.5 rounded-xl transition flex items-center gap-2 shadow-sm"
               >
-                ⏸️ Pause All Streams for 14 Days
+                <svg className="w-3.5 h-3.5 text-amber-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M10 9v6m4-6v6m7-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                <span>Pause All Streams for 14 Days</span>
               </button>
 
               <button
