@@ -2,8 +2,10 @@ name: Daily Newsletter Pipeline
 
 on:
   schedule:
-    # Run at 6 AM UTC daily (7 AM CET)
-    - cron: '0 6 * * *'
+    # Primary: 5:17 AM UTC (7:17 AM CEST) - off-peak minute avoids GitHub top-of-hour queue congestion
+    - cron: '17 5 * * *'
+    # Fallback: 7:17 AM UTC (9:17 AM CEST) - secondary backup window if GitHub runner queue delays primary
+    - cron: '17 7 * * *'
 
   repository_dispatch:
     types: [trigger-daily-newsletter]
