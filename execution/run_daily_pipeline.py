@@ -242,7 +242,7 @@ def main():
             break
             
     if not all_selections_exist:
-        if not run_script("select_stories.py", timeout=300):  # Increased from 120s
+        if not run_script("select_stories.py", timeout=600):  # 10 minute timeout for LLM analysis
             log("❌ Pipeline failed at story selection", "ERROR")
             return False
     else:

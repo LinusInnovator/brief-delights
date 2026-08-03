@@ -467,12 +467,12 @@ def merge_selection_with_articles(raw_articles: list, selection: dict) -> list:
     return merged
 
 
-def pre_filter_articles(raw_articles: list, max_articles: int = 50) -> list:
-    """Pre-filter to reduce payload size"""
+def pre_filter_articles(raw_articles: list, max_articles: int = 30) -> list:
+    """Pre-filter to reduce payload size for high-velocity LLM story selection"""
     if len(raw_articles) <= max_articles:
         return raw_articles
     
-    log(f"⚠️ Too many articles ({len(raw_articles)}), sampling {max_articles} for LLM analysis")
+    log(f"⚠️ Sampling top {max_articles} articles from {len(raw_articles)} raw pool for LLM analysis")
     
     # Group by category
     by_category = defaultdict(list)
