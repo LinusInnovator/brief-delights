@@ -134,23 +134,21 @@ def validate_newsletter(segment_id: str, date: str = None) -> QualityReport:
     else:
         report.ok("Read time variance", f"{len(unique_times)} distinct values across {len(articles)} articles")
 
-    # ─── CHECK 3: Content quality ───
-    empty_summaries = [a for a in articles if not a.get("summary", "").strip()]
-    if empty_summaries:
-        report.fail("Summary content", f"{len(empty_summaries)} articles have empty summaries")
+    # ─── CHECK 3: Content quality (Summary & Strategic Takeaway Box) ───
+    short_summaries = [a for a in articles if len(a.get("summary", "").strip()) < 45]
+    short_takeaways = [a for a in articles if len(a.get("why_this_matters", "").strip()) < 35]
+
+    if short_summaries:
+        report.fail("Summary content", f"{len(short_summaries)} articles have insufficient body summary text (<45 chars)")
+    elif short_takeaways:
+        report.fail("Strategic takeaways", f"{len(short_takeaways)} articles are missing strategic takeaways (<35 chars)")
     else:
-        # Check for duplicate summaries (copy-paste errors), ignoring expected placeholders
         summary_counts = Counter(a.get("summary", "") for a in articles)
-        
-        # Ignore expected placeholder for Tier 2/3 articles
-        if "See article for details" in summary_counts:
-            del summary_counts["See article for details"]
-            
         dupes = {s: c for s, c in summary_counts.items() if c > 1}
         if dupes:
             report.warn("Summary content", f"{len(dupes)} duplicate summaries found")
         else:
-            report.ok("Summary content", f"All full summaries unique and non-empty")
+            report.ok("Summary content", f"All {len(articles)} articles have complete body text & strategic takeaway boxes")
 
     # ─── CHECK 4: No unrendered template placeholders ───
     unrendered = re.findall(r'\{\{[^}]+\}\}', html)

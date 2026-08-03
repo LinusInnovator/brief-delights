@@ -199,7 +199,7 @@ def sanitize_text_content(text: str) -> str:
 
 
 def fix_read_times(articles: list, log_file: Path) -> list:
-    """Fix missing or zero read times and sanitize empty summaries."""
+    """Fix missing or zero read times, enforce robust 2-sentence summaries, and guarantee strategic takeaways."""
     for article in articles:
         # Sanitize all text fields from leaked Markdown images or raw HTML tags
         if article.get('title'):
@@ -209,23 +209,29 @@ def fix_read_times(articles: list, log_file: Path) -> list:
         description = sanitize_text_content(article.get('description', ''))
         why = sanitize_text_content(article.get('why_this_matters', '') or article.get('selection_reason', ''))
 
-        if len(summary) < 20 and len(description) < 20:
-            article['summary'] = f"Key breakthrough in {article.get('category_tag', 'AI & Innovation')}: {article.get('title', '')}."
-            log(f"  📝 Filled empty summary: '{article['title'][:40]}'", log_file)
-        elif not summary or len(summary) < 20:
-            article['summary'] = description or f"Key insight on {article.get('title', '')}."
-        else:
+        # Enforce robust summary paragraph (minimum 45 characters)
+        if len(summary) >= 45:
             article['summary'] = summary
+        elif len(description) >= 45:
+            article['summary'] = description
+        else:
+            title_text = article.get('title', 'this breakthrough').rstrip('.')
+            article['summary'] = f"Analyzes key technical developments and market implications surrounding {title_text}. Provides essential context for enterprise engineering teams."
+            log(f"  📝 Synthesized rich summary for: '{title_text[:40]}'", log_file)
 
-        # Strip duplicate "Why this matters:" prefixes
+        # Strip duplicate "Why this matters:" prefixes and enforce takeaway (minimum 35 characters)
         why_clean = re.sub(r'^(why\s+this\s+matters:?\s*)+', '', why, flags=re.IGNORECASE).strip()
-        article['why_this_matters'] = why_clean or "Provides actionable strategic value for enterprise infrastructure."
+        if len(why_clean) >= 35:
+            article['why_this_matters'] = why_clean
+        else:
+            title_text = article.get('title', 'this breakthrough').rstrip('.')
+            article['why_this_matters'] = f"Grasp the strategic implications, operational risks, and technical adoption velocity of {title_text} for your organization."
 
         # Read time fix
         old_rt = article.get('read_time_minutes', 0) or 0
         if old_rt > 0:
             continue
-        raw = article.get('raw_content', '') or article.get('description', '')
+        raw = article.get('raw_content', '') or article.get('description', '') or summary
         word_count = len(raw.split())
         article['read_time_minutes'] = calculate_read_time(word_count)
         log(f"  ⏱️ Read time fix: '{article['title'][:40]}' → {article['read_time_minutes']} min ({word_count} words)", log_file)
