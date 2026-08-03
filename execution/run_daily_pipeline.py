@@ -191,12 +191,24 @@ def main():
     log("─"*70)
     raw_articles_file = TMP_DIR / f"raw_articles_{TODAY}.json"
     
-    if not raw_articles_file.exists():
+    # Re-run aggregation if missing or if file contains < 100 articles
+    should_aggregate = True
+    if raw_articles_file.exists():
+        try:
+            with open(raw_articles_file, 'r') as f:
+                existing_data = json.load(f)
+                if len(existing_data.get('articles', [])) >= 100:
+                    should_aggregate = False
+        except Exception:
+            should_aggregate = True
+
+    if should_aggregate:
+        log("📡 Aggregating fresh RSS feeds for today...")
         if not run_script("aggregate_feeds.py", timeout=120):
             log("❌ Pipeline failed at aggregation", "ERROR")
             return False
     else:
-        log("✅ Skipping aggregation: raw articles already exist")
+        log("✅ Skipping aggregation: valid raw articles pool already exists")
     
     # Validation: Ensure raw articles file was created
     raw_articles_file = TMP_DIR / f"raw_articles_{TODAY}.json"
