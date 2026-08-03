@@ -291,10 +291,20 @@ def summarize_article(article: Dict, index: int, log_file: Path, trend_context: 
             log(f"⚠️ Primary model failed, trying fallback", log_file)
             summary_data = call_llm_for_summary(prompt, FALLBACK_MODEL)
         
-        # Add summary to article
-        article['summary'] = summary_data['summary']
-        article['key_takeaway'] = summary_data.get('key_takeaway', '')
-        article['why_this_matters'] = summary_data.get('why_this_matters', '')  # NEW: Editorial context
+        # Add summary to article (sanitized from markdown images / raw HTML)
+        import html
+        def sanitize_str(s):
+            if not s: return ""
+            c = html.unescape(str(s))
+            c = re.sub(r'<!--.*?-->', '', c, flags=re.DOTALL)
+            c = re.sub(r'!\[[^\]]*\]\([^\)]*\)', '', c)
+            c = re.sub(r'!\[[^\]]*\]', '', c)
+            c = re.sub(r'<[^>]+>', '', c)
+            return re.sub(r'\s+', ' ', c).strip()
+
+        article['summary'] = sanitize_str(summary_data['summary'])
+        article['key_takeaway'] = sanitize_str(summary_data.get('key_takeaway', ''))
+        article['why_this_matters'] = sanitize_str(summary_data.get('why_this_matters', ''))  # NEW: Editorial context
         article['read_time_minutes'] = calculated_read_time  # Always use our calculated value
         
         elapsed = time.time() - start_time

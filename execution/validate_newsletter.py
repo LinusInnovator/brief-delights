@@ -237,6 +237,26 @@ def validate_newsletter(segment_id: str, date: str = None) -> QualityReport:
     else:
         report.ok("HTML href validity", f"All {len(href_urls)} href attributes valid")
 
+    # ─── CHECK 9: Content Sanitization (No leaked markdown images or raw HTML tags inside text) ───
+    leaked_issues = []
+    for article in articles:
+        summary = article.get("summary", "")
+        title = article.get("title", "")
+        why = article.get("why_this_matters", "")
+
+        for field_name, val in [("summary", summary), ("title", title), ("why_this_matters", why)]:
+            if "![" in val:
+                leaked_issues.append(f"Leaked markdown image in {field_name}: '{val[:40]}...'")
+            if re.search(r'</?(?:p|div|table|tr|td|span|img|b|i)[^>]*>', val, re.IGNORECASE):
+                leaked_issues.append(f"Leaked raw HTML tag in {field_name}: '{val[:40]}...'")
+            if "<!--" in val or "-->" in val:
+                leaked_issues.append(f"Leaked HTML comment in {field_name}: '{val[:40]}...'")
+
+    if leaked_issues:
+        report.fail("Content sanitization", f"{len(leaked_issues)} formatting leak(s): {leaked_issues[0]}")
+    else:
+        report.ok("Content sanitization", "Zero leaked markdown images or raw HTML tags in article text")
+
     return report
 
 

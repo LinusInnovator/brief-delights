@@ -165,29 +165,63 @@ def calculate_read_time(word_count: int) -> int:
     return max(1, min(round(word_count / 200), 15))
 
 
+import html
+
+def sanitize_text_content(text: str) -> str:
+    """
+    Bulletproof content sanitizer for newsletter text fields (title, summary, why_this_matters).
+    Completely eliminates leaked Markdown images (![alt](url)), raw HTML tags (<img...>, <p...>, etc),
+    HTML comments (<!--...-->), and unescaped HTML entities.
+    """
+    if not text:
+        return ""
+    
+    # 1. Unescape HTML entities first (e.g. &lt;p&gt; -> <p>)
+    cleaned = html.unescape(str(text))
+    
+    # 2. Strip HTML comments (e.g. <!-- Strategic Takeaway Box -->)
+    cleaned = re.sub(r'<!--.*?-->', '', cleaned, flags=re.DOTALL)
+    
+    # 3. Strip Markdown images: ![alt](url) and ![alt]
+    cleaned = re.sub(r'!\[[^\]]*\]\([^\)]*\)', '', cleaned)
+    cleaned = re.sub(r'!\[[^\]]*\]', '', cleaned)
+    
+    # 4. Strip Markdown links: [link text](url) -> keep link text
+    cleaned = re.sub(r'\[([^\]]+)\]\([^\)]*\)', r'\1', cleaned)
+    
+    # 5. Strip ALL HTML tags (<img...>, </p>, <table...>, etc.)
+    cleaned = re.sub(r'<[^>]+>', '', cleaned)
+    
+    # 6. Collapse whitespace and strip leading/trailing quotes or spaces
+    cleaned = re.sub(r'\s+', ' ', cleaned).strip()
+    
+    return cleaned
+
+
 def fix_read_times(articles: list, log_file: Path) -> list:
     """Fix missing or zero read times and sanitize empty summaries."""
     for article in articles:
-        # 1. Sanitize empty or snippet '...' summaries
-        summary = article.get('summary', '').strip()
-        description = article.get('description', '').strip()
-        why = article.get('why_this_matters', '').strip() or article.get('selection_reason', '').strip()
+        # Sanitize all text fields from leaked Markdown images or raw HTML tags
+        if article.get('title'):
+            article['title'] = sanitize_text_content(article['title'])
+            
+        summary = sanitize_text_content(article.get('summary', ''))
+        description = sanitize_text_content(article.get('description', ''))
+        why = sanitize_text_content(article.get('why_this_matters', '') or article.get('selection_reason', ''))
 
         if len(summary) < 20 and len(description) < 20:
             article['summary'] = f"Key breakthrough in {article.get('category_tag', 'AI & Innovation')}: {article.get('title', '')}."
             log(f"  📝 Filled empty summary: '{article['title'][:40]}'", log_file)
-        elif not summary:
-            article['summary'] = description
+        elif not summary or len(summary) < 20:
+            article['summary'] = description or f"Key insight on {article.get('title', '')}."
+        else:
+            article['summary'] = summary
 
         # Strip duplicate "Why this matters:" prefixes
         why_clean = re.sub(r'^(why\s+this\s+matters:?\s*)+', '', why, flags=re.IGNORECASE).strip()
         article['why_this_matters'] = why_clean or "Provides actionable strategic value for enterprise infrastructure."
 
-        # Strip inline RSS images for 100% clean, skimmable daily text-only delivery
-        summary_clean = re.sub(r'<img[^>]*>', '', summary, flags=re.IGNORECASE).strip()
-        article['summary'] = summary_clean
-
-        # 2. Read time fix
+        # Read time fix
         old_rt = article.get('read_time_minutes', 0) or 0
         if old_rt > 0:
             continue
