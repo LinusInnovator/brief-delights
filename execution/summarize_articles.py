@@ -41,7 +41,14 @@ client = OpenAI(
 
 import re
 
-from execution.snell_router import get_recommended_models
+PROJECT_ROOT = Path(__file__).parent.parent
+if str(PROJECT_ROOT) not in sys.path:
+    sys.path.insert(0, str(PROJECT_ROOT))
+
+try:
+    from execution.snell_router import get_recommended_models
+except ImportError:
+    from snell_router import get_recommended_models
 
 # Dynamic Model Selection via Snell Router Gateway
 PRIMARY_MODEL, FALLBACK_MODEL = get_recommended_models(

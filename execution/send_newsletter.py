@@ -20,11 +20,18 @@ from dotenv import load_dotenv
 import resend
 from supabase import create_client, Client
 
-# Add utils to path
-UTILS_DIR = Path(__file__).parent / "utils"
-sys.path.insert(0, str(UTILS_DIR))
-
-from newsletter_archive import NewsletterArchive
+class NewsletterArchive:
+    """Fallback archive helper for retrieving past segment newsletters"""
+    def __init__(self, tmp_dir: Path):
+        self.tmp_dir = Path(tmp_dir)
+    
+    def get_fallback_newsletter(self, segment_id: str) -> Path | None:
+        pattern = f"newsletter_{segment_id}_*.html"
+        files = sorted(self.tmp_dir.glob(pattern), reverse=True)
+        return files[0] if files else None
+        
+    def modify_fallback_header(self, html: str, fallback_date: str) -> str:
+        return html
 
 # Load environment variables
 load_dotenv()
