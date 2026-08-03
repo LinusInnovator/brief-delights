@@ -241,7 +241,56 @@
                 </tr>
               </table>
             </td>
+          <!-- Cross-Dispatch Radar: Sibling Segment Teasers -->
+          {% if cross_teasers is defined and cross_teasers %}
+          <tr>
+            <td style="padding-bottom: 24px;">
+              <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="background-color: #FFFFFF; border: 1px solid #E5DCD3; border-radius: 12px;" class="card-bg">
+                <tr>
+                  <td style="padding: 20px;">
+                    <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0">
+                      <tr>
+                        <td style="padding-bottom: 12px; border-bottom: 1px dashed #E5DCD3;">
+                          <span style="font-family: -apple-system, sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: #58111A; display: block; margin-bottom: 2px;">
+                            📡 SIBLING DISPATCH RADAR
+                          </span>
+                          <h3 style="margin: 0; font-family: Georgia, 'Times New Roman', serif; font-size: 17px; line-height: 22px; font-weight: 700; color: #121212;">
+                            Top insights from today's other intelligence tracks:
+                          </h3>
+                        </td>
+                      </tr>
+                      {% for teaser in cross_teasers %}
+                      <tr>
+                        <td style="padding-top: 12px; padding-bottom: 12px; border-bottom: {% if loop.last %}none{% else %}1px solid #F4EFEB{% endif %};">
+                          <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0">
+                            <tr>
+                              <td align="left" style="padding-bottom: 4px;">
+                                <span style="background-color: #F4EFEB; color: #58111A; font-family: -apple-system, sans-serif; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; padding: 2px 7px; border-radius: 4px; display: inline-block;">
+                                  {{ teaser.segment_emoji }} {{ teaser.segment_name }}
+                                </span>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td align="left">
+                                <a href="{{ teaser.url }}" target="_blank" style="font-family: Georgia, serif; font-size: 15px; font-weight: 700; color: #121212; text-decoration: none;" class="header-title">
+                                  {{ teaser.title }}
+                                </a>
+                                <p style="margin: 4px 0 0 0; font-family: -apple-system, sans-serif; font-size: 13px; line-height: 18px; color: #475569;" class="body-text">
+                                  {{ teaser.summary }}
+                                </p>
+                              </td>
+                            </tr>
+                          </table>
+                        </td>
+                      </tr>
+                      {% endfor %}
+                    </table>
+                  </td>
+                </tr>
+              </table>
+            </td>
           </tr>
+          {% endif %}
 
           <!-- Referral Program & VIP Milestone Status Card -->
           <tr>

@@ -265,7 +265,33 @@ def get_dynamic_scanned_count(segment_id: str, date: str) -> str:
         except Exception:
             pass
     
-    return "1,300+"  # Reasonable fallback based on RSS pool size
+def collect_cross_teasers(current_segment_id: str, segments_data: dict, log_file: Path) -> list:
+    """Collect #1 lead story from sibling segments to feature in the Sibling Dispatch Radar"""
+    teasers = []
+    all_segments = segments_data.get('segments', {})
+    
+    for seg_id, seg_cfg in all_segments.items():
+        if seg_id == current_segment_id:
+            continue
+        summary_file = TMP_DIR / f"summaries_{seg_id}_{TODAY}.json"
+        if summary_file.exists():
+            try:
+                with open(summary_file, 'r') as f:
+                    s_data = json.load(f)
+                    s_articles = s_data.get('articles', [])
+                    if s_articles:
+                        lead = s_articles[0]
+                        teasers.append({
+                            'segment_id': seg_id,
+                            'segment_name': seg_cfg.get('name', seg_id.capitalize()),
+                            'segment_emoji': seg_cfg.get('emoji', '📰'),
+                            'title': sanitize_text_content(lead.get('title', '')),
+                            'summary': sanitize_text_content(lead.get('summary', '') or lead.get('why_this_matters', '')),
+                            'url': lead.get('tracked_url') or lead.get('url') or f"{WEBSITE_URL}/archive"
+                        })
+            except Exception as e:
+                log(f"  ⚠️ Could not read cross-teaser for {seg_id}: {e}", log_file)
+    return teasers
 
 
 def compose_newsletter(articles: list, segment_id: str, segment_config: dict, log_file: Path) -> str:
@@ -342,6 +368,10 @@ def compose_newsletter(articles: list, segment_id: str, segment_config: dict, lo
         except Exception as e:
             log(f"⚠️ Failed to load contrarian data: {e}", log_file)
 
+    # Collect cross-teasers
+    segments_data = load_segments_config()
+    cross_teasers = collect_cross_teasers(segment_id, segments_data, log_file)
+
     # Load template
     template = load_template()
     
@@ -358,6 +388,7 @@ def compose_newsletter(articles: list, segment_id: str, segment_config: dict, lo
         quick_links=quick_links,
         trending=trending,
         contrarian_section=contrarian_section,
+        cross_teasers=cross_teasers,
         total_scanned=total_scanned,
         total_enriched=f"~{len(articles) * 15}",  # Rough estimate of enriched pool
         total_selected=len(articles),

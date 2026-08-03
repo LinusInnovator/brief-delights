@@ -85,6 +85,37 @@
                 "routine"
             ],
             "selection_criteria": "Prioritize breakthrough research, novel applications, future-forward innovations, and AI advances that will shape the next 5 years. Focus on what researchers and early adopters need to stay ahead of the curve."
+        },
+        "generative_media": {
+            "name": "Generative Media AI",
+            "emoji": "🎨",
+            "description": "For creators, studio leads, and AI media engineers",
+            "focus_categories": [
+                "Generative Media (Image, Video, Audio & 3D)",
+                "AI & Machine Learning"
+            ],
+            "focus_keywords": [
+                "image",
+                "video",
+                "audio",
+                "voice",
+                "sora",
+                "midjourney",
+                "runway",
+                "elevenlabs",
+                "3d",
+                "diffusion",
+                "creative",
+                "spatial",
+                "flux"
+            ],
+            "skip_keywords": [
+                "database",
+                "kubernetes",
+                "compliance",
+                "accounting"
+            ],
+            "selection_criteria": "Prioritize state-of-the-art model releases, open-weights, video & voice synthesis breakthroughs, 3D spatial AI, and creative workflow automation tools."
         }
     },
     "default_segment": "leaders",
