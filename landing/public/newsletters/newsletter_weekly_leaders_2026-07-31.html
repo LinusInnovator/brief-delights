@@ -1,0 +1,315 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brief Delights Weekly Insights - July 31, 2026</title>
+    <style>
+        /* Reset */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background-color: #f8f9fa;
+            color: #1a1a1a;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* Container */
+        .email-wrapper {
+            max-width: 680px;
+            margin: 0 auto;
+            background-color: #ffffff;
+        }
+
+        /* Top Bar (minimal, like TLDR) */
+        .top-bar {
+            padding: 16px 40px;
+            text-align: center;
+            border-bottom: 1px solid #e8e8e8;
+            background: #ffffff;
+        }
+
+        .top-bar a {
+            color: #666;
+            text-decoration: none;
+            font-size: 13px;
+            margin: 0 12px;
+            font-weight: 500;
+        }
+
+        .top-bar a:hover {
+            color: #000;
+        }
+
+        /* Header (Clean, no gradient!) */
+        .header {
+            background: #ffffff;
+            padding: 40px 40px 32px 40px;
+            text-align: center;
+            border-bottom: 1px solid #e8e8e8;
+        }
+
+        .logo {
+            font-size: 52px;
+            font-weight: 700;
+            letter-spacing: -1.5px;
+            margin: 0;
+            line-height: 1;
+            color: #000000;
+        }
+
+        .tagline {
+            font-size: 18px;
+            font-weight: 400;
+            color: #666666;
+            margin: 4px 0 12px 0;
+            letter-spacing: 2px;
+        }
+
+        .header .date {
+            margin: 0 0 8px 0;
+            font-size: 14px;
+            color: #999;
+            font-weight: 400;
+        }
+
+        .header .curation-stats {
+            margin: 0;
+            font-size: 12px;
+            color: #aaa;
+            font-weight: 400;
+            font-family: 'Courier New', monospace;
+        }
+
+        /* Content */
+        .content {
+            padding: 40px;
+        }
+
+        /* Section Headers */
+        .section {
+            margin-bottom: 32px;
+        }
+
+        .section h2 {
+            font-size: 20px;
+            font-weight: 700;
+            color: #000;
+            margin: 0 0 20px 0;
+            padding: 0;
+            border: none;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .section h3 {
+            font-size: 18px;
+            font-weight: 600;
+            color: #000;
+            margin: 24px 0 12px 0;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Insights text */
+        .insights p {
+            font-size: 15px;
+            color: #444;
+            line-height: 1.7;
+            margin: 0 0 16px 0;
+        }
+
+        .insights ul, .insights ol {
+            font-size: 15px;
+            color: #444;
+            line-height: 1.7;
+            margin: 0 0 16px 0;
+            padding-left: 24px;
+        }
+
+        .insights li {
+            margin-bottom: 8px;
+        }
+
+        .insights a {
+            color: #4f46e5;
+            text-decoration: none;
+            border-bottom: 1px solid rgba(79, 70, 229, 0.3);
+        }
+
+        .insights a:hover {
+            color: #1e40af;
+            border-bottom-color: #1e40af;
+        }
+
+        .insights strong {
+            font-weight: 600;
+            color: #000;
+        }
+
+        /* Section separators */
+        .section-separator {
+            border-top: 2px solid #e8e8e8;
+            margin: 32px 0;
+        }
+
+        /* Charts */
+        .chart-container {
+            margin: 32px 0;
+            text-align: center;
+        }
+
+        .chart-container img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+            border-radius: 8px;
+        }
+
+        /* Footer */
+        .footer {
+            background: #ffffff;
+            padding: 40px;
+            text-align: center;
+            border-top: 1px solid #e8e8e8;
+        }
+
+        .footer .share {
+            margin: 0 0 24px 0;
+            font-size: 16px;
+            color: #444;
+        }
+
+        .footer .share a {
+            color: #4f46e5;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .footer .share a:hover {
+            text-decoration: underline;
+        }
+
+        .footer .links {
+            margin: 20px 0;
+            font-size: 14px;
+        }
+
+        .footer .links a {
+            color: #666;
+            text-decoration: none;
+            margin: 0 12px;
+        }
+
+        .footer .links a:hover {
+            color: #000;
+        }
+
+        .footer .legal {
+            margin-top: 24px;
+            font-size: 13px;
+            color: #999;
+            line-height: 1.6;
+        }
+
+        /* Mobile Responsive */
+        @media only screen and (max-width: 600px) {
+            .email-wrapper {
+                width: 100% !important;
+            }
+
+            .top-bar {
+                padding: 12px 20px !important;
+            }
+
+            .header {
+                padding: 24px 20px 20px 20px !important;
+            }
+
+            .logo {
+                font-size: 36px !important;
+            }
+
+            .tagline {
+                font-size: 15px !important;
+            }
+
+            .content, .footer {
+                padding: 24px !important;
+            }
+
+            .chart-container {
+                margin: 24px 0 !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="email-wrapper">
+        <!-- Top Navigation Bar -->
+        <div class="top-bar">
+            <a href="https://brief.delights.pro">Sign Up</a> |
+            <a href="mailto:sponsors@brief.delights.pro?subject=Advertising%20Inquiry">Advertise</a> |
+            <a href="https://brief.delights.pro/archive">View Online</a>
+        </div>
+
+        <!-- Header -->
+        <div class="header">
+            <div class="logo">Brief</div>
+            <div class="tagline">delights</div>
+            <p class="date">Weekly Insights 📊 | July 31, 2026</p>
+            <p class="curation-stats">~8,000 scanned → ~2,400 analyzed → 11 selected this week</p>
+        </div>
+
+        <!-- Content -->
+        <div class="content">
+            <div class="insights">
+                <h3 style="font-size: 18px; font-weight: 600; margin: 20px 0 12px 0; color: #333;">📊 Executive Summary & Weekly Narrative</h3>
+<p style="margin: 0 0 16px 0; line-height: 1.7; color: #333; font-size: 15px;">This week highlighted rapid shifts in platform strategy and enterprise infrastructure. Decision-makers focused on balancing scaling efficiency against operational security risks.</p>
+
+<h3 style="font-size: 18px; font-weight: 600; margin: 20px 0 12px 0; color: #333;">🎯 3 Key Strategic Insights</h3>
+<ol style="margin: 16px 0; padding-left: 24px; line-height: 1.8;">
+<li style="margin-bottom: 8px; color: #333;">**Platform Strategy Acceleration**: Enterprises are consolidating AI tooling to reduce integration friction.</li>
+<li style="margin-bottom: 8px; color: #333;">**Infrastructure Resilience**: Edge and home network security emerged as critical zero-trust priorities.</li>
+<li style="margin-bottom: 8px; color: #333;">**Resource Optimization**: Cost-efficiency metrics are now driving multi-model deployment choices.</li>
+</ul>
+
+<h3 style="font-size: 18px; font-weight: 600; margin: 20px 0 12px 0; color: #333;">🔮 What to Watch Next Week</h3>
+<ul style="margin: 16px 0; padding-left: 24px; line-height: 1.8;">
+<li style="margin-bottom: 8px; color: #333;">Vendor announcements around model optimization APIs.</li>
+<li style="margin-bottom: 8px; color: #333;">Enterprise zero-trust security policy updates.</li>
+</ul>
+            </div>
+        </div>
+
+        <!-- Trend Charts -->
+        
+        
+        
+
+        <!-- Footer -->
+        <div class="footer">
+            <p class="share">💌 Enjoying Brief Delights? <a href="mailto:?subject=Check%20out%20Brief%20Delights&body=I%20thought%20you'd%20find%20this%20weekly%20tech%20brief%20useful">Forward to a colleague</a></p>
+
+            <p class="links">
+                <a href="https://brief.delights.pro">Website</a>
+                <a href="https://brief.delights.pro/archive">Archive</a>
+                <a href="mailto:sponsors@brief.delights.pro?subject=Advertising%20Inquiry">Advertise</a>
+                <a href="mailto:hello@brief.delights.pro?subject=Unsubscribe">Unsubscribe</a>
+            </p>
+
+            <p class="legal">
+                You're receiving this because you subscribed to Brief Delights.<br>
+                <strong>brief delights</strong><br>
+                © 2026 All rights reserved.<br>
+                Questions? <a href="mailto:hello@brief.delights.pro" style="color: #999; text-decoration: none;">hello@brief.delights.pro</a>
+            </p>
+        </div>
+    </div>
+</body>
+</html>
+        
