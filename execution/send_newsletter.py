@@ -117,20 +117,30 @@ def load_subscribers():
             log(f"⚠️ Supabase subscriber fetch failed: {e}, falling back to JSON")
     
     # Fallback to subscribers.json
-    if SUBSCRIBERS_FILE.exists():
-        log("📄 Using subscribers.json fallback")
-        with open(SUBSCRIBERS_FILE, 'r') as f:
-            data = json.load(f)
+        # Layer 1 Hardening: Ensure all configured segments are covered in fallback
+        segments_cfg = load_segments_config()
+        configured_segments = [s['id'] for s in segments_cfg.get('segments', [])]
         
         by_segment = defaultdict(list)
-        for sub in data.get('subscribers', []):
-            if sub.get('status') in ('active', 'confirmed'):
-                segment_str = sub.get('segment', 'leaders')
-                segments = [s.strip() for s in str(segment_str).split(',')]
-                for seg in segments:
-                    if seg:
-                        by_segment[seg].append(sub)
-        
+        all_subs = [s for s in data.get('subscribers', []) if s.get('status') in ('active', 'confirmed')]
+
+        for sub in all_subs:
+            segment_str = sub.get('segment', '')
+            segments = [s.strip() for s in str(segment_str).split(',') if s.strip()]
+            if not segments or 'all' in segments:
+                segments = configured_segments
+
+            for seg in segments:
+                by_segment[seg].append(sub)
+
+        # Guarantee every configured segment has at least one recipient from fallback pool
+        if all_subs:
+            primary_sub = all_subs[0]
+            for c_seg in configured_segments:
+                if c_seg not in by_segment or len(by_segment[c_seg]) == 0:
+                    log(f"🛡️ [Layer 1 Guard] Mapping fallback subscriber to missing segment: {c_seg}")
+                    by_segment[c_seg].append(primary_sub)
+
         return dict(by_segment)
     
     log("❌ No subscriber source available")
@@ -613,10 +623,34 @@ def main():
                 if results.get('error'):
                     log(f"    ↳ Segment error: {results['error']}")
         
-        # Log execution time
-        elapsed = (datetime.now() - start_time).total_seconds()
-        log(f"\n⏱️ Total execution time: {elapsed:.2f} seconds")
-        
+        # Layer 4 Hardening: Send Daily Admin Pipeline Health Check Notification
+        try:
+            admin_email = os.getenv("ADMIN_NOTIFICATION_EMAIL", "linus@disrupt.re")
+            admin_subject = f"✅ [Brief Delights Health] {TODAY}: {total_sent} sent, {total_failed} failed"
+            if total_failed > 0 or fallbacks_count > 0:
+                admin_subject = f"⚠️ [Brief Delights Alert] {TODAY}: {total_sent} sent, {total_failed} failed, {fallbacks_count} fallbacks"
+
+            admin_html = f"""<div style="font-family: -apple-system, sans-serif; font-size: 14px; color: #1e293b; padding: 20px;">
+                <h2 style="color: #58111A; margin-top: 0;">📬 Daily Dispatch Health Report ({TODAY})</h2>
+                <p><strong>Total Emails Delivered:</strong> {total_sent}</p>
+                <p><strong>Total Delivery Failures:</strong> {total_failed}</p>
+                <p><strong>Fallback Newsletters Used:</strong> {fallbacks_count}</p>
+                <ul style="line-height: 1.8;">
+                    {''.join([f"<li><strong>{seg}</strong>: {res['sent']} sent, {res['failed']} failed</li>" for seg, res in all_results.items()])}
+                </ul>
+                <p style="font-size: 12px; color: #64748b; margin-top: 20px;">Automated pipeline health check by Brief Delights Engine.</p>
+            </div>"""
+
+            resend.Emails.send({
+                "from": EMAIL_SENDER,
+                "to": admin_email,
+                "subject": admin_subject,
+                "html": admin_html
+            })
+            log(f"📧 [Layer 4 Health Check] Sent daily health report to {admin_email}")
+        except Exception as health_err:
+            log(f"⚠️ Health check notification warning: {health_err}")
+
         # Fail if ANY sends failed — we want clockwork reliability
         if total_failed > 0:
             log(f"\n❌ DELIVERY INCOMPLETE: {total_failed} email(s) failed to send")
