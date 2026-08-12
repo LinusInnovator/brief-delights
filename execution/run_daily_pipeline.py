@@ -307,7 +307,13 @@ def run_phase_1(segments_data: dict) -> bool:
     if not run_script("send_newsletter.py", 300):
         log("⚠️ Send newsletters failed - check logs", "ERROR")
         return False
-    log("✅ Phase 1: Core Email Delivery complete")
+
+    # STEP 5b: Persist Social Breakdown Posts for Admin UI
+    log("\n\n▶️  Step 5b: Persist Social Breakdown Posts")
+    log("─"*70)
+    run_script("save_social_posts.py", 30)
+
+    log("✅ Phase 1: Core Email Delivery & Social Post Generation complete")
     return True
 
 
@@ -335,11 +341,14 @@ def run_phase_2(segments_data: dict) -> bool:
         log("⚠️ Social teaser generation failed or skipped", "WARN")
     else:
         log("✅ Daily social teasers ready in .tmp/social_posts_YYYY-MM-DD.txt")
+
+    run_script("save_social_posts.py", 30)
         
     if not run_script("post_to_reddit.py", 120):
         log("⚠️ Reddit post preparation or Playwright auto-posting skipped", "WARN")
     else:
         log("✅ Reddit strategic post published / 1-Click link ready")
+
 
     if datetime.now().weekday() == 6:  # 6 = Sunday
         log("\n" + "=" * 60)

@@ -30,30 +30,117 @@ SEGMENTS = [
 ]
 
 
+def clean_text_snippet(text: str, max_chars: int = 400) -> str:
+    """Clean HTML tags and collapse whitespace, truncating cleanly at word boundaries"""
+    if not text:
+        return ""
+    text = re.sub(r'<[^>]+>', '', text)
+    text = re.sub(r'\s+', ' ', text).strip()
+    if len(text) > max_chars:
+        trimmed = text[:max_chars]
+        if ' ' in trimmed:
+            return trimmed.rsplit(' ', 1)[0] + "..."
+        return trimmed + "..."
+    return text
+
+
+def parse_article_from_newsletter_html(html_path: Path) -> tuple[dict, str]:
+    """Extract top article data from committed newsletter HTML file"""
+    try:
+        match = re.search(r'\d{4}-\d{2}-\d{2}', html_path.name)
+        date_str = match.group(0) if match else TODAY
+        
+        with open(html_path, 'r', encoding='utf-8') as f:
+            html = f.read()
+
+        title = 'Daily Tech & AI Strategic Intelligence'
+        h_match = re.search(r'<h1[^>]*>(.*?)<\/h1>', html, re.DOTALL | re.IGNORECASE) or re.search(r'<h2[^>]*>(.*?)<\/h2>', html, re.DOTALL | re.IGNORECASE)
+        if h_match:
+            title = clean_text_snippet(h_match.group(1), max_chars=140)
+
+        p_matches = [clean_text_snippet(m.group(1), max_chars=400) for m in re.finditer(r'<p[^>]*>(.*?)</p>', html, re.DOTALL | re.IGNORECASE)]
+        p_matches = [p for p in p_matches if len(p) > 25]
+
+        summary = p_matches[0] if p_matches else f"Strategic intelligence breakdown for {date_str}."
+        takeaway = p_matches[1] if len(p_matches) > 1 else summary
+        why_it_matters = p_matches[2] if len(p_matches) > 2 else f"Directly impacts architectural design, operational risk, and tech stack choices."
+
+        article = {
+            "title": title,
+            "summary": clean_text_snippet(summary, max_chars=450),
+            "key_takeaway": clean_text_snippet(takeaway, max_chars=250),
+            "why_this_matters": clean_text_snippet(why_it_matters, max_chars=300),
+            "source": "Brief Delights Editorial"
+        }
+        return [article], date_str
+    except Exception as e:
+        print(f"Error parsing HTML fallback {html_path}: {e}")
+        return [], TODAY
+
+
+
 def load_segment_articles(segment_id: str) -> tuple:
-    """Load summaries for a segment, falling back to most recent available"""
+    """Load summaries for a segment with multi-tier fallback (summaries -> selected -> public HTML)"""
+    # Tier 1: summaries_<seg>_<date>.json in .tmp
     file_path = TMP_DIR / f"summaries_{segment_id}_{TODAY}.json"
     used_date = TODAY
 
-    if not file_path.exists():
-        pattern = str(TMP_DIR / f"summaries_{segment_id}_*.json")
+    if file_path.exists():
+        try:
+            with open(file_path, 'r', encoding='utf-8') as f:
+                data = json.load(f)
+                articles = data.get('articles', [])
+                if articles:
+                    return articles, TODAY
+        except Exception:
+            pass
+
+    # Search for recent summaries files in .tmp
+    pattern = str(TMP_DIR / f"summaries_{segment_id}_*.json")
+    matches = sorted(glob.glob(pattern), reverse=True)
+    if matches:
+        file_path = Path(matches[0])
+        match = re.search(r'\d{4}-\d{2}-\d{2}', file_path.name)
+        used_date = match.group(0) if match else TODAY
+        try:
+            with open(file_path, 'r', encoding='utf-8') as f:
+                data = json.load(f)
+                articles = data.get('articles', [])
+                if articles:
+                    return articles, used_date
+        except Exception:
+            pass
+
+    # Tier 2: selected_articles_<seg>_<date>.json in .tmp
+    sel_path = TMP_DIR / f"selected_articles_{segment_id}_{TODAY}.json"
+    if not sel_path.exists():
+        pattern = str(TMP_DIR / f"selected_articles_{segment_id}_*.json")
         matches = sorted(glob.glob(pattern), reverse=True)
         if matches:
-            file_path = Path(matches[0])
-            # Extract date from filename summaries_<segment>_<YYYY-MM-DD>.json
-            match = re.search(r'\d{4}-\d{2}-\d{2}', file_path.name)
-            if match:
-                used_date = match.group(0)
-        else:
-            return [], TODAY
+            sel_path = Path(matches[0])
+            match = re.search(r'\d{4}-\d{2}-\d{2}', sel_path.name)
+            used_date = match.group(0) if match else TODAY
 
-    try:
-        with open(file_path, 'r', encoding='utf-8') as f:
-            data = json.load(f)
-            return data.get('articles', []), used_date
-    except Exception as e:
-        print(f"Error loading {file_path}: {e}")
-        return [], TODAY
+    if sel_path.exists():
+        try:
+            with open(sel_path, 'r', encoding='utf-8') as f:
+                data = json.load(f)
+                articles = data.get('articles', [])
+                if articles:
+                    return articles, used_date
+        except Exception:
+            pass
+
+    # Tier 3: Committed public HTML newsletters in landing/public/newsletters/
+    public_newsletters_dir = PROJECT_ROOT / "landing" / "public" / "newsletters"
+    if public_newsletters_dir.exists():
+        html_pattern = str(public_newsletters_dir / f"newsletter_{segment_id}_*.html")
+        html_matches = sorted(glob.glob(html_pattern), reverse=True)
+        if html_matches:
+            return parse_article_from_newsletter_html(Path(html_matches[0]))
+
+    return [], TODAY
+
 
 
 def format_post(seg: dict, top_article: dict, date_str: str) -> dict:
@@ -62,11 +149,12 @@ def format_post(seg: dict, top_article: dict, date_str: str) -> dict:
     segment_name = seg["name"]
     segment_emoji = seg["emoji"]
 
-    title = top_article.get('title', 'Daily Tech & AI Strategic Intelligence')
-    summary = top_article.get('summary', '')
-    key_takeaway = top_article.get('key_takeaway', summary)
-    why_it_matters = top_article.get('why_it_matters', top_article.get('why_this_matters', '')).strip()
-    why_it_matters = re.sub(r'^(why\s+(it|this)\s+matters:?\s*|strategic\s+takeaway\s+(for\s+[^:]+:?\s*)?)+', '', why_it_matters, flags=re.IGNORECASE).strip()
+    title = clean_text_snippet(top_article.get('title', 'Daily Tech & AI Strategic Intelligence'), max_chars=140)
+    summary = clean_text_snippet(top_article.get('summary', ''), max_chars=450)
+    key_takeaway = clean_text_snippet(top_article.get('key_takeaway', summary), max_chars=250)
+    raw_why = top_article.get('why_it_matters', top_article.get('why_this_matters', '')).strip()
+    raw_why = re.sub(r'^(why\s+(it|this)\s+matters:?\s*|strategic\s+takeaway\s+(for\s+[^:]+:?\s*)?)+', '', raw_why, flags=re.IGNORECASE).strip()
+    why_it_matters = clean_text_snippet(raw_why, max_chars=300)
 
     if not why_it_matters or why_it_matters.lower() == key_takeaway.lower():
         if segment_id == 'leaders':
@@ -75,6 +163,7 @@ def format_post(seg: dict, top_article: dict, date_str: str) -> dict:
             why_it_matters = f"Engineering & Stack Impact: {key_takeaway} — Directly impacts architecture design, latency budgets, and tooling integration."
         else:
             why_it_matters = f"Frontier & AI Research Impact: {key_takeaway} — Accelerates state-of-the-art capabilities and challenges existing model deployment benchmarks."
+
 
     reddit_title = f"{segment_emoji} [{segment_name}] {title} — Strategic Breakdown ({date_str})"
     source_name = top_article.get('source', 'Research')
