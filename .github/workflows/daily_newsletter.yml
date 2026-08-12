@@ -7,10 +7,11 @@ on:
     # Fallback: 7:17 AM UTC (9:17 AM CEST) - secondary backup window if GitHub runner queue delays primary
     - cron: '17 7 * * *'
 
-  workflow_dispatch: {}
+  workflow_dispatch:
 
   repository_dispatch:
     types: [trigger-daily-newsletter]
+
 
 
 
