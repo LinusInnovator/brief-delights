@@ -82,9 +82,8 @@ def load_subscribers():
     if SUPABASE_URL and SUPABASE_KEY:
         try:
             supabase: Client = create_client(SUPABASE_URL, SUPABASE_KEY)
-            result = supabase.table('subscribers').select('email, segment, referral_code, referral_count, timezone, preferences, verification_token').in_('status', ['confirmed', 'active']).execute()
+            result = supabase.table('subscribers').select('email, segment, referral_code, referral_count, timezone, verification_token').in_('status', ['confirmed', 'active']).execute()
 
-            
             if result.data and len(result.data) > 0:
                 by_segment = defaultdict(list)
                 now_iso = datetime.now(dt_timezone.utc).isoformat()
@@ -92,7 +91,7 @@ def load_subscribers():
                 day_ordinal = datetime.now().toordinal()
 
                 for sub in result.data:
-                    prefs = sub.get('preferences') or {}
+                    prefs = sub.get('preferences') if isinstance(sub.get('preferences'), dict) else {}
                     pause_until = prefs.get('pause_until')
                     if pause_until and pause_until > now_iso:
                         continue  # Skip subscriber if paused
@@ -123,31 +122,41 @@ def load_subscribers():
             log(f"⚠️ Supabase subscriber fetch failed: {e}, falling back to JSON")
     
     # Fallback to subscribers.json
-        # Layer 1 Hardening: Ensure all configured segments are covered in fallback
-        segments_cfg = load_segments_config()
-        configured_segments = [s['id'] for s in segments_cfg.get('segments', [])]
-        
-        by_segment = defaultdict(list)
-        all_subs = [s for s in data.get('subscribers', []) if s.get('status') in ('active', 'confirmed')]
+    data = {}
+    if SUBSCRIBERS_FILE.exists():
+        try:
+            with open(SUBSCRIBERS_FILE, 'r', encoding='utf-8') as f:
+                data = json.load(f)
+        except Exception as ex:
+            log(f"⚠️ Error reading subscribers.json: {ex}")
 
-        for sub in all_subs:
-            segment_str = sub.get('segment', '')
-            segments = [s.strip() for s in str(segment_str).split(',') if s.strip()]
-            if not segments or 'all' in segments:
-                segments = configured_segments
+    segments_cfg = load_segments_config()
+    configured_segments = [s['id'] for s in segments_cfg.get('segments', [])]
+    
+    by_segment = defaultdict(list)
+    raw_subs = data.get('subscribers', []) if isinstance(data, dict) else []
+    all_subs = [s for s in raw_subs if isinstance(s, dict) and s.get('status') in ('active', 'confirmed')]
 
-            for seg in segments:
-                by_segment[seg].append(sub)
 
-        # Guarantee every configured segment has at least one recipient from fallback pool
-        if all_subs:
-            primary_sub = all_subs[0]
-            for c_seg in configured_segments:
-                if c_seg not in by_segment or len(by_segment[c_seg]) == 0:
-                    log(f"🛡️ [Layer 1 Guard] Mapping fallback subscriber to missing segment: {c_seg}")
-                    by_segment[c_seg].append(primary_sub)
+    for sub in all_subs:
+        segment_str = sub.get('segment', '')
+        segments = [s.strip() for s in str(segment_str).split(',') if s.strip()]
+        if not segments or 'all' in segments:
+            segments = configured_segments
 
-        return dict(by_segment)
+        for seg in segments:
+            by_segment[seg].append(sub)
+
+    # Guarantee every configured segment has at least one recipient from fallback pool
+    if all_subs:
+        primary_sub = all_subs[0]
+        for c_seg in configured_segments:
+            if c_seg not in by_segment or len(by_segment[c_seg]) == 0:
+                log(f"🛡️ [Layer 1 Guard] Mapping fallback subscriber to missing segment: {c_seg}")
+                by_segment[c_seg].append(primary_sub)
+
+    return dict(by_segment)
+
     
     log("❌ No subscriber source available")
     return {}
