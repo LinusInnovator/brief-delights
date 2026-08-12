@@ -4,7 +4,7 @@ import path from 'path';
 
 export const dynamic = 'force-dynamic';
 
-function extractPostsFromNewsletterHtml(html: strContent, dateStr: string, segId: string, segName: string, segEmoji: string) {
+function extractPostsFromNewsletterHtml(html: string, dateStr: string, segId: string, segName: string, segEmoji: string) {
   // Simple regex parser for newsletter HTML
   let title = 'Daily Strategic Intelligence';
   const h1Match = html.match(/<h1[^>]*>(.*?)<\/h1>/i) || html.match(/<h2[^>]*>(.*?)<\/h2>/i);
