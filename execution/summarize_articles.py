@@ -12,7 +12,7 @@ from pathlib import Path
 from openai import OpenAI
 from dotenv import load_dotenv
 import concurrent.futures
-from typing import Dict, List, Tuple
+from typing import Dict, List, Tuple, Optional
 import time
 
 # Import editorial prompt templates from same directory
@@ -61,13 +61,18 @@ PRIMARY_MODEL, FALLBACK_MODEL = get_recommended_models(
 MAX_WORKERS = 8
 
 
-def log(message: str, log_file: Path):
+def log(message: str, log_file: Optional[Path] = None):
     """Log to both console and file"""
     timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     log_entry = f"[{timestamp}] {message}"
     print(log_entry)
-    with open(log_file, "a") as f:
-        f.write(log_entry + "\n")
+    if log_file:
+        try:
+            with open(log_file, "a", encoding="utf-8") as f:
+                f.write(log_entry + "\n")
+        except Exception:
+            pass
+
 
 
 def prepare_content(article: Dict) -> str:
