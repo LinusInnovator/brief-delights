@@ -299,6 +299,18 @@ def main():
     
     print(f"✅ Reddit strategic posts & 1-click links ready: {md_out}")
 
+    # Save to public data & Supabase for social publisher UI persistence
+    try:
+        try:
+            from execution.save_social_posts import generate_and_save
+        except ImportError:
+            from save_social_posts import generate_and_save
+        generate_and_save()
+    except Exception as e:
+        print(f"⚠️ Failed to execute save_social_posts: {e}")
+
+
 
 if __name__ == "__main__":
     main()
+

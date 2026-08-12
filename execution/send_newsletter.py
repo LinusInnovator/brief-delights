@@ -28,10 +28,15 @@ class NewsletterArchive:
     def get_fallback_newsletter(self, segment_id: str) -> Path | None:
         pattern = f"newsletter_{segment_id}_*.html"
         files = sorted(self.tmp_dir.glob(pattern), reverse=True)
+        if not files:
+            public_dir = PROJECT_ROOT / "landing" / "public" / "newsletters"
+            if public_dir.exists():
+                files = sorted(public_dir.glob(pattern), reverse=True)
         return files[0] if files else None
         
     def modify_fallback_header(self, html: str, fallback_date: str) -> str:
         return html
+
 
 # Load environment variables
 load_dotenv()
@@ -77,7 +82,8 @@ def load_subscribers():
     if SUPABASE_URL and SUPABASE_KEY:
         try:
             supabase: Client = create_client(SUPABASE_URL, SUPABASE_KEY)
-            result = supabase.table('subscribers').select('email, segment, referral_code, referral_count, timezone, preferences, verification_token').eq('status', 'confirmed').execute()
+            result = supabase.table('subscribers').select('email, segment, referral_code, referral_count, timezone, preferences, verification_token').in_('status', ['confirmed', 'active']).execute()
+
             
             if result.data and len(result.data) > 0:
                 by_segment = defaultdict(list)

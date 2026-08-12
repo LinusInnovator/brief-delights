@@ -182,34 +182,49 @@ Return ONLY valid JSON (no markdown, no explanations):
 
 
 def call_llm_for_summary(prompt: str, model: str = PRIMARY_MODEL, retries: int = 4) -> Dict:
-    """Call LLM to generate summary with exponential backoff for rate limits"""
-    for attempt in range(retries):
+    """Call LLM to generate summary with robust multi-provider failover"""
+    try:
         try:
-            response = client.chat.completions.create(
-                model=model,
-                messages=[{"role": "user", "content": prompt}],
-                temperature=0.5,
-                max_tokens=300
-            )
-            
-            content = response.choices[0].message.content.strip()
-            
-            # Remove markdown if present
-            if content.startswith("```"):
-                content = content.split("```")[1]
-                if content.startswith("json"):
-                    content = content[4:]
-            
-            return json.loads(content)
-            
-        except Exception as e:
-            if attempt < retries - 1:
-                # Exponential backoff: 1s, 2s, 4s...
-                time.sleep(2 ** attempt)
-                continue
-            
-            log(f"❌ Error in LLM call after {retries} attempts: {str(e)}")
-            raise
+            from execution.utils.llm_router import robust_chat_completion
+        except ImportError:
+            from utils.llm_router import robust_chat_completion
+        response = robust_chat_completion(
+            client=client,
+            messages=[{"role": "user", "content": prompt}],
+            primary_model=model,
+            fallback_model=FALLBACK_MODEL,
+            temperature=0.5,
+            max_tokens=300
+        )
+        content = response.choices[0].message.content.strip()
+        if content.startswith("```"):
+            content = content.split("```")[1]
+            if content.startswith("json"):
+                content = content[4:]
+        return json.loads(content)
+    except Exception as e:
+        log(f"⚠️ Robust LLM call failed: {e}, attempting single-client retry...")
+        for attempt in range(retries):
+            try:
+                response = client.chat.completions.create(
+                    model=model,
+                    messages=[{"role": "user", "content": prompt}],
+                    temperature=0.5,
+                    max_tokens=300
+                )
+                content = response.choices[0].message.content.strip()
+                if content.startswith("```"):
+                    content = content.split("```")[1]
+                    if content.startswith("json"):
+                        content = content[4:]
+                return json.loads(content)
+            except Exception as ex:
+                if attempt < retries - 1:
+                    time.sleep(2 ** attempt)
+                    continue
+                log(f"❌ Error in LLM call after {retries} attempts: {str(ex)}")
+                raise
+
 
 
 

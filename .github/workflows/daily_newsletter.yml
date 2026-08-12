@@ -56,9 +56,22 @@ jobs:
       - name: Create temp directory
         run: mkdir -p .tmp
       
-      - name: Run Full Pipeline
-        run: python3 execution/run_daily_pipeline.py
-        timeout-minutes: 25
+      - name: Run Phase 1: Core Email Generation & Dispatch
+        run: python3 execution/run_daily_pipeline.py --phase 1
+        timeout-minutes: 15
+        env:
+          PYTHONPATH: .
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+          NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
+          SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
+          INTERNAL_GOD_KEY: ${{ secrets.INTERNAL_GOD_KEY }}
+          SITE_URL: https://brief.delights.pro
+
+      - name: Run Phase 2: Growth Engine & Distribution (Non-blocking)
+        if: always()
+        run: python3 execution/run_daily_pipeline.py --phase 2
+        timeout-minutes: 15
         env:
           PYTHONPATH: .
           OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
@@ -75,7 +88,7 @@ jobs:
       
       - name: Move newsletters and previews to public folder
         run: |
-          mkdir -p landing/public/newsletters landing/public/previews
+          mkdir -p landing/public/newsletters landing/public/previews landing/public/data
           if ls .tmp/newsletter_*.html 1> /dev/null 2>&1; then
             cp .tmp/newsletter_*.html landing/public/newsletters/
             echo "✅ Moved newsletters to public folder"
@@ -88,7 +101,7 @@ jobs:
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action Bot"
-          git add landing/public/newsletters/ landing/public/previews/
+          git add landing/public/newsletters/ landing/public/previews/ landing/public/data/
           # Only commit if there are changes
           if ! git diff --staged --quiet; then
             git commit -m "📰 Auto-generated newsletters & previews $(date +%Y-%m-%d)"
@@ -111,17 +124,6 @@ jobs:
             git stash pop || true
             git push origin main
           fi
-      
-      - name: Auto-post #1 Featured Breakdown to Reddit (PRAW API / Playwright)
-        run: python3 execution/post_to_reddit.py
-        timeout-minutes: 5
-        env:
-          PYTHONPATH: .
-          REDDIT_CLIENT_ID: ${{ secrets.REDDIT_CLIENT_ID }}
-          REDDIT_CLIENT_SECRET: ${{ secrets.REDDIT_CLIENT_SECRET }}
-          REDDIT_USERNAME: ${{ secrets.REDDIT_USERNAME }}
-          REDDIT_PASSWORD: ${{ secrets.REDDIT_PASSWORD }}
-          REDDIT_SESSION_COOKIE: ${{ secrets.REDDIT_SESSION_COOKIE }}
 
       - name: Upload artifacts
         if: always()
@@ -133,3 +135,4 @@ jobs:
             .tmp/*.html
             .tmp/*.txt
           retention-days: 7
+

@@ -162,23 +162,13 @@ def generate_summary(segments: dict):
     log("="*70)
 
 
-def main():
-    """Main pipeline execution"""
-    start_time = datetime.now()
+def run_phase_1(segments_data: dict) -> bool:
+    """Phase 1: Core Email Generation & Dispatch (High Priority, Fast ~4-6 min)"""
+    log("\n" + "="*70)
+    log("🚀 PHASE 1: CORE EMAIL GENERATION & DISPATCH", "INFO")
+    log("="*70)
     
-    print_banner()
-    
-    # Prerequisites
-    if not check_prerequisites():
-        log("\n❌ Prerequisites check failed", "ERROR")
-        return False
-    
-    log("\n✅ All prerequisites passed")
-    
-    # Load segments
-    segments = load_segments()
-    segment_ids = list(segments.keys())
-    log(f"\n📋 Configured segments: {', '.join(segment_ids)}")
+    segment_ids = list(segments_data.keys())
     
     # STEP 0: Generate Custom Feeds (v2.1)
     log("\n\n▶️  Step 0/5: Generate Custom RSS Feeds")
@@ -191,7 +181,6 @@ def main():
     log("─"*70)
     raw_articles_file = TMP_DIR / f"raw_articles_{TODAY}.json"
     
-    # Re-run aggregation if missing or if file contains < 100 articles
     should_aggregate = True
     if raw_articles_file.exists():
         try:
@@ -210,14 +199,11 @@ def main():
     else:
         log("✅ Skipping aggregation: valid raw articles pool already exists")
     
-    # Validation: Ensure raw articles file was created
     raw_articles_file = TMP_DIR / f"raw_articles_{TODAY}.json"
     if not raw_articles_file.exists():
         log(f"❌ CRITICAL: Raw articles file not found: {raw_articles_file}", "ERROR")
-        log("   This means feed aggregation didn't create the expected output", "ERROR")
         return False
     
-    # Check if file has content
     try:
         with open(raw_articles_file, 'r') as f:
             data = json.load(f)
@@ -234,7 +220,6 @@ def main():
     log("\n\n▶️  Step 2/5: Select Top Stories (All Segments)")
     log("─"*70)
     
-    # Check idempotency: Have we already selected stories for all segments?
     all_selections_exist = True
     for segment_id in segment_ids:
         if not (TMP_DIR / f"selected_articles_{segment_id}_{TODAY}.json").exists():
@@ -248,7 +233,6 @@ def main():
     else:
         log("✅ Skipping story selection: files already exist for all segments")
     
-    # Validation: Ensure selected articles files were created for each segment
     missing_segments = []
     for segment_id in segment_ids:
         selected_file = TMP_DIR / f"selected_articles_{segment_id}_{TODAY}.json"
@@ -268,9 +252,8 @@ def main():
     
     # STEP 3 & 4: Summarize and Compose for each segment
     for i, segment_id in enumerate(segment_ids, 1):
-        segment_name = segments[segment_id]['name']
+        segment_name = segments_data[segment_id]['name']
         
-        # Summarize
         log(f"\n\n▶️  Step 3.{i}: Summarize Articles ({segment_name})")
         log("─"*70)
         summaries_file = TMP_DIR / f"summaries_{segment_id}_{TODAY}.json"
@@ -282,26 +265,23 @@ def main():
         else:
             log(f"✅ Skipping summarization: already exists for {segment_name}")
         
-        # Detect Contrarian
         log(f"\n\n▶️  Step 3.{i}b: Detect Contrarian ({segment_name})")
         log("─"*70)
         if not run_script("detect_contrarian.py", timeout=60, args=["--segment", segment_id]):
             log(f"⚠️ Contrarian detection failed for {segment_id} (non-blocking)", "WARN")
         
-        # Compose
         log(f"\n\n▶️  Step 4.{i}: Compose Newsletter ({segment_name})")
         log("─"*70)
         newsletter_file = TMP_DIR / f"newsletter_{segment_id}_{TODAY}.html"
         
         if not newsletter_file.exists():
-            if not run_script("compose_newsletter.py", timeout=30, args=["--segment", segment_id]):
+            if not run_script("compose_newsletter.py", timeout=90, args=["--segment", segment_id]):
                 log(f"❌ Failed to compose for {segment_id}", "ERROR")
                 continue
             log(f"✅ Newsletter composed for {segment_name}")
         else:
             log(f"✅ Skipping composition: already exists for {segment_name}")
             
-        # Quality Gate + Self-Healing Loop
         log(f"\n   🔍 Quality Gate ({segment_name}):")
         if not run_script("validate_newsletter.py", timeout=15, args=["--segment", segment_id]):
             log(f"   🩺 Quality gate failed — attempting self-healing...", "WARN")
@@ -309,11 +289,8 @@ def main():
                 log(f"   ✅ Self-healed for {segment_name}")
             else:
                 log(f"   ❌ Self-healing FAILED for {segment_id} — newsletter will NOT be sent", "ERROR")
-                log(f"      Check GitHub Issues for diagnostics", "ERROR")
-                # SEGMENT ISOLATION: Continue to next segment instead of crashing everything!
                 continue
         
-        # NEW: Archive successful newsletter for fallback
         newsletter_file = TMP_DIR / f"newsletter_{segment_id}_{TODAY}.html"
         if newsletter_file.exists():
             try:
@@ -324,31 +301,33 @@ def main():
             except Exception as e:
                 log(f"⚠️ Failed to archive newsletter: {str(e)}", "WARN")
     
-    # STEP 5: Send (handles all segments)
-    # ========================================
-    # STEP 5: Send Newsletters
-    # ========================================
+    # STEP 5: Send Newsletters to Subscribers
+    log("\n\n▶️  Step 5/5: Send Newsletters to Subscribers")
+    log("─"*70)
     if not run_script("send_newsletter.py", 300):
         log("⚠️ Send newsletters failed - check logs", "ERROR")
-        return False # This return False was missing in the provided snippet, but is crucial for pipeline integrity.
-    log("✅ Delivery complete")
+        return False
+    log("✅ Phase 1: Core Email Delivery complete")
+    return True
+
+
+def run_phase_2(segments_data: dict) -> bool:
+    """Phase 2: Growth, Social Teasers, Reddit & Distribution (Non-blocking post-processing)"""
+    log("\n" + "="*70)
+    log("📈 PHASE 2: GROWTH, SOCIAL TEASERS & DISTRIBUTION ENGINE", "INFO")
+    log("="*70)
     
-    # ========================================
-    # STEP 6: Aggregate Weekly Trends (for Sunday insights)
-    # ========================================
+    segment_ids = list(segments_data.keys())
+    
+    # STEP 6: Aggregate Weekly Trends
     log("\n" + "=" * 60)
     log("STEP 6: Aggregating Weekly Trends", "INFO")
     log("=" * 60)
-    log("📊 Saving today's trends for Sunday synthesis...")
-    
-    # Run aggregation for each segment
     for segment_id in ["builders", "leaders", "innovators"]:
         if not run_script("aggregate_weekly_trends.py", 30, [segment_id]):
             log(f"⚠️ Weekly aggregation failed for {segment_id}", "WARN")
     
-    # ========================================
     # STEP 7: Generate Social Media Teasers & Reddit Posts
-    # ========================================
     log("\n" + "=" * 60)
     log("STEP 7: Generating Daily Social Teasers & Reddit Posts", "INFO")
     log("=" * 60)
@@ -366,30 +345,24 @@ def main():
         log("\n" + "=" * 60)
         log("STEP 6b: Source Auto-Improvement (Sunday Maintenance)", "INFO")
         log("=" * 60)
-        log("🧹 Pruning bad feeds and scouting for new ones...")
-        if not run_script("auto_improve_sources.py", 600):  # LLM scouting takes time
+        if not run_script("auto_improve_sources.py", 600):
             log("⚠️ Source auto-improvement failed (non-blocking)", "WARN")
         else:
             log("✅ Source auto-improvement complete")
     
-    # ========================================
-    # STEP 7: Growth Engine (drip, win-back, repurposing)
-    # ========================================
+    # STEP 8: Growth Engine (drip, win-back, repurposing)
     log("\n" + "=" * 60)
-    log("STEP 7: Growth Engine", "INFO")
+    log("STEP 8: Growth Engine", "INFO")
     log("=" * 60)
     
-    # 7a: Welcome drip sequence
     log("💧 Running welcome drip sequence...")
     if not run_script("send_drip_sequence.py", 60):
         log("⚠️ Drip sequence failed (non-blocking)", "WARN")
     
-    # 7b: Win-back & list hygiene
     log("🧹 Running win-back engine...")
     if not run_script("winback_sequence.py", 60):
         log("⚠️ Win-back engine failed (non-blocking)", "WARN")
     
-    # 7c: Content repurposing (for each segment)
     log("♻️  Running content repurposing...")
     for segment_id in segment_ids:
         if not run_script("repurpose_newsletter.py", 60, ["--segment", segment_id]):
@@ -397,14 +370,10 @@ def main():
     
     log("✅ Growth engine complete")
     
-    # ========================================
-    # STEP 8: Sponsor Discovery (auto-find leads from click data)
-    # ========================================
+    # STEP 9: Sponsor Discovery
     log("\n" + "=" * 60)
-    log("STEP 8: Sponsor Discovery", "INFO")
+    log("STEP 9: Sponsor Discovery", "INFO")
     log("=" * 60)
-    log("🔍 Finding sponsor leads from recent article clicks...")
-    
     site_url = os.environ.get("SITE_URL", "https://brief.delights.pro")
     cron_secret = os.environ.get("CRON_SECRET", os.environ.get("SUPABASE_SERVICE_KEY", ""))
     
@@ -423,26 +392,51 @@ def main():
             with urllib.request.urlopen(req, timeout=30) as resp:
                 result = json.loads(resp.read())
                 leads = result.get('leadsWritten', 0)
-                incumbents = result.get('incumbentsDetected', [])
-                log(f"✅ Sponsor discovery: {leads} new leads, {len(incumbents)} incumbents detected")
-                if incumbents:
-                    log(f"   Incumbents: {', '.join(incumbents[:5])}")
+                log(f"✅ Sponsor discovery: {leads} new leads")
         except Exception as e:
             log(f"⚠️ Sponsor discovery failed (non-blocking): {e}", "WARN")
-    else:
-        log("⚠️ No CRON_SECRET set — skipping automated sponsor discovery", "WARN")
+            
+    log("✅ Phase 2: Growth & Distribution complete")
+    return True
+
+
+def main():
+    """Main pipeline execution supporting --phase 1, --phase 2, or --phase all"""
+    import argparse
+    parser = argparse.ArgumentParser(description="Multi-segment Newsletter Pipeline Orchestrator")
+    parser.add_argument("--phase", choices=["1", "2", "all"], default="all", help="Execution phase: 1 (Core Email), 2 (Growth & Distribution), or all")
+    args = parser.parse_args()
+
+    start_time = datetime.now()
+    print_banner()
     
-    # Summary
+    if not check_prerequisites():
+        log("\n❌ Prerequisites check failed", "ERROR")
+        return False
+    
+    log("\n✅ All prerequisites passed")
+    segments = load_segments()
+
+    success = True
+
+    if args.phase in ("1", "all"):
+        success_p1 = run_phase_1(segments)
+        if not success_p1 and args.phase == "1":
+            return False
+        success = success and success_p1
+
+    if args.phase in ("2", "all"):
+        success_p2 = run_phase_2(segments)
+        success = success and success_p2
+
     generate_summary(segments)
-    
-    # Total time
     elapsed = (datetime.now() - start_time).total_seconds()
     
-    log(f"\n✅ PIPELINE COMPLETED SUCCESSFULLY", "SUCCESS")
+    log(f"\n✅ PIPELINE (Phase {args.phase}) COMPLETED", "SUCCESS")
     log(f"⏱️  Total execution time: {elapsed:.2f} seconds ({elapsed/60:.1f} minutes)")
     log(f"📝 Full log saved to: {PIPELINE_LOG}")
     
-    return True
+    return success
 
 
 if __name__ == "__main__":
@@ -457,3 +451,4 @@ if __name__ == "__main__":
         import traceback
         log(traceback.format_exc(), "ERROR")
         sys.exit(1)
+
