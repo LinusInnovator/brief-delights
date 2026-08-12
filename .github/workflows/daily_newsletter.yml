@@ -54,7 +54,7 @@ jobs:
       - name: Create temp directory
         run: mkdir -p .tmp
       
-      - name: Run Phase 1: Core Email Generation & Dispatch
+      - name: "Run Phase 1: Core Email Generation & Dispatch"
         run: python3 execution/run_daily_pipeline.py --phase 1
         env:
           PYTHONPATH: .
@@ -65,9 +65,10 @@ jobs:
           INTERNAL_GOD_KEY: ${{ secrets.INTERNAL_GOD_KEY }}
           SITE_URL: https://brief.delights.pro
 
-      - name: Run Phase 2: Growth Engine & Distribution (Non-blocking)
+      - name: "Run Phase 2: Growth Engine & Distribution (Non-blocking)"
         if: always()
         run: python3 execution/run_daily_pipeline.py --phase 2
+
         env:
           PYTHONPATH: .
           OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
