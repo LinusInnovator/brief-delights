@@ -16,6 +16,7 @@ on:
         description: 'Test mode (no emails sent)'
         required: false
         default: 'false'
+        type: string
 
 jobs:
   run_pipeline:
@@ -58,7 +59,6 @@ jobs:
       
       - name: Run Phase 1: Core Email Generation & Dispatch
         run: python3 execution/run_daily_pipeline.py --phase 1
-        timeout-minutes: 15
         env:
           PYTHONPATH: .
           OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
@@ -71,7 +71,6 @@ jobs:
       - name: Run Phase 2: Growth Engine & Distribution (Non-blocking)
         if: always()
         run: python3 execution/run_daily_pipeline.py --phase 2
-        timeout-minutes: 15
         env:
           PYTHONPATH: .
           OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
@@ -83,6 +82,7 @@ jobs:
           REDDIT_CLIENT_ID: ${{ secrets.REDDIT_CLIENT_ID }}
           REDDIT_CLIENT_SECRET: ${{ secrets.REDDIT_CLIENT_SECRET }}
           REDDIT_SESSION_COOKIE: ${{ secrets.REDDIT_SESSION_COOKIE }}
+
           INTERNAL_GOD_KEY: ${{ secrets.INTERNAL_GOD_KEY }}
           SITE_URL: https://brief.delights.pro
       
