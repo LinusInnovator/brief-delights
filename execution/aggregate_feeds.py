@@ -248,14 +248,26 @@ def aggregate_all_feeds() -> List[Dict]:
             log(f"   Segment: {segment}")
             log(f"   Lookback: {lookback_hours} hours")
             
-            # Process all categories in this segment config
-            for category, feed_urls in config['categories'].items():
-                log(f"\n📰 [{segment}] Processing category: {category}")
-                
-                for feed_url in feed_urls:
-                    feed_count += 1
-                    articles = fetch_feed(feed_url, category, segment, lookback_hours)
-                    all_articles.extend(articles)
+            categories_data = config.get('categories', {})
+
+            if isinstance(categories_data, list):
+                for cat_item in categories_data:
+                    cat_name = cat_item.get('name', 'General')
+                    feeds = cat_item.get('feeds', [])
+                    log(f"\n📰 [{segment}] Processing category: {cat_name}")
+                    for feed_entry in feeds:
+                        feed_url = feed_entry.get('url') if isinstance(feed_entry, dict) else feed_entry
+                        if feed_url:
+                            feed_count += 1
+                            articles = fetch_feed(feed_url, cat_name, segment, lookback_hours)
+                            all_articles.extend(articles)
+            elif isinstance(categories_data, dict):
+                for category, feed_urls in categories_data.items():
+                    log(f"\n📰 [{segment}] Processing category: {category}")
+                    for feed_url in feed_urls:
+                        feed_count += 1
+                        articles = fetch_feed(feed_url, category, segment, lookback_hours)
+                        all_articles.extend(articles)
     
     else:
         # Fallback to legacy single config
