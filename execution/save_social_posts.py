@@ -156,13 +156,22 @@ def format_post(seg: dict, top_article: dict, date_str: str) -> dict:
     raw_why = re.sub(r'^(why\s+(it|this)\s+matters:?\s*|strategic\s+takeaway\s+(for\s+[^:]+:?\s*)?)+', '', raw_why, flags=re.IGNORECASE).strip()
     why_it_matters = clean_text_snippet(raw_why, max_chars=300)
 
-    if not why_it_matters or why_it_matters.lower() == key_takeaway.lower():
-        if segment_id == 'leaders':
+    if segment_id == 'leaders':
+
+        if not why_it_matters or why_it_matters.lower() == key_takeaway.lower():
             why_it_matters = f"Executive & Business Impact: {key_takeaway} — Forces decision-makers to evaluate operational risk and vendor reliance."
-        elif segment_id == 'builders':
+        hook_headline = f"Executive Strategy: {title}"
+        pro_image_prompt = f"Minimalist 3D isometric corporate strategy diagram depicting '{title}', sleek obsidian glassmorphism aesthetic, glowing gold and emerald nodes, dark ambient background, 8k render, professional UI design"
+    elif segment_id == 'builders':
+        if not why_it_matters or why_it_matters.lower() == key_takeaway.lower():
             why_it_matters = f"Engineering & Stack Impact: {key_takeaway} — Directly impacts architecture design, latency budgets, and tooling integration."
-        else:
+        hook_headline = f"Engineering Shift: {title}"
+        pro_image_prompt = f"Cybernetic software engineering architecture diagram illustrating '{title}', obsidian dark mode UI, glowing neon cyan lines, data flow blocks, 8k render, hyper-detailed tech graphic"
+    else:
+        if not why_it_matters or why_it_matters.lower() == key_takeaway.lower():
             why_it_matters = f"Frontier & AI Research Impact: {key_takeaway} — Accelerates state-of-the-art capabilities and challenges existing model deployment benchmarks."
+        hook_headline = f"Frontier AI Signal: {title}"
+        pro_image_prompt = f"Abstract frontier AI research neural network topology showing '{title}', glowing violet and deep purple laser paths, dark glassmorphism space, 8k render, high-tech research visual"
 
 
     reddit_title = f"{segment_emoji} [{segment_name}] {title} — Strategic Breakdown ({date_str})"
@@ -202,14 +211,19 @@ We scan 1,340+ tech & AI articles daily across engineering, strategy, and fronti
         "segment_name": segment_name,
         "segment_emoji": segment_emoji,
         "article_title": title,
+        "hook_headline": hook_headline,
+        "key_takeaway": key_takeaway,
+        "why_it_matters": why_it_matters,
+        "pro_image_prompt": pro_image_prompt,
         "reddit_title": reddit_title,
         "reddit_body": reddit_body,
         "reddit_submit_url": reddit_submit_url,
         "twitter_share_url": twitter_share_url,
         "linkedin_share_url": linkedin_share_url,
-        "archive_url": f"https://brief.delights.pro/archive/{date_str}-{segment_id}",
+        "archive_url": archive_url,
         "date": date_str
     }
+
 
 
 def generate_and_save():
