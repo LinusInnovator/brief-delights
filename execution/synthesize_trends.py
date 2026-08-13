@@ -42,36 +42,39 @@ def create_trend_synthesis_prompt(trend_analysis: Dict, segment: str) -> str:
         LLM prompt string
     """
     trends = trend_analysis.get('trends', [])
+def create_trend_synthesis_prompt(trend_analysis: Dict, segment: str) -> str:
+    """
+    Format LLM prompt for deep executive trend synthesis
+    """
+    trends = trend_analysis.get('trends', [])
     total = trend_analysis.get('total_articles', 0)
     
-    # Format trends for prompt
-    trends_text = ""
-    for trend in trends[:5]:  # Top 5 trends
-        trends_text += f"- {trend['theme_label']}: {trend['count']}/{total} articles ({trend['percentage']}%)\n"
+    clusters_text = ""
+    for trend in trends[:4]:
+        label = trend.get('theme_label', 'Trend')
+        count = trend.get('count', 0)
+        pct = trend.get('percentage', 0)
+        art_titles = [a.get('title', '') for a in trend.get('articles', [])[:4] if a.get('title')]
+        art_list = "\n  * " + "\n  * ".join(art_titles) if art_titles else ""
+        clusters_text += f"THEME: {label} ({count}/{total} signals, {pct}%)\nKey Signals:{art_list}\n\n"
     
-    prompt = f"""You're analyzing emerging trends in today's tech newsletter for {segment}.
+    prompt = f"""You are the Chief Intelligence Analyst for Brief Delights, writing a Weekly Macro Synthesis for senior engineering and technology leaders ({segment}).
 
-DETECTED THEMES:
-{trends_text}
+ANALYTICAL SIGNAL DATA (1,340+ feeds scanned over 7-day window, {total} curated articles analyzed):
+{clusters_text}
 
-Generate 1-2 concise trend observations in this format:
-- Start with "We're seeing..."
-- Be specific about what's emerging (not generic)
-- Connect to broader industry shifts when relevant
+TASK:
+Write a 2-paragraph executive macro analysis synthesizing what is shifting across these technical vectors.
 
-QUALITY EXAMPLES:
-✅ "We're seeing a shift from model training to agent orchestration, with 5/14 articles focusing on multi-agent platforms"
-✅ "Enterprise AI is moving from experimentation to production deployment, addressing authentication and compliance barriers"
+REQUIREMENTS:
+1. Paragraph 1: State the core underlying structural shift happening right now. Be specific, referencing actual technical patterns (e.g. inference-time parallel scaling, KV cache optimizations, telemetry standards, agentic state persistence, multi-cloud LLM routing).
+2. Paragraph 2: Explain the strategic consequence — what senior leaders or engineering teams must prepare for or adjust in their Q3/Q4 architecture roadmaps.
+3. Tone: Authoritative, crisp, 250-IQ, zero corporate fluff, no generic statements like "AI is evolving fast".
 
-❌ AVOID:
-- "AI is advancing rapidly"
-- "Lots of innovation happening"
-- Generic observations
-
-Output format: 1-2 sentences maximum, separated by newlines if multiple observations.
-"""
+Write ONLY the 2 paragraphs of synthesis:"""
     
     return prompt
+
 
 
 def synthesize_trend_narrative(trend_analysis: Dict, segment: str) -> str:
@@ -96,9 +99,10 @@ def synthesize_trend_narrative(trend_analysis: Dict, segment: str) -> str:
             messages=[
                 {"role": "user", "content": prompt}
             ],
-            max_tokens=150,
-            temperature=0.7
+            max_tokens=500,
+            temperature=0.6
         )
+
         
         narrative = response.choices[0].message.content.strip()
         return narrative

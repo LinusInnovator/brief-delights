@@ -7,10 +7,13 @@ Cost: $0 (keyword-based, no LLM)
 
 import json
 import sys
+import glob
+import re
 from pathlib import Path
 from datetime import datetime
 from collections import defaultdict
 from typing import Dict, List, Tuple
+
 
 # Trend keyword categories
 TREND_KEYWORDS = {
@@ -57,7 +60,16 @@ TREND_KEYWORDS = {
 }
 
 
+def clean_title(title: str) -> str:
+    """Strip raw HTML tags and extra whitespace from article titles"""
+    if not title:
+        return ""
+    cleaned = re.sub(r'<[^>]+>', '', str(title))
+    return re.sub(r'\s+', ' ', cleaned).strip()
+
+
 def extract_themes_from_article(article: Dict) -> List[str]:
+
     """
     Extract themes from a single article using keyword matching
     
@@ -156,24 +168,41 @@ def main():
     parser.add_argument('--date', default=datetime.now().strftime('%Y-%m-%d'))
     args = parser.parse_args()
     
-    # Load selected articles
     base_dir = Path(__file__).parent.parent
-    input_file = base_dir / '.tmp' / f'selected_articles_{args.segment}_{args.date}.json'
+    tmp_dir = base_dir / '.tmp'
     
-    if not input_file.exists():
-        print(f"❌ Error: {input_file} not found")
-        print(f"   Run select_stories.py first")
+    # Gather selected articles from all recent runs (past 7 days)
+    selection_files = sorted(glob.glob(str(tmp_dir / f"selected_articles_{args.segment}_*.json")), reverse=True)[:7]
+    
+    articles = []
+    seen_titles = set()
+    
+    for s_file in selection_files:
+        try:
+            with open(s_file, 'r', encoding='utf-8') as f:
+                sdata = json.load(f)
+            raw_arts = sdata.get('selected_articles', sdata.get('articles', []))
+            for a in raw_arts:
+                t = clean_title(a.get('title', ''))
+                if t and t not in seen_titles:
+                    seen_titles.add(t)
+                    a['title'] = t
+                    articles.append(a)
+        except Exception as e:
+            print(f"⚠️ Warning reading {s_file}: {e}")
+
+    if not articles:
+        input_file = tmp_dir / f'selected_articles_{args.segment}_{args.date}.json'
+        if input_file.exists():
+            with open(input_file) as f:
+                data = json.load(f)
+            articles = data.get('selected_articles', data.get('articles', []))
+    
+    if not articles:
+        print(f"❌ Error: No articles found for {args.segment}")
         sys.exit(1)
     
-    print(f"📊 Analyzing trends for {args.segment}")
-    print(f"   Input: {input_file}\n")
-    
-    with open(input_file) as f:
-        data = json.load(f)
-    
-    # Handle both old and new format
-    articles = data.get('selected_articles', data.get('articles', []))
-
+    print(f"📊 Analyzing 7-day trend pool for {args.segment} ({len(articles)} total curated articles)")
     
     # Detect trends
     trend_analysis = detect_trends(articles)
