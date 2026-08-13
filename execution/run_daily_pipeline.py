@@ -325,13 +325,16 @@ def run_phase_2(segments_data: dict) -> bool:
     
     segment_ids = list(segments_data.keys())
     
-    # STEP 6: Aggregate Weekly Trends
+    # STEP 6: Aggregate & Synthesize Weekly Trends
     log("\n" + "=" * 60)
-    log("STEP 6: Aggregating Weekly Trends", "INFO")
+    log("STEP 6: Aggregating & Synthesizing Weekly Trends", "INFO")
     log("=" * 60)
     for segment_id in ["builders", "leaders", "innovators"]:
         if not run_script("aggregate_weekly_trends.py", 30, [segment_id]):
             log(f"⚠️ Weekly aggregation failed for {segment_id}", "WARN")
+        run_script("detect_trends.py", 30, ["--segment", segment_id])
+        run_script("synthesize_trends.py", 60, ["--segment", segment_id])
+
     
     # STEP 7: Generate Social Media Teasers & Reddit Posts
     log("\n" + "=" * 60)
