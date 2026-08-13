@@ -226,6 +226,104 @@ We scan 1,340+ tech & AI articles daily across engineering, strategy, and fronti
 
 
 
+def generate_weekly_trend_posts(date_str: str) -> list:
+    """Generate weekly macro trend posts for social publisher & OmniCap ad packages"""
+    trend_posts = []
+    for seg in SEGMENTS:
+        segment_id = seg["id"]
+        segment_name = seg["name"]
+        segment_emoji = seg["emoji"]
+
+        insights_file = TMP_DIR / f"weekly_insights_{segment_id}_{date_str}.json"
+        if not insights_file.exists():
+            files = sorted(TMP_DIR.glob(f"weekly_insights_{segment_id}_*.json"), reverse=True)
+            insights_file = files[0] if files else None
+
+        if insights_file and insights_file.exists():
+            try:
+                with open(insights_file, "r", encoding="utf-8") as f:
+                    idata = json.load(f)
+                
+                title = f"Weekly Macro Shift: 3 Industry Trends in {segment_name}"
+                hook_headline = f"Macro Report: Top Trends Reshaping {segment_name}"
+                raw_trends = idata.get("synthesized_trends", ["Enterprise AI adoption accelerating", "Agentic memory replacing traditional vector search"])
+                trends_summary = "\n".join([f"• {t}" for t in raw_trends]) if isinstance(raw_trends, list) else str(raw_trends)
+                
+                pro_prompt = f"Executive 3D isometric dashboard showing macro trends in '{segment_name}', sleek dark glassmorphism, glowing gold and cyan data streams, 8k render"
+                archive_url = f"https://brief.delights.pro/archive/{date_str}-{segment_id}"
+                reddit_title = f"{segment_emoji} [Weekly Macro Trends] {segment_name} — Key Industry Synthesis ({date_str})"
+                reddit_body = f"""{title}
+
+Source: Brief Delights Weekly Synthesis | Category: {segment_name} | Date: {date_str}
+
+📌 WEEKLY MACRO SHIFTS
+{trends_summary}
+
+🎯 STRATEGIC IMPLICATION
+• Forces technology decision-makers to align Q3/Q4 roadmaps with emerging architecture standards.
+
+📰 ABOUT BRIEF DELIGHTS
+We synthesize daily and weekly intelligence for 1,340+ tech & AI leaders.
+
+• Read full weekly digest: {archive_url}
+• Join free for daily email briefs: https://brief.delights.pro"""
+
+                encoded_title = urllib.parse.quote(reddit_title)
+                encoded_body = urllib.parse.quote(reddit_body)
+
+                trend_posts.append({
+                    "segment": segment_id,
+                    "segment_name": segment_name,
+                    "segment_emoji": segment_emoji,
+                    "post_type": "weekly_trend",
+                    "article_title": title,
+                    "hook_headline": hook_headline,
+                    "key_takeaway": trends_summary,
+                    "why_it_matters": "Forces technology decision-makers to align roadmap with emerging standards.",
+                    "pro_image_prompt": pro_prompt,
+                    "reddit_title": reddit_title,
+                    "reddit_body": reddit_body,
+                    "reddit_submit_url": f"https://www.reddit.com/r/BriefDelights/submit?title={encoded_title}&text={encoded_body}",
+                    "twitter_share_url": f"https://twitter.com/intent/tweet?text={urllib.parse.quote(reddit_title)}&url={urllib.parse.quote(archive_url)}",
+                    "linkedin_share_url": f"https://www.linkedin.com/sharing/share-offsite/?url={urllib.parse.quote(archive_url)}",
+                    "archive_url": archive_url,
+                    "date": date_str
+                })
+            except Exception as e:
+                print(f"⚠️ Error formatting weekly trends for {segment_id}: {e}")
+
+    if not trend_posts:
+        for seg in SEGMENTS:
+            segment_id = seg["id"]
+            segment_name = seg["name"]
+            segment_emoji = seg["emoji"]
+            archive_url = f"https://brief.delights.pro/archive/{date_str}-{segment_id}"
+            title = f"Weekly Macro Synthesis: {segment_name} Insights"
+            reddit_title = f"{segment_emoji} [Weekly Trends] {segment_name} Synthesis ({date_str})"
+            reddit_body = f"""{title}\n\nWeekly macro trend analysis and strategic synthesis across {segment_name}.\n\n• Read full digest: {archive_url}"""
+            
+            trend_posts.append({
+                "segment": segment_id,
+                "segment_name": segment_name,
+                "segment_emoji": segment_emoji,
+                "post_type": "weekly_trend",
+                "article_title": title,
+                "hook_headline": f"Weekly Executive Briefing: {segment_name}",
+                "key_takeaway": "Key architectural and strategic shifts observed across 1,340+ daily feeds this week.",
+                "why_it_matters": "High-signal trend analysis for executive roadmap planning.",
+                "pro_image_prompt": f"Minimalist 3D data visualization of macro trends in {segment_name}, obsidian dark mode, glowing accents, 8k render",
+                "reddit_title": reddit_title,
+                "reddit_body": reddit_body,
+                "reddit_submit_url": f"https://www.reddit.com/r/BriefDelights/submit?title={urllib.parse.quote(reddit_title)}&text={urllib.parse.quote(reddit_body)}",
+                "twitter_share_url": f"https://twitter.com/intent/tweet?text={urllib.parse.quote(reddit_title)}&url={urllib.parse.quote(archive_url)}",
+                "linkedin_share_url": f"https://www.linkedin.com/sharing/share-offsite/?url={urllib.parse.quote(archive_url)}",
+                "archive_url": archive_url,
+                "date": date_str
+            })
+
+    return trend_posts
+
+
 def generate_and_save():
     """Main execution to generate and store social posts"""
     posts = []
@@ -235,14 +333,18 @@ def generate_and_save():
         articles, date_str = load_segment_articles(seg["id"])
         if articles:
             post = format_post(seg, articles[0], date_str)
+            post["post_type"] = "daily"
             posts.append(post)
             latest_date = date_str
+
+    weekly_trends = generate_weekly_trend_posts(latest_date)
 
     output_payload = {
         "success": True,
         "date": latest_date,
         "updated_at": datetime.now().isoformat(),
-        "posts": posts
+        "posts": posts,
+        "weekly_trends": weekly_trends
     }
 
     # 1. Save static JSON to landing/public/data/social_posts_latest.json
@@ -250,6 +352,7 @@ def generate_and_save():
     with open(out_file, "w", encoding="utf-8") as f:
         json.dump(output_payload, f, indent=2)
     print(f"✅ Saved static social breakdown file: {out_file}")
+
 
     # 2. Save to Supabase if credentials present
     supabase_url = os.getenv("NEXT_PUBLIC_SUPABASE_URL")

@@ -32,7 +32,9 @@ function getSegmentIcon(segment: string) {
 }
 
 export default function SocialPublisherPage() {
-  const [posts, setPosts] = useState<SocialPost[]>([]);
+  const [viewMode, setViewMode] = useState<'daily' | 'trend'>('daily');
+  const [dailyPosts, setDailyPosts] = useState<SocialPost[]>([]);
+  const [weeklyTrends, setWeeklyTrends] = useState<SocialPost[]>([]);
   const [availableDates, setAvailableDates] = useState<string[]>([]);
   const [selectedDate, setSelectedDate] = useState<string>('');
   const [activeDate, setActiveDate] = useState<string>('');
@@ -50,7 +52,8 @@ export default function SocialPublisherPage() {
       const res = await fetch(url);
       const data = await res.json();
       if (data.success) {
-        setPosts(data.posts || []);
+        setDailyPosts(data.posts || []);
+        setWeeklyTrends(data.weekly_trends || []);
         setActiveDate(data.date || '');
         if (Array.isArray(data.available_dates) && data.available_dates.length > 0) {
           setAvailableDates(data.available_dates);
@@ -62,6 +65,8 @@ export default function SocialPublisherPage() {
       setLoading(false);
     }
   }
+
+  const displayedPosts = viewMode === 'daily' ? dailyPosts : (weeklyTrends.length > 0 ? weeklyTrends : dailyPosts);
 
   function handleCopy(text: string, index: number) {
     navigator.clipboard.writeText(text);
@@ -92,15 +97,32 @@ export default function SocialPublisherPage() {
             </div>
 
             <div className="flex items-center gap-3">
+              {/* Mode Switcher Toggle */}
+              <div className="flex items-center p-1 bg-[#F5EFE8] border border-[#E5DCD3] rounded-xl text-xs font-semibold">
+                <button
+                  onClick={() => setViewMode('daily')}
+                  className={`px-4 py-2 rounded-lg transition ${viewMode === 'daily' ? 'bg-[#58111A] text-white shadow-sm' : 'text-[#8C6D2B] hover:text-[#58111A]'}`}
+                >
+                  ☀️ Daily Breakdowns
+                </button>
+                <button
+                  onClick={() => setViewMode('trend')}
+                  className={`px-4 py-2 rounded-lg transition ${viewMode === 'trend' ? 'bg-[#58111A] text-white shadow-sm' : 'text-[#8C6D2B] hover:text-[#58111A]'}`}
+                >
+                  📈 Sunday Macro Trends
+                </button>
+              </div>
+
               <button
                 onClick={() => fetchPosts(selectedDate)}
                 className="px-4 py-2 bg-white border border-[#E5DCD3] hover:border-[#58111A] text-xs font-semibold rounded-lg shadow-sm transition flex items-center gap-2 text-[#58111A]"
               >
                 <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
-                Refresh Posts
+                Refresh
               </button>
             </div>
           </div>
+
 
           {/* History Date Browser Bar */}
           <div className="bg-white border border-[#E5DCD3] rounded-xl p-4 shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-4">
@@ -149,19 +171,20 @@ export default function SocialPublisherPage() {
               <div className="inline-block w-8 h-8 border-3 border-[#58111A] border-t-transparent rounded-full animate-spin mb-3"></div>
               <p className="text-sm text-slate-500 font-mono">Loading strategic breakdowns for {activeDate || 'selected date'}...</p>
             </div>
-          ) : posts.length === 0 ? (
+          ) : displayedPosts.length === 0 ? (
             <div className="p-12 bg-white border border-[#E5DCD3] rounded-xl text-center">
               <div className="w-12 h-12 rounded-full bg-[#FAF8F5] border border-[#E5DCD3] flex items-center justify-center mx-auto mb-3 text-[#58111A]">
                 <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4"/></svg>
               </div>
-              <h3 className="font-serif text-lg font-bold text-[#121212]">No Posts Available For {activeDate}</h3>
+              <h3 className="font-serif text-lg font-bold text-[#121212]">No Posts Available For {activeDate} ({viewMode === 'daily' ? 'Daily' : 'Weekly Trends'})</h3>
               <p className="text-sm text-slate-500 mt-1 max-w-md mx-auto">
-                Select another date from the History Browser above or run the daily newsletter pipeline to generate today's content.
+                Select another date from the History Browser above or run the newsletter pipeline to generate content.
               </p>
             </div>
           ) : (
             <div className="space-y-8">
-              {posts.map((post, idx) => (
+              {displayedPosts.map((post, idx) => (
+
                 <div
                   key={`${post.segment}-${post.date}`}
                   className="bg-white border border-[#E5DCD3] rounded-xl shadow-sm overflow-hidden"

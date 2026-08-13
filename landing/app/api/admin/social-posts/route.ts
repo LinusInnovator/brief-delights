@@ -113,13 +113,15 @@ export async function GET(request: NextRequest) {
             success: true,
             date: fileContent.date || today,
             available_dates: availableDates,
-            posts: fileContent.posts
+            posts: fileContent.posts,
+            weekly_trends: fileContent.weekly_trends || []
           });
         }
       } catch (e) {
         console.error('Error reading static social_posts_latest.json:', e);
       }
     }
+
 
     // Attempt loading summaries or html for targetDate (or fallback to latest available)
     let posts: any[] = [];
