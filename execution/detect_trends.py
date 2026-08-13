@@ -112,8 +112,9 @@ def detect_trends(articles: List[Dict]) -> Dict:
     total_articles = len(articles)
     trends = []
     
+    min_count = 2 if total_articles >= 8 else 1
     for theme, count in theme_counts.items():
-        if count >= 2:  # Minimum 2 articles to be considered a trend
+        if count >= min_count:
             percentage = (count / total_articles * 100) if total_articles > 0 else 0
             trends.append({
                 'theme': theme,
@@ -122,6 +123,19 @@ def detect_trends(articles: List[Dict]) -> Dict:
                 'percentage': round(percentage, 1),
                 'articles': theme_articles[theme]
             })
+            
+    if not trends and theme_counts:
+        sorted_themes = sorted(theme_counts.items(), key=lambda x: x[1], reverse=True)
+        for theme, count in sorted_themes[:3]:
+            percentage = (count / total_articles * 100) if total_articles > 0 else 0
+            trends.append({
+                'theme': theme,
+                'theme_label': theme.replace('_', ' ').title(),
+                'count': count,
+                'percentage': round(percentage, 1),
+                'articles': theme_articles[theme]
+            })
+
     
     # Sort by count (descending)
     trends.sort(key=lambda x: x['count'], reverse=True)
