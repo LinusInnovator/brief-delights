@@ -198,6 +198,73 @@ def sanitize_text_content(text: str) -> str:
     return cleaned
 
 
+def format_newsletter_paragraphs(text: str) -> str:
+    """
+    Format raw article text or summary into clean HTML paragraphs, section subheadings, and bullet lists.
+    Prevents unindented walls of text in email newsletters.
+    """
+    if not text:
+        return ""
+
+    cleaned = html.unescape(str(text))
+    cleaned = re.sub(r'<!--.*?-->', '', cleaned, flags=re.DOTALL)
+    cleaned = re.sub(r'!\[[^\]]*\]\([^\)]*\)', '', cleaned)
+    cleaned = re.sub(r'!\[[^\]]*\]', '', cleaned)
+    cleaned = re.sub(r'\[([^\]]+)\]\([^\)]*\)', r'\1', cleaned)
+
+    # Normalize line endings
+    cleaned = cleaned.replace('\r\n', '\n').replace('\r', '\n')
+
+    # Detect sub-headings or section headers
+    known_headers = [
+        "Motivation", "Overview", "Background", "From Fixed Parallelism to Adaptive Control",
+        "Inference Systems for Adaptive Parallelism", "Training Models to Use Parallelism",
+        "Evaluation and Open Questions", "Open Questions", "Key Takeaways", "Conclusion"
+    ]
+    for h in known_headers:
+        cleaned = re.sub(r'(?i)(?<=[\.\n\s])(' + re.escape(h) + r')(?=[\.\n\s]|\Z)', r'\n\n### \1\n\n', cleaned)
+
+    # Split into raw blocks by double newlines or structural headers
+    raw_blocks = [b.strip() for b in re.split(r'\n\s*\n', cleaned) if b.strip()]
+    if len(raw_blocks) <= 1:
+        raw_blocks = [b.strip() for b in re.split(r'(?:\.\s+)(?=[A-Z][a-z]+\s*:|\b(?:Motivation|Overview|Figure \d+:|Recent variants|From |Simple fork|Heuristic-based|Multiverse|ThreadWeaver|Accuracy is|Open Questions)\b)', cleaned) if b.strip()]
+
+    formatted_html_blocks = []
+    
+    for block in raw_blocks:
+        if block.startswith("### "):
+            header_text = block.replace("### ", "").strip()
+            formatted_html_blocks.append(
+                f'<h4 style="margin: 18px 0 6px 0; font-family: Georgia, serif; font-size: 16px; line-height: 22px; font-weight: 700; color: #58111A;">{header_text}</h4>'
+            )
+            continue
+        
+        # Check if block contains list items (- line, • line, 1. line)
+        lines = block.split('\n')
+        list_items = []
+        is_list = False
+        for line in lines:
+            line_str = line.strip()
+            if re.match(r'^[\-\•\*]\s+', line_str) or re.match(r'^\d+[\.\)]\s+', line_str):
+                is_list = True
+                item_text = re.sub(r'^([\-\•\*]|\d+[\.\)])\s+', '', line_str)
+                list_items.append(f'<li style="margin-bottom: 6px; color: #334155;">{item_text}</li>')
+
+        if is_list and list_items:
+            formatted_html_blocks.append(
+                f'<ul style="margin: 8px 0 12px 0; padding-left: 20px; font-family: -apple-system, sans-serif; font-size: 14px; line-height: 22px;">{"".join(list_items)}</ul>'
+            )
+            continue
+
+        p_text = re.sub(r'\s+', ' ', block).strip()
+        if p_text:
+            formatted_html_blocks.append(
+                f'<p class="body-text" style="margin: 0 0 12px 0; font-family: -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, sans-serif; font-size: 15px; line-height: 24px; color: #334155;">{p_text}</p>'
+            )
+
+    return "\n".join(formatted_html_blocks)
+
+
 def fix_read_times(articles: list, log_file: Path) -> list:
     """Fix missing or zero read times, enforce robust 2-sentence summaries, and guarantee strategic takeaways."""
     for article in articles:
@@ -205,6 +272,7 @@ def fix_read_times(articles: list, log_file: Path) -> list:
         if article.get('title'):
             article['title'] = sanitize_text_content(article['title'])
             
+        raw_summary_source = article.get('summary', '') or article.get('description', '') or article.get('raw_content', '')
         summary = sanitize_text_content(article.get('summary', ''))
         description = sanitize_text_content(article.get('description', ''))
         why = sanitize_text_content(article.get('why_this_matters', '') or article.get('selection_reason', ''))
@@ -218,6 +286,9 @@ def fix_read_times(articles: list, log_file: Path) -> list:
             title_text = article.get('title', 'this breakthrough').rstrip('.')
             article['summary'] = f"Analyzes key technical developments and market implications surrounding {title_text}. Provides essential context for enterprise engineering teams."
             log(f"  📝 Synthesized rich summary for: '{title_text[:40]}'", log_file)
+
+        # Generate structured summary HTML with paragraphs, section headers, and lists
+        article['summary_html'] = format_newsletter_paragraphs(raw_summary_source or article['summary'])
 
         # Strip duplicate "Why this matters:" prefixes and enforce takeaway (minimum 35 characters)
         why_clean = re.sub(r'^(why\s+this\s+matters:?\s*)+', '', why, flags=re.IGNORECASE).strip()
@@ -236,6 +307,7 @@ def fix_read_times(articles: list, log_file: Path) -> list:
         article['read_time_minutes'] = calculate_read_time(word_count)
         log(f"  ⏱️ Read time fix: '{article['title'][:40]}' → {article['read_time_minutes']} min ({word_count} words)", log_file)
     return articles
+
 
 
 def get_dynamic_scanned_count(segment_id: str, date: str) -> str:

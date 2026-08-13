@@ -159,9 +159,14 @@
                     </h3>
 
                     <!-- Article Summary Body -->
-                    <p class="body-text" style="margin: 0 0 14px 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 15px; line-height: 24px; color: #334155;">
-                      {{ article.summary }}
-                    </p>
+                    {% if article.summary_html %}
+                      {{ article.summary_html | safe }}
+                    {% else %}
+                      <p class="body-text" style="margin: 0 0 14px 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 15px; line-height: 24px; color: #334155;">
+                        {{ article.summary }}
+                      </p>
+                    {% endif %}
+
 
                     {% if article.why_this_matters %}
                     <!-- Strategic Takeaway Box -->
