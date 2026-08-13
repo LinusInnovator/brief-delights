@@ -152,8 +152,8 @@ def detect_source_type(url: str, source: str, category: str) -> str:
     return 'primary' if 'blog' in url_lower or 'research' in url_lower else 'secondary'
 
 
-def fetch_feed(feed_url: str, category: str, segment: str, lookback_hours: int = 24) -> List[Dict]:
-    """Fetch and parse a single RSS feed with custom user-agent and path resolution"""
+def fetch_feed(feed_url: str, category: str, segment: str, lookback_hours: int = 72) -> List[Dict]:
+    """Fetch and parse a single RSS feed with browser headers and Google News fallback on 403s"""
     articles = []
     
     # Resolve synthetic local custom feeds
@@ -163,21 +163,43 @@ def fetch_feed(feed_url: str, category: str, segment: str, lookback_hours: int =
         if local_file.exists():
             feed_url = str(local_file)
     
+    headers = {
+        'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36',
+        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+        'Accept-Language': 'en-US,en;q=0.9',
+        'Referer': 'https://www.google.com/'
+    }
+    
+    resp_content = None
     try:
-        # Fetch HTTP/HTTPS feeds using requests with custom User-Agent to avoid 403 blocks
         if feed_url.startswith("http://") or feed_url.startswith("https://"):
-            headers = {
-                'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
-            }
             try:
-                resp = requests.get(feed_url, headers=headers, timeout=8)
+                resp = requests.get(feed_url, headers=headers, timeout=10)
                 if resp.status_code == 200:
-                    feed = feedparser.parse(resp.content)
+                    resp_content = resp.content
                 else:
-                    log(f"⚠️ HTTP {resp.status_code} fetching feed {feed_url}")
-                    return articles
+                    log(f"⚠️ HTTP {resp.status_code} fetching feed {feed_url} — attempting Google News RSS fallback...")
             except Exception as http_err:
-                log(f"⚠️ Request failed for {feed_url}: {http_err}")
+                log(f"⚠️ Request failed for {feed_url}: {http_err} — attempting Google News RSS fallback...")
+            
+            # Google News RSS Fallback if primary URL failed or returned 403/404
+            if not resp_content:
+                from urllib.parse import urlparse, quote
+                domain = urlparse(feed_url).netloc.replace("www.", "")
+                brand = domain.split(".")[0]
+                fallback_url = f"https://news.google.com/rss/search?q={quote(brand)}+AI+when:3d"
+                try:
+                    fb_resp = requests.get(fallback_url, headers=headers, timeout=10)
+                    if fb_resp.status_code == 200:
+                        resp_content = fb_resp.content
+                        log(f"🛡️ Google News RSS fallback succeeded for {brand}")
+                except Exception as fb_err:
+                    log(f"⚠️ Google News fallback failed for {brand}: {fb_err}")
+                    return articles
+            
+            if resp_content:
+                feed = feedparser.parse(resp_content)
+            else:
                 return articles
         else:
             feed = feedparser.parse(feed_url)
@@ -189,14 +211,12 @@ def fetch_feed(feed_url: str, category: str, segment: str, lookback_hours: int =
         
         # Extract articles
         for entry in feed.entries:
-            # Parse publication date
             pub_date = parse_date(entry.get('published_parsed') or entry.get('updated_parsed'))
             
-            # Filter by date
+            # Filter by date window (allow up to 72h for rolling pool)
             if not is_recent(pub_date, lookback_hours):
                 continue
             
-            # Extract article data
             article = {
                 "id": generate_article_id(entry.link),
                 "title": entry.get('title', 'No Title'),
@@ -205,8 +225,8 @@ def fetch_feed(feed_url: str, category: str, segment: str, lookback_hours: int =
                 "description": entry.get('summary', ''),
                 "source": extract_source_from_url(entry.link, feed.feed.get('title', '')),
                 "category": category,
-                "segment": segment,  # Tag with segment
-                "source_type": detect_source_type(entry.link, feed.feed.get('title', ''), category),  # Detect primary vs secondary
+                "segment": segment,
+                "source_type": detect_source_type(entry.link, feed.feed.get('title', ''), category),
                 "raw_content": entry.get('content', [{}])[0].get('value', '') if entry.get('content') else entry.get('summary', '')
             }
             
@@ -218,6 +238,7 @@ def fetch_feed(feed_url: str, category: str, segment: str, lookback_hours: int =
         log(f"❌ Error fetching {feed_url}: {str(e)}")
     
     return articles
+
 
 
 def aggregate_all_feeds() -> List[Dict]:
@@ -323,6 +344,60 @@ def aggregate_all_feeds() -> List[Dict]:
     return deduplicated
 
 
+ROLLING_BUFFER_FILE = TMP_DIR / "raw_articles_rolling.json"
+
+
+def sync_rolling_buffer(fresh_articles: List[Dict]) -> List[Dict]:
+    """Sync rolling 72-hour article pool buffer to ensure high coverage even on slow news days"""
+    existing_articles = []
+    if ROLLING_BUFFER_FILE.exists():
+        try:
+            with open(ROLLING_BUFFER_FILE, 'r') as f:
+                data = json.load(f)
+                existing_articles = data.get('articles', [])
+        except Exception as e:
+            log(f"⚠️ Warning reading rolling buffer: {e}")
+
+    # Combine fresh and existing
+    combined = {a['id']: a for a in existing_articles}
+    for a in fresh_articles:
+        combined[a['id']] = a
+
+    # Filter out articles older than 72 hours
+    cutoff = datetime.now() - timedelta(hours=72)
+    valid_pool = []
+    for a in combined.values():
+        try:
+            pub_dt = datetime.fromisoformat(a['published_date'].replace('Z', '+00:00'))
+            if pub_dt.tzinfo is not None:
+                pub_dt = pub_dt.replace(tzinfo=None)
+            if pub_dt > cutoff:
+                valid_pool.append(a)
+        except Exception:
+            valid_pool.append(a)
+
+    valid_pool.sort(key=lambda x: x.get('published_date', ''), reverse=True)
+
+    # Save updated rolling buffer
+    try:
+        with open(ROLLING_BUFFER_FILE, 'w') as f:
+            json.dump({
+                "updated_at": datetime.now().isoformat(),
+                "article_count": len(valid_pool),
+                "articles": valid_pool
+            }, f, indent=2)
+        log(f"🛡️ [Rolling Buffer] Synced {len(valid_pool)} articles in 72h pool buffer")
+    except Exception as err:
+        log(f"⚠️ Failed saving rolling buffer: {err}")
+
+    # If today's fresh count is low (< 20), return full rolling valid_pool
+    if len(fresh_articles) < 20 and len(valid_pool) > len(fresh_articles):
+        log(f"⚡ [Rolling Buffer Guard] Fresh harvest count is low ({len(fresh_articles)}). Supplementing with 72h rolling pool ({len(valid_pool)} total).")
+        return valid_pool
+
+    return fresh_articles
+
+
 def save_articles(articles: List[Dict]):
     """Save articles to JSON file"""
     output_data = {
@@ -345,6 +420,9 @@ def main():
         # Aggregate feeds
         articles = aggregate_all_feeds()
         
+        # Sync with 72-hour rolling buffer pool
+        articles = sync_rolling_buffer(articles)
+
         # Save results
         save_articles(articles)
         
@@ -353,6 +431,7 @@ def main():
         log(f"\n⏱️  Total execution time: {elapsed:.2f} seconds")
         
         return True
+
         
     except Exception as e:
         log(f"\n❌ FATAL ERROR: {str(e)}")
