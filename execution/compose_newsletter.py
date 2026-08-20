@@ -215,19 +215,17 @@ def format_newsletter_paragraphs(text: str) -> str:
     # Normalize line endings
     cleaned = cleaned.replace('\r\n', '\n').replace('\r', '\n')
 
-    # Detect sub-headings or section headers
+    # Detect sub-headings or section headers (only match when on their own line or preceded by double newline)
     known_headers = [
         "Motivation", "Overview", "Background", "From Fixed Parallelism to Adaptive Control",
         "Inference Systems for Adaptive Parallelism", "Training Models to Use Parallelism",
         "Evaluation and Open Questions", "Open Questions", "Key Takeaways", "Conclusion"
     ]
     for h in known_headers:
-        cleaned = re.sub(r'(?i)(?<=[\.\n\s])(' + re.escape(h) + r')(?=[\.\n\s]|\Z)', r'\n\n### \1\n\n', cleaned)
+        cleaned = re.sub(r'(?i)(?<=\n)(' + re.escape(h) + r')(?=\n|\Z)', r'\n\n### \1\n\n', cleaned)
 
-    # Split into raw blocks by double newlines or structural headers
+    # Split into raw blocks by double newlines
     raw_blocks = [b.strip() for b in re.split(r'\n\s*\n', cleaned) if b.strip()]
-    if len(raw_blocks) <= 1:
-        raw_blocks = [b.strip() for b in re.split(r'(?:\.\s+)(?=[A-Z][a-z]+\s*:|\b(?:Motivation|Overview|Figure \d+:|Recent variants|From |Simple fork|Heuristic-based|Multiverse|ThreadWeaver|Accuracy is|Open Questions)\b)', cleaned) if b.strip()]
 
     formatted_html_blocks = []
     
@@ -235,7 +233,7 @@ def format_newsletter_paragraphs(text: str) -> str:
         if block.startswith("### "):
             header_text = block.replace("### ", "").strip()
             formatted_html_blocks.append(
-                f'<h4 style="margin: 18px 0 6px 0; font-family: Georgia, serif; font-size: 16px; line-height: 22px; font-weight: 700; color: #58111A;">{header_text}</h4>'
+                f'<h4 style="margin: 18px 0 6px 0; font-family: Georgia, serif; font-size: 16px; line-height: 22px; font-weight: 700; color: #58111A; -webkit-text-size-adjust: 100%; text-size-adjust: 100%;">{header_text}</h4>'
             )
             continue
         
@@ -248,21 +246,22 @@ def format_newsletter_paragraphs(text: str) -> str:
             if re.match(r'^[\-\•\*]\s+', line_str) or re.match(r'^\d+[\.\)]\s+', line_str):
                 is_list = True
                 item_text = re.sub(r'^([\-\•\*]|\d+[\.\)])\s+', '', line_str)
-                list_items.append(f'<li style="margin-bottom: 6px; color: #334155;">{item_text}</li>')
+                list_items.append(f'<li style="margin-bottom: 6px; color: #334155; -webkit-text-size-adjust: 100%; text-size-adjust: 100%;">{item_text}</li>')
 
         if is_list and list_items:
             formatted_html_blocks.append(
-                f'<ul style="margin: 8px 0 12px 0; padding-left: 20px; font-family: -apple-system, sans-serif; font-size: 14px; line-height: 22px;">{"".join(list_items)}</ul>'
+                f'<ul style="margin: 8px 0 12px 0; padding-left: 20px; font-family: -apple-system, sans-serif; font-size: 14px; line-height: 22px; -webkit-text-size-adjust: 100%; text-size-adjust: 100%;">{"".join(list_items)}</ul>'
             )
             continue
 
         p_text = re.sub(r'\s+', ' ', block).strip()
         if p_text:
             formatted_html_blocks.append(
-                f'<p class="body-text" style="margin: 0 0 12px 0; font-family: -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, sans-serif; font-size: 15px; line-height: 24px; color: #334155;">{p_text}</p>'
+                f'<p class="body-text" style="margin: 0 0 12px 0; font-family: -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, sans-serif; font-size: 15px; line-height: 24px; color: #334155; -webkit-text-size-adjust: 100%; text-size-adjust: 100%;">{p_text}</p>'
             )
 
     return "\n".join(formatted_html_blocks)
+
 
 
 def fix_read_times(articles: list, log_file: Path) -> list:

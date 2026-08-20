@@ -5,10 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{{ newsletter_name }} — {{ segment_name }}</title>
   <style type="text/css">
-    /* Reset & Base */
-    body, table, td, p, a, li, blockquote {
-      -webkit-text-size-adjust: 100%;
-      -ms-text-size-adjust: 100%;
+    /* Universal Mobile Text-Size Adjust Reset & Outlook Exact Line Height */
+    html, body, table, td, p, a, li, blockquote, h1, h2, h3, h4, h5, h6, span, div {
+      -webkit-text-size-adjust: 100% !important;
+      -ms-text-size-adjust: 100% !important;
+      text-size-adjust: 100% !important;
+      mso-line-height-rule: exactly;
     }
     body {
       margin: 0 !important;
@@ -35,7 +37,7 @@
     }
   </style>
 </head>
-<body style="margin: 0; padding: 0; background-color: #FAF8F5;" class="email-bg">
+<body style="margin: 0; padding: 0; background-color: #FAF8F5; -webkit-text-size-adjust: 100%; text-size-adjust: 100%;" class="email-bg">
 
   <!-- Top Accent Bar -->
   <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="background-color: #58111A;">
@@ -54,7 +56,7 @@
           
           <!-- Header Masthead -->
           <tr>
-            <td align="center" style="padding-bottom: 24px; border-b: 1px solid #E5DCD3;">
+            <td align="center" style="padding-bottom: 24px; border-bottom: 1px solid #E5DCD3;">
               <table role="presentation" cellspacing="0" cellpadding="0" border="0">
                 <tr>
                   <td align="center" style="padding-bottom: 12px;">
@@ -66,7 +68,7 @@
                 <tr>
                   <td align="center">
                     <a href="{{ website_url }}" target="_blank" style="text-decoration: none; color: #121212;">
-                      <h1 class="header-title" style="margin: 0; font-family: Georgia, 'Times New Roman', serif; font-size: 26px; line-height: 32px; font-weight: 700; letter-spacing: -0.5px; color: #121212; text-align: center;">
+                      <h1 class="header-title" style="margin: 0; font-family: Georgia, 'Times New Roman', serif; font-size: 26px; line-height: 34px; font-weight: 700; letter-spacing: -0.5px; color: #121212; text-align: center; -webkit-text-size-adjust: 100%; text-size-adjust: 100%;">
                         BRIEF DELIGHTS
                       </h1>
                     </a>
@@ -74,9 +76,9 @@
                 </tr>
                 <tr>
                   <td align="center" style="padding-top: 6px;">
-                    <span style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 11px; line-height: 14px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: #8C6D2B; display: inline-block;">
+                    <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 11px; line-height: 16px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: #8C6D2B; text-align: center; display: block; -webkit-text-size-adjust: 100%; text-size-adjust: 100%;">
                       KNOWLEDGE, REFINED &bull; {{ segment_name }} &bull; {{ formatted_date }}
-                    </span>
+                    </div>
                   </td>
                 </tr>
               </table>
@@ -88,7 +90,7 @@
             <td style="padding: 16px 0 24px 0;">
               <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="background-color: #F4EFEB; border: 1px solid #E5DCD3; border-radius: 10px;">
                 <tr>
-                  <td style="padding: 12px 16px; text-align: center; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 12px; line-height: 16px; color: #58111A; font-weight: 600;">
+                  <td style="padding: 12px 16px; text-align: center; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 12px; line-height: 18px; color: #58111A; font-weight: 600; -webkit-text-size-adjust: 100%; text-size-adjust: 100%;">
                     📊 Scanned <strong>{{ total_scanned }}</strong> articles &bull; Selected top <strong>{{ total_selected }}</strong> role-critical insights for today.
                   </td>
                 </tr>
@@ -100,16 +102,16 @@
           <!-- Contrarian Insight Block -->
           <tr>
             <td style="padding-bottom: 24px;">
-              <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="background-color: #3D0A11; border-radius: 12px; color: #ffffff;">
+              <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="background-color: #3D0A11; border-radius: 12px; color: #ffffff; width: 100%;">
                 <tr>
                   <td style="padding: 20px;">
-                    <span style="font-family: -apple-system, BlinkMacSystemFont, sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: #C5A059; display: block; margin-bottom: 8px;">
+                    <div style="font-family: -apple-system, BlinkMacSystemFont, sans-serif; font-size: 11px; line-height: 15px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: #C5A059; margin-bottom: 8px; display: block; -webkit-text-size-adjust: 100%; text-size-adjust: 100%;">
                       🤔 CONTRARIAN TAKEAWAY
-                    </span>
-                    <h3 style="margin: 0 0 10px 0; font-family: Georgia, serif; font-size: 18px; line-height: 24px; color: #ffffff;">
+                    </div>
+                    <h3 style="margin: 0 0 10px 0; font-family: Georgia, serif; font-size: 18px; line-height: 25px; color: #ffffff; font-weight: 700; -webkit-text-size-adjust: 100%; text-size-adjust: 100%;">
                       {{ contrarian_section.title }}
                     </h3>
-                    <p style="margin: 0; font-family: -apple-system, sans-serif; font-size: 14px; line-height: 20px; color: #e2e8f0;">
+                    <p style="margin: 0; font-family: -apple-system, BlinkMacSystemFont, sans-serif; font-size: 14px; line-height: 22px; color: #e2e8f0; -webkit-text-size-adjust: 100%; text-size-adjust: 100%;">
                       {{ contrarian_section.body }}
                     </p>
                   </td>
@@ -123,11 +125,12 @@
           {% for section in sections %}
           <tr>
             <td style="padding-top: 12px; padding-bottom: 8px;">
-              <h2 style="margin: 0; font-family: Georgia, 'Times New Roman', serif; font-size: 20px; line-height: 26px; font-weight: 700; color: #58111A; border-bottom: 2px solid #58111A; padding-bottom: 6px;">
+              <h2 style="margin: 0; font-family: Georgia, 'Times New Roman', serif; font-size: 20px; line-height: 28px; font-weight: 700; color: #58111A; border-bottom: 2px solid #58111A; padding-bottom: 6px; -webkit-text-size-adjust: 100%; text-size-adjust: 100%;">
                 {{ section.category }}
               </h2>
             </td>
           </tr>
+
 
           {% for article in section.articles %}
           <!-- Single Article Card -->
