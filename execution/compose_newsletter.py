@@ -170,7 +170,7 @@ import html
 def sanitize_text_content(text: str) -> str:
     """
     Bulletproof content sanitizer for newsletter text fields (title, summary, why_this_matters).
-    Completely eliminates leaked Markdown images (![alt](url)), raw HTML tags (<img...>, <p...>, etc),
+    Completely eliminates leaked Markdown images (![alt](url)), raw HTML images (<img...>), figures,
     HTML comments (<!--...-->), and unescaped HTML entities.
     """
     if not text:
@@ -182,17 +182,23 @@ def sanitize_text_content(text: str) -> str:
     # 2. Strip HTML comments (e.g. <!-- Strategic Takeaway Box -->)
     cleaned = re.sub(r'<!--.*?-->', '', cleaned, flags=re.DOTALL)
     
-    # 3. Strip Markdown images: ![alt](url) and ![alt]
+    # 3. Strip figure, picture, svg, and img tags completely
+    cleaned = re.sub(r'<figure[^>]*>.*?</figure>', '', cleaned, flags=re.DOTALL | re.IGNORECASE)
+    cleaned = re.sub(r'<picture[^>]*>.*?</picture>', '', cleaned, flags=re.DOTALL | re.IGNORECASE)
+    cleaned = re.sub(r'<svg[^>]*>.*?</svg>', '', cleaned, flags=re.DOTALL | re.IGNORECASE)
+    cleaned = re.sub(r'<img[^>]*>', '', cleaned, flags=re.IGNORECASE)
+    
+    # 4. Strip Markdown images: ![alt](url) and ![alt]
     cleaned = re.sub(r'!\[[^\]]*\]\([^\)]*\)', '', cleaned)
     cleaned = re.sub(r'!\[[^\]]*\]', '', cleaned)
     
-    # 4. Strip Markdown links: [link text](url) -> keep link text
+    # 5. Strip Markdown links: [link text](url) -> keep link text
     cleaned = re.sub(r'\[([^\]]+)\]\([^\)]*\)', r'\1', cleaned)
     
-    # 5. Strip ALL HTML tags (<img...>, </p>, <table...>, etc.)
+    # 6. Strip ALL HTML tags (<img...>, </p>, <table...>, etc.)
     cleaned = re.sub(r'<[^>]+>', '', cleaned)
     
-    # 6. Collapse whitespace and strip leading/trailing quotes or spaces
+    # 7. Collapse whitespace and strip leading/trailing quotes or spaces
     cleaned = re.sub(r'\s+', ' ', cleaned).strip()
     
     return cleaned
@@ -201,13 +207,20 @@ def sanitize_text_content(text: str) -> str:
 def format_newsletter_paragraphs(text: str) -> str:
     """
     Format raw article text or summary into clean HTML paragraphs, section subheadings, and bullet lists.
-    Prevents unindented walls of text in email newsletters.
+    Prevents unindented walls of text and leaked raw images in email newsletters.
     """
     if not text:
         return ""
 
     cleaned = html.unescape(str(text))
     cleaned = re.sub(r'<!--.*?-->', '', cleaned, flags=re.DOTALL)
+    
+    # Strip figure, picture, svg, and img tags completely to prevent giant diagram leakage
+    cleaned = re.sub(r'<figure[^>]*>.*?</figure>', '', cleaned, flags=re.DOTALL | re.IGNORECASE)
+    cleaned = re.sub(r'<picture[^>]*>.*?</picture>', '', cleaned, flags=re.DOTALL | re.IGNORECASE)
+    cleaned = re.sub(r'<svg[^>]*>.*?</svg>', '', cleaned, flags=re.DOTALL | re.IGNORECASE)
+    cleaned = re.sub(r'<img[^>]*>', '', cleaned, flags=re.IGNORECASE)
+
     cleaned = re.sub(r'!\[[^\]]*\]\([^\)]*\)', '', cleaned)
     cleaned = re.sub(r'!\[[^\]]*\]', '', cleaned)
     cleaned = re.sub(r'\[([^\]]+)\]\([^\)]*\)', r'\1', cleaned)
@@ -232,6 +245,8 @@ def format_newsletter_paragraphs(text: str) -> str:
     for block in raw_blocks:
         if block.startswith("### "):
             header_text = block.replace("### ", "").strip()
+            # Clean any remaining tags inside header
+            header_text = re.sub(r'<[^>]+>', '', header_text)
             formatted_html_blocks.append(
                 f'<h4 style="margin: 18px 0 6px 0; font-family: Georgia, serif; font-size: 16px; line-height: 22px; font-weight: 700; color: #58111A; -webkit-text-size-adjust: 100%; text-size-adjust: 100%;">{header_text}</h4>'
             )
@@ -246,6 +261,7 @@ def format_newsletter_paragraphs(text: str) -> str:
             if re.match(r'^[\-\•\*]\s+', line_str) or re.match(r'^\d+[\.\)]\s+', line_str):
                 is_list = True
                 item_text = re.sub(r'^([\-\•\*]|\d+[\.\)])\s+', '', line_str)
+                item_text = re.sub(r'<[^>]+>', '', item_text)
                 list_items.append(f'<li style="margin-bottom: 6px; color: #334155; -webkit-text-size-adjust: 100%; text-size-adjust: 100%;">{item_text}</li>')
 
         if is_list and list_items:
@@ -255,6 +271,8 @@ def format_newsletter_paragraphs(text: str) -> str:
             continue
 
         p_text = re.sub(r'\s+', ' ', block).strip()
+        # Strip any remaining unhandled HTML tags from paragraph
+        p_text = re.sub(r'<[^>]+>', '', p_text)
         if p_text:
             formatted_html_blocks.append(
                 f'<p class="body-text" style="margin: 0 0 12px 0; font-family: -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, sans-serif; font-size: 15px; line-height: 24px; color: #334155; -webkit-text-size-adjust: 100%; text-size-adjust: 100%;">{p_text}</p>'
