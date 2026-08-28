@@ -57,14 +57,22 @@ export async function GET(request: NextRequest) {
                 });
         }
 
-        // Redirect safely to actual destination URL (302 Found)
-        return NextResponse.redirect(parsedUrl.href, 302);
+        // Clean redirect without forwarding tracking query parameters to destination URL
+        return new Response(null, {
+            status: 302,
+            headers: {
+                'Location': parsedUrl.href,
+                'Cache-Control': 'no-store, no-cache, must-revalidate, proxy-revalidate',
+                'Pragma': 'no-cache',
+                'Expires': '0',
+            },
+        });
 
     } catch (error) {
         console.error('Track redirect error:', error);
-        return NextResponse.json(
-            { error: 'Internal server error' },
-            { status: 500 }
+        return new Response(
+            JSON.stringify({ error: 'Internal server error' }),
+            { status: 500, headers: { 'Content-Type': 'application/json' } }
         );
     }
 }
