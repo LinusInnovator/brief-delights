@@ -1,70 +1,72 @@
-import { NextRequest, NextResponse } from 'next/server';
+import { NextResponse } from 'next/server';
 
-/**
- * Robust Daily Cron Trigger Endpoint
- * 
- * Invoked by Vercel Cron or external scheduler (e.g. Cron-Job.org / Upstash) at 06:00 UTC.
- * Triggers GitHub Actions workflow instantly via GitHub Repository Dispatch API,
- * bypassing GitHub's native cron queue delays.
- */
+export const dynamic = 'force-dynamic';
 
-export async function GET(request: NextRequest) {
-    try {
-        const authHeader = request.headers.get('authorization');
-        const cronSecret = process.env.CRON_SECRET;
-
-        // Verify Vercel Cron or secret authorization if configured
-        if (cronSecret && authHeader !== `Bearer ${cronSecret}`) {
-            return NextResponse.json({ error: 'Unauthorized cron request' }, { status: 401 });
-        }
-
-        const githubToken = process.env.GH_PAT_TOKEN || process.env.GITHUB_TOKEN;
-
-        if (!githubToken) {
-            console.error('Missing GH_PAT_TOKEN environment variable for GitHub dispatch');
-            return NextResponse.json({
-                warning: 'GH_PAT_TOKEN missing on server — falling back to internal trigger log',
-                timestamp: new Date().toISOString()
-            }, { status: 200 });
-        }
-
-        // Send repository_dispatch event to GitHub API
-        const ghResponse = await fetch('https://api.github.com/repos/LinusInnovator/brief-delights/dispatches', {
-            method: 'POST',
-            headers: {
-                'Accept': 'application/vnd.github.v3+json',
-                'Authorization': `Bearer ${githubToken}`,
-                'Content-Type': 'application/json',
-                'User-Agent': 'Brief-Delights-Cron-Trigger',
-            },
-            body: JSON.stringify({
-                event_type: 'trigger-daily-newsletter',
-                client_payload: {
-                    triggered_at: new Date().toISOString(),
-                    source: 'vercel-cron-dispatcher'
-                }
-            })
-        });
-
-        if (ghResponse.ok || ghResponse.status === 204) {
-            return NextResponse.json({
-                success: true,
-                message: 'GitHub Actions workflow triggered instantly via repository_dispatch',
-                status: ghResponse.status,
-                timestamp: new Date().toISOString()
-            });
-        }
-
-        const ghError = await ghResponse.text();
-        console.error('GitHub dispatch failed:', ghError);
-        return NextResponse.json({
-            error: 'GitHub dispatch failed',
-            details: ghError,
-            status: ghResponse.status
-        }, { status: 500 });
-
-    } catch (error: any) {
-        console.error('Cron trigger error:', error);
-        return NextResponse.json({ error: error.message || 'Internal server error' }, { status: 500 });
+export async function GET(request: Request) {
+  try {
+    const authHeader = request.headers.get('authorization');
+    const cronSecret = process.env.CRON_SECRET;
+    
+    // Check cron authorization if configured
+    if (cronSecret && authHeader !== `Bearer ${cronSecret}`) {
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
+
+    const today = new Date().toISOString().split('T')[0];
+    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://brief.delights.pro';
+    const leadersUrl = `${baseUrl}/newsletters/newsletter_leaders_${today}.html`;
+
+    // Check if today's newsletter is already published
+    const checkRes = await fetch(leadersUrl, { method: 'HEAD', cache: 'no-store' });
+    if (checkRes.ok) {
+      return NextResponse.json({
+        status: 'OK',
+        message: `Today's dispatches (${today}) are already published. No backup trigger required.`,
+        today,
+      });
+    }
+
+    // Trigger GitHub repository_dispatch to wake up pipeline
+    const githubToken = process.env.GITHUB_PAT || process.env.INTERNAL_GOD_KEY;
+    if (!githubToken) {
+      return NextResponse.json({
+        status: 'WARNING',
+        message: `Today's dispatches missing for ${today}, but GITHUB_PAT is not set. Unable to auto-trigger dispatch.`,
+      });
+    }
+
+    const dispatchRes = await fetch(
+      'https://api.github.com/repos/LinusInnovator/brief-delights/dispatches',
+      {
+        method: 'POST',
+        headers: {
+          Authorization: `Bearer ${githubToken}`,
+          Accept: 'application/vnd.github.v3+json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          event_type: 'trigger-daily-newsletter',
+          client_payload: { source: 'vercel_cron_backup', date: today },
+        }),
+      }
+    );
+
+    if (dispatchRes.ok) {
+      return NextResponse.json({
+        status: 'BACKUP_TRIGGERED',
+        message: `Fired GitHub repository_dispatch for ${today} backup run.`,
+      });
+    } else {
+      const errText = await dispatchRes.text();
+      return NextResponse.json(
+        { status: 'ERROR', message: `GitHub dispatch failed: ${errText}` },
+        { status: 500 }
+      );
+    }
+  } catch (error: any) {
+    return NextResponse.json(
+      { error: error?.message || 'Internal server error' },
+      { status: 500 }
+    );
+  }
 }

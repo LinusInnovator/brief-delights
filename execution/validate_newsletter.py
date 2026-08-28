@@ -168,18 +168,21 @@ def validate_newsletter(segment_id: str, date: str = None) -> QualityReport:
     else:
         report.ok("Template rendering", "No unrendered {{ }} placeholders")
 
-    # ─── CHECK 5: Dynamic values not hardcoded ───
-    # Check total_scanned isn't a suspicious static value
-    hardcoded_patterns = [
-        (r'1,340\+?\s*news', "Hardcoded '1,340' article count"),
-        (r'~400\s*analyzed', "Hardcoded '~400' enrichment count"),
-    ]
-    for pattern, description in hardcoded_patterns:
-        if re.search(pattern, html, re.IGNORECASE):
-            report.warn("Dynamic values", description)
-            break
+    # ─── CHECK 5: Dynamic values not hardcoded or unpopulated ───
+    if re.search(r'Scanned\s*<strong>\s*None\s*</strong>', html, re.IGNORECASE) or re.search(r'Selected top\s*<strong>\s*None\s*</strong>', html, re.IGNORECASE):
+        report.fail("Dynamic values", "Scanned or selected count rendered as 'None'")
     else:
-        report.ok("Dynamic values", "No hardcoded counts detected")
+        # Check total_scanned isn't a suspicious static value
+        hardcoded_patterns = [
+            (r'1,340\+?\s*news', "Hardcoded '1,340' article count"),
+            (r'~400\s*analyzed', "Hardcoded '~400' enrichment count"),
+        ]
+        for pattern, description in hardcoded_patterns:
+            if re.search(pattern, html, re.IGNORECASE):
+                report.warn("Dynamic values", description)
+                break
+        else:
+            report.ok("Dynamic values", "Dynamic counts properly populated")
 
     # ─── CHECK 6: Required structure ───
     required = {

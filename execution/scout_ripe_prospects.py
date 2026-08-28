@@ -13,7 +13,10 @@ from datetime import datetime
 from pathlib import Path
 from openai import OpenAI
 
+from dotenv import load_dotenv
+
 PROJECT_ROOT = Path(__file__).parent.parent
+load_dotenv(dotenv_path=PROJECT_ROOT / ".env")
 TMP_DIR = PROJECT_ROOT / ".tmp"
 TMP_DIR.mkdir(exist_ok=True)
 TODAY = datetime.now().strftime("%Y-%m-%d")
@@ -22,14 +25,21 @@ sys.path.insert(0, str(PROJECT_ROOT))
 from execution.snell_router import get_recommended_models
 from execution.generate_cobranded_pitch import generate_cobranded_pitch
 
-client = OpenAI(
-    base_url="https://openrouter.ai/api/v1",
-    api_key=os.getenv("OPENROUTER_API_KEY") or "dummy_key_for_init",
-    default_headers={
-        "HTTP-Referer": "https://brief.delights.pro",
-        "X-Title": "Brief Delights Lead Hunter",
-    }
-)
+def get_openrouter_client():
+    key = os.getenv("OPENROUTER_API_KEY")
+    if not key or key == "dummy_key_for_init":
+        load_dotenv(dotenv_path=PROJECT_ROOT / ".env", override=True)
+        key = os.getenv("OPENROUTER_API_KEY")
+    return OpenAI(
+        base_url="https://openrouter.ai/api/v1",
+        api_key=key,
+        default_headers={
+            "HTTP-Referer": "https://brief.delights.pro",
+            "X-Title": "Brief Delights Lead Hunter",
+        }
+    )
+
+client = get_openrouter_client()
 
 
 ICP_TIERS = {
@@ -37,31 +47,66 @@ ICP_TIERS = {
         "name": "Seed & Series A AI Startups",
         "price_tier": "$99–$199 / mo (Slack & Email Team Feed)",
         "icp_description": "Fast-scaling Seed & Series A AI startups (10-50 employees) with Founders, CTOs, or VPs of Eng looking for a daily 8:00 AM tech radar in Slack.",
-        "pitch_angle": "Give your 20-person engineering team an automated daily 8:00 AM AI & Tech Brief in Slack for $99/mo."
+        "pitch_angle": "Give your 20-person engineering team an automated daily 8:00 AM AI & Tech Brief in Slack for $99/mo.",
+        "fallback_prospects": [
+            {"company": "Phidata", "domain": "phidata.com", "trigger_reason": "High-Growth AI Agent Framework (Seed)", "founder_email": "founders@phidata.com"},
+            {"company": "Tavus", "domain": "tavus.io", "trigger_reason": "Generative Video AI Platform (Series A)", "founder_email": "founders@tavus.io"},
+            {"company": "Braintrust", "domain": "usebraintrust.com", "trigger_reason": "AI Evaluation & Observability Platform (Series A)", "founder_email": "founders@usebraintrust.com"},
+            {"company": "Cognition AI", "domain": "cognition.ai", "trigger_reason": "Autonomous Software Engineering (Series A)", "founder_email": "founders@cognition.ai"},
+            {"company": "LangChain", "domain": "langchain.com", "trigger_reason": "LLM Orchestration Infrastructure (Series A)", "founder_email": "harrison@langchain.com"}
+        ]
     },
     "advisor": {
         "name": "Fractional CTOs & Tech Advisors",
         "price_tier": "$49 / mo (Pro Advisor Brief)",
         "icp_description": "Fractional CTOs, tech advisors, and consultants managing multiple startups who need daily 5-minute executive signal and 1-click LinkedIn/client briefing exports.",
-        "pitch_angle": "Sound like the smartest advisor in every board meeting with automated daily executive intelligence for $49/mo."
+        "pitch_angle": "Sound like the smartest advisor in every board meeting with automated daily executive intelligence for $49/mo.",
+        "fallback_prospects": [
+            {"company": "Fractional CTO Collective", "domain": "fractionalcto.io", "trigger_reason": "Active Advisory Network", "founder_email": "lead@fractionalcto.io"},
+            {"company": "TechExec Advisors", "domain": "techexecadvisors.com", "trigger_reason": "Executive Advisory Practice", "founder_email": "contact@techexecadvisors.com"},
+            {"company": "DevCounsel", "domain": "devcounsel.io", "trigger_reason": "Fractional Engineering Leadership", "founder_email": "hello@devcounsel.io"},
+            {"company": "ArchAdvisors", "domain": "archadvisors.tech", "trigger_reason": "System Architecture Consultancy", "founder_email": "info@archadvisors.tech"},
+            {"company": "ScaleCTO", "domain": "scalecto.com", "trigger_reason": "Scaleup Engineering Practice", "founder_email": "hello@scalecto.com"}
+        ]
     },
     "agency": {
         "name": "Boutique Agencies & DevRel Studios",
         "price_tier": "$149–$299 / mo (Co-Branded Client Brief)",
         "icp_description": "DevRel leads, boutique software agencies, and AI consultancies wanting to send a white-labeled daily/weekly client update.",
-        "pitch_angle": "Auto-curate and deliver a co-branded weekly AI & engineering signal brief to your clients with zero manual effort."
+        "pitch_angle": "Auto-curate and deliver a co-branded weekly AI & engineering signal brief to your clients with zero manual effort.",
+        "fallback_prospects": [
+            {"company": "Superhuman Studio", "domain": "superhuman.studio", "trigger_reason": "AI Product Development Agency", "founder_email": "hello@superhuman.studio"},
+            {"company": "DeepDev", "domain": "deepdev.agency", "trigger_reason": "Boutique AI Engineering Shop", "founder_email": "contact@deepdev.agency"},
+            {"company": "StackOne", "domain": "stackone.com", "trigger_reason": "B2B Integration Agency", "founder_email": "founders@stackone.com"},
+            {"company": "Subtle Medical", "domain": "subtlemedical.com", "trigger_reason": "Specialized AI Imaging Consultancy", "founder_email": "contact@subtlemedical.com"},
+            {"company": "Vercel Partner Network", "domain": "vercel.com", "trigger_reason": "Frontend & AI Agency Ecosystem", "founder_email": "partners@vercel.com"}
+        ]
     },
     "vc": {
         "name": "Micro-VCs & Accelerators",
         "price_tier": "$299 / mo (Portfolio White-Label Brief)",
         "icp_description": "Micro-VCs, incubators, and startup communities wanting to send a white-label daily/weekly tech brief to all their portfolio founders.",
-        "pitch_angle": "Provide an exclusive white-label daily tech radar for all 30+ of your portfolio founders for $299/mo."
+        "pitch_angle": "Provide an exclusive white-label daily tech radar for all 30+ of your portfolio founders for $299/mo.",
+        "fallback_prospects": [
+            {"company": "Founder Collective", "domain": "foundercollective.com", "trigger_reason": "Seed-Stage VC Fund", "founder_email": "team@foundercollective.com"},
+            {"company": "Speedinvest", "domain": "speedinvest.com", "trigger_reason": "Early-Stage Tech VC", "founder_email": "hello@speedinvest.com"},
+            {"company": "Village Global", "domain": "villageglobal.vc", "trigger_reason": "Founder-Led Micro VC", "founder_email": "network@villageglobal.vc"},
+            {"company": "Techstars", "domain": "techstars.com", "trigger_reason": "Global Startup Accelerator", "founder_email": "hello@techstars.com"},
+            {"company": "Y Combinator", "domain": "ycombinator.com", "trigger_reason": "Early-Stage Startup Ecosystem", "founder_email": "apply@ycombinator.com"}
+        ]
     },
     "enterprise": {
         "name": "Enterprise SaaS & Big Tech",
         "price_tier": "$14,400 / yr (Enterprise NaaS)",
         "icp_description": "Mid-market to enterprise B2B SaaS platforms and corporations seeking a white-label curation engine.",
-        "pitch_angle": "Deploy Brief Delights enterprise curation engine to power custom market intelligence."
+        "pitch_angle": "Deploy Brief Delights enterprise curation engine to power custom market intelligence.",
+        "fallback_prospects": [
+            {"company": "PostHog", "domain": "posthog.com", "trigger_reason": "Series B Developer Platform", "founder_email": "founder@posthog.com"},
+            {"company": "Linear", "domain": "linear.app", "trigger_reason": "Series B Product Engineering Tool", "founder_email": "karri@linear.app"},
+            {"company": "Supabase", "domain": "supabase.com", "trigger_reason": "Series B Open-Source Postgres Infrastructure", "founder_email": "paul@supabase.com"},
+            {"company": "Pinecone", "domain": "pinecone.io", "trigger_reason": "Series B Vector DB Infrastructure", "founder_email": "greg@pinecone.io"},
+            {"company": "Ramp", "domain": "ramp.com", "trigger_reason": "Series D Corporate Spend Platform", "founder_email": "eric@ramp.com"}
+        ]
     }
 }
 
@@ -97,10 +142,8 @@ Return ONLY a JSON object with this structure:
 }}"""
 
     try:
-        if not os.getenv("OPENROUTER_API_KEY"):
-            raise ValueError("OPENROUTER_API_KEY not set")
-
-        response = client.chat.completions.create(
+        current_client = get_openrouter_client()
+        response = current_client.chat.completions.create(
             model=primary_model,
             messages=[{"role": "user", "content": prompt}],
             temperature=0.4,
@@ -108,41 +151,13 @@ Return ONLY a JSON object with this structure:
             response_format={"type": "json_object"}
         )
         data = json.loads(response.choices[0].message.content)
-        return data.get("prospects", [])
+        prospects = data.get("prospects", [])
+        if prospects:
+            return prospects
     except Exception as e:
-        print(f"⚠️ Lead hunter fallback ({e}), returning curated ripe prospects...")
-        return [
-            {
-                "company": "PostHog",
-                "domain": "posthog.com",
-                "trigger_reason": "High-Growth Developer Platform (Series B)",
-                "founder_email": "founder@posthog.com"
-            },
-            {
-                "company": "Linear",
-                "domain": "linear.app",
-                "trigger_reason": "Active Product Engineering Ecosystem (Series B)",
-                "founder_email": "karri@linear.app"
-            },
-            {
-                "company": "Supabase",
-                "domain": "supabase.com",
-                "trigger_reason": "Rapidly Growing Developer Infrastructure (Series B)",
-                "founder_email": "paul@supabase.com"
-            },
-            {
-                "company": "Pinecone",
-                "domain": "pinecone.io",
-                "trigger_reason": "Vector Database AI Infrastructure Scaling (Series B)",
-                "founder_email": "greg@pinecone.io"
-            },
-            {
-                "company": "Ramp",
-                "domain": "ramp.com",
-                "trigger_reason": "Executive B2B Finance & SaaS Platform (Series D)",
-                "founder_email": "eric@ramp.com"
-            }
-        ]
+        print(f"⚠️ Lead hunter fallback ({e}), returning curated tier prospects...")
+        
+    return tier_info.get("fallback_prospects", ICP_TIERS["startup"]["fallback_prospects"])
 
 
 def hunt_and_qualify_leads(tier: str = "startup", auto_pitch: bool = False):

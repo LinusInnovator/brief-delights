@@ -1,47 +1,39 @@
-# Task Plan: Bullet-Proof & Future-Proof Newsletter Pipeline
+# Task Plan — Ask Brief Delights AI Search Excellence
 
 ## Goal
-Fix all LLM API errors, RSS feed parsing failures, schema validation errors, and model fallbacks to ensure the automated daily newsletter pipeline executes 100% reliably and bullet-proof.
+Transform "Ask Brief Delights AI" into a world-class, empowering, sub-second RAG search engine:
+1. Replace hardcoded mock dispatches with automated retrieval from the real Supabase/file archive of published newsletter dispatches.
+2. Implement pre-computed OpenAI `text-embedding-3-small` vector similarity indexing for < 10ms semantic search.
+3. Add streaming response rendering (Typewriter / Server-Sent Events) so answers start rendering in < 100ms.
+4. Add interactive "Deep-Dive Follow-Up" conversations and verbatim source citations.
 
-## Tasks & Phases
+---
 
-### Phase 1: Comprehensive Failure Analysis & Diagnostics
-- [x] Analyze GitHub Actions run #208 logs
-- [x] Identify OpenRouter model ID errors (`google/gemini-flash-latest` 400 Bad Request)
-- [x] Identify Pydantic/OpenAI strict schema validation error (`additionalProperties: false` 400 Bad Request)
-- [x] Identify RSS feed parsing failures (synthetic feed paths & 403 blocks)
+## Phases
 
-### Phase 2: OpenRouter Model Routing & Schema Compliance Fixes
-- [x] Fix OpenRouter model IDs across all scripts (`google/gemini-2.5-flash`, `openai/gpt-4o-mini`, `anthropic/claude-3.5-sonnet:beta`)
-- [x] Implement robust Pydantic JSON schema sanitizer (`additionalProperties: false` injector for strict mode)
-- [x] Add JSON repair / raw prompt fallback when structured output APIs return provider errors
+### Phase 1: Real Archive Knowledge Base Ingestion [COMPLETE]
+- [x] Integrate live `openai/text-embedding-3-small` vector retrieval alongside DeepSeek-V4-Flash synthesis in `/api/search`.
+- [x] Fix temporal month scoring (`May 2026`, `June`, `July`, `August`) and remove query regurgitation in system prompts.
+- [x] Connect `/api/search` to dynamically ingest all **81+ real published HTML newsletters** from `public/newsletters/*.html`.
 
-### Phase 3: RSS Feed Resilience & Path Mismatch Fixes
-- [x] Fix path resolution for synthetic custom RSS feeds (CloudDocs vs deployment container paths)
-- [x] Implement user-agent headers and timeout handling for external RSS feeds (Nature, DeepMind, HBR, Bloomberg, WSJ, Gartner)
-- [x] Gracefully handle feed parsing failures without crashing pipeline stages
+### Phase 2: High-Performance Vector Cosine Indexing [PLANNED]
+- [ ] Pre-embed all past newsletter articles using `openai/text-embedding-3-small` into a JSON/Supabase vector store.
+- [ ] Compute real dot-product cosine similarity between query embeddings and stored document vectors for 100% precise semantic retrieval.
 
-### Phase 4: Verification & Automated Pipeline Validation
-- [x] Run unit tests and local pipeline execution (7,254 unique articles aggregated in 26.67s)
-- [x] Pushed fixes to GitHub origin/main ([Commit 4f36bff])
-- [x] Updated task_plan.md, findings.md, and progress.md
+### Phase 3: Live Streaming Responses & Typewriter UI [PLANNED]
+- [ ] Convert `landing/app/api/search/route.ts` to stream DeepSeek-V4-Flash tokens via ReadableStream / Server-Sent Events (SSE).
+- [ ] Update `landing/components/AISearchSection.tsx` with real-time typewriter effect for instantaneous perceived latency (< 100ms TTFB).
 
-### Phase 5: Autonomous Niche Discovery & Source Scout Engine
-- [x] Write design specification `docs/plans/2026-07-31-auto-niche-scout-design.md`
-- [x] Build `execution/scout_niche_sources.py`
-- [x] Verify dry-run feed discovery and Matrix Score validation (>85/100)
-- [x] Deploy and push to `origin/main`
+### Phase 4: Conversational Follow-Ups & Quote Citations [COMPLETE]
+- [x] Add **Verbatim Quote Citation Badges** in search result card accordions.
+- [x] Add **Direct Archive Jump Links** (`/archive/${slug}`) carrying dispatch publication dates.
 
-### Phase 6: B2B White-Label Growth Pitcher & Web Studio Engine
-- [x] Write design specification `docs/plans/2026-07-31-b2b-growth-pitcher-design.md`
-- [x] Build `execution/scrape_saas_brand.py` (brand scraper, logo & color extraction)
-- [x] Build `execution/generate_cobranded_pitch.py` (co-branded HTML renderer + Resend cold pitch)
-- [x] Build Web Studio UI (`landing/app/admin/b2b-pitcher/page.tsx`) with Trust Switch toggle
-- [x] Deploy and push to `origin/main`
+---
 
-## Errors & Discoveries
-| Error | Attempt | Resolution |
-|-------|---------|------------|
-| `google/gemini-flash-latest is not a valid model ID` | 1 | Use explicit OpenRouter model IDs (`google/gemini-2.5-flash`, `openai/gpt-4o-mini`) |
-| `additionalProperties: false is required` | 1 | Add recursive JSON schema post-processor to set `additionalProperties: False` |
-| `Failed to parse feed: /Users/linus/.../.tmp/...` | 1 | Use relative `PROJECT_ROOT / ".tmp"` path for synthetic feeds |
+## Errors Encountered
+| Error | Phase | Resolution |
+|-------|-------|------------|
+| Missing OpenAI embedding in initial code | Phase 1 | Wired live `openai/text-embedding-3-small` OpenRouter call in commit `7765fa8` |
+| Duplicate `openrouterKey` declaration in TypeScript | Phase 1 | Cleaned up duplicate const declaration in `route.ts` |
+| Generic query regurgitation fallback | Phase 1 | Rewrote system prompt & fallback in commit `caf05d4` |
+| Conflating May 2026 queries with August dispatches | Phase 1 | Implemented temporal month scoring & May archive dispatch in commit `c4aac78` |

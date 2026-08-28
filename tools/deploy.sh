@@ -10,7 +10,8 @@ echo "========================================"
 echo ""
 
 # Configuration
-ICLOUD_DIR="/Users/linus/Library/Mobile Documents/com~apple~CloudDocs/projects/Dream Validator/Prototrying.com/Prototryers/antigravity/The letter"
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+ICLOUD_DIR="$(cd "$SCRIPT_DIR/.." && pwd)"
 TMP_REPO="/tmp/brief-delights-deploy"
 GITHUB_REPO="https://github.com/LinusInnovator/brief-delights.git"
 
@@ -31,7 +32,7 @@ echo ""
 
 # Step 2: Copy changed files from iCloud to clean repo
 echo "[2/5] Syncing files from iCloud directory..."
-rsync -av --exclude='.git' --exclude='node_modules' --exclude='.next' \
+rsync -av --exclude='.git' --exclude='node_modules' --exclude='.next' --exclude='public/newsletters' --exclude='.tmp' \
     "$ICLOUD_DIR/landing/" "$TMP_REPO/landing/"
 rsync -av --exclude='.git' --exclude='.tmp' --exclude='__pycache__' \
     "$ICLOUD_DIR/execution/" "$TMP_REPO/execution/"

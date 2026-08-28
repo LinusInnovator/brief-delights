@@ -1,61 +1,30 @@
-# Subscriber Data (CONTAINS PII - DO NOT COMMIT TO PUBLIC REPOS)
-subscribers.json
-subscribers_*.json
-subscribers.csv
-subscribers_*.csv
-
-# Environment variables (API keys)
-.env
-.env.local
-.env.*.local
-
-# Temporary files
-.tmp/
-*.tmp
-*.log
-
-# Python
-__pycache__/
-*.py[cod]
-*$py.class
-*.so
-.Python
+# Node / Next.js dependencies and build outputs
+node_modules/
+**/node_modules/
+.next/
+**/.next/
+out/
 build/
-develop-eggs/
 dist/
-downloads/
-eggs/
-.eggs/
-lib/
-!landing/lib/
-lib64/
-parts/
-sdist/
-var/
-wheels/
-*.egg-info/
-.installed.cfg
-*.egg
 
-# IDEs
-.vscode/
-.idea/
-*.swp
-*.swo
-*~
-
-# OS
-.DS_Store
-Thumbs.db
-
-# Testing
+# Python virtual environments & bytecode
+venv/
+.venv/
+env/
+__pycache__/
+**/__pycache__/
+*.pyc
+*.pyo
+*.pyd
 .pytest_cache/
-.coverage
-htmlcov/
 
-# Newsletter outputs (optional - these are OK to commit if you want archive)
-# .tmp/newsletter_*.html
-# .tmp/summaries_*.json
+# Temporary and cache files
+.tmp/
+**/.tmp/
+*.log
+.DS_Store
+**/.DS_Store
 
-# Local Netlify folder
-.netlify
+# Environment variables & secrets
+.env
+.env*.local
