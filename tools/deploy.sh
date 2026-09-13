@@ -42,7 +42,7 @@ rsync -av "$ICLOUD_DIR/README.md" "$TMP_REPO/" 2>/dev/null || true
 
 # Pipeline-critical root files: templates, configs, tools
 rsync -av "$ICLOUD_DIR/newsletter_template.html" "$TMP_REPO/"
-rsync -av "$ICLOUD_DIR/newsletter_teaser_weekly.html" "$TMP_REPO/"
+rsync -av "$ICLOUD_DIR/newsletter_teaser_weekly.html" "$TMP_REPO/" 2>/dev/null || true
 rsync -av "$ICLOUD_DIR/segments_config.json" "$TMP_REPO/"
 rsync -av "$ICLOUD_DIR/feeds_config.json" "$TMP_REPO/"
 rsync -av "$ICLOUD_DIR/subscribers.json" "$TMP_REPO/"
@@ -63,13 +63,17 @@ if [ ! -d "node_modules" ] || [ "package.json" -nt "node_modules" ]; then
 fi
 
 echo "  → Testing build..."
-if npm run build; then
-    echo "  ✅ Build successful!"
+if grep -q '"build"' package.json; then
+    if npm run build; then
+        echo "  ✅ Build successful!"
+    else
+        echo "  ❌ Build failed!"
+        echo ""
+        echo "Fix the build errors above before deploying."
+        exit 1
+    fi
 else
-    echo "  ❌ Build failed!"
-    echo ""
-    echo "Fix the build errors above before deploying."
-    exit 1
+    echo "  ℹ️ No build script defined, skipping build step"
 fi
 echo ""
 

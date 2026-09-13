@@ -1,0 +1,29 @@
+{
+  "segment": "production_scale_ai_development",
+  "name": "Production-scale AI development",
+  "status": "INCUBATING (Sub-Threshold)",
+  "lookback_hours": 24,
+  "matrix_score": 72.5,
+  "categories": [
+    {
+      "name": "AI Systems & Performance",
+      "feeds": [
+        {
+          "title": "NVIDIA Developer Blog",
+          "url": "https://developer.nvidia.com/blog/feed/",
+          "source_type": "primary"
+        }
+      ]
+    },
+    {
+      "name": "Responsible AI & Security",
+      "feeds": [
+        {
+          "title": "Hugging Face Blog",
+          "url": "https://huggingface.co/blog/feed.xml",
+          "source_type": "primary"
+        }
+      ]
+    }
+  ]
+}

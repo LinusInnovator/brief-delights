@@ -72,9 +72,8 @@ export async function GET(request: NextRequest) {
       { id: 'innovators', name: 'AI Research & Signals', emoji: '🚀' }
     ];
 
-    // Collect all available historical dates
+    // Collect all available historical dates that actually exist on disk
     const dateSet = new Set<string>();
-    dateSet.add(today);
 
     const publicNewslettersDir = path.join(process.cwd(), 'public', 'newsletters');
     if (fs.existsSync(publicNewslettersDir)) {
@@ -100,18 +99,18 @@ export async function GET(request: NextRequest) {
 
     const availableDates = Array.from(dateSet).sort().reverse();
     
-    // Target date logic: requestedDate or today or latest available date
-    let targetDate = requestedDate || today;
+    // Target date logic: requestedDate or latest available date on disk
+    let targetDate = requestedDate || availableDates[0] || today;
 
-    // Check if target date has static file
+    // Check if latest date has static file
     const staticFilePath = path.join(process.cwd(), 'public', 'data', 'social_posts_latest.json');
-    if ((!requestedDate || requestedDate === today) && fs.existsSync(staticFilePath)) {
+    if (!requestedDate && fs.existsSync(staticFilePath)) {
       try {
         const fileContent = JSON.parse(fs.readFileSync(staticFilePath, 'utf8'));
         if (fileContent && Array.isArray(fileContent.posts) && fileContent.posts.length > 0) {
           return NextResponse.json({
             success: true,
-            date: fileContent.date || today,
+            date: fileContent.date || availableDates[0] || today,
             available_dates: availableDates,
             posts: fileContent.posts,
             weekly_trends: fileContent.weekly_trends || []

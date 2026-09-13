@@ -1,0 +1,28 @@
+{
+    "subscribers": [
+        {
+            "email": "linus@disrupt.re",
+            "name": "Linus",
+            "subscribed_date": "2026-02-08",
+            "status": "active",
+            "segment": "builders,leaders,innovators,generative_media",
+            "preferences": {
+                "frequency": "daily",
+                "categories": [
+                    "all"
+                ]
+            }
+        }
+    ],
+    "metadata": {
+        "total_subscribers": 1,
+        "active_subscribers": 1,
+        "last_updated": "2026-08-05",
+        "segments": {
+            "builders": 1,
+            "leaders": 1,
+            "innovators": 1,
+            "generative_media": 1
+        }
+    }
+}

@@ -1,0 +1,29 @@
+{
+  "segment": "ai_powered_conversational_search_engine",
+  "name": "AI-powered conversational search engine",
+  "status": "INCUBATING (Sub-Threshold)",
+  "lookback_hours": 24,
+  "matrix_score": 66.5,
+  "categories": [
+    {
+      "name": "Conversational AI & Search Research",
+      "feeds": [
+        {
+          "title": "Microsoft Research Blog",
+          "url": "https://www.microsoft.com/en-us/research/feed/",
+          "source_type": "primary"
+        }
+      ]
+    },
+    {
+      "name": "Large Language Models & Retrieval-Augmented Generation (RAG)",
+      "feeds": [
+        {
+          "title": "Hugging Face Blog",
+          "url": "https://huggingface.co/blog/feed.xml",
+          "source_type": "primary"
+        }
+      ]
+    }
+  ]
+}

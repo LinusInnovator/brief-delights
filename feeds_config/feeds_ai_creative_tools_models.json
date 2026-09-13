@@ -1,0 +1,24 @@
+{
+  "segment": "ai_creative_tools_models",
+  "name": "AI Creative Tools & Models",
+  "status": "INCUBATING (Sub-Threshold)",
+  "lookback_hours": 24,
+  "matrix_score": 66.5,
+  "categories": [
+    {
+      "name": "Open Source Creative AI Models",
+      "feeds": [
+        {
+          "title": "Hugging Face Blog",
+          "url": "https://huggingface.co/blog/feed.xml",
+          "source_type": "primary"
+        },
+        {
+          "title": "AUTOMATIC1111/stable-diffusion-webui Releases",
+          "url": "https://github.com/AUTOMATIC1111/stable-diffusion-webui/releases.atom",
+          "source_type": "primary"
+        }
+      ]
+    }
+  ]
+}

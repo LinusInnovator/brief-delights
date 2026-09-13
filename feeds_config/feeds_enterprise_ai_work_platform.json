@@ -1,0 +1,44 @@
+{
+  "segment": "enterprise_ai_work_platform",
+  "name": "Enterprise AI Work Platform",
+  "status": "INCUBATING (Sub-Threshold)",
+  "lookback_hours": 24,
+  "matrix_score": 68.2,
+  "categories": [
+    {
+      "name": "AI Platform & Infrastructure",
+      "feeds": [
+        {
+          "title": "Databricks Blog",
+          "url": "https://www.databricks.com/feed",
+          "source_type": "primary"
+        },
+        {
+          "title": "Hugging Face Blog",
+          "url": "https://huggingface.co/blog/feed.xml",
+          "source_type": "primary"
+        }
+      ]
+    },
+    {
+      "name": "Enterprise AI Strategy & Adoption",
+      "feeds": [
+        {
+          "title": "The AI Revolution (Substack)",
+          "url": "https://theairevolution.substack.com/feed",
+          "source_type": "primary"
+        }
+      ]
+    },
+    {
+      "name": "Cloud AI Services",
+      "feeds": [
+        {
+          "title": "AWS Machine Learning Blog",
+          "url": "https://aws.amazon.com/blogs/machine-learning/feed/",
+          "source_type": "primary"
+        }
+      ]
+    }
+  ]
+}
