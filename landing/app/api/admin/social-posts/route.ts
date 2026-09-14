@@ -97,28 +97,39 @@ export async function GET(request: NextRequest) {
       }
     }
 
-    const availableDates = Array.from(dateSet).sort().reverse();
-    
-    // Target date logic: requestedDate or latest available date on disk
-    let targetDate = requestedDate || availableDates[0] || today;
-
     // Check if latest date has static file
     const staticFilePath = path.join(process.cwd(), 'public', 'data', 'social_posts_latest.json');
-    if (!requestedDate && fs.existsSync(staticFilePath)) {
+    let staticPosts: any = null;
+    let latestStaticDate: string | null = null;
+    if (fs.existsSync(staticFilePath)) {
       try {
         const fileContent = JSON.parse(fs.readFileSync(staticFilePath, 'utf8'));
         if (fileContent && Array.isArray(fileContent.posts) && fileContent.posts.length > 0) {
-          return NextResponse.json({
-            success: true,
-            date: fileContent.date || availableDates[0] || today,
-            available_dates: availableDates,
-            posts: fileContent.posts,
-            weekly_trends: fileContent.weekly_trends || []
-          });
+          staticPosts = fileContent;
+          latestStaticDate = fileContent.date;
+          if (latestStaticDate) {
+            dateSet.add(latestStaticDate);
+          }
         }
       } catch (e) {
         console.error('Error reading static social_posts_latest.json:', e);
       }
+    }
+
+    const availableDates = Array.from(dateSet).sort().reverse();
+    
+    // Target date logic: requestedDate or latest static date or latest available date on disk
+    let targetDate = requestedDate || latestStaticDate || availableDates[0] || today;
+
+    // Return static posts if target matches the pre-generated latest bundle
+    if (staticPosts && (!requestedDate || requestedDate === latestStaticDate || requestedDate === targetDate)) {
+      return NextResponse.json({
+        success: true,
+        date: latestStaticDate || targetDate,
+        available_dates: availableDates,
+        posts: staticPosts.posts,
+        weekly_trends: staticPosts.weekly_trends || []
+      });
     }
 
 

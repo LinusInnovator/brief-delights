@@ -63,17 +63,17 @@ if [ ! -d "node_modules" ] || [ "package.json" -nt "node_modules" ]; then
 fi
 
 echo "  → Testing build..."
-if grep -q '"build"' package.json; then
-    if npm run build; then
-        echo "  ✅ Build successful!"
-    else
-        echo "  ❌ Build failed!"
-        echo ""
-        echo "Fix the build errors above before deploying."
-        exit 1
-    fi
+if ! grep -q '"build"' package.json; then
+    echo "  ❌ Error: package.json is missing 'build' script! Aborting deploy."
+    exit 1
+fi
+if npm run build; then
+    echo "  ✅ Build successful!"
 else
-    echo "  ℹ️ No build script defined, skipping build step"
+    echo "  ❌ Build failed!"
+    echo ""
+    echo "Fix the build errors above before deploying."
+    exit 1
 fi
 echo ""
 
