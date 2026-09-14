@@ -140,6 +140,35 @@ def scrape_stanford_hai():
                     
     write_rss("custom_feed_stanfordhai.xml", "Stanford HAI", url, "Stanford Human-Centered AI", items[:10])
 
+def scrape_hf_daily_papers():
+    url = "https://huggingface.co/api/daily_papers"
+    try:
+        headers = {'User-Agent': USER_AGENT}
+        resp = requests.get(url, headers=headers, timeout=10)
+        if resp.status_code != 200:
+            print(f"⚠️ Failed to fetch HF daily papers: status {resp.status_code}")
+            return
+        data = resp.json()
+        items = []
+        for entry in data[:25]:
+            paper = entry.get("paper", {})
+            title = paper.get("title", "")
+            pid = paper.get("id", "")
+            summary = paper.get("summary", "")
+            upvotes = paper.get("upvotes", 0)
+            
+            link = f"https://huggingface.co/papers/{pid}"
+            desc = f"[Upvotes: {upvotes}] {summary}"
+            if title and pid:
+                items.append({
+                    "title": f"[Paper & Demo] {title}",
+                    "link": link,
+                    "description": desc
+                })
+        write_rss("custom_feed_hf_daily_papers.xml", "Hugging Face Daily Papers", "https://huggingface.co/papers", "Top Trending Research Papers & Project Demos", items)
+    except Exception as e:
+        print(f"❌ Error scraping HF Daily Papers: {e}")
+
 def main():
     print("=" * 60)
     print("Generating custom local RSS feeds for non-syndicated sources...")
@@ -148,6 +177,7 @@ def main():
     scrape_the_information()
     scrape_gartner()
     scrape_stanford_hai()
+    scrape_hf_daily_papers()
     print("Synthetic RSS generation complete.")
 
 if __name__ == '__main__':

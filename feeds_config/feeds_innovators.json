@@ -3,6 +3,7 @@
     "description": "Frontier Research + Future Signals",
     "categories": {
         "Raw Research (Machine Learning & AI)": [
+            ".tmp/custom_feed_hf_daily_papers.xml",
             "http://export.arxiv.org/rss/cs.AI",
             "https://arxiv.org/rss/cs.CL",
             "https://arxiv.org/rss/cs.CV",

@@ -1,0 +1,42 @@
+{
+  "segment": "early_signals",
+  "description": "Patient Zero & First-Signal AI Feeds (Pre-Mainstream Radar)",
+  "categories": {
+    "Daily Papers & Project Demos": [
+      ".tmp/custom_feed_hf_daily_papers.xml",
+      "https://arxiv.org/rss/cs.CV",
+      "https://arxiv.org/rss/cs.CL",
+      "https://arxiv.org/rss/cs.RO",
+      "https://arxiv.org/rss/cs.AI",
+      "https://arxiv.org/rss/eess.AS"
+    ],
+    "Frontier Lab Official Newsrooms": [
+      "https://openai.com/news/rss.xml",
+      "https://deepmind.google/blog/feed/basic/",
+      "https://rsshub.bestblogs.dev/anthropic/news",
+      "https://research.google/blog/rss/",
+      ".tmp/custom_feed_anthropic.xml"
+    ],
+    "Generative Media, Audio & Robotics": [
+      "https://stability.ai/news?format=rss",
+      "https://runwayml.com/blog/rss.xml",
+      "https://elevenlabs.io/blog/rss",
+      "https://bair.berkeley.edu/blog/feed.xml"
+    ]
+  },
+  "curated_x_accounts_to_monitor": [
+    {"handle": "@_akhaliq", "role": "Hugging Face Daily Papers curator - primary paper scout"},
+    {"handle": "@AlphaSignalAI", "role": "Algorithmic research paper & GitHub velocity rankings"},
+    {"handle": "@omarsar0", "role": "DAIR.AI founder - weekly open-source & paper synthesis"},
+    {"handle": "@rohanpaul_ai", "role": "Open source repo architectural breakdowns"},
+    {"handle": "@drjimfan", "role": "NVIDIA GEAR lead - embodied AI, robotics & foundation models"},
+    {"handle": "@deepseek_ai", "role": "DeepSeek official models & releases"},
+    {"handle": "@OpenAI", "role": "OpenAI research index drops"},
+    {"handle": "@GoogleDeepMind", "role": "Google DeepMind frontier publications"},
+    {"handle": "@suno_ai_", "role": "Suno AI audio foundation releases"},
+    {"handle": "@OpenBMB", "role": "MiniCPM & Tsinghua edge AI models"}
+  ],
+  "update_frequency": "daily",
+  "max_articles_per_feed": 30,
+  "lookback_hours": 24
+}
