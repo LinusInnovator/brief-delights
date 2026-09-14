@@ -39,6 +39,7 @@ rsync -av --exclude='.git' --exclude='.tmp' --exclude='__pycache__' \
 rsync -av "$ICLOUD_DIR/.github/" "$TMP_REPO/.github/"
 rsync -av "$ICLOUD_DIR/requirements.txt" "$TMP_REPO/"
 rsync -av "$ICLOUD_DIR/README.md" "$TMP_REPO/" 2>/dev/null || true
+rsync -av "$ICLOUD_DIR/netlify.toml" "$TMP_REPO/" 2>/dev/null || true
 
 # Pipeline-critical root files: templates, configs, tools
 rsync -av "$ICLOUD_DIR/newsletter_template.html" "$TMP_REPO/"
