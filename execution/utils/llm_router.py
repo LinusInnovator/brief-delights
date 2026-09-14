@@ -17,6 +17,7 @@ EXPENSIVE_MODEL_PATTERNS = [
 ]
 
 SAFE_BUDGET_FALLBACKS = [
+    "deepseek/deepseek-v4.1-flash",
     "deepseek/deepseek-v4-flash-0731",
     "google/gemini-2.5-flash",
     "google/gemini-2.5-flash-lite",
@@ -40,6 +41,7 @@ def get_failover_models(primary_model: str, fallback_model: str) -> List[str]:
     raw_candidates = [
         primary_model,
         fallback_model,
+        "deepseek/deepseek-v4.1-flash",
         "deepseek/deepseek-v4-flash-0731",
         "google/gemini-2.5-flash",
         "google/gemini-2.5-flash-lite",
@@ -63,7 +65,7 @@ def get_failover_models(primary_model: str, fallback_model: str) -> List[str]:
 def robust_chat_completion(
     client: OpenAI,
     messages: List[Dict[str, str]],
-    primary_model: str = "deepseek/deepseek-v4-flash-0731",
+    primary_model: str = "deepseek/deepseek-v4.1-flash",
     fallback_model: str = "google/gemini-2.5-flash",
     response_format: Optional[Dict[str, Any]] = None,
     temperature: float = 0.7,

@@ -63,7 +63,7 @@ Return a generic JSON extraction:
 {{ "content": "Extracted text based on instruction" }}"""
 
     response = client.chat.completions.create(
-        model="openai/gpt-4o", # Can be replaced with Snell SDK routing logic
+        model="deepseek/deepseek-v4.1-flash",
         response_format={"type": "json_object"},
         messages=[
             {"role": "system", "content": system_prompt},

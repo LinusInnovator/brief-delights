@@ -36,7 +36,7 @@ def scan_for_opportunities():
     """
     
     response = client.chat.completions.create(
-        model="openai/gpt-4o",
+        model="deepseek/deepseek-v4.1-flash",
         response_format={"type": "json_object"},
         messages=[
             {"role": "system", "content": prompt}

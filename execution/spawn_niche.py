@@ -24,7 +24,7 @@ def generate_niche_config(prompt: str) -> dict:
     print(f"🤖 Radar Agent spinning up config for: '{prompt}'...")
     
     response = client.chat.completions.create(
-        model="openai/gpt-4o",
+        model="deepseek/deepseek-v4.1-flash",
         response_format={"type": "json_object"},
         messages=[
             {

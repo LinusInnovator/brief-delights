@@ -19,6 +19,7 @@ EXPENSIVE_MODEL_PATTERNS = [
 ]
 
 SAFE_BUDGET_MODELS = [
+    "deepseek/deepseek-v4.1-flash",
     "deepseek/deepseek-v4-flash-0731",
     "google/gemini-2.5-flash",
     "google/gemini-2.5-flash-lite",
@@ -45,7 +46,7 @@ def is_safe_cheap_model(model_name: str, max_cost: float = 0.50, reported_cost: 
 
 def get_recommended_models(
     intent: str = "drafting",
-    default_primary: str = "deepseek/deepseek-v4-flash-0731",
+    default_primary: str = "deepseek/deepseek-v4.1-flash",
     default_fallback: str = "google/gemini-2.5-flash",
     strategy: str = "price_performance",
     max_cost_per_m: float = 0.50

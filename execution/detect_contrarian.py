@@ -36,7 +36,7 @@ client = OpenAI(
         "X-Title": "The Brief",
     }
 )
-CHEAP_MODEL = "deepseek/deepseek-v4-flash-0731"
+CHEAP_MODEL = "deepseek/deepseek-v4.1-flash"
 
 
 def log(message: str):
@@ -245,7 +245,7 @@ Return ONLY valid JSON:
             model=CHEAP_MODEL,
             messages=[{"role": "user", "content": prompt}],
             temperature=0.7,
-            max_tokens=200
+            max_tokens=400
         )
 
         content = response.choices[0].message.content.strip()

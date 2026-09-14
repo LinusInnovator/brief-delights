@@ -37,7 +37,7 @@ client = OpenAI(
         "X-Title": "The Brief",
     }
 )
-MODEL = "deepseek/deepseek-v4-flash-0731"
+MODEL = "deepseek/deepseek-v4.1-flash"
 
 
 def log(message: str):

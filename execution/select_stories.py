@@ -48,7 +48,7 @@ from execution.snell_router import get_recommended_models
 # Dynamic Model Selection via Snell Router Gateway
 PRIMARY_MODEL, FALLBACK_MODEL = get_recommended_models(
     intent="selection",
-    default_primary=os.getenv("PRIMARY_LLM_MODEL", "deepseek/deepseek-v4-flash-0731"),
+    default_primary=os.getenv("PRIMARY_LLM_MODEL", "deepseek/deepseek-v4.1-flash"),
     default_fallback="google/gemini-2.5-flash"
 )
 

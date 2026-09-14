@@ -127,7 +127,7 @@ Synthesize this data strictly into the required JSON schema."""
 
     try:
         response = client.chat.completions.create(
-            model="anthropic/claude-3-haiku",
+            model="deepseek/deepseek-v4.1-flash",
             messages=[
                 {"role": "system", "content": system_prompt},
                 {"role": "user", "content": user_prompt}

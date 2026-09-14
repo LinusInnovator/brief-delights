@@ -53,7 +53,7 @@ except ImportError:
 # Dynamic Model Selection via Snell Router Gateway
 PRIMARY_MODEL, FALLBACK_MODEL = get_recommended_models(
     intent="summarization",
-    default_primary=os.getenv("PRIMARY_LLM_MODEL", "deepseek/deepseek-v4-flash-0731"),
+    default_primary=os.getenv("PRIMARY_LLM_MODEL", "deepseek/deepseek-v4.1-flash"),
     default_fallback="google/gemini-2.5-flash"
 )
 
@@ -199,7 +199,7 @@ def call_llm_for_summary(prompt: str, model: str = PRIMARY_MODEL, retries: int =
             primary_model=model,
             fallback_model=FALLBACK_MODEL,
             temperature=0.5,
-            max_tokens=300
+            max_tokens=600
         )
         content = response.choices[0].message.content.strip()
         if content.startswith("```"):
@@ -215,7 +215,7 @@ def call_llm_for_summary(prompt: str, model: str = PRIMARY_MODEL, retries: int =
                     model=model,
                     messages=[{"role": "user", "content": prompt}],
                     temperature=0.5,
-                    max_tokens=300
+                    max_tokens=600
                 )
                 content = response.choices[0].message.content.strip()
                 if content.startswith("```"):
