@@ -1,0 +1,153 @@
+{
+  "episode_id": "ai-news-2026-09-15",
+  "date": "2026-09-15",
+  "voice_profile": "alex_tech",
+  "intro": "[excited] Today: a 2B model that watches ten-minute egos, a wearable that knows when to shut up, and a pruning trick that saves your GUI agent's memory.",
+  "stories": [
+    {
+      "name": "Ambient @ EgoLongQA 2026",
+      "url": "https://huggingface.co/papers/2609.07154",
+      "mode": "tool_drop",
+      "demo_anchor": "table, canvas, #results, .benchmark",
+      "download_anchor": "a[href*='huggingface.co']",
+      "specs": "Sub-2B VLM | 10-min egocentric video | Paper + weights pending | 0.8279 held-out score",
+      "beats": {
+        "landing_page": "[confident] Ambient just took first place in the sub-2B division at ECCV's Wearable AI Challenge, scoring 0.8279 on held-out long-video questions.",
+        "demo": "[amazed] One greedy forward pass answers multiple-choice Q&A over ten-minute egocentric video \u2014 no chunking, no retrieval loop, just distilled perception compressed into a tiny brain.",
+        "access": "[excited] Full writeup lives on Hugging Face Papers at 2609.07154 \u2014 weights are still under wraps, so bookmark it now before the fold."
+      },
+      "ordered_beats": [
+        {
+          "title": "Landing Page",
+          "narration": "[confident] Ambient just took first place in the sub-2B division at ECCV's Wearable AI Challenge, scoring 0.8279 on held-out long-video questions."
+        },
+        {
+          "title": "Demo",
+          "narration": "[amazed] One greedy forward pass answers multiple-choice Q&A over ten-minute egocentric video \u2014 no chunking, no retrieval loop, just distilled perception compressed into a tiny brain."
+        },
+        {
+          "title": "Access",
+          "narration": "[excited] Full writeup lives on Hugging Face Papers at 2609.07154 \u2014 weights are still under wraps, so bookmark it now before the fold."
+        }
+      ]
+    },
+    {
+      "name": "Ambient @ EgoProactive 2026",
+      "url": "https://huggingface.co/papers/2609.07099",
+      "mode": "paper_preview",
+      "demo_anchor": "figure, .architecture, table, #results",
+      "download_anchor": "a[href*='huggingface.co']",
+      "specs": "Wearable assistant | 8-sec intervention windows | ECCV 2026 challenge | Paper only",
+      "beats": {
+        "paper_preview": "[curious] Same team, harder problem: a wearable assistant that decides every eight seconds whether to speak up or stay silent \u2014 and it ranked first in the large-model division.",
+        "architecture": "[confident] Their trick reformulates intervention as visually grounded supervision, and the architecture figure shows exactly where the gating signal is injected.",
+        "release_horizon": "[friendly] It's a challenge paper on Hugging Face at 2609.07099 \u2014 code expected post-conference, so follow the repo now."
+      },
+      "ordered_beats": [
+        {
+          "title": "Paper Preview",
+          "narration": "[curious] Same team, harder problem: a wearable assistant that decides every eight seconds whether to speak up or stay silent \u2014 and it ranked first in the large-model division."
+        },
+        {
+          "title": "Architecture",
+          "narration": "[confident] Their trick reformulates intervention as visually grounded supervision, and the architecture figure shows exactly where the gating signal is injected."
+        },
+        {
+          "title": "Release Horizon",
+          "narration": "[friendly] It's a challenge paper on Hugging Face at 2609.07099 \u2014 code expected post-conference, so follow the repo now."
+        }
+      ]
+    },
+    {
+      "name": "Task-Agnostic Environment Preprocessing",
+      "url": "https://huggingface.co/papers/2609.10824",
+      "mode": "paper_preview",
+      "demo_anchor": "figure, table, #experiments, .pipeline",
+      "download_anchor": "a[href*='huggingface.co']",
+      "specs": "Agent scaffolding | No task supervision | Paper only",
+      "beats": {
+        "paper_preview": "[skeptical] Here's the wild one: can an agent prep an environment before it even knows the task? Prior methods cheat with examples, trajectories, or eval feedback.",
+        "architecture": "[amazed] Table one proves their task-agnostic preprocessing builds reusable indices and scripts that transfer cold \u2014 no supervision, no hints, just raw corpus inspection.",
+        "release_horizon": "[curious] Paper's up at 2609.10824 on Hugging Face Daily \u2014 implementation timeline is still TBD, so expect replications first."
+      },
+      "ordered_beats": [
+        {
+          "title": "Paper Preview",
+          "narration": "[skeptical] Here's the wild one: can an agent prep an environment before it even knows the task? Prior methods cheat with examples, trajectories, or eval feedback."
+        },
+        {
+          "title": "Architecture",
+          "narration": "[amazed] Table one proves their task-agnostic preprocessing builds reusable indices and scripts that transfer cold \u2014 no supervision, no hints, just raw corpus inspection."
+        },
+        {
+          "title": "Release Horizon",
+          "narration": "[curious] Paper's up at 2609.10824 on Hugging Face Daily \u2014 implementation timeline is still TBD, so expect replications first."
+        }
+      ]
+    },
+    {
+      "name": "TRACE",
+      "url": "https://huggingface.co/papers/2609.10297",
+      "mode": "tool_drop",
+      "demo_anchor": "table, #comparison, .latency, canvas",
+      "download_anchor": "a[href*='huggingface.co'], a[href*='github.com']",
+      "specs": "Training-free token pruning | GUI agent inference | Paper + code pending",
+      "beats": {
+        "landing_page": "[confident] TRACE fixes a nasty GUI agent problem: once you prune visual tokens, you can't undo it without re-encoding. So they made admission irreversible but smart.",
+        "demo": "[amazed] Point at the latency table \u2014 trajectory-robust admission plus evidence ordering cuts memory hard while screenshots keep stacking.",
+        "access": "[excited] Training-free, so no fine-tune needed. Grab it at 2609.10297 on Hugging Face, GitHub mirror likely dropping this week."
+      },
+      "ordered_beats": [
+        {
+          "title": "Landing Page",
+          "narration": "[confident] TRACE fixes a nasty GUI agent problem: once you prune visual tokens, you can't undo it without re-encoding. So they made admission irreversible but smart."
+        },
+        {
+          "title": "Demo",
+          "narration": "[amazed] Point at the latency table \u2014 trajectory-robust admission plus evidence ordering cuts memory hard while screenshots keep stacking."
+        },
+        {
+          "title": "Access",
+          "narration": "[excited] Training-free, so no fine-tune needed. Grab it at 2609.10297 on Hugging Face, GitHub mirror likely dropping this week."
+        }
+      ]
+    }
+  ],
+  "outro": "[friendly] All project links and research papers are organized down in the description below. Hit subscribe to Brief Delights for your daily rundown, and I'll see you tomorrow.",
+  "tools_metadata": [
+    {
+      "name": "Ambient @ EgoLongQA 2026",
+      "url": "https://huggingface.co/papers/2609.07154",
+      "mode": "tool_drop",
+      "demo_anchor": "table, canvas, #results, .benchmark",
+      "download_anchor": "a[href*='huggingface.co']",
+      "specs": "Sub-2B VLM | 10-min egocentric video | Paper + weights pending | 0.8279 held-out score"
+    },
+    {
+      "name": "Ambient @ EgoProactive 2026",
+      "url": "https://huggingface.co/papers/2609.07099",
+      "mode": "paper_preview",
+      "demo_anchor": "figure, .architecture, table, #results",
+      "download_anchor": "a[href*='huggingface.co']",
+      "specs": "Wearable assistant | 8-sec intervention windows | ECCV 2026 challenge | Paper only"
+    },
+    {
+      "name": "Task-Agnostic Environment Preprocessing",
+      "url": "https://huggingface.co/papers/2609.10824",
+      "mode": "paper_preview",
+      "demo_anchor": "figure, table, #experiments, .pipeline",
+      "download_anchor": "a[href*='huggingface.co']",
+      "specs": "Agent scaffolding | No task supervision | Paper only"
+    },
+    {
+      "name": "TRACE",
+      "url": "https://huggingface.co/papers/2609.10297",
+      "mode": "tool_drop",
+      "demo_anchor": "table, #comparison, .latency, canvas",
+      "download_anchor": "a[href*='huggingface.co'], a[href*='github.com']",
+      "specs": "Training-free token pruning | GUI agent inference | Paper + code pending"
+    }
+  ],
+  "raw_markdown": "---\nepisode_id: \"ai-news-2026-09-15\"\nvoice_profile: \"alex_tech\"\ntools:\n  - name: \"Ambient @ EgoLongQA 2026\"\n    url: \"https://huggingface.co/papers/2609.07154\"\n    mode: \"tool_drop\"\n    demo_anchor: \"table, canvas, #results, .benchmark\"\n    download_anchor: \"a[href*='huggingface.co']\"\n    specs: \"Sub-2B VLM | 10-min egocentric video | Paper + weights pending | 0.8279 held-out score\"\n  - name: \"Ambient @ EgoProactive 2026\"\n    url: \"https://huggingface.co/papers/2609.07099\"\n    mode: \"paper_preview\"\n    demo_anchor: \"figure, .architecture, table, #results\"\n    download_anchor: \"a[href*='huggingface.co']\"\n    specs: \"Wearable assistant | 8-sec intervention windows | ECCV 2026 challenge | Paper only\"\n  - name: \"Task-Agnostic Environment Preprocessing\"\n    url: \"https://huggingface.co/papers/2609.10824\"\n    mode: \"paper_preview\"\n    demo_anchor: \"figure, table, #experiments, .pipeline\"\n    download_anchor: \"a[href*='huggingface.co']\"\n    specs: \"Agent scaffolding | No task supervision | Paper only\"\n  - name: \"TRACE\"\n    url: \"https://huggingface.co/papers/2609.10297\"\n    mode: \"tool_drop\"\n    demo_anchor: \"table, #comparison, .latency, canvas\"\n    download_anchor: \"a[href*='huggingface.co'], a[href*='github.com']\"\n    specs: \"Training-free token pruning | GUI agent inference | Paper + code pending\"\n---\n\n# Intro\n[excited] Today: a 2B model that watches ten-minute egos, a wearable that knows when to shut up, and a pruning trick that saves your GUI agent's memory.\n\n---\n\n# Story 1: Ambient @ EgoLongQA 2026\n### Landing Page\n[confident] Ambient just took first place in the sub-2B division at ECCV's Wearable AI Challenge, scoring 0.8279 on held-out long-video questions.\n\n### Demo\n[amazed] One greedy forward pass answers multiple-choice Q&A over ten-minute egocentric video \u2014 no chunking, no retrieval loop, just distilled perception compressed into a tiny brain.\n\n### Access\n[excited] Full writeup lives on Hugging Face Papers at 2609.07154 \u2014 weights are still under wraps, so bookmark it now before the fold.\n\n---\n\n# Story 2: Ambient @ EgoProactive 2026\n### Paper Preview\n[curious] Same team, harder problem: a wearable assistant that decides every eight seconds whether to speak up or stay silent \u2014 and it ranked first in the large-model division.\n\n### Architecture\n[confident] Their trick reformulates intervention as visually grounded supervision, and the architecture figure shows exactly where the gating signal is injected.\n\n### Release Horizon\n[friendly] It's a challenge paper on Hugging Face at 2609.07099 \u2014 code expected post-conference, so follow the repo now.\n\n---\n\n# Story 3: Studying Without a Syllabus\n### Paper Preview\n[skeptical] Here's the wild one: can an agent prep an environment before it even knows the task? Prior methods cheat with examples, trajectories, or eval feedback.\n\n### Architecture\n[amazed] Table one proves their task-agnostic preprocessing builds reusable indices and scripts that transfer cold \u2014 no supervision, no hints, just raw corpus inspection.\n\n### Release Horizon\n[curious] Paper's up at 2609.10824 on Hugging Face Daily \u2014 implementation timeline is still TBD, so expect replications first.\n\n---\n\n# Story 4: TRACE\n### Landing Page\n[confident] TRACE fixes a nasty GUI agent problem: once you prune visual tokens, you can't undo it without re-encoding. So they made admission irreversible but smart.\n\n### Demo\n[amazed] Point at the latency table \u2014 trajectory-robust admission plus evidence ordering cuts memory hard while screenshots keep stacking.\n\n### Access\n[excited] Training-free, so no fine-tune needed. Grab it at 2609.10297 on Hugging Face, GitHub mirror likely dropping this week.\n\n---\n\n# Outro\n[friendly] All project links and research papers are organized down in the description below. Hit subscribe to Brief Delights for your daily rundown, and I'll see you tomorrow.",
+  "generated_at": "2026-09-15T07:38:52.785276"
+}

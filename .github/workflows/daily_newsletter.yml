@@ -99,7 +99,7 @@ jobs:
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action Bot"
-          git add landing/public/newsletters/ landing/public/previews/ landing/public/data/ reports/weekly_insights/
+          git add landing/public/newsletters/ landing/public/previews/ landing/public/data/ reports/weekly_insights/ reports/video_scripts/
           # Only commit if there are changes
           if ! git diff --staged --quiet; then
             git commit -m "📰 Auto-generated newsletters & previews $(date +%Y-%m-%d)"

@@ -352,6 +352,15 @@ def run_phase_2(segments_data: dict) -> bool:
     else:
         log("✅ Reddit strategic post published / 1-Click link ready")
 
+    # STEP 7b: Generate Daily Video Safari Script for OmniCap
+    log("\n" + "=" * 60)
+    log("STEP 7b: Generating Daily Video Safari Script (OmniCap)", "INFO")
+    log("=" * 60)
+    if not run_script("generate_video_script.py", 180):
+        log("⚠️ Video safari script generation failed (non-blocking)", "WARN")
+    else:
+        log("✅ Video safari script generated in reports/video_scripts/ & public/data/")
+
 
     if datetime.now().weekday() == 6:  # 6 = Sunday
         log("\n" + "=" * 60)

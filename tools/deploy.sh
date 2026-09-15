@@ -48,6 +48,7 @@ rsync -av "$ICLOUD_DIR/segments_config.json" "$TMP_REPO/"
 rsync -av "$ICLOUD_DIR/feeds_config.json" "$TMP_REPO/"
 rsync -av "$ICLOUD_DIR/subscribers.json" "$TMP_REPO/"
 rsync -av --exclude='__pycache__' "$ICLOUD_DIR/feeds_config/" "$TMP_REPO/feeds_config/" 2>/dev/null || true
+rsync -av "$ICLOUD_DIR/reports/" "$TMP_REPO/reports/" 2>/dev/null || true
 rsync -av "$ICLOUD_DIR/tools/" "$TMP_REPO/tools/" 2>/dev/null || true
 echo "  ✅ Files synced"
 echo ""
