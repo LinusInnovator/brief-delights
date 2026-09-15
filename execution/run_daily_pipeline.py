@@ -354,12 +354,12 @@ def run_phase_2(segments_data: dict) -> bool:
 
     # STEP 7b: Generate Daily Video Safari Script for OmniCap
     log("\n" + "=" * 60)
-    log("STEP 7b: Generating Daily Video Safari Script (OmniCap)", "INFO")
+    log(f"STEP 7b: Generating Daily Video Safari Script for {TODAY} (OmniCap)", "INFO")
     log("=" * 60)
-    if not run_script("generate_video_script.py", 180):
+    if not run_script("generate_video_script.py", 180, args=["--date", TODAY]):
         log("⚠️ Video safari script generation failed (non-blocking)", "WARN")
     else:
-        log("✅ Video safari script generated in reports/video_scripts/ & public/data/")
+        log(f"✅ Video safari script generated for {TODAY} in reports/video_scripts/ & public/data/")
 
 
     if datetime.now().weekday() == 6:  # 6 = Sunday

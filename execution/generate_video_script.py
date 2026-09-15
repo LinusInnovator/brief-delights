@@ -410,6 +410,49 @@ def main():
         json.dump(parsed_json, f, indent=2)
     log(f"✅ Saved Structured JSON: {latest_json_file}")
 
+    # 6. Long-term Archive: Save date-versioned copies inside public/data/video_scripts/
+    scripts_archive_dir = PUBLIC_DATA_DIR / "video_scripts"
+    scripts_archive_dir.mkdir(parents=True, exist_ok=True)
+
+    archived_md = scripts_archive_dir / f"{date_str}-ai-news.md"
+    with open(archived_md, "w", encoding="utf-8") as f:
+        f.write(md_script)
+
+    archived_json = scripts_archive_dir / f"{date_str}.json"
+    with open(archived_json, "w", encoding="utf-8") as f:
+        json.dump(parsed_json, f, indent=2)
+
+    # 7. Update Archive Catalog index.json
+    index_file = scripts_archive_dir / "index.json"
+    archive_index = []
+    if index_file.exists():
+        try:
+            with open(index_file, "r") as f:
+                archive_index = json.load(f)
+        except Exception:
+            archive_index = []
+
+    # Update or insert today's entry
+    story_names = [s.get("name", "") for s in parsed_json.get("stories", [])]
+    entry = {
+        "date": date_str,
+        "episode_id": parsed_json.get("episode_id", f"ai-news-{date_str}"),
+        "stories": story_names,
+        "stories_count": len(story_names),
+        "json_path": f"/data/video_scripts/{date_str}.json",
+        "md_path": f"/data/video_scripts/{date_str}-ai-news.md",
+        "updated_at": datetime.now().isoformat()
+    }
+
+    # Replace existing for same date or prepend
+    archive_index = [e for e in archive_index if e.get("date") != date_str]
+    archive_index.insert(0, entry)
+    archive_index.sort(key=lambda x: x.get("date", ""), reverse=True)
+
+    with open(index_file, "w", encoding="utf-8") as f:
+        json.dump(archive_index, f, indent=2)
+    log(f"✅ Updated Video Safari Archive Index ({len(archive_index)} episodes recorded)")
+
     print("\n--- GENERATED SCRIPT PREVIEW ---\n")
     print(md_script[:600] + "\n...\n")
     return True

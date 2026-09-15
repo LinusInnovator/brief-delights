@@ -1,0 +1,16 @@
+[
+  {
+    "date": "2026-09-15",
+    "episode_id": "ai-news-2026-09-15",
+    "stories": [
+      "Ambient @ EgoLongQA 2026",
+      "Ambient @ EgoProactive 2026",
+      "Task-Agnostic Environment Preprocessing",
+      "TRACE"
+    ],
+    "stories_count": 4,
+    "json_path": "/data/video_scripts/2026-09-15.json",
+    "md_path": "/data/video_scripts/2026-09-15-ai-news.md",
+    "updated_at": "2026-09-15T07:47:14.991156"
+  }
+]
