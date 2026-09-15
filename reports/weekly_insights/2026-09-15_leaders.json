@@ -3,135 +3,230 @@
   "segment": "leaders",
   "trends": {
     "categories": {
-      "Macro Trends & Tech Economy": 5,
-      "Enterprise Strategy & SaaS": 3,
-      "Venture Capital & M&A": 2
+      "Enterprise Strategy & SaaS": 5,
+      "Macro Trends & Tech Economy": 4,
+      "Platform & Growth Strategy": 3,
+      "Frontier AI Labs & Research": 2
     },
     "sources": {
-      "Technology": 5,
-      "Enterprise News | TechCrunch": 2,
-      "Sifted": 2,
-      "\"saastr AI when:3d\" - Google News": 1
+      "Enterprise News | TechCrunch": 5,
+      "Technology": 4,
+      "The Verge": 3,
+      "AI News & Artificial Intelligence | TechCrunch": 2
     },
     "topics": [
-      "IBM partners with OpenAI to bolster enterprise AI push",
-      "Bannon and Sanders unite over AI safety as Trump condemns warnings as a \u2018hoax\u2019",
-      "Time for a pause on cutting-edge AI",
-      "AI companies must relinquish some of the power at their disposal",
+      "OpenAI-backed Thrive Holdings raises $2B to bring AI to the enterprise",
+      "OpenAI-backed Thrive Holdings raises $2B to bring AI to the enterprise",
+      "Amazon just tripled its order of Nvidia chips over \u2018surging demand\u2019",
+      "What execs and politicians are saying about slowing down AI development",
+      "Is Big Tech\u2019s AI slowdown a safety pact or a cartel?",
+      "Y Combinator\u2019s Garry Tan wants US open-weight AI labs to \u2018distill\u2019 frontier models, too",
+      "Salesforce and Nvidia\u2019s new reasoning model is everything the AI labs should fear",
+      "US tech stocks fall after big AI groups call for slowdown",
       "Cyber criminals use AI to supercharge scams, watchdog warns",
-      "Automation is coming for the gig economy",
-      "We Run 21 AI Agents and They\u2019ve Closed Millions. But There Still Isn\u2019t a Good AI Account Executive. Yet - saastr.com",
-      "Meta\u2019s new Glimmer AI model offers a hint at Zuckerberg\u2019s personal intelligence vision",
-      "Exclusive: Bynario raises \u20ac2.1m to tackle cybersecurity\u2019s AI slop problem",
-      "Bending Spoons to buy Amsterdam-based Miro in $1.36bn deal"
+      "Music industry targets AI songs in crackdown on streaming fraud",
+      "AI code-testing startup Blacksmith\u2019s valuation jumps almost 10x in less than a year",
+      "IBM partners with OpenAI to bolster enterprise AI push",
+      "Jensen Huang puts Trump on speakerphone onstage to announce robots won\u2019t take over the world",
+      "Bannon and Sanders unite over AI safety as Trump condemns warnings as a \u2018hoax\u2019"
     ],
     "detected_trends": [
       {
-        "keyword": "Macro Trends & Tech Economy",
+        "keyword": "Enterprise Strategy & SaaS",
         "count": 5
       },
       {
-        "keyword": "Enterprise Strategy & SaaS",
+        "keyword": "Macro Trends & Tech Economy",
+        "count": 4
+      },
+      {
+        "keyword": "Platform & Growth Strategy",
         "count": 3
       },
       {
-        "keyword": "Venture Capital & M&A",
+        "keyword": "Frontier AI Labs & Research",
         "count": 2
       }
     ],
-    "total_articles": 10
+    "total_articles": 14
   },
-  "article_count": 10,
+  "article_count": 14,
   "articles": [
     {
-      "id": "b377fa89f3ad152d5e1d6e4218e33c19",
-      "title": "IBM partners with OpenAI to bolster enterprise AI push",
-      "url": "https://techcrunch.com/2026/08/13/ibm-partners-with-openai-to-bolster-enterprise-ai-push/",
-      "published_date": "2026-09-15T10:08:57.296676",
-      "description": "IBM plans to train and certify tens of thousands of consultants on OpenAI's technologies as part of this deal.",
+      "id": "2fd40c918be855216ae767e5bb820dfe",
+      "title": "OpenAI-backed Thrive Holdings raises $2B to bring AI to the enterprise",
+      "url": "https://techcrunch.com/2026/08/12/openai-backed-thrive-holdings-raises-2b-to-bring-ai-to-the-enterprise/",
+      "published_date": "2026-09-15T12:44:34.488883",
+      "description": "Thrive Holdings has raised $2 billion in new funding at a $12 billion valuation from investors like SoftBank, D1 Capital Partners, and Altimeter Capital.",
       "source": "Enterprise News | TechCrunch",
       "category": "Enterprise Strategy & SaaS",
       "segment": "leaders",
       "source_type": "secondary",
-      "raw_content": "IBM plans to train and certify tens of thousands of consultants on OpenAI's technologies as part of this deal.",
+      "raw_content": "Thrive Holdings has raised $2 billion in new funding at a $12 billion valuation from investors like SoftBank, D1 Capital Partners, and Altimeter Capital.",
       "segments": [
         "leaders"
       ],
       "tier": "full",
-      "selection_reason": "This partnership between IBM and OpenAI signifies a major strategic move in enterprise AI adoption, impacting how businesses will leverage AI technologies.",
-      "audience_value": "Leaders can assess the implications of major tech players integrating cutting-edge AI, guiding their own company's AI strategy and vendor selection.",
-      "urgency_score": 8,
-      "category_tag": "\ud83d\ude80 AI & Innovation",
-      "why_this_matters": "Why this matters: IBM's strategic partnership with OpenAI for enterprise AI adoption signals a significant shift in how businesses will access and implement advanced AI capabilities."
-    },
-    {
-      "id": "1c2a6496adfd809867d2947bd59fe443",
-      "title": "Bannon and Sanders unite over AI safety as Trump condemns warnings as a \u2018hoax\u2019",
-      "url": "https://www.ft.com/content/bab5c4c5-5377-4dd0-8b46-d8c4ce9a36d5?syn-25a6b1a6=1",
-      "published_date": "2026-09-15T10:08:59.191320",
-      "description": "Rightwing activist and leftwing senator join forces to demand stronger regulation of the technology",
-      "source": "Technology",
-      "category": "Macro Trends & Tech Economy",
-      "segment": "leaders",
-      "source_type": "secondary",
-      "raw_content": "Rightwing activist and leftwing senator join forces to demand stronger regulation of the technology",
-      "segments": [
-        "leaders"
-      ],
-      "tier": "full",
-      "selection_reason": "The convergence of political figures on AI safety regulation highlights a critical emerging trend that will shape the future of AI development and deployment.",
-      "audience_value": "Leaders need to be aware of the growing regulatory discussions around AI, which could impact compliance, innovation timelines, and market access.",
-      "urgency_score": 8,
-      "category_tag": "\ud83d\ude80 AI & Innovation",
-      "why_this_matters": "Why this matters: Bipartisan and cross-ideological attention on AI safety and regulation indicates potential future policy shifts that could impact business operations and innovation."
-    },
-    {
-      "id": "d44d95965a4264454320fdd700b8a8b9",
-      "title": "Time for a pause on cutting-edge AI",
-      "url": "https://www.ft.com/content/b132d848-7d0b-4938-81ee-3683ef2004db?syn-25a6b1a6=1",
-      "published_date": "2026-09-15T10:08:59.191308",
-      "description": "The most advanced models are starting to escape human control",
-      "source": "Technology",
-      "category": "Macro Trends & Tech Economy",
-      "segment": "leaders",
-      "source_type": "secondary",
-      "raw_content": "The most advanced models are starting to escape human control",
-      "segments": [
-        "leaders"
-      ],
-      "tier": "full",
-      "selection_reason": "This article discusses the growing concern over advanced AI models potentially escaping human control, a critical strategic risk for leaders.",
-      "audience_value": "Leaders gain insight into the escalating debate around AI control and safety, informing risk management and long-term strategic planning for AI integration.",
+      "selection_reason": "This article details a significant funding round for an AI enterprise company, directly impacting strategic investment decisions and market positioning.",
+      "audience_value": "Provides insight into major AI investment trends and valuations, informing strategic partnerships and competitive analysis.",
       "urgency_score": 9,
-      "category_tag": "\ud83d\ude80 AI & Innovation",
-      "why_this_matters": "Why this matters: The call to pause cutting-edge AI development due to control concerns presents a significant strategic consideration for companies investing heavily in AI."
+      "category_tag": "\ud83d\udcb0 Funding & M&A",
+      "why_this_matters": "Why this matters: A $2B funding round for an AI enterprise player signals significant market confidence and potential competitive shifts."
     },
     {
-      "id": "4015119659443e53c7bd99e45e7dafc8",
-      "title": "AI companies must relinquish some of the power at their disposal",
-      "url": "https://www.ft.com/content/7bc5ed85-47db-400c-b5c2-7b403d7e4608?syn-25a6b1a6=1",
-      "published_date": "2026-09-15T10:08:59.191355",
-      "description": "The founders of OpenAI, Anthropic, Grok and DeepMind have warned about the dangers, now technology needs to be human scale",
-      "source": "Technology",
-      "category": "Macro Trends & Tech Economy",
+      "id": "2fd40c918be855216ae767e5bb820dfe",
+      "title": "OpenAI-backed Thrive Holdings raises $2B to bring AI to the enterprise",
+      "url": "https://techcrunch.com/2026/08/12/openai-backed-thrive-holdings-raises-2b-to-bring-ai-to-the-enterprise/",
+      "published_date": "2026-09-15T12:44:34.488883",
+      "description": "Thrive Holdings has raised $2 billion in new funding at a $12 billion valuation from investors like SoftBank, D1 Capital Partners, and Altimeter Capital.",
+      "source": "Enterprise News | TechCrunch",
+      "category": "Enterprise Strategy & SaaS",
       "segment": "leaders",
       "source_type": "secondary",
-      "raw_content": "The founders of OpenAI, Anthropic, Grok and DeepMind have warned about the dangers, now technology needs to be human scale",
+      "raw_content": "Thrive Holdings has raised $2 billion in new funding at a $12 billion valuation from investors like SoftBank, D1 Capital Partners, and Altimeter Capital.",
       "segments": [
         "leaders"
       ],
       "tier": "full",
-      "selection_reason": "This piece addresses the critical need for AI companies to decentralize power, a key strategic consideration for market dynamics and ethical AI development.",
-      "audience_value": "Leaders can understand the evolving discourse on AI power concentration, influencing their approach to AI adoption and ethical considerations.",
+      "selection_reason": "This article highlights a major partnership between IBM and OpenAI, signaling a strategic shift in enterprise AI adoption and potential market disruption.",
+      "audience_value": "Informs leaders about key strategic alliances in the AI space, influencing technology adoption strategies and competitive landscape assessments.",
+      "urgency_score": 8,
+      "category_tag": "\ud83d\ude80 AI & Innovation",
+      "why_this_matters": "Why this matters: IBM's strategic partnership with OpenAI indicates a major push for enterprise AI integration, impacting future business models."
+    },
+    {
+      "id": "18acc42de8d17184366653a0c08a6d77",
+      "title": "Amazon just tripled its order of Nvidia chips over \u2018surging demand\u2019",
+      "url": "https://techcrunch.com/2026/08/26/amazon-just-tripled-its-order-of-nvidia-chips-over-surging-demand/",
+      "published_date": "2026-09-15T12:44:34.488791",
+      "description": "Amazon is adding another 2 million Nvidia GPU chips to its data centers over the next two years. But this extended partnerships stretches beyond buying more chips.",
+      "source": "Enterprise News | TechCrunch",
+      "category": "Enterprise Strategy & SaaS",
+      "segment": "leaders",
+      "source_type": "secondary",
+      "raw_content": "Amazon is adding another 2 million Nvidia GPU chips to its data centers over the next two years. But this extended partnerships stretches beyond buying more chips.",
+      "segments": [
+        "leaders"
+      ],
+      "tier": "full",
+      "selection_reason": "Amazon's tripled order of Nvidia chips reflects surging demand for AI infrastructure, impacting supply chain strategies and hardware investment decisions.",
+      "audience_value": "Offers critical data on hyperscaler demand for AI hardware, guiding procurement strategies and understanding market capacity.",
+      "urgency_score": 9,
+      "category_tag": "\u2601\ufe0f Enterprise Tech",
+      "why_this_matters": "Why this matters: Amazon's massive chip order signals intense demand for AI infrastructure, impacting supply chains and hardware market dynamics."
+    },
+    {
+      "id": "de5d887a67d769f90a829c4f1e637bad",
+      "title": "What execs and politicians are saying about slowing down AI development",
+      "url": "https://www.theverge.com/ai-artificial-intelligence/995141/ai-executives-politicians-safety-regulation-anthropic-dario-amodei",
+      "published_date": "2026-09-15T12:44:22.876976",
+      "description": "Dario Amodei kicked off a flood of statements over the past few days about AI safety by publishing a long essay titled \"We Must Pace the Frontier\" detailing why AI development should be slowed down. Other AI leaders and politicians are speaking out in favor of or opposing his points, and we've compiled some of [&#8230;]",
+      "source": "The Verge",
+      "category": "Platform & Growth Strategy",
+      "segment": "leaders",
+      "source_type": "secondary",
+      "raw_content": "<figure>\n\n<img alt=\"\" src=\"https://platform.theverge.com/wp-content/uploads/sites/2/2026/03/STK202_DARIO_AMODEI_CVIRGINIA_D.jpg?quality=90&#038;strip=all&#038;crop=0,0,100,100\" />\n\t<figcaption>\n\t\t</figcaption>\n</figure>\n<p class=\"wp-block-paragraph\">Dario Amodei kicked off a flood of statements over the past few days about AI safety by publishing a long essay titled <a href=\"https://darioamodei.com/post/we-must-pace-the-frontier\">\"We Must Pace the Frontier\"</a> detailing why AI development should be slowed down. Other AI leaders and politicians are speaking out in favor of or opposing his points, and we've compiled some of them here.</p>\n<p class=\"wp-block-paragraph\"><strong>Anthropic CEO Dario Amodei</strong></p>\n<p class=\"wp-block-paragraph\">Amodei's Saturday morning essay outlined three steps for pacing AI development: embedded third-party evaluators that can verify if a company is adhering to safety practices and commitments and report incidents, coordination between frontier AI companies in democratic countries on standards and li \u2026</p>\n<p><a href=\"https://www.theverge.com/ai-artificial-intelligence/995141/ai-executives-politicians-safety-regulation-anthropic-dario-amodei\">Read the full story at The Verge.</a></p>",
+      "segments": [
+        "leaders"
+      ],
+      "tier": "full",
+      "selection_reason": "This article discusses the growing debate among executives and politicians about slowing down AI development, directly affecting regulatory landscapes and strategic planning.",
+      "audience_value": "Provides crucial context on the evolving AI regulation debate, helping leaders anticipate policy changes and their business impact.",
+      "urgency_score": 8,
+      "category_tag": "\ud83d\ude80 AI & Innovation",
+      "why_this_matters": "Why this matters: The executive and political discourse on pacing AI development signals potential regulatory shifts that could impact innovation timelines."
+    },
+    {
+      "id": "c9c7e7aae9376f42002bdc94ee796681",
+      "title": "Is Big Tech\u2019s AI slowdown a safety pact or a cartel?",
+      "url": "https://www.theverge.com/ai-artificial-intelligence/995186/is-big-techs-ai-slowdown-a-safety-pact-or-a-cartel",
+      "published_date": "2026-09-15T12:44:22.876926",
+      "description": "When OpenAI CEO Sam Altman, Anthropic CEO Dario Amodei, Google DeepMind cofounder Demis Hassabis, and SpaceX head Elon Musk loosely agreed over the weekend to slow down AI development, skeptics spotted an ulterior motive immediately. The AI titans had declared that their aim was to \"pace the frontier,\" signing on at least partially to a [&#8230;]",
+      "source": "The Verge",
+      "category": "Platform & Growth Strategy",
+      "segment": "leaders",
+      "source_type": "secondary",
+      "raw_content": "<figure>\n\n<img alt=\"Enlightened robots standing next to each other.\" src=\"https://platform.theverge.com/wp-content/uploads/sites/2/2025/11/STKS522_AGI_A.jpg?quality=90&#038;strip=all&#038;crop=0,0,100,100\" />\n\t<figcaption>\n\t\t</figcaption>\n</figure>\n<p class=\"has-drop-cap wp-block-paragraph\">When OpenAI CEO Sam Altman, Anthropic CEO Dario Amodei, Google DeepMind cofounder Demis Hassabis, and SpaceX head Elon Musk loosely agreed over the weekend to slow down AI development, skeptics spotted an ulterior motive immediately. The AI titans had declared that their aim was to \"pace the frontier,\" signing on at least partially to a proposal for embedding third-party auditors, regulating domestic labs, and reaching a global slowdown agreement. Their critics, however, argued they simply wanted to stop would-be competitors, kneecap the open-source movement, and avoid real legal safeguards - <a href=\"https://www.tiktok.com/t/ZTUCseghH/\">some</a> dubbed it an outright \"cartel.\" </p>\n<p class=\"wp-block-paragraph\">The truth  \u2026</p>\n<p><a href=\"https://www.theverge.com/ai-artificial-intelligence/995186/is-big-techs-ai-slowdown-a-safety-pact-or-a-cartel\">Read the full story at The Verge.</a></p>",
+      "segments": [
+        "leaders"
+      ],
+      "tier": "full",
+      "selection_reason": "This piece analyzes the implications of Big Tech's AI slowdown calls, raising questions about market collusion and competitive strategy.",
+      "audience_value": "Helps leaders understand the strategic motivations behind AI development slowdowns, informing competitive strategy and market analysis.",
+      "urgency_score": 7,
+      "category_tag": "\ud83d\udcca Market Trends",
+      "why_this_matters": "Why this matters: The debate over AI development pace could signal shifts in market competition and strategic positioning among tech giants."
+    },
+    {
+      "id": "e2480aa4c979ae2fddd08f46b5d266f4",
+      "title": "Y Combinator\u2019s Garry Tan wants US open-weight AI labs to \u2018distill\u2019 frontier models, too",
+      "url": "https://techcrunch.com/2026/09/11/y-combinators-garry-tan-wants-u-s-open-weight-ai-labs-to-distill-frontier-models-too/",
+      "published_date": "2026-09-15T12:43:52.724229",
+      "description": "Tan wants smaller, American open-weight AI labs to use the same kind of training techniques on American frontier AI labs, giving the U.S. a more robust set of open-weight options that aren\u2019t Chinese.",
+      "source": "AI News & Artificial Intelligence | TechCrunch",
+      "category": "Frontier AI Labs & Research",
+      "segment": "innovators",
+      "source_type": "secondary",
+      "raw_content": "Tan wants smaller, American open-weight AI labs to use the same kind of training techniques on American frontier AI labs, giving the U.S. a more robust set of open-weight options that aren\u2019t Chinese.",
+      "segments": [
+        "innovators",
+        "leaders"
+      ],
+      "tier": "full",
+      "selection_reason": "Garry Tan's call for US AI labs to 'distill' frontier models is a strategic imperative for national AI competitiveness and leadership.",
+      "audience_value": "Informs leaders about strategic initiatives to bolster domestic AI capabilities and maintain a competitive edge in frontier AI research.",
       "urgency_score": 7,
       "category_tag": "\ud83d\ude80 AI & Innovation",
-      "why_this_matters": "Why this matters: The call for AI companies to relinquish power is a significant trend that could reshape the competitive landscape and ethical frameworks of AI deployment."
+      "why_this_matters": "Why this matters: Strategic efforts to consolidate and advance US AI capabilities are crucial for maintaining global technological leadership."
+    },
+    {
+      "id": "221b10e9623a92a524353ca66c2fc0df",
+      "title": "Salesforce and Nvidia\u2019s new reasoning model is everything the AI labs should fear",
+      "url": "https://techcrunch.com/2026/09/15/salesforce-and-nvidias-new-reasoning-model-is-everything-the-ai-labs-should-fear/",
+      "published_date": "2026-09-15T12:43:52.723754",
+      "description": "Salesforce Koa is built on Nvidia's open-weight Nemotron model and is trained to do sales, marketing and customer-support tasks.",
+      "source": "AI News & Artificial Intelligence | TechCrunch",
+      "category": "Frontier AI Labs & Research",
+      "segment": "innovators",
+      "source_type": "secondary",
+      "raw_content": "Salesforce Koa is built on Nvidia's open-weight Nemotron model and is trained to do sales, marketing and customer-support tasks.",
+      "segments": [
+        "innovators",
+        "leaders"
+      ],
+      "tier": "full",
+      "selection_reason": "Salesforce and Nvidia's new reasoning model poses a strategic challenge to existing AI labs, impacting competitive dynamics and future product development.",
+      "audience_value": "Highlights a significant development in enterprise AI reasoning capabilities, influencing strategic product roadmaps and competitive positioning.",
+      "urgency_score": 8,
+      "category_tag": "\ud83d\ude80 AI & Innovation",
+      "why_this_matters": "Why this matters: A new reasoning model from Salesforce and Nvidia could redefine enterprise AI applications and challenge existing market players."
+    },
+    {
+      "id": "95e8ac688cc7d13ca7c2cdac1b0af872",
+      "title": "US tech stocks fall after big AI groups call for slowdown",
+      "url": "https://www.ft.com/content/aa8a1be7-abe0-44b7-bcd3-31fd0a44de08?syn-25a6b1a6=1",
+      "published_date": "2026-09-15T12:44:36.104284",
+      "description": "Memory-chip makers and Nvidia slide on Wall Street as warnings combine with backdrop of rising oil prices and higher borrowing costs",
+      "source": "Technology",
+      "category": "Macro Trends & Tech Economy",
+      "segment": "leaders",
+      "source_type": "secondary",
+      "raw_content": "Memory-chip makers and Nvidia slide on Wall Street as warnings combine with backdrop of rising oil prices and higher borrowing costs",
+      "segments": [
+        "leaders"
+      ],
+      "tier": "full",
+      "selection_reason": "The article connects AI group slowdown calls to a fall in US tech stocks, indicating market sentiment and investment shifts.",
+      "audience_value": "Provides insight into how AI development discourse impacts market valuations and investor sentiment, crucial for financial strategy.",
+      "urgency_score": 8,
+      "category_tag": "\ud83d\udcb0 Funding & M&A",
+      "why_this_matters": "Why this matters: Market reactions to AI slowdown calls highlight the sensitivity of tech valuations to industry narratives and strategic shifts."
     },
     {
       "id": "2c2195af50c0ad401d1627d7aced0f6b",
       "title": "Cyber criminals use AI to supercharge scams, watchdog warns",
       "url": "https://www.ft.com/content/d545bae1-d770-46f3-9913-07e85d4ae34c?syn-25a6b1a6=1",
-      "published_date": "2026-09-15T10:08:59.191481",
+      "published_date": "2026-09-15T12:44:36.104666",
       "description": "Criminals are switching from using vast fraud compounds with hundreds of workers to one or two people working on sophisticated models",
       "source": "Technology",
       "category": "Macro Trends & Tech Economy",
@@ -141,117 +236,117 @@
       "segments": [
         "leaders"
       ],
-      "tier": "full",
-      "selection_reason": "This article highlights how cybercriminals are leveraging AI to enhance scams, a growing security threat that impacts business operations and customer trust.",
-      "audience_value": "Leaders will be alerted to sophisticated AI-driven threats, enabling them to bolster their cybersecurity strategies and protect their organizations.",
-      "urgency_score": 8,
+      "tier": "quick",
+      "selection_reason": "Cyber criminals are leveraging AI for sophisticated scams, posing a new threat landscape for businesses.",
+      "audience_value": "Alerts leaders to evolving cyber threats driven by AI, necessitating updated security strategies.",
+      "urgency_score": 7,
       "category_tag": "\ud83d\udd10 Security",
-      "why_this_matters": "Why this matters: AI-powered scams are becoming more sophisticated, posing a direct threat to business revenue and customer trust, necessitating enhanced security measures."
+      "why_this_matters": "Why this matters: AI-powered scams are becoming more sophisticated, demanding enhanced cybersecurity vigilance."
     },
     {
-      "id": "65eabbadcc915d152c852025ad94c01a",
-      "title": "Automation is coming for the gig economy",
-      "url": "https://www.ft.com/content/a2c33eed-7aef-4e68-9252-3a1dddf61b5a?syn-25a6b1a6=1",
-      "published_date": "2026-09-15T10:08:59.191457",
-      "description": "A safety net for people who have fallen out of the formal labour market is being dismantled",
+      "id": "557a25c2b716a0e8e7a99c5c0ce2a533",
+      "title": "Music industry targets AI songs in crackdown on streaming fraud",
+      "url": "https://www.ft.com/content/c1f17709-7fc8-4afc-8ac9-38cd923f0064?syn-25a6b1a6=1",
+      "published_date": "2026-09-15T12:44:36.104642",
+      "description": "Scammers are flooding platforms with tracks then deploying bots to rack up plays and royalty payments",
       "source": "Technology",
       "category": "Macro Trends & Tech Economy",
       "segment": "leaders",
       "source_type": "secondary",
-      "raw_content": "A safety net for people who have fallen out of the formal labour market is being dismantled",
+      "raw_content": "Scammers are flooding platforms with tracks then deploying bots to rack up plays and royalty payments",
       "segments": [
         "leaders"
       ],
-      "tier": "full",
-      "selection_reason": "The automation of the gig economy presents a significant market trend that will reshape labor markets and workforce strategies.",
-      "audience_value": "Leaders can anticipate shifts in workforce dynamics and consider how automation will impact their talent acquisition and operational models.",
-      "urgency_score": 7,
-      "category_tag": "\ud83d\udcca Market Trends",
-      "why_this_matters": "Why this matters: The increasing automation of the gig economy signals a fundamental shift in labor markets, requiring strategic adjustments to workforce planning and talent management."
+      "tier": "quick",
+      "selection_reason": "The music industry is cracking down on AI-generated songs used for streaming fraud, indicating a growing challenge in content authenticity and revenue protection.",
+      "audience_value": "Highlights emerging challenges in AI-driven content fraud and its impact on revenue streams.",
+      "urgency_score": 6,
+      "category_tag": "\ud83d\udcbc Tech Business",
+      "why_this_matters": "Why this matters: AI-driven fraud in the music industry signals potential revenue risks and the need for robust content verification."
     },
     {
-      "id": "90ffb19c14235ee62bb3cec734877a31",
-      "title": "We Run 21 AI Agents and They\u2019ve Closed Millions. But There Still Isn\u2019t a Good AI Account Executive. Yet - saastr.com",
-      "url": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxQbkw4QVV3WWdBTUdZYXRES0RFbDUwS0puVDdFODEzOXdNNkFDUmRrZ21QLVZnS2VSbllLcng4emFKNGI0MUhNWUV0SzFVaXV2MTI5dFZ4ZWJISWRmYWd0RGFEOFg1MXV1QWRKVTVTamdhWXJ5RmJpZnBVdUhtaVVnNW9kOUtYUzlSWEhFclI0c0xRVUdtX0pDblNKdDJzdFc3NHJudEh3UVd3VHNJUzZDSGFJcmY1NWhGcXVoMlRPbnc?oc=5",
-      "published_date": "2026-09-15T10:08:57.839263",
-      "description": "<a href=\"https://news.google.com/rss/articles/CBMiwAFBVV95cUxQbkw4QVV3WWdBTUdZYXRES0RFbDUwS0puVDdFODEzOXdNNkFDUmRrZ21QLVZnS2VSbllLcng4emFKNGI0MUhNWUV0SzFVaXV2MTI5dFZ4ZWJISWRmYWd0RGFEOFg1MXV1QWRKVTVTamdhWXJ5RmJpZnBVdUhtaVVnNW9kOUtYUzlSWEhFclI0c0xRVUdtX0pDblNKdDJzdFc3NHJudEh3UVd3VHNJUzZDSGFJcmY1NWhGcXVoMlRPbnc?oc=5\" target=\"_blank\">We Run 21 AI Agents and They\u2019ve Closed Millions. But There Still Isn\u2019t a Good AI Account Executive. Yet</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">saastr.com</font>",
-      "source": "\"saastr AI when:3d\" - Google News",
-      "category": "Enterprise Strategy & SaaS",
-      "segment": "leaders",
-      "source_type": "secondary",
-      "raw_content": "<a href=\"https://news.google.com/rss/articles/CBMiwAFBVV95cUxQbkw4QVV3WWdBTUdZYXRES0RFbDUwS0puVDdFODEzOXdNNkFDUmRrZ21QLVZnS2VSbllLcng4emFKNGI0MUhNWUV0SzFVaXV2MTI5dFZ4ZWJISWRmYWd0RGFEOFg1MXV1QWRKVTVTamdhWXJ5RmJpZnBVdUhtaVVnNW9kOUtYUzlSWEhFclI0c0xRVUdtX0pDblNKdDJzdFc3NHJudEh3UVd3VHNJUzZDSGFJcmY1NWhGcXVoMlRPbnc?oc=5\" target=\"_blank\">We Run 21 AI Agents and They\u2019ve Closed Millions. But There Still Isn\u2019t a Good AI Account Executive. Yet</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">saastr.com</font>",
-      "segments": [
-        "leaders"
-      ],
-      "tier": "full",
-      "selection_reason": "This article discusses the practical application of AI agents in closing millions in revenue, offering insights into effective AI sales strategies.",
-      "audience_value": "Leaders can learn from real-world examples of AI driving revenue growth, informing their strategies for sales optimization and AI adoption.",
-      "urgency_score": 8,
-      "category_tag": "\ud83d\ude80 AI & Innovation",
-      "why_this_matters": "Why this matters: Demonstrating millions in revenue closed by AI agents highlights the immediate business impact and ROI potential of advanced AI in sales operations."
-    },
-    {
-      "id": "4662a98c4da9d5a35fdeb378bc1ce210",
-      "title": "Meta\u2019s new Glimmer AI model offers a hint at Zuckerberg\u2019s personal intelligence vision",
-      "url": "https://techcrunch.com/2026/08/10/metas-new-glimmer-ai-model-offers-a-hint-at-zuckerbergs-personal-intelligence-vision/",
-      "published_date": "2026-09-15T10:08:57.296724",
-      "description": "Meta\u2019s new open-weight Muse Glimmer model offers a glimpse of Mark Zuckerberg\u2019s personal superintelligence vision, as well as  the emerging divide between AI users can own and access.",
+      "id": "618c36a0317edf70cd221d19ea7d49eb",
+      "title": "AI code-testing startup Blacksmith\u2019s valuation jumps almost 10x in less than a year",
+      "url": "https://techcrunch.com/2026/08/12/blacksmiths-valuation-jumps-10x-to-550m-as-ai-coding-fuels-software-validation/",
+      "published_date": "2026-09-15T12:44:34.488906",
+      "description": "Blacksmith says revenue has grown more than tenfold over the past year.",
       "source": "Enterprise News | TechCrunch",
       "category": "Enterprise Strategy & SaaS",
       "segment": "leaders",
       "source_type": "secondary",
-      "raw_content": "Meta\u2019s new open-weight Muse Glimmer model offers a glimpse of Mark Zuckerberg\u2019s personal superintelligence vision, as well as  the emerging divide between AI users can own and access.",
+      "raw_content": "Blacksmith says revenue has grown more than tenfold over the past year.",
       "segments": [
         "leaders"
       ],
-      "tier": "full",
-      "selection_reason": "Meta's new AI model offers a glimpse into future AI development and potential market shifts driven by open-weight models.",
-      "audience_value": "Leaders can gain strategic insights into Meta's AI direction and the broader implications of open-weight models on the AI landscape.",
+      "tier": "quick",
+      "selection_reason": "An AI code-testing startup's valuation has surged nearly 10x, reflecting significant growth and investor interest in AI-driven development tools.",
+      "audience_value": "Illustrates rapid valuation growth in AI startups, offering benchmarks for investment and M&A strategies.",
       "urgency_score": 7,
-      "category_tag": "\ud83d\ude80 AI & Innovation",
-      "why_this_matters": "Why this matters: Meta's Glimmer AI model provides a strategic indicator of future AI capabilities and the growing divide between accessible and proprietary AI technologies."
-    },
-    {
-      "id": "0b290816b7d664758fc51b7934b66238",
-      "title": "Exclusive: Bynario raises \u20ac2.1m to tackle cybersecurity\u2019s AI slop problem",
-      "url": "https://sifted.eu/articles/bynario-cybersecurity-pre-seed-round/",
-      "published_date": "2026-09-15T10:08:57.241112",
-      "description": "",
-      "source": "Sifted",
-      "category": "Venture Capital & M&A",
-      "segment": "leaders",
-      "source_type": "secondary",
-      "raw_content": "",
-      "segments": [
-        "leaders"
-      ],
-      "tier": "full",
-      "selection_reason": "This funding announcement for a cybersecurity AI startup addresses a critical need for tackling AI-related security challenges.",
-      "audience_value": "Leaders can identify emerging solutions in cybersecurity that leverage AI, informing their risk mitigation and technology investment strategies.",
-      "urgency_score": 8,
-      "category_tag": "\ud83d\udd10 Security",
-      "why_this_matters": "Why this matters: A \u20ac2.1m funding round for an AI cybersecurity startup tackling 'AI slop' indicates a growing market focus on securing AI systems and data integrity."
-    },
-    {
-      "id": "4b80a861f762390d9f25826c76f75869",
-      "title": "Bending Spoons to buy Amsterdam-based Miro in $1.36bn deal",
-      "url": "https://sifted.eu/articles/bending-spoons-to-buy-miro/",
-      "published_date": "2026-09-15T10:08:57.241061",
-      "description": "",
-      "source": "Sifted",
-      "category": "Venture Capital & M&A",
-      "segment": "leaders",
-      "source_type": "secondary",
-      "raw_content": "",
-      "segments": [
-        "leaders"
-      ],
-      "tier": "full",
-      "selection_reason": "This acquisition news signals consolidation in the tech market and potential shifts in competitive dynamics.",
-      "audience_value": "Leaders can track M&A activity to understand market consolidation, potential competitive threats, and strategic acquisition opportunities.",
-      "urgency_score": 8,
       "category_tag": "\ud83d\udcb0 Funding & M&A",
-      "why_this_matters": "Why this matters: A $1.36bn acquisition highlights significant market consolidation and strategic moves by larger players, impacting competitive landscapes."
+      "why_this_matters": "Why this matters: A 10x valuation jump for an AI code-testing startup highlights explosive growth potential in specialized AI solutions."
+    },
+    {
+      "id": "b377fa89f3ad152d5e1d6e4218e33c19",
+      "title": "IBM partners with OpenAI to bolster enterprise AI push",
+      "url": "https://techcrunch.com/2026/08/13/ibm-partners-with-openai-to-bolster-enterprise-ai-push/",
+      "published_date": "2026-09-15T12:44:34.488860",
+      "description": "IBM plans to train and certify tens of thousands of consultants on OpenAI's technologies as part of this deal.",
+      "source": "Enterprise News | TechCrunch",
+      "category": "Enterprise Strategy & SaaS",
+      "segment": "leaders",
+      "source_type": "secondary",
+      "raw_content": "IBM plans to train and certify tens of thousands of consultants on OpenAI's technologies as part of this deal.",
+      "segments": [
+        "leaders"
+      ],
+      "tier": "quick",
+      "selection_reason": "IBM is partnering with OpenAI to train consultants on their AI technologies, indicating a strategic move to scale enterprise AI adoption.",
+      "audience_value": "Shows strategic partnerships aimed at scaling AI expertise within large enterprises.",
+      "urgency_score": 6,
+      "category_tag": "\ud83d\ude80 AI & Innovation",
+      "why_this_matters": "Why this matters: IBM's partnership with OpenAI signals a significant push to integrate advanced AI into enterprise consulting services."
+    },
+    {
+      "id": "1002fff4f0e057fb4325982ef80fa148",
+      "title": "Jensen Huang puts Trump on speakerphone onstage to announce robots won\u2019t take over the world",
+      "url": "https://www.theverge.com/tech/995079/president-donald-trump-calls-nvidia-ceo-jensen-huang-all-in-summit",
+      "published_date": "2026-09-15T12:44:22.877026",
+      "description": "Nvidia CEO Jensen Huang took a call from President Trump on Monday while onstage at the All-In Podcast's All-In Summit. It's not the first time Huang has taken a call from the president during work, but this time he put Trump on speakerphone before a big crowd. During the call, the president launched into his [&#8230;]",
+      "source": "The Verge",
+      "category": "Platform & Growth Strategy",
+      "segment": "leaders",
+      "source_type": "secondary",
+      "raw_content": "<figure>\n\n<img alt=\"\" src=\"https://platform.theverge.com/wp-content/uploads/sites/2/2026/09/gettyimages-2292612804.jpg?quality=90&#038;strip=all&#038;crop=0,0,100,100\" />\n\t<figcaption>\n\tNVIDIA CEO Jensen Huang speaks during the G20 Innovation Ministerial in Chapel Hill, North Carolina, on September 2, 2026. (Photo by Matt RAMEY / AFP via Getty Images) | AFP via Getty Images\t</figcaption>\n</figure>\n<p class=\"wp-block-paragraph\">Nvidia CEO Jensen Huang took a call from President Trump on Monday while onstage at the All-In Podcast's All-In Summit. It's not the first time Huang has <a href=\"https://www.theverge.com/tech/986389/oops-hot-mic\">taken a call from the president</a> during work, but this time he put Trump on speakerphone before a big crowd. </p>\n<p class=\"wp-block-paragraph\">During the call, the president launched into his take on recent fears about AI development, which he called a \"hoax,\" and told the crowd that \"the robots will not be taking over.\" </p>\n<p class=\"wp-block-paragraph\">It's already a <a href=\"https://www.theverge.com/ai-artificial-intelligence/995141/ai-executives-politicians-safety-regulation-anthropic-dario-amodei\">frothy week</a> for AI news. The call with the president followed Anthropic CEO Dario Amodei's long essay published this weekend titled <a href=\"https://darioamodei.com/post/we-must-pace-the-frontier\">\"We Must Pace the Frontier\"</a> where he argued for slowing  \u2026</p>\n<p><a href=\"https://www.theverge.com/tech/995079/president-donald-trump-calls-nvidia-ceo-jensen-huang-all-in-summit\">Read the full story at The Verge.</a></p>",
+      "segments": [
+        "leaders"
+      ],
+      "tier": "trending",
+      "selection_reason": "Nvidia CEO Jensen Huang's interaction with President Trump highlights the intersection of tech leadership, politics, and public perception.",
+      "audience_value": "Offers a glimpse into high-profile tech leadership interactions and their public relations implications.",
+      "urgency_score": 5,
+      "category_tag": "\ud83d\udcbc Tech Business",
+      "why_this_matters": "Why this matters: High-profile interactions between tech leaders and political figures can shape public perception and influence regulatory discussions."
+    },
+    {
+      "id": "1c2a6496adfd809867d2947bd59fe443",
+      "title": "Bannon and Sanders unite over AI safety as Trump condemns warnings as a \u2018hoax\u2019",
+      "url": "https://www.ft.com/content/bab5c4c5-5377-4dd0-8b46-d8c4ce9a36d5?syn-25a6b1a6=1",
+      "published_date": "2026-09-15T12:44:36.104355",
+      "description": "Rightwing activist and leftwing senator join forces to demand stronger regulation of the technology",
+      "source": "Technology",
+      "category": "Macro Trends & Tech Economy",
+      "segment": "leaders",
+      "source_type": "secondary",
+      "raw_content": "Rightwing activist and leftwing senator join forces to demand stronger regulation of the technology",
+      "segments": [
+        "leaders"
+      ],
+      "tier": "trending",
+      "selection_reason": "Bannon and Sanders uniting over AI safety demonstrates a bipartisan concern for AI regulation, signaling potential policy shifts.",
+      "audience_value": "Illustrates the growing bipartisan consensus on AI safety, which could lead to significant regulatory changes.",
+      "urgency_score": 6,
+      "category_tag": "\ud83d\ude80 AI & Innovation",
+      "why_this_matters": "Bannon and Sanders uniting over AI safety demonstrates a bipartisan concern for AI regulation, signaling potential policy shifts."
     }
   ]
 }
