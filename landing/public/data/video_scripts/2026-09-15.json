@@ -2,113 +2,86 @@
   "episode_id": "ai-news-2026-09-15",
   "date": "2026-09-15",
   "voice_profile": "alex_tech",
-  "intro": "[excited] Today: a 2B model that watches ten-minute egos, a wearable that knows when to shut up, and a pruning trick that saves your GUI agent's memory.",
+  "intro": "[excited] Three drops today: a robot brain that predicts its own future, an RL trick that rewires how Mixture-of-Experts models think, and video generation you can actually control. Let's go.",
   "stories": [
     {
-      "name": "Ambient @ EgoLongQA 2026",
-      "url": "https://huggingface.co/papers/2609.07154",
+      "name": "Dynin-Omni",
+      "url": "https://huggingface.co/papers/2609.13053",
       "mode": "tool_drop",
-      "demo_anchor": "table, canvas, #results, .benchmark",
+      "demo_anchor": "video, canvas, .demo, #trajectory",
       "download_anchor": "a[href*='huggingface.co']",
-      "specs": "Sub-2B VLM | 10-min egocentric video | Paper + weights pending | 0.8279 held-out score",
+      "specs": "Omnimodal masked-diffusion VLA | Paper + Weights | Robot Policy",
       "beats": {
-        "landing_page": "[confident] Ambient just took first place in the sub-2B division at ECCV's Wearable AI Challenge, scoring 0.8279 on held-out long-video questions.",
-        "demo": "[amazed] One greedy forward pass answers multiple-choice Q&A over ten-minute egocentric video \u2014 no chunking, no retrieval loop, just distilled perception compressed into a tiny brain.",
-        "access": "[excited] Full writeup lives on Hugging Face Papers at 2609.07154 \u2014 weights are still under wraps, so bookmark it now before the fold."
+        "landing_page": "[confident] Dynin Robotics just released Dynin-Omni, an omnimodal masked-diffusion backbone that fuses language, vision, and action into one shared trajectory model for robot policies.",
+        "demo": "[amazed] Scroll to the demo section, where you'll see video, canvas, and trajectory rollouts showing the model predicting both the goal outcome and every action-dependent scene change.",
+        "access": "[excited] Head to the Hugging Face paper page, hit the download anchor, and grab weights, configs, and the full training recipe. This is the VLA stack you want to watch."
       },
       "ordered_beats": [
         {
           "title": "Landing Page",
-          "narration": "[confident] Ambient just took first place in the sub-2B division at ECCV's Wearable AI Challenge, scoring 0.8279 on held-out long-video questions."
+          "narration": "[confident] Dynin Robotics just released Dynin-Omni, an omnimodal masked-diffusion backbone that fuses language, vision, and action into one shared trajectory model for robot policies."
         },
         {
           "title": "Demo",
-          "narration": "[amazed] One greedy forward pass answers multiple-choice Q&A over ten-minute egocentric video \u2014 no chunking, no retrieval loop, just distilled perception compressed into a tiny brain."
+          "narration": "[amazed] Scroll to the demo section, where you'll see video, canvas, and trajectory rollouts showing the model predicting both the goal outcome and every action-dependent scene change."
         },
         {
           "title": "Access",
-          "narration": "[excited] Full writeup lives on Hugging Face Papers at 2609.07154 \u2014 weights are still under wraps, so bookmark it now before the fold."
+          "narration": "[excited] Head to the Hugging Face paper page, hit the download anchor, and grab weights, configs, and the full training recipe. This is the VLA stack you want to watch."
         }
       ]
     },
     {
-      "name": "Ambient @ EgoProactive 2026",
-      "url": "https://huggingface.co/papers/2609.07099",
+      "name": "Expert-Space Exploration (MoE RL)",
+      "url": "https://huggingface.co/papers/2609.13058",
       "mode": "paper_preview",
-      "demo_anchor": "figure, .architecture, table, #results",
-      "download_anchor": "a[href*='huggingface.co']",
-      "specs": "Wearable assistant | 8-sec intervention windows | ECCV 2026 challenge | Paper only",
+      "demo_anchor": "table, figure, .architecture, #benchmark",
+      "download_anchor": "a[href*='arxiv.org']",
+      "specs": "Paper Only | MoE Post-Training | RL Routing",
       "beats": {
-        "paper_preview": "[curious] Same team, harder problem: a wearable assistant that decides every eight seconds whether to speak up or stay silent \u2014 and it ranked first in the large-model division.",
-        "architecture": "[confident] Their trick reformulates intervention as visually grounded supervision, and the architecture figure shows exactly where the gating signal is injected.",
-        "release_horizon": "[friendly] It's a challenge paper on Hugging Face at 2609.07099 \u2014 code expected post-conference, so follow the repo now."
+        "paper_preview": "[curious] Next up, Expert-Space Exploration in MoE Reinforcement Learning. The hypothesis is bold: expert routing isn't fixed plumbing, it's a search space you should actively explore.",
+        "architecture_and_evidence": "[skeptical] The architecture diagram shows routing treated as a trainable variable rather than a static component. Then jump to the benchmark table comparing standard MoE RL against their exploration strategy.",
+        "release_horizon": "[confident] It's live on Hugging Face papers right now, with no code repo yet. Expect weights and training scripts within a few weeks if the benchmark numbers hold up."
       },
       "ordered_beats": [
         {
           "title": "Paper Preview",
-          "narration": "[curious] Same team, harder problem: a wearable assistant that decides every eight seconds whether to speak up or stay silent \u2014 and it ranked first in the large-model division."
+          "narration": "[curious] Next up, Expert-Space Exploration in MoE Reinforcement Learning. The hypothesis is bold: expert routing isn't fixed plumbing, it's a search space you should actively explore."
         },
         {
-          "title": "Architecture",
-          "narration": "[confident] Their trick reformulates intervention as visually grounded supervision, and the architecture figure shows exactly where the gating signal is injected."
+          "title": "Architecture and Evidence",
+          "narration": "[skeptical] The architecture diagram shows routing treated as a trainable variable rather than a static component. Then jump to the benchmark table comparing standard MoE RL against their exploration strategy."
         },
         {
           "title": "Release Horizon",
-          "narration": "[friendly] It's a challenge paper on Hugging Face at 2609.07099 \u2014 code expected post-conference, so follow the repo now."
+          "narration": "[confident] It's live on Hugging Face papers right now, with no code repo yet. Expect weights and training scripts within a few weeks if the benchmark numbers hold up."
         }
       ]
     },
     {
-      "name": "Task-Agnostic Environment Preprocessing",
-      "url": "https://huggingface.co/papers/2609.10824",
-      "mode": "paper_preview",
-      "demo_anchor": "figure, table, #experiments, .pipeline",
-      "download_anchor": "a[href*='huggingface.co']",
-      "specs": "Agent scaffolding | No task supervision | Paper only",
-      "beats": {
-        "paper_preview": "[skeptical] Here's the wild one: can an agent prep an environment before it even knows the task? Prior methods cheat with examples, trajectories, or eval feedback.",
-        "architecture": "[amazed] Table one proves their task-agnostic preprocessing builds reusable indices and scripts that transfer cold \u2014 no supervision, no hints, just raw corpus inspection.",
-        "release_horizon": "[curious] Paper's up at 2609.10824 on Hugging Face Daily \u2014 implementation timeline is still TBD, so expect replications first."
-      },
-      "ordered_beats": [
-        {
-          "title": "Paper Preview",
-          "narration": "[skeptical] Here's the wild one: can an agent prep an environment before it even knows the task? Prior methods cheat with examples, trajectories, or eval feedback."
-        },
-        {
-          "title": "Architecture",
-          "narration": "[amazed] Table one proves their task-agnostic preprocessing builds reusable indices and scripts that transfer cold \u2014 no supervision, no hints, just raw corpus inspection."
-        },
-        {
-          "title": "Release Horizon",
-          "narration": "[curious] Paper's up at 2609.10824 on Hugging Face Daily \u2014 implementation timeline is still TBD, so expect replications first."
-        }
-      ]
-    },
-    {
-      "name": "TRACE",
-      "url": "https://huggingface.co/papers/2609.10297",
+      "name": "LynnReal-Omni",
+      "url": "https://huggingface.co/papers/2609.15863",
       "mode": "tool_drop",
-      "demo_anchor": "table, #comparison, .latency, canvas",
+      "demo_anchor": "video, canvas, #comparison, .demo",
       "download_anchor": "a[href*='huggingface.co'], a[href*='github.com']",
-      "specs": "Training-free token pruning | GUI agent inference | Paper + code pending",
+      "specs": "Agentic Video Gen | Multi-Modal | Demo Clips",
       "beats": {
-        "landing_page": "[confident] TRACE fixes a nasty GUI agent problem: once you prune visual tokens, you can't undo it without re-encoding. So they made admission irreversible but smart.",
-        "demo": "[amazed] Point at the latency table \u2014 trajectory-robust admission plus evidence ordering cuts memory hard while screenshots keep stacking.",
-        "access": "[excited] Training-free, so no fine-tune needed. Grab it at 2609.10297 on Hugging Face, GitHub mirror likely dropping this week."
+        "landing_page": "[amazed] Thirty-five upvotes, and deserved. LynnReal Omni is native multi-modal video generation built for agentic visual workflows, with the killer claim that you finally get control.",
+        "demo": "[excited] The demo section is the pitch: split-screen comparison clips, canvas renders, and side-by-side video showing drift-free long-horizon scenes against baseline diffusion output.",
+        "access": "[friendly] Check the Hugging Face page and GitHub link in the description. Explicit references, editable 3D scenes, and executable game states give you stable, repeatable generation instead of lucky sampling."
       },
       "ordered_beats": [
         {
           "title": "Landing Page",
-          "narration": "[confident] TRACE fixes a nasty GUI agent problem: once you prune visual tokens, you can't undo it without re-encoding. So they made admission irreversible but smart."
+          "narration": "[amazed] Thirty-five upvotes, and deserved. LynnReal Omni is native multi-modal video generation built for agentic visual workflows, with the killer claim that you finally get control."
         },
         {
           "title": "Demo",
-          "narration": "[amazed] Point at the latency table \u2014 trajectory-robust admission plus evidence ordering cuts memory hard while screenshots keep stacking."
+          "narration": "[excited] The demo section is the pitch: split-screen comparison clips, canvas renders, and side-by-side video showing drift-free long-horizon scenes against baseline diffusion output."
         },
         {
           "title": "Access",
-          "narration": "[excited] Training-free, so no fine-tune needed. Grab it at 2609.10297 on Hugging Face, GitHub mirror likely dropping this week."
+          "narration": "[friendly] Check the Hugging Face page and GitHub link in the description. Explicit references, editable 3D scenes, and executable game states give you stable, repeatable generation instead of lucky sampling."
         }
       ]
     }
@@ -116,38 +89,30 @@
   "outro": "[friendly] All project links and research papers are organized down in the description below. Hit subscribe to Brief Delights for your daily rundown, and I'll see you tomorrow.",
   "tools_metadata": [
     {
-      "name": "Ambient @ EgoLongQA 2026",
-      "url": "https://huggingface.co/papers/2609.07154",
+      "name": "Dynin-Omni",
+      "url": "https://huggingface.co/papers/2609.13053",
       "mode": "tool_drop",
-      "demo_anchor": "table, canvas, #results, .benchmark",
+      "demo_anchor": "video, canvas, .demo, #trajectory",
       "download_anchor": "a[href*='huggingface.co']",
-      "specs": "Sub-2B VLM | 10-min egocentric video | Paper + weights pending | 0.8279 held-out score"
+      "specs": "Omnimodal masked-diffusion VLA | Paper + Weights | Robot Policy"
     },
     {
-      "name": "Ambient @ EgoProactive 2026",
-      "url": "https://huggingface.co/papers/2609.07099",
+      "name": "Expert-Space Exploration (MoE RL)",
+      "url": "https://huggingface.co/papers/2609.13058",
       "mode": "paper_preview",
-      "demo_anchor": "figure, .architecture, table, #results",
-      "download_anchor": "a[href*='huggingface.co']",
-      "specs": "Wearable assistant | 8-sec intervention windows | ECCV 2026 challenge | Paper only"
+      "demo_anchor": "table, figure, .architecture, #benchmark",
+      "download_anchor": "a[href*='arxiv.org']",
+      "specs": "Paper Only | MoE Post-Training | RL Routing"
     },
     {
-      "name": "Task-Agnostic Environment Preprocessing",
-      "url": "https://huggingface.co/papers/2609.10824",
-      "mode": "paper_preview",
-      "demo_anchor": "figure, table, #experiments, .pipeline",
-      "download_anchor": "a[href*='huggingface.co']",
-      "specs": "Agent scaffolding | No task supervision | Paper only"
-    },
-    {
-      "name": "TRACE",
-      "url": "https://huggingface.co/papers/2609.10297",
+      "name": "LynnReal-Omni",
+      "url": "https://huggingface.co/papers/2609.15863",
       "mode": "tool_drop",
-      "demo_anchor": "table, #comparison, .latency, canvas",
+      "demo_anchor": "video, canvas, #comparison, .demo",
       "download_anchor": "a[href*='huggingface.co'], a[href*='github.com']",
-      "specs": "Training-free token pruning | GUI agent inference | Paper + code pending"
+      "specs": "Agentic Video Gen | Multi-Modal | Demo Clips"
     }
   ],
-  "raw_markdown": "---\nepisode_id: \"ai-news-2026-09-15\"\nvoice_profile: \"alex_tech\"\ntools:\n  - name: \"Ambient @ EgoLongQA 2026\"\n    url: \"https://huggingface.co/papers/2609.07154\"\n    mode: \"tool_drop\"\n    demo_anchor: \"table, canvas, #results, .benchmark\"\n    download_anchor: \"a[href*='huggingface.co']\"\n    specs: \"Sub-2B VLM | 10-min egocentric video | Paper + weights pending | 0.8279 held-out score\"\n  - name: \"Ambient @ EgoProactive 2026\"\n    url: \"https://huggingface.co/papers/2609.07099\"\n    mode: \"paper_preview\"\n    demo_anchor: \"figure, .architecture, table, #results\"\n    download_anchor: \"a[href*='huggingface.co']\"\n    specs: \"Wearable assistant | 8-sec intervention windows | ECCV 2026 challenge | Paper only\"\n  - name: \"Task-Agnostic Environment Preprocessing\"\n    url: \"https://huggingface.co/papers/2609.10824\"\n    mode: \"paper_preview\"\n    demo_anchor: \"figure, table, #experiments, .pipeline\"\n    download_anchor: \"a[href*='huggingface.co']\"\n    specs: \"Agent scaffolding | No task supervision | Paper only\"\n  - name: \"TRACE\"\n    url: \"https://huggingface.co/papers/2609.10297\"\n    mode: \"tool_drop\"\n    demo_anchor: \"table, #comparison, .latency, canvas\"\n    download_anchor: \"a[href*='huggingface.co'], a[href*='github.com']\"\n    specs: \"Training-free token pruning | GUI agent inference | Paper + code pending\"\n---\n\n# Intro\n[excited] Today: a 2B model that watches ten-minute egos, a wearable that knows when to shut up, and a pruning trick that saves your GUI agent's memory.\n\n---\n\n# Story 1: Ambient @ EgoLongQA 2026\n### Landing Page\n[confident] Ambient just took first place in the sub-2B division at ECCV's Wearable AI Challenge, scoring 0.8279 on held-out long-video questions.\n\n### Demo\n[amazed] One greedy forward pass answers multiple-choice Q&A over ten-minute egocentric video \u2014 no chunking, no retrieval loop, just distilled perception compressed into a tiny brain.\n\n### Access\n[excited] Full writeup lives on Hugging Face Papers at 2609.07154 \u2014 weights are still under wraps, so bookmark it now before the fold.\n\n---\n\n# Story 2: Ambient @ EgoProactive 2026\n### Paper Preview\n[curious] Same team, harder problem: a wearable assistant that decides every eight seconds whether to speak up or stay silent \u2014 and it ranked first in the large-model division.\n\n### Architecture\n[confident] Their trick reformulates intervention as visually grounded supervision, and the architecture figure shows exactly where the gating signal is injected.\n\n### Release Horizon\n[friendly] It's a challenge paper on Hugging Face at 2609.07099 \u2014 code expected post-conference, so follow the repo now.\n\n---\n\n# Story 3: Studying Without a Syllabus\n### Paper Preview\n[skeptical] Here's the wild one: can an agent prep an environment before it even knows the task? Prior methods cheat with examples, trajectories, or eval feedback.\n\n### Architecture\n[amazed] Table one proves their task-agnostic preprocessing builds reusable indices and scripts that transfer cold \u2014 no supervision, no hints, just raw corpus inspection.\n\n### Release Horizon\n[curious] Paper's up at 2609.10824 on Hugging Face Daily \u2014 implementation timeline is still TBD, so expect replications first.\n\n---\n\n# Story 4: TRACE\n### Landing Page\n[confident] TRACE fixes a nasty GUI agent problem: once you prune visual tokens, you can't undo it without re-encoding. So they made admission irreversible but smart.\n\n### Demo\n[amazed] Point at the latency table \u2014 trajectory-robust admission plus evidence ordering cuts memory hard while screenshots keep stacking.\n\n### Access\n[excited] Training-free, so no fine-tune needed. Grab it at 2609.10297 on Hugging Face, GitHub mirror likely dropping this week.\n\n---\n\n# Outro\n[friendly] All project links and research papers are organized down in the description below. Hit subscribe to Brief Delights for your daily rundown, and I'll see you tomorrow.",
-  "generated_at": "2026-09-15T07:47:14.990541"
+  "raw_markdown": "---\nepisode_id: \"ai-news-2026-09-15\"\nvoice_profile: \"alex_tech\"\ntools:\n  - name: \"Dynin-Omni\"\n    url: \"https://huggingface.co/papers/2609.13053\"\n    mode: \"tool_drop\"\n    demo_anchor: \"video, canvas, .demo, #trajectory\"\n    download_anchor: \"a[href*='huggingface.co']\"\n    specs: \"Omnimodal masked-diffusion VLA | Paper + Weights | Robot Policy\"\n  - name: \"Expert-Space Exploration (MoE RL)\"\n    url: \"https://huggingface.co/papers/2609.13058\"\n    mode: \"paper_preview\"\n    demo_anchor: \"table, figure, .architecture, #benchmark\"\n    download_anchor: \"a[href*='arxiv.org']\"\n    specs: \"Paper Only | MoE Post-Training | RL Routing\"\n  - name: \"LynnReal-Omni\"\n    url: \"https://huggingface.co/papers/2609.15863\"\n    mode: \"tool_drop\"\n    demo_anchor: \"video, canvas, #comparison, .demo\"\n    download_anchor: \"a[href*='huggingface.co'], a[href*='github.com']\"\n    specs: \"Agentic Video Gen | Multi-Modal | Demo Clips\"\n---\n\n# Intro\n[excited] Three drops today: a robot brain that predicts its own future, an RL trick that rewires how Mixture-of-Experts models think, and video generation you can actually control. Let's go.\n\n---\n\n# Story 1: Dynin-Omni\n### Landing Page\n[confident] Dynin Robotics just released Dynin-Omni, an omnimodal masked-diffusion backbone that fuses language, vision, and action into one shared trajectory model for robot policies.\n\n### Demo\n[amazed] Scroll to the demo section, where you'll see video, canvas, and trajectory rollouts showing the model predicting both the goal outcome and every action-dependent scene change.\n\n### Access\n[excited] Head to the Hugging Face paper page, hit the download anchor, and grab weights, configs, and the full training recipe. This is the VLA stack you want to watch.\n\n---\n\n# Story 2: Expert-Space Exploration\n### Paper Preview\n[curious] Next up, Expert-Space Exploration in MoE Reinforcement Learning. The hypothesis is bold: expert routing isn't fixed plumbing, it's a search space you should actively explore.\n\n### Architecture and Evidence\n[skeptical] The architecture diagram shows routing treated as a trainable variable rather than a static component. Then jump to the benchmark table comparing standard MoE RL against their exploration strategy.\n\n### Release Horizon\n[confident] It's live on Hugging Face papers right now, with no code repo yet. Expect weights and training scripts within a few weeks if the benchmark numbers hold up.\n\n---\n\n# Story 3: LynnReal-Omni\n### Landing Page\n[amazed] Thirty-five upvotes, and deserved. LynnReal Omni is native multi-modal video generation built for agentic visual workflows, with the killer claim that you finally get control.\n\n### Demo\n[excited] The demo section is the pitch: split-screen comparison clips, canvas renders, and side-by-side video showing drift-free long-horizon scenes against baseline diffusion output.\n\n### Access\n[friendly] Check the Hugging Face page and GitHub link in the description. Explicit references, editable 3D scenes, and executable game states give you stable, repeatable generation instead of lucky sampling.\n\n---\n\n# Outro\n[friendly] All project links and research papers are organized down in the description below. Hit subscribe to Brief Delights for your daily rundown, and I'll see you tomorrow.",
+  "generated_at": "2026-09-15T10:19:06.032780"
 }

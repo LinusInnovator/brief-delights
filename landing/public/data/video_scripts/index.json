@@ -3,14 +3,13 @@
     "date": "2026-09-15",
     "episode_id": "ai-news-2026-09-15",
     "stories": [
-      "Ambient @ EgoLongQA 2026",
-      "Ambient @ EgoProactive 2026",
-      "Task-Agnostic Environment Preprocessing",
-      "TRACE"
+      "Dynin-Omni",
+      "Expert-Space Exploration (MoE RL)",
+      "LynnReal-Omni"
     ],
-    "stories_count": 4,
+    "stories_count": 3,
     "json_path": "/data/video_scripts/2026-09-15.json",
     "md_path": "/data/video_scripts/2026-09-15-ai-news.md",
-    "updated_at": "2026-09-15T07:47:14.991156"
+    "updated_at": "2026-09-15T10:19:06.033338"
   }
 ]
