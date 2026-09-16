@@ -1,5 +1,19 @@
 [
   {
+    "date": "2026-09-16",
+    "episode_id": "ai-news-2026-09-16",
+    "stories": [
+      "HarnessVLN",
+      "ModularRSI",
+      "StepAudio 3 Realtime",
+      "Emergence World"
+    ],
+    "stories_count": 4,
+    "json_path": "/data/video_scripts/2026-09-16.json",
+    "md_path": "/data/video_scripts/2026-09-16-ai-news.md",
+    "updated_at": "2026-09-16T10:11:06.533890"
+  },
+  {
     "date": "2026-09-15",
     "episode_id": "ai-news-2026-09-15",
     "stories": [
