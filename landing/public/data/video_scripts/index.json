@@ -3,15 +3,14 @@
     "date": "2026-09-17",
     "episode_id": "ai-news-2026-09-17",
     "stories": [
-      "Experiential Confidence Estimation (ECE)",
-      "LimiX-2",
-      "PANORAMA",
-      "ActionPiece"
+      "CERA-MoA",
+      "Fathom",
+      "In-Context Robot Learning with VLM Agents"
     ],
-    "stories_count": 4,
+    "stories_count": 3,
     "json_path": "/data/video_scripts/2026-09-17.json",
     "md_path": "/data/video_scripts/2026-09-17-ai-news.md",
-    "updated_at": "2026-09-17T10:08:45.717249"
+    "updated_at": "2026-09-17T12:51:59.689235"
   },
   {
     "date": "2026-09-16",

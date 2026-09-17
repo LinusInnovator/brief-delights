@@ -2,113 +2,86 @@
   "episode_id": "ai-news-2026-09-17",
   "date": "2026-09-17",
   "voice_profile": "alex_tech",
-  "intro": "[excited] Four papers just dropped that quietly rewrite how AI knows when it's wrong, how it reasons, how it sees pixels, and how robots move.",
+  "intro": "[excited] Today: Mixture-of-Agents that finally trains its own router, a KV cache that reads only what it needs, and robots that learn from context on the spot. Three papers, under three minutes. Let's go.",
   "stories": [
     {
-      "name": "Experiential Confidence Estimation (ECE)",
-      "url": "https://huggingface.co/papers/2609.17708",
-      "mode": "paper_preview",
-      "demo_anchor": "figure, .benchmark, table",
-      "download_anchor": "a[href*='huggingface.co']",
-      "specs": "Paper Only | Calibration Benchmarks | Agent Escalation Routing",
-      "beats": {
-        "landing_page": "[confident] This is ECE \u2014 Experiential Confidence Estimation. The claim is brutal and simple: today's confidence estimators only read the current inference, so they're blind to whether the model has ever solved anything like this before.",
-        "demo": "[amazed] Look at the benchmark table. Instead of introspecting one forward pass, it scores the model against its own history of past reasoning traces \u2014 and calibration jumps across both reasoning and agent tasks.",
-        "access": "[curious] Paper's live on Hugging Face right now, linked below. No weights yet, but this is the calibration layer your agent escalation router is missing."
-      },
-      "ordered_beats": [
-        {
-          "title": "Landing Page",
-          "narration": "[confident] This is ECE \u2014 Experiential Confidence Estimation. The claim is brutal and simple: today's confidence estimators only read the current inference, so they're blind to whether the model has ever solved anything like this before."
-        },
-        {
-          "title": "Demo",
-          "narration": "[amazed] Look at the benchmark table. Instead of introspecting one forward pass, it scores the model against its own history of past reasoning traces \u2014 and calibration jumps across both reasoning and agent tasks."
-        },
-        {
-          "title": "Access",
-          "narration": "[curious] Paper's live on Hugging Face right now, linked below. No weights yet, but this is the calibration layer your agent escalation router is missing."
-        }
-      ]
-    },
-    {
-      "name": "LimiX-2",
-      "url": "https://huggingface.co/papers/2609.17488",
-      "mode": "paper_preview",
-      "demo_anchor": "figure, .architecture, table",
-      "download_anchor": "a[href*='huggingface.co']",
-      "specs": "Paper Only | CMN + CCMM | Scaling-Law Guided",
-      "beats": {
-        "landing_page": "[excited] LimiX-2 is here from the LimiX team. It's a structured-data model, built by scaling model and data along their own published scaling laws.",
-        "demo": "[confident] Check the architecture figure. This is Contextual Mechanism Networks with Context-Conditional Masked Modeling. In-context learning shifts from predicting a target to identifying the mechanism generating the data.",
-        "access": "[skeptical] Paper's on Hugging Face, code timing unclear. If you're doing tabular, time-series, or any structured pipeline, this is the one to watch this quarter."
-      },
-      "ordered_beats": [
-        {
-          "title": "Landing Page",
-          "narration": "[excited] LimiX-2 is here from the LimiX team. It's a structured-data model, built by scaling model and data along their own published scaling laws."
-        },
-        {
-          "title": "Demo",
-          "narration": "[confident] Check the architecture figure. This is Contextual Mechanism Networks with Context-Conditional Masked Modeling. In-context learning shifts from predicting a target to identifying the mechanism generating the data."
-        },
-        {
-          "title": "Access",
-          "narration": "[skeptical] Paper's on Hugging Face, code timing unclear. If you're doing tabular, time-series, or any structured pipeline, this is the one to watch this quarter."
-        }
-      ]
-    },
-    {
-      "name": "PANORAMA",
-      "url": "https://huggingface.co/papers/2609.19143",
-      "mode": "paper_preview",
-      "demo_anchor": "figure, .demo, img",
-      "download_anchor": "a[href*='huggingface.co']",
-      "specs": "Paper Only | Panoptic Grounded Captioning | Mask Proposal Selection",
-      "beats": {
-        "landing_page": "[friendly] PANORAMA tackles a quietly annoying problem: vision-language models write beautiful captions that point at absolutely nothing in the image.",
-        "demo": "[amazed] The demo figures show panoptic grounded captioning \u2014 every phrase tied to actual pixels via mask proposal selection, so descriptions stay complete and spatially honest.",
-        "access": "[curious] Paper's on Hugging Face. Robotics and spatial-agent people, this is the grounding recipe you'll be stealing for your perception stack."
-      },
-      "ordered_beats": [
-        {
-          "title": "Landing Page",
-          "narration": "[friendly] PANORAMA tackles a quietly annoying problem: vision-language models write beautiful captions that point at absolutely nothing in the image."
-        },
-        {
-          "title": "Demo",
-          "narration": "[amazed] The demo figures show panoptic grounded captioning \u2014 every phrase tied to actual pixels via mask proposal selection, so descriptions stay complete and spatially honest."
-        },
-        {
-          "title": "Access",
-          "narration": "[curious] Paper's on Hugging Face. Robotics and spatial-agent people, this is the grounding recipe you'll be stealing for your perception stack."
-        }
-      ]
-    },
-    {
-      "name": "ActionPiece",
-      "url": "https://huggingface.co/papers/2609.18487",
+      "name": "CERA-MoA",
+      "url": "https://huggingface.co/papers/2609.18779",
       "mode": "tool_drop",
-      "demo_anchor": "video, canvas, #comparison, .demo, table",
+      "demo_anchor": "figure, table, .abstract, a[href*='huggingface.co/papers']",
       "download_anchor": "a[href*='huggingface.co'], a[href*='github.com']",
-      "specs": "VLA Tokenizer | Open Weights Expected | LIBERO + Real Robot Evals",
+      "specs": "Research Paper | MoA Routing + Agent Co-Training | HF Daily Papers",
       "beats": {
-        "landing_page": "[excited] ActionPiece rethinks action tokenization for vision-language-action models. Translation: your robot policy is only as good as the tokens it outputs.",
-        "demo": "[confident] Pointwise MSE hides catastrophic failure. Watch the comparison \u2014 same reconstruction error, wildly different executed trajectories. ActionPiece optimizes for what the arm actually does.",
-        "access": "[energetic] Paper's up on Hugging Face now, code and open weights expected soon. Grab the links in the description and wire it into your VLA stack."
+        "landing_page": "[confident] Meet CERA-MoA \u2014 a Mixture-of-Agents framework where the router and the agents co-evolve instead of being trained in separate silos. The killer claim: routing adapts as agent capabilities improve.",
+        "demo": "[amazed] Look at the architecture figure and benchmark table. The router gets reward signal from actual agent post-training, so specialization becomes data-driven \u2014 not hand-tuned. That's the synergy everyone keeps promising but rarely ships.",
+        "access": "[friendly] It's on Hugging Face Daily Papers right now, paper 2609.18779. No weights yet, but the ranking results are worth your coffee break. Link's in the description."
       },
       "ordered_beats": [
         {
           "title": "Landing Page",
-          "narration": "[excited] ActionPiece rethinks action tokenization for vision-language-action models. Translation: your robot policy is only as good as the tokens it outputs."
+          "narration": "[confident] Meet CERA-MoA \u2014 a Mixture-of-Agents framework where the router and the agents co-evolve instead of being trained in separate silos. The killer claim: routing adapts as agent capabilities improve."
         },
         {
           "title": "Demo",
-          "narration": "[confident] Pointwise MSE hides catastrophic failure. Watch the comparison \u2014 same reconstruction error, wildly different executed trajectories. ActionPiece optimizes for what the arm actually does."
+          "narration": "[amazed] Look at the architecture figure and benchmark table. The router gets reward signal from actual agent post-training, so specialization becomes data-driven \u2014 not hand-tuned. That's the synergy everyone keeps promising but rarely ships."
         },
         {
           "title": "Access",
-          "narration": "[energetic] Paper's up on Hugging Face now, code and open weights expected soon. Grab the links in the description and wire it into your VLA stack."
+          "narration": "[friendly] It's on Hugging Face Daily Papers right now, paper 2609.18779. No weights yet, but the ranking results are worth your coffee break. Link's in the description."
+        }
+      ]
+    },
+    {
+      "name": "Fathom",
+      "url": "https://huggingface.co/papers/2609.17652",
+      "mode": "paper_preview",
+      "demo_anchor": "figure, table, #architecture, .diagram",
+      "download_anchor": "a[href*='arxiv.org'], a[href*='huggingface.co']",
+      "specs": "Paper Only | 4-bit channel-major KV cache | Million-token agentic sessions",
+      "beats": {
+        "paper_preview": "[curious] Fathom asks a simple question: why read every bit of every key, every single time? It's per-query read depth for sparse decoding over offloaded KV caches \u2014 million-token agentic sessions, many concurrent users.",
+        "architecture_evidence": "[skeptical] The K cache sits in host memory, channel-major, four bits per channel. Each query decides how many bits to pull. The scan traffic that used to bound your decode speed just collapses. Check Table 1 for the latency numbers.",
+        "release_horizon": "[confident] Paper is up at 2609.17652 on Hugging Face, arXiv mirror inbound. No code yet, but if you're serving long-context agents, bookmark this one immediately."
+      },
+      "ordered_beats": [
+        {
+          "title": "Paper Preview",
+          "narration": "[curious] Fathom asks a simple question: why read every bit of every key, every single time? It's per-query read depth for sparse decoding over offloaded KV caches \u2014 million-token agentic sessions, many concurrent users."
+        },
+        {
+          "title": "Architecture / Evidence",
+          "narration": "[skeptical] The K cache sits in host memory, channel-major, four bits per channel. Each query decides how many bits to pull. The scan traffic that used to bound your decode speed just collapses. Check Table 1 for the latency numbers."
+        },
+        {
+          "title": "Release Horizon",
+          "narration": "[confident] Paper is up at 2609.17652 on Hugging Face, arXiv mirror inbound. No code yet, but if you're serving long-context agents, bookmark this one immediately."
+        }
+      ]
+    },
+    {
+      "name": "In-Context Robot Learning with VLM Agents",
+      "url": "https://huggingface.co/papers/2609.19138",
+      "mode": "tool_drop",
+      "demo_anchor": "video, canvas, .demo, figure",
+      "download_anchor": "a[href*='huggingface.co'], a[href*='github.com']",
+      "specs": "Research Paper | VLM-driven in-context robot adaptation | 12 HF upvotes",
+      "beats": {
+        "landing_page": "[excited] Twelve upvotes \u2014 the crowd favorite today. VLM agents doing in-context robot learning. The claim: no finite demo set can cover reality, so let the robot learn from context at deployment.",
+        "demo": "[amazed] Watch the rollout videos. Hand it a novel environment with a few in-context examples, and the VLM agent re-plans on the fly. That's the generalization gap embodied AI has been stuck on for years.",
+        "access": "[friendly] Paper 2609.19138 is live on Hugging Face Daily Papers. Code and project page coming \u2014 check the links below before someone else does."
+      },
+      "ordered_beats": [
+        {
+          "title": "Landing Page",
+          "narration": "[excited] Twelve upvotes \u2014 the crowd favorite today. VLM agents doing in-context robot learning. The claim: no finite demo set can cover reality, so let the robot learn from context at deployment."
+        },
+        {
+          "title": "Demo",
+          "narration": "[amazed] Watch the rollout videos. Hand it a novel environment with a few in-context examples, and the VLM agent re-plans on the fly. That's the generalization gap embodied AI has been stuck on for years."
+        },
+        {
+          "title": "Access",
+          "narration": "[friendly] Paper 2609.19138 is live on Hugging Face Daily Papers. Code and project page coming \u2014 check the links below before someone else does."
         }
       ]
     }
@@ -116,38 +89,30 @@
   "outro": "[friendly] All project links and research papers are organized down in the description below. Hit subscribe to Brief Delights for your daily rundown, and I'll see you tomorrow.",
   "tools_metadata": [
     {
-      "name": "Experiential Confidence Estimation (ECE)",
-      "url": "https://huggingface.co/papers/2609.17708",
-      "mode": "paper_preview",
-      "demo_anchor": "figure, .benchmark, table",
-      "download_anchor": "a[href*='huggingface.co']",
-      "specs": "Paper Only | Calibration Benchmarks | Agent Escalation Routing"
-    },
-    {
-      "name": "LimiX-2",
-      "url": "https://huggingface.co/papers/2609.17488",
-      "mode": "paper_preview",
-      "demo_anchor": "figure, .architecture, table",
-      "download_anchor": "a[href*='huggingface.co']",
-      "specs": "Paper Only | CMN + CCMM | Scaling-Law Guided"
-    },
-    {
-      "name": "PANORAMA",
-      "url": "https://huggingface.co/papers/2609.19143",
-      "mode": "paper_preview",
-      "demo_anchor": "figure, .demo, img",
-      "download_anchor": "a[href*='huggingface.co']",
-      "specs": "Paper Only | Panoptic Grounded Captioning | Mask Proposal Selection"
-    },
-    {
-      "name": "ActionPiece",
-      "url": "https://huggingface.co/papers/2609.18487",
+      "name": "CERA-MoA",
+      "url": "https://huggingface.co/papers/2609.18779",
       "mode": "tool_drop",
-      "demo_anchor": "video, canvas, #comparison, .demo, table",
+      "demo_anchor": "figure, table, .abstract, a[href*='huggingface.co/papers']",
       "download_anchor": "a[href*='huggingface.co'], a[href*='github.com']",
-      "specs": "VLA Tokenizer | Open Weights Expected | LIBERO + Real Robot Evals"
+      "specs": "Research Paper | MoA Routing + Agent Co-Training | HF Daily Papers"
+    },
+    {
+      "name": "Fathom",
+      "url": "https://huggingface.co/papers/2609.17652",
+      "mode": "paper_preview",
+      "demo_anchor": "figure, table, #architecture, .diagram",
+      "download_anchor": "a[href*='arxiv.org'], a[href*='huggingface.co']",
+      "specs": "Paper Only | 4-bit channel-major KV cache | Million-token agentic sessions"
+    },
+    {
+      "name": "In-Context Robot Learning with VLM Agents",
+      "url": "https://huggingface.co/papers/2609.19138",
+      "mode": "tool_drop",
+      "demo_anchor": "video, canvas, .demo, figure",
+      "download_anchor": "a[href*='huggingface.co'], a[href*='github.com']",
+      "specs": "Research Paper | VLM-driven in-context robot adaptation | 12 HF upvotes"
     }
   ],
-  "raw_markdown": "---\nepisode_id: \"ai-news-2026-09-17\"\nvoice_profile: \"alex_tech\"\ntools:\n  - name: \"Experiential Confidence Estimation (ECE)\"\n    url: \"https://huggingface.co/papers/2609.17708\"\n    mode: \"paper_preview\"\n    demo_anchor: \"figure, .benchmark, table\"\n    download_anchor: \"a[href*='huggingface.co']\"\n    specs: \"Paper Only | Calibration Benchmarks | Agent Escalation Routing\"\n  - name: \"LimiX-2\"\n    url: \"https://huggingface.co/papers/2609.17488\"\n    mode: \"paper_preview\"\n    demo_anchor: \"figure, .architecture, table\"\n    download_anchor: \"a[href*='huggingface.co']\"\n    specs: \"Paper Only | CMN + CCMM | Scaling-Law Guided\"\n  - name: \"PANORAMA\"\n    url: \"https://huggingface.co/papers/2609.19143\"\n    mode: \"paper_preview\"\n    demo_anchor: \"figure, .demo, img\"\n    download_anchor: \"a[href*='huggingface.co']\"\n    specs: \"Paper Only | Panoptic Grounded Captioning | Mask Proposal Selection\"\n  - name: \"ActionPiece\"\n    url: \"https://huggingface.co/papers/2609.18487\"\n    mode: \"tool_drop\"\n    demo_anchor: \"video, canvas, #comparison, .demo, table\"\n    download_anchor: \"a[href*='huggingface.co'], a[href*='github.com']\"\n    specs: \"VLA Tokenizer | Open Weights Expected | LIBERO + Real Robot Evals\"\n---\n\n# Intro\n[excited] Four papers just dropped that quietly rewrite how AI knows when it's wrong, how it reasons, how it sees pixels, and how robots move.\n\n---\n\n# Story 1: Experiential Confidence Estimation\n### Landing Page\n[confident] This is ECE \u2014 Experiential Confidence Estimation. The claim is brutal and simple: today's confidence estimators only read the current inference, so they're blind to whether the model has ever solved anything like this before.\n\n### Demo\n[amazed] Look at the benchmark table. Instead of introspecting one forward pass, it scores the model against its own history of past reasoning traces \u2014 and calibration jumps across both reasoning and agent tasks.\n\n### Access\n[curious] Paper's live on Hugging Face right now, linked below. No weights yet, but this is the calibration layer your agent escalation router is missing.\n\n---\n\n# Story 2: LimiX-2\n### Landing Page\n[excited] LimiX-2 is here from the LimiX team. It's a structured-data model, built by scaling model and data along their own published scaling laws.\n\n### Demo\n[confident] Check the architecture figure. This is Contextual Mechanism Networks with Context-Conditional Masked Modeling. In-context learning shifts from predicting a target to identifying the mechanism generating the data.\n\n### Access\n[skeptical] Paper's on Hugging Face, code timing unclear. If you're doing tabular, time-series, or any structured pipeline, this is the one to watch this quarter.\n\n---\n\n# Story 3: PANORAMA\n### Landing Page\n[friendly] PANORAMA tackles a quietly annoying problem: vision-language models write beautiful captions that point at absolutely nothing in the image.\n\n### Demo\n[amazed] The demo figures show panoptic grounded captioning \u2014 every phrase tied to actual pixels via mask proposal selection, so descriptions stay complete and spatially honest.\n\n### Access\n[curious] Paper's on Hugging Face. Robotics and spatial-agent people, this is the grounding recipe you'll be stealing for your perception stack.\n\n---\n\n# Story 4: ActionPiece\n### Landing Page\n[excited] ActionPiece rethinks action tokenization for vision-language-action models. Translation: your robot policy is only as good as the tokens it outputs.\n\n### Demo\n[confident] Pointwise MSE hides catastrophic failure. Watch the comparison \u2014 same reconstruction error, wildly different executed trajectories. ActionPiece optimizes for what the arm actually does.\n\n### Access\n[energetic] Paper's up on Hugging Face now, code and open weights expected soon. Grab the links in the description and wire it into your VLA stack.\n\n---\n\n# Outro\n[friendly] All project links and research papers are organized down in the description below. Hit subscribe to Brief Delights for your daily rundown, and I'll see you tomorrow.",
-  "generated_at": "2026-09-17T10:08:45.716295"
+  "raw_markdown": "---\nepisode_id: \"ai-news-2026-09-17\"\nvoice_profile: \"alex_tech\"\ntools:\n  - name: \"CERA-MoA\"\n    url: \"https://huggingface.co/papers/2609.18779\"\n    mode: \"tool_drop\"\n    demo_anchor: \"figure, table, .abstract, a[href*='huggingface.co/papers']\"\n    download_anchor: \"a[href*='huggingface.co'], a[href*='github.com']\"\n    specs: \"Research Paper | MoA Routing + Agent Co-Training | HF Daily Papers\"\n  - name: \"Fathom\"\n    url: \"https://huggingface.co/papers/2609.17652\"\n    mode: \"paper_preview\"\n    demo_anchor: \"figure, table, #architecture, .diagram\"\n    download_anchor: \"a[href*='arxiv.org'], a[href*='huggingface.co']\"\n    specs: \"Paper Only | 4-bit channel-major KV cache | Million-token agentic sessions\"\n  - name: \"In-Context Robot Learning with VLM Agents\"\n    url: \"https://huggingface.co/papers/2609.19138\"\n    mode: \"tool_drop\"\n    demo_anchor: \"video, canvas, .demo, figure\"\n    download_anchor: \"a[href*='huggingface.co'], a[href*='github.com']\"\n    specs: \"Research Paper | VLM-driven in-context robot adaptation | 12 HF upvotes\"\n---\n\n# Intro\n[excited] Today: Mixture-of-Agents that finally trains its own router, a KV cache that reads only what it needs, and robots that learn from context on the spot. Three papers, under three minutes. Let's go.\n\n---\n\n# Story 1: CERA-MoA\n### Landing Page\n[confident] Meet CERA-MoA \u2014 a Mixture-of-Agents framework where the router and the agents co-evolve instead of being trained in separate silos. The killer claim: routing adapts as agent capabilities improve.\n\n### Demo\n[amazed] Look at the architecture figure and benchmark table. The router gets reward signal from actual agent post-training, so specialization becomes data-driven \u2014 not hand-tuned. That's the synergy everyone keeps promising but rarely ships.\n\n### Access\n[friendly] It's on Hugging Face Daily Papers right now, paper 2609.18779. No weights yet, but the ranking results are worth your coffee break. Link's in the description.\n\n---\n\n# Story 2: Fathom\n### Paper Preview\n[curious] Fathom asks a simple question: why read every bit of every key, every single time? It's per-query read depth for sparse decoding over offloaded KV caches \u2014 million-token agentic sessions, many concurrent users.\n\n### Architecture / Evidence\n[skeptical] The K cache sits in host memory, channel-major, four bits per channel. Each query decides how many bits to pull. The scan traffic that used to bound your decode speed just collapses. Check Table 1 for the latency numbers.\n\n### Release Horizon\n[confident] Paper is up at 2609.17652 on Hugging Face, arXiv mirror inbound. No code yet, but if you're serving long-context agents, bookmark this one immediately.\n\n---\n\n# Story 3: In-Context Robot Learning\n### Landing Page\n[excited] Twelve upvotes \u2014 the crowd favorite today. VLM agents doing in-context robot learning. The claim: no finite demo set can cover reality, so let the robot learn from context at deployment.\n\n### Demo\n[amazed] Watch the rollout videos. Hand it a novel environment with a few in-context examples, and the VLM agent re-plans on the fly. That's the generalization gap embodied AI has been stuck on for years.\n\n### Access\n[friendly] Paper 2609.19138 is live on Hugging Face Daily Papers. Code and project page coming \u2014 check the links below before someone else does.\n\n---\n\n# Outro\n[friendly] All project links and research papers are organized down in the description below. Hit subscribe to Brief Delights for your daily rundown, and I'll see you tomorrow.",
+  "generated_at": "2026-09-17T12:51:59.688380"
 }

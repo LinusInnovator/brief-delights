@@ -3,45 +3,39 @@
   "segment": "innovators",
   "trends": {
     "categories": {
-      "Human-Centered AI, Policy & Ethics": 4,
-      "Raw Research (Machine Learning & AI)": 2,
-      "Agentic Infrastructure & Frameworks": 2,
+      "Human-Centered AI, Policy & Ethics": 6,
+      "Generative Media (Image, Video, Audio & 3D)": 2,
       "Applied Science & Frontier Tech": 1,
-      "Generative Media (Image, Video, Audio & 3D)": 1,
-      "Frontier AI Labs & Research": 1
+      "Raw Research (Machine Learning & AI)": 1,
+      "Agentic Infrastructure & Frameworks": 1
     },
     "sources": {
-      "Future of Life Institute": 4,
-      "cs.LG updates on arXiv.org": 2,
-      "OpenAI News": 2,
-      "Quanta Magazine": 1,
-      "cs.GR updates on arXiv.org": 1,
-      "AI News & Artificial Intelligence | TechCrunch": 1
+      "Future of Life Institute": 6,
+      "cs.GR updates on arXiv.org": 2,
+      "Ars Technica": 1,
+      "\"bair AI when:3d\" - Google News": 1,
+      "OpenAI News": 1
     },
     "topics": [
       "Google DeepMind Falls Behind OpenAI in Latest Safety Review; All AI Companies Still Falling Short, Say Experts",
-      "The U.S. Public Wants Regulation (or Prohibition) of Expert\u2011Level and Superhuman AI",
       "Are we close to an intelligence explosion?",
+      "Michael Kleinman reacts to breakthrough AI safety legislation",
+      "The U.S. Public Wants Regulation (or Prohibition) of Expert\u2011Level and Superhuman AI",
+      "Future of Life Institute Launches Multimillion Dollar Nationwide AI Regulation Campaign",
       "The Impact of AI in Education: Navigating the Imminent Future",
-      "Black Holes or Black Hole Stars? Astronomers Spar Over Webb Telescope\u2019s \u2018Little Red Dots.\u2019",
+      "How chimps teach their kids tool tricks",
       "MoQSplat: Adaptive Progressive Streaming of 3D Gaussian Splatting via MoQ",
-      "Which Histories Matter for Time Series Forecasting? Learning Predictive Relevance with Future Supervision",
-      "Former Infosys chief\u2019s AI startup nabs another $53M",
-      "OpenAI Gym Beta",
-      "Generative models",
-      "Bridging the Gap in ECG-Based Emotion Recognition: A Unified Evaluation of Deep Learning Models"
+      "InterMASH: A Unified Geometric Representation for Grasp Synthesis",
+      "How AI compares to human doctors in deciding kidney transplants \u2014 and more health headlines - Yahoo",
+      "Generative models"
     ],
     "detected_trends": [
       {
         "keyword": "Human-Centered AI, Policy & Ethics",
-        "count": 4
+        "count": 6
       },
       {
-        "keyword": "Raw Research (Machine Learning & AI)",
-        "count": 2
-      },
-      {
-        "keyword": "Agentic Infrastructure & Frameworks",
+        "keyword": "Generative Media (Image, Video, Audio & 3D)",
         "count": 2
       },
       {
@@ -49,11 +43,11 @@
         "count": 1
       },
       {
-        "keyword": "Generative Media (Image, Video, Audio & 3D)",
+        "keyword": "Raw Research (Machine Learning & AI)",
         "count": 1
       },
       {
-        "keyword": "Frontier AI Labs & Research",
+        "keyword": "Agentic Infrastructure & Frameworks",
         "count": 1
       }
     ],
@@ -65,7 +59,7 @@
       "id": "44dcbf11f52c695252eae0affd89d767",
       "title": "Google DeepMind Falls Behind OpenAI in Latest Safety Review; All AI Companies Still Falling Short, Say Experts",
       "url": "https://futureoflife.org/press-release/google-deepmind-falls-behind-openai-in-latest-safety-review/",
-      "published_date": "2026-09-17T09:57:41.781901",
+      "published_date": "2026-09-17T12:38:07.202670",
       "description": "The Future of Life Institute\u2019s 2025 summer update to its AI Safety Index shows some companies making incremental progress, but dangerous gaps remain in key categories such as risk assessment and controlling the systems they plan to build.",
       "source": "Future of Life Institute",
       "category": "Human-Centered AI, Policy & Ethics",
@@ -76,38 +70,17 @@
         "innovators"
       ],
       "tier": "full",
-      "selection_reason": "This article provides a critical assessment of leading AI companies' safety practices, directly impacting the landscape of AI development and deployment.",
-      "audience_value": "Innovators will gain insights into the current state of AI safety, understanding potential risks and the effectiveness of industry self-regulation, crucial for strategic decision-making.",
+      "selection_reason": "This article provides a critical assessment of AI safety progress among leading companies, directly impacting the ethical and developmental trajectory of AI.",
+      "audience_value": "Innovators will gain insights into the current state of AI safety, understanding which major players are falling short and why, crucial for responsible development.",
       "urgency_score": 9,
       "category_tag": "\ud83d\ude80 AI & Innovation",
-      "why_this_matters": "Why this matters: Understanding AI safety gaps and regulatory trends is paramount for pioneers shaping the future of AI."
-    },
-    {
-      "id": "76e407beb4f1165356b2f4a8e3449186",
-      "title": "The U.S. Public Wants Regulation (or Prohibition) of Expert\u2011Level and Superhuman AI",
-      "url": "https://futureoflife.org/recent-news/americans-want-regulation-or-prohibition-of-superhuman-ai/",
-      "published_date": "2026-09-17T09:57:41.781851",
-      "description": "Three\u2011quarters of U.S. adults want strong regulations on AI development, preferring oversight akin to pharmaceuticals rather than industry \"self\u2011regulation.\"",
-      "source": "Future of Life Institute",
-      "category": "Human-Centered AI, Policy & Ethics",
-      "segment": "innovators",
-      "source_type": "secondary",
-      "raw_content": "<p class=\"wp-block-paragraph\">A new national survey of 2,000 U.S. adults (29 Sept \u2013 5 Oct 2025) uncovers where Americans stand on AI and the prospect of expert\u2011level and superhuman systems.</p>\n\n\n\n<p class=\"wp-block-paragraph\">The findings show that <strong>a majority of those surveyed are concerned about the way that AI is being developed today</strong>, and that they <strong>do not support the development of human-level AI systems until they can be proven safe and controllable</strong>.</p>\n\n\n\n<div class=\"wp-block-group pad--s rounded--s bg--primary-ultra-light border\"><div class=\"wp-block-group__inner-container is-layout-constrained wp-block-group-is-layout-constrained\">\n<h3 class=\"wp-block-heading\">\u2b50 Highlights</h3>\n\n\n\n<div class=\"wp-block-spacer\" style=\"height: 12px;\"></div>\n\n\n\n<ul class=\"wp-block-list\">\n<li>There is <strong>widespread discontent at the current trajectory of advanced AI development</strong>, with only 5% in support of the status quo of fast, unregulated development;</li>\n\n\n\n<li>Almost two-thirds (64%) feel that <strong>superhuman AI should not be developed until it is proven safe and controllable</strong>, or should <strong>never be developed;</strong></li>\n\n\n\n<li>There is <strong>overwhelming support (73%) for robust regulation on AI</strong>. The fraction opposed to strong regulation is only 12%.</li>\n</ul>\n</div></div>\n\n\n\n<p class=\"wp-block-paragraph\">Participants were given a brief description of key terms, including &#8216;expert-level AI&#8217; and &#8216;superhuman AI&#8217;, and asked about both the benefits and potential risks of these technologies. Their understanding and engagement on these topics was measured so that results could be compared across cohorts.</p>\n\n\n\n<p class=\"wp-block-paragraph\">Below we summarize the key findings of this report. <a href=\"https://futureoflife.org/wp-content/uploads/2025/10/FLI-Advanced-AI-Survey-Analysis-BG25-140.pdf\">Click here to view the full report.</a></p>\n\n\n\n<hr class=\"wp-block-separator has-alpha-channel-opacity\" />\n\n\n\n<h3 class=\"wp-block-heading\">Overall: American adults are not \u2018bought in\u2019 to current trajectory</h3>\n\n\n\n<p class=\"wp-block-paragraph\">The poll reveals a strong consensus that superhuman AI should not be developed until there is scientific agreement that it is safe and controllable (64%), or should never be developed at all.</p>\n\n\n\n<p class=\"wp-block-paragraph\">A majority of adults (57%) are not bought in to the development of \u2018expert-level AI\u2019 under current conditions; they feel that it should never be developed (17%), or at least halted until proven controllable and safe (40%).</p>\n\n\n\n<figure class=\"wp-block-image size-full wp-lightbox-container\"><img alt=\"\" class=\"wp-image-137344\" height=\"497\" src=\"https://futureoflife.org/wp-content/uploads/2025/10/Development-preference-2.jpg\" width=\"1115\" /><button class=\"lightbox-trigger\" type=\"button\">\n\t\t\t<svg fill=\"none\" height=\"12\" viewBox=\"0 0 12 12\" width=\"12\" xmlns=\"http://www.w3.org/2000/svg\">\n\t\t\t\t<path d=\"M2 0a2 2 0 0 0-2 2v2h1.5V2a.5.5 0 0 1 .5-.5h2V0H2Zm2 10.5H2a.5.5 0 0 1-.5-.5V8H0v2a2 2 0 0 0 2 2h2v-1.5ZM8 12v-1.5h2a.5.5 0 0 0 .5-.5V8H12v2a2 2 0 0 1-2 2H8Zm2-12a2 2 0 0 1 2 2v2h-1.5V2a.5.5 0 0 0-.5-.5H8V0h2Z\" fill=\"#fff\">\n\t\t\t</svg>\n\t\t</button></figure>\n\n\n\n<p class=\"wp-block-paragraph\">Only 5% feel that either technology should be developed \u201cas quickly as possible.\u201d This sits in stark contrast to the operating paradigm of the leading AI corporations today, which openly declare they are \u201cracing\u201d to human-level systems and beyond.</p>\n\n\n\n<p class=\"wp-block-paragraph\">Despite this, around half of respondents expect that advanced AI will be developed \u201cquickly with minimal safeguards\u201d.</p>\n\n\n\n<figure class=\"wp-block-image size-full wp-lightbox-container\"><img alt=\"\" class=\"wp-image-137345\" height=\"499\" src=\"https://futureoflife.org/wp-content/uploads/2025/10/Prevent-or-develop-2.jpg\" width=\"1116\" /><button class=\"lightbox-trigger\" type=\"button\">\n\t\t\t<svg fill=\"none\" height=\"12\" viewBox=\"0 0 12 12\" width=\"12\" xmlns=\"http://www.w3.org/2000/svg\">\n\t\t\t\t<path d=\"M2 0a2 2 0 0 0-2 2v2h1.5V2a.5.5 0 0 1 .5-.5h2V0H2Zm2 10.5H2a.5.5 0 0 1-.5-.5V8H0v2a2 2 0 0 0 2 2h2v-1.5ZM8 12v-1.5h2a.5.5 0 0 0 .5-.5V8H12v2a2 2 0 0 1-2 2H8Zm2-12a2 2 0 0 1 2 2v2h-1.5V2a.5.5 0 0 0-.5-.5H8V0h2Z\" fill=\"#fff\">\n\t\t\t</svg>\n\t\t</button></figure>\n\n\n\n<hr class=\"wp-block-separator has-alpha-channel-opacity\" />\n\n\n\n<h3 class=\"wp-block-heading\">Approaches to AI development: Heavy regulation favored by most</h3>\n\n\n\n<p class=\"wp-block-paragraph\">There is overwhelming support for &#8220;slow, heavily regulated&#8221; development of AI (73%), with about the same proportion wishing for regulation &#8220;like pharmaceuticals with extensive testing before deployment&#8221;.</p>\n\n\n\n<p class=\"wp-block-paragraph\">Even more significantly, two-thirds (64%) of adults would like to see an &#8220;immediate pause&#8221; on the development of advanced AI until the technology is proven to be safe.</p>\n\n\n\n<figure class=\"wp-block-image size-full wp-lightbox-container\"><img alt=\"\" class=\"wp-image-137346\" height=\"505\" src=\"https://futureoflife.org/wp-content/uploads/2025/10/Development-approaches-2.jpg\" width=\"1114\" /><button class=\"lightbox-trigger\" type=\"button\">\n\t\t\t<svg fill=\"none\" height=\"12\" viewBox=\"0 0 12 12\" width=\"12\" xmlns=\"http://www.w3.org/2000/svg\">\n\t\t\t\t<path d=\"M2 0a2 2 0 0 0-2 2v2h1.5V2a.5.5 0 0 1 .5-.5h2V0H2Zm2 10.5H2a.5.5 0 0 1-.5-.5V8H0v2a2 2 0 0 0 2 2h2v-1.5ZM8 12v-1.5h2a.5.5 0 0 0 .5-.5V8H12v2a2 2 0 0 1-2 2H8Zm2-12a2 2 0 0 1 2 2v2h-1.5V2a.5.5 0 0 0-.5-.5H8V0h2Z\" fill=\"#fff\">\n\t\t\t</svg>\n\t\t</button></figure>\n\n\n\n<p class=\"wp-block-paragraph\">A related poll on American&#8217;s attitudes about AI found that 69% think the government is not doing enough to regulate the use of AI (<a href=\"https://poll.qu.edu/poll-release?releaseid=3923\">Quinnipiac University</a>, April 2025).</p>\n\n\n\n<hr class=\"wp-block-separator has-alpha-channel-opacity\" />\n\n\n\n<h3 class=\"wp-block-heading\">Respondents cite &#8220;replacement&#8221; and \u201cextinction\u201d as top reasons to not develop advanced AI</h3>\n\n\n\n<p class=\"wp-block-paragraph\">When asked to rate reasons to not develop advanced AI, those which received the most support all revolved around human extinction or enfeeblement, and concentration of power.</p>\n\n\n\n<figure class=\"wp-block-image size-full wp-lightbox-container\"><img alt=\"\" class=\"wp-image-137347\" height=\"503\" src=\"https://futureoflife.org/wp-content/uploads/2025/10/Expert-level-AI-risks-2.jpg\" width=\"1118\" /><button class=\"lightbox-trigger\" type=\"button\">\n\t\t\t<svg fill=\"none\" height=\"12\" viewBox=\"0 0 12 12\" width=\"12\" xmlns=\"http://www.w3.org/2000/svg\">\n\t\t\t\t<path d=\"M2 0a2 2 0 0 0-2 2v2h1.5V2a.5.5 0 0 1 .5-.5h2V0H2Zm2 10.5H2a.5.5 0 0 1-.5-.5V8H0v2a2 2 0 0 0 2 2h2v-1.5ZM8 12v-1.5h2a.5.5 0 0 0 .5-.5V8H12v2a2 2 0 0 1-2 2H8Zm2-12a2 2 0 0 1 2 2v2h-1.5V2a.5.5 0 0 0-.5-.5H8V0h2Z\" fill=\"#fff\">\n\t\t\t</svg>\n\t\t</button></figure>\n\n\n\n<figure class=\"wp-block-image size-full wp-lightbox-container\"><img alt=\"\" class=\"wp-image-137350\" src=\"https://futureoflife.org/wp-content/uploads/2025/10/Superhuman-AI-risks-2.png\" /><button class=\"lightbox-trigger\" type=\"button\">\n\t\t\t<svg fill=\"none\" height=\"12\" viewBox=\"0 0 12 12\" width=\"12\" xmlns=\"http://www.w3.org/2000/svg\">\n\t\t\t\t<path d=\"M2 0a2 2 0 0 0-2 2v2h1.5V2a.5.5 0 0 1 .5-.5h2V0H2Zm2 10.5H2a.5.5 0 0 1-.5-.5V8H0v2a2 2 0 0 0 2 2h2v-1.5ZM8 12v-1.5h2a.5.5 0 0 0 .5-.5V8H12v2a2 2 0 0 1-2 2H8Zm2-12a2 2 0 0 1 2 2v2h-1.5V2a.5.5 0 0 0-.5-.5H8V0h2Z\" fill=\"#fff\">\n\t\t\t</svg>\n\t\t</button></figure>\n\n\n\n<p class=\"wp-block-paragraph\">Another poll on American&#8217;s attitudes (<a href=\"https://today.yougov.com/technology/articles/51803-americans-increasingly-skeptical-about-ai-artificial-intelligence-effects-poll\">YouGov</a>, March 2025) had similar findings:</p>\n\n\n\n<ul class=\"wp-block-list\">\n<li>Three-quarters (74%) of adults are concerned about the possibility of AI resulting in the concentration of power in technology companies, and;</li>\n\n\n\n<li>One-third (37%) of adults are concerned that AI could cause the end of the human race on earth.</li>\n</ul>\n\n\n\n<p class=\"wp-block-paragraph\">In terms of support for the development of advanced AI, top reasons involved solving major social and scientific challenges, and creating abundance.</p>\n\n\n\n<figure class=\"wp-block-image size-full wp-lightbox-container\"><img alt=\"\" class=\"wp-image-137348\" height=\"504\" src=\"https://futureoflife.org/wp-content/uploads/2025/10/Expert-level-AI-benefits-2.jpg\" width=\"1114\" /><button class=\"lightbox-trigger\" type=\"button\">\n\t\t\t<svg fill=\"none\" height=\"12\" viewBox=\"0 0 12 12\" width=\"12\" xmlns=\"http://www.w3.org/2000/svg\">\n\t\t\t\t<path d=\"M2 0a2 2 0 0 0-2 2v2h1.5V2a.5.5 0 0 1 .5-.5h2V0H2Zm2 10.5H2a.5.5 0 0 1-.5-.5V8H0v2a2 2 0 0 0 2 2h2v-1.5ZM8 12v-1.5h2a.5.5 0 0 0 .5-.5V8H12v2a2 2 0 0 1-2 2H8Zm2-12a2 2 0 0 1 2 2v2h-1.5V2a.5.5 0 0 0-.5-.5H8V0h2Z\" fill=\"#fff\">\n\t\t\t</svg>\n\t\t</button></figure>\n\n\n\n<figure class=\"wp-block-image size-full wp-lightbox-container\"><img alt=\"\" class=\"wp-image-137351\" height=\"503\" src=\"https://futureoflife.org/wp-content/uploads/2025/10/Superhuman-AI-benefits-2.jpg\" width=\"1116\" /><button class=\"lightbox-trigger\" type=\"button\">\n\t\t\t<svg fill=\"none\" height=\"12\" viewBox=\"0 0 12 12\" width=\"12\" xmlns=\"http://www.w3.org/2000/svg\">\n\t\t\t\t<path d=\"M2 0a2 2 0 0 0-2 2v2h1.5V2a.5.5 0 0 1 .5-.5h2V0H2Zm2 10.5H2a.5.5 0 0 1-.5-.5V8H0v2a2 2 0 0 0 2 2h2v-1.5ZM8 12v-1.5h2a.5.5 0 0 0 .5-.5V8H12v2a2 2 0 0 1-2 2H8Zm2-12a2 2 0 0 1 2 2v2h-1.5V2a.5.5 0 0 0-.5-.5H8V0h2Z\" fill=\"#fff\">\n\t\t\t</svg>\n\t\t</button></figure>\n\n\n\n<p class=\"wp-block-paragraph\">Respondents with higher AI\u2011knowledge tend to appreciate both upsides and downsides, and demand tighter safeguards.</p>\n\n\n\n<p class=\"wp-block-paragraph\">Overall, U.S. adults feel overwhelmingly concerned about the long-term impacts of AI on society.</p>\n\n\n\n<figure class=\"wp-block-image size-full wp-lightbox-container\"><img alt=\"\" class=\"wp-image-137352\" height=\"501\" src=\"https://futureoflife.org/wp-content/uploads/2025/10/Long-term-impacts-thought-concern-2.jpg\" width=\"1119\" /><button class=\"lightbox-trigger\" type=\"button\">\n\t\t\t<svg fill=\"none\" height=\"12\" viewBox=\"0 0 12 12\" width=\"12\" xmlns=\"http://www.w3.org/2000/svg\">\n\t\t\t\t<path d=\"M2 0a2 2 0 0 0-2 2v2h1.5V2a.5.5 0 0 1 .5-.5h2V0H2Zm2 10.5H2a.5.5 0 0 1-.5-.5V8H0v2a2 2 0 0 0 2 2h2v-1.5ZM8 12v-1.5h2a.5.5 0 0 0 .5-.5V8H12v2a2 2 0 0 1-2 2H8Zm2-12a2 2 0 0 1 2 2v2h-1.5V2a.5.5 0 0 0-.5-.5H8V0h2Z\" fill=\"#fff\">\n\t\t\t</svg>\n\t\t</button></figure>\n\n\n\n<p class=\"wp-block-paragraph\">Two other polls of U.S. adults demonstrate an overall pessimism about the impacts of AI on society:</p>\n\n\n\n<ul class=\"wp-block-list\">\n<li>Almost half (44%) think AI will do more harm than good, while only 38% think the opposite (<a href=\"https://poll.qu.edu/poll-release?releaseid=3923\">Quinnipiac University</a>, April 2025);</li>\n\n\n\n<li>40% think AI will have a negative impact on society, and only 29% expect it to have a positive impact (<a href=\"https://today.yougov.com/technology/articles/51803-americans-increasingly-skeptical-about-ai-artificial-intelligence-effects-poll\">YouGov,</a> March 2025).</li>\n</ul>\n\n\n\n<hr class=\"wp-block-separator has-alpha-channel-opacity\" />\n\n\n\n<h3 class=\"wp-block-heading\">The public looks to scientific organizations on AI</h3>\n\n\n\n<p class=\"wp-block-paragraph\">When asked who they believed should determine the trajectory of advanced AI, \u201cInternational scientific organizations\u201d ranked at the top, with \u201cNational government agencies\u201d a very close second.</p>\n\n\n\n<p class=\"wp-block-paragraph\">Altogether, scientific organizations (both international and independent combined) are favored by around half of U.S. adults.</p>\n\n\n\n<figure class=\"wp-block-image size-full wp-lightbox-container\"><img alt=\"\" class=\"wp-image-137356\" src=\"https://futureoflife.org/wp-content/uploads/2025/10/Development-decision-makers-2.png\" /><button class=\"lightbox-trigger\" type=\"button\">\n\t\t\t<svg fill=\"none\" height=\"12\" viewBox=\"0 0 12 12\" width=\"12\" xmlns=\"http://www.w3.org/2000/svg\">\n\t\t\t\t<path d=\"M2 0a2 2 0 0 0-2 2v2h1.5V2a.5.5 0 0 1 .5-.5h2V0H2Zm2 10.5H2a.5.5 0 0 1-.5-.5V8H0v2a2 2 0 0 0 2 2h2v-1.5ZM8 12v-1.5h2a.5.5 0 0 0 .5-.5V8H12v2a2 2 0 0 1-2 2H8Zm2-12a2 2 0 0 1 2 2v2h-1.5V2a.5.5 0 0 0-.5-.5H8V0h2Z\" fill=\"#fff\">\n\t\t\t</svg>\n\t\t</button></figure>\n\n\n\n<p class=\"wp-block-paragraph\">Two-thirds (69%) reported that the sources of information they would trust most for guidance on AI safety include \u201cAI researchers\u201d\u2014both at universities and non-profits\u2014and \u201cInternational bodies\u201d.</p>\n\n\n\n<figure class=\"wp-block-image size-full wp-lightbox-container\"><img alt=\"\" class=\"wp-image-137353\" height=\"510\" src=\"https://futureoflife.org/wp-content/uploads/2025/10/Trusted-figures-for-AI-safety-guidance-2.jpg\" width=\"1116\" /><button class=\"lightbox-trigger\" type=\"button\">\n\t\t\t<svg fill=\"none\" height=\"12\" viewBox=\"0 0 12 12\" width=\"12\" xmlns=\"http://www.w3.org/2000/svg\">\n\t\t\t\t<path d=\"M2 0a2 2 0 0 0-2 2v2h1.5V2a.5.5 0 0 1 .5-.5h2V0H2Zm2 10.5H2a.5.5 0 0 1-.5-.5V8H0v2a2 2 0 0 0 2 2h2v-1.5ZM8 12v-1.5h2a.5.5 0 0 0 .5-.5V8H12v2a2 2 0 0 1-2 2H8Zm2-12a2 2 0 0 1 2 2v2h-1.5V2a.5.5 0 0 0-.5-.5H8V0h2Z\" fill=\"#fff\">\n\t\t\t</svg>\n\t\t</button></figure>\n\n\n\n<p class=\"wp-block-paragraph\">The companies developing AI technologies and their leadership score significantly lower in terms of public trust. And a related study (<a href=\"https://www.pewresearch.org/internet/2025/04/03/how-the-us-public-and-ai-experts-view-artificial-intelligence/\">Pew Research</a>, April 2025) found that a majority of adults (59%) have little or no confidence in US companies to develop and use AI responsibly.</p>\n\n\n\n<hr class=\"wp-block-separator has-alpha-channel-opacity\" />\n\n\n\n<h3 class=\"wp-block-heading\">The public expects transformative AI to be here soon</h3>\n\n\n\n<p class=\"wp-block-paragraph\">The majority of those surveyed expect expert\u2011level AI to arrive imminently: 49% think that expert-level AI will be developed within 2 years.</p>\n\n\n\n<p class=\"wp-block-paragraph\">Superhuman AI is seen as slightly farther off, but still quite soon; the same proportion (49%) expect it to be developed within 5 years.</p>\n\n\n\n<figure class=\"wp-block-image size-full wp-lightbox-container\"><img alt=\"\" class=\"wp-image-137354\" height=\"485\" src=\"https://futureoflife.org/wp-content/uploads/2025/10/Advanced-AI-timeline-2.png\" width=\"1116\" /><button class=\"lightbox-trigger\" type=\"button\">\n\t\t\t<svg fill=\"none\" height=\"12\" viewBox=\"0 0 12 12\" width=\"12\" xmlns=\"http://www.w3.org/2000/svg\">\n\t\t\t\t<path d=\"M2 0a2 2 0 0 0-2 2v2h1.5V2a.5.5 0 0 1 .5-.5h2V0H2Zm2 10.5H2a.5.5 0 0 1-.5-.5V8H0v2a2 2 0 0 0 2 2h2v-1.5ZM8 12v-1.5h2a.5.5 0 0 0 .5-.5V8H12v2a2 2 0 0 1-2 2H8Zm2-12a2 2 0 0 1 2 2v2h-1.5V2a.5.5 0 0 0-.5-.5H8V0h2Z\" fill=\"#fff\">\n\t\t\t</svg>\n\t\t</button></figure>\n\n\n\n<p class=\"wp-block-paragraph\">Two-thirds of adults worry that advanced AI is likely (61% or greater chance) to cause \u201csignificant harm to humanity\u201d if it is developed without proper safeguards.</p>\n\n\n\n<figure class=\"wp-block-image size-full wp-lightbox-container\"><img alt=\"\" class=\"wp-image-137358\" height=\"450\" src=\"https://futureoflife.org/wp-content/uploads/2025/10/Advanced-AI-likelihood-3.jpg\" width=\"1118\" /><button class=\"lightbox-trigger\" type=\"button\">\n\t\t\t<svg fill=\"none\" height=\"12\" viewBox=\"0 0 12 12\" width=\"12\" xmlns=\"http://www.w3.org/2000/svg\">\n\t\t\t\t<path d=\"M2 0a2 2 0 0 0-2 2v2h1.5V2a.5.5 0 0 1 .5-.5h2V0H2Zm2 10.5H2a.5.5 0 0 1-.5-.5V8H0v2a2 2 0 0 0 2 2h2v-1.5ZM8 12v-1.5h2a.5.5 0 0 0 .5-.5V8H12v2a2 2 0 0 1-2 2H8Zm2-12a2 2 0 0 1 2 2v2h-1.5V2a.5.5 0 0 0-.5-.5H8V0h2Z\" fill=\"#fff\">\n\t\t\t</svg>\n\t\t</button></figure>\n\n\n\n<hr class=\"wp-block-separator has-alpha-channel-opacity\" />\n\n\n\n<h3 class=\"wp-block-heading\">Conclusion</h3>\n\n\n\n<p class=\"wp-block-paragraph\">To our knowledge, this is the first public large-scale survey that specifically addresses US public attitudes toward the development of advanced AI systems of the type often referred to as &#8220;AGI&#8221; and &#8220;superintelligence.&#8221; We encourage more such studies by independent researchers.</p>\n\n\n\n<p class=\"wp-block-paragraph\">In the results above, we see a <strong>clear disconnect between the stated mission of leading AI companies and the wishes of the American public.</strong></p>\n\n\n\n<p class=\"wp-block-paragraph\">OpenAI, Anthropic, xAI, Google, Meta, and others have openly declared they are &#8220;racing&#8221; to expert-level or superhuman AI, while many of them actively hamper efforts to create any meaningful guardrails.</p>\n\n\n\n<p class=\"wp-block-paragraph\">The survey paints a nuanced picture: Americans recognize AI\u2019s general promise but are wary of unchecked advancement of certain systems that aim to compete with or exceed top human experts. The public&#8217;s preference for strong, independent oversight signals a clear mandate for policymakers and industry leaders: advance cautiously and responsibly, educate broadly, and involve trusted scientific institutions in governance.</p>",
-      "segments": [
-        "innovators"
-      ],
-      "tier": "full",
-      "selection_reason": "This article details public sentiment and demand for AI regulation, influencing the future trajectory of AI development and policy.",
-      "audience_value": "Innovators can gauge public perception and regulatory pressures, informing their strategies for developing and deploying advanced AI systems responsibly.",
-      "urgency_score": 8,
-      "category_tag": "\ud83d\ude80 AI & Innovation",
-      "why_this_matters": "Why this matters: Public and governmental attitudes towards advanced AI directly shape the innovation landscape and market opportunities."
+      "why_this_matters": "Why this matters: Staying ahead of AI safety benchmarks is paramount for pioneers shaping the future of intelligent systems."
     },
     {
       "id": "709442cc9586978bf2eb487887e7ec59",
       "title": "Are we close to an intelligence explosion?",
       "url": "https://futureoflife.org/ai/are-we-close-to-an-intelligence-explosion/",
-      "published_date": "2026-09-17T09:57:41.781920",
+      "published_date": "2026-09-17T12:38:07.202689",
       "description": "AIs are inching ever-closer to a critical threshold. Beyond this threshold lie great risks\u2014but crossing it is not inevitable.",
       "source": "Future of Life Institute",
       "category": "Human-Centered AI, Policy & Ethics",
@@ -118,17 +91,80 @@
         "innovators"
       ],
       "tier": "full",
-      "selection_reason": "This piece explores the critical question of an impending intelligence explosion, a core concern for those at the forefront of AI research.",
-      "audience_value": "Innovators will gain perspective on the potential timelines and implications of rapid AI advancement, informing their research priorities and risk assessments.",
+      "selection_reason": "This piece explores the proximity to an intelligence explosion, a fundamental concept for those pushing the boundaries of AI capabilities.",
+      "audience_value": "Innovators can assess the potential for rapid AI advancement and its associated risks, informing their research and development strategies.",
+      "urgency_score": 8,
+      "category_tag": "\ud83d\ude80 AI & Innovation",
+      "why_this_matters": "Why this matters: Understanding the potential for an intelligence explosion is key to navigating the frontier of AI development."
+    },
+    {
+      "id": "25b552782a648606ad11191b10263a2e",
+      "title": "Michael Kleinman reacts to breakthrough AI safety legislation",
+      "url": "https://futureoflife.org/ai-policy/michael-kleinman-reacts-to-breakthrough-ai-safety-legislation/",
+      "published_date": "2026-09-17T12:38:07.202645",
+      "description": "FLI celebrates a landmark moment for the AI safety movement and highlights its growing momentum",
+      "source": "Future of Life Institute",
+      "category": "Human-Centered AI, Policy & Ethics",
+      "segment": "innovators",
+      "source_type": "secondary",
+      "raw_content": "<p class=\"wp-block-paragraph\">Michael Kleinman, Head of US Policy at the Future of Life Institute, released the following statement regarding the signing of SB 53:</p>\n\n\n\n<blockquote class=\"wp-block-quote is-layout-flow wp-block-quote-is-layout-flow\">\n<p class=\"wp-block-paragraph\">We applaud Governor Newsom for signing this vital legislation. Across America, the demand for stronger AI legislation continues to grow, with large majorities of both Republicans and Democrats calling for common-sense AI safeguards, including 82% of Republicans who agree there should be limits on what AI is allowed to do, and more than 70% of voters who support the government taking action to set safety standards.</p>\n\n\n\n<p class=\"wp-block-paragraph\">While more work remains, this is a landmark moment: lawmakers have finally begun establishing basic protections around advanced AI systems &#8212; the same safeguards that exist for every other industry, whether pharmaceuticals, aircraft manufacturers, or your local sandwich shop.</p>\n\n\n\n<p class=\"wp-block-paragraph\">This summer, the Senate resoundingly rejected, by a 99-to-1 vote, an attempt to prevent states from taking action. Now, states are stepping up to enact the AI safeguards the American people are demanding. Unless and until there are strong federal AI safety standards to protect our children, our communities and our jobs, both blue and red states will have no choice but to continue filling the void.</p>\n</blockquote>",
+      "segments": [
+        "innovators"
+      ],
+      "tier": "full",
+      "selection_reason": "This article discusses a breakthrough in AI safety legislation, signaling a significant shift in regulatory approaches to advanced AI.",
+      "audience_value": "Innovators can grasp the implications of new AI safety legislation, understanding how it might shape future research and deployment.",
       "urgency_score": 9,
       "category_tag": "\ud83d\ude80 AI & Innovation",
-      "why_this_matters": "Why this matters: Debates around AI's potential for rapid self-improvement are central to the future trajectory of the field."
+      "why_this_matters": "Why this matters: Landmark AI safety legislation directly impacts the future landscape of innovation and deployment."
+    },
+    {
+      "id": "76e407beb4f1165356b2f4a8e3449186",
+      "title": "The U.S. Public Wants Regulation (or Prohibition) of Expert\u2011Level and Superhuman AI",
+      "url": "https://futureoflife.org/recent-news/americans-want-regulation-or-prohibition-of-superhuman-ai/",
+      "published_date": "2026-09-17T12:38:07.202621",
+      "description": "Three\u2011quarters of U.S. adults want strong regulations on AI development, preferring oversight akin to pharmaceuticals rather than industry \"self\u2011regulation.\"",
+      "source": "Future of Life Institute",
+      "category": "Human-Centered AI, Policy & Ethics",
+      "segment": "innovators",
+      "source_type": "secondary",
+      "raw_content": "<p class=\"wp-block-paragraph\">A new national survey of 2,000 U.S. adults (29 Sept \u2013 5 Oct 2025) uncovers where Americans stand on AI and the prospect of expert\u2011level and superhuman systems.</p>\n\n\n\n<p class=\"wp-block-paragraph\">The findings show that <strong>a majority of those surveyed are concerned about the way that AI is being developed today</strong>, and that they <strong>do not support the development of human-level AI systems until they can be proven safe and controllable</strong>.</p>\n\n\n\n<div class=\"wp-block-group pad--s rounded--s bg--primary-ultra-light border\"><div class=\"wp-block-group__inner-container is-layout-constrained wp-block-group-is-layout-constrained\">\n<h3 class=\"wp-block-heading\">\u2b50 Highlights</h3>\n\n\n\n<div class=\"wp-block-spacer\" style=\"height: 12px;\"></div>\n\n\n\n<ul class=\"wp-block-list\">\n<li>There is <strong>widespread discontent at the current trajectory of advanced AI development</strong>, with only 5% in support of the status quo of fast, unregulated development;</li>\n\n\n\n<li>Almost two-thirds (64%) feel that <strong>superhuman AI should not be developed until it is proven safe and controllable</strong>, or should <strong>never be developed;</strong></li>\n\n\n\n<li>There is <strong>overwhelming support (73%) for robust regulation on AI</strong>. The fraction opposed to strong regulation is only 12%.</li>\n</ul>\n</div></div>\n\n\n\n<p class=\"wp-block-paragraph\">Participants were given a brief description of key terms, including &#8216;expert-level AI&#8217; and &#8216;superhuman AI&#8217;, and asked about both the benefits and potential risks of these technologies. Their understanding and engagement on these topics was measured so that results could be compared across cohorts.</p>\n\n\n\n<p class=\"wp-block-paragraph\">Below we summarize the key findings of this report. <a href=\"https://futureoflife.org/wp-content/uploads/2025/10/FLI-Advanced-AI-Survey-Analysis-BG25-140.pdf\">Click here to view the full report.</a></p>\n\n\n\n<hr class=\"wp-block-separator has-alpha-channel-opacity\" />\n\n\n\n<h3 class=\"wp-block-heading\">Overall: American adults are not \u2018bought in\u2019 to current trajectory</h3>\n\n\n\n<p class=\"wp-block-paragraph\">The poll reveals a strong consensus that superhuman AI should not be developed until there is scientific agreement that it is safe and controllable (64%), or should never be developed at all.</p>\n\n\n\n<p class=\"wp-block-paragraph\">A majority of adults (57%) are not bought in to the development of \u2018expert-level AI\u2019 under current conditions; they feel that it should never be developed (17%), or at least halted until proven controllable and safe (40%).</p>\n\n\n\n<figure class=\"wp-block-image size-full wp-lightbox-container\"><img alt=\"\" class=\"wp-image-137344\" height=\"497\" src=\"https://futureoflife.org/wp-content/uploads/2025/10/Development-preference-2.jpg\" width=\"1115\" /><button class=\"lightbox-trigger\" type=\"button\">\n\t\t\t<svg fill=\"none\" height=\"12\" viewBox=\"0 0 12 12\" width=\"12\" xmlns=\"http://www.w3.org/2000/svg\">\n\t\t\t\t<path d=\"M2 0a2 2 0 0 0-2 2v2h1.5V2a.5.5 0 0 1 .5-.5h2V0H2Zm2 10.5H2a.5.5 0 0 1-.5-.5V8H0v2a2 2 0 0 0 2 2h2v-1.5ZM8 12v-1.5h2a.5.5 0 0 0 .5-.5V8H12v2a2 2 0 0 1-2 2H8Zm2-12a2 2 0 0 1 2 2v2h-1.5V2a.5.5 0 0 0-.5-.5H8V0h2Z\" fill=\"#fff\">\n\t\t\t</svg>\n\t\t</button></figure>\n\n\n\n<p class=\"wp-block-paragraph\">Only 5% feel that either technology should be developed \u201cas quickly as possible.\u201d This sits in stark contrast to the operating paradigm of the leading AI corporations today, which openly declare they are \u201cracing\u201d to human-level systems and beyond.</p>\n\n\n\n<p class=\"wp-block-paragraph\">Despite this, around half of respondents expect that advanced AI will be developed \u201cquickly with minimal safeguards\u201d.</p>\n\n\n\n<figure class=\"wp-block-image size-full wp-lightbox-container\"><img alt=\"\" class=\"wp-image-137345\" height=\"499\" src=\"https://futureoflife.org/wp-content/uploads/2025/10/Prevent-or-develop-2.jpg\" width=\"1116\" /><button class=\"lightbox-trigger\" type=\"button\">\n\t\t\t<svg fill=\"none\" height=\"12\" viewBox=\"0 0 12 12\" width=\"12\" xmlns=\"http://www.w3.org/2000/svg\">\n\t\t\t\t<path d=\"M2 0a2 2 0 0 0-2 2v2h1.5V2a.5.5 0 0 1 .5-.5h2V0H2Zm2 10.5H2a.5.5 0 0 1-.5-.5V8H0v2a2 2 0 0 0 2 2h2v-1.5ZM8 12v-1.5h2a.5.5 0 0 0 .5-.5V8H12v2a2 2 0 0 1-2 2H8Zm2-12a2 2 0 0 1 2 2v2h-1.5V2a.5.5 0 0 0-.5-.5H8V0h2Z\" fill=\"#fff\">\n\t\t\t</svg>\n\t\t</button></figure>\n\n\n\n<hr class=\"wp-block-separator has-alpha-channel-opacity\" />\n\n\n\n<h3 class=\"wp-block-heading\">Approaches to AI development: Heavy regulation favored by most</h3>\n\n\n\n<p class=\"wp-block-paragraph\">There is overwhelming support for &#8220;slow, heavily regulated&#8221; development of AI (73%), with about the same proportion wishing for regulation &#8220;like pharmaceuticals with extensive testing before deployment&#8221;.</p>\n\n\n\n<p class=\"wp-block-paragraph\">Even more significantly, two-thirds (64%) of adults would like to see an &#8220;immediate pause&#8221; on the development of advanced AI until the technology is proven to be safe.</p>\n\n\n\n<figure class=\"wp-block-image size-full wp-lightbox-container\"><img alt=\"\" class=\"wp-image-137346\" height=\"505\" src=\"https://futureoflife.org/wp-content/uploads/2025/10/Development-approaches-2.jpg\" width=\"1114\" /><button class=\"lightbox-trigger\" type=\"button\">\n\t\t\t<svg fill=\"none\" height=\"12\" viewBox=\"0 0 12 12\" width=\"12\" xmlns=\"http://www.w3.org/2000/svg\">\n\t\t\t\t<path d=\"M2 0a2 2 0 0 0-2 2v2h1.5V2a.5.5 0 0 1 .5-.5h2V0H2Zm2 10.5H2a.5.5 0 0 1-.5-.5V8H0v2a2 2 0 0 0 2 2h2v-1.5ZM8 12v-1.5h2a.5.5 0 0 0 .5-.5V8H12v2a2 2 0 0 1-2 2H8Zm2-12a2 2 0 0 1 2 2v2h-1.5V2a.5.5 0 0 0-.5-.5H8V0h2Z\" fill=\"#fff\">\n\t\t\t</svg>\n\t\t</button></figure>\n\n\n\n<p class=\"wp-block-paragraph\">A related poll on American&#8217;s attitudes about AI found that 69% think the government is not doing enough to regulate the use of AI (<a href=\"https://poll.qu.edu/poll-release?releaseid=3923\">Quinnipiac University</a>, April 2025).</p>\n\n\n\n<hr class=\"wp-block-separator has-alpha-channel-opacity\" />\n\n\n\n<h3 class=\"wp-block-heading\">Respondents cite &#8220;replacement&#8221; and \u201cextinction\u201d as top reasons to not develop advanced AI</h3>\n\n\n\n<p class=\"wp-block-paragraph\">When asked to rate reasons to not develop advanced AI, those which received the most support all revolved around human extinction or enfeeblement, and concentration of power.</p>\n\n\n\n<figure class=\"wp-block-image size-full wp-lightbox-container\"><img alt=\"\" class=\"wp-image-137347\" height=\"503\" src=\"https://futureoflife.org/wp-content/uploads/2025/10/Expert-level-AI-risks-2.jpg\" width=\"1118\" /><button class=\"lightbox-trigger\" type=\"button\">\n\t\t\t<svg fill=\"none\" height=\"12\" viewBox=\"0 0 12 12\" width=\"12\" xmlns=\"http://www.w3.org/2000/svg\">\n\t\t\t\t<path d=\"M2 0a2 2 0 0 0-2 2v2h1.5V2a.5.5 0 0 1 .5-.5h2V0H2Zm2 10.5H2a.5.5 0 0 1-.5-.5V8H0v2a2 2 0 0 0 2 2h2v-1.5ZM8 12v-1.5h2a.5.5 0 0 0 .5-.5V8H12v2a2 2 0 0 1-2 2H8Zm2-12a2 2 0 0 1 2 2v2h-1.5V2a.5.5 0 0 0-.5-.5H8V0h2Z\" fill=\"#fff\">\n\t\t\t</svg>\n\t\t</button></figure>\n\n\n\n<figure class=\"wp-block-image size-full wp-lightbox-container\"><img alt=\"\" class=\"wp-image-137350\" src=\"https://futureoflife.org/wp-content/uploads/2025/10/Superhuman-AI-risks-2.png\" /><button class=\"lightbox-trigger\" type=\"button\">\n\t\t\t<svg fill=\"none\" height=\"12\" viewBox=\"0 0 12 12\" width=\"12\" xmlns=\"http://www.w3.org/2000/svg\">\n\t\t\t\t<path d=\"M2 0a2 2 0 0 0-2 2v2h1.5V2a.5.5 0 0 1 .5-.5h2V0H2Zm2 10.5H2a.5.5 0 0 1-.5-.5V8H0v2a2 2 0 0 0 2 2h2v-1.5ZM8 12v-1.5h2a.5.5 0 0 0 .5-.5V8H12v2a2 2 0 0 1-2 2H8Zm2-12a2 2 0 0 1 2 2v2h-1.5V2a.5.5 0 0 0-.5-.5H8V0h2Z\" fill=\"#fff\">\n\t\t\t</svg>\n\t\t</button></figure>\n\n\n\n<p class=\"wp-block-paragraph\">Another poll on American&#8217;s attitudes (<a href=\"https://today.yougov.com/technology/articles/51803-americans-increasingly-skeptical-about-ai-artificial-intelligence-effects-poll\">YouGov</a>, March 2025) had similar findings:</p>\n\n\n\n<ul class=\"wp-block-list\">\n<li>Three-quarters (74%) of adults are concerned about the possibility of AI resulting in the concentration of power in technology companies, and;</li>\n\n\n\n<li>One-third (37%) of adults are concerned that AI could cause the end of the human race on earth.</li>\n</ul>\n\n\n\n<p class=\"wp-block-paragraph\">In terms of support for the development of advanced AI, top reasons involved solving major social and scientific challenges, and creating abundance.</p>\n\n\n\n<figure class=\"wp-block-image size-full wp-lightbox-container\"><img alt=\"\" class=\"wp-image-137348\" height=\"504\" src=\"https://futureoflife.org/wp-content/uploads/2025/10/Expert-level-AI-benefits-2.jpg\" width=\"1114\" /><button class=\"lightbox-trigger\" type=\"button\">\n\t\t\t<svg fill=\"none\" height=\"12\" viewBox=\"0 0 12 12\" width=\"12\" xmlns=\"http://www.w3.org/2000/svg\">\n\t\t\t\t<path d=\"M2 0a2 2 0 0 0-2 2v2h1.5V2a.5.5 0 0 1 .5-.5h2V0H2Zm2 10.5H2a.5.5 0 0 1-.5-.5V8H0v2a2 2 0 0 0 2 2h2v-1.5ZM8 12v-1.5h2a.5.5 0 0 0 .5-.5V8H12v2a2 2 0 0 1-2 2H8Zm2-12a2 2 0 0 1 2 2v2h-1.5V2a.5.5 0 0 0-.5-.5H8V0h2Z\" fill=\"#fff\">\n\t\t\t</svg>\n\t\t</button></figure>\n\n\n\n<figure class=\"wp-block-image size-full wp-lightbox-container\"><img alt=\"\" class=\"wp-image-137351\" height=\"503\" src=\"https://futureoflife.org/wp-content/uploads/2025/10/Superhuman-AI-benefits-2.jpg\" width=\"1116\" /><button class=\"lightbox-trigger\" type=\"button\">\n\t\t\t<svg fill=\"none\" height=\"12\" viewBox=\"0 0 12 12\" width=\"12\" xmlns=\"http://www.w3.org/2000/svg\">\n\t\t\t\t<path d=\"M2 0a2 2 0 0 0-2 2v2h1.5V2a.5.5 0 0 1 .5-.5h2V0H2Zm2 10.5H2a.5.5 0 0 1-.5-.5V8H0v2a2 2 0 0 0 2 2h2v-1.5ZM8 12v-1.5h2a.5.5 0 0 0 .5-.5V8H12v2a2 2 0 0 1-2 2H8Zm2-12a2 2 0 0 1 2 2v2h-1.5V2a.5.5 0 0 0-.5-.5H8V0h2Z\" fill=\"#fff\">\n\t\t\t</svg>\n\t\t</button></figure>\n\n\n\n<p class=\"wp-block-paragraph\">Respondents with higher AI\u2011knowledge tend to appreciate both upsides and downsides, and demand tighter safeguards.</p>\n\n\n\n<p class=\"wp-block-paragraph\">Overall, U.S. adults feel overwhelmingly concerned about the long-term impacts of AI on society.</p>\n\n\n\n<figure class=\"wp-block-image size-full wp-lightbox-container\"><img alt=\"\" class=\"wp-image-137352\" height=\"501\" src=\"https://futureoflife.org/wp-content/uploads/2025/10/Long-term-impacts-thought-concern-2.jpg\" width=\"1119\" /><button class=\"lightbox-trigger\" type=\"button\">\n\t\t\t<svg fill=\"none\" height=\"12\" viewBox=\"0 0 12 12\" width=\"12\" xmlns=\"http://www.w3.org/2000/svg\">\n\t\t\t\t<path d=\"M2 0a2 2 0 0 0-2 2v2h1.5V2a.5.5 0 0 1 .5-.5h2V0H2Zm2 10.5H2a.5.5 0 0 1-.5-.5V8H0v2a2 2 0 0 0 2 2h2v-1.5ZM8 12v-1.5h2a.5.5 0 0 0 .5-.5V8H12v2a2 2 0 0 1-2 2H8Zm2-12a2 2 0 0 1 2 2v2h-1.5V2a.5.5 0 0 0-.5-.5H8V0h2Z\" fill=\"#fff\">\n\t\t\t</svg>\n\t\t</button></figure>\n\n\n\n<p class=\"wp-block-paragraph\">Two other polls of U.S. adults demonstrate an overall pessimism about the impacts of AI on society:</p>\n\n\n\n<ul class=\"wp-block-list\">\n<li>Almost half (44%) think AI will do more harm than good, while only 38% think the opposite (<a href=\"https://poll.qu.edu/poll-release?releaseid=3923\">Quinnipiac University</a>, April 2025);</li>\n\n\n\n<li>40% think AI will have a negative impact on society, and only 29% expect it to have a positive impact (<a href=\"https://today.yougov.com/technology/articles/51803-americans-increasingly-skeptical-about-ai-artificial-intelligence-effects-poll\">YouGov,</a> March 2025).</li>\n</ul>\n\n\n\n<hr class=\"wp-block-separator has-alpha-channel-opacity\" />\n\n\n\n<h3 class=\"wp-block-heading\">The public looks to scientific organizations on AI</h3>\n\n\n\n<p class=\"wp-block-paragraph\">When asked who they believed should determine the trajectory of advanced AI, \u201cInternational scientific organizations\u201d ranked at the top, with \u201cNational government agencies\u201d a very close second.</p>\n\n\n\n<p class=\"wp-block-paragraph\">Altogether, scientific organizations (both international and independent combined) are favored by around half of U.S. adults.</p>\n\n\n\n<figure class=\"wp-block-image size-full wp-lightbox-container\"><img alt=\"\" class=\"wp-image-137356\" src=\"https://futureoflife.org/wp-content/uploads/2025/10/Development-decision-makers-2.png\" /><button class=\"lightbox-trigger\" type=\"button\">\n\t\t\t<svg fill=\"none\" height=\"12\" viewBox=\"0 0 12 12\" width=\"12\" xmlns=\"http://www.w3.org/2000/svg\">\n\t\t\t\t<path d=\"M2 0a2 2 0 0 0-2 2v2h1.5V2a.5.5 0 0 1 .5-.5h2V0H2Zm2 10.5H2a.5.5 0 0 1-.5-.5V8H0v2a2 2 0 0 0 2 2h2v-1.5ZM8 12v-1.5h2a.5.5 0 0 0 .5-.5V8H12v2a2 2 0 0 1-2 2H8Zm2-12a2 2 0 0 1 2 2v2h-1.5V2a.5.5 0 0 0-.5-.5H8V0h2Z\" fill=\"#fff\">\n\t\t\t</svg>\n\t\t</button></figure>\n\n\n\n<p class=\"wp-block-paragraph\">Two-thirds (69%) reported that the sources of information they would trust most for guidance on AI safety include \u201cAI researchers\u201d\u2014both at universities and non-profits\u2014and \u201cInternational bodies\u201d.</p>\n\n\n\n<figure class=\"wp-block-image size-full wp-lightbox-container\"><img alt=\"\" class=\"wp-image-137353\" height=\"510\" src=\"https://futureoflife.org/wp-content/uploads/2025/10/Trusted-figures-for-AI-safety-guidance-2.jpg\" width=\"1116\" /><button class=\"lightbox-trigger\" type=\"button\">\n\t\t\t<svg fill=\"none\" height=\"12\" viewBox=\"0 0 12 12\" width=\"12\" xmlns=\"http://www.w3.org/2000/svg\">\n\t\t\t\t<path d=\"M2 0a2 2 0 0 0-2 2v2h1.5V2a.5.5 0 0 1 .5-.5h2V0H2Zm2 10.5H2a.5.5 0 0 1-.5-.5V8H0v2a2 2 0 0 0 2 2h2v-1.5ZM8 12v-1.5h2a.5.5 0 0 0 .5-.5V8H12v2a2 2 0 0 1-2 2H8Zm2-12a2 2 0 0 1 2 2v2h-1.5V2a.5.5 0 0 0-.5-.5H8V0h2Z\" fill=\"#fff\">\n\t\t\t</svg>\n\t\t</button></figure>\n\n\n\n<p class=\"wp-block-paragraph\">The companies developing AI technologies and their leadership score significantly lower in terms of public trust. And a related study (<a href=\"https://www.pewresearch.org/internet/2025/04/03/how-the-us-public-and-ai-experts-view-artificial-intelligence/\">Pew Research</a>, April 2025) found that a majority of adults (59%) have little or no confidence in US companies to develop and use AI responsibly.</p>\n\n\n\n<hr class=\"wp-block-separator has-alpha-channel-opacity\" />\n\n\n\n<h3 class=\"wp-block-heading\">The public expects transformative AI to be here soon</h3>\n\n\n\n<p class=\"wp-block-paragraph\">The majority of those surveyed expect expert\u2011level AI to arrive imminently: 49% think that expert-level AI will be developed within 2 years.</p>\n\n\n\n<p class=\"wp-block-paragraph\">Superhuman AI is seen as slightly farther off, but still quite soon; the same proportion (49%) expect it to be developed within 5 years.</p>\n\n\n\n<figure class=\"wp-block-image size-full wp-lightbox-container\"><img alt=\"\" class=\"wp-image-137354\" height=\"485\" src=\"https://futureoflife.org/wp-content/uploads/2025/10/Advanced-AI-timeline-2.png\" width=\"1116\" /><button class=\"lightbox-trigger\" type=\"button\">\n\t\t\t<svg fill=\"none\" height=\"12\" viewBox=\"0 0 12 12\" width=\"12\" xmlns=\"http://www.w3.org/2000/svg\">\n\t\t\t\t<path d=\"M2 0a2 2 0 0 0-2 2v2h1.5V2a.5.5 0 0 1 .5-.5h2V0H2Zm2 10.5H2a.5.5 0 0 1-.5-.5V8H0v2a2 2 0 0 0 2 2h2v-1.5ZM8 12v-1.5h2a.5.5 0 0 0 .5-.5V8H12v2a2 2 0 0 1-2 2H8Zm2-12a2 2 0 0 1 2 2v2h-1.5V2a.5.5 0 0 0-.5-.5H8V0h2Z\" fill=\"#fff\">\n\t\t\t</svg>\n\t\t</button></figure>\n\n\n\n<p class=\"wp-block-paragraph\">Two-thirds of adults worry that advanced AI is likely (61% or greater chance) to cause \u201csignificant harm to humanity\u201d if it is developed without proper safeguards.</p>\n\n\n\n<figure class=\"wp-block-image size-full wp-lightbox-container\"><img alt=\"\" class=\"wp-image-137358\" height=\"450\" src=\"https://futureoflife.org/wp-content/uploads/2025/10/Advanced-AI-likelihood-3.jpg\" width=\"1118\" /><button class=\"lightbox-trigger\" type=\"button\">\n\t\t\t<svg fill=\"none\" height=\"12\" viewBox=\"0 0 12 12\" width=\"12\" xmlns=\"http://www.w3.org/2000/svg\">\n\t\t\t\t<path d=\"M2 0a2 2 0 0 0-2 2v2h1.5V2a.5.5 0 0 1 .5-.5h2V0H2Zm2 10.5H2a.5.5 0 0 1-.5-.5V8H0v2a2 2 0 0 0 2 2h2v-1.5ZM8 12v-1.5h2a.5.5 0 0 0 .5-.5V8H12v2a2 2 0 0 1-2 2H8Zm2-12a2 2 0 0 1 2 2v2h-1.5V2a.5.5 0 0 0-.5-.5H8V0h2Z\" fill=\"#fff\">\n\t\t\t</svg>\n\t\t</button></figure>\n\n\n\n<hr class=\"wp-block-separator has-alpha-channel-opacity\" />\n\n\n\n<h3 class=\"wp-block-heading\">Conclusion</h3>\n\n\n\n<p class=\"wp-block-paragraph\">To our knowledge, this is the first public large-scale survey that specifically addresses US public attitudes toward the development of advanced AI systems of the type often referred to as &#8220;AGI&#8221; and &#8220;superintelligence.&#8221; We encourage more such studies by independent researchers.</p>\n\n\n\n<p class=\"wp-block-paragraph\">In the results above, we see a <strong>clear disconnect between the stated mission of leading AI companies and the wishes of the American public.</strong></p>\n\n\n\n<p class=\"wp-block-paragraph\">OpenAI, Anthropic, xAI, Google, Meta, and others have openly declared they are &#8220;racing&#8221; to expert-level or superhuman AI, while many of them actively hamper efforts to create any meaningful guardrails.</p>\n\n\n\n<p class=\"wp-block-paragraph\">The survey paints a nuanced picture: Americans recognize AI\u2019s general promise but are wary of unchecked advancement of certain systems that aim to compete with or exceed top human experts. The public&#8217;s preference for strong, independent oversight signals a clear mandate for policymakers and industry leaders: advance cautiously and responsibly, educate broadly, and involve trusted scientific institutions in governance.</p>",
+      "segments": [
+        "innovators"
+      ],
+      "tier": "full",
+      "selection_reason": "This article highlights public demand for regulation of advanced AI, reflecting societal concerns that will shape the AI landscape.",
+      "audience_value": "Innovators will understand the public's perspective on AI regulation, which is increasingly influencing policy and development priorities.",
+      "urgency_score": 7,
+      "category_tag": "\ud83d\ude80 AI & Innovation",
+      "why_this_matters": "Why this matters: Public sentiment and regulatory pressures are critical factors for innovators developing next-generation AI."
+    },
+    {
+      "id": "dfec5238d91f17e11c14ae4acd6c12a6",
+      "title": "Future of Life Institute Launches Multimillion Dollar Nationwide AI Regulation Campaign",
+      "url": "https://futureoflife.org/press-release/fli-launches-multimillion-dollar-nationwide-ai-regulation-campaign/",
+      "published_date": "2026-09-17T12:38:07.202579",
+      "description": "The Protect What\u2019s Human campaign will push for commonsense AI safety rules at federal and state level",
+      "source": "Future of Life Institute",
+      "category": "Human-Centered AI, Policy & Ethics",
+      "segment": "innovators",
+      "source_type": "primary",
+      "raw_content": "<p class=\"wp-block-paragraph\"><strong>CONTACT</strong><br />Chase Hardin<br /><a href=\"mailto:chase@futureoflife.org\">chase@futureoflife.org</a></p>\n\n\n\n<p class=\"wp-block-paragraph\"><strong>WASHINGTON, D.C.</strong> \u2014 Today<strong>,</strong> the Future of Life Institute (FLI) launched <a href=\"https://protectwhatshuman.org/\" rel=\"noreferrer noopener\" target=\"_blank\"><strong><em>Protect What\u2019s Human</em></strong></a><em>,</em> a new multimillion dollar campaign to rally people across the country in support of regulating AI and protecting what matters most. The campaign will take the debate about AI out of Washington and Silicon Valley, and could spend up to $8 million to engage the millions of Americans who are already feeling AI\u2019s impact, starting in Iowa, Kentucky, Maine, Michigan, and North Carolina.</p>\n\n\n\n<p class=\"wp-block-paragraph\">The <em>Protect What\u2019s Human</em> campaign kicks off as Big Tech anti-regulation PACs pour massive resources into polarizing this fight and electing Silicon Valley-anointed candidates this year. Outside of D.C. and the Bay Area, regulating <a href=\"https://ifstudies.org/blog/americans-want-ai-safeguards-by-a-9-to-1-margin\" rel=\"noreferrer noopener\" target=\"_blank\">AI enjoys massive bipartisan support</a>, <a href=\"https://drive.google.com/file/d/1GdB3Eb9kWsyUKl_TZQO5JFyNst02cmzf/view\" rel=\"noreferrer noopener\" target=\"_blank\">including from President Trump&#8217;s voters</a>, who are <a href=\"https://www.axios.com/2026/01/12/most-americans-skeptical-trump-big-tech-ties\" rel=\"noreferrer noopener\" target=\"_blank\">concerned</a> about their leaders&#8217; close ties to Big Tech. Everyday Americans\u2019 perspective is missing from the 2026 election conversation \u2014 that\u2019s why the campaign will not only spotlight their stories but show how policymakers are at odds with their constituents on this issue.</p>\n\n\n\n<p class=\"wp-block-paragraph\"><em>\u201cSilcon Valley corporations are creating technology designed not to help us, but to replace us. AI is already erasing human jobs, creeping into our most intimate spaces, and influencing young minds in deeply troubling ways. That\u2019s why we need to act now to put common-sense safety standards in place, just as we\u2019ve done with every other powerful technology and industry,\u201d</em> <strong>said Anthony Aguirre, CEO of the Future of Life Institute.</strong> <em>\u201cThis campaign isn\u2019t anti-tech, it\u2019s pro-human. We believe in progress and innovation, but never at the expense of our dignity, our communities, or our families.\u201d</em></p>\n\n\n\n<p class=\"wp-block-paragraph\">As the ads argue, <em>\u201cour hands built America \u2013 hands that carve, shape, teach and care. We&#8217;ve always had tools that made us faster and more capable, but they never replace the people who held them because a machine can&#8217;t take pride in a hard day&#8217;s work or teach a son right from wrong. Because the most important intelligence is Human. That\u2019s why the hands who built this country must build what comes next.\u201d</em></p>\n\n\n\n<p class=\"wp-block-paragraph\"><em>\u201cAI has invaded our homes and children\u2019s lives, often without parents even realizing it. Our laws just aren\u2019t keeping up with this new technology\u2019s predatory behavior and we urgently need to put it back under human control before it\u2019s too late,\u201d </em><strong><em>said Megan Garcia, a mother who brought the first lawsuit in the country against an AI chatbot company after the suicide of her 14-year-old son.</em></strong><em> \u201cFamilies, teachers, and doctors should care for our kids, not machines designed to get more clicks for money.\u201d</em></p>\n\n\n\n<p class=\"wp-block-paragraph\">The campaign is making an initial six to seven figure investment in each state as several consider new AI regulation laws to protect their residents\u2019 safety, privacy, jobs, and healthcare. <a href=\"https://drive.google.com/file/d/1zwhm7BwS-uHAwGgKFt1acuODRwDPx_9C/view\" rel=\"noreferrer noopener\" target=\"_blank\">A large majority of Iowans, Kentuckians, Mainers, Michiganders, and North Carolinians express strong support for regulating AI</a> and <em>Protect What\u2019s Human</em> will provide a springboard for further movement around commonsense AI safety measures.</p>",
+      "segments": [
+        "innovators"
+      ],
+      "tier": "full",
+      "selection_reason": "The Future of Life Institute's launch of a nationwide AI regulation campaign indicates a significant push for governance in AI development.",
+      "audience_value": "Innovators will be aware of major advocacy efforts pushing for AI safety rules, which could influence the direction and pace of innovation.",
+      "urgency_score": 8,
+      "category_tag": "\ud83d\ude80 AI & Innovation",
+      "why_this_matters": "Why this matters: Major campaigns for AI regulation signal shifts in the ecosystem that innovators must anticipate."
     },
     {
       "id": "15fde844d73b83d86e9492065e88ea7f",
       "title": "The Impact of AI in Education: Navigating the Imminent Future",
       "url": "https://futureoflife.org/guest-post/the-impact-of-ai-in-education-navigating-the-imminent-future/",
-      "published_date": "2026-09-17T09:57:41.781944",
+      "published_date": "2026-09-17T12:38:07.202713",
       "description": "What must be considered to build a safe but effective future for AI in education, and for children to be safe online?",
       "source": "Future of Life Institute",
       "category": "Human-Centered AI, Policy & Ethics",
@@ -139,38 +175,38 @@
         "innovators"
       ],
       "tier": "full",
-      "selection_reason": "This article addresses the crucial intersection of AI and education, highlighting future challenges and considerations for responsible integration.",
-      "audience_value": "Innovators can understand the emerging landscape of AI in education, identifying potential applications and ethical considerations for future development.",
+      "selection_reason": "This piece delves into the impact of AI in education, exploring the future of AI integration in learning environments.",
+      "audience_value": "Innovators can explore novel applications of AI in education, understanding how these systems are being designed for safety and effectiveness.",
       "urgency_score": 7,
       "category_tag": "\ud83d\ude80 AI & Innovation",
-      "why_this_matters": "Why this matters: The integration of AI into educational systems represents a significant future application area with broad societal impact."
+      "why_this_matters": "Why this matters: The integration of AI into education represents a significant emerging application area for advanced AI."
     },
     {
-      "id": "2f9decb7a92efe6ee029c246fec796cb",
-      "title": "Black Holes or Black Hole Stars? Astronomers Spar Over Webb Telescope\u2019s \u2018Little Red Dots.\u2019",
-      "url": "https://www.quantamagazine.org/black-holes-or-black-hole-stars-astronomers-spar-over-webb-telescopes-little-red-dots-20260914/",
-      "published_date": "2026-09-17T09:57:46.284145",
-      "description": "The James Webb Space Telescope spots mysterious \u201clittle red dots\u201d everywhere. A bold new theory suggests they\u2019re suns dozens of times larger than our entire solar system.             <p>The post <a href=\"https://www.quantamagazine.org/black-holes-or-black-hole-stars-astronomers-spar-over-webb-telescopes-little-red-dots-20260914/\" target=\"_blank\">Black Holes or Black Hole Stars? Astronomers Spar Over Webb Telescope\u2019s \u2018Little Red Dots.\u2019</a> first appeared on <a href=\"https://www.quantamagazine.org\" target=\"_blank\">Quanta Magazine</a></p>",
-      "source": "Quanta Magazine",
+      "id": "801f9f200d4ba02bc06c49985b25fddb",
+      "title": "How chimps teach their kids tool tricks",
+      "url": "https://arstechnica.com/science/2026/09/how-chimps-teach-their-kids-tool-tricks/",
+      "published_date": "2026-09-17T12:38:11.440990",
+      "description": "Adults first demonstrate tool use, then hand over the implements to their infants, who copy the behavior.",
+      "source": "Ars Technica",
       "category": "Applied Science & Frontier Tech",
       "segment": "innovators",
       "source_type": "secondary",
-      "raw_content": "<p>Astronomers built the James Webb Space Telescope to pick up faint light from the first billion years after the Big Bang, a chaotic era when vast swaths of hydrogen and helium gas gathered into the chains of galaxies we see today. Even in the telescope&rsquo;s first images, astronomers could see a whole zoo of mysterious smears of light. One batch of objects proved especially difficult to interpret.</p>\n<p><a href=\"https://www.quantamagazine.org/black-holes-or-black-hole-stars-astronomers-spar-over-webb-telescopes-little-red-dots-20260914/\" rel=\"nofollow\">Source</a></p>",
+      "raw_content": "<p>Chimpanzees are known to use rudimentary tools when foraging for food. According to a new paper in the journal Frontiers in Psychology, this learned behavior is passed down from adults to offspring through social learning. Specifically, adult chimps deliberately model the behavior, then turn their tools over to the youngsters so they can mimic the same motions.</p>\n<p>\"Receiving food and tools from experienced individuals, which we call food or tool transfer, may help chimpanzees learn to use technology to extract foods that are difficult to access,\u201d <a href=\"https://www.eurekalert.org/news-releases/1143218?\">said co-author Andreu S\u00e1nchez-Meg\u00edas</a>, a graduate student at the University of Barcelona and the Jane Goodall Institute Spain in Senegal. \u201cTool transfers thus appear to be a form of teaching, together with observation and supervised practice. It appears that mothers are the main models and teachers for young chimpanzees in this manner.\u201d</p>\n<p>As <a href=\"https://arstechnica.com/science/2012/11/parrot-in-captivity-manufactures-tools-something-not-seen-in-the-wild/\">we have previously reported</a>, tool use was once thought to be one of the defining features of humans, although Charles Darwin observed chimpanzees using stones to crack nuts in 1871. In 1960, the late primatologist <a href=\"https://arstechnica.com/science/2025/10/world-famous-primatologist-jane-goodall-dead-at-91/\">Jane Goodall</a> observed a chimp named David Greybeard bend a twig, strip off the leaves, and use it to spoon termites out of a nest and into his mouth. When he learned of the behavior, Goodall's mentor, Louis Leakey, famously observed, \u201cNow we must redefine \u2018tool,\u2019 redefine \u2018man,\u2019 or accept chimpanzees as humans.\u201d Since then, chimps have been observed making sponges out of leaves to soak up liquids, shaping sticks to collect algae, and sharpening rudimentary spears for hunting.</p><p><a href=\"https://arstechnica.com/science/2026/09/how-chimps-teach-their-kids-tool-tricks/\">Read full article</a></p>\n<p><a href=\"https://arstechnica.com/science/2026/09/how-chimps-teach-their-kids-tool-tricks/#comments\">Comments</a></p>",
       "segments": [
         "innovators"
       ],
       "tier": "full",
-      "selection_reason": "This article discusses a novel interpretation of astronomical observations from the Webb Telescope, representing a potential breakthrough in our understanding of the universe.",
-      "audience_value": "Innovators interested in fundamental scientific discovery will appreciate the cutting-edge research and the debate surrounding new astronomical phenomena.",
-      "urgency_score": 8,
+      "selection_reason": "This research paper details how chimpanzees teach tool use to their young, offering insights into biological learning mechanisms relevant to AI.",
+      "audience_value": "Innovators can draw inspiration from natural learning processes, potentially informing the development of more intuitive and effective AI learning algorithms.",
+      "urgency_score": 6,
       "category_tag": "\ud83d\ude80 AI & Innovation",
-      "why_this_matters": "Why this matters: Pushing the boundaries of scientific understanding often inspires new technological approaches and paradigms."
+      "why_this_matters": "Why this matters: Understanding biological learning mechanisms can unlock novel approaches for AI algorithm design."
     },
     {
       "id": "86399ae62c262249e98a5959a5351218",
       "title": "MoQSplat: Adaptive Progressive Streaming of 3D Gaussian Splatting via MoQ",
       "url": "https://arxiv.org/abs/2609.18624",
-      "published_date": "2026-09-17T09:57:44.028612",
+      "published_date": "2026-09-17T12:38:09.967068",
       "description": "arXiv:2609.18624v1 Announce Type: cross \nAbstract: 3D Gaussian Splatting (3DGS) enables photorealistic novel view synthesis, but transmitting gigabyte-scale scene data remains challenging for immersive applications. Traditional HTTP Adaptive Streaming over TCP introduces Head-of-Line (HOL) blocking and coarse segmenting ill-suited to fine-grained 3DGS delivery. We propose MoQSplat, which maps 3DGS content onto the Media over QUIC (MoQ) transport hierarchy. MoQSplat partitions scenes into spatial Tracks, clusters splats into semantically coherent Groups, and constructs progressive-quality Subgroups mapped to independent QUIC streams to eliminate connection-level HOL blocking. Using a stateless, subscriber-driven adaptation loop, clients dynamically request spatial regions and quality tiers based on six degrees of freedom (6-DoF) frustum visibility, distance, and foveal alignment. We evaluate the core components on a prototype implementation, showing that opacity-based pruning outperforms scale-based pruning for progressive delivery. The source code is available at https://github.com/emanuele-artioli/MoQSplat.",
       "source": "cs.GR updates on arXiv.org",
       "category": "Generative Media (Image, Video, Audio & 3D)",
@@ -180,90 +216,62 @@
       "segments": [
         "innovators"
       ],
-      "tier": "full",
-      "selection_reason": "This arXiv paper introduces MoQSplat, a novel approach to adaptive streaming for 3D Gaussian Splatting, addressing a key challenge in real-time rendering and immersive applications.",
-      "audience_value": "Innovators in graphics, AR/VR, and real-time rendering will find this research valuable for its potential to improve the efficiency and scalability of 3D content delivery.",
-      "urgency_score": 8,
+      "tier": "quick",
+      "selection_reason": "This paper introduces MoQSplat, an adaptive streaming technique for 3D Gaussian Splatting, relevant for real-time rendering innovations.",
+      "audience_value": "Provides a novel approach for efficient streaming of complex 3D data, crucial for immersive and real-time applications.",
+      "urgency_score": 7,
       "category_tag": "\ud83d\ude80 AI & Innovation",
-      "why_this_matters": "Why this matters: Advances in 3D rendering and streaming are foundational for the next generation of immersive and interactive experiences."
+      "why_this_matters": "Why this matters: Advances in 3D data streaming are critical for the next generation of immersive and generative technologies."
     },
     {
-      "id": "dbc365232605ba60e60bc58767f7b3dc",
-      "title": "Which Histories Matter for Time Series Forecasting? Learning Predictive Relevance with Future Supervision",
-      "url": "https://arxiv.org/abs/2608.23221",
-      "published_date": "2026-09-17T09:57:24.424290",
-      "description": "arXiv:2608.23221v2 Announce Type: replace-cross \nAbstract: Historical retrieval for time-series prediction commonly treats past similarity as a proxy for usefulness. We ask a different question: which historical examples should be expected to matter for a query? We define predictive relevance as expected future utility conditioned on inference-time information, using realized futures only during training as privileged supervision. A normalized-pattern retriever first forms a coarse candidate set, and a lightweight residual multilayer perceptron (MLP) learns a listwise future-compatibility target while keeping inference-time scoring strictly past-only. Our method retains similarity-based candidate generation but reranks its candidates by a more predictive relevance criterion. Optimal relevance decomposes into candidate-level utility and query-specific compatibility, motivating Candidate-Prior and Shuffled-Future controls. Across six benchmarks, the reranker improves Pattern retrieval while revealing candidate-global, query-specific, and mixed relevance regimes. On all 12 confirmatory tasks, it improves Pattern and outperforms a matched-protocol Stationarity-Aware Retrieval-Augmented Time Series Forecasting (SARAF) retrieval rule. Architecture-matched ablations show that correct future supervision, rather than the MLP or added context alone, drives gains in query-specific regimes. Alternative-similarity experiments show that a strong last-value-anchored L2 rule remains superior in some domains, whereas future-supervised relevance is particularly strong where our diagnostics indicate query-specific relevance, especially on Solar. Candidate-pool diagnostics show that this contrast is not explained solely by coarse Pattern retrieval. Overall, historical relevance is structured and domain dependent rather than governed by a universally superior retrieval rule.",
-      "source": "cs.LG updates on arXiv.org",
+      "id": "a49b3dcf2372c4262fc0c80e7657591d",
+      "title": "InterMASH: A Unified Geometric Representation for Grasp Synthesis",
+      "url": "https://arxiv.org/abs/2609.18504",
+      "published_date": "2026-09-17T12:38:09.967033",
+      "description": "arXiv:2609.18504v1 Announce Type: cross \nAbstract: Grasp synthesis aims to generate stable and physically plausible hand--object interactions, and has become a fundamental problem in both human hand modeling and robotic manipulation. However, a unified representation across human and robotic hands is still lacking, mainly due to differences in hand morphology and surface modeling. Prior methods typically rely on either contact maps or dense implicit descriptors to represent interaction, but these representations are often incomplete or computationally expensive and redundant. We propose InterMASH, a unified geometric representation that establishes cross-embodiment correspondence using sphere-fixed anchors. At each anchor, low-degree spherical harmonics compactly encode local hand geometry, object geometry, and contact, forming an explicit and interpretable token sequence. Building on this natively tokenized structure, we introduce a conditional Diffusion Transformer that operates directly in the proposed InterMASH representation space and jointly generates hand geometry and contact, improving consistency and physical plausibility. Our method achieves competitive performance with state-of-the-art methods on key physical feasibility metrics in a large-scale ShadowHand benchmark, supports joint training across multiple hands, and shows that cross-embodiment fine-tuning with human grasp data can improve robotic grasp success and diversity. Project page is available at https://inter-mash.github.io/.",
+      "source": "cs.GR updates on arXiv.org",
+      "category": "Generative Media (Image, Video, Audio & 3D)",
+      "segment": "innovators",
+      "source_type": "primary",
+      "raw_content": "arXiv:2609.18504v1 Announce Type: cross \nAbstract: Grasp synthesis aims to generate stable and physically plausible hand--object interactions, and has become a fundamental problem in both human hand modeling and robotic manipulation. However, a unified representation across human and robotic hands is still lacking, mainly due to differences in hand morphology and surface modeling. Prior methods typically rely on either contact maps or dense implicit descriptors to represent interaction, but these representations are often incomplete or computationally expensive and redundant. We propose InterMASH, a unified geometric representation that establishes cross-embodiment correspondence using sphere-fixed anchors. At each anchor, low-degree spherical harmonics compactly encode local hand geometry, object geometry, and contact, forming an explicit and interpretable token sequence. Building on this natively tokenized structure, we introduce a conditional Diffusion Transformer that operates directly in the proposed InterMASH representation space and jointly generates hand geometry and contact, improving consistency and physical plausibility. Our method achieves competitive performance with state-of-the-art methods on key physical feasibility metrics in a large-scale ShadowHand benchmark, supports joint training across multiple hands, and shows that cross-embodiment fine-tuning with human grasp data can improve robotic grasp success and diversity. Project page is available at https://inter-mash.github.io/.",
+      "segments": [
+        "innovators",
+        "early_signals"
+      ],
+      "tier": "quick",
+      "selection_reason": "InterMASH presents a unified geometric representation for grasp synthesis, advancing robotics and human-computer interaction.",
+      "audience_value": "Offers a new unified representation for grasp synthesis, benefiting researchers in robotics and AI-driven manipulation.",
+      "urgency_score": 7,
+      "category_tag": "\ud83d\ude80 AI & Innovation",
+      "why_this_matters": "Why this matters: Unified representations are key to developing more sophisticated and adaptable robotic manipulation systems."
+    },
+    {
+      "id": "195fba9b95fdea92adef3bca870ab6a9",
+      "title": "How AI compares to human doctors in deciding kidney transplants \u2014 and more health headlines - Yahoo",
+      "url": "https://news.google.com/rss/articles/CBMimAFBVV95cUxPd2EwQVBOOTc4WWdMQ29BY3EtS29kZnhIMFFYZU4wNG5wbkUyY29HZUZuQ1RSUDdYQUdkU2N3ekptNk1ncEgybGxEVzY0c2ZRQ1h4RXdWdS1saURtb3l3ekpQamRXeU5ZT2NEY1FmaktPbDFyVVF6SzZLaEtpMXkyMUtQck5Sa1R2NndQMVBaNWFyRmVhdzlseg?oc=5",
+      "published_date": "2026-09-17T12:37:59.734699",
+      "description": "<a href=\"https://news.google.com/rss/articles/CBMimAFBVV95cUxPd2EwQVBOOTc4WWdMQ29BY3EtS29kZnhIMFFYZU4wNG5wbkUyY29HZUZuQ1RSUDdYQUdkU2N3ekptNk1ncEgybGxEVzY0c2ZRQ1h4RXdWdS1saURtb3l3ekpQamRXeU5ZT2NEY1FmaktPbDFyVVF6SzZLaEtpMXkyMUtQck5Sa1R2NndQMVBaNWFyRmVhdzlseg?oc=5\" target=\"_blank\">How AI compares to human doctors in deciding kidney transplants \u2014 and more health headlines</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">Yahoo</font>",
+      "source": "\"bair AI when:3d\" - Google News",
       "category": "Raw Research (Machine Learning & AI)",
       "segment": "innovators",
-      "source_type": "primary",
-      "raw_content": "arXiv:2608.23221v2 Announce Type: replace-cross \nAbstract: Historical retrieval for time-series prediction commonly treats past similarity as a proxy for usefulness. We ask a different question: which historical examples should be expected to matter for a query? We define predictive relevance as expected future utility conditioned on inference-time information, using realized futures only during training as privileged supervision. A normalized-pattern retriever first forms a coarse candidate set, and a lightweight residual multilayer perceptron (MLP) learns a listwise future-compatibility target while keeping inference-time scoring strictly past-only. Our method retains similarity-based candidate generation but reranks its candidates by a more predictive relevance criterion. Optimal relevance decomposes into candidate-level utility and query-specific compatibility, motivating Candidate-Prior and Shuffled-Future controls. Across six benchmarks, the reranker improves Pattern retrieval while revealing candidate-global, query-specific, and mixed relevance regimes. On all 12 confirmatory tasks, it improves Pattern and outperforms a matched-protocol Stationarity-Aware Retrieval-Augmented Time Series Forecasting (SARAF) retrieval rule. Architecture-matched ablations show that correct future supervision, rather than the MLP or added context alone, drives gains in query-specific regimes. Alternative-similarity experiments show that a strong last-value-anchored L2 rule remains superior in some domains, whereas future-supervised relevance is particularly strong where our diagnostics indicate query-specific relevance, especially on Solar. Candidate-pool diagnostics show that this contrast is not explained solely by coarse Pattern retrieval. Overall, historical relevance is structured and domain dependent rather than governed by a universally superior retrieval rule.",
-      "segments": [
-        "innovators"
-      ],
-      "tier": "full",
-      "selection_reason": "This research paper explores a novel method for time series forecasting by learning predictive relevance, a key challenge in many AI applications.",
-      "audience_value": "Innovators working with time-series data will gain insights into a new algorithm that improves forecasting accuracy by intelligently selecting relevant historical data.",
-      "urgency_score": 8,
-      "category_tag": "\ud83d\ude80 AI & Innovation",
-      "why_this_matters": "Why this matters: Developing more accurate and efficient forecasting algorithms is crucial for predictive modeling across various domains."
-    },
-    {
-      "id": "766bd696566c6e2f0feac762a6023ba2",
-      "title": "Former Infosys chief\u2019s AI startup nabs another $53M",
-      "url": "https://techcrunch.com/2026/09/16/former-infosys-chiefs-ai-startup-adds-50m-to-seed-weeks-after-initial-raise/",
-      "published_date": "2026-09-17T09:57:39.676385",
-      "description": "The Palo Alto startup says it has landed multiple seven-figure enterprise contracts within months of launch.",
-      "source": "AI News & Artificial Intelligence | TechCrunch",
-      "category": "Frontier AI Labs & Research",
-      "segment": "innovators",
       "source_type": "secondary",
-      "raw_content": "The Palo Alto startup says it has landed multiple seven-figure enterprise contracts within months of launch.",
+      "raw_content": "<a href=\"https://news.google.com/rss/articles/CBMimAFBVV95cUxPd2EwQVBOOTc4WWdMQ29BY3EtS29kZnhIMFFYZU4wNG5wbkUyY29HZUZuQ1RSUDdYQUdkU2N3ekptNk1ncEgybGxEVzY0c2ZRQ1h4RXdWdS1saURtb3l3ekpQamRXeU5ZT2NEY1FmaktPbDFyVVF6SzZLaEtpMXkyMUtQck5Sa1R2NndQMVBaNWFyRmVhdzlseg?oc=5\" target=\"_blank\">How AI compares to human doctors in deciding kidney transplants \u2014 and more health headlines</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">Yahoo</font>",
       "segments": [
-        "innovators"
-      ],
-      "tier": "quick",
-      "selection_reason": "A significant funding round for an AI startup focused on enterprise solutions.",
-      "audience_value": "Early indicators of market momentum and investment trends in the AI sector.",
-      "urgency_score": 7,
-      "category_tag": "\ud83d\udcb0 Funding & M&A",
-      "why_this_matters": "Why this matters: Tracking significant funding rounds reveals emerging leaders and investment focus in the AI space."
-    },
-    {
-      "id": "803a064703b56978ace4966364a62bed",
-      "title": "OpenAI Gym Beta",
-      "url": "https://openai.com/index/openai-gym-beta",
-      "published_date": "2026-09-17T09:57:20.706926",
-      "description": "We\u2019re releasing the public beta of OpenAI Gym, a toolkit for developing and comparing reinforcement learning (RL) algorithms. It consists of a growing suite of environments (from simulated robots to Atari games), and a site for comparing and reproducing results.",
-      "source": "OpenAI News",
-      "category": "Agentic Infrastructure & Frameworks",
-      "segment": "pinecone_technology_innovation",
-      "source_type": "primary",
-      "raw_content": "We\u2019re releasing the public beta of OpenAI Gym, a toolkit for developing and comparing reinforcement learning (RL) algorithms. It consists of a growing suite of environments (from simulated robots to Atari games), and a site for comparing and reproducing results.",
-      "segments": [
-        "pinecone_technology_innovation",
-        "ramp_technology_innovation",
-        "generative_media",
         "innovators",
-        "agentic_ai_workflows",
-        "posthog_technology_innovation",
-        "generative_image_video_audio_and_spatial_media_ai",
-        "early_signals",
-        "linear_technology_innovation",
-        "supabase_technology_innovation"
+        "early_signals"
       ],
       "tier": "quick",
-      "selection_reason": "OpenAI's early release of a toolkit for reinforcement learning environments.",
-      "audience_value": "Access to a foundational tool for developing and testing advanced RL algorithms.",
-      "urgency_score": 7,
+      "selection_reason": "This article compares AI's performance to human doctors in medical decisions, highlighting AI's growing role in healthcare.",
+      "audience_value": "Provides a comparative analysis of AI in critical medical decision-making, relevant for understanding AI's impact on healthcare.",
+      "urgency_score": 6,
       "category_tag": "\ud83d\ude80 AI & Innovation",
-      "why_this_matters": "Why this matters: New tools for reinforcement learning accelerate research and development in autonomous systems."
+      "why_this_matters": "Why this matters: AI's increasing capability in complex domains like healthcare demands attention from innovators."
     },
     {
       "id": "2804996053bb598d358b1bcb639bd01c",
       "title": "Generative models",
       "url": "https://openai.com/index/generative-models",
-      "published_date": "2026-09-17T09:57:20.706865",
+      "published_date": "2026-09-17T12:37:45.362119",
       "description": "This post describes four projects that share a common theme of enhancing or using generative models, a branch of unsupervised learning techniques in machine learning. In addition to describing our work, this post will tell you a bit more about generative models: what they are, why they are important, and where they might be going.",
       "source": "OpenAI News",
       "category": "Agentic Infrastructure & Frameworks",
@@ -283,32 +291,11 @@
         "supabase_technology_innovation"
       ],
       "tier": "quick",
-      "selection_reason": "OpenAI's foundational post on generative models.",
-      "audience_value": "A clear explanation of generative models and their importance from a leading research institution.",
+      "selection_reason": "This OpenAI post explains generative models, their importance, and recent advancements, crucial for understanding a core AI technology.",
+      "audience_value": "Offers foundational knowledge and insights into generative models, a key area of AI research and application.",
       "urgency_score": 6,
       "category_tag": "\ud83d\ude80 AI & Innovation",
-      "why_this_matters": "Why this matters: Understanding the core principles of generative models is essential for leveraging their power."
-    },
-    {
-      "id": "334c5d64345480200d0ae8498affa9fb",
-      "title": "Bridging the Gap in ECG-Based Emotion Recognition: A Unified Evaluation of Deep Learning Models",
-      "url": "https://arxiv.org/abs/2609.15055",
-      "published_date": "2026-09-17T09:57:24.424360",
-      "description": "arXiv:2609.15055v2 Announce Type: replace-cross \nAbstract: Deep learning has led to numerous proposed architectures for Automated Emotion Recognition (AER) from electrocardiogram (ECG) data, but inconsistencies in preprocessing, training, and evaluation make direct comparisons difficult. Most studies train and validate models on individual datasets collected under homogeneous conditions, limiting variability and raising concerns about generalizability. Cross-dataset validation is sometimes used but primarily assesses model adaptability rather than true generalization. This study presents a comparative analysis of prominent deep learning architectures in AER, emphasizing model generalization over dataset adaptability. To enable this benchmark, we introduce two open-source frameworks: Affective Research on Representations and Classifications (ARRC), a standardized benchmarking toolkit, and Affective Research Dataset Toolkit (ARDT), a framework for inter-dataset training and validation. Using ARDT, we consolidate three publicly available AER datasets, CUADS, ASCERTAIN, and DREAMER, into a single dataset, increasing variability in sensor types, recording conditions, and participant demographics. We then use ARRC to evaluate three widely studied deep learning models and two CNN baselines through hyperparameter optimization and 10-fold cross-validation. Our findings provide insights into the trade-offs between classification accuracy and model complexity, establishing a reproducible benchmark for AER research. All source code for ARRC, ARDT, and model evaluation is publicly available to ensure transparency and facilitate further research.",
-      "source": "cs.LG updates on arXiv.org",
-      "category": "Raw Research (Machine Learning & AI)",
-      "segment": "innovators",
-      "source_type": "primary",
-      "raw_content": "arXiv:2609.15055v2 Announce Type: replace-cross \nAbstract: Deep learning has led to numerous proposed architectures for Automated Emotion Recognition (AER) from electrocardiogram (ECG) data, but inconsistencies in preprocessing, training, and evaluation make direct comparisons difficult. Most studies train and validate models on individual datasets collected under homogeneous conditions, limiting variability and raising concerns about generalizability. Cross-dataset validation is sometimes used but primarily assesses model adaptability rather than true generalization. This study presents a comparative analysis of prominent deep learning architectures in AER, emphasizing model generalization over dataset adaptability. To enable this benchmark, we introduce two open-source frameworks: Affective Research on Representations and Classifications (ARRC), a standardized benchmarking toolkit, and Affective Research Dataset Toolkit (ARDT), a framework for inter-dataset training and validation. Using ARDT, we consolidate three publicly available AER datasets, CUADS, ASCERTAIN, and DREAMER, into a single dataset, increasing variability in sensor types, recording conditions, and participant demographics. We then use ARRC to evaluate three widely studied deep learning models and two CNN baselines through hyperparameter optimization and 10-fold cross-validation. Our findings provide insights into the trade-offs between classification accuracy and model complexity, establishing a reproducible benchmark for AER research. All source code for ARRC, ARDT, and model evaluation is publicly available to ensure transparency and facilitate further research.",
-      "segments": [
-        "innovators"
-      ],
-      "tier": "quick",
-      "selection_reason": "A research paper presenting a unified evaluation framework for deep learning models in ECG-based emotion recognition.",
-      "audience_value": "Provides a standardized approach for comparing and advancing research in a novel AI application area.",
-      "urgency_score": 6,
-      "category_tag": "\ud83d\ude80 AI & Innovation",
-      "why_this_matters": "Why this matters: Standardized evaluation methods are crucial for accelerating progress in emerging AI research fields."
+      "why_this_matters": "Why this matters: Understanding the fundamentals and advancements in generative models is essential for cutting-edge AI development."
     }
   ]
 }
