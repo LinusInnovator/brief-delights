@@ -1,5 +1,19 @@
 [
   {
+    "date": "2026-09-17",
+    "episode_id": "ai-news-2026-09-17",
+    "stories": [
+      "Experiential Confidence Estimation (ECE)",
+      "LimiX-2",
+      "PANORAMA",
+      "ActionPiece"
+    ],
+    "stories_count": 4,
+    "json_path": "/data/video_scripts/2026-09-17.json",
+    "md_path": "/data/video_scripts/2026-09-17-ai-news.md",
+    "updated_at": "2026-09-17T10:08:45.717249"
+  },
+  {
     "date": "2026-09-16",
     "episode_id": "ai-news-2026-09-16",
     "stories": [
