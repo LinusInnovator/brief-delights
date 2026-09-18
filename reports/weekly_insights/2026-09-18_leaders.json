@@ -1,0 +1,245 @@
+{
+  "date": "2026-09-18",
+  "segment": "leaders",
+  "trends": {
+    "categories": {
+      "Macro Trends & Tech Economy": 10
+    },
+    "sources": {
+      "Technology": 7,
+      "\"restofworld AI when:3d\" - Google News": 3
+    },
+    "topics": [
+      "UN chief warns AI race could trigger \u2018gigantic disaster\u2019 as Trump rejects tighter controls - The Times of India",
+      "South Africa joins the global resistance against American data centers - Rest of World",
+      "Playing both sides of the U.S.-China AI \u201cCold War\u201d - Rest of World",
+      "Japan has good reason to welcome arrival of driverless taxis",
+      "Apple\u2019s most valuable product isn\u2019t the iPhone",
+      "Mergermarket owner slashes jobs as pressure mounts on Andrea Pignataro\u2019s empire",
+      "Gore downplays AI threats and touts its climate potential",
+      "Moonshot capitalism",
+      "Either Meta Glasses are selling extremely well or this Citi survey might have some issues",
+      "Trump family-backed drone maker signs agreement with Pakistan"
+    ],
+    "detected_trends": [
+      {
+        "keyword": "Macro Trends & Tech Economy",
+        "count": 10
+      }
+    ],
+    "total_articles": 10
+  },
+  "article_count": 10,
+  "articles": [
+    {
+      "id": "4a799e51d6c9a87767ce2bd4b7a08b50",
+      "title": "UN chief warns AI race could trigger \u2018gigantic disaster\u2019 as Trump rejects tighter controls - The Times of India",
+      "url": "https://news.google.com/rss/articles/CBMi_wFBVV95cUxNcThRUEEtS01lN01kbVZLS3Q1bngzY0R3R25QMU1MWm9BM0R4czM2QU9WYUxkcmxVZlJscW9DblQ2cVhKMG5uMk95S29fSEhkRzlsekZaUjFyVE94NWxjMEFqTlFmSXFGVW40Y2FDZWwxb1F3bGNSdHNOcXVsdkk0MlMwUkxaTnlUTDRtdWs4c2FiTUdOR2ktV1lEUFVEbEVoTkZ5Sjd3ZlpMSnF3UVRqU0dQQVdIbFJQUjZNam9lTGVkcmlaaTNDVDgxTlFid1pwNjhWT3VTcTlGOWFDaXRGMUVvcF9IUWlIcjl1WjZLRHhoUFRnMnIwMFZUdU0yU3PSAYQCQVVfeXFMT3ItVm8yUVVhSHJWMUFpYllITHJHeFUwLWg3QVg5Tll5WWkyempaOWJDZG9fRUE2WGVYTlBNblU0SmltT3kzR1UzVkppb1RCcDRxYUozTE1KRDhJeDFrQ2xQZUdZdExoS3o1a3dkckh6OXBlbzNmQ1U4ZERHbXl6WWdmeE9pN0ZoOVEwQ282QnlLLV80eEFHYU5rQzc0UHh4YnFMRmNYSUhHelZBejhtOEJZRVE5THZfNzc2cTBYU0MzQlFRMVc0S2NDQ2RkUlJVclVrcFZvU3ZqdlJ2Qlc0WkotSVdIVnFncGp6M2phY3Z1TG5TMThxVEV2RlVZSkJ2N2ppNEU?oc=5",
+      "published_date": "2026-09-18T09:50:44.556727",
+      "description": "<a href=\"https://news.google.com/rss/articles/CBMi_wFBVV95cUxNcThRUEEtS01lN01kbVZLS3Q1bngzY0R3R25QMU1MWm9BM0R4czM2QU9WYUxkcmxVZlJscW9DblQ2cVhKMG5uMk95S29fSEhkRzlsekZaUjFyVE94NWxjMEFqTlFmSXFGVW40Y2FDZWwxb1F3bGNSdHNOcXVsdkk0MlMwUkxaTnlUTDRtdWs4c2FiTUdOR2ktV1lEUFVEbEVoTkZ5Sjd3ZlpMSnF3UVRqU0dQQVdIbFJQUjZNam9lTGVkcmlaaTNDVDgxTlFid1pwNjhWT3VTcTlGOWFDaXRGMUVvcF9IUWlIcjl1WjZLRHhoUFRnMnIwMFZUdU0yU3PSAYQCQVVfeXFMT3ItVm8yUVVhSHJWMUFpYllITHJHeFUwLWg3QVg5Tll5WWkyempaOWJDZG9fRUE2WGVYTlBNblU0SmltT3kzR1UzVkppb1RCcDRxYUozTE1KRDhJeDFrQ2xQZUdZdExoS3o1a3dkckh6OXBlbzNmQ1U4ZERHbXl6WWdmeE9pN0ZoOVEwQ282QnlLLV80eEFHYU5rQzc0UHh4YnFMRmNYSUhHelZBejhtOEJZRVE5THZfNzc2cTBYU0MzQlFRMVc0S2NDQ2RkUlJVclVrcFZvU3ZqdlJ2Qlc0WkotSVdIVnFncGp6M2phY3Z1TG5TMThxVEV2RlVZSkJ2N2ppNEU?oc=5\" target=\"_blank\">UN chief warns AI race could trigger \u2018gigantic disaster\u2019 as Trump rejects tighter controls</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">The Times of India</font>",
+      "source": "\"restofworld AI when:3d\" - Google News",
+      "category": "Macro Trends & Tech Economy",
+      "segment": "leaders",
+      "source_type": "secondary",
+      "raw_content": "<a href=\"https://news.google.com/rss/articles/CBMi_wFBVV95cUxNcThRUEEtS01lN01kbVZLS3Q1bngzY0R3R25QMU1MWm9BM0R4czM2QU9WYUxkcmxVZlJscW9DblQ2cVhKMG5uMk95S29fSEhkRzlsekZaUjFyVE94NWxjMEFqTlFmSXFGVW40Y2FDZWwxb1F3bGNSdHNOcXVsdkk0MlMwUkxaTnlUTDRtdWs4c2FiTUdOR2ktV1lEUFVEbEVoTkZ5Sjd3ZlpMSnF3UVRqU0dQQVdIbFJQUjZNam9lTGVkcmlaaTNDVDgxTlFid1pwNjhWT3VTcTlGOWFDaXRGMUVvcF9IUWlIcjl1WjZLRHhoUFRnMnIwMFZUdU0yU3PSAYQCQVVfeXFMT3ItVm8yUVVhSHJWMUFpYllITHJHeFUwLWg3QVg5Tll5WWkyempaOWJDZG9fRUE2WGVYTlBNblU0SmltT3kzR1UzVkppb1RCcDRxYUozTE1KRDhJeDFrQ2xQZUdZdExoS3o1a3dkckh6OXBlbzNmQ1U4ZERHbXl6WWdmeE9pN0ZoOVEwQ282QnlLLV80eEFHYU5rQzc0UHh4YnFMRmNYSUhHelZBejhtOEJZRVE5THZfNzc2cTBYU0MzQlFRMVc0S2NDQ2RkUlJVclVrcFZvU3ZqdlJ2Qlc0WkotSVdIVnFncGp6M2phY3Z1TG5TMThxVEV2RlVZSkJ2N2ppNEU?oc=5\" target=\"_blank\">UN chief warns AI race could trigger \u2018gigantic disaster\u2019 as Trump rejects tighter controls</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">The Times of India</font>",
+      "segments": [
+        "leaders"
+      ],
+      "tier": "full",
+      "selection_reason": "Selected headline for leaders.",
+      "audience_value": "Actionable industry signal.",
+      "urgency_score": 8,
+      "category_tag": "\ud83d\ude80 AI & Innovation",
+      "why_this_matters": "<a href=\"https://news.google.com/rss/articles/CBMi_wFBVV95cUxNcThRUEEtS01lN01kbVZLS3Q1bngzY0R3R25QMU1MWm9BM0R4czM2QU9WYUxkcmxVZlJscW9DblQ2cVhKMG5uMk95S29fSEhkRzlsekZaUjFyVE94NWxjMEFqTlFmSXFGVW40Y2FDZWwxb1F3bGNSdHNOcXVsdkk0MlMwUkxaTnlUTDRtdWs4c2FiTUdOR2ktV1lEUFVEbEVoTkZ5Sjd3ZlpMSnF3UVRqU0dQQVdIbFJQUjZNam9lTGVkcmlaaTNDVDgxTlFid1pwNjhWT3VTcTlGOWFDaXRGMUVvcF9IUWlIcjl1WjZLRHhoUFRnMnIwMFZUdU0yU3PSAYQCQVVfeXFMT3ItVm8yUVVhSHJWMUFpYllITHJHeFUwLWg3QVg5Tll5WWkyempaOWJDZG9fRUE2WGVYTlBNblU0SmltT3kzR1UzVkppb1RCcDRxYUozTE1KRDhJeDFrQ2xQZUdZdExoS3o1a3dkckh6OXBlbzNmQ1U4ZERHbXl6WWdmeE9pN0ZoOVEwQ282QnlLLV80eEFHYU5rQzc0UHh4YnFMRmNYSUhHelZBejhtOEJZRVE5THZfNzc2cTBYU0MzQlFRMVc0S2NDQ2RkUlJVclVrcFZvU3ZqdlJ2Qlc0WkotSVdIVnFncGp6M2phY3Z1TG5TMThxVEV2RlVZSkJ2N2ppNEU?oc=5\" target=\"_blank\">UN chief warns AI race could trigger \u2018gigantic disaster\u2019 as Trump rejects tighter controls</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">The Times of India</font>"
+    },
+    {
+      "id": "04d17308672a541296196eb97d687db7",
+      "title": "South Africa joins the global resistance against American data centers - Rest of World",
+      "url": "https://news.google.com/rss/articles/CBMidEFVX3lxTE1pUEN0VEhLQ2Z4MWdudzR0SnBpMVRhazFCOTJ3Y1V6VVctOUV5aXdqRjhGWmtkcnRyYTVWUkdEeG8wTEtqY2p4V3RnQzRGSlhSV2xrRFVUQTYwRDZYMlRqZW1nYV9TOXVJczNTbmNMbXhxSGZf?oc=5",
+      "published_date": "2026-09-18T09:50:44.556703",
+      "description": "<a href=\"https://news.google.com/rss/articles/CBMidEFVX3lxTE1pUEN0VEhLQ2Z4MWdudzR0SnBpMVRhazFCOTJ3Y1V6VVctOUV5aXdqRjhGWmtkcnRyYTVWUkdEeG8wTEtqY2p4V3RnQzRGSlhSV2xrRFVUQTYwRDZYMlRqZW1nYV9TOXVJczNTbmNMbXhxSGZf?oc=5\" target=\"_blank\">South Africa joins the global resistance against American data centers</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">Rest of World</font>",
+      "source": "\"restofworld AI when:3d\" - Google News",
+      "category": "Macro Trends & Tech Economy",
+      "segment": "leaders",
+      "source_type": "secondary",
+      "raw_content": "<a href=\"https://news.google.com/rss/articles/CBMidEFVX3lxTE1pUEN0VEhLQ2Z4MWdudzR0SnBpMVRhazFCOTJ3Y1V6VVctOUV5aXdqRjhGWmtkcnRyYTVWUkdEeG8wTEtqY2p4V3RnQzRGSlhSV2xrRFVUQTYwRDZYMlRqZW1nYV9TOXVJczNTbmNMbXhxSGZf?oc=5\" target=\"_blank\">South Africa joins the global resistance against American data centers</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">Rest of World</font>",
+      "segments": [
+        "leaders"
+      ],
+      "tier": "full",
+      "selection_reason": "Selected headline for leaders.",
+      "audience_value": "Actionable industry signal.",
+      "urgency_score": 8,
+      "category_tag": "\ud83d\ude80 AI & Innovation",
+      "why_this_matters": "<a href=\"https://news.google.com/rss/articles/CBMidEFVX3lxTE1pUEN0VEhLQ2Z4MWdudzR0SnBpMVRhazFCOTJ3Y1V6VVctOUV5aXdqRjhGWmtkcnRyYTVWUkdEeG8wTEtqY2p4V3RnQzRGSlhSV2xrRFVUQTYwRDZYMlRqZW1nYV9TOXVJczNTbmNMbXhxSGZf?oc=5\" target=\"_blank\">South Africa joins the global resistance against American data centers</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">Rest of World</font>"
+    },
+    {
+      "id": "da7231379a9d4cef7ff885c107c53468",
+      "title": "Playing both sides of the U.S.-China AI \u201cCold War\u201d - Rest of World",
+      "url": "https://news.google.com/rss/articles/CBMid0FVX3lxTE1wRG1pekpsLUxrcnRPcUljMENUdVNWVV9jQ0Y0bG5NWElmYzdmN1BZTkpsUDAxRC1BMlhnWm41YWRmZEtybE9ucDkwTno5S0l3Um5LeFlIZlV6R2s4UVQ3OWFtOTkyNDVZRDBTaDQ3eVhiRXFhUXV3?oc=5",
+      "published_date": "2026-09-18T09:50:44.556643",
+      "description": "<a href=\"https://news.google.com/rss/articles/CBMid0FVX3lxTE1wRG1pekpsLUxrcnRPcUljMENUdVNWVV9jQ0Y0bG5NWElmYzdmN1BZTkpsUDAxRC1BMlhnWm41YWRmZEtybE9ucDkwTno5S0l3Um5LeFlIZlV6R2s4UVQ3OWFtOTkyNDVZRDBTaDQ3eVhiRXFhUXV3?oc=5\" target=\"_blank\">Playing both sides of the U.S.-China AI \u201cCold War\u201d</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">Rest of World</font>",
+      "source": "\"restofworld AI when:3d\" - Google News",
+      "category": "Macro Trends & Tech Economy",
+      "segment": "leaders",
+      "source_type": "secondary",
+      "raw_content": "<a href=\"https://news.google.com/rss/articles/CBMid0FVX3lxTE1wRG1pekpsLUxrcnRPcUljMENUdVNWVV9jQ0Y0bG5NWElmYzdmN1BZTkpsUDAxRC1BMlhnWm41YWRmZEtybE9ucDkwTno5S0l3Um5LeFlIZlV6R2s4UVQ3OWFtOTkyNDVZRDBTaDQ3eVhiRXFhUXV3?oc=5\" target=\"_blank\">Playing both sides of the U.S.-China AI \u201cCold War\u201d</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">Rest of World</font>",
+      "segments": [
+        "leaders"
+      ],
+      "tier": "full",
+      "selection_reason": "Selected headline for leaders.",
+      "audience_value": "Actionable industry signal.",
+      "urgency_score": 8,
+      "category_tag": "\ud83d\ude80 AI & Innovation",
+      "why_this_matters": "<a href=\"https://news.google.com/rss/articles/CBMid0FVX3lxTE1wRG1pekpsLUxrcnRPcUljMENUdVNWVV9jQ0Y0bG5NWElmYzdmN1BZTkpsUDAxRC1BMlhnWm41YWRmZEtybE9ucDkwTno5S0l3Um5LeFlIZlV6R2s4UVQ3OWFtOTkyNDVZRDBTaDQ3eVhiRXFhUXV3?oc=5\" target=\"_blank\">Playing both sides of the U.S.-China AI \u201cCold War\u201d</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">Rest of World</font>"
+    },
+    {
+      "id": "3657490ece8602f52b1f4c69b45da603",
+      "title": "Japan has good reason to welcome arrival of driverless taxis",
+      "url": "https://www.ft.com/content/a5f012e4-7948-4a7a-b024-5a76ba10704c?syn-25a6b1a6=1",
+      "published_date": "2026-09-18T09:50:44.026489",
+      "description": "Shortage of taxi drivers gives country a structural reason for robotaxis to grow",
+      "source": "Technology",
+      "category": "Macro Trends & Tech Economy",
+      "segment": "leaders",
+      "source_type": "secondary",
+      "raw_content": "Shortage of taxi drivers gives country a structural reason for robotaxis to grow",
+      "segments": [
+        "leaders"
+      ],
+      "tier": "full",
+      "selection_reason": "Selected headline for leaders.",
+      "audience_value": "Actionable industry signal.",
+      "urgency_score": 8,
+      "category_tag": "\ud83d\ude80 AI & Innovation",
+      "why_this_matters": "Shortage of taxi drivers gives country a structural reason for robotaxis to grow"
+    },
+    {
+      "id": "975eab162bc06f7886986f5fe5f3b535",
+      "title": "Apple\u2019s most valuable product isn\u2019t the iPhone",
+      "url": "https://www.ft.com/content/f5325951-7049-4d3a-97e4-cbe34f9058d8?syn-25a6b1a6=1",
+      "published_date": "2026-09-18T09:50:44.026472",
+      "description": "Markets were signalling discomfort even before the latest wave of worries about existential risk",
+      "source": "Technology",
+      "category": "Macro Trends & Tech Economy",
+      "segment": "leaders",
+      "source_type": "secondary",
+      "raw_content": "Markets were signalling discomfort even before the latest wave of worries about existential risk",
+      "segments": [
+        "leaders"
+      ],
+      "tier": "full",
+      "selection_reason": "Selected headline for leaders.",
+      "audience_value": "Actionable industry signal.",
+      "urgency_score": 8,
+      "category_tag": "\ud83d\ude80 AI & Innovation",
+      "why_this_matters": "Markets were signalling discomfort even before the latest wave of worries about existential risk"
+    },
+    {
+      "id": "8d4c50ec2556974c75f7c0a790efe89a",
+      "title": "Mergermarket owner slashes jobs as pressure mounts on Andrea Pignataro\u2019s empire",
+      "url": "https://www.ft.com/content/56148283-fea4-4055-a709-04f6ce211d87?syn-25a6b1a6=1",
+      "published_date": "2026-09-18T09:50:44.026454",
+      "description": "Largest unit of technology group Ion has stepped up cost-cutting amid scrutiny from creditors",
+      "source": "Technology",
+      "category": "Macro Trends & Tech Economy",
+      "segment": "leaders",
+      "source_type": "secondary",
+      "raw_content": "Largest unit of technology group Ion has stepped up cost-cutting amid scrutiny from creditors",
+      "segments": [
+        "leaders"
+      ],
+      "tier": "full",
+      "selection_reason": "Selected headline for leaders.",
+      "audience_value": "Actionable industry signal.",
+      "urgency_score": 8,
+      "category_tag": "\ud83d\ude80 AI & Innovation",
+      "why_this_matters": "Largest unit of technology group Ion has stepped up cost-cutting amid scrutiny from creditors"
+    },
+    {
+      "id": "ec1cbaa448feab033e39b242053883c1",
+      "title": "Gore downplays AI threats and touts its climate potential",
+      "url": "https://www.ft.com/content/ba945e37-7d9c-4846-b4f4-ce5ec47f06a0?syn-25a6b1a6=1",
+      "published_date": "2026-09-18T09:50:44.026437",
+      "description": "Former US vice-president argues in favour of technology to help with green progress",
+      "source": "Technology",
+      "category": "Macro Trends & Tech Economy",
+      "segment": "leaders",
+      "source_type": "secondary",
+      "raw_content": "Former US vice-president argues in favour of technology to help with green progress",
+      "segments": [
+        "leaders"
+      ],
+      "tier": "quick",
+      "selection_reason": "Selected headline for leaders.",
+      "audience_value": "Actionable industry signal.",
+      "urgency_score": 8,
+      "category_tag": "\ud83d\ude80 AI & Innovation",
+      "why_this_matters": "Former US vice-president argues in favour of technology to help with green progress"
+    },
+    {
+      "id": "f9e9f4d6deeddeeb084490e7c1c1396e",
+      "title": "Moonshot capitalism",
+      "url": "https://www.ft.com/content/9f5ca8e1-b64d-4959-9d26-0ad94f127f28?syn-25a6b1a6=1",
+      "published_date": "2026-09-18T09:50:44.026420",
+      "description": "The start-ups attracting billions of dollars in funding as they pursue breakthroughs with the potential to transform the way we live",
+      "source": "Technology",
+      "category": "Macro Trends & Tech Economy",
+      "segment": "leaders",
+      "source_type": "secondary",
+      "raw_content": "The start-ups attracting billions of dollars in funding as they pursue breakthroughs with the potential to transform the way we live",
+      "segments": [
+        "leaders"
+      ],
+      "tier": "quick",
+      "selection_reason": "Selected headline for leaders.",
+      "audience_value": "Actionable industry signal.",
+      "urgency_score": 8,
+      "category_tag": "\ud83d\ude80 AI & Innovation",
+      "why_this_matters": "The start-ups attracting billions of dollars in funding as they pursue breakthroughs with the potential to transform the way we live"
+    },
+    {
+      "id": "8d305772c534c062454504ff5fb1785b",
+      "title": "Either Meta Glasses are selling extremely well or this Citi survey might have some issues",
+      "url": "https://www.ft.com/content/2739954a-816a-465a-ae21-7d846bb70365",
+      "published_date": "2026-09-18T09:50:44.026402",
+      "description": "Alternate virtual realities",
+      "source": "Technology",
+      "category": "Macro Trends & Tech Economy",
+      "segment": "leaders",
+      "source_type": "secondary",
+      "raw_content": "Alternate virtual realities",
+      "segments": [
+        "leaders"
+      ],
+      "tier": "trending",
+      "selection_reason": "Selected headline for leaders.",
+      "audience_value": "Actionable industry signal.",
+      "urgency_score": 8,
+      "category_tag": "\ud83d\ude80 AI & Innovation",
+      "why_this_matters": "Alternate virtual realities"
+    },
+    {
+      "id": "48f4308287006ad5054094b6bb7b6c7f",
+      "title": "Trump family-backed drone maker signs agreement with Pakistan",
+      "url": "https://www.ft.com/content/b114584c-524b-4022-b0ed-438211bd3d38?syn-25a6b1a6=1",
+      "published_date": "2026-09-18T09:50:44.026385",
+      "description": "Powerus says move will reduce Islamabad\u2019s reliance on China as Asim Munir strengthens ties with US",
+      "source": "Technology",
+      "category": "Macro Trends & Tech Economy",
+      "segment": "leaders",
+      "source_type": "secondary",
+      "raw_content": "Powerus says move will reduce Islamabad\u2019s reliance on China as Asim Munir strengthens ties with US",
+      "segments": [
+        "leaders"
+      ],
+      "tier": "trending",
+      "selection_reason": "Selected headline for leaders.",
+      "audience_value": "Actionable industry signal.",
+      "urgency_score": 8,
+      "category_tag": "\ud83d\ude80 AI & Innovation",
+      "why_this_matters": "Powerus says move will reduce Islamabad\u2019s reliance on China as Asim Munir strengthens ties with US"
+    }
+  ]
+}

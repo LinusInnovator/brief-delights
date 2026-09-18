@@ -1,5 +1,18 @@
 [
   {
+    "date": "2026-09-18",
+    "episode_id": "ai-news-2026-09-18",
+    "stories": [
+      "MiniMax-H3",
+      "Srijika",
+      "FAMOS"
+    ],
+    "stories_count": 3,
+    "json_path": "/data/video_scripts/2026-09-18.json",
+    "md_path": "/data/video_scripts/2026-09-18-ai-news.md",
+    "updated_at": "2026-09-18T09:59:25.686909"
+  },
+  {
     "date": "2026-09-17",
     "episode_id": "ai-news-2026-09-17",
     "stories": [
