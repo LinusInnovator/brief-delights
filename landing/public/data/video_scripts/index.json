@@ -3,14 +3,15 @@
     "date": "2026-09-18",
     "episode_id": "ai-news-2026-09-18",
     "stories": [
-      "MiniMax-H3",
+      "ActObs",
+      "V\u0101kQA",
       "Srijika",
-      "FAMOS"
+      "MiniMax-H3"
     ],
-    "stories_count": 3,
+    "stories_count": 4,
     "json_path": "/data/video_scripts/2026-09-18.json",
     "md_path": "/data/video_scripts/2026-09-18-ai-news.md",
-    "updated_at": "2026-09-18T09:59:25.686909"
+    "updated_at": "2026-09-18T12:26:01.062073"
   },
   {
     "date": "2026-09-17",

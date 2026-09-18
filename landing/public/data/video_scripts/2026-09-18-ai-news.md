@@ -2,64 +2,83 @@
 episode_id: "ai-news-2026-09-18"
 voice_profile: "alex_tech"
 tools:
-  - name: "MiniMax-H3"
-    url: "https://huggingface.co/papers/2609.18323"
+  - name: "ActObs"
+    url: "https://huggingface.co/papers/2609.20715"
     mode: "tool_drop"
-    demo_anchor: "video, canvas, .demo, #audio-visual"
-    download_anchor: "a[href*='huggingface.co'], a[href*='github.com']"
-    specs: "Omni-modal | text+image+video+audio | Paper + Weights"
+    demo_anchor: ".hero, table, #comparison, .demo"
+    download_anchor: "a[href*='github.com'], a[href*='huggingface.co']"
+    specs: "RL fine-tuning recipe | Paper + Code | Observation-supervised SFT"
+  - name: "VākQA"
+    url: "https://huggingface.co/papers/2609.19879"
+    mode: "paper_preview"
+    demo_anchor: "table, figure, #benchmark-table"
+    download_anchor: "a[href*='arxiv.org'], a[href*='huggingface.co']"
+    specs: "2,001 Telugu QA pairs | Spoken QA | Benchmark Only"
   - name: "Srijika"
     url: "https://huggingface.co/papers/2609.05661"
     mode: "paper_preview"
-    demo_anchor: "figure, #architecture, table, .glyph-grid"
+    demo_anchor: "figure, table, #glyph-grid"
     download_anchor: "a[href*='arxiv.org'], a[href*='github.com']"
-    specs: "9 Indic scripts | OpenType GSUB/GPOS reuse | Paper Only"
-  - name: "FAMOS"
-    url: "https://huggingface.co/papers/2609.20817"
+    specs: "9 Brahmic scripts | OpenType output | Paper Only"
+  - name: "MiniMax-H3"
+    url: "https://huggingface.co/papers/2609.18323"
     mode: "tool_drop"
-    demo_anchor: "video, canvas, #comparison, .demo"
+    demo_anchor: "video, canvas, .demo, #outputs"
     download_anchor: "a[href*='huggingface.co'], a[href*='github.com']"
-    specs: "Sparse monocular views | Feed-forward | Code Coming Soon"
+    specs: "Omni-modal | Joint audio-visual | Weights + Eval"
+
 ---
 
 # Intro
-[excited] Three drops today: MiniMax-H3 asks if AI finally gets physics, FAMOS rigs 3D joints from a single photo, and Srijika restyles nine Indic scripts without breaking a single glyph.
+[excited] Four drops today: agents that learn from what the world says back, a Telugu spoken-QA benchmark, fonts for nine Indic scripts, and MiniMax-H3's grip on physical reality. Let's go.
 
 ---
 
-# Story 1: MiniMax-H3
+# Story 1: ActObs
 ### Landing Page
-[confident] MiniMax-H3 is an omni-modal generative model that fuses text, image, video, and audio into one shared latent space — and the paper asks the real question: does alignment teach physics?
+[confident] Standard fine-tuning only scores the agent's actions and ignores observations. ActObs flips that, supervising predictions on environment feedback too — and it changes how agents explore under RL.
 
 ### Demo
-[amazed] Scroll the video block and canvas samples where joint audio-visual generation happens in one pass. Watch objects fall, collide, and splash — no separate audio model bolted on afterward.
+[amazed] Check the comparison table and training curves. Same model, same compute, just observation-supervised SFT — and the RL warm start looks nothing like the baseline.
 
 ### Access
-[energetic] Paper lives at huggingface.co/papers/2609.18323. Weights and repo links are in the description — go stress-test its world model yourself.
+[excited] Paper and code are linked on the Hugging Face page. If you're pretraining an agent for RL, this is a cheap initialization change worth testing this week.
 
 ---
 
-# Story 2: Srijika
+# Story 2: VākQA
 ### Paper Preview
-[curious] Srijika is a font restyling system for nine Brahmic scripts — Devanagari, Tamil, Bengali, Telugu, Kannada, Malayalam, Gujarati, Gurmukhi, and Odia. It restyles outlines instead of regenerating glyphs.
+[curious] VākQA asks a simple question: does spoken question answering actually work outside English? The authors built 2,001 Telugu factoid pairs to find out.
 
 ### Architecture
-[skeptical] Here's the clever bit: it preserves the template font's cmap, GSUB closure, and GPOS metrics. Check the architecture figure and glyph grid — shaping survives restyling, which is where most font AI breaks.
+[skeptical] Here's the interesting part. They didn't just score models — they quantified how reliable automatic evaluation even is in this spoken setting. Look at the human-versus-auto agreement numbers.
 
 ### Release Horizon
-[friendly] Full paper is on arXiv now, and code lands on GitHub soon. If you ship Indic typography, bookmark this one before your next localization sprint.
+[confident] It's on arXiv now, benchmark-focused. If you work on Indic speech or low-resource QA, this gives you a real diagnostic instead of a vibe check.
 
 ---
 
-# Story 3: FAMOS
+# Story 3: Srijika
+### Paper Preview
+[amazed] Srijika doesn't generate fonts from nothing. It restyles glyph outlines from shaping-complete templates — keeping the cmap, GSUB and GPOS intact across nine Brahmic scripts.
+
+### Architecture
+[curious] That's the trick. Reusing OpenType layout means Devanagari, Tamil, Bengali, Telugu and five more keep correct shaping out of the box, instead of breaking the moment you restyle.
+
+### Release Horizon
+[confident] Paper's up now. For anyone shipping Indic typography, this is the pipeline to watch when code lands.
+
+---
+
+# Story 4: MiniMax-H3
 ### Landing Page
-[confident] FAMOS models articulated objects — drawers, laptops, scissors — from just sparse monocular views, feed-forward, no per-object optimization, no category shape priors doing the heavy lifting.
+[excited] MiniMax-H3 is a unified omni-modal model — text, image, video, audio in one latent space. The eval asks the real question: does that alignment buy physical-world reasoning?
 
 ### Demo
-[amazed] Look at the comparison video: it predicts movable-part segmentation and joint axes straight from a couple of frames. Drag through and watch the joint parameters snap to reality.
+[amazed] Watch the generated clips. Joint audio-visual output, same latent framework, and the paper tests whether understanding and generation actually reinforce each other.
 
 ### Access
-[energetic] Paper and project page are up at huggingface.co/papers/2609.20817. Code and checkpoints are inbound — links are pinned below.
+[confident] Paper, eval details and model links are on the Hugging Face page. Test it against your own physical reasoning prompts before you believe the headline number.
 
 ---
 
