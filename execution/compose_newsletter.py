@@ -9,11 +9,49 @@ import os
 import sys
 import argparse
 import re
+import socket
 import urllib.parse
 from datetime import datetime
 from pathlib import Path
 from jinja2 import Template
 from collections import defaultdict
+
+DISALLOWED_TITLE_REGEXES = [
+    re.compile(r'^\s*hello\s*world\b', re.IGNORECASE),
+    re.compile(r'^\s*test(\s+post)?\s*$', re.IGNORECASE),
+    re.compile(r'^\s*untitled\s*$', re.IGNORECASE),
+    re.compile(r'^\s*welcome(\s+to.*)?\s*$', re.IGNORECASE),
+    re.compile(r'^\s*first\s+post\s*$', re.IGNORECASE),
+    re.compile(r'^\s*(my\s+)?new\s+blog\s*$', re.IGNORECASE),
+]
+
+_RESOLVABLE_HOSTS_CACHE = {}
+
+def is_domain_resolvable(url: str, timeout: float = 1.5) -> bool:
+    try:
+        parsed = urllib.parse.urlparse(url)
+        host = parsed.hostname
+        if not host:
+            return False
+        if host in _RESOLVABLE_HOSTS_CACHE:
+            return _RESOLVABLE_HOSTS_CACHE[host]
+        
+        socket.setdefaulttimeout(timeout)
+        socket.gethostbyname(host)
+        _RESOLVABLE_HOSTS_CACHE[host] = True
+        return True
+    except Exception:
+        if host:
+            _RESOLVABLE_HOSTS_CACHE[host] = False
+        return False
+
+def is_junk_or_placeholder_title(title: str) -> bool:
+    if not title or len(title.strip()) < 4:
+        return True
+    for regex in DISALLOWED_TITLE_REGEXES:
+        if regex.search(title):
+            return True
+    return False
 
 # Configuration
 PROJECT_ROOT = Path(__file__).parent.parent
@@ -366,7 +404,7 @@ def get_dynamic_scanned_count(segment_id: str, date: str) -> str:
                 pass
 
     # 3. Robust default fallback so it never renders 'None'
-    return "1,340+"
+    return "7,000+"
     
 def collect_cross_teasers(current_segment_id: str, segments_data: dict, log_file: Path) -> list:
     """Collect #1 lead story from sibling segments to feature in the Sibling Dispatch Radar"""
@@ -382,16 +420,36 @@ def collect_cross_teasers(current_segment_id: str, segments_data: dict, log_file
                 with open(summary_file, 'r') as f:
                     s_data = json.load(f)
                     s_articles = s_data.get('articles', [])
-                    if s_articles:
-                        lead = s_articles[0]
+                    for candidate in s_articles:
+                        title = candidate.get('title', '').strip()
+                        raw_url = candidate.get('url', '').strip()
+                        if not raw_url or raw_url == '#':
+                            continue
+                        if is_junk_or_placeholder_title(title):
+                            log(f"  🚫 Skipping cross-teaser with placeholder title: '{title[:40]}'", log_file)
+                            continue
+                        if not is_domain_resolvable(raw_url):
+                            log(f"  🚫 Skipping cross-teaser with unresolvable URL: '{title[:40]}' ({raw_url})", log_file)
+                            continue
+
+                        # Build click tracking URL for radar teaser
+                        params = {
+                            'url': raw_url,
+                            's': f"cross_{current_segment_id}_to_{seg_id}",
+                            'd': TODAY,
+                            't': clean_article_title(title)[:100]
+                        }
+                        tracked_url = f"https://brief.delights.pro/api/track?{urllib.parse.urlencode(params)}"
+
                         teasers.append({
                             'segment_id': seg_id,
                             'segment_name': seg_cfg.get('name', seg_id.capitalize()),
                             'segment_emoji': seg_cfg.get('emoji', '📰'),
-                            'title': sanitize_text_content(lead.get('title', '')),
-                            'summary': sanitize_text_content(lead.get('summary', '') or lead.get('why_this_matters', '')),
-                            'url': lead.get('tracked_url') or lead.get('url') or f"{WEBSITE_URL}/archive"
+                            'title': sanitize_text_content(clean_article_title(title)),
+                            'summary': sanitize_text_content(candidate.get('summary', '') or candidate.get('why_this_matters', '')),
+                            'url': tracked_url
                         })
+                        break
             except Exception as e:
                 log(f"  ⚠️ Could not read cross-teaser for {seg_id}: {e}", log_file)
     return teasers
@@ -406,13 +464,20 @@ def compose_newsletter(articles: list, segment_id: str, segment_config: dict, lo
     # Fix read times from raw content word count
     articles = fix_read_times(articles, log_file)
     
-    # Separate articles by tier and drop any missing a URL
+    # Separate articles by tier and drop any missing a URL or with placeholder/dead link
     valid_articles = []
     for a in articles:
         # Check if the url is missing, empty, or just a hash
         url = a.get('url', '').strip()
         if not url or url == '#':
             log(f"⚠️ Dropping article missing valid URL: '{a.get('title', 'Unknown')[:40]}'", log_file)
+            continue
+        title = a.get('title', '').strip()
+        if is_junk_or_placeholder_title(title):
+            log(f"⚠️ Dropping article with placeholder title: '{title[:40]}'", log_file)
+            continue
+        if not is_domain_resolvable(url):
+            log(f"⚠️ Dropping article with unresolvable domain: '{title[:40]}' ({url})", log_file)
             continue
         valid_articles.append(a)
             

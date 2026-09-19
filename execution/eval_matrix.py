@@ -121,7 +121,7 @@ def evaluate_structural_balance(articles: List[Dict]) -> float:
 def run_matrix_evaluation(segments: List[str] = None) -> Dict:
     """Run full Accuracy & Smartness Matrix benchmark evaluation"""
     if segments is None:
-        segments = ["builders", "leaders", "innovators"]
+        segments = ["builders", "leaders", "innovators", "generative_media"]
 
     results = {}
     total_matrix_score = 0.0

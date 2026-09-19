@@ -60,7 +60,7 @@ export default function ClientPage({
         badge_text: abVariant?.badge_text || 'Tech Intelligence, Curated for Your Role',
         headline: abVariant?.headline || 'Brief',
         headline_accent: abVariant?.headline_accent || 'delights',
-        subheadline: abVariant?.subheadline || "Get the top 14 stories that matter to your role. Daily. Plus weekly strategic insights that connect the dots. We read 1,340+ articles so you don't have to.",
+        subheadline: abVariant?.subheadline || "Get the top 14 stories that matter to your role. Daily. Plus weekly strategic insights that connect the dots. We read 7,000+ articles so you don't have to.",
         cta_primary: abVariant?.cta_primary || 'Subscribe Free',
         cta_secondary: abVariant?.cta_secondary || 'See Archive',
     };
@@ -150,7 +150,7 @@ export default function ClientPage({
 
                     <div className="mt-14 bg-white border border-[#121212]/10 rounded-2xl p-6 inline-block shadow-sm">
                         <p className="text-gray-600 font-mono text-xs tracking-wider">
-                            1,340+ ENGINES SCANNED • ~400 SYNTHESIZED • 14 REFINED DAILY
+                            7,000+ ENGINES SCANNED • ~400 SYNTHESIZED • 14 REFINED DAILY
                         </p>
                     </div>
                 </div>
@@ -332,7 +332,7 @@ export default function ClientPage({
                                 <IconEditoriallyCurated className="w-7 h-7 text-[#58111A]" />
                             </div>
                             <h4 className="text-xl font-serif font-bold mb-2 text-[#121212]">Editorially refined</h4>
-                            <p className="text-gray-600 text-sm leading-relaxed">Scanned across 1,340+ sources for highest signal.</p>
+                            <p className="text-gray-600 text-sm leading-relaxed">Scanned across 7,000+ sources for highest signal.</p>
                         </div>
                     </div>
                 </div>

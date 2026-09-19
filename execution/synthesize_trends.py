@@ -60,7 +60,7 @@ def create_trend_synthesis_prompt(trend_analysis: Dict, segment: str) -> str:
     
     prompt = f"""You are the Chief Intelligence Analyst for Brief Delights, writing a Weekly Macro Synthesis for senior engineering and technology leaders ({segment}).
 
-ANALYTICAL SIGNAL DATA (1,340+ feeds scanned over 7-day window, {total} curated articles analyzed):
+ANALYTICAL SIGNAL DATA (7,000+ feeds scanned over 7-day window, {total} curated articles analyzed):
 {clusters_text}
 
 TASK:

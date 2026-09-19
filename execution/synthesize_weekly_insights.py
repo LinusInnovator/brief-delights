@@ -205,7 +205,7 @@ You are a strategic technology analyst preparing the Sunday Weekly Insights repo
 WEEK OVERVIEW:
 - Days analyzed: {len(week_data)} (Mon-Sat)
 - Total articles analyzed: {analysis['total_articles']}
-- Total articles scanned: ~8,000+ (from 1,340+ daily RSS feeds)
+- Total articles scanned: ~35,000+ (from 7,000+ daily RSS feeds)
 - Articles enriched: ~2,400 (full content scraped)
 
 TOP TRENDS THIS WEEK:

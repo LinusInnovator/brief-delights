@@ -1,85 +1,120 @@
 ---
-episode_id: "ai-news-2026-09-19"
-voice_profile: "alex_tech"
+episode_id: ai-news-2026-09-19-top4
+track: top4
+format: daily
+voice_profile: alex_tech
 tools:
-  - name: "ActObs"
-    url: "https://huggingface.co/papers/2609.20715"
-    mode: "tool_drop"
-    demo_anchor: "table, .demo, figure, #results"
-    download_anchor: "a[href*='huggingface.co'], a[href*='github.com']"
-    specs: "RL post-training | Paper + Code | Observation Supervision"
-  - name: "Verifiable Social Reasoning for LLM Assistants"
-    url: "https://huggingface.co/papers/2609.17496"
-    mode: "paper_preview"
-    demo_anchor: "figure, table, #benchmark, .architecture"
-    download_anchor: "a[href*='huggingface.co'], a[href*='arxiv.org']"
-    specs: "Paper Only | Social Reasoning Benchmark | 27 Upvotes"
-  - name: "Self-Evolving Search Index"
-    url: "https://huggingface.co/papers/2609.19656"
-    mode: "paper_preview"
-    demo_anchor: "figure, table, #results, .diagram"
-    download_anchor: "a[href*='huggingface.co'], a[href*='arxiv.org']"
-    specs: "Paper Only | Retrieval Index | Agent RAG"
-  - name: "MiniMax-H3 Physical World Reasoning"
-    url: "https://huggingface.co/papers/2609.18323"
-    mode: "tool_drop"
-    demo_anchor: "video, canvas, #comparison, .demo"
-    download_anchor: "a[href*='huggingface.co'], a[href*='minimax.io']"
-    specs: "Omni-Modal | Audio-Visual | 73 Upvotes"
+- name: 'YuE2: Open Full-Song Generation with Symbolic Score Planning'
+  url: https://huggingface.co/spaces/multimodal-art/YuE
+  mode: tool_drop
+  hero_anchor: h1, .model-header, header
+  demo_anchor: iframe[src*='gradio'], .gradio-container, canvas, video, button[type='submit'],
+    .output
+  download_anchor: button[data-testid='duplicate-button'], a[href*='tree/main']
+  specs: Interactive Space | Hugging Face | Live Demo
+  video_readiness: 135.0
+  consensus_count: 5
+  hn_points: 480
+  badges:
+  - 🔥 HN Trending (480 pts)
+  - ⚡ 5 Outlets Confirmed
+  - ✨ Interactive Demo Live
+- name: 'DeepSeek V4.1 Flash: Asymmetric Compute MoE Architecture'
+  url: https://arxiv.org/abs/2609.11200
+  mode: paper_preview
+  hero_anchor: h1.title, .title, h1
+  demo_anchor: a.download-pdf, div.extra-services, table.benchmark, figure
+  download_anchor: a.download-pdf, a[href*='arxiv.org/pdf']
+  specs: Research Preprint | arXiv
+  video_readiness: 85.0
+  consensus_count: 6
+  hn_points: 650
+  badges:
+  - 🔥 HN Trending (650 pts)
+  - ⚡ 6 Outlets Confirmed
+  - 📄 Research Preprint
+- name: Anthropic Agrees $45B AI Infrastructure Deal with Nscale
+  url: https://brief.delights.pro/newsletters/newsletter_leaders_2026-08-28.html
+  mode: industry_insight
+  hero_anchor: main h1, header h1, .hero h1, h1
+  demo_anchor: figure, table, blockquote, canvas, .chart, .metrics
+  download_anchor: a[href*='report'], a[href*='pdf'], a.cta-button
+  specs: Industry Insight | Strategic Analysis
+  video_readiness: 65.0
+  consensus_count: 3
+  hn_points: 190
+  badges:
+  - 🔥 HN Trending (190 pts)
+  - ⚡ 3 Outlets Confirmed
+- name: 'Marigold v2: Diffusion Transformers for Real-Time Monocular Depth'
+  url: https://github.com/prs-eth/marigold
+  mode: tool_drop
+  hero_anchor: 'article.markdown-body h1, .repository-content, #readme h1, h1'
+  demo_anchor: 'article.markdown-body img[src*=''.gif''], article.markdown-body video,
+    article.markdown-body details, #readme img, table'
+  download_anchor: a[href*='releases'], a[href*='clone'], .btn-primary, a[href$='.zip']
+  specs: Open Source | GitHub | Code & Docs
+  video_readiness: 110.0
+  consensus_count: 4
+  hn_points: 340
+  badges:
+  - 🔥 HN Trending (340 pts)
+  - ⚡ 4 Outlets Confirmed
+  - 🛠️ Open Source Repo
 ---
 
 # Intro
-[excited] Four papers today, and one of them just broke the assumption every RL fine-tuning pipeline has been built on for two years. Let's go.
+[excited] Four drops today, and Hacker News is on fire — DeepSeek's 552-billion-parameter preprint just hit 650 points, while YuE2's open music Space sits at 480 and climbing. Let's move.
 
 ---
 
-# Story 1: ActObs
+# Story 1: YuE2: Open Full-Song Generation with Symbolic Score Planning
 ### Landing Page
-[confident] Standard SFT only trains on the agent's own actions, treating environment observations as dead context. ActObs says that's a mistake, and supervises the observations too.
+[confident] YuE2 generates complete songs — vocals, lyrics, instrumentation — and it's completely open. Five outlets confirmed it, and it's trending on Hacker News at 480 points with 210 comments.
 
 ### Demo
-[amazed] Look at the results table. Agents pretrained with observation supervision explore differently under RL, meaning better initialization, faster convergence, and noticeably stronger downstream task performance.
+[amazed] Here's the magic: it plans your track as editable ABC symbolic score notation first, then renders audio. You actually rewrite the melody instead of rerolling a slot machine.
 
 ### Access
-[excited] It's up on Hugging Face Daily Papers right now, link below. If you're running any agent RL loop, this is a one-line change with real upside.
+[friendly] The interactive Space is live on Hugging Face right now — no install, no waitlist. Click the link below, type a prompt, and you're producing full tracks in about a minute.
 
 ---
 
-# Story 2: Verifiable Social Reasoning for LLM Assistants
-### Paper Preview
-[curious] Your assistant gives social advice all day, but nobody can grade it. This paper builds a setup where the model learns social situations from messy user narratives, then checks it.
+# Story 2: DeepSeek V4.1 Flash: Asymmetric Compute MoE Architecture
+### Paper
+[confident] DeepSeek V4.1 Flash just landed as a preprint — 552 billion parameters of mixture-of-experts, and Hacker News pushed it to 650 points with 380 comments. Six outlets confirmed it.
 
-### Architecture
-[skeptical] The hard part is ground truth. Intentions aren't verifiable, so they construct proxy signals and benchmark against them. Check the architecture figure and the benchmark table for exactly how.
+### Architecture / Evidence
+[curious] The trick is asymmetric compute: experts get wildly different budgets, so most tokens route through cheap paths. Their benchmark table shows frontier-adjacent scores at a fraction of the inference cost.
 
 ### Release Horizon
-[confident] It's a preprint on Hugging Face, twenty-seven upvotes and climbing. No code repo yet, but this is the eval harness social AI has been missing.
+[excited] PyTorch weights are already on Hugging Face, so this isn't vaporware. Expect fine-tunes and quantized builds flooding in within days — grab the base weights while they're hot.
 
 ---
 
-# Story 3: Self-Evolving Search Index
-### Paper Preview
-[excited] Retrieval quality lives or dies on index keys, and static keys go stale. This paper lets the index rewrite its own representations as the retrieval environment shifts.
+# Story 3: Anthropic Agrees $45B AI Infrastructure Deal with Nscale
+### Headline
+[skeptical] Forty-five billion dollars. Anthropic just signed a massive infrastructure deal with Nscale, locking down European gigawatt power and datacenter capacity. Three outlets confirmed, 190 points on HN.
 
-### Architecture
-[amazed] The diagram shows keys evolving across iterations instead of being frozen at build time. That's the whole trick: the index becomes a learner, not a lookup table.
+### Evidence
+[confident] This isn't just GPUs — it's power contracts and physical buildout. Gigawatt-scale commitments take years to energize, which means Anthropic is betting on demand staying hot well into the 2030s.
 
-### Release Horizon
-[friendly] Paper only for now, sitting on Hugging Face with nineteen upvotes. If you're building agentic RAG, watch this repo space closely.
+### The Verdict
+[curious] The compute land grab is now a real-estate and energy game. If you're building on frontier models, expect capacity to be the bottleneck — and pricing to reflect whoever owns the megawatts.
 
 ---
 
-# Story 4: MiniMax-H3 Physical World Reasoning
+# Story 4: Marigold v2: Diffusion Transformers for Real-Time Monocular Depth
 ### Landing Page
-[amazed] MiniMax-H3 is an omni-modal model generating text, images, video, and audio in one shared latent space. Seventy-three upvotes, the biggest paper of the day.
+[excited] Marigold v2 turns any single photo into a depth map, four times faster than before, on consumer GPUs. It's open source, sitting at 340 points on Hacker News with four outlets confirming.
 
 ### Demo
-[excited] Watch the comparison clips. They probe whether joint audio-visual alignment actually buys physical world understanding, or just prettier output. The answer is genuinely interesting.
+[amazed] Watch this — one image in, a clean depth field out, in real time. Diffusion transformers doing what used to need a render farm, now running on the card already in your desktop.
 
 ### Access
-[curious] Full evaluation is on Hugging Face Daily Papers, link in the description. Go read the failure cases, that's where the real signal lives.
+[friendly] Code, weights, and docs are all on GitHub under the prs-eth repo. Clone it, run the demo script, and you've got instant depth for 3D, AR, or video pipelines.
 
 ---
 
 # Outro
-[friendly] All project links and research papers are organized down in the description below. Hit subscribe to Brief Delights for your daily rundown, and I'll see you tomorrow.
+[friendly] All project links, Hugging Face spaces, and research papers are organized down in the description below. Hit subscribe to Brief Delights for your daily rundown, and I'll see you tomorrow.

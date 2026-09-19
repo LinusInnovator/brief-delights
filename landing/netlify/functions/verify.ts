@@ -152,7 +152,7 @@ async function sendWelcomeEmail(email: string, segment: string) {
           
           <ul style="font-size: 16px; line-height: 1.8;">
             <li><strong>Daily Brief</strong>: 14 hand-picked stories (6 full, 4 quick, 2 trending)</li>
-            <li><strong>AI-Curated</strong>: 1,340+ articles scanned, best 14 selected</li>
+            <li><strong>AI-Curated</strong>: 7,000+ articles scanned, best 14 selected</li>
             <li><strong>Strategic Context</strong>: "Why this matters" insights</li>
             <li><strong>Sunday Synthesis</strong>: Weekly trend analysis</li>
           </ul>

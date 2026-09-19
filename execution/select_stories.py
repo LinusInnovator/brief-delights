@@ -14,6 +14,9 @@ import time
 from collections import defaultdict
 from pydantic import BaseModel, Field
 
+import re
+import socket
+import urllib.parse
 import sys
 sys.path.insert(0, str(Path(__file__).parent.parent))
 try:
@@ -21,8 +24,223 @@ try:
 except ImportError:
     load_niche_config = None
 
+try:
+    from execution.hn_signals import enrich_articles_with_hn
+except ImportError:
+    try:
+        from hn_signals import enrich_articles_with_hn
+    except ImportError:
+        enrich_articles_with_hn = lambda articles, **kw: articles
+
+# ==============================================================================
+# Domain Authority and Signal Scoring Engine
+# ==============================================================================
+
+TIER_1_PRIMARY_DOMAINS = [
+    'openai.com', 'anthropic.com', 'deepmind.google', 'deepmind.com',
+    'ai.meta.com', 'research.google', 'blog.google', 'arxiv.org',
+    'huggingface.co/papers', 'bair.berkeley.edu', 'github.blog', 'github.com',
+    'stripe.com/blog', 'netflixtechblog.com', 'engineering.fb.com',
+    'aws.amazon.com/blogs', 'microsoft.com/en-us/research'
+]
+
+TIER_2_TECH_SIGNALS = [
+    'simonwillison.net', 'pragmaticengineer.com', 'semianalysis.com',
+    'latent.space', 'interconnects.ai', 'thealgorithmicbridge.com',
+    'stratechery.com', 'nature.com', 'science.org', 'spectrum.ieee.org',
+    'martinfowler.com', 'danluu.com', 'vllm.ai', 'ollama.com',
+    'lilianweng.github.io', 'evilsocket.net', 'fly.io/blog', 'eugeneyan.com'
+]
+
+TIER_3_SECONDARY_MEDIA = [
+    'techcrunch.com', 'theverge.com', 'wired.com', 'arstechnica.com',
+    'venturebeat.com', 'siliconangle.com', 'zdnet.com', 'reuters.com',
+    'bloomberg.com', 'cnbc.com', 'fortune.com', 'wsj.com', 'engadget.com'
+]
+
+def get_domain_authority_score(url: str, source_type: str = '') -> int:
+    """Evaluate domain authority tier (8 - 30 pts)"""
+    url_lower = (url or '').lower()
+    if any(d in url_lower for d in TIER_1_PRIMARY_DOMAINS):
+        return 30
+    if any(d in url_lower for d in TIER_2_TECH_SIGNALS):
+        return 22
+    if any(d in url_lower for d in TIER_3_SECONDARY_MEDIA):
+        return 12
+    if source_type == 'primary' or 'engineering' in url_lower or 'research' in url_lower:
+        return 20
+    return 8
+
+STOPWORDS = {
+    'the', 'a', 'an', 'in', 'on', 'of', 'for', 'with', 'at', 'by', 'from',
+    'up', 'about', 'into', 'over', 'after', 'is', 'are', 'was', 'were', 'to',
+    'how', 'what', 'why', 'when', 'new', 'and', 'or', 'but', 'as', 'it', 'its',
+    'this', 'that', 'these', 'those', 'be', 'been', 'being', 'have', 'has', 'had',
+    'do', 'does', 'did', 'will', 'would', 'shall', 'should', 'can', 'could', 'may'
+}
+
+def extract_title_keywords(title: str) -> set:
+    """Extract significant lowercase keywords for topic clustering"""
+    cleaned = re.sub(r'[^a-zA-Z0-9\s]', ' ', (title or '').lower())
+    tokens = [w for w in cleaned.split() if len(w) >= 3 and w not in STOPWORDS]
+    return set(tokens)
+
+def cluster_consensus_articles(articles: list) -> list:
+    """
+    Cluster multiple feeds covering the exact same event/announcement.
+    Elects canonical primary/high-authority article, sets consensus_count and consensus_sources.
+    """
+    clusters = []
+    for art in articles:
+        art_tokens = extract_title_keywords(art.get('title', ''))
+        matched_cluster = None
+        
+        if len(art_tokens) >= 2:
+            for cluster in clusters:
+                rep = cluster[0]
+                rep_tokens = extract_title_keywords(rep.get('title', ''))
+                shared = art_tokens.intersection(rep_tokens)
+                if len(shared) >= 3 or (len(shared) >= 2 and (len(art_tokens) <= 4 or len(rep_tokens) <= 4)):
+                    matched_cluster = cluster
+                    break
+        
+        if matched_cluster is not None:
+            matched_cluster.append(art)
+        else:
+            clusters.append([art])
+            
+    canonical_list = []
+    for cluster in clusters:
+        def _canonical_key(a):
+            is_prim = 1 if a.get('source_type') == 'primary' else 0
+            dom_score = get_domain_authority_score(a.get('url', ''), a.get('source_type', ''))
+            desc_len = len(a.get('description') or '')
+            return (is_prim, dom_score, desc_len)
+            
+        cluster.sort(key=_canonical_key, reverse=True)
+        canonical = cluster[0].copy()
+        canonical['consensus_count'] = len(cluster)
+        canonical['consensus_sources'] = list(dict.fromkeys([x.get('source', '') for x in cluster if x.get('source')]))
+        canonical_list.append(canonical)
+        
+    return canonical_list
+
+def calculate_article_signal_score(article: dict, segment_config: dict = None) -> float:
+    """
+    Composite Signal Score formula (0 - 100+):
+    Domain Authority (30) + Primary Boost (15) + Consensus Boost (25) +
+    HN Velocity (25) + Keyword Alignment (20) - Skip Keyword Penalty (30) + Recency (10)
+    """
+    url = article.get('url', '')
+    source_type = article.get('source_type', '')
+    score = 0.0
+    
+    # 1. Domain Authority Tier
+    score += get_domain_authority_score(url, source_type)
+    
+    # 2. Primary Source Boost
+    if source_type == 'primary':
+        score += 15.0
+        
+    # 3. Multi-Source Consensus Convergence
+    consensus = article.get('consensus_count', 1)
+    if consensus > 1:
+        score += min(25.0, (consensus - 1) * 6.0)
+        
+    # 4. Hacker News Signals & Velocity
+    if article.get('on_hn'):
+        pts = article.get('hn_points', 0)
+        comments = article.get('hn_comments', 0)
+        velocity = article.get('hn_velocity', 'low')
+        if velocity == 'high':
+            score += 18.0
+        elif velocity == 'medium':
+            score += 10.0
+        else:
+            score += 4.0
+        score += min(10.0, (pts + comments) / 20.0)
+        
+    # 5. Segment Persona Focus Alignment
+    if segment_config:
+        focus_kws = segment_config.get('focus_keywords', [])
+        skip_kws = segment_config.get('skip_keywords', [])
+        text = (article.get('title', '') + " " + article.get('description', '')).lower()
+        
+        matched_focus = [kw for kw in focus_kws if kw.lower() in text]
+        score += min(20.0, len(matched_focus) * 4.0)
+        
+        if any(sk.lower() in text for sk in skip_kws):
+            score -= 30.0
+
+    # 6. Recency Gradient
+    try:
+        pub_str = article.get('published_date', '')
+        if pub_str:
+            pub_dt = datetime.fromisoformat(pub_str.replace('Z', '+00:00'))
+            if pub_dt.tzinfo is not None:
+                pub_dt = pub_dt.replace(tzinfo=None)
+            age_hours = max((datetime.now() - pub_dt).total_seconds() / 3600.0, 0.0)
+            if age_hours <= 12:
+                score += 10.0
+            elif age_hours <= 24:
+                score += 6.0
+            elif age_hours <= 48:
+                score += 2.0
+            else:
+                score -= 6.0
+    except Exception:
+        score += 2.0
+        
+    return round(score, 1)
+
 # Load environment variables
 load_dotenv()
+
+DISALLOWED_TITLE_REGEXES = [
+    re.compile(r'^\s*hello\s*world\b', re.IGNORECASE),
+    re.compile(r'^\s*test(\s+post)?\s*$', re.IGNORECASE),
+    re.compile(r'^\s*untitled\s*$', re.IGNORECASE),
+    re.compile(r'^\s*welcome(\s+to.*)?\s*$', re.IGNORECASE),
+    re.compile(r'^\s*first\s+post\s*$', re.IGNORECASE),
+    re.compile(r'^\s*(my\s+)?new\s+blog\s*$', re.IGNORECASE),
+]
+
+_RESOLVABLE_HOSTS_CACHE = {}
+
+def is_domain_resolvable(url: str, timeout: float = 1.5) -> bool:
+    try:
+        parsed = urllib.parse.urlparse(url)
+        host = parsed.hostname
+        if not host:
+            return False
+        if host in _RESOLVABLE_HOSTS_CACHE:
+            return _RESOLVABLE_HOSTS_CACHE[host]
+        
+        socket.setdefaulttimeout(timeout)
+        socket.gethostbyname(host)
+        _RESOLVABLE_HOSTS_CACHE[host] = True
+        return True
+    except Exception:
+        if host:
+            _RESOLVABLE_HOSTS_CACHE[host] = False
+        return False
+
+def is_junk_or_placeholder_article(article: dict) -> bool:
+    title = (article.get('title') or '').strip()
+    if not title or len(title) < 4:
+        return True
+    for regex in DISALLOWED_TITLE_REGEXES:
+        if regex.search(title):
+            return True
+    
+    url = (article.get('url') or '').strip()
+    if not url or url == '#':
+        return True
+    if not is_domain_resolvable(url):
+        return True
+        
+    return False
+
 
 # Configuration
 PROJECT_ROOT = Path(__file__).parent.parent
@@ -116,20 +334,44 @@ def load_segments_config():
 
 
 def prepare_articles_for_llm(articles: list) -> str:
-    """Format articles for LLM analysis"""
+    """Format articles for LLM analysis with explicit, rich signal tags"""
     formatted = []
     
     for i, article in enumerate(articles, 1):
-        desc = article.get('description', '')[:300]
+        desc = (article.get('description', '') or '').strip()[:350]
+        source = article.get('source', 'Unknown')
+        source_type = "Primary Source" if article.get('source_type') == 'primary' else "Secondary Coverage"
+        
+        # Build signal badges
+        badges = [f"Source Type: {source_type}"]
+        
+        consensus = article.get('consensus_count', 1)
+        if consensus > 1:
+            sources_preview = ", ".join(article.get('consensus_sources', [])[:3])
+            badges.append(f"Consensus: Covered by {consensus} outlets ({sources_preview})")
+            
+        if article.get('on_hn'):
+            pts = article.get('hn_points', 0)
+            comments = article.get('hn_comments', 0)
+            vel = article.get('hn_velocity', 'medium')
+            badges.append(f"Hacker News: {pts} pts, {comments} comments (Velocity: {vel.upper()})")
+            
+        signal_score = article.get('_signal_score', 0)
+        if signal_score:
+            badges.append(f"Signal Score: {signal_score}")
+            
+        signal_line = " | ".join(badges)
+        
         formatted.append(f"""
 Article #{i}
 ID: {article['id']}
 Title: {article['title']}
-Source: {article['source']}
-Category: {article['category']}
-Published: {article['published_date']}
+Source: {source}
+Signals: {signal_line}
+Category: {article.get('category', 'General')}
+Published: {article.get('published_date', '')}
 Description: {desc}...
-URL: {article['url']}
+URL: {article.get('url', '')}
 ---
 """)
     
@@ -206,6 +448,11 @@ RANKING FORMULA:
 - Important tool/guide release: 8/10
 - Secondary source with unique/valuable angle: 7/10
 - Routine company blog or Minor update: 3/10
+
+QUALITY GUARDS & EXCLUSIONS (Strict):
+- NEVER select placeholder posts, test posts, or generic introductory titles (e.g., "Hello World", "Welcome", "Untitled", "Test").
+- NEVER select personal meta-posts about migrating personal blogs/tools unless it is a massive industry event.
+- Every selected story must be substantive, informative, and newsworthy with a concrete headline.
 
 For each selected article, provide:
 1. tier: "full" | "quick" | "trending"
@@ -475,38 +722,78 @@ def merge_selection_with_articles(raw_articles: list, selection: dict) -> list:
     return merged
 
 
-def pre_filter_articles(raw_articles: list, max_articles: int = 25) -> list:
-    """Pre-filter to reduce payload size for high-velocity LLM story selection"""
+def pre_filter_articles(raw_articles: list, segment_config: dict = None, max_articles: int = 65) -> list:
+    """
+    Intelligent 3-stage candidate pre-filtering:
+    1. Multi-source consensus clustering (collapses echo chamber, elevates canonical source)
+    2. Composite signal scoring (domain tier, primary status, consensus, persona fit, recency)
+    3. Stratified category quotas + Hacker News live velocity enrichment
+    """
+    if not raw_articles:
+        return []
+        
     if len(raw_articles) <= max_articles:
-        return raw_articles
+        clustered = cluster_consensus_articles(raw_articles)
+        try:
+            clustered = enrich_articles_with_hn(clustered)
+        except Exception:
+            pass
+        for art in clustered:
+            art['_signal_score'] = calculate_article_signal_score(art, segment_config)
+        clustered.sort(key=lambda x: x.get('_signal_score', 0), reverse=True)
+        return clustered
     
-    log(f"⚠️ Sampling top {max_articles} articles from {len(raw_articles)} raw pool for LLM analysis")
+    log(f"🧠 [Smart Pre-Filter] Clustering and ranking {len(raw_articles)} raw pool candidates...")
     
-    # Group by category
+    # Stage 1: Consensus clustering
+    clustered_articles = cluster_consensus_articles(raw_articles)
+    duplicates_collapsed = len(raw_articles) - len(clustered_articles)
+    log(f"   Collapsed into {len(clustered_articles)} unique story clusters ({duplicates_collapsed} duplicate coverage reports merged)")
+    
+    # Stage 2: Initial signal scoring
+    for art in clustered_articles:
+        art['_signal_score'] = calculate_article_signal_score(art, segment_config)
+        
+    # Stage 3: Stratified category sampling to ensure broad sub-discipline representation
     by_category = defaultdict(list)
-    for article in raw_articles:
-        by_category[article['category']].append(article)
-    
-    # Sample evenly from each category
-    articles_per_category = max_articles // len(by_category)
+    for art in clustered_articles:
+        by_category[art.get('category', 'General')].append(art)
+        
+    quota_per_category = max(4, max_articles // max(1, len(by_category)))
     sampled = []
+    already_selected_ids = set()
     
-    for category, articles in by_category.items():
-        sorted_articles = sorted(articles, key=lambda x: x.get('published_date', ''), reverse=True)
-        sampled.extend(sorted_articles[:articles_per_category])
-        log(f"   Selected {min(len(sorted_articles), articles_per_category)} articles from {category}")
-    
-    # Fill remaining slots
-    if len(sampled) < max_articles:
-        already_selected = set(a['id'] for a in sampled)
-        for article in raw_articles:
-            if article['id'] not in already_selected:
-                sampled.append(article)
-                if len(sampled) >= max_articles:
-                    break
-    
+    for category, cat_articles in by_category.items():
+        cat_sorted = sorted(cat_articles, key=lambda x: x.get('_signal_score', 0), reverse=True)
+        picks = cat_sorted[:quota_per_category]
+        for p in picks:
+            sampled.append(p)
+            already_selected_ids.add(p['id'])
+            
+    # Fill remaining slots with overall highest-scoring articles across all categories
+    remaining = [a for a in clustered_articles if a['id'] not in already_selected_ids]
+    remaining.sort(key=lambda x: x.get('_signal_score', 0), reverse=True)
+    needed = max_articles - len(sampled)
+    if needed > 0:
+        sampled.extend(remaining[:needed])
+        
+    # Stage 4: Live Hacker News velocity enrichment on the top candidate pool
+    log(f"   Enriching top {len(sampled)} candidates with live Hacker News velocity signals...")
+    try:
+        sampled = enrich_articles_with_hn(sampled)
+        # Re-score with live HN signals
+        for art in sampled:
+            art['_signal_score'] = calculate_article_signal_score(art, segment_config)
+    except Exception as hn_err:
+        log(f"⚠️ HN signal enrichment warning (non-blocking): {hn_err}")
+        
+    # Final sort by composite signal score
+    sampled.sort(key=lambda x: x.get('_signal_score', 0), reverse=True)
     result = sampled[:max_articles]
-    log(f"✅ Reduced to {len(result)} articles for LLM analysis")
+    
+    top_score = result[0].get('_signal_score', 0) if result else 0
+    bottom_score = result[-1].get('_signal_score', 0) if result else 0
+    log(f"✅ Selected top {len(result)} high-signal candidates (Signal score range: {bottom_score} to {top_score})")
     return result
 
 
@@ -639,15 +926,24 @@ def main():
                     if segment_id in a.get('segments', [a.get('segment')]) or a.get('segment') == 'all'
                 ]
                 
-                log(f"\n📊 [{segment_id}] Found {len(segment_articles)} segment-specific raw articles")
+                # Exclude junk/placeholder/dead-link articles
+                clean_segment_articles = []
+                for a in segment_articles:
+                    if is_junk_or_placeholder_article(a):
+                        log(f"  🚫 Discarding junk/dead article: '{a.get('title', '')[:50]}' ({a.get('url', '')})")
+                        continue
+                    clean_segment_articles.append(a)
+                segment_articles = clean_segment_articles
+
+                log(f"\n📊 [{segment_id}] Found {len(segment_articles)} valid segment-specific raw articles")
                 
                 if not segment_articles:
                     log(f"⚠️ No articles found for segment {segment_id}. Skipping.")
                     failed_segments.append(segment_id)
                     continue
                 
-                # Pre-filter segment articles (reduce payload size)
-                filtered_articles = pre_filter_articles(segment_articles, max_articles=50)
+                # Pre-filter segment articles with smart signal scoring & consensus clustering
+                filtered_articles = pre_filter_articles(segment_articles, segment_config=segment_config, max_articles=65)
                 
                 selected = select_stories_for_segment(filtered_articles, segment_id, segment_config)
                 save_segment_selection(segment_id, selected)

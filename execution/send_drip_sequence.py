@@ -63,7 +63,7 @@ DRIP_EMAILS = {
   </p>
   
   <ul style="font-size: 16px; line-height: 1.8;">
-    <li><strong>AI-curated, not human-curated.</strong> We scan 1,340+ articles daily. No editor bias — the algorithm finds what matters.</li>
+    <li><strong>AI-curated, not human-curated.</strong> We scan 7,000+ articles daily. No editor bias — the algorithm finds what matters.</li>
     <li><strong>Segment-specific.</strong> You're in the <strong>{segment}</strong> track. Every story is filtered for relevance to your role.</li>
     <li><strong>"Why This Matters" on every article.</strong> We don't just summarize — we tell you what to <em>do</em> differently.</li>
     <li><strong>Contrarian signals.</strong> When 80% of sources agree, we surface the 20% that disagree.</li>
@@ -137,7 +137,7 @@ DRIP_EMAILS = {
   </div>
   
   <p style="font-size: 16px; line-height: 1.6;">
-    All of this is automated — our AI scans 1,340+ articles daily to surface what matters to <strong>{segment}</strong>.
+    All of this is automated — our AI scans 7,000+ articles daily to surface what matters to <strong>{segment}</strong>.
   </p>
   
   <hr style="border: none; border-top: 1px solid #e8e8e8; margin: 32px 0;" />

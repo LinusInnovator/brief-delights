@@ -49,6 +49,12 @@ def format_reddit_post(segment: str, article: dict) -> tuple:
     key_takeaway = article.get('key_takeaway', '')
     why_it_matters = article.get('why_it_matters', '').strip()
     source = article.get('source', '')
+    article_url = article.get('url') or article.get('link') or article.get('tracked_url', '')
+
+    if article_url and ("see full article" in key_takeaway.lower() or key_takeaway.strip().lower() == source.lower()):
+        key_takeaway = f"See full story at {source}: {article_url}"
+
+    source_line = f"{source} ({article_url})" if article_url else (source or "Research")
     
     # Strip generic fallback prefix if present
     # Clean duplicate "Why it matters:" or "Strategic Takeaway" prefixes
@@ -73,7 +79,7 @@ def format_reddit_post(segment: str, article: dict) -> tuple:
     
     reddit_body = f"""{title}
 
-Source: {source} | Category: {segment.capitalize()} | Date: {TODAY}
+Source: {source_line} | Category: {segment.capitalize()} | Date: {TODAY}
 
 📌 WHAT HAPPENED
 {summary}
@@ -85,7 +91,7 @@ Source: {source} | Category: {segment.capitalize()} | Date: {TODAY}
 • {why_it_matters}
 
 📰 ABOUT BRIEF DELIGHTS
-We scan 1,340+ tech & AI articles daily across engineering, strategy, and frontier research so you don't have to.
+We scan 7,000+ tech & AI articles daily across engineering, strategy, and frontier research so you don't have to.
 
 • Read full 14-story daily issue: https://brief.delights.pro/archive/{TODAY}-{segment}
 • Join free for daily email briefs: https://brief.delights.pro"""

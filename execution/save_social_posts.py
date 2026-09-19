@@ -176,10 +176,16 @@ def format_post(seg: dict, top_article: dict, date_str: str) -> dict:
 
     reddit_title = f"{segment_emoji} [{segment_name}] {title} — Strategic Breakdown ({date_str})"
     source_name = top_article.get('source', 'Research')
+    article_url = top_article.get('url') or top_article.get('link') or top_article.get('tracked_url', '')
+
+    if article_url and ("see full article" in key_takeaway.lower() or key_takeaway.strip().lower() == source_name.lower()):
+        key_takeaway = f"See full story at {source_name}: {article_url}"
+
+    source_line = f"Source: {source_name} ({article_url})" if article_url else f"Source: {source_name}"
 
     reddit_body = f"""{title}
 
-Source: {source_name} | Category: {segment_name} | Date: {date_str}
+{source_line} | Category: {segment_name} | Date: {date_str}
 
 📌 WHAT HAPPENED
 {summary}
@@ -191,7 +197,7 @@ Source: {source_name} | Category: {segment_name} | Date: {date_str}
 • {why_it_matters}
 
 📰 ABOUT BRIEF DELIGHTS
-We scan 1,340+ tech & AI articles daily across engineering, strategy, and frontier research so you don't have to.
+We scan 7,000+ tech & AI articles daily across engineering, strategy, and frontier research so you don't have to.
 
 • Read full daily issue: https://brief.delights.pro/archive/{date_str}-{segment_id}
 • Join free for daily email briefs: https://brief.delights.pro"""
@@ -211,6 +217,7 @@ We scan 1,340+ tech & AI articles daily across engineering, strategy, and fronti
         "segment_name": segment_name,
         "segment_emoji": segment_emoji,
         "article_title": title,
+        "article_url": article_url,
         "hook_headline": hook_headline,
         "key_takeaway": key_takeaway,
         "why_it_matters": why_it_matters,
@@ -305,7 +312,7 @@ Source: Brief Delights Weekly Synthesis | Category: {segment_name} | Date: {date
 • Forces technology decision-makers to align Q3/Q4 roadmaps with emerging architecture standards.
 
 📰 ABOUT BRIEF DELIGHTS
-We scan 1,340+ tech & AI articles daily across engineering, strategy, and frontier research so you don't have to.
+We scan 7,000+ tech & AI articles daily across engineering, strategy, and frontier research so you don't have to.
 
 • Read full weekly digest: {archive_url}
 • Join free for daily email briefs: https://brief.delights.pro"""
@@ -352,7 +359,7 @@ We scan 1,340+ tech & AI articles daily across engineering, strategy, and fronti
                 "post_type": "weekly_trend",
                 "article_title": title,
                 "hook_headline": f"Weekly Executive Briefing: {segment_name}",
-                "key_takeaway": "Key architectural and strategic shifts observed across 1,340+ daily feeds this week.",
+                "key_takeaway": "Key architectural and strategic shifts observed across 7,000+ daily feeds this week.",
                 "why_it_matters": "High-signal trend analysis for executive roadmap planning.",
                 "pro_image_prompt": f"Minimalist 3D data visualization of macro trends in {segment_name}, obsidian dark mode, glowing accents, 8k render",
                 "reddit_title": reddit_title,

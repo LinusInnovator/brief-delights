@@ -1,0 +1,225 @@
+{
+  "episode_id": "ai-news-2026-09-18-generative_media",
+  "track": "generative_media",
+  "format": "daily",
+  "date": "2026-09-18",
+  "voice_profile": "alex_tech",
+  "intro": "[excited] Four drops today, and the numbers are absurd: 650 Hacker News points on a DeepSeek preprint, 480 on a full-song generator, and a forty-five billion dollar compute deal. Let's move fast.",
+  "stories": [
+    {
+      "name": "YuE2",
+      "url": "https://huggingface.co/spaces/multimodal-art/YuE",
+      "mode": "tool_drop",
+      "hero_anchor": "h1, .model-header, header",
+      "demo_anchor": "iframe[src*='gradio'], .gradio-container, canvas, video, button[type='submit'], .output",
+      "download_anchor": "button[data-testid='duplicate-button'], a[href*='tree/main']",
+      "specs": "Interactive Space | Hugging Face | Live Demo",
+      "video_readiness": 174.0,
+      "consensus_count": 5,
+      "hn_points": 480,
+      "badges": [
+        "\ud83d\udd25 HN Trending (480 pts)",
+        "\u26a1 5 Outlets Confirmed",
+        "\u2728 Interactive Demo Live"
+      ],
+      "beats": {
+        "landing_page": "[confident] YuE2 just landed on Hugging Face \u2014 full-length vocal songs, generated end to end, with an editable ABC symbolic score you can actually rewrite by hand.",
+        "demo": "[amazed] The live Space is running right now. Type a prompt, hit submit, and watch the gradio canvas spit out a finished track \u2014 vocals, instruments, structure. Trending on Hacker News at 480 points.",
+        "access": "[excited] Five outlets confirmed it. Duplicate the Space or pull the weights straight from the model tree \u2014 link's in the description. Go make something weird."
+      },
+      "ordered_beats": [
+        {
+          "title": "Landing Page",
+          "narration": "[confident] YuE2 just landed on Hugging Face \u2014 full-length vocal songs, generated end to end, with an editable ABC symbolic score you can actually rewrite by hand."
+        },
+        {
+          "title": "Demo",
+          "narration": "[amazed] The live Space is running right now. Type a prompt, hit submit, and watch the gradio canvas spit out a finished track \u2014 vocals, instruments, structure. Trending on Hacker News at 480 points."
+        },
+        {
+          "title": "Access",
+          "narration": "[excited] Five outlets confirmed it. Duplicate the Space or pull the weights straight from the model tree \u2014 link's in the description. Go make something weird."
+        }
+      ]
+    },
+    {
+      "name": "Marigold v2",
+      "url": "https://github.com/prs-eth/marigold",
+      "mode": "tool_drop",
+      "hero_anchor": "article.markdown-body h1, .repository-content, #readme h1, h1",
+      "demo_anchor": "article.markdown-body img[src*='.gif'], article.markdown-body video, article.markdown-body details, #readme img, table",
+      "download_anchor": "a[href*='releases'], a[href*='clone'], .btn-primary, a[href$='.zip']",
+      "specs": "Open Source | GitHub | Code & Docs",
+      "video_readiness": 118.0,
+      "consensus_count": 4,
+      "hn_points": 340,
+      "badges": [
+        "\ud83d\udd25 HN Trending (340 pts)",
+        "\u26a1 4 Outlets Confirmed",
+        "\ud83d\udee0\ufe0f Open Source Repo"
+      ],
+      "beats": {
+        "landing_page": "[confident] Marigold v2, from the PRS-ETH lab: diffusion transformers doing monocular depth estimation four times faster, on consumer GPUs. Depth from a single photo, real time.",
+        "demo": "[amazed] Scroll the README \u2014 those comparison GIFs and tables are the whole pitch. Same fidelity as v1, quarter the compute. 340 upvotes on Hacker News, four outlets covering it.",
+        "access": "[energetic] Fully open source on GitHub. Grab it from releases, clone the repo, run it locally tonight. This one slots straight into your 3D and robotics pipeline."
+      },
+      "ordered_beats": [
+        {
+          "title": "Landing Page",
+          "narration": "[confident] Marigold v2, from the PRS-ETH lab: diffusion transformers doing monocular depth estimation four times faster, on consumer GPUs. Depth from a single photo, real time."
+        },
+        {
+          "title": "Demo",
+          "narration": "[amazed] Scroll the README \u2014 those comparison GIFs and tables are the whole pitch. Same fidelity as v1, quarter the compute. 340 upvotes on Hacker News, four outlets covering it."
+        },
+        {
+          "title": "Access",
+          "narration": "[energetic] Fully open source on GitHub. Grab it from releases, clone the repo, run it locally tonight. This one slots straight into your 3D and robotics pipeline."
+        }
+      ]
+    },
+    {
+      "name": "DeepSeek V4.1 Flash",
+      "url": "https://arxiv.org/abs/2609.11200",
+      "mode": "paper_preview",
+      "hero_anchor": "h1.title, .title, h1",
+      "demo_anchor": "a.download-pdf, div.extra-services, table.benchmark, figure",
+      "download_anchor": "a.download-pdf, a[href*='arxiv.org/pdf']",
+      "specs": "Research Preprint | arXiv",
+      "video_readiness": 65.0,
+      "consensus_count": 6,
+      "hn_points": 650,
+      "badges": [
+        "\ud83d\udd25 HN Trending (650 pts)",
+        "\u26a1 6 Outlets Confirmed",
+        "\ud83d\udcc4 Research Preprint"
+      ],
+      "beats": {
+        "paper_preview": "[curious] DeepSeek V4.1 Flash \u2014 a 552 billion parameter MoE preprint built on what they call asymmetric compute. Six outlets confirmed, and it's sitting at 650 Hacker News points.",
+        "architecture_evidence": "[skeptical] Head to Table 1. The benchmark grid is where the claim lives or dies \u2014 routing only activates a slice of experts, so you get frontier scores at a fraction of the FLOPs.",
+        "release_horizon": "[confident] It's on arXiv now, and PyTorch weights are already up on Hugging Face. Unusual for a preprint \u2014 they shipped code with the paper. Download link below."
+      },
+      "ordered_beats": [
+        {
+          "title": "Paper Preview",
+          "narration": "[curious] DeepSeek V4.1 Flash \u2014 a 552 billion parameter MoE preprint built on what they call asymmetric compute. Six outlets confirmed, and it's sitting at 650 Hacker News points."
+        },
+        {
+          "title": "Architecture / Evidence",
+          "narration": "[skeptical] Head to Table 1. The benchmark grid is where the claim lives or dies \u2014 routing only activates a slice of experts, so you get frontier scores at a fraction of the FLOPs."
+        },
+        {
+          "title": "Release Horizon",
+          "narration": "[confident] It's on arXiv now, and PyTorch weights are already up on Hugging Face. Unusual for a preprint \u2014 they shipped code with the paper. Download link below."
+        }
+      ]
+    },
+    {
+      "name": "Anthropic x Nscale $45B Compute Deal",
+      "url": "https://brief.delights.pro/newsletters/newsletter_leaders_2026-08-28.html",
+      "mode": "industry_insight",
+      "hero_anchor": "main h1, header h1, .hero h1, h1",
+      "demo_anchor": "video, audio, canvas, .player, .waveform, iframe[src*='gradio'], .output, figure",
+      "download_anchor": "a[href*='download'], a[href*='github.com'], a[href*='huggingface.co'], .cta-button",
+      "specs": "Creative Media | Audio/Video/3D | Live Demo",
+      "video_readiness": 45.0,
+      "consensus_count": 3,
+      "hn_points": 190,
+      "badges": [
+        "\ud83d\udd25 HN Trending (190 pts)",
+        "\u26a1 3 Outlets Confirmed"
+      ],
+      "beats": {
+        "headline": "[confident] Anthropic just signed a forty-five billion dollar infrastructure deal with Nscale, locking down European gigawatt-scale power and datacenter buildout. That's not a cloud bill \u2014 that's a moat.",
+        "evidence": "[curious] Three outlets confirmed, 190 points on Hacker News. The number to watch is gigawatts, not GPUs \u2014 power contracts are the scarce asset in 2026, and they're signing decade-long ones.",
+        "the_verdict": "[excited] Here's the takeaway: compute is becoming real estate. Whoever owns the megawatts owns the roadmap. Everyone else rents at whatever price the landlord names."
+      },
+      "ordered_beats": [
+        {
+          "title": "Headline",
+          "narration": "[confident] Anthropic just signed a forty-five billion dollar infrastructure deal with Nscale, locking down European gigawatt-scale power and datacenter buildout. That's not a cloud bill \u2014 that's a moat."
+        },
+        {
+          "title": "Evidence",
+          "narration": "[curious] Three outlets confirmed, 190 points on Hacker News. The number to watch is gigawatts, not GPUs \u2014 power contracts are the scarce asset in 2026, and they're signing decade-long ones."
+        },
+        {
+          "title": "The Verdict",
+          "narration": "[excited] Here's the takeaway: compute is becoming real estate. Whoever owns the megawatts owns the roadmap. Everyone else rents at whatever price the landlord names."
+        }
+      ]
+    }
+  ],
+  "outro": "[friendly] All project links, Hugging Face spaces, and research papers are organized down in the description below. Hit subscribe to Brief Delights for your daily rundown, and I'll see you tomorrow.",
+  "tools_metadata": [
+    {
+      "name": "YuE2",
+      "url": "https://huggingface.co/spaces/multimodal-art/YuE",
+      "mode": "tool_drop",
+      "hero_anchor": "h1, .model-header, header",
+      "demo_anchor": "iframe[src*='gradio'], .gradio-container, canvas, video, button[type='submit'], .output",
+      "download_anchor": "button[data-testid='duplicate-button'], a[href*='tree/main']",
+      "specs": "Interactive Space | Hugging Face | Live Demo",
+      "video_readiness": 174.0,
+      "consensus_count": 5,
+      "hn_points": 480,
+      "badges": [
+        "\ud83d\udd25 HN Trending (480 pts)",
+        "\u26a1 5 Outlets Confirmed",
+        "\u2728 Interactive Demo Live"
+      ]
+    },
+    {
+      "name": "Marigold v2",
+      "url": "https://github.com/prs-eth/marigold",
+      "mode": "tool_drop",
+      "hero_anchor": "article.markdown-body h1, .repository-content, #readme h1, h1",
+      "demo_anchor": "article.markdown-body img[src*='.gif'], article.markdown-body video, article.markdown-body details, #readme img, table",
+      "download_anchor": "a[href*='releases'], a[href*='clone'], .btn-primary, a[href$='.zip']",
+      "specs": "Open Source | GitHub | Code & Docs",
+      "video_readiness": 118.0,
+      "consensus_count": 4,
+      "hn_points": 340,
+      "badges": [
+        "\ud83d\udd25 HN Trending (340 pts)",
+        "\u26a1 4 Outlets Confirmed",
+        "\ud83d\udee0\ufe0f Open Source Repo"
+      ]
+    },
+    {
+      "name": "DeepSeek V4.1 Flash",
+      "url": "https://arxiv.org/abs/2609.11200",
+      "mode": "paper_preview",
+      "hero_anchor": "h1.title, .title, h1",
+      "demo_anchor": "a.download-pdf, div.extra-services, table.benchmark, figure",
+      "download_anchor": "a.download-pdf, a[href*='arxiv.org/pdf']",
+      "specs": "Research Preprint | arXiv",
+      "video_readiness": 65.0,
+      "consensus_count": 6,
+      "hn_points": 650,
+      "badges": [
+        "\ud83d\udd25 HN Trending (650 pts)",
+        "\u26a1 6 Outlets Confirmed",
+        "\ud83d\udcc4 Research Preprint"
+      ]
+    },
+    {
+      "name": "Anthropic x Nscale $45B Compute Deal",
+      "url": "https://brief.delights.pro/newsletters/newsletter_leaders_2026-08-28.html",
+      "mode": "industry_insight",
+      "hero_anchor": "main h1, header h1, .hero h1, h1",
+      "demo_anchor": "video, audio, canvas, .player, .waveform, iframe[src*='gradio'], .output, figure",
+      "download_anchor": "a[href*='download'], a[href*='github.com'], a[href*='huggingface.co'], .cta-button",
+      "specs": "Creative Media | Audio/Video/3D | Live Demo",
+      "video_readiness": 45.0,
+      "consensus_count": 3,
+      "hn_points": 190,
+      "badges": [
+        "\ud83d\udd25 HN Trending (190 pts)",
+        "\u26a1 3 Outlets Confirmed"
+      ]
+    }
+  ],
+  "raw_markdown": "---\nepisode_id: \"ai-news-2026-09-18-generative_media\"\ntrack: \"generative_media\"\nvoice_profile: \"alex_tech\"\ntools:\n  - name: \"YuE2\"\n    url: \"https://huggingface.co/spaces/multimodal-art/YuE\"\n    mode: \"tool_drop\"\n    hero_anchor: \"h1, .model-header, header\"\n    demo_anchor: \"iframe[src*='gradio'], .gradio-container, canvas, video, button[type='submit'], .output\"\n    download_anchor: \"button[data-testid='duplicate-button'], a[href*='tree/main']\"\n    specs: \"Interactive Space | Hugging Face | Live Demo\"\n    video_readiness: 174.0\n    consensus_count: 5\n    hn_points: 480\n    badges:\n      - \"\ud83d\udd25 HN Trending (480 pts)\"\n      - \"\u26a1 5 Outlets Confirmed\"\n      - \"\u2728 Interactive Demo Live\"\n  - name: \"Marigold v2\"\n    url: \"https://github.com/prs-eth/marigold\"\n    mode: \"tool_drop\"\n    hero_anchor: \"article.markdown-body h1, .repository-content, #readme h1, h1\"\n    demo_anchor: \"article.markdown-body img[src*='.gif'], article.markdown-body video, article.markdown-body details, #readme img, table\"\n    download_anchor: \"a[href*='releases'], a[href*='clone'], .btn-primary, a[href$='.zip']\"\n    specs: \"Open Source | GitHub | Code & Docs\"\n    video_readiness: 118.0\n    consensus_count: 4\n    hn_points: 340\n    badges:\n      - \"\ud83d\udd25 HN Trending (340 pts)\"\n      - \"\u26a1 4 Outlets Confirmed\"\n      - \"\ud83d\udee0\ufe0f Open Source Repo\"\n  - name: \"DeepSeek V4.1 Flash\"\n    url: \"https://arxiv.org/abs/2609.11200\"\n    mode: \"paper_preview\"\n    hero_anchor: \"h1.title, .title, h1\"\n    demo_anchor: \"a.download-pdf, div.extra-services, table.benchmark, figure\"\n    download_anchor: \"a.download-pdf, a[href*='arxiv.org/pdf']\"\n    specs: \"Research Preprint | arXiv\"\n    video_readiness: 65.0\n    consensus_count: 6\n    hn_points: 650\n    badges:\n      - \"\ud83d\udd25 HN Trending (650 pts)\"\n      - \"\u26a1 6 Outlets Confirmed\"\n      - \"\ud83d\udcc4 Research Preprint\"\n  - name: \"Anthropic x Nscale $45B Compute Deal\"\n    url: \"https://brief.delights.pro/newsletters/newsletter_leaders_2026-08-28.html\"\n    mode: \"industry_insight\"\n    hero_anchor: \"main h1, header h1, .hero h1, h1\"\n    demo_anchor: \"video, audio, canvas, .player, .waveform, iframe[src*='gradio'], .output, figure\"\n    download_anchor: \"a[href*='download'], a[href*='github.com'], a[href*='huggingface.co'], .cta-button\"\n    specs: \"Creative Media | Audio/Video/3D | Live Demo\"\n    video_readiness: 45.0\n    consensus_count: 3\n    hn_points: 190\n    badges:\n      - \"\ud83d\udd25 HN Trending (190 pts)\"\n      - \"\u26a1 3 Outlets Confirmed\"\n---\n\n# Intro\n[excited] Four drops today, and the numbers are absurd: 650 Hacker News points on a DeepSeek preprint, 480 on a full-song generator, and a forty-five billion dollar compute deal. Let's move fast.\n\n---\n\n# Story 1: YuE2\n### Landing Page\n[confident] YuE2 just landed on Hugging Face \u2014 full-length vocal songs, generated end to end, with an editable ABC symbolic score you can actually rewrite by hand.\n\n### Demo\n[amazed] The live Space is running right now. Type a prompt, hit submit, and watch the gradio canvas spit out a finished track \u2014 vocals, instruments, structure. Trending on Hacker News at 480 points.\n\n### Access\n[excited] Five outlets confirmed it. Duplicate the Space or pull the weights straight from the model tree \u2014 link's in the description. Go make something weird.\n\n---\n\n# Story 2: Marigold v2\n### Landing Page\n[confident] Marigold v2, from the PRS-ETH lab: diffusion transformers doing monocular depth estimation four times faster, on consumer GPUs. Depth from a single photo, real time.\n\n### Demo\n[amazed] Scroll the README \u2014 those comparison GIFs and tables are the whole pitch. Same fidelity as v1, quarter the compute. 340 upvotes on Hacker News, four outlets covering it.\n\n### Access\n[energetic] Fully open source on GitHub. Grab it from releases, clone the repo, run it locally tonight. This one slots straight into your 3D and robotics pipeline.\n\n---\n\n# Story 3: DeepSeek V4.1 Flash\n### Paper Preview\n[curious] DeepSeek V4.1 Flash \u2014 a 552 billion parameter MoE preprint built on what they call asymmetric compute. Six outlets confirmed, and it's sitting at 650 Hacker News points.\n\n### Architecture / Evidence\n[skeptical] Head to Table 1. The benchmark grid is where the claim lives or dies \u2014 routing only activates a slice of experts, so you get frontier scores at a fraction of the FLOPs.\n\n### Release Horizon\n[confident] It's on arXiv now, and PyTorch weights are already up on Hugging Face. Unusual for a preprint \u2014 they shipped code with the paper. Download link below.\n\n---\n\n# Story 4: Anthropic x Nscale\n### Headline\n[confident] Anthropic just signed a forty-five billion dollar infrastructure deal with Nscale, locking down European gigawatt-scale power and datacenter buildout. That's not a cloud bill \u2014 that's a moat.\n\n### Evidence\n[curious] Three outlets confirmed, 190 points on Hacker News. The number to watch is gigawatts, not GPUs \u2014 power contracts are the scarce asset in 2026, and they're signing decade-long ones.\n\n### The Verdict\n[excited] Here's the takeaway: compute is becoming real estate. Whoever owns the megawatts owns the roadmap. Everyone else rents at whatever price the landlord names.\n\n---\n\n# Outro\n[friendly] All project links, Hugging Face spaces, and research papers are organized down in the description below. Hit subscribe to Brief Delights for your daily rundown, and I'll see you tomorrow.",
+  "generated_at": "2026-09-18T12:48:23.559773"
+}

@@ -344,8 +344,12 @@ def summarize_article(article: Dict, index: int, log_file: Path, trend_context: 
         # Fallback: use description as summary and calculate read time
         fallback_content = article.get('description', '') or article.get('raw_content', '')
         fallback_word_count = len(fallback_content.split())
-        article['summary'] = fallback_content[:200]
-        article['key_takeaway'] = f"See full article for details: {article['source']}"
+        article_url = article.get('url') or article.get('link') or article.get('tracked_url', '')
+        source_name = article.get('source', 'source')
+        if article_url:
+            article['key_takeaway'] = f"See full story at {source_name}: {article_url}"
+        else:
+            article['key_takeaway'] = f"See full article for details: {source_name}"
         article['read_time_minutes'] = calculate_read_time(fallback_word_count)
         return article
 

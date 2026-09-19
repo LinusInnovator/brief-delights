@@ -1,0 +1,174 @@
+{
+  "episode_id": "ai-news-2026-09-19-builders",
+  "track": "builders",
+  "format": "daily",
+  "date": "2026-09-19",
+  "voice_profile": "alex_tech",
+  "intro": "[excited] Three drops just hit, and Hacker News is on fire \u2014 YuE2 generates full songs, Marigold v2 does real-time depth, and DeepSeek's 552-billion-parameter MoE preprint is already at 650 points.",
+  "stories": [
+    {
+      "name": "YuE2: Open Full-Song Generation with Symbolic Score Planning",
+      "url": "https://huggingface.co/spaces/multimodal-art/YuE",
+      "mode": "tool_drop",
+      "hero_anchor": "h1, .model-header, header",
+      "demo_anchor": "iframe[src*='gradio'], .gradio-container, canvas, video, button[type='submit'], .output",
+      "download_anchor": "button[data-testid='duplicate-button'], a[href*='tree/main']",
+      "specs": "Interactive Space | Hugging Face | Live Demo",
+      "video_readiness": 150.0,
+      "consensus_count": 5,
+      "hn_points": 480,
+      "badges": [
+        "\ud83d\udd25 HN Trending (480 pts)",
+        "\u26a1 5 Outlets Confirmed",
+        "\u2728 Interactive Demo Live"
+      ],
+      "beats": {
+        "landing_page": "[confident] YuE2 just landed on Hugging Face, and it's trending at 480 points with 210 comments. Five outlets confirmed it: full-length vocal songs, not loops \u2014 actual structured tracks with verses.",
+        "demo": "[amazed] Here's the wild part \u2014 it plans songs through editable ABC symbolic score notation. You can literally rewrite the melody in text before the model sings it. That's compositional control, live in the Space right now.",
+        "access": "[excited] The interactive demo is live and free. Click the link below, type a prompt, tweak the score, and generate a full track. Open full-song generation just became a browser tab."
+      },
+      "ordered_beats": [
+        {
+          "title": "Landing Page",
+          "narration": "[confident] YuE2 just landed on Hugging Face, and it's trending at 480 points with 210 comments. Five outlets confirmed it: full-length vocal songs, not loops \u2014 actual structured tracks with verses."
+        },
+        {
+          "title": "Demo",
+          "narration": "[amazed] Here's the wild part \u2014 it plans songs through editable ABC symbolic score notation. You can literally rewrite the melody in text before the model sings it. That's compositional control, live in the Space right now."
+        },
+        {
+          "title": "Access",
+          "narration": "[excited] The interactive demo is live and free. Click the link below, type a prompt, tweak the score, and generate a full track. Open full-song generation just became a browser tab."
+        }
+      ]
+    },
+    {
+      "name": "Marigold v2: Diffusion Transformers for Real-Time Monocular Depth",
+      "url": "https://github.com/prs-eth/marigold",
+      "mode": "tool_drop",
+      "hero_anchor": "article.markdown-body h1, .repository-content, #readme h1, h1",
+      "demo_anchor": "article.markdown-body img[src*='.gif'], article.markdown-body video, article.markdown-body details, #readme img, table",
+      "download_anchor": "a[href*='releases'], a[href*='clone'], .btn-primary, a[href$='.zip']",
+      "specs": "Open Source | GitHub | Code & Docs",
+      "video_readiness": 125.0,
+      "consensus_count": 4,
+      "hn_points": 340,
+      "badges": [
+        "\ud83d\udd25 HN Trending (340 pts)",
+        "\u26a1 4 Outlets Confirmed",
+        "\ud83d\udee0\ufe0f Open Source Repo"
+      ],
+      "beats": {
+        "landing_page": "[confident] Marigold v2 is sitting at 340 points on Hacker News with four outlets confirming. It's a GitHub repo, fully open source, and it's rewriting what depth estimation costs you.",
+        "demo": "[amazed] Diffusion transformers, four times faster, running monocular depth on consumer GPUs. Real-time depth from a single camera \u2014 that's robotics, AR, and video pipelines getting a massive speed unlock.",
+        "access": "[excited] Code and docs are on GitHub right now. Clone it, run it on your own GPU, and check the benchmarks yourself. No waitlist, no API key \u2014 just a repo."
+      },
+      "ordered_beats": [
+        {
+          "title": "Landing Page",
+          "narration": "[confident] Marigold v2 is sitting at 340 points on Hacker News with four outlets confirming. It's a GitHub repo, fully open source, and it's rewriting what depth estimation costs you."
+        },
+        {
+          "title": "Demo",
+          "narration": "[amazed] Diffusion transformers, four times faster, running monocular depth on consumer GPUs. Real-time depth from a single camera \u2014 that's robotics, AR, and video pipelines getting a massive speed unlock."
+        },
+        {
+          "title": "Access",
+          "narration": "[excited] Code and docs are on GitHub right now. Clone it, run it on your own GPU, and check the benchmarks yourself. No waitlist, no API key \u2014 just a repo."
+        }
+      ]
+    },
+    {
+      "name": "DeepSeek V4.1 Flash: Asymmetric Compute MoE Architecture",
+      "url": "https://arxiv.org/abs/2609.11200",
+      "mode": "paper_preview",
+      "hero_anchor": "h1.title, .title, h1",
+      "demo_anchor": "a.download-pdf, div.extra-services, table.benchmark, figure",
+      "download_anchor": "a.download-pdf, a[href*='arxiv.org/pdf']",
+      "specs": "Research Preprint | arXiv",
+      "video_readiness": 85.0,
+      "consensus_count": 6,
+      "hn_points": 650,
+      "badges": [
+        "\ud83d\udd25 HN Trending (650 pts)",
+        "\u26a1 6 Outlets Confirmed",
+        "\ud83d\udcc4 Research Preprint"
+      ],
+      "beats": {
+        "paper": "[curious] DeepSeek V4.1 Flash is the loudest thing on Hacker News today \u2014 650 points, 380 comments, six outlets confirmed. It's a preprint, not a product, so let's read it carefully.",
+        "architecture_evidence": "[skeptical] 552 billion parameters in a Mixture-of-Experts, but the twist is asymmetric compute \u2014 uneven budget across experts. The benchmark table looks strong, though independent replication is still pending.",
+        "release_horizon": "[confident] PyTorch weights are already on Hugging Face, which is unusually fast for a preprint. Expect fine-tunes within days. The real question is whether the efficiency claims survive outside DeepSeek's own harness."
+      },
+      "ordered_beats": [
+        {
+          "title": "Paper",
+          "narration": "[curious] DeepSeek V4.1 Flash is the loudest thing on Hacker News today \u2014 650 points, 380 comments, six outlets confirmed. It's a preprint, not a product, so let's read it carefully."
+        },
+        {
+          "title": "Architecture/Evidence",
+          "narration": "[skeptical] 552 billion parameters in a Mixture-of-Experts, but the twist is asymmetric compute \u2014 uneven budget across experts. The benchmark table looks strong, though independent replication is still pending."
+        },
+        {
+          "title": "Release Horizon",
+          "narration": "[confident] PyTorch weights are already on Hugging Face, which is unusually fast for a preprint. Expect fine-tunes within days. The real question is whether the efficiency claims survive outside DeepSeek's own harness."
+        }
+      ]
+    }
+  ],
+  "outro": "[friendly] All project links, Hugging Face spaces, and research papers are organized down in the description below. Hit subscribe to Brief Delights for your daily rundown, and I'll see you tomorrow.",
+  "tools_metadata": [
+    {
+      "name": "YuE2: Open Full-Song Generation with Symbolic Score Planning",
+      "url": "https://huggingface.co/spaces/multimodal-art/YuE",
+      "mode": "tool_drop",
+      "hero_anchor": "h1, .model-header, header",
+      "demo_anchor": "iframe[src*='gradio'], .gradio-container, canvas, video, button[type='submit'], .output",
+      "download_anchor": "button[data-testid='duplicate-button'], a[href*='tree/main']",
+      "specs": "Interactive Space | Hugging Face | Live Demo",
+      "video_readiness": 150.0,
+      "consensus_count": 5,
+      "hn_points": 480,
+      "badges": [
+        "\ud83d\udd25 HN Trending (480 pts)",
+        "\u26a1 5 Outlets Confirmed",
+        "\u2728 Interactive Demo Live"
+      ]
+    },
+    {
+      "name": "Marigold v2: Diffusion Transformers for Real-Time Monocular Depth",
+      "url": "https://github.com/prs-eth/marigold",
+      "mode": "tool_drop",
+      "hero_anchor": "article.markdown-body h1, .repository-content, #readme h1, h1",
+      "demo_anchor": "article.markdown-body img[src*='.gif'], article.markdown-body video, article.markdown-body details, #readme img, table",
+      "download_anchor": "a[href*='releases'], a[href*='clone'], .btn-primary, a[href$='.zip']",
+      "specs": "Open Source | GitHub | Code & Docs",
+      "video_readiness": 125.0,
+      "consensus_count": 4,
+      "hn_points": 340,
+      "badges": [
+        "\ud83d\udd25 HN Trending (340 pts)",
+        "\u26a1 4 Outlets Confirmed",
+        "\ud83d\udee0\ufe0f Open Source Repo"
+      ]
+    },
+    {
+      "name": "DeepSeek V4.1 Flash: Asymmetric Compute MoE Architecture",
+      "url": "https://arxiv.org/abs/2609.11200",
+      "mode": "paper_preview",
+      "hero_anchor": "h1.title, .title, h1",
+      "demo_anchor": "a.download-pdf, div.extra-services, table.benchmark, figure",
+      "download_anchor": "a.download-pdf, a[href*='arxiv.org/pdf']",
+      "specs": "Research Preprint | arXiv",
+      "video_readiness": 85.0,
+      "consensus_count": 6,
+      "hn_points": 650,
+      "badges": [
+        "\ud83d\udd25 HN Trending (650 pts)",
+        "\u26a1 6 Outlets Confirmed",
+        "\ud83d\udcc4 Research Preprint"
+      ]
+    }
+  ],
+  "raw_markdown": "---\nepisode_id: ai-news-2026-09-19-builders\ntrack: builders\nformat: daily\nvoice_profile: alex_tech\ntools:\n- name: 'YuE2: Open Full-Song Generation with Symbolic Score Planning'\n  url: https://huggingface.co/spaces/multimodal-art/YuE\n  mode: tool_drop\n  hero_anchor: h1, .model-header, header\n  demo_anchor: iframe[src*='gradio'], .gradio-container, canvas, video, button[type='submit'],\n    .output\n  download_anchor: button[data-testid='duplicate-button'], a[href*='tree/main']\n  specs: Interactive Space | Hugging Face | Live Demo\n  video_readiness: 150.0\n  consensus_count: 5\n  hn_points: 480\n  badges:\n  - \ud83d\udd25 HN Trending (480 pts)\n  - \u26a1 5 Outlets Confirmed\n  - \u2728 Interactive Demo Live\n- name: 'Marigold v2: Diffusion Transformers for Real-Time Monocular Depth'\n  url: https://github.com/prs-eth/marigold\n  mode: tool_drop\n  hero_anchor: 'article.markdown-body h1, .repository-content, #readme h1, h1'\n  demo_anchor: 'article.markdown-body img[src*=''.gif''], article.markdown-body video,\n    article.markdown-body details, #readme img, table'\n  download_anchor: a[href*='releases'], a[href*='clone'], .btn-primary, a[href$='.zip']\n  specs: Open Source | GitHub | Code & Docs\n  video_readiness: 125.0\n  consensus_count: 4\n  hn_points: 340\n  badges:\n  - \ud83d\udd25 HN Trending (340 pts)\n  - \u26a1 4 Outlets Confirmed\n  - \ud83d\udee0\ufe0f Open Source Repo\n- name: 'DeepSeek V4.1 Flash: Asymmetric Compute MoE Architecture'\n  url: https://arxiv.org/abs/2609.11200\n  mode: paper_preview\n  hero_anchor: h1.title, .title, h1\n  demo_anchor: a.download-pdf, div.extra-services, table.benchmark, figure\n  download_anchor: a.download-pdf, a[href*='arxiv.org/pdf']\n  specs: Research Preprint | arXiv\n  video_readiness: 85.0\n  consensus_count: 6\n  hn_points: 650\n  badges:\n  - \ud83d\udd25 HN Trending (650 pts)\n  - \u26a1 6 Outlets Confirmed\n  - \ud83d\udcc4 Research Preprint\n---\n\n# Intro\n[excited] Three drops just hit, and Hacker News is on fire \u2014 YuE2 generates full songs, Marigold v2 does real-time depth, and DeepSeek's 552-billion-parameter MoE preprint is already at 650 points.\n\n---\n\n# Story 1: YuE2: Open Full-Song Generation with Symbolic Score Planning\n### Landing Page\n[confident] YuE2 just landed on Hugging Face, and it's trending at 480 points with 210 comments. Five outlets confirmed it: full-length vocal songs, not loops \u2014 actual structured tracks with verses.\n\n### Demo\n[amazed] Here's the wild part \u2014 it plans songs through editable ABC symbolic score notation. You can literally rewrite the melody in text before the model sings it. That's compositional control, live in the Space right now.\n\n### Access\n[excited] The interactive demo is live and free. Click the link below, type a prompt, tweak the score, and generate a full track. Open full-song generation just became a browser tab.\n\n---\n\n# Story 2: Marigold v2: Diffusion Transformers for Real-Time Monocular Depth\n### Landing Page\n[confident] Marigold v2 is sitting at 340 points on Hacker News with four outlets confirming. It's a GitHub repo, fully open source, and it's rewriting what depth estimation costs you.\n\n### Demo\n[amazed] Diffusion transformers, four times faster, running monocular depth on consumer GPUs. Real-time depth from a single camera \u2014 that's robotics, AR, and video pipelines getting a massive speed unlock.\n\n### Access\n[excited] Code and docs are on GitHub right now. Clone it, run it on your own GPU, and check the benchmarks yourself. No waitlist, no API key \u2014 just a repo.\n\n---\n\n# Story 3: DeepSeek V4.1 Flash: Asymmetric Compute MoE Architecture\n### Paper\n[curious] DeepSeek V4.1 Flash is the loudest thing on Hacker News today \u2014 650 points, 380 comments, six outlets confirmed. It's a preprint, not a product, so let's read it carefully.\n\n### Architecture/Evidence\n[skeptical] 552 billion parameters in a Mixture-of-Experts, but the twist is asymmetric compute \u2014 uneven budget across experts. The benchmark table looks strong, though independent replication is still pending.\n\n### Release Horizon\n[confident] PyTorch weights are already on Hugging Face, which is unusually fast for a preprint. Expect fine-tunes within days. The real question is whether the efficiency claims survive outside DeepSeek's own harness.\n\n---\n\n# Outro\n[friendly] All project links, Hugging Face spaces, and research papers are organized down in the description below. Hit subscribe to Brief Delights for your daily rundown, and I'll see you tomorrow.",
+  "generated_at": "2026-09-19T12:32:06.775755"
+}

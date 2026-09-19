@@ -24,9 +24,12 @@ export async function OPTIONS() {
  * GET /api/video-script
  * 
  * Query params:
+ *   - track: 'top4' (default) | 'builders' | 'leaders' | 'generative_media' | 'weekly'
+ *   - all: 'true' (returns all 4 daily tracks + weekly recap in a single bundle)
+ *   - weekly: 'true' (alias for track=weekly)
  *   - format: 'json' (default) | 'md' | 'markdown' | 'text' | 'index'
  *   - date: 'YYYY-MM-DD' (optional, defaults to latest)
- *   - archive: 'true' (returns the list of all historical episodes)
+ *   - archive: 'true' (returns the list of all historical episodes and tracks)
  * 
  * Headers:
  *   - Accept: 'text/markdown' will return raw markdown unless format=json is specified
@@ -37,13 +40,17 @@ export async function GET(request: NextRequest) {
         const formatParam = searchParams.get('format')?.toLowerCase();
         const dateParam = searchParams.get('date')?.trim();
         const archiveParam = searchParams.get('archive')?.toLowerCase();
+        const trackParam = searchParams.get('track')?.toLowerCase().trim();
+        const allParam = searchParams.get('all')?.toLowerCase().trim();
+        const weeklyParam = searchParams.get('weekly')?.toLowerCase().trim();
         const acceptHeader = request.headers.get('accept') || '';
 
         const cwd = process.cwd();
         const scriptsArchiveDir = path.join(cwd, 'public', 'data', 'video_scripts');
         const reportsDir = path.join(cwd, '..', 'reports', 'video_scripts');
+        const publicDataDir = path.join(cwd, 'public', 'data');
 
-        // 1. Archive Index Mode: returns list of all available episodes
+        // 1. Archive Index Mode: returns list of all available episodes across all tracks
         if (archiveParam === 'true' || formatParam === 'index' || formatParam === 'archive') {
             const indexPath = path.join(scriptsArchiveDir, 'index.json');
             if (fs.existsSync(indexPath)) {
@@ -54,7 +61,7 @@ export async function GET(request: NextRequest) {
                         headers: {
                             ...CORS_HEADERS,
                             'Content-Type': 'application/json; charset=utf-8',
-                            'Cache-Control': 'public, s-maxage=300, stale-while-revalidate=600',
+                            'Cache-Control': 'public, s-maxage=120, stale-while-revalidate=300',
                         },
                     });
                 } catch (err) {
@@ -63,18 +70,64 @@ export async function GET(request: NextRequest) {
             }
         }
 
+        // 2. All Tracks Bundle Mode (?all=true or ?track=all)
+        if (allParam === 'true' || trackParam === 'all') {
+            const tracks = ['top4', 'builders', 'leaders', 'generative_media'];
+            const bundle: Record<string, any> = {};
+
+            for (const t of tracks) {
+                const jsonFile = t === 'top4' 
+                    ? path.join(publicDataDir, 'latest_video_script.json')
+                    : path.join(publicDataDir, `latest_video_script_${t}.json`);
+                if (fs.existsSync(jsonFile)) {
+                    try {
+                        bundle[t] = JSON.parse(fs.readFileSync(jsonFile, 'utf-8'));
+                    } catch (e) {
+                        bundle[t] = null;
+                    }
+                }
+            }
+
+            // Also attach weekly if available
+            const weeklyJson = path.join(publicDataDir, 'latest_weekly_video_script.json');
+            if (fs.existsSync(weeklyJson)) {
+                try {
+                    bundle['weekly_recap'] = JSON.parse(fs.readFileSync(weeklyJson, 'utf-8'));
+                } catch (e) {}
+            }
+
+            return NextResponse.json({
+                available_tracks: Object.keys(bundle),
+                tracks: bundle,
+                generated_at: new Date().toISOString()
+            }, {
+                status: 200,
+                headers: {
+                    ...CORS_HEADERS,
+                    'Content-Type': 'application/json; charset=utf-8',
+                    'Cache-Control': 'public, s-maxage=120, stale-while-revalidate=300',
+                }
+            });
+        }
+
         const wantsMarkdown = formatParam === 'md' || 
                               formatParam === 'markdown' || 
                               formatParam === 'text' ||
                               (acceptHeader.includes('text/markdown') && formatParam !== 'json');
 
+        const isWeekly = weeklyParam === 'true' || trackParam === 'weekly' || trackParam === 'weekly_mega_recap';
+        const track = isWeekly ? 'weekly' : (trackParam || 'top4');
+
         let jsonData: any = null;
         let rawMarkdown: string | null = null;
 
-        // 2. Specific Date Requested
+        // 3. Specific Date Requested
         if (dateParam) {
-            // Check public/data/video_scripts/YYYY-MM-DD.json
-            const dateJsonPath = path.join(scriptsArchiveDir, `${dateParam}.json`);
+            let filenameStem = isWeekly 
+                ? `weekly_${dateParam}-mega-recap`
+                : (track === 'top4' ? `${dateParam}-ai-news` : `${dateParam}-ai-news-${track}`);
+
+            const dateJsonPath = path.join(scriptsArchiveDir, `${filenameStem}.json`);
             if (fs.existsSync(dateJsonPath)) {
                 try {
                     jsonData = JSON.parse(fs.readFileSync(dateJsonPath, 'utf-8'));
@@ -82,26 +135,35 @@ export async function GET(request: NextRequest) {
                         rawMarkdown = jsonData.raw_markdown;
                     }
                 } catch (err) {
-                    console.error(`[video-script] Error reading ${dateParam}.json:`, err);
+                    console.error(`[video-script] Error reading ${filenameStem}.json:`, err);
                 }
             }
 
-            // Check public/data/video_scripts/YYYY-MM-DD-ai-news.md
-            const dateMdPath = path.join(scriptsArchiveDir, `${dateParam}-ai-news.md`);
+            const dateMdPath = path.join(scriptsArchiveDir, `${filenameStem}.md`);
             if (!rawMarkdown && fs.existsSync(dateMdPath)) {
                 rawMarkdown = fs.readFileSync(dateMdPath, 'utf-8');
             }
 
-            // Fallback to reports/video_scripts/
-            const reportDateMdPath = path.join(reportsDir, `${dateParam}-ai-news.md`);
+            const reportDateMdPath = path.join(reportsDir, `${filenameStem}.md`);
             if (!rawMarkdown && fs.existsSync(reportDateMdPath)) {
                 rawMarkdown = fs.readFileSync(reportDateMdPath, 'utf-8');
             }
         }
 
-        // 3. Default / Latest Fallback (if dateParam not specified or specific date not found)
+        // 4. Latest Fallback for requested track
         if (!jsonData && !rawMarkdown) {
-            const publicLatestJson = path.join(cwd, 'public', 'data', 'latest_video_script.json');
+            let latestJsonName = 'latest_video_script.json';
+            let latestMdName = 'latest_video_script.md';
+
+            if (isWeekly) {
+                latestJsonName = 'latest_weekly_video_script.json';
+                latestMdName = 'latest_weekly_video_script.md';
+            } else if (track !== 'top4') {
+                latestJsonName = `latest_video_script_${track}.json`;
+                latestMdName = `latest_video_script_${track}.md`;
+            }
+
+            const publicLatestJson = path.join(publicDataDir, latestJsonName);
             if (fs.existsSync(publicLatestJson)) {
                 try {
                     jsonData = JSON.parse(fs.readFileSync(publicLatestJson, 'utf-8'));
@@ -109,24 +171,26 @@ export async function GET(request: NextRequest) {
                         rawMarkdown = jsonData.raw_markdown;
                     }
                 } catch (err) {
-                    console.error('[video-script] Error reading latest_video_script.json:', err);
+                    console.error(`[video-script] Error reading ${latestJsonName}:`, err);
                 }
             }
-        }
 
-        // Fallback to latest .md file in public or reports
-        if (!rawMarkdown) {
-            const publicLatestMd = path.join(cwd, 'public', 'data', 'latest_video_script.md');
-            if (fs.existsSync(publicLatestMd)) {
-                rawMarkdown = fs.readFileSync(publicLatestMd, 'utf-8');
-            } else if (fs.existsSync(reportsDir)) {
-                try {
-                    const files = fs.readdirSync(reportsDir).filter(f => f.endsWith('-ai-news.md')).sort().reverse();
-                    if (files.length > 0) {
-                        rawMarkdown = fs.readFileSync(path.join(reportsDir, files[0]), 'utf-8');
+            if (!rawMarkdown) {
+                const publicLatestMd = path.join(publicDataDir, latestMdName);
+                if (fs.existsSync(publicLatestMd)) {
+                    rawMarkdown = fs.readFileSync(publicLatestMd, 'utf-8');
+                } else if (fs.existsSync(reportsDir)) {
+                    try {
+                        const files = fs.readdirSync(reportsDir)
+                            .filter(f => isWeekly ? f.startsWith('weekly_') : (track === 'top4' ? f.endsWith('-ai-news.md') : f.includes(track)))
+                            .sort()
+                            .reverse();
+                        if (files.length > 0) {
+                            rawMarkdown = fs.readFileSync(path.join(reportsDir, files[0]), 'utf-8');
+                        }
+                    } catch (err) {
+                        console.error('[video-script] Error reading reportsDir:', err);
                     }
-                } catch (err) {
-                    console.error('[video-script] Error reading reportsDir:', err);
                 }
             }
         }
@@ -134,15 +198,14 @@ export async function GET(request: NextRequest) {
         if (!jsonData && !rawMarkdown) {
             return NextResponse.json(
                 { 
-                    error: dateParam 
-                        ? `No video safari script found for date: ${dateParam}`
-                        : 'No video safari script available yet.' 
+                    error: `No video safari script found for track: '${track}'${dateParam ? ` on date: ${dateParam}` : ''}.`,
+                    available_tracks: ['top4', 'builders', 'leaders', 'generative_media', 'weekly']
                 },
                 { status: 404, headers: CORS_HEADERS }
             );
         }
 
-        // 4. Return Raw Markdown
+        // 5. Return Raw Markdown
         if (wantsMarkdown) {
             if (!rawMarkdown && jsonData) {
                 rawMarkdown = jsonData.raw_markdown || '';
@@ -152,15 +215,16 @@ export async function GET(request: NextRequest) {
                 headers: {
                     ...CORS_HEADERS,
                     'Content-Type': 'text/markdown; charset=utf-8',
-                    'Cache-Control': 'public, s-maxage=300, stale-while-revalidate=600',
+                    'Cache-Control': 'public, s-maxage=120, stale-while-revalidate=300',
                 },
             });
         }
 
-        // 5. Return Structured JSON
+        // 6. Return Structured JSON
         if (!jsonData && rawMarkdown) {
             jsonData = {
                 raw_markdown: rawMarkdown,
+                track: track,
                 note: 'Structured JSON not cached for this historical date, raw markdown provided.',
             };
         }
@@ -170,7 +234,7 @@ export async function GET(request: NextRequest) {
             headers: {
                 ...CORS_HEADERS,
                 'Content-Type': 'application/json; charset=utf-8',
-                'Cache-Control': 'public, s-maxage=300, stale-while-revalidate=600',
+                'Cache-Control': 'public, s-maxage=120, stale-while-revalidate=300',
             },
         });
     } catch (error: any) {

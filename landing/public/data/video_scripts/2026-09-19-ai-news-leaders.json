@@ -1,0 +1,172 @@
+{
+  "episode_id": "ai-news-2026-09-19-leaders",
+  "track": "leaders",
+  "format": "daily",
+  "date": "2026-09-19",
+  "voice_profile": "alex_tech",
+  "intro": "[excited] Three drops, one massive day \u2014 DeepSeek's 552-billion-parameter MoE just hit 650 Hacker News points, YuE2 generates full songs at 480, and Anthropic locked a 45-billion-dollar compute deal. Let's run it.",
+  "stories": [
+    {
+      "name": "Anthropic Agrees $45B AI Infrastructure Deal with Nscale",
+      "url": "https://brief.delights.pro/newsletters/newsletter_leaders_2026-08-28.html",
+      "mode": "industry_insight",
+      "hero_anchor": "main h1, header h1, .hero h1, h1",
+      "demo_anchor": "figure, table, blockquote, canvas, .chart, .metrics",
+      "download_anchor": "a[href*='report'], a[href*='pdf'], a.cta-button",
+      "specs": "Industry Insight | Strategic Analysis",
+      "video_readiness": 90.0,
+      "consensus_count": 3,
+      "hn_points": 190,
+      "badges": [
+        "\ud83d\udd25 HN Trending (190 pts)",
+        "\u26a1 3 Outlets Confirmed"
+      ],
+      "beats": {
+        "headline": "[confident] Anthropic just signed a 45-billion-dollar infrastructure agreement with Nscale, locking down gigawatt-scale European power and datacenter capacity for the next wave of frontier model training.",
+        "evidence": "[curious] This is multi-outlet confirmed and currently trending on Hacker News at 190 points with 95 comments \u2014 the conversation isn't hype, it's about whether Europe can actually deliver that power on schedule.",
+        "access": "[skeptical] Keep your eye on this one. Draft briefs are published, but the real signal is execution \u2014 if Nscale builds, Anthropic trains; if it slips, compute scarcity prices everyone else's tokens this cycle."
+      },
+      "ordered_beats": [
+        {
+          "title": "Headline",
+          "narration": "[confident] Anthropic just signed a 45-billion-dollar infrastructure agreement with Nscale, locking down gigawatt-scale European power and datacenter capacity for the next wave of frontier model training."
+        },
+        {
+          "title": "Evidence",
+          "narration": "[curious] This is multi-outlet confirmed and currently trending on Hacker News at 190 points with 95 comments \u2014 the conversation isn't hype, it's about whether Europe can actually deliver that power on schedule."
+        },
+        {
+          "title": "Access",
+          "narration": "[skeptical] Keep your eye on this one. Draft briefs are published, but the real signal is execution \u2014 if Nscale builds, Anthropic trains; if it slips, compute scarcity prices everyone else's tokens this cycle."
+        }
+      ]
+    },
+    {
+      "name": "YuE2: Open Full-Song Generation with Symbolic Score Planning",
+      "url": "https://huggingface.co/spaces/multimodal-art/YuE",
+      "mode": "tool_drop",
+      "hero_anchor": "h1, .model-header, header",
+      "demo_anchor": "iframe[src*='gradio'], .gradio-container, canvas, video, button[type='submit'], .output",
+      "download_anchor": "button[data-testid='duplicate-button'], a[href*='tree/main']",
+      "specs": "Interactive Space | Hugging Face | Live Demo",
+      "video_readiness": 135.0,
+      "consensus_count": 5,
+      "hn_points": 480,
+      "badges": [
+        "\ud83d\udd25 HN Trending (480 pts)",
+        "\u26a1 5 Outlets Confirmed",
+        "\u2728 Interactive Demo Live"
+      ],
+      "beats": {
+        "landing_page": "[amazed] YuE2 does something most music models can't: full-length songs, vocals included, planned through editable symbolic ABC score notation. And the live Space is already sitting at 480 Hacker News points.",
+        "demo": "[excited] You type a lyric and style prompt, the model drafts a symbolic score you can edit bar by bar, then renders it into a full vocal track \u2014 structure, verses, chorus, all under your control.",
+        "access": "[friendly] It's live right now on Hugging Face Spaces \u2014 five outlets confirmed it, and honestly, click the link in the description and try it yourself before the queue fills up."
+      },
+      "ordered_beats": [
+        {
+          "title": "Landing Page",
+          "narration": "[amazed] YuE2 does something most music models can't: full-length songs, vocals included, planned through editable symbolic ABC score notation. And the live Space is already sitting at 480 Hacker News points."
+        },
+        {
+          "title": "Demo",
+          "narration": "[excited] You type a lyric and style prompt, the model drafts a symbolic score you can edit bar by bar, then renders it into a full vocal track \u2014 structure, verses, chorus, all under your control."
+        },
+        {
+          "title": "Access",
+          "narration": "[friendly] It's live right now on Hugging Face Spaces \u2014 five outlets confirmed it, and honestly, click the link in the description and try it yourself before the queue fills up."
+        }
+      ]
+    },
+    {
+      "name": "DeepSeek V4.1 Flash: Asymmetric Compute MoE Architecture",
+      "url": "https://arxiv.org/abs/2609.11200",
+      "mode": "paper_preview",
+      "hero_anchor": "h1.title, .title, h1",
+      "demo_anchor": "a.download-pdf, div.extra-services, table.benchmark, figure",
+      "download_anchor": "a.download-pdf, a[href*='arxiv.org/pdf']",
+      "specs": "Research Preprint | arXiv",
+      "video_readiness": 105.0,
+      "consensus_count": 6,
+      "hn_points": 650,
+      "badges": [
+        "\ud83d\udd25 HN Trending (650 pts)",
+        "\u26a1 6 Outlets Confirmed",
+        "\ud83d\udcc4 Research Preprint"
+      ],
+      "beats": {
+        "paper": "[confident] DeepSeek V4.1 Flash is a 552-billion-parameter mixture-of-experts preprint, and it's the top story on Hacker News right now \u2014 650 points, 380 comments, six outlets confirming.",
+        "architecture": "[amazed] The twist is asymmetric compute: experts get uneven budgets, so cheap tokens route through tiny experts while hard tokens get the heavy ones. That's how you get MoE efficiency without losing reasoning depth.",
+        "release_horizon": "[curious] Weights are already on Hugging Face alongside PyTorch checkpoints and a full benchmark table. Fair warning \u2014 it's a preprint, so benchmark independently before you rebuild your stack around it."
+      },
+      "ordered_beats": [
+        {
+          "title": "Paper",
+          "narration": "[confident] DeepSeek V4.1 Flash is a 552-billion-parameter mixture-of-experts preprint, and it's the top story on Hacker News right now \u2014 650 points, 380 comments, six outlets confirming."
+        },
+        {
+          "title": "Architecture",
+          "narration": "[amazed] The twist is asymmetric compute: experts get uneven budgets, so cheap tokens route through tiny experts while hard tokens get the heavy ones. That's how you get MoE efficiency without losing reasoning depth."
+        },
+        {
+          "title": "Release Horizon",
+          "narration": "[curious] Weights are already on Hugging Face alongside PyTorch checkpoints and a full benchmark table. Fair warning \u2014 it's a preprint, so benchmark independently before you rebuild your stack around it."
+        }
+      ]
+    }
+  ],
+  "outro": "[friendly] All project links, Hugging Face spaces, and research papers are organized down in the description below. Hit subscribe to Brief Delights for your daily rundown, and I'll see you tomorrow.",
+  "tools_metadata": [
+    {
+      "name": "Anthropic Agrees $45B AI Infrastructure Deal with Nscale",
+      "url": "https://brief.delights.pro/newsletters/newsletter_leaders_2026-08-28.html",
+      "mode": "industry_insight",
+      "hero_anchor": "main h1, header h1, .hero h1, h1",
+      "demo_anchor": "figure, table, blockquote, canvas, .chart, .metrics",
+      "download_anchor": "a[href*='report'], a[href*='pdf'], a.cta-button",
+      "specs": "Industry Insight | Strategic Analysis",
+      "video_readiness": 90.0,
+      "consensus_count": 3,
+      "hn_points": 190,
+      "badges": [
+        "\ud83d\udd25 HN Trending (190 pts)",
+        "\u26a1 3 Outlets Confirmed"
+      ]
+    },
+    {
+      "name": "YuE2: Open Full-Song Generation with Symbolic Score Planning",
+      "url": "https://huggingface.co/spaces/multimodal-art/YuE",
+      "mode": "tool_drop",
+      "hero_anchor": "h1, .model-header, header",
+      "demo_anchor": "iframe[src*='gradio'], .gradio-container, canvas, video, button[type='submit'], .output",
+      "download_anchor": "button[data-testid='duplicate-button'], a[href*='tree/main']",
+      "specs": "Interactive Space | Hugging Face | Live Demo",
+      "video_readiness": 135.0,
+      "consensus_count": 5,
+      "hn_points": 480,
+      "badges": [
+        "\ud83d\udd25 HN Trending (480 pts)",
+        "\u26a1 5 Outlets Confirmed",
+        "\u2728 Interactive Demo Live"
+      ]
+    },
+    {
+      "name": "DeepSeek V4.1 Flash: Asymmetric Compute MoE Architecture",
+      "url": "https://arxiv.org/abs/2609.11200",
+      "mode": "paper_preview",
+      "hero_anchor": "h1.title, .title, h1",
+      "demo_anchor": "a.download-pdf, div.extra-services, table.benchmark, figure",
+      "download_anchor": "a.download-pdf, a[href*='arxiv.org/pdf']",
+      "specs": "Research Preprint | arXiv",
+      "video_readiness": 105.0,
+      "consensus_count": 6,
+      "hn_points": 650,
+      "badges": [
+        "\ud83d\udd25 HN Trending (650 pts)",
+        "\u26a1 6 Outlets Confirmed",
+        "\ud83d\udcc4 Research Preprint"
+      ]
+    }
+  ],
+  "raw_markdown": "---\nepisode_id: ai-news-2026-09-19-leaders\ntrack: leaders\nformat: daily\nvoice_profile: alex_tech\ntools:\n- name: Anthropic Agrees $45B AI Infrastructure Deal with Nscale\n  url: https://brief.delights.pro/newsletters/newsletter_leaders_2026-08-28.html\n  mode: industry_insight\n  hero_anchor: main h1, header h1, .hero h1, h1\n  demo_anchor: figure, table, blockquote, canvas, .chart, .metrics\n  download_anchor: a[href*='report'], a[href*='pdf'], a.cta-button\n  specs: Industry Insight | Strategic Analysis\n  video_readiness: 90.0\n  consensus_count: 3\n  hn_points: 190\n  badges:\n  - \ud83d\udd25 HN Trending (190 pts)\n  - \u26a1 3 Outlets Confirmed\n- name: 'YuE2: Open Full-Song Generation with Symbolic Score Planning'\n  url: https://huggingface.co/spaces/multimodal-art/YuE\n  mode: tool_drop\n  hero_anchor: h1, .model-header, header\n  demo_anchor: iframe[src*='gradio'], .gradio-container, canvas, video, button[type='submit'],\n    .output\n  download_anchor: button[data-testid='duplicate-button'], a[href*='tree/main']\n  specs: Interactive Space | Hugging Face | Live Demo\n  video_readiness: 135.0\n  consensus_count: 5\n  hn_points: 480\n  badges:\n  - \ud83d\udd25 HN Trending (480 pts)\n  - \u26a1 5 Outlets Confirmed\n  - \u2728 Interactive Demo Live\n- name: 'DeepSeek V4.1 Flash: Asymmetric Compute MoE Architecture'\n  url: https://arxiv.org/abs/2609.11200\n  mode: paper_preview\n  hero_anchor: h1.title, .title, h1\n  demo_anchor: a.download-pdf, div.extra-services, table.benchmark, figure\n  download_anchor: a.download-pdf, a[href*='arxiv.org/pdf']\n  specs: Research Preprint | arXiv\n  video_readiness: 105.0\n  consensus_count: 6\n  hn_points: 650\n  badges:\n  - \ud83d\udd25 HN Trending (650 pts)\n  - \u26a1 6 Outlets Confirmed\n  - \ud83d\udcc4 Research Preprint\n---\n\n# Intro\n[excited] Three drops, one massive day \u2014 DeepSeek's 552-billion-parameter MoE just hit 650 Hacker News points, YuE2 generates full songs at 480, and Anthropic locked a 45-billion-dollar compute deal. Let's run it.\n\n---\n\n# Story 1: Anthropic Agrees $45B AI Infrastructure Deal with Nscale\n### Headline\n[confident] Anthropic just signed a 45-billion-dollar infrastructure agreement with Nscale, locking down gigawatt-scale European power and datacenter capacity for the next wave of frontier model training.\n\n### Evidence\n[curious] This is multi-outlet confirmed and currently trending on Hacker News at 190 points with 95 comments \u2014 the conversation isn't hype, it's about whether Europe can actually deliver that power on schedule.\n\n### Access\n[skeptical] Keep your eye on this one. Draft briefs are published, but the real signal is execution \u2014 if Nscale builds, Anthropic trains; if it slips, compute scarcity prices everyone else's tokens this cycle.\n\n---\n\n# Story 2: YuE2: Open Full-Song Generation with Symbolic Score Planning\n### Landing Page\n[amazed] YuE2 does something most music models can't: full-length songs, vocals included, planned through editable symbolic ABC score notation. And the live Space is already sitting at 480 Hacker News points.\n\n### Demo\n[excited] You type a lyric and style prompt, the model drafts a symbolic score you can edit bar by bar, then renders it into a full vocal track \u2014 structure, verses, chorus, all under your control.\n\n### Access\n[friendly] It's live right now on Hugging Face Spaces \u2014 five outlets confirmed it, and honestly, click the link in the description and try it yourself before the queue fills up.\n\n---\n\n# Story 3: DeepSeek V4.1 Flash: Asymmetric Compute MoE Architecture\n### Paper\n[confident] DeepSeek V4.1 Flash is a 552-billion-parameter mixture-of-experts preprint, and it's the top story on Hacker News right now \u2014 650 points, 380 comments, six outlets confirming.\n\n### Architecture\n[amazed] The twist is asymmetric compute: experts get uneven budgets, so cheap tokens route through tiny experts while hard tokens get the heavy ones. That's how you get MoE efficiency without losing reasoning depth.\n\n### Release Horizon\n[curious] Weights are already on Hugging Face alongside PyTorch checkpoints and a full benchmark table. Fair warning \u2014 it's a preprint, so benchmark independently before you rebuild your stack around it.\n\n---\n\n# Outro\n[friendly] All project links, Hugging Face spaces, and research papers are organized down in the description below. Hit subscribe to Brief Delights for your daily rundown, and I'll see you tomorrow.",
+  "generated_at": "2026-09-19T12:32:22.341223"
+}

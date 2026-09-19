@@ -1,71 +1,128 @@
 [
   {
     "date": "2026-09-19",
-    "episode_id": "ai-news-2026-09-19",
+    "track": "top4",
+    "episode_id": "ai-news-2026-09-19-top4",
     "stories": [
-      "ActObs",
-      "Verifiable Social Reasoning for LLM Assistants",
-      "Self-Evolving Search Index",
-      "MiniMax-H3 Physical World Reasoning"
+      "YuE2: Open Full-Song Generation with Symbolic Score Planning",
+      "DeepSeek V4.1 Flash: Asymmetric Compute MoE Architecture",
+      "Anthropic Agrees $45B AI Infrastructure Deal with Nscale",
+      "Marigold v2: Diffusion Transformers for Real-Time Monocular Depth"
     ],
     "stories_count": 4,
-    "json_path": "/data/video_scripts/2026-09-19.json",
+    "json_path": "/data/video_scripts/2026-09-19-ai-news.json",
     "md_path": "/data/video_scripts/2026-09-19-ai-news.md",
-    "updated_at": "2026-09-19T09:46:45.950245"
+    "updated_at": "2026-09-19T12:30:54.102981"
+  },
+  {
+    "date": "2026-09-19",
+    "track": "leaders",
+    "episode_id": "ai-news-2026-09-19-leaders",
+    "stories": [
+      "Anthropic Agrees $45B AI Infrastructure Deal with Nscale",
+      "YuE2: Open Full-Song Generation with Symbolic Score Planning",
+      "DeepSeek V4.1 Flash: Asymmetric Compute MoE Architecture"
+    ],
+    "stories_count": 3,
+    "json_path": "/data/video_scripts/2026-09-19-ai-news-leaders.json",
+    "md_path": "/data/video_scripts/2026-09-19-ai-news-leaders.md",
+    "updated_at": "2026-09-19T12:32:22.343057"
+  },
+  {
+    "date": "2026-09-19",
+    "track": "generative_media",
+    "episode_id": "ai-news-2026-09-19-generative_media",
+    "stories": [
+      "YuE2: Open Full-Song Generation with Symbolic Score Planning",
+      "Marigold v2: Diffusion Transformers for Real-Time Monocular Depth",
+      "DeepSeek V4.1 Flash: Asymmetric Compute MoE Architecture",
+      "Anthropic Agrees $45B AI Infrastructure Deal with Nscale"
+    ],
+    "stories_count": 4,
+    "json_path": "/data/video_scripts/2026-09-19-ai-news-generative_media.json",
+    "md_path": "/data/video_scripts/2026-09-19-ai-news-generative_media.md",
+    "updated_at": "2026-09-19T12:32:37.289289"
+  },
+  {
+    "date": "2026-09-19",
+    "track": "builders",
+    "episode_id": "ai-news-2026-09-19-builders",
+    "stories": [
+      "YuE2: Open Full-Song Generation with Symbolic Score Planning",
+      "Marigold v2: Diffusion Transformers for Real-Time Monocular Depth",
+      "DeepSeek V4.1 Flash: Asymmetric Compute MoE Architecture"
+    ],
+    "stories_count": 3,
+    "json_path": "/data/video_scripts/2026-09-19-ai-news-builders.json",
+    "md_path": "/data/video_scripts/2026-09-19-ai-news-builders.md",
+    "updated_at": "2026-09-19T12:32:06.778606"
   },
   {
     "date": "2026-09-18",
-    "episode_id": "ai-news-2026-09-18",
-    "stories": [
-      "ActObs",
-      "V\u0101kQA",
-      "Srijika",
-      "MiniMax-H3"
-    ],
-    "stories_count": 4,
-    "json_path": "/data/video_scripts/2026-09-18.json",
-    "md_path": "/data/video_scripts/2026-09-18-ai-news.md",
-    "updated_at": "2026-09-18T12:26:01.062073"
+    "track": "weekly_mega_recap",
+    "episode_id": "weekly-ai-news-2026-09-18",
+    "chapters": [],
+    "tools_count": 8,
+    "json_path": "/data/video_scripts/weekly_2026-09-18-mega-recap.json",
+    "md_path": "/data/video_scripts/weekly_2026-09-18-mega-recap.md",
+    "updated_at": "2026-09-18T12:50:52.631343"
   },
   {
-    "date": "2026-09-17",
-    "episode_id": "ai-news-2026-09-17",
+    "date": "2026-09-18",
+    "track": "top4",
+    "episode_id": "ai-news-2026-09-18-top4",
     "stories": [
-      "CERA-MoA",
-      "Fathom",
-      "In-Context Robot Learning with VLM Agents"
+      "YuE2",
+      "DeepSeek V4.1 Flash",
+      "Anthropic Nscale Deal",
+      "Marigold v2"
+    ],
+    "stories_count": 4,
+    "json_path": "/data/video_scripts/2026-09-18-ai-news.json",
+    "md_path": "/data/video_scripts/2026-09-18-ai-news.md",
+    "updated_at": "2026-09-18T11:41:55.482177"
+  },
+  {
+    "date": "2026-09-18",
+    "track": "generative_media",
+    "episode_id": "ai-news-2026-09-18-generative_media",
+    "stories": [
+      "YuE2",
+      "Marigold v2",
+      "DeepSeek V4.1 Flash",
+      "Anthropic x Nscale $45B Compute Deal"
+    ],
+    "stories_count": 4,
+    "json_path": "/data/video_scripts/2026-09-18-ai-news-generative_media.json",
+    "md_path": "/data/video_scripts/2026-09-18-ai-news-generative_media.md",
+    "updated_at": "2026-09-18T12:48:23.561646"
+  },
+  {
+    "date": "2026-09-18",
+    "track": "builders",
+    "episode_id": "ai-news-2026-09-18-builders",
+    "stories": [
+      "YuE2",
+      "Marigold v2",
+      "DeepSeek V4.1 Flash"
     ],
     "stories_count": 3,
-    "json_path": "/data/video_scripts/2026-09-17.json",
-    "md_path": "/data/video_scripts/2026-09-17-ai-news.md",
-    "updated_at": "2026-09-17T12:51:59.689235"
-  },
-  {
-    "date": "2026-09-16",
-    "episode_id": "ai-news-2026-09-16",
-    "stories": [
-      "HarnessVLN",
-      "ModularRSI",
-      "StepAudio 3 Realtime",
-      "Emergence World"
-    ],
-    "stories_count": 4,
-    "json_path": "/data/video_scripts/2026-09-16.json",
-    "md_path": "/data/video_scripts/2026-09-16-ai-news.md",
-    "updated_at": "2026-09-16T10:11:06.533890"
+    "json_path": "/data/video_scripts/2026-09-18-ai-news-builders.json",
+    "md_path": "/data/video_scripts/2026-09-18-ai-news-builders.md",
+    "updated_at": "2026-09-18T11:35:05.500275"
   },
   {
     "date": "2026-09-15",
     "episode_id": "ai-news-2026-09-15",
     "stories": [
-      "Dynin-Robotics Omnimodal VLA",
-      "Orthrus Speculative Decoding",
-      "ModaLens",
-      "LynnReal-Omni"
+      "Ambient @ EgoLongQA 2026",
+      "Ambient @ EgoProactive 2026",
+      "Studying Without a Syllabus",
+      "TRACE"
     ],
     "stories_count": 4,
     "json_path": "/data/video_scripts/2026-09-15.json",
     "md_path": "/data/video_scripts/2026-09-15-ai-news.md",
-    "updated_at": "2026-09-15T12:55:45.022309"
+    "updated_at": "2026-09-15T07:55:49.310262"
   }
 ]

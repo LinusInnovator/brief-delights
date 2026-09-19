@@ -1,0 +1,173 @@
+{
+  "episode_id": "ai-news-2026-09-18-builders",
+  "track": "builders",
+  "date": "2026-09-18",
+  "voice_profile": "alex_tech",
+  "intro": "[excited] Three drops today, and Hacker News is on fire: a full-song generator at 480 upvotes, real-time depth at 340, and DeepSeek's 552-billion-parameter preprint clearing 650 points and 380 comments. Let's go.",
+  "stories": [
+    {
+      "name": "YuE2",
+      "url": "https://huggingface.co/spaces/multimodal-art/YuE",
+      "mode": "tool_drop",
+      "hero_anchor": ".gradio-container",
+      "demo_anchor": "canvas, button[type='submit'], .output",
+      "download_anchor": "button[data-testid='duplicate-button'], a[href*='tree/main']",
+      "specs": "Live HF Space | Full-Song Vocals | Editable ABC Symbolic Score",
+      "video_readiness": 140.0,
+      "consensus_count": 5,
+      "hn_points": 480,
+      "badges": [
+        "\ud83d\udd25 HN Trending (480 pts)",
+        " 5 Outlets Confirmed",
+        "\u2728 Interactive Demo Live"
+      ],
+      "beats": {
+        "landing_page": "[confident] YuE2 generates complete songs with vocals, not loops. Five outlets confirmed it, and it's trending on Hacker News at 480 points with 210 comments moving fast.",
+        "demo": "[amazed] Scroll the Gradio space and hit submit. It plans the track as editable ABC symbolic score notation, so you actually rewrite the melody and structure before you render audio.",
+        "access": "[excited] The live Space is linked below, plus the duplicate button if you want your own copy. Clone the repo, swap your lyrics in, and ship a track tonight."
+      },
+      "ordered_beats": [
+        {
+          "title": "Landing Page",
+          "narration": "[confident] YuE2 generates complete songs with vocals, not loops. Five outlets confirmed it, and it's trending on Hacker News at 480 points with 210 comments moving fast."
+        },
+        {
+          "title": "Demo",
+          "narration": "[amazed] Scroll the Gradio space and hit submit. It plans the track as editable ABC symbolic score notation, so you actually rewrite the melody and structure before you render audio."
+        },
+        {
+          "title": "Access",
+          "narration": "[excited] The live Space is linked below, plus the duplicate button if you want your own copy. Clone the repo, swap your lyrics in, and ship a track tonight."
+        }
+      ]
+    },
+    {
+      "name": "Marigold v2",
+      "url": "https://github.com/prs-eth/marigold",
+      "mode": "tool_drop",
+      "hero_anchor": "article.markdown-body img[src*='.gif'], #readme img",
+      "demo_anchor": "article.markdown-body video, article.markdown-body details, table",
+      "download_anchor": "a[href*='releases'], a[href*='clone'], .btn-primary, a[href$='.zip']",
+      "specs": "Open Source | GitHub | 4x Faster Depth",
+      "video_readiness": 135.0,
+      "consensus_count": 4,
+      "hn_points": 340,
+      "badges": [
+        "\ud83d\udd25 HN Trending (340 pts)",
+        " 4 Outlets Confirmed",
+        "\ud83d\udee0\ufe0f Open Source Repo"
+      ],
+      "beats": {
+        "landing_page": "[confident] Marigold v2 does monocular depth estimation four times faster, using diffusion transformers. It's sitting at 340 upvotes on Hacker News, confirmed across four outlets, and it runs on consumer GPUs.",
+        "demo": "[amazed] Watch the README GIFs and video clips. One RGB frame in, a clean depth map out, edge-stable on hair, glass, and thin structures where older depth models smear into mush.",
+        "access": "[energetic] Everything's open source on GitHub: code, docs, and downloadable checkpoints in the releases tab. Clone it, run the demo locally on your own card, and fine-tune on your data."
+      },
+      "ordered_beats": [
+        {
+          "title": "Landing Page",
+          "narration": "[confident] Marigold v2 does monocular depth estimation four times faster, using diffusion transformers. It's sitting at 340 upvotes on Hacker News, confirmed across four outlets, and it runs on consumer GPUs."
+        },
+        {
+          "title": "Demo",
+          "narration": "[amazed] Watch the README GIFs and video clips. One RGB frame in, a clean depth map out, edge-stable on hair, glass, and thin structures where older depth models smear into mush."
+        },
+        {
+          "title": "Access",
+          "narration": "[energetic] Everything's open source on GitHub: code, docs, and downloadable checkpoints in the releases tab. Clone it, run the demo locally on your own card, and fine-tune on your data."
+        }
+      ]
+    },
+    {
+      "name": "DeepSeek V4.1 Flash",
+      "url": "https://arxiv.org/abs/2609.11200",
+      "mode": "paper_preview",
+      "hero_anchor": "div.extra-services, figure",
+      "demo_anchor": "table.benchmark, figure",
+      "download_anchor": "a.download-pdf, a[href*='arxiv.org/pdf']",
+      "specs": "Research Preprint | arXiv | 552B MoE",
+      "video_readiness": 85.0,
+      "consensus_count": 6,
+      "hn_points": 650,
+      "badges": [
+        "\ud83d\udd25 HN Trending (650 pts)",
+        " 6 Outlets Confirmed",
+        "\ud83d\udcc4 Research Preprint"
+      ],
+      "beats": {
+        "paper_preview": "[curious] DeepSeek V4.1 Flash is a 552-billion-parameter mixture-of-experts preprint. It's the biggest signal today: 650 Hacker News points, 380 comments, and six outlets confirming the release.",
+        "architecture_evidence": "[skeptical] The core claim is asymmetric compute allocation across experts. Jump to the benchmark table and the architecture figure, then pull the PDF and check how the sparse routing math actually holds up.",
+        "release_horizon": "[confident] The full preprint is on arXiv with the download PDF link below, and PyTorch weights are already on Hugging Face. Expect community benchmarks within days, so watch this space closely."
+      },
+      "ordered_beats": [
+        {
+          "title": "Paper Preview",
+          "narration": "[curious] DeepSeek V4.1 Flash is a 552-billion-parameter mixture-of-experts preprint. It's the biggest signal today: 650 Hacker News points, 380 comments, and six outlets confirming the release."
+        },
+        {
+          "title": "Architecture & Evidence",
+          "narration": "[skeptical] The core claim is asymmetric compute allocation across experts. Jump to the benchmark table and the architecture figure, then pull the PDF and check how the sparse routing math actually holds up."
+        },
+        {
+          "title": "Release Horizon",
+          "narration": "[confident] The full preprint is on arXiv with the download PDF link below, and PyTorch weights are already on Hugging Face. Expect community benchmarks within days, so watch this space closely."
+        }
+      ]
+    }
+  ],
+  "outro": "[friendly] All project links, Hugging Face spaces, and research papers are organized down in the description below. Hit subscribe to Brief Delights for your daily rundown, and I'll see you tomorrow.",
+  "tools_metadata": [
+    {
+      "name": "YuE2",
+      "url": "https://huggingface.co/spaces/multimodal-art/YuE",
+      "mode": "tool_drop",
+      "hero_anchor": ".gradio-container",
+      "demo_anchor": "canvas, button[type='submit'], .output",
+      "download_anchor": "button[data-testid='duplicate-button'], a[href*='tree/main']",
+      "specs": "Live HF Space | Full-Song Vocals | Editable ABC Symbolic Score",
+      "video_readiness": 140.0,
+      "consensus_count": 5,
+      "hn_points": 480,
+      "badges": [
+        "\ud83d\udd25 HN Trending (480 pts)",
+        " 5 Outlets Confirmed",
+        "\u2728 Interactive Demo Live"
+      ]
+    },
+    {
+      "name": "Marigold v2",
+      "url": "https://github.com/prs-eth/marigold",
+      "mode": "tool_drop",
+      "hero_anchor": "article.markdown-body img[src*='.gif'], #readme img",
+      "demo_anchor": "article.markdown-body video, article.markdown-body details, table",
+      "download_anchor": "a[href*='releases'], a[href*='clone'], .btn-primary, a[href$='.zip']",
+      "specs": "Open Source | GitHub | 4x Faster Depth",
+      "video_readiness": 135.0,
+      "consensus_count": 4,
+      "hn_points": 340,
+      "badges": [
+        "\ud83d\udd25 HN Trending (340 pts)",
+        " 4 Outlets Confirmed",
+        "\ud83d\udee0\ufe0f Open Source Repo"
+      ]
+    },
+    {
+      "name": "DeepSeek V4.1 Flash",
+      "url": "https://arxiv.org/abs/2609.11200",
+      "mode": "paper_preview",
+      "hero_anchor": "div.extra-services, figure",
+      "demo_anchor": "table.benchmark, figure",
+      "download_anchor": "a.download-pdf, a[href*='arxiv.org/pdf']",
+      "specs": "Research Preprint | arXiv | 552B MoE",
+      "video_readiness": 85.0,
+      "consensus_count": 6,
+      "hn_points": 650,
+      "badges": [
+        "\ud83d\udd25 HN Trending (650 pts)",
+        " 6 Outlets Confirmed",
+        "\ud83d\udcc4 Research Preprint"
+      ]
+    }
+  ],
+  "raw_markdown": "---\nepisode_id: \"ai-news-2026-09-18-builders\"\ntrack: \"builders\"\nvoice_profile: \"alex_tech\"\ntools:\n  - name: \"YuE2\"\n    url: \"https://huggingface.co/spaces/multimodal-art/YuE\"\n    mode: \"tool_drop\"\n    hero_anchor: \".gradio-container\"\n    demo_anchor: \"canvas, button[type='submit'], .output\"\n    download_anchor: \"button[data-testid='duplicate-button'], a[href*='tree/main']\"\n    specs: \"Live HF Space | Full-Song Vocals | Editable ABC Symbolic Score\"\n    video_readiness: 140.0\n    consensus_count: 5\n    hn_points: 480\n    badges:\n      - \"\ud83d\udd25 HN Trending (480 pts)\"\n      - \" 5 Outlets Confirmed\"\n      - \"\u2728 Interactive Demo Live\"\n  - name: \"Marigold v2\"\n    url: \"https://github.com/prs-eth/marigold\"\n    mode: \"tool_drop\"\n    hero_anchor: \"article.markdown-body img[src*='.gif'], #readme img\"\n    demo_anchor: \"article.markdown-body video, article.markdown-body details, table\"\n    download_anchor: \"a[href*='releases'], a[href*='clone'], .btn-primary, a[href$='.zip']\"\n    specs: \"Open Source | GitHub | 4x Faster Depth\"\n    video_readiness: 135.0\n    consensus_count: 4\n    hn_points: 340\n    badges:\n      - \"\ud83d\udd25 HN Trending (340 pts)\"\n      - \" 4 Outlets Confirmed\"\n      - \"\ud83d\udee0\ufe0f Open Source Repo\"\n  - name: \"DeepSeek V4.1 Flash\"\n    url: \"https://arxiv.org/abs/2609.11200\"\n    mode: \"paper_preview\"\n    hero_anchor: \"div.extra-services, figure\"\n    demo_anchor: \"table.benchmark, figure\"\n    download_anchor: \"a.download-pdf, a[href*='arxiv.org/pdf']\"\n    specs: \"Research Preprint | arXiv | 552B MoE\"\n    video_readiness: 85.0\n    consensus_count: 6\n    hn_points: 650\n    badges:\n      - \"\ud83d\udd25 HN Trending (650 pts)\"\n      - \" 6 Outlets Confirmed\"\n      - \"\ud83d\udcc4 Research Preprint\"\n---\n\n# Intro\n[excited] Three drops today, and Hacker News is on fire: a full-song generator at 480 upvotes, real-time depth at 340, and DeepSeek's 552-billion-parameter preprint clearing 650 points and 380 comments. Let's go.\n\n---\n\n# Story 1: YuE2\n### Landing Page\n[confident] YuE2 generates complete songs with vocals, not loops. Five outlets confirmed it, and it's trending on Hacker News at 480 points with 210 comments moving fast.\n\n### Demo\n[amazed] Scroll the Gradio space and hit submit. It plans the track as editable ABC symbolic score notation, so you actually rewrite the melody and structure before you render audio.\n\n### Access\n[excited] The live Space is linked below, plus the duplicate button if you want your own copy. Clone the repo, swap your lyrics in, and ship a track tonight.\n\n---\n\n# Story 2: Marigold v2\n### Landing Page\n[confident] Marigold v2 does monocular depth estimation four times faster, using diffusion transformers. It's sitting at 340 upvotes on Hacker News, confirmed across four outlets, and it runs on consumer GPUs.\n\n### Demo\n[amazed] Watch the README GIFs and video clips. One RGB frame in, a clean depth map out, edge-stable on hair, glass, and thin structures where older depth models smear into mush.\n\n### Access\n[energetic] Everything's open source on GitHub: code, docs, and downloadable checkpoints in the releases tab. Clone it, run the demo locally on your own card, and fine-tune on your data.\n\n---\n\n# Story 3: DeepSeek V4.1 Flash\n### Paper Preview\n[curious] DeepSeek V4.1 Flash is a 552-billion-parameter mixture-of-experts preprint. It's the biggest signal today: 650 Hacker News points, 380 comments, and six outlets confirming the release.\n\n### Architecture & Evidence\n[skeptical] The core claim is asymmetric compute allocation across experts. Jump to the benchmark table and the architecture figure, then pull the PDF and check how the sparse routing math actually holds up.\n\n### Release Horizon\n[confident] The full preprint is on arXiv with the download PDF link below, and PyTorch weights are already on Hugging Face. Expect community benchmarks within days, so watch this space closely.\n\n---\n\n# Outro\n[friendly] All project links, Hugging Face spaces, and research papers are organized down in the description below. Hit subscribe to Brief Delights for your daily rundown, and I'll see you tomorrow.",
+  "generated_at": "2026-09-18T11:35:05.498297"
+}

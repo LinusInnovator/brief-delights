@@ -199,7 +199,7 @@ export default async function ArchivePage() {
                 {/* Subscribe CTA Banner */}
                 <section className="bg-[#58111A] rounded-3xl p-8 md:p-10 mb-12 text-white text-center shadow-xl">
                     <h2 className="text-2xl md:text-3xl font-serif font-bold mb-2">Never Miss Tomorrow&apos;s Intelligence Dispatch</h2>
-                    <p className="text-white/80 max-w-xl mx-auto mb-6 text-sm">We scan 1,340+ articles daily so you don&apos;t have to. Get the top role-curated insights in your inbox every morning.</p>
+                    <p className="text-white/80 max-w-xl mx-auto mb-6 text-sm">We scan 7,000+ articles daily so you don&apos;t have to. Get the top role-curated insights in your inbox every morning.</p>
                     <Link
                         href="/"
                         className="inline-block bg-white text-[#121212] font-bold px-8 py-3.5 rounded-xl hover:bg-gray-100 transition text-sm shadow-md"

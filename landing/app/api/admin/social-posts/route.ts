@@ -15,14 +15,23 @@ function extractPostsFromNewsletterHtml(html: string, dateStr: string, segId: st
   // Extract first two paragraph texts for takeaway & why it matters
   const pMatches = Array.from(html.matchAll(/<p[^>]*>(.*?)<\/p>/gi)).map(m => m[1].replace(/<[^>]+>/g, '').trim()).filter(p => p.length > 20);
   
+  // Extract link if available in the newsletter HTML
+  const linkMatch = html.match(/<a[^>]+href=["'](https?:\/\/[^"']+)["'][^>]*>(?:Read the full story|Read more|Full story|Source|Full article)/i)
+    || html.match(/<h[12][^>]*><a[^>]+href=["'](https?:\/\/[^"']+)["']/i);
+  const articleUrl = linkMatch ? linkMatch[1] : '';
+
   const summary = pMatches[0] || `Strategic analysis and breakdown for ${segName} on ${dateStr}.`;
-  const keyTakeaway = pMatches[1] || summary;
+  let keyTakeaway = pMatches[1] || summary;
+  if (articleUrl && (/see full article/i.test(keyTakeaway) || keyTakeaway.trim().toLowerCase() === 'technology')) {
+    keyTakeaway = `See full story: ${articleUrl}`;
+  }
   const whyItMatters = pMatches[2] || `Directly impacts organizational roadmap, technology stack, and competitive strategy for ${segName}.`;
 
   const redditTitle = `${segEmoji} [${segName}] ${title} — Strategic Breakdown (${dateStr})`;
+  const sourceLine = articleUrl ? `Source: Brief Delights Editorial (${articleUrl})` : `Source: Brief Delights Editorial`;
   const redditBody = `${title}
 
-Source: Brief Delights Editorial | Category: ${segName} | Date: ${dateStr}
+${sourceLine} | Category: ${segName} | Date: ${dateStr}
 
 📌 WHAT HAPPENED
 ${summary}
@@ -34,7 +43,7 @@ ${summary}
 • ${whyItMatters}
 
 📰 ABOUT BRIEF DELIGHTS
-We scan 1,340+ tech & AI articles daily across engineering, strategy, and frontier research so you don't have to.
+We scan 7,000+ tech & AI articles daily across engineering, strategy, and frontier research so you don't have to.
 
 • Read full daily issue: https://brief.delights.pro/archive/${dateStr}-${segId}
 • Join free for daily email briefs: https://brief.delights.pro`;
@@ -50,6 +59,7 @@ We scan 1,340+ tech & AI articles daily across engineering, strategy, and fronti
     segment_name: segName,
     segment_emoji: segEmoji,
     article_title: title,
+    article_url: articleUrl,
     reddit_title: redditTitle,
     reddit_body: redditBody,
     reddit_submit_url: redditSubmitUrl,
@@ -154,7 +164,14 @@ export async function GET(request: NextRequest) {
           const top = articles[0];
           const title = top.title || 'Daily Tech & AI Strategic Intelligence';
           const summary = top.summary || '';
-          const keyTakeaway = top.key_takeaway || top.summary || '';
+          const articleUrl = top.url || top.link || top.tracked_url || '';
+          const sourceName = top.source || 'Research';
+          let keyTakeaway = top.key_takeaway || top.summary || '';
+
+          if (articleUrl && (/see full article/i.test(keyTakeaway) || keyTakeaway.trim().toLowerCase() === sourceName.toLowerCase())) {
+            keyTakeaway = `See full story at ${sourceName}: ${articleUrl}`;
+          }
+
           let whyItMatters = (top.why_it_matters || top.why_this_matters || '').replace(/^(why\s+(it|this)\s+matters:?\s*|strategic\s+takeaway\s+(for\s+[^:]+:?\s*)?)+/gi, '').trim();
 
           if (!whyItMatters || whyItMatters.toLowerCase() === keyTakeaway.toLowerCase()) {
@@ -162,10 +179,10 @@ export async function GET(request: NextRequest) {
           }
 
           const redditTitle = `${seg.emoji} [${seg.name}] ${title} — Strategic Breakdown (${dateStr})`;
-          const sourceName = top.source || 'Research';
+          const sourceLine = articleUrl ? `Source: ${sourceName} (${articleUrl})` : `Source: ${sourceName}`;
           const redditBody = `${title}
 
-Source: ${sourceName} | Category: ${seg.name} | Date: ${dateStr}
+${sourceLine} | Category: ${seg.name} | Date: ${dateStr}
 
 📌 WHAT HAPPENED
 ${summary}
@@ -177,7 +194,7 @@ ${summary}
 • ${whyItMatters}
 
 📰 ABOUT BRIEF DELIGHTS
-We scan 1,340+ tech & AI articles daily across engineering, strategy, and frontier research so you don't have to.
+We scan 7,000+ tech & AI articles daily across engineering, strategy, and frontier research so you don't have to.
 
 • Read full daily issue: https://brief.delights.pro/archive/${dateStr}-${seg.id}
 • Join free for daily email briefs: https://brief.delights.pro`;
@@ -190,6 +207,7 @@ We scan 1,340+ tech & AI articles daily across engineering, strategy, and fronti
             segment_name: seg.name,
             segment_emoji: seg.emoji,
             article_title: title,
+            article_url: articleUrl,
             reddit_title: redditTitle,
             reddit_body: redditBody,
             reddit_submit_url: `https://www.reddit.com/r/BriefDelights/submit?title=${encodedTitle}&text=${encodedBody}`,

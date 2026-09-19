@@ -352,24 +352,30 @@ def run_phase_2(segments_data: dict) -> bool:
     else:
         log("✅ Reddit strategic post published / 1-Click link ready")
 
-    # STEP 7b: Generate Daily Video Safari Script for OmniCap
+    # STEP 7b: Generate Daily Video Safari Scripts for OmniCap (All Audience Tracks)
     log("\n" + "=" * 60)
-    log(f"STEP 7b: Generating Daily Video Safari Script for {TODAY} (OmniCap)", "INFO")
+    log(f"STEP 7b: Generating Daily Video Safari Scripts for {TODAY} (OmniCap Multi-Track)", "INFO")
     log("=" * 60)
-    if not run_script("generate_video_script.py", 180, args=["--date", TODAY]):
-        log("⚠️ Video safari script generation failed (non-blocking)", "WARN")
+    if not run_script("generate_video_script.py", 360, args=["--all-tracks", "--date", TODAY]):
+        log("⚠️ Video safari multi-track script generation failed (non-blocking)", "WARN")
     else:
-        log(f"✅ Video safari script generated for {TODAY} in reports/video_scripts/ & public/data/")
+        log(f"✅ Video safari scripts generated for {TODAY} across all tracks in reports/video_scripts/ & public/data/")
 
 
     if datetime.now().weekday() == 6:  # 6 = Sunday
         log("\n" + "=" * 60)
-        log("STEP 6b: Source Auto-Improvement (Sunday Maintenance)", "INFO")
+        log("STEP 6b: Sunday Maintenance & Weekly Mega-Recap", "INFO")
         log("=" * 60)
         if not run_script("auto_improve_sources.py", 600):
             log("⚠️ Source auto-improvement failed (non-blocking)", "WARN")
         else:
             log("✅ Source auto-improvement complete")
+
+        log("🎬 Generating Sunday Weekly Mega-Recap Video Script...")
+        if not run_script("generate_video_script.py", 300, args=["--weekly", "--date", TODAY]):
+            log("⚠️ Weekly mega-recap video script generation failed (non-blocking)", "WARN")
+        else:
+            log(f"✅ Sunday Weekly Mega-Recap video script generated in reports/video_scripts/ & public/data/")
     
     # STEP 8: Growth Engine (drip, win-back, repurposing)
     log("\n" + "=" * 60)
