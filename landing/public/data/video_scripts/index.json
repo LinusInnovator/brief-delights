@@ -1,5 +1,19 @@
 [
   {
+    "date": "2026-09-19",
+    "episode_id": "ai-news-2026-09-19",
+    "stories": [
+      "ActObs",
+      "Verifiable Social Reasoning for LLM Assistants",
+      "Self-Evolving Search Index",
+      "MiniMax-H3 Physical World Reasoning"
+    ],
+    "stories_count": 4,
+    "json_path": "/data/video_scripts/2026-09-19.json",
+    "md_path": "/data/video_scripts/2026-09-19-ai-news.md",
+    "updated_at": "2026-09-19T09:46:45.950245"
+  },
+  {
     "date": "2026-09-18",
     "episode_id": "ai-news-2026-09-18",
     "stories": [
