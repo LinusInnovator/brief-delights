@@ -4,148 +4,133 @@
   "format": "daily",
   "date": "2026-09-19",
   "voice_profile": "alex_tech",
-  "intro": "[excited] Four drops today, and Hacker News is on fire \u2014 DeepSeek's 552-billion-parameter preprint just hit 650 points, while YuE2's open music Space sits at 480 and climbing. Let's move.",
+  "intro": "[excited] Today: AWS Graviton5 hits GA, OpenAI drops gpt-oss and 4o image gen, plus a brutal US-China revenue gap. HN\u2019s quiet, but consensus is loud.",
   "stories": [
     {
-      "name": "YuE2: Open Full-Song Generation with Symbolic Score Planning",
-      "url": "https://huggingface.co/spaces/multimodal-art/YuE",
+      "name": "Amazon EC2 R9g and R9gd instances powered by AWS Graviton5 processors are now generally available",
+      "url": "https://aws.amazon.com/blogs/aws/amazon-ec2-r9g-and-r9gd-instances-powered-by-aws-graviton5-processors-are-now-generally-available/",
       "mode": "tool_drop",
-      "hero_anchor": "h1, .model-header, header",
-      "demo_anchor": "iframe[src*='gradio'], .gradio-container, canvas, video, button[type='submit'], .output",
-      "download_anchor": "button[data-testid='duplicate-button'], a[href*='tree/main']",
-      "specs": "Interactive Space | Hugging Face | Live Demo",
-      "video_readiness": 135.0,
-      "consensus_count": 5,
-      "hn_points": 480,
-      "badges": [
-        "\ud83d\udd25 HN Trending (480 pts)",
-        "\u26a1 5 Outlets Confirmed",
-        "\u2728 Interactive Demo Live"
-      ],
+      "hero_anchor": "main h1, header h1, .hero h1, h1",
+      "demo_anchor": "video, canvas, #demo, .demo, #comparison, table",
+      "download_anchor": "a[href*='github.com'], a[href*='download'], a[href*='huggingface.co'], .cta-button",
+      "specs": "Live Tool | Web Drop",
+      "video_readiness": 45.0,
+      "consensus_count": 2,
+      "hn_points": null,
+      "badges": [],
       "beats": {
-        "landing_page": "[confident] YuE2 generates complete songs \u2014 vocals, lyrics, instrumentation \u2014 and it's completely open. Five outlets confirmed it, and it's trending on Hacker News at 480 points with 210 comments.",
-        "demo": "[amazed] Here's the magic: it plans your track as editable ABC symbolic score notation first, then renders audio. You actually rewrite the melody instead of rerolling a slot machine.",
-        "access": "[friendly] The interactive Space is live on Hugging Face right now \u2014 no install, no waitlist. Click the link below, type a prompt, and you're producing full tracks in about a minute."
+        "landing_page": "[confident] AWS just made EC2 R9g and R9gd instances generally available, powered by Graviton5. Two-source consensus flags this as a live tool drop for builders.",
+        "demo": "[amazed] Spin up an R9g, point your workload at Graviton5, and benchmark. No HN thread yet, but the AWS blog is your launchpad.",
+        "access": "[energetic] R9g and R9gd are GA now in AWS. Check regional availability, then wire them into your CI or inference stack."
       },
       "ordered_beats": [
         {
           "title": "Landing Page",
-          "narration": "[confident] YuE2 generates complete songs \u2014 vocals, lyrics, instrumentation \u2014 and it's completely open. Five outlets confirmed it, and it's trending on Hacker News at 480 points with 210 comments."
+          "narration": "[confident] AWS just made EC2 R9g and R9gd instances generally available, powered by Graviton5. Two-source consensus flags this as a live tool drop for builders."
         },
         {
           "title": "Demo",
-          "narration": "[amazed] Here's the magic: it plans your track as editable ABC symbolic score notation first, then renders audio. You actually rewrite the melody instead of rerolling a slot machine."
+          "narration": "[amazed] Spin up an R9g, point your workload at Graviton5, and benchmark. No HN thread yet, but the AWS blog is your launchpad."
         },
         {
           "title": "Access",
-          "narration": "[friendly] The interactive Space is live on Hugging Face right now \u2014 no install, no waitlist. Click the link below, type a prompt, and you're producing full tracks in about a minute."
+          "narration": "[energetic] R9g and R9gd are GA now in AWS. Check regional availability, then wire them into your CI or inference stack."
         }
       ]
     },
     {
-      "name": "DeepSeek V4.1 Flash: Asymmetric Compute MoE Architecture",
-      "url": "https://arxiv.org/abs/2609.11200",
+      "name": "Introducing gpt-oss",
+      "url": "https://openai.com/index/introducing-gpt-oss",
       "mode": "paper_preview",
-      "hero_anchor": "h1.title, .title, h1",
-      "demo_anchor": "a.download-pdf, div.extra-services, table.benchmark, figure",
-      "download_anchor": "a.download-pdf, a[href*='arxiv.org/pdf']",
-      "specs": "Research Preprint | arXiv",
-      "video_readiness": 85.0,
-      "consensus_count": 6,
-      "hn_points": 650,
-      "badges": [
-        "\ud83d\udd25 HN Trending (650 pts)",
-        "\u26a1 6 Outlets Confirmed",
-        "\ud83d\udcc4 Research Preprint"
-      ],
+      "hero_anchor": "main h1, header h1, h1",
+      "demo_anchor": "figure, table, .results, #diagram, #comparison",
+      "download_anchor": "a[href*='pdf'], a[href*='arxiv.org'], a[href*='github.com']",
+      "specs": "Research Preview | Benchmark",
+      "video_readiness": 40.0,
+      "consensus_count": 2,
+      "hn_points": null,
+      "badges": [],
       "beats": {
-        "paper": "[confident] DeepSeek V4.1 Flash just landed as a preprint \u2014 552 billion parameters of mixture-of-experts, and Hacker News pushed it to 650 points with 380 comments. Six outlets confirmed it.",
-        "architecture_evidence": "[curious] The trick is asymmetric compute: experts get wildly different budgets, so most tokens route through cheap paths. Their benchmark table shows frontier-adjacent scores at a fraction of the inference cost.",
-        "release_horizon": "[excited] PyTorch weights are already on Hugging Face, so this isn't vaporware. Expect fine-tunes and quantized builds flooding in within days \u2014 grab the base weights while they're hot."
+        "paper": "[curious] OpenAI introduces gpt-oss, a research preview with benchmarks. Two-source consensus says innovators should read the paper before the hype cycle.",
+        "architecture_evidence": "[skeptical] No HN thread yet, so skip the vibes. The evidence is in the benchmark tables\u2014check architecture choices, tokenizer, and eval claims yourself.",
+        "release_horizon": "[confident] It\u2019s a research preview, not a product launch. Watch for weights, API access, or a broader release window from OpenAI."
       },
       "ordered_beats": [
         {
           "title": "Paper",
-          "narration": "[confident] DeepSeek V4.1 Flash just landed as a preprint \u2014 552 billion parameters of mixture-of-experts, and Hacker News pushed it to 650 points with 380 comments. Six outlets confirmed it."
+          "narration": "[curious] OpenAI introduces gpt-oss, a research preview with benchmarks. Two-source consensus says innovators should read the paper before the hype cycle."
         },
         {
-          "title": "Architecture / Evidence",
-          "narration": "[curious] The trick is asymmetric compute: experts get wildly different budgets, so most tokens route through cheap paths. Their benchmark table shows frontier-adjacent scores at a fraction of the inference cost."
+          "title": "Architecture/Evidence",
+          "narration": "[skeptical] No HN thread yet, so skip the vibes. The evidence is in the benchmark tables\u2014check architecture choices, tokenizer, and eval claims yourself."
         },
         {
           "title": "Release Horizon",
-          "narration": "[excited] PyTorch weights are already on Hugging Face, so this isn't vaporware. Expect fine-tunes and quantized builds flooding in within days \u2014 grab the base weights while they're hot."
+          "narration": "[confident] It\u2019s a research preview, not a product launch. Watch for weights, API access, or a broader release window from OpenAI."
         }
       ]
     },
     {
-      "name": "Anthropic Agrees $45B AI Infrastructure Deal with Nscale",
-      "url": "https://brief.delights.pro/newsletters/newsletter_leaders_2026-08-28.html",
+      "name": "OpenAI and Anthropic are making 10 times more revenue than all Chinese AI models combined, research group Rhodium says",
+      "url": "https://www.cnbc.com/2026/09/17/chinas-ai-models-make-only-10percent-of-us-leaders-revenue-rhodium.html",
       "mode": "industry_insight",
       "hero_anchor": "main h1, header h1, .hero h1, h1",
       "demo_anchor": "figure, table, blockquote, canvas, .chart, .metrics",
       "download_anchor": "a[href*='report'], a[href*='pdf'], a.cta-button",
       "specs": "Industry Insight | Strategic Analysis",
-      "video_readiness": 65.0,
-      "consensus_count": 3,
-      "hn_points": 190,
-      "badges": [
-        "\ud83d\udd25 HN Trending (190 pts)",
-        "\u26a1 3 Outlets Confirmed"
-      ],
+      "video_readiness": 30.0,
+      "consensus_count": 1,
+      "hn_points": null,
+      "badges": [],
       "beats": {
-        "headline": "[skeptical] Forty-five billion dollars. Anthropic just signed a massive infrastructure deal with Nscale, locking down European gigawatt power and datacenter capacity. Three outlets confirmed, 190 points on HN.",
-        "evidence": "[confident] This isn't just GPUs \u2014 it's power contracts and physical buildout. Gigawatt-scale commitments take years to energize, which means Anthropic is betting on demand staying hot well into the 2030s.",
-        "the_verdict": "[curious] The compute land grab is now a real-estate and energy game. If you're building on frontier models, expect capacity to be the bottleneck \u2014 and pricing to reflect whoever owns the megawatts."
+        "headline": "[excited] Rhodium says OpenAI and Anthropic make ten times more revenue than all Chinese AI models combined. One-source consensus, but this reframes the competitive map.",
+        "evidence": "[confident] CNBC reports the gap using Rhodium\u2019s research. No HN thread yet, so treat it as strategic signal, not settled scoreboard.",
+        "the_verdict": "[skeptical] The verdict: US labs dominate revenue, but China can still win on open weights and cost. Builders should hedge, not panic."
       },
       "ordered_beats": [
         {
           "title": "Headline",
-          "narration": "[skeptical] Forty-five billion dollars. Anthropic just signed a massive infrastructure deal with Nscale, locking down European gigawatt power and datacenter capacity. Three outlets confirmed, 190 points on HN."
+          "narration": "[excited] Rhodium says OpenAI and Anthropic make ten times more revenue than all Chinese AI models combined. One-source consensus, but this reframes the competitive map."
         },
         {
           "title": "Evidence",
-          "narration": "[confident] This isn't just GPUs \u2014 it's power contracts and physical buildout. Gigawatt-scale commitments take years to energize, which means Anthropic is betting on demand staying hot well into the 2030s."
+          "narration": "[confident] CNBC reports the gap using Rhodium\u2019s research. No HN thread yet, so treat it as strategic signal, not settled scoreboard."
         },
         {
           "title": "The Verdict",
-          "narration": "[curious] The compute land grab is now a real-estate and energy game. If you're building on frontier models, expect capacity to be the bottleneck \u2014 and pricing to reflect whoever owns the megawatts."
+          "narration": "[skeptical] The verdict: US labs dominate revenue, but China can still win on open weights and cost. Builders should hedge, not panic."
         }
       ]
     },
     {
-      "name": "Marigold v2: Diffusion Transformers for Real-Time Monocular Depth",
-      "url": "https://github.com/prs-eth/marigold",
+      "name": "Introducing 4o Image Generation",
+      "url": "https://openai.com/index/introducing-4o-image-generation",
       "mode": "tool_drop",
-      "hero_anchor": "article.markdown-body h1, .repository-content, #readme h1, h1",
-      "demo_anchor": "article.markdown-body img[src*='.gif'], article.markdown-body video, article.markdown-body details, #readme img, table",
-      "download_anchor": "a[href*='releases'], a[href*='clone'], .btn-primary, a[href$='.zip']",
-      "specs": "Open Source | GitHub | Code & Docs",
-      "video_readiness": 110.0,
-      "consensus_count": 4,
-      "hn_points": 340,
-      "badges": [
-        "\ud83d\udd25 HN Trending (340 pts)",
-        "\u26a1 4 Outlets Confirmed",
-        "\ud83d\udee0\ufe0f Open Source Repo"
-      ],
+      "hero_anchor": "main h1, header h1, .hero h1, h1",
+      "demo_anchor": "video, canvas, #demo, .demo, #comparison, table",
+      "download_anchor": "a[href*='github.com'], a[href*='download'], a[href*='huggingface.co'], .cta-button",
+      "specs": "Live Tool | Web Drop",
+      "video_readiness": 45.0,
+      "consensus_count": 2,
+      "hn_points": null,
+      "badges": [],
       "beats": {
-        "landing_page": "[excited] Marigold v2 turns any single photo into a depth map, four times faster than before, on consumer GPUs. It's open source, sitting at 340 points on Hacker News with four outlets confirming.",
-        "demo": "[amazed] Watch this \u2014 one image in, a clean depth field out, in real time. Diffusion transformers doing what used to need a render farm, now running on the card already in your desktop.",
-        "access": "[friendly] Code, weights, and docs are all on GitHub under the prs-eth repo. Clone it, run the demo script, and you've got instant depth for 3D, AR, or video pipelines."
+        "landing_page": "[excited] OpenAI\u2019s 4o Image Generation lands natively inside GPT-4o. Two-source consensus flags strong text rendering and instruction following as a direct Midjourney and Flux threat.",
+        "demo": "[amazed] Prompt it to design a poster with legible text, then iterate conversationally. No HN thread yet, but the demo value is obvious.",
+        "access": "[friendly] It\u2019s live in GPT-4o for many users now. Open ChatGPT, describe your image, and stress-test the text rendering yourself today."
       },
       "ordered_beats": [
         {
           "title": "Landing Page",
-          "narration": "[excited] Marigold v2 turns any single photo into a depth map, four times faster than before, on consumer GPUs. It's open source, sitting at 340 points on Hacker News with four outlets confirming."
+          "narration": "[excited] OpenAI\u2019s 4o Image Generation lands natively inside GPT-4o. Two-source consensus flags strong text rendering and instruction following as a direct Midjourney and Flux threat."
         },
         {
           "title": "Demo",
-          "narration": "[amazed] Watch this \u2014 one image in, a clean depth field out, in real time. Diffusion transformers doing what used to need a render farm, now running on the card already in your desktop."
+          "narration": "[amazed] Prompt it to design a poster with legible text, then iterate conversationally. No HN thread yet, but the demo value is obvious."
         },
         {
           "title": "Access",
-          "narration": "[friendly] Code, weights, and docs are all on GitHub under the prs-eth repo. Clone it, run the demo script, and you've got instant depth for 3D, AR, or video pipelines."
+          "narration": "[friendly] It\u2019s live in GPT-4o for many users now. Open ChatGPT, describe your image, and stress-test the text rendering yourself today."
         }
       ]
     }
@@ -153,73 +138,58 @@
   "outro": "[friendly] All project links, Hugging Face spaces, and research papers are organized down in the description below. Hit subscribe to Brief Delights for your daily rundown, and I'll see you tomorrow.",
   "tools_metadata": [
     {
-      "name": "YuE2: Open Full-Song Generation with Symbolic Score Planning",
-      "url": "https://huggingface.co/spaces/multimodal-art/YuE",
+      "name": "Amazon EC2 R9g and R9gd instances powered by AWS Graviton5 processors are now generally available",
+      "url": "https://aws.amazon.com/blogs/aws/amazon-ec2-r9g-and-r9gd-instances-powered-by-aws-graviton5-processors-are-now-generally-available/",
       "mode": "tool_drop",
-      "hero_anchor": "h1, .model-header, header",
-      "demo_anchor": "iframe[src*='gradio'], .gradio-container, canvas, video, button[type='submit'], .output",
-      "download_anchor": "button[data-testid='duplicate-button'], a[href*='tree/main']",
-      "specs": "Interactive Space | Hugging Face | Live Demo",
-      "video_readiness": 135.0,
-      "consensus_count": 5,
-      "hn_points": 480,
-      "badges": [
-        "\ud83d\udd25 HN Trending (480 pts)",
-        "\u26a1 5 Outlets Confirmed",
-        "\u2728 Interactive Demo Live"
-      ]
+      "hero_anchor": "main h1, header h1, .hero h1, h1",
+      "demo_anchor": "video, canvas, #demo, .demo, #comparison, table",
+      "download_anchor": "a[href*='github.com'], a[href*='download'], a[href*='huggingface.co'], .cta-button",
+      "specs": "Live Tool | Web Drop",
+      "video_readiness": 45.0,
+      "consensus_count": 2,
+      "hn_points": null,
+      "badges": []
     },
     {
-      "name": "DeepSeek V4.1 Flash: Asymmetric Compute MoE Architecture",
-      "url": "https://arxiv.org/abs/2609.11200",
+      "name": "Introducing gpt-oss",
+      "url": "https://openai.com/index/introducing-gpt-oss",
       "mode": "paper_preview",
-      "hero_anchor": "h1.title, .title, h1",
-      "demo_anchor": "a.download-pdf, div.extra-services, table.benchmark, figure",
-      "download_anchor": "a.download-pdf, a[href*='arxiv.org/pdf']",
-      "specs": "Research Preprint | arXiv",
-      "video_readiness": 85.0,
-      "consensus_count": 6,
-      "hn_points": 650,
-      "badges": [
-        "\ud83d\udd25 HN Trending (650 pts)",
-        "\u26a1 6 Outlets Confirmed",
-        "\ud83d\udcc4 Research Preprint"
-      ]
+      "hero_anchor": "main h1, header h1, h1",
+      "demo_anchor": "figure, table, .results, #diagram, #comparison",
+      "download_anchor": "a[href*='pdf'], a[href*='arxiv.org'], a[href*='github.com']",
+      "specs": "Research Preview | Benchmark",
+      "video_readiness": 40.0,
+      "consensus_count": 2,
+      "hn_points": null,
+      "badges": []
     },
     {
-      "name": "Anthropic Agrees $45B AI Infrastructure Deal with Nscale",
-      "url": "https://brief.delights.pro/newsletters/newsletter_leaders_2026-08-28.html",
+      "name": "OpenAI and Anthropic are making 10 times more revenue than all Chinese AI models combined, research group Rhodium says",
+      "url": "https://www.cnbc.com/2026/09/17/chinas-ai-models-make-only-10percent-of-us-leaders-revenue-rhodium.html",
       "mode": "industry_insight",
       "hero_anchor": "main h1, header h1, .hero h1, h1",
       "demo_anchor": "figure, table, blockquote, canvas, .chart, .metrics",
       "download_anchor": "a[href*='report'], a[href*='pdf'], a.cta-button",
       "specs": "Industry Insight | Strategic Analysis",
-      "video_readiness": 65.0,
-      "consensus_count": 3,
-      "hn_points": 190,
-      "badges": [
-        "\ud83d\udd25 HN Trending (190 pts)",
-        "\u26a1 3 Outlets Confirmed"
-      ]
+      "video_readiness": 30.0,
+      "consensus_count": 1,
+      "hn_points": null,
+      "badges": []
     },
     {
-      "name": "Marigold v2: Diffusion Transformers for Real-Time Monocular Depth",
-      "url": "https://github.com/prs-eth/marigold",
+      "name": "Introducing 4o Image Generation",
+      "url": "https://openai.com/index/introducing-4o-image-generation",
       "mode": "tool_drop",
-      "hero_anchor": "article.markdown-body h1, .repository-content, #readme h1, h1",
-      "demo_anchor": "article.markdown-body img[src*='.gif'], article.markdown-body video, article.markdown-body details, #readme img, table",
-      "download_anchor": "a[href*='releases'], a[href*='clone'], .btn-primary, a[href$='.zip']",
-      "specs": "Open Source | GitHub | Code & Docs",
-      "video_readiness": 110.0,
-      "consensus_count": 4,
-      "hn_points": 340,
-      "badges": [
-        "\ud83d\udd25 HN Trending (340 pts)",
-        "\u26a1 4 Outlets Confirmed",
-        "\ud83d\udee0\ufe0f Open Source Repo"
-      ]
+      "hero_anchor": "main h1, header h1, .hero h1, h1",
+      "demo_anchor": "video, canvas, #demo, .demo, #comparison, table",
+      "download_anchor": "a[href*='github.com'], a[href*='download'], a[href*='huggingface.co'], .cta-button",
+      "specs": "Live Tool | Web Drop",
+      "video_readiness": 45.0,
+      "consensus_count": 2,
+      "hn_points": null,
+      "badges": []
     }
   ],
-  "raw_markdown": "---\nepisode_id: ai-news-2026-09-19-top4\ntrack: top4\nformat: daily\nvoice_profile: alex_tech\ntools:\n- name: 'YuE2: Open Full-Song Generation with Symbolic Score Planning'\n  url: https://huggingface.co/spaces/multimodal-art/YuE\n  mode: tool_drop\n  hero_anchor: h1, .model-header, header\n  demo_anchor: iframe[src*='gradio'], .gradio-container, canvas, video, button[type='submit'],\n    .output\n  download_anchor: button[data-testid='duplicate-button'], a[href*='tree/main']\n  specs: Interactive Space | Hugging Face | Live Demo\n  video_readiness: 135.0\n  consensus_count: 5\n  hn_points: 480\n  badges:\n  - \ud83d\udd25 HN Trending (480 pts)\n  - \u26a1 5 Outlets Confirmed\n  - \u2728 Interactive Demo Live\n- name: 'DeepSeek V4.1 Flash: Asymmetric Compute MoE Architecture'\n  url: https://arxiv.org/abs/2609.11200\n  mode: paper_preview\n  hero_anchor: h1.title, .title, h1\n  demo_anchor: a.download-pdf, div.extra-services, table.benchmark, figure\n  download_anchor: a.download-pdf, a[href*='arxiv.org/pdf']\n  specs: Research Preprint | arXiv\n  video_readiness: 85.0\n  consensus_count: 6\n  hn_points: 650\n  badges:\n  - \ud83d\udd25 HN Trending (650 pts)\n  - \u26a1 6 Outlets Confirmed\n  - \ud83d\udcc4 Research Preprint\n- name: Anthropic Agrees $45B AI Infrastructure Deal with Nscale\n  url: https://brief.delights.pro/newsletters/newsletter_leaders_2026-08-28.html\n  mode: industry_insight\n  hero_anchor: main h1, header h1, .hero h1, h1\n  demo_anchor: figure, table, blockquote, canvas, .chart, .metrics\n  download_anchor: a[href*='report'], a[href*='pdf'], a.cta-button\n  specs: Industry Insight | Strategic Analysis\n  video_readiness: 65.0\n  consensus_count: 3\n  hn_points: 190\n  badges:\n  - \ud83d\udd25 HN Trending (190 pts)\n  - \u26a1 3 Outlets Confirmed\n- name: 'Marigold v2: Diffusion Transformers for Real-Time Monocular Depth'\n  url: https://github.com/prs-eth/marigold\n  mode: tool_drop\n  hero_anchor: 'article.markdown-body h1, .repository-content, #readme h1, h1'\n  demo_anchor: 'article.markdown-body img[src*=''.gif''], article.markdown-body video,\n    article.markdown-body details, #readme img, table'\n  download_anchor: a[href*='releases'], a[href*='clone'], .btn-primary, a[href$='.zip']\n  specs: Open Source | GitHub | Code & Docs\n  video_readiness: 110.0\n  consensus_count: 4\n  hn_points: 340\n  badges:\n  - \ud83d\udd25 HN Trending (340 pts)\n  - \u26a1 4 Outlets Confirmed\n  - \ud83d\udee0\ufe0f Open Source Repo\n---\n\n# Intro\n[excited] Four drops today, and Hacker News is on fire \u2014 DeepSeek's 552-billion-parameter preprint just hit 650 points, while YuE2's open music Space sits at 480 and climbing. Let's move.\n\n---\n\n# Story 1: YuE2: Open Full-Song Generation with Symbolic Score Planning\n### Landing Page\n[confident] YuE2 generates complete songs \u2014 vocals, lyrics, instrumentation \u2014 and it's completely open. Five outlets confirmed it, and it's trending on Hacker News at 480 points with 210 comments.\n\n### Demo\n[amazed] Here's the magic: it plans your track as editable ABC symbolic score notation first, then renders audio. You actually rewrite the melody instead of rerolling a slot machine.\n\n### Access\n[friendly] The interactive Space is live on Hugging Face right now \u2014 no install, no waitlist. Click the link below, type a prompt, and you're producing full tracks in about a minute.\n\n---\n\n# Story 2: DeepSeek V4.1 Flash: Asymmetric Compute MoE Architecture\n### Paper\n[confident] DeepSeek V4.1 Flash just landed as a preprint \u2014 552 billion parameters of mixture-of-experts, and Hacker News pushed it to 650 points with 380 comments. Six outlets confirmed it.\n\n### Architecture / Evidence\n[curious] The trick is asymmetric compute: experts get wildly different budgets, so most tokens route through cheap paths. Their benchmark table shows frontier-adjacent scores at a fraction of the inference cost.\n\n### Release Horizon\n[excited] PyTorch weights are already on Hugging Face, so this isn't vaporware. Expect fine-tunes and quantized builds flooding in within days \u2014 grab the base weights while they're hot.\n\n---\n\n# Story 3: Anthropic Agrees $45B AI Infrastructure Deal with Nscale\n### Headline\n[skeptical] Forty-five billion dollars. Anthropic just signed a massive infrastructure deal with Nscale, locking down European gigawatt power and datacenter capacity. Three outlets confirmed, 190 points on HN.\n\n### Evidence\n[confident] This isn't just GPUs \u2014 it's power contracts and physical buildout. Gigawatt-scale commitments take years to energize, which means Anthropic is betting on demand staying hot well into the 2030s.\n\n### The Verdict\n[curious] The compute land grab is now a real-estate and energy game. If you're building on frontier models, expect capacity to be the bottleneck \u2014 and pricing to reflect whoever owns the megawatts.\n\n---\n\n# Story 4: Marigold v2: Diffusion Transformers for Real-Time Monocular Depth\n### Landing Page\n[excited] Marigold v2 turns any single photo into a depth map, four times faster than before, on consumer GPUs. It's open source, sitting at 340 points on Hacker News with four outlets confirming.\n\n### Demo\n[amazed] Watch this \u2014 one image in, a clean depth field out, in real time. Diffusion transformers doing what used to need a render farm, now running on the card already in your desktop.\n\n### Access\n[friendly] Code, weights, and docs are all on GitHub under the prs-eth repo. Clone it, run the demo script, and you've got instant depth for 3D, AR, or video pipelines.\n\n---\n\n# Outro\n[friendly] All project links, Hugging Face spaces, and research papers are organized down in the description below. Hit subscribe to Brief Delights for your daily rundown, and I'll see you tomorrow.",
-  "generated_at": "2026-09-19T12:30:54.100895"
+  "raw_markdown": "---\nepisode_id: ai-news-2026-09-19-top4\ntrack: top4\nformat: daily\nvoice_profile: alex_tech\ntools:\n- name: Amazon EC2 R9g and R9gd instances powered by AWS Graviton5 processors are\n    now generally available\n  url: https://aws.amazon.com/blogs/aws/amazon-ec2-r9g-and-r9gd-instances-powered-by-aws-graviton5-processors-are-now-generally-available/\n  mode: tool_drop\n  hero_anchor: main h1, header h1, .hero h1, h1\n  demo_anchor: 'video, canvas, #demo, .demo, #comparison, table'\n  download_anchor: a[href*='github.com'], a[href*='download'], a[href*='huggingface.co'],\n    .cta-button\n  specs: Live Tool | Web Drop\n  video_readiness: 45.0\n  consensus_count: 2\n  hn_points: null\n  badges: []\n- name: Introducing gpt-oss\n  url: https://openai.com/index/introducing-gpt-oss\n  mode: paper_preview\n  hero_anchor: main h1, header h1, h1\n  demo_anchor: 'figure, table, .results, #diagram, #comparison'\n  download_anchor: a[href*='pdf'], a[href*='arxiv.org'], a[href*='github.com']\n  specs: Research Preview | Benchmark\n  video_readiness: 40.0\n  consensus_count: 2\n  hn_points: null\n  badges: []\n- name: OpenAI and Anthropic are making 10 times more revenue than all Chinese AI\n    models combined, research group Rhodium says\n  url: https://www.cnbc.com/2026/09/17/chinas-ai-models-make-only-10percent-of-us-leaders-revenue-rhodium.html\n  mode: industry_insight\n  hero_anchor: main h1, header h1, .hero h1, h1\n  demo_anchor: figure, table, blockquote, canvas, .chart, .metrics\n  download_anchor: a[href*='report'], a[href*='pdf'], a.cta-button\n  specs: Industry Insight | Strategic Analysis\n  video_readiness: 30.0\n  consensus_count: 1\n  hn_points: null\n  badges: []\n- name: Introducing 4o Image Generation\n  url: https://openai.com/index/introducing-4o-image-generation\n  mode: tool_drop\n  hero_anchor: main h1, header h1, .hero h1, h1\n  demo_anchor: 'video, canvas, #demo, .demo, #comparison, table'\n  download_anchor: a[href*='github.com'], a[href*='download'], a[href*='huggingface.co'],\n    .cta-button\n  specs: Live Tool | Web Drop\n  video_readiness: 45.0\n  consensus_count: 2\n  hn_points: null\n  badges: []\n---\n\n# Intro\n[excited] Today: AWS Graviton5 hits GA, OpenAI drops gpt-oss and 4o image gen, plus a brutal US-China revenue gap. HN\u2019s quiet, but consensus is loud.\n\n---\n\n# Story 1: Amazon EC2 R9g and R9gd instances powered by AWS Graviton5 processors are now generally available\n### Landing Page\n[confident] AWS just made EC2 R9g and R9gd instances generally available, powered by Graviton5. Two-source consensus flags this as a live tool drop for builders.\n\n### Demo\n[amazed] Spin up an R9g, point your workload at Graviton5, and benchmark. No HN thread yet, but the AWS blog is your launchpad.\n\n### Access\n[energetic] R9g and R9gd are GA now in AWS. Check regional availability, then wire them into your CI or inference stack.\n\n---\n\n# Story 2: Introducing gpt-oss\n### Paper\n[curious] OpenAI introduces gpt-oss, a research preview with benchmarks. Two-source consensus says innovators should read the paper before the hype cycle.\n\n### Architecture/Evidence\n[skeptical] No HN thread yet, so skip the vibes. The evidence is in the benchmark tables\u2014check architecture choices, tokenizer, and eval claims yourself.\n\n### Release Horizon\n[confident] It\u2019s a research preview, not a product launch. Watch for weights, API access, or a broader release window from OpenAI.\n\n---\n\n# Story 3: OpenAI and Anthropic are making 10 times more revenue than all Chinese AI models combined, research group Rhodium says\n### Headline\n[excited] Rhodium says OpenAI and Anthropic make ten times more revenue than all Chinese AI models combined. One-source consensus, but this reframes the competitive map.\n\n### Evidence\n[confident] CNBC reports the gap using Rhodium\u2019s research. No HN thread yet, so treat it as strategic signal, not settled scoreboard.\n\n### The Verdict\n[skeptical] The verdict: US labs dominate revenue, but China can still win on open weights and cost. Builders should hedge, not panic.\n\n---\n\n# Story 4: Introducing 4o Image Generation\n### Landing Page\n[excited] OpenAI\u2019s 4o Image Generation lands natively inside GPT-4o. Two-source consensus flags strong text rendering and instruction following as a direct Midjourney and Flux threat.\n\n### Demo\n[amazed] Prompt it to design a poster with legible text, then iterate conversationally. No HN thread yet, but the demo value is obvious.\n\n### Access\n[friendly] It\u2019s live in GPT-4o for many users now. Open ChatGPT, describe your image, and stress-test the text rendering yourself today.\n\n---\n\n# Outro\n[friendly] All project links, Hugging Face spaces, and research papers are organized down in the description below. Hit subscribe to Brief Delights for your daily rundown, and I'll see you tomorrow.",
+  "generated_at": "2026-09-19T12:10:03.784063"
 }

@@ -3,111 +3,142 @@
   "segment": "leaders",
   "trends": {
     "categories": {
-      "Macro Trends & Tech Economy": 5,
-      "Enterprise Strategy & SaaS": 5,
-      "Platform & Growth Strategy": 2,
-      "Venture Capital & M&A": 2,
-      "Frontier AI Labs & Research": 1
+      "Enterprise Strategy & SaaS": 2,
+      "Macro Trends & Tech Economy": 1,
+      "Frontier AI Labs & Research": 1,
+      "Venture Capital & M&A": 1,
+      "Platform & Growth Strategy": 1
     },
     "sources": {
-      "Technology": 4,
-      "Enterprise News | TechCrunch": 4,
-      "The Verge": 2,
-      "Sifted": 2,
+      "Enterprise News | TechCrunch": 2,
+      "Tech": 1,
       "AI News & Artificial Intelligence | TechCrunch": 1,
-      "\"restofworld AI when:3d\" - Google News": 1,
-      "\"saastr AI when:3d\" - Google News": 1
+      "Sifted": 1,
+      "The Verge": 1
     },
     "topics": [
-      "OpenAI\u2019s listing delay raises stakes for SoftBank\u2019s $50bn data centre IPO",
-      "OpenAI-backed Thrive Holdings raises $2B to bring AI to the enterprise",
+      "Bending Spoons to buy collaboration tools maker Miro for $1.36B, 90% less than its 2022 valuation",
+      "OpenAI and Anthropic are making 10 times more revenue than all Chinese AI models combined, research group Rhodium says",
+      "Jensen Huang explains why Nvidia will grow an astounding 70% next year",
       "Crusoe raises $3.9B to build massive data centers and small modular \u2018AI factories\u2019",
-      "Amazon just tripled its order of Nvidia chips over \u2018surging demand\u2019",
-      "Gavin Newsom advances AI \u2018kill switch\u2019 in response to safety fears",
-      "OpenAI and Microsoft knew they were starting a \u2018doom loop\u2019 for the web",
-      "OpenAI breached by researchers using Anthropic models",
-      "Xi\u2019s edge over Trump on AI",
-      "AI code-testing startup Blacksmith\u2019s valuation jumps almost 10x in less than a year",
-      "Samsung and EU Scaleup Fund back efficient AI startup Euclyd in \u20ac200m Series A",
-      "Exein raises $270m to fight AI hackers, doubles valuation",
-      "IBM partners with OpenAI to bolster enterprise AI push",
-      "What Hollywood thinks about existential AI warnings",
-      "The case for a robot tax to redistribute wealth - restofworld.org",
-      "We Mentioned Replit in 214 Articles Last Year. For Free. Most Vendors Have No Plan For Customers Like That - saastr.com"
+      "DeepMind researcher\u2019s new AI lab nears $4bn valuation, reports say",
+      "Gavin Newsom is pushing for an AI kill switch"
     ],
     "detected_trends": [
       {
-        "keyword": "Macro Trends & Tech Economy",
-        "count": 5
-      },
-      {
         "keyword": "Enterprise Strategy & SaaS",
-        "count": 5
-      },
-      {
-        "keyword": "Platform & Growth Strategy",
         "count": 2
       },
       {
-        "keyword": "Venture Capital & M&A",
-        "count": 2
+        "keyword": "Macro Trends & Tech Economy",
+        "count": 1
       },
       {
         "keyword": "Frontier AI Labs & Research",
         "count": 1
+      },
+      {
+        "keyword": "Venture Capital & M&A",
+        "count": 1
+      },
+      {
+        "keyword": "Platform & Growth Strategy",
+        "count": 1
       }
     ],
-    "total_articles": 15
+    "total_articles": 6
   },
-  "article_count": 15,
+  "article_count": 6,
   "articles": [
     {
-      "id": "c86012ccf150dd518ef8f79d68ddc111",
-      "title": "OpenAI\u2019s listing delay raises stakes for SoftBank\u2019s $50bn data centre IPO",
-      "url": "https://www.ft.com/content/6c467774-9d91-425e-a901-26db055e37ad?syn-25a6b1a6=1",
-      "published_date": "2026-09-19T09:35:24.389689",
-      "description": "Initial public offering of SB Energy set to test investor appetite for Masayoshi Son\u2019s AI gamble",
-      "source": "Technology",
-      "category": "Macro Trends & Tech Economy",
-      "segment": "leaders",
-      "source_type": "secondary",
-      "raw_content": "Initial public offering of SB Energy set to test investor appetite for Masayoshi Son\u2019s AI gamble",
-      "segments": [
-        "leaders"
-      ],
-      "tier": "full",
-      "selection_reason": "SoftBank's $50bn data-centre IPO is a bellwether for AI infrastructure investment and the public market's tolerance for AI risk.",
-      "audience_value": "Executives can gauge capital markets' appetite for AI assets before making strategic investment or partnership decisions.",
-      "urgency_score": 9,
-      "category_tag": "\ud83d\udcb0 Funding & M&A",
-      "why_this_matters": "Why this matters: The deal's outcome will reset the cost and availability of AI infrastructure capital for every technology leader."
-    },
-    {
-      "id": "2fd40c918be855216ae767e5bb820dfe",
-      "title": "OpenAI-backed Thrive Holdings raises $2B to bring AI to the enterprise",
-      "url": "https://techcrunch.com/2026/08/12/openai-backed-thrive-holdings-raises-2b-to-bring-ai-to-the-enterprise/",
-      "published_date": "2026-09-19T09:35:23.089336",
-      "description": "Thrive Holdings has raised $2 billion in new funding at a $12 billion valuation from investors like SoftBank, D1 Capital Partners, and Altimeter Capital.",
+      "id": "7cc25eebdab79007c3c0362fb964d8bb",
+      "title": "Bending Spoons to buy collaboration tools maker Miro for $1.36B, 90% less than its 2022 valuation",
+      "url": "https://techcrunch.com/2026/09/10/bending-spoons-to-buy-collaboration-tools-maker-miro-for-1-36b-90-less-than-its-2022-valuation/",
+      "published_date": "2026-09-19T11:58:10.167056",
+      "description": "Bending Spoons is buying Miro for $1.36 billion, a huge dip in valuation for the workplace collaboration startup, which was valued at $17.5 billion in late 2021.",
       "source": "Enterprise News | TechCrunch",
       "category": "Enterprise Strategy & SaaS",
       "segment": "leaders",
       "source_type": "secondary",
-      "raw_content": "Thrive Holdings has raised $2 billion in new funding at a $12 billion valuation from investors like SoftBank, D1 Capital Partners, and Altimeter Capital.",
+      "raw_content": "Bending Spoons is buying Miro for $1.36 billion, a huge dip in valuation for the workplace collaboration startup, which was valued at $17.5 billion in late 2021.",
       "segments": [
         "leaders"
       ],
+      "consensus_count": 3,
+      "consensus_sources": [
+        "Enterprise News | TechCrunch"
+      ],
+      "_signal_score": 38.0,
+      "on_hn": false,
       "tier": "full",
-      "selection_reason": "OpenAI-backed Thrive's $2B raise underlines enterprise AI's investment gravity and the shift to AI service integrators.",
-      "audience_value": "Leaders see which AI delivery models and valuations attract institutional backing, informing build-vs-buy choices.",
+      "selection_reason": "A $17.5B unicorn selling for $1.36B is the clearest signal yet of the SaaS valuation reset every board must reckon with.",
+      "audience_value": "A benchmark for repricing late-stage SaaS assets and a lens on the PE-style roll-up playbook Bending Spoons is executing.",
       "urgency_score": 9,
       "category_tag": "\ud83d\udcb0 Funding & M&A",
-      "why_this_matters": "Why this matters: Enterprise AI spending is consolidating around well-funded integrators, reshaping competitive dynamics for every company."
+      "why_this_matters": "Why this matters: Leaders holding 2021-era valuations need to recalibrate exit expectations and M&A strategy before the market does it for them."
+    },
+    {
+      "id": "eb3b88f3c737374063153a4bca19ab97",
+      "title": "OpenAI and Anthropic are making 10 times more revenue than all Chinese AI models combined, research group Rhodium says",
+      "url": "https://www.cnbc.com/2026/09/17/chinas-ai-models-make-only-10percent-of-us-leaders-revenue-rhodium.html",
+      "published_date": "2026-09-19T11:58:11.068472",
+      "description": "Rhodium Group's latest analysis of Chinese and U.S. AI companies also found that low revenue did not necessarily correspond with lower valuation.",
+      "source": "Tech",
+      "category": "Macro Trends & Tech Economy",
+      "segment": "leaders",
+      "source_type": "secondary",
+      "raw_content": "Rhodium Group's latest analysis of Chinese and U.S. AI companies also found that low revenue did not necessarily correspond with lower valuation.",
+      "segments": [
+        "leaders"
+      ],
+      "consensus_count": 2,
+      "consensus_sources": [
+        "Tech",
+        "Technology"
+      ],
+      "_signal_score": 36.0,
+      "on_hn": false,
+      "tier": "full",
+      "selection_reason": "Rhodium's data quantifies the US-China AI revenue gap, reframing the competitive landscape leaders are planning against.",
+      "audience_value": "Hard numbers on monetization vs. valuation across the two AI superpowers, useful for vendor selection and geopolitical risk planning.",
+      "urgency_score": 8,
+      "category_tag": "\ud83d\udcca Market Trends",
+      "why_this_matters": "Why this matters: Executives betting on AI partners need to know where the revenue, not just the hype, is actually accruing."
+    },
+    {
+      "id": "3f1b7e6d6a103cc4efbde4b8edaae47e",
+      "title": "Jensen Huang explains why Nvidia will grow an astounding 70% next year",
+      "url": "https://techcrunch.com/2026/09/10/jensen-huang-explains-why-nvidia-will-grow-an-astounding-70-next-year/",
+      "published_date": "2026-09-19T11:58:10.167027",
+      "description": "Nvidia has its finger in every pie, and sees another year of plenty in its future, Jensen Huang says. But, he insists, its deals are not circular.",
+      "source": "Enterprise News | TechCrunch",
+      "category": "Enterprise Strategy & SaaS",
+      "segment": "leaders",
+      "source_type": "secondary",
+      "raw_content": "Nvidia has its finger in every pie, and sees another year of plenty in its future, Jensen Huang says. But, he insists, its deals are not circular.",
+      "segments": [
+        "leaders"
+      ],
+      "consensus_count": 3,
+      "consensus_sources": [
+        "Enterprise News | TechCrunch",
+        "Tech",
+        "NYT > Technology"
+      ],
+      "_signal_score": 34.0,
+      "on_hn": false,
+      "tier": "full",
+      "selection_reason": "Jensen Huang's 70% growth forecast sets the tone for AI infrastructure spending across the entire economy next year.",
+      "audience_value": "Insight into Nvidia's demand visibility and its rebuttal to circular-deal concerns, informing capex and compute procurement plans.",
+      "urgency_score": 9,
+      "category_tag": "\ud83d\udcca Market Trends",
+      "why_this_matters": "Why this matters: If Nvidia is right, compute costs and supply constraints will remain the defining variable in every leader's AI budget."
     },
     {
       "id": "e3285a711c8c90e5544d13f00df7c228",
       "title": "Crusoe raises $3.9B to build massive data centers and small modular \u2018AI factories\u2019",
       "url": "https://techcrunch.com/2026/09/17/crusoe-raises-3-9b-to-build-massive-data-centers-and-small-modular-ai-factories/",
-      "published_date": "2026-09-19T09:34:42.382379",
+      "published_date": "2026-09-19T11:57:39.602871",
       "description": "The round values the data center giant at $30.9 billion.",
       "source": "AI News & Artificial Intelligence | TechCrunch",
       "category": "Frontier AI Labs & Research",
@@ -118,264 +149,74 @@
         "innovators",
         "leaders"
       ],
+      "consensus_count": 1,
+      "consensus_sources": [
+        "AI News & Artificial Intelligence | TechCrunch"
+      ],
+      "_signal_score": 22.0,
+      "on_hn": false,
       "tier": "full",
-      "selection_reason": "Crusoe's $3.9B raise shows record capital flows into AI data-centre infrastructure and modular 'AI factories'.",
-      "audience_value": "Highlights the scale and valuation of AI infrastructure, critical for capacity planning and capital allocation.",
-      "urgency_score": 9,
+      "selection_reason": "Crusoe's $3.9B raise at a $30.9B valuation shows capital continues to flood into AI data center infrastructure at record scale.",
+      "audience_value": "Understanding of the modular 'AI factory' model and where mega-rounds are concentrating, relevant to infrastructure partnering decisions.",
+      "urgency_score": 8,
       "category_tag": "\ud83d\udcb0 Funding & M&A",
-      "why_this_matters": "Why this matters: AI infrastructure is becoming staggeringly capital-intensive, so leaders must assess build, buy, or partner options now."
+      "why_this_matters": "Why this matters: Leaders evaluating build-vs-buy for AI compute now face a rapidly consolidating, deeply capitalized neocloud tier."
     },
     {
-      "id": "18acc42de8d17184366653a0c08a6d77",
-      "title": "Amazon just tripled its order of Nvidia chips over \u2018surging demand\u2019",
-      "url": "https://techcrunch.com/2026/08/26/amazon-just-tripled-its-order-of-nvidia-chips-over-surging-demand/",
-      "published_date": "2026-09-19T09:35:23.089244",
-      "description": "Amazon is adding another 2 million Nvidia GPU chips to its data centers over the next two years. But this extended partnerships stretches beyond buying more chips.",
-      "source": "Enterprise News | TechCrunch",
-      "category": "Enterprise Strategy & SaaS",
-      "segment": "leaders",
-      "source_type": "secondary",
-      "raw_content": "Amazon is adding another 2 million Nvidia GPU chips to its data centers over the next two years. But this extended partnerships stretches beyond buying more chips.",
-      "segments": [
-        "leaders"
-      ],
-      "tier": "full",
-      "selection_reason": "Amazon tripling Nvidia chip orders is a concrete demand signal for AI compute and cloud capacity.",
-      "audience_value": "Confirms enterprise AI demand trajectory and potential supply constraints that affect procurement and pricing.",
-      "urgency_score": 8,
-      "category_tag": "\ud83d\udcca Market Trends",
-      "why_this_matters": "Why this matters: Cloud capacity decisions affect enterprise AI strategy, pricing leverage, and vendor lock-in risk."
-    },
-    {
-      "id": "2d42c1568a49493df12ff4c83fb8875c",
-      "title": "Gavin Newsom advances AI \u2018kill switch\u2019 in response to safety fears",
-      "url": "https://www.ft.com/content/cd4e4514-944b-4919-a245-d8013734b8a0?syn-25a6b1a6=1",
-      "published_date": "2026-09-19T09:35:24.389411",
-      "description": "California\u2019s governor signals tougher stance on the technology after public outcry",
-      "source": "Technology",
-      "category": "Macro Trends & Tech Economy",
-      "segment": "leaders",
-      "source_type": "secondary",
-      "raw_content": "California\u2019s governor signals tougher stance on the technology after public outcry",
-      "segments": [
-        "leaders"
-      ],
-      "tier": "full",
-      "selection_reason": "California's move to push an AI 'kill switch' could define the regulatory frontier for AI in the US.",
-      "audience_value": "Leaders need to anticipate new compliance obligations if they build, deploy, or rely on frontier models.",
-      "urgency_score": 9,
-      "category_tag": "\ud83d\ude80 AI & Innovation",
-      "why_this_matters": "Why this matters: State-level AI rules can reshape product roadmaps and risk governance for any company using advanced AI."
-    },
-    {
-      "id": "077d8f6ca8fa2cba3b89b245fa53f468",
-      "title": "OpenAI and Microsoft knew they were starting a \u2018doom loop\u2019 for the web",
-      "url": "https://www.theverge.com/ai-artificial-intelligence/997633/openai-microsoft-chatgpt-ai-new-york-times-doom-loop-theft-google-zero",
-      "published_date": "2026-09-19T09:35:20.891694",
-      "description": "Recently unsealed court documents in the New York Times' case against OpenAI and Microsoft are pretty damning. The companies' own documentation warned that it was starting a \"doom loop\" that would damage the web, characterized its scraping of data to train its models as the \"largest theft of labor in human history,\" and that it [&#8230;]",
-      "source": "The Verge",
-      "category": "Platform & Growth Strategy",
-      "segment": "leaders",
-      "source_type": "secondary",
-      "raw_content": "<figure>\n\n<img alt=\"Skull with circuitboard graphic overlayed.\" src=\"https://platform.theverge.com/wp-content/uploads/sites/2/2026/09/STKS534_AI_DOOMSDAY2_B.png?quality=90&#038;strip=all&#038;crop=0,0,100,100\" />\n\t<figcaption>\n\t\t</figcaption>\n</figure>\n<p class=\"wp-block-paragraph\">Recently <a href=\"https://www.theverge.com/ai-artificial-intelligence/997312/a-microsoft-exec-called-ai-scraping-theft-of-unprecedented-proportions\">unsealed</a> court documents in the <a href=\"https://www.nytimes.com/2026/09/04/technology/openai-microsoft-new-york-times-lawsuit.html\"><em>New York Times</em>' case against OpenAI and Microsoft</a> are pretty damning. The companies' own documentation warned that it was starting a \"doom loop\" that would damage the web, characterized its scraping of data to train its models as the \"largest theft of labor in human history,\" and that it made a \"complete mockery of the idea of fair use.\"</p>\n<p class=\"wp-block-paragraph\">Many of the most eye-catching quotes from the document come from Microsoft's Director of Applied Science, Brent Hecht. Though, the company has tried to distance itself from Hecht's assertions. Microsoft spokesperson Alex Haurek told The Verge that \"These comments ref \u2026</p>\n<p><a href=\"https://www.theverge.com/ai-artificial-intelligence/997633/openai-microsoft-chatgpt-ai-new-york-times-doom-loop-theft-google-zero\">Read the full story at The Verge.</a></p>",
-      "segments": [
-        "leaders"
-      ],
-      "tier": "full",
-      "selection_reason": "Unsealed court documents show OpenAI and Microsoft knew their data scraping could create a 'doom loop' for the open web.",
-      "audience_value": "Provides legal and reputational context for AI data practices and content-licensing strategy.",
-      "urgency_score": 8,
-      "category_tag": "\ud83d\udcbc Tech Business",
-      "why_this_matters": "Why this matters: AI companies' data sourcing is now a legal liability, forcing leaders to audit inputs, licensing, and partnerships."
-    },
-    {
-      "id": "d4a91b38305918572b4b9afa570a2dc8",
-      "title": "OpenAI breached by researchers using Anthropic models",
-      "url": "https://www.ft.com/content/c4aa118e-a258-48bc-b50e-28e453a95db8?syn-25a6b1a6=1",
-      "published_date": "2026-09-19T09:35:24.389666",
-      "description": "Security company hacked into AI lab using tools from its rival",
-      "source": "Technology",
-      "category": "Macro Trends & Tech Economy",
-      "segment": "leaders",
-      "source_type": "secondary",
-      "raw_content": "Security company hacked into AI lab using tools from its rival",
-      "segments": [
-        "leaders"
-      ],
-      "tier": "full",
-      "selection_reason": "Researchers breached OpenAI using Anthropic models, exposing AI-specific security risks and competitive use of AI tools.",
-      "audience_value": "Executives see how AI itself is becoming both attack vector and defense tool, informing security policies.",
-      "urgency_score": 9,
-      "category_tag": "\ud83d\udd10 Security",
-      "why_this_matters": "Why this matters: AI vendor security is now a board-level issue, and this breach proves no frontier lab is immune."
-    },
-    {
-      "id": "7f01c519d5633743fb48bdaa85b11408",
-      "title": "Xi\u2019s edge over Trump on AI",
-      "url": "https://www.ft.com/content/a528adc7-3a8c-4a00-826f-1fdde748efb5?syn-25a6b1a6=1",
-      "published_date": "2026-09-19T09:35:24.389508",
-      "description": "The US president\u2019s anti-regulatory stance fails to take into account that China is catching up",
-      "source": "Technology",
-      "category": "Macro Trends & Tech Economy",
-      "segment": "leaders",
-      "source_type": "secondary",
-      "raw_content": "The US president\u2019s anti-regulatory stance fails to take into account that China is catching up",
-      "segments": [
-        "leaders"
-      ],
-      "tier": "full",
-      "selection_reason": "Xi's regulatory simplicity may give China an edge in the AI race, reshaping assumptions about global AI timelines.",
-      "audience_value": "Executives can recalibrate global market entry, supply-chain, and partnership strategies based on US-China dynamics.",
-      "urgency_score": 8,
-      "category_tag": "\ud83d\udcca Market Trends",
-      "why_this_matters": "Why this matters: US-China AI competition influences export controls, talent flows, and where value accrues\u2014directly affecting global strategy."
-    },
-    {
-      "id": "618c36a0317edf70cd221d19ea7d49eb",
-      "title": "AI code-testing startup Blacksmith\u2019s valuation jumps almost 10x in less than a year",
-      "url": "https://techcrunch.com/2026/08/12/blacksmiths-valuation-jumps-10x-to-550m-as-ai-coding-fuels-software-validation/",
-      "published_date": "2026-09-19T09:35:23.089359",
-      "description": "Blacksmith says revenue has grown more than tenfold over the past year.",
-      "source": "Enterprise News | TechCrunch",
-      "category": "Enterprise Strategy & SaaS",
-      "segment": "leaders",
-      "source_type": "secondary",
-      "raw_content": "Blacksmith says revenue has grown more than tenfold over the past year.",
-      "segments": [
-        "leaders"
-      ],
-      "tier": "quick",
-      "selection_reason": "Blacksmith's 10x valuation jump highlights investor obsession with AI code quality and validation.",
-      "audience_value": "Signals a fast-growing niche that could impact software delivery costs and development tooling budgets.",
-      "urgency_score": 6,
-      "category_tag": "\ud83d\udcb0 Funding & M&A",
-      "why_this_matters": "Why this matters: AI-assisted development is creating new must-have tools, and valuation spikes reveal where software budgets are heading."
-    },
-    {
-      "id": "a2544bbb60bf3b96b13f232a1dc4db0b",
-      "title": "Samsung and EU Scaleup Fund back efficient AI startup Euclyd in \u20ac200m Series A",
-      "url": "https://sifted.eu/articles/euclyd-efficient-ai-series-a/",
-      "published_date": "2026-09-19T09:35:23.025382",
+      "id": "72e5eb0909f4d96edcb96e69e4d9df7c",
+      "title": "DeepMind researcher\u2019s new AI lab nears $4bn valuation, reports say",
+      "url": "https://sifted.eu/articles/deepmind-researchers-new-ai-lab-nears-4bn-valuation-reports-say/",
+      "published_date": "2026-09-19T11:58:10.121882",
       "description": "",
       "source": "Sifted",
       "category": "Venture Capital & M&A",
       "segment": "leaders",
-      "source_type": "secondary",
+      "source_type": "primary",
       "raw_content": "",
       "segments": [
         "leaders"
       ],
-      "tier": "quick",
-      "selection_reason": "Euclyd's \u20ac200M Series A with Samsung and EU backing shows efficiency-AI is becoming a strategic category.",
-      "audience_value": "Points to energy-efficient AI as a cost and sustainability priority for enterprise adoption.",
-      "urgency_score": 6,
-      "category_tag": "\ud83d\ude80 AI & Innovation",
-      "why_this_matters": "Why this matters: Efficiency-focused AI startups could become key partners for enterprises managing compute costs and sustainability goals."
-    },
-    {
-      "id": "a3ad719cd919973a5be8bea0574cd915",
-      "title": "Exein raises $270m to fight AI hackers, doubles valuation",
-      "url": "https://sifted.eu/articles/exein-funding-round-ai-hack-cybersecurity/",
-      "published_date": "2026-09-19T09:35:23.025311",
-      "description": "",
-      "source": "Sifted",
-      "category": "Venture Capital & M&A",
-      "segment": "leaders",
-      "source_type": "secondary",
-      "raw_content": "",
-      "segments": [
-        "leaders"
+      "consensus_count": 1,
+      "consensus_sources": [
+        "Sifted"
       ],
-      "tier": "quick",
-      "selection_reason": "Exein's $270M raise validates the growing market for defending against AI-powered hackers.",
-      "audience_value": "Leaders can benchmark security investment trends and identify emerging vendors for AI-era protection.",
-      "urgency_score": 6,
-      "category_tag": "\ud83d\udd10 Security",
-      "why_this_matters": "Why this matters: AI-powered cyber threats are escalating, and capital is flowing to startups that could become critical enterprise safeguards."
+      "_signal_score": 49.0,
+      "on_hn": false,
+      "tier": "full",
+      "selection_reason": "A brand-new lab approaching a $4B valuation underscores the premium investors place on frontier AI talent.",
+      "audience_value": "A read on talent-driven valuations and the ongoing fragmentation of elite research talent away from Big Tech.",
+      "urgency_score": 8,
+      "category_tag": "\ud83d\udcb0 Funding & M&A",
+      "why_this_matters": "Why this matters: Founders and CEOs competing for AI talent must understand the capital that now backs researchers who go independent."
     },
     {
-      "id": "b377fa89f3ad152d5e1d6e4218e33c19",
-      "title": "IBM partners with OpenAI to bolster enterprise AI push",
-      "url": "https://techcrunch.com/2026/08/13/ibm-partners-with-openai-to-bolster-enterprise-ai-push/",
-      "published_date": "2026-09-19T09:35:23.089313",
-      "description": "IBM plans to train and certify tens of thousands of consultants on OpenAI's technologies as part of this deal.",
-      "source": "Enterprise News | TechCrunch",
-      "category": "Enterprise Strategy & SaaS",
-      "segment": "leaders",
-      "source_type": "secondary",
-      "raw_content": "IBM plans to train and certify tens of thousands of consultants on OpenAI's technologies as part of this deal.",
-      "segments": [
-        "leaders"
-      ],
-      "tier": "quick",
-      "selection_reason": "IBM's partnership with OpenAI brings frontier AI into the enterprise through massive consulting channels.",
-      "audience_value": "Shows how legacy tech giants are packaging AI for corporate adoption, affecting enterprise procurement.",
-      "urgency_score": 7,
-      "category_tag": "\u2601\ufe0f Enterprise Tech",
-      "why_this_matters": "Why this matters: IBM's training of thousands of consultants will accelerate enterprise AI rollouts, changing how companies buy and deploy AI."
-    },
-    {
-      "id": "a6e3cc386b2a92daa5684e72d484dc52",
-      "title": "What Hollywood thinks about existential AI warnings",
-      "url": "https://www.theverge.com/ai-artificial-intelligence/997358/what-hollywood-thinks-about-existential-ai-warnings",
-      "published_date": "2026-09-19T09:35:20.891858",
-      "description": "As the tech sector sounds alarms about AI's potential to destroy humanity, entertainment labor groups are urging the public to stay focused on what's already happening. The Verge reached out to Disney, Netflix, Amazon, Lionsgate, and other studios who have started using AI, as well film startups focused on bringing generative AI into the mainstream [&#8230;]",
+      "id": "a773bfa98d7208067d8c557f2766b4ee",
+      "title": "Gavin Newsom is pushing for an AI kill switch",
+      "url": "https://www.theverge.com/policy/997516/california-governor-newsom-ai-kill-switch",
+      "published_date": "2026-09-19T11:58:08.459221",
+      "description": "California Gov. Gavin Newsom (D) is positioning the state to take the lead on AI oversight, including the potential to mandate a \"kill switch\" for frontier models, with a new executive order issued Friday. Newsom's order directs the state to convene a group of experts that will deliver recommendations within two months on how to [&#8230;]",
       "source": "The Verge",
       "category": "Platform & Growth Strategy",
       "segment": "leaders",
       "source_type": "secondary",
-      "raw_content": "<figure>\n\n<img alt=\"A digital illustration of a black circuit board and a red lens.\" src=\"https://platform.theverge.com/wp-content/uploads/sites/2/2026/09/268764_hollywood_AI_slowdown_CVirginia.jpg?quality=90&#038;strip=all&#038;crop=0,0,100,100\" />\n\t<figcaption>\n\t\t</figcaption>\n</figure>\n<p class=\"has-drop-cap wp-block-paragraph\">As the tech sector sounds alarms about AI's potential to destroy humanity, entertainment labor groups are urging the public to stay focused on what's already happening. <em>The Verge</em> reached out to <a href=\"https://www.theverge.com/ai-artificial-intelligence/899850/openai-sora-ai-chatgpt\">Disney</a>, <a href=\"https://www.theverge.com/streaming/966633/netflix-ai-titles-q2-2026-earnings\">Netflix</a>, <a href=\"https://www.theverge.com/tech/991809/amazon-prime-video-ai-lip-sync-dubbing\">Amazon</a>, <a href=\"https://www.theverge.com/2024/9/18/24248115/lionsgate-runway-ai-deal\">Lionsgate</a>, and other studios who have started using AI, as well film startups focused on bringing generative AI into the mainstream to ask for their reaction to the recent <a href=\"https://www.theverge.com/ai-artificial-intelligence/991927/anthropic-ai-kill-all-humans\">warnings</a> surrounding the technology. None have responded to our request for comment. The Screen Actors Guild - American Federation of Television and Radio Artists (SAG-AFTRA) and Writers Guild of America East (WGAE) did, however.</p>\n<p class=\"wp-block-paragraph\">The AI tools used in entert \u2026</p>\n<p><a href=\"https://www.theverge.com/ai-artificial-intelligence/997358/what-hollywood-thinks-about-existential-ai-warnings\">Read the full story at The Verge.</a></p>",
+      "raw_content": "<figure>\n\n<img alt=\"\" src=\"https://platform.theverge.com/wp-content/uploads/sites/2/2026/09/gettyimages-2292819671.jpg?quality=90&#038;strip=all&#038;crop=0,0,100,100\" />\n\t<figcaption>\n\t\t</figcaption>\n</figure>\n<p class=\"wp-block-paragraph\">California Gov. Gavin Newsom (D) is positioning the state to take the lead on AI oversight, including the potential to mandate a \"kill switch\" for frontier models, with <a href=\"https://www.gov.ca.gov/2026/09/18/governor-newsom-issues-executive-order-to-accelerate-independent-oversight-and-advance-the-creation-of-an-ai-kill-switch/\">a new executive order</a> issued Friday. </p>\n<p class=\"wp-block-paragraph\">Newsom's order directs the state to convene a group of experts that will deliver recommendations within two months on how to strengthen AI safety measures in state law. Newsom wants the group to consider how the state could require AI companies to embed independent verification groups onsite for regular audits, make their transparency reports and risk assessments subject to standards of independent auditors, create a \"kill switch\" that's \u2026</p>\n<p><a href=\"https://www.theverge.com/policy/997516/california-governor-newsom-ai-kill-switch\">Read the full story at The Verge.</a></p>",
       "segments": [
         "leaders"
       ],
-      "tier": "trending",
-      "selection_reason": "Hollywood's skepticism of existential AI warnings captures the cultural mood that leaders must navigate.",
-      "audience_value": "Leaders can align AI messaging with public and workforce sentiment rather than hype-driven fear.",
-      "urgency_score": 5,
+      "consensus_count": 3,
+      "consensus_sources": [
+        "The Verge",
+        "NYT > Technology",
+        "Technology"
+      ],
+      "_signal_score": 34.0,
+      "on_hn": false,
+      "tier": "full",
+      "selection_reason": "California's move toward a mandated AI kill switch would set de facto national policy for anyone deploying frontier models.",
+      "audience_value": "Early warning on compliance obligations with a two-month",
+      "urgency_score": 8,
       "category_tag": "\ud83d\ude80 AI & Innovation",
-      "why_this_matters": "Why this matters: The gap between AI hype and real-world impact influences talent, brand reputation, and regulatory expectations."
-    },
-    {
-      "id": "f7bebd92b0dc65df3df126de37cbcf1c",
-      "title": "The case for a robot tax to redistribute wealth - restofworld.org",
-      "url": "https://news.google.com/rss/articles/CBMickFVX3lxTE9SdEctWTNmeGpZQWlCNjFaZkhCa041T3hJQWNaQnhuM2UzOWtOcmZXSk82NndFZm5aMlJWR3dQdUpBbWNuWnBBOGQ3LVhRWElhRklRLTVLZy1kWkRhRndKejNtX2Q0RDdYSHZKVkJZbGJzQQ?oc=5",
-      "published_date": "2026-09-19T09:35:24.956224",
-      "description": "<a href=\"https://news.google.com/rss/articles/CBMickFVX3lxTE9SdEctWTNmeGpZQWlCNjFaZkhCa041T3hJQWNaQnhuM2UzOWtOcmZXSk82NndFZm5aMlJWR3dQdUpBbWNuWnBBOGQ3LVhRWElhRklRLTVLZy1kWkRhRndKejNtX2Q0RDdYSHZKVkJZbGJzQQ?oc=5\" target=\"_blank\">The case for a robot tax to redistribute wealth</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">restofworld.org</font>",
-      "source": "\"restofworld AI when:3d\" - Google News",
-      "category": "Macro Trends & Tech Economy",
-      "segment": "leaders",
-      "source_type": "secondary",
-      "raw_content": "<a href=\"https://news.google.com/rss/articles/CBMickFVX3lxTE9SdEctWTNmeGpZQWlCNjFaZkhCa041T3hJQWNaQnhuM2UzOWtOcmZXSk82NndFZm5aMlJWR3dQdUpBbWNuWnBBOGQ3LVhRWElhRklRLTVLZy1kWkRhRndKejNtX2Q0RDdYSHZKVkJZbGJzQQ?oc=5\" target=\"_blank\">The case for a robot tax to redistribute wealth</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">restofworld.org</font>",
-      "segments": [
-        "leaders"
-      ],
-      "tier": "trending",
-      "selection_reason": "The robot-tax debate is gaining traction and directly engages with automation economics.",
-      "audience_value": "Leaders need to model potential labour-market regulation into automation and workforce plans.",
-      "urgency_score": 5,
-      "category_tag": "\ud83d\udcca Market Trends",
-      "why_this_matters": "Why this matters: A robot tax would fundamentally change the cost-benefit calculus of every automation decision."
-    },
-    {
-      "id": "f8b6676880da0a75ded923b9a0a89f9a",
-      "title": "We Mentioned Replit in 214 Articles Last Year. For Free. Most Vendors Have No Plan For Customers Like That - saastr.com",
-      "url": "https://news.google.com/rss/articles/CBMixwFBVV95cUxNM2xucVBBWGtOdk42TEwwR3V0OGZLdzdPd1haSllVUU5UN2xYa29TTzNtMmdRMUVJb1p4Q0ZMTUFkUWpaQVBWODZkdTlQc29TVWtFOUNYV3V5Qmowa0xzcmpSZzdua1Z6WjRKYVpibHFwYzdGZFVPM2cyT0hOVXU0aERDWmM4eWRmd1REakIyZkhHQ1JqT3ZlWUdGQW5OeGh1QmZWWjltN09vcG9zQzBrY0xpMFZtUHB1VURBOC04d1pRNUYwSWY0?oc=5",
-      "published_date": "2026-09-19T09:35:23.392606",
-      "description": "<a href=\"https://news.google.com/rss/articles/CBMixwFBVV95cUxNM2xucVBBWGtOdk42TEwwR3V0OGZLdzdPd1haSllVUU5UN2xYa29TTzNtMmdRMUVJb1p4Q0ZMTUFkUWpaQVBWODZkdTlQc29TVWtFOUNYV3V5Qmowa0xzcmpSZzdua1Z6WjRKYVpibHFwYzdGZFVPM2cyT0hOVXU0aERDWmM4eWRmd1REakIyZkhHQ1JqT3ZlWUdGQW5OeGh1QmZWWjltN09vcG9zQzBrY0xpMFZtUHB1VURBOC04d1pRNUYwSWY0?oc=5\" target=\"_blank\">We Mentioned Replit in 214 Articles Last Year. For Free. Most Vendors Have No Plan For Customers Like That</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">saastr.com</font>",
-      "source": "\"saastr AI when:3d\" - Google News",
-      "category": "Enterprise Strategy & SaaS",
-      "segment": "leaders",
-      "source_type": "secondary",
-      "raw_content": "<a href=\"https://news.google.com/rss/articles/CBMixwFBVV95cUxNM2xucVBBWGtOdk42TEwwR3V0OGZLdzdPd1haSllVUU5UN2xYa29TTzNtMmdRMUVJb1p4Q0ZMTUFkUWpaQVBWODZkdTlQc29TVWtFOUNYV3V5Qmowa0xzcmpSZzdua1Z6WjRKYVpibHFwYzdGZFVPM2cyT0hOVXU0aERDWmM4eWRmd1REakIyZkhHQ1JqT3ZlWUdGQW5OeGh1QmZWWjltN09vcG9zQzBrY0xpMFZtUHB1VURBOC04d1pRNUYwSWY0?oc=5\" target=\"_blank\">We Mentioned Replit in 214 Articles Last Year. For Free. Most Vendors Have No Plan For Customers Like That</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">saastr.com</font>",
-      "segments": [
-        "leaders"
-      ],
-      "tier": "trending",
-      "selection_reason": "The Replit case study exposes how AI-native vendors win mindshare without traditional enterprise sales motions.",
-      "audience_value": "Founders and executives can adapt go-to-market and customer-success models for AI-native buyers.",
-      "urgency_score": 6,
-      "category_tag": "\ud83d\udcbc Tech Business",
-      "why_this_matters": "Why this matters: AI-native customers will define B2B growth strategies, and vendors that ignore free-product leverage will lose market share."
+      "why_this_matters": "California's move toward a mandated AI kill switch would set de facto national policy for anyone deploying frontier models."
     }
   ]
 }
