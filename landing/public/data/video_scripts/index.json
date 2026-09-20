@@ -1,8 +1,8 @@
 [
   {
-    "date": "2026-09-20",
+    "date": "2026-09-21",
     "track": "weekly_mega_recap",
-    "episode_id": "weekly-ai-news-2026-09-20",
+    "episode_id": "weekly-ai-news-2026-09-21",
     "chapters": [
       "Frontier Models & Open Weights",
       "Creative & Multimodal Breakthroughs",
@@ -10,84 +10,24 @@
       "Breakthrough Agents & Tools"
     ],
     "tools_count": 8,
-    "json_path": "/data/video_scripts/weekly_2026-09-20-mega-recap.json",
-    "md_path": "/data/video_scripts/weekly_2026-09-20-mega-recap.md",
-    "updated_at": "2026-09-20T12:42:29.166485"
-  },
-  {
-    "date": "2026-09-20",
-    "track": "top4",
-    "episode_id": "ai-news-2026-09-20-top4",
-    "stories": [
-      "Fine-tune FLUX.1 with an API",
-      "Learning from human preferences",
-      "DeepMind researcher\u2019s new AI lab nears $4bn valuation, reports say",
-      "Welcome spaCy to the Hugging Face Hub"
-    ],
-    "stories_count": 4,
-    "json_path": "/data/video_scripts/2026-09-20-ai-news.json",
-    "md_path": "/data/video_scripts/2026-09-20-ai-news.md",
-    "updated_at": "2026-09-20T12:41:12.772706"
-  },
-  {
-    "date": "2026-09-20",
-    "track": "leaders",
-    "episode_id": "ai-news-2026-09-20-leaders",
-    "stories": [
-      "DeepMind researcher\u2019s new AI lab nears $4bn valuation, reports say",
-      "OpenAI and Anthropic are making 10 times more revenue than all Chinese AI models combined, research group Rhodium says",
-      "Writing engineering strategy",
-      "V\u0101kQA: A Benchmark and Evaluation Study for Telugu Spoken Factoid Question Answering"
-    ],
-    "stories_count": 4,
-    "json_path": "/data/video_scripts/2026-09-20-ai-news-leaders.json",
-    "md_path": "/data/video_scripts/2026-09-20-ai-news-leaders.md",
-    "updated_at": "2026-09-20T12:41:55.338737"
-  },
-  {
-    "date": "2026-09-20",
-    "track": "generative_media",
-    "episode_id": "ai-news-2026-09-20-generative_media",
-    "stories": [
-      "Consistency Models",
-      "Can MiniMax-H3 Reason About the Physical World? An Evaluation of Omni-Modal Generative Model",
-      "Video generation models as world simulators",
-      "Our approach to data and AI"
-    ],
-    "stories_count": 4,
-    "json_path": "/data/video_scripts/2026-09-20-ai-news-generative_media.json",
-    "md_path": "/data/video_scripts/2026-09-20-ai-news-generative_media.md",
-    "updated_at": "2026-09-20T12:42:07.053414"
-  },
-  {
-    "date": "2026-09-20",
-    "track": "builders",
-    "episode_id": "ai-news-2026-09-20-builders",
-    "stories": [
-      "Fine-tune FLUX.1 with an API",
-      "Welcome spaCy to the Hugging Face Hub",
-      "The Partnership: Amazon SageMaker and Hugging Face",
-      "Learning from human preferences"
-    ],
-    "stories_count": 4,
-    "json_path": "/data/video_scripts/2026-09-20-ai-news-builders.json",
-    "md_path": "/data/video_scripts/2026-09-20-ai-news-builders.md",
-    "updated_at": "2026-09-20T12:41:26.198554"
+    "json_path": "/data/video_scripts/weekly_2026-09-21-mega-recap.json",
+    "md_path": "/data/video_scripts/weekly_2026-09-21-mega-recap.md",
+    "updated_at": "2026-09-21T01:20:44.621453"
   },
   {
     "date": "2026-09-19",
     "track": "top4",
     "episode_id": "ai-news-2026-09-19-top4",
     "stories": [
-      "Amazon EC2 R9g and R9gd instances powered by AWS Graviton5 processors are now generally available",
-      "Introducing gpt-oss",
-      "OpenAI and Anthropic are making 10 times more revenue than all Chinese AI models combined, research group Rhodium says",
-      "Introducing 4o Image Generation"
+      "YuE2: Open Full-Song Generation with Symbolic Score Planning",
+      "DeepSeek V4.1 Flash: Asymmetric Compute MoE Architecture",
+      "Anthropic Agrees $45B AI Infrastructure Deal with Nscale",
+      "Marigold v2: Diffusion Transformers for Real-Time Monocular Depth"
     ],
     "stories_count": 4,
     "json_path": "/data/video_scripts/2026-09-19-ai-news.json",
     "md_path": "/data/video_scripts/2026-09-19-ai-news.md",
-    "updated_at": "2026-09-19T12:10:03.785184"
+    "updated_at": "2026-09-19T12:30:54.102981"
   },
   {
     "date": "2026-09-19",

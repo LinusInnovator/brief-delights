@@ -1,108 +1,118 @@
 ---
-episode_id: ai-news-2026-09-20-top4
+episode_id: ai-news-2026-09-19-top4
 track: top4
 format: daily
 voice_profile: alex_tech
 tools:
-- name: Fine-tune FLUX.1 with an API
-  url: https://replicate.com/blog/fine-tune-flux-with-an-api
+- name: 'YuE2: Open Full-Song Generation with Symbolic Score Planning'
+  url: https://huggingface.co/spaces/multimodal-art/YuE
   mode: tool_drop
-  hero_anchor: h1, header, .hero h1
-  demo_anchor: form, input, button[type='submit'], canvas, video, audio, .output,
-    .demo
-  download_anchor: a[href*='github.com'], a[href*='api'], button
-  specs: Live Web App | Interactive Demo
-  video_readiness: 60.0
-  consensus_count: 1
-  hn_points: null
+  hero_anchor: h1, .model-header, header
+  demo_anchor: iframe[src*='gradio'], .gradio-container, canvas, video, button[type='submit'],
+    .output
+  download_anchor: button[data-testid='duplicate-button'], a[href*='tree/main']
+  specs: Interactive Space | Hugging Face | Live Demo
+  video_readiness: 135.0
+  consensus_count: 5
+  hn_points: 480
   badges:
+  - 🔥 HN Trending (480 pts)
+  - ⚡ 5 Outlets Confirmed
   - ✨ Interactive Demo Live
-- name: Learning from human preferences
-  url: https://openai.com/index/learning-from-human-preferences
+- name: 'DeepSeek V4.1 Flash: Asymmetric Compute MoE Architecture'
+  url: https://arxiv.org/abs/2609.11200
   mode: paper_preview
-  hero_anchor: main h1, header h1, h1
-  demo_anchor: 'figure, table, .results, #diagram, #comparison'
-  download_anchor: a[href*='pdf'], a[href*='arxiv.org'], a[href*='github.com']
-  specs: Research Preview | Benchmark
-  video_readiness: 40.0
-  consensus_count: 2
-  hn_points: null
-  badges: []
-- name: DeepMind researcher’s new AI lab nears $4bn valuation, reports say
-  url: https://sifted.eu/articles/deepmind-researchers-new-ai-lab-nears-4bn-valuation-reports-say/
+  hero_anchor: h1.title, .title, h1
+  demo_anchor: a.download-pdf, div.extra-services, table.benchmark, figure
+  download_anchor: a.download-pdf, a[href*='arxiv.org/pdf']
+  specs: Research Preprint | arXiv
+  video_readiness: 85.0
+  consensus_count: 6
+  hn_points: 650
+  badges:
+  - 🔥 HN Trending (650 pts)
+  - ⚡ 6 Outlets Confirmed
+  - 📄 Research Preprint
+- name: Anthropic Agrees $45B AI Infrastructure Deal with Nscale
+  url: https://brief.delights.pro/newsletters/newsletter_leaders_2026-08-28.html
   mode: industry_insight
   hero_anchor: main h1, header h1, .hero h1, h1
   demo_anchor: figure, table, blockquote, canvas, .chart, .metrics
   download_anchor: a[href*='report'], a[href*='pdf'], a.cta-button
   specs: Industry Insight | Strategic Analysis
-  video_readiness: 30.0
-  consensus_count: 1
-  hn_points: null
-  badges: []
-- name: Welcome spaCy to the Hugging Face Hub
-  url: https://huggingface.co/blog/spacy
-  mode: tool_drop
-  hero_anchor: h1, .model-header, header
-  demo_anchor: 'table, .results, #benchmark, canvas, .viewer, video'
-  download_anchor: button[data-testid='download-button'], a[href*='tree/main'], a[href*='resolve']
-  specs: Model Weights | Hugging Face Hub
-  video_readiness: 55.0
-  consensus_count: 1
-  hn_points: null
+  video_readiness: 65.0
+  consensus_count: 3
+  hn_points: 190
   badges:
-  - 📦 Open Weights
+  - 🔥 HN Trending (190 pts)
+  - ⚡ 3 Outlets Confirmed
+- name: 'Marigold v2: Diffusion Transformers for Real-Time Monocular Depth'
+  url: https://github.com/prs-eth/marigold
+  mode: tool_drop
+  hero_anchor: 'article.markdown-body h1, .repository-content, #readme h1, h1'
+  demo_anchor: 'article.markdown-body img[src*=''.gif''], article.markdown-body video,
+    article.markdown-body details, #readme img, table'
+  download_anchor: a[href*='releases'], a[href*='clone'], .btn-primary, a[href$='.zip']
+  specs: Open Source | GitHub | Code & Docs
+  video_readiness: 110.0
+  consensus_count: 4
+  hn_points: 340
+  badges:
+  - 🔥 HN Trending (340 pts)
+  - ⚡ 4 Outlets Confirmed
+  - 🛠️ Open Source Repo
 ---
 
 # Intro
-[excited] Today: fine-tune FLUX.1 by API, spaCy lands on Hugging Face, OpenAI studies human preferences, and a DeepMind alum’s lab nears four billion. No HN threads, but consensus is moving.
+[excited] Four drops today, and Hacker News is on fire — DeepSeek's 552-billion-parameter preprint just hit 650 points, while YuE2's open music Space sits at 480 and climbing. Let's move.
 
 ---
 
-# Story 1: Fine-tune FLUX.1 with an API
+# Story 1: YuE2: Open Full-Song Generation with Symbolic Score Planning
 ### Landing Page
-[confident] Replicate just dropped a guide to fine-tune FLUX.1 entirely through its API, turning custom image models into a scriptable workflow.
+[confident] YuE2 generates complete songs — vocals, lyrics, instrumentation — and it's completely open. Five outlets confirmed it, and it's trending on Hacker News at 480 points with 210 comments.
 
 ### Demo
-[amazed] You upload a dataset, kick off training, then call the tuned endpoint. The interactive demo is live, so you can watch your style lock in.
+[amazed] Here's the magic: it plans your track as editable ABC symbolic score notation first, then renders audio. You actually rewrite the melody instead of rerolling a slot machine.
 
 ### Access
-[excited] Access is live on Replicate’s blog. One consensus source, no Hacker News thread yet, but this is the fastest path from prompt to custom FLUX.
+[friendly] The interactive Space is live on Hugging Face right now — no install, no waitlist. Click the link below, type a prompt, and you're producing full tracks in about a minute.
 
 ---
 
-# Story 2: Learning from human preferences
+# Story 2: DeepSeek V4.1 Flash: Asymmetric Compute MoE Architecture
 ### Paper
-[curious] OpenAI revisits learning from human preferences, the alignment recipe behind safer, more useful models. Two outlets flag it, though Hacker News stays quiet.
+[confident] DeepSeek V4.1 Flash just landed as a preprint — 552 billion parameters of mixture-of-experts, and Hacker News pushed it to 650 points with 380 comments. Six outlets confirmed it.
 
-### Architecture/Evidence
-[confident] The method trains a reward model on human comparisons, then optimizes policy against that learned signal. It’s a benchmark for preference-based tuning.
+### Architecture / Evidence
+[curious] The trick is asymmetric compute: experts get wildly different budgets, so most tokens route through cheap paths. Their benchmark table shows frontier-adjacent scores at a fraction of the inference cost.
 
 ### Release Horizon
-[skeptical] No release date or code drop yet. Treat this as a research preview: useful context, not a plug-and-play tool for your stack today.
+[excited] PyTorch weights are already on Hugging Face, so this isn't vaporware. Expect fine-tunes and quantized builds flooding in within days — grab the base weights while they're hot.
 
 ---
 
-# Story 3: DeepMind researcher’s new AI lab nears $4bn valuation, reports say
+# Story 3: Anthropic Agrees $45B AI Infrastructure Deal with Nscale
 ### Headline
-[amazed] A DeepMind researcher’s new AI lab is reportedly nearing a four-billion-dollar valuation before shipping a public product.
+[skeptical] Forty-five billion dollars. Anthropic just signed a massive infrastructure deal with Nscale, locking down European gigawatt power and datacenter capacity. Three outlets confirmed, 190 points on HN.
 
 ### Evidence
-[skeptical] Sifted reports the mega-round pricing is driven by frontier talent alone. One outlet, no HN thread, but the signal is clear: pedigrees still raise capital fast.
+[confident] This isn't just GPUs — it's power contracts and physical buildout. Gigawatt-scale commitments take years to energize, which means Anthropic is betting on demand staying hot well into the 2030s.
 
 ### The Verdict
-[confident] The verdict? Talent is the moat investors are buying. Watch for team poaching, stealth benchmarks, and a very loud launch.
+[curious] The compute land grab is now a real-estate and energy game. If you're building on frontier models, expect capacity to be the bottleneck — and pricing to reflect whoever owns the megawatts.
 
 ---
 
-# Story 4: Welcome spaCy to the Hugging Face Hub
+# Story 4: Marigold v2: Diffusion Transformers for Real-Time Monocular Depth
 ### Landing Page
-[friendly] spaCy just landed on the Hugging Face Hub, bringing the battle-tested NLP library into the same ecosystem as transformers and datasets.
+[excited] Marigold v2 turns any single photo into a depth map, four times faster than before, on consumer GPUs. It's open source, sitting at 340 points on Hacker News with four outlets confirming.
 
 ### Demo
-[excited] You can browse spaCy models, pull pipelines, and integrate them with Hugging Face workflows. The badge says open weights, so experimentation is immediate.
+[amazed] Watch this — one image in, a clean depth field out, in real time. Diffusion transformers doing what used to need a render farm, now running on the card already in your desktop.
 
 ### Access
-[confident] Access is live now on the Hugging Face blog. One consensus source, no HN thread yet, but this removes real friction for production NLP teams.
+[friendly] Code, weights, and docs are all on GitHub under the prs-eth repo. Clone it, run the demo script, and you've got instant depth for 3D, AR, or video pipelines.
 
 ---
 

@@ -329,7 +329,7 @@ def run_phase_2(segments_data: dict) -> bool:
     log("\n" + "=" * 60)
     log("STEP 6: Aggregating & Synthesizing Weekly Trends", "INFO")
     log("=" * 60)
-    for segment_id in ["builders", "leaders", "innovators"]:
+    for segment_id in segment_ids:
         if not run_script("aggregate_weekly_trends.py", 30, [segment_id]):
             log(f"⚠️ Weekly aggregation failed for {segment_id}", "WARN")
         run_script("detect_trends.py", 30, ["--segment", segment_id])

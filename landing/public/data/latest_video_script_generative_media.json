@@ -1,138 +1,151 @@
 {
-  "episode_id": "ai-news-2026-09-20-generative_media",
+  "episode_id": "ai-news-2026-09-19-generative_media",
   "track": "generative_media",
   "format": "daily",
-  "date": "2026-09-20",
+  "date": "2026-09-19",
   "voice_profile": "alex_tech",
-  "intro": "[excited] Today: OpenAI's Consistency Models slash diffusion sampling, MiniMax-H3 tests physical reasoning, and Sora's world-simulator report. HN is quiet, but Hugging Face is buzzing with 111 upvotes.",
+  "intro": "[excited] Today's drops are stacked: YuE2 generates full songs with editable scores, Marigold v2 hits real-time depth, DeepSeek's 552-billion MoE preprint is tearing up Hacker News at 650 points, and Anthropic just signed a 45-billion-dollar compute deal.",
   "stories": [
     {
-      "name": "Consistency Models",
-      "url": "https://openai.com/index/consistency-models",
+      "name": "YuE2: Open Full-Song Generation with Symbolic Score Planning",
+      "url": "https://huggingface.co/spaces/multimodal-art/YuE",
       "mode": "tool_drop",
-      "hero_anchor": "main h1, header h1, .hero h1, h1",
-      "demo_anchor": "video, audio, canvas, .player, .waveform, iframe[src*='gradio'], .output, figure",
-      "download_anchor": "a[href*='download'], a[href*='github.com'], a[href*='huggingface.co'], .cta-button",
-      "specs": "Creative Media | Audio/Video/3D | Live Demo",
-      "video_readiness": 69.0,
-      "consensus_count": 1,
-      "hn_points": null,
-      "badges": [],
-      "beats": {
-        "landing_page": "[confident] OpenAI just dropped Consistency Models, attacking diffusion's slow iterative sampling across image, audio, and video. One-step generation, no fifty-step crawl.",
-        "demo": "[amazed] The live demo shows near-instant renders: text to image, audio, even video, trading some fidelity for massive speed. Watch the sampler collapse into a single pass.",
-        "access": "[excited] Hit the OpenAI page now. No HN thread yet, but this is the bottleneck fix creators begged for. Test it, then tell me if quality holds."
-      },
-      "ordered_beats": [
-        {
-          "title": "Landing Page",
-          "narration": "[confident] OpenAI just dropped Consistency Models, attacking diffusion's slow iterative sampling across image, audio, and video. One-step generation, no fifty-step crawl."
-        },
-        {
-          "title": "Demo",
-          "narration": "[amazed] The live demo shows near-instant renders: text to image, audio, even video, trading some fidelity for massive speed. Watch the sampler collapse into a single pass."
-        },
-        {
-          "title": "Access",
-          "narration": "[excited] Hit the OpenAI page now. No HN thread yet, but this is the bottleneck fix creators begged for. Test it, then tell me if quality holds."
-        }
-      ]
-    },
-    {
-      "name": "Can MiniMax-H3 Reason About the Physical World? An Evaluation of Omni-Modal Generative Model",
-      "url": "https://huggingface.co/papers/2609.18323",
-      "mode": "tool_drop",
-      "hero_anchor": "h1, .paper-title, h1.title",
-      "demo_anchor": "table, figure, .results, #benchmark, div[class*='abstract']",
-      "download_anchor": "a[href*='arxiv.org/pdf'], a[href*='huggingface.co/papers']",
-      "specs": "Research Paper | Hugging Face Daily Papers",
-      "video_readiness": 56.0,
-      "consensus_count": 1,
-      "hn_points": null,
+      "hero_anchor": "h1, .model-header, header",
+      "demo_anchor": "iframe[src*='gradio'], .gradio-container, canvas, video, button[type='submit'], .output",
+      "download_anchor": "button[data-testid='duplicate-button'], a[href*='tree/main']",
+      "specs": "Interactive Space | Hugging Face | Live Demo",
+      "video_readiness": 174.0,
+      "consensus_count": 5,
+      "hn_points": 480,
       "badges": [
-        "\ud83d\udce6 Open Weights"
+        "\ud83d\udd25 HN Trending (480 pts)",
+        "\u26a1 5 Outlets Confirmed",
+        "\u2728 Interactive Demo Live"
       ],
       "beats": {
-        "landing_page": "[curious] Next, MiniMax-H3: an omni-modal generative model on Hugging Face, 111 upvotes, open weights. It asks: can unified text, image, video, audio alignment reason about physics?",
-        "demo": "[skeptical] The paper evaluates physical-world reasoning through joint audio-visual generation in one latent space. Does it understand gravity, collisions, and cause-effect, or just mimic pixels?",
-        "access": "[confident] Open weights are live on Hugging Face. Grab the paper, run the model, and stress-test its physical intuition. This is the research drop to watch."
+        "landing_page": "[confident] YuE2 just landed on Hugging Face, and it's trending hard at 480 points on Hacker News with five outlets already confirming the drop.",
+        "demo": "[amazed] This isn't a thirty-second loop. YuE2 writes full vocal tracks, then exposes the ABC symbolic score so you can edit the melody before it ever renders.",
+        "access": "[excited] The Space is live right now, so you can generate a complete song in your browser and remix the notation for free."
       },
       "ordered_beats": [
         {
           "title": "Landing Page",
-          "narration": "[curious] Next, MiniMax-H3: an omni-modal generative model on Hugging Face, 111 upvotes, open weights. It asks: can unified text, image, video, audio alignment reason about physics?"
+          "narration": "[confident] YuE2 just landed on Hugging Face, and it's trending hard at 480 points on Hacker News with five outlets already confirming the drop."
         },
         {
           "title": "Demo",
-          "narration": "[skeptical] The paper evaluates physical-world reasoning through joint audio-visual generation in one latent space. Does it understand gravity, collisions, and cause-effect, or just mimic pixels?"
+          "narration": "[amazed] This isn't a thirty-second loop. YuE2 writes full vocal tracks, then exposes the ABC symbolic score so you can edit the melody before it ever renders."
         },
         {
           "title": "Access",
-          "narration": "[confident] Open weights are live on Hugging Face. Grab the paper, run the model, and stress-test its physical intuition. This is the research drop to watch."
+          "narration": "[excited] The Space is live right now, so you can generate a complete song in your browser and remix the notation for free."
         }
       ]
     },
     {
-      "name": "Video generation models as world simulators",
-      "url": "https://openai.com/index/video-generation-models-as-world-simulators",
+      "name": "Marigold v2: Diffusion Transformers for Real-Time Monocular Depth",
+      "url": "https://github.com/prs-eth/marigold",
       "mode": "tool_drop",
-      "hero_anchor": "main h1, header h1, .hero h1, h1",
-      "demo_anchor": "video, audio, canvas, .player, .waveform, iframe[src*='gradio'], .output, figure",
-      "download_anchor": "a[href*='download'], a[href*='github.com'], a[href*='huggingface.co'], .cta-button",
-      "specs": "Creative Media | Audio/Video/3D | Live Demo",
-      "video_readiness": 56.0,
-      "consensus_count": 1,
-      "hn_points": null,
-      "badges": [],
+      "hero_anchor": "article.markdown-body h1, .repository-content, #readme h1, h1",
+      "demo_anchor": "article.markdown-body img[src*='.gif'], article.markdown-body video, article.markdown-body details, #readme img, table",
+      "download_anchor": "a[href*='releases'], a[href*='clone'], .btn-primary, a[href$='.zip']",
+      "specs": "Open Source | GitHub | Code & Docs",
+      "video_readiness": 118.0,
+      "consensus_count": 4,
+      "hn_points": 340,
+      "badges": [
+        "\ud83d\udd25 HN Trending (340 pts)",
+        "\u26a1 4 Outlets Confirmed",
+        "\ud83d\udee0\ufe0f Open Source Repo"
+      ],
       "beats": {
-        "landing_page": "[excited] Third: OpenAI's Sora technical report, \"Video generation models as world simulators.\" Spacetime patches plus diffusion transformers define today's state of the art.",
-        "demo": "[amazed] The demo treats video as patches in space and time, scaling compute to simulate 3D consistency, object permanence, and long shots. It's a world model hiding in a video generator.",
-        "access": "[friendly] Read the report on OpenAI's site. No HN thread yet, but every video startup is quietly benchmarking against this. Save it, study the architecture, steal the ideas."
+        "landing_page": "[confident] Marigold v2 is sitting at 340 points on Hacker News, with four independent outlets confirming this is the new depth-estimation baseline.",
+        "demo": "[amazed] Diffusion transformers, four times faster, running monocular depth on consumer GPUs. That's the jump from offline batch rendering to genuinely real-time scene understanding.",
+        "access": "[skeptical] It's fully open source on GitHub with code and docs, so go clone it, run it on your own GPU, and verify those speed claims yourself."
       },
       "ordered_beats": [
         {
           "title": "Landing Page",
-          "narration": "[excited] Third: OpenAI's Sora technical report, \"Video generation models as world simulators.\" Spacetime patches plus diffusion transformers define today's state of the art."
+          "narration": "[confident] Marigold v2 is sitting at 340 points on Hacker News, with four independent outlets confirming this is the new depth-estimation baseline."
         },
         {
           "title": "Demo",
-          "narration": "[amazed] The demo treats video as patches in space and time, scaling compute to simulate 3D consistency, object permanence, and long shots. It's a world model hiding in a video generator."
+          "narration": "[amazed] Diffusion transformers, four times faster, running monocular depth on consumer GPUs. That's the jump from offline batch rendering to genuinely real-time scene understanding."
         },
         {
           "title": "Access",
-          "narration": "[friendly] Read the report on OpenAI's site. No HN thread yet, but every video startup is quietly benchmarking against this. Save it, study the architecture, steal the ideas."
+          "narration": "[skeptical] It's fully open source on GitHub with code and docs, so go clone it, run it on your own GPU, and verify those speed claims yourself."
         }
       ]
     },
     {
-      "name": "Our approach to data and AI",
-      "url": "https://openai.com/index/approach-to-data-and-ai",
-      "mode": "tool_drop",
+      "name": "DeepSeek V4.1 Flash: Asymmetric Compute MoE Architecture",
+      "url": "https://arxiv.org/abs/2609.11200",
+      "mode": "paper_preview",
+      "hero_anchor": "h1.title, .title, h1",
+      "demo_anchor": "a.download-pdf, div.extra-services, table.benchmark, figure",
+      "download_anchor": "a.download-pdf, a[href*='arxiv.org/pdf']",
+      "specs": "Research Preprint | arXiv",
+      "video_readiness": 65.0,
+      "consensus_count": 6,
+      "hn_points": 650,
+      "badges": [
+        "\ud83d\udd25 HN Trending (650 pts)",
+        "\u26a1 6 Outlets Confirmed",
+        "\ud83d\udcc4 Research Preprint"
+      ],
+      "beats": {
+        "paper": "[curious] DeepSeek V4.1 Flash is a 552-billion-parameter MoE preprint, and it's dominating Hacker News right now with 650 points and 380 comments.",
+        "architecture_evidence": "[confident] The asymmetric compute routing means different experts get different budget, and the benchmark table shows it trading blows with far denser frontier models.",
+        "release_horizon": "[excited] PyTorch weights are already on Hugging Face, so this isn't a wait-and-see paper. You can download and test it today."
+      },
+      "ordered_beats": [
+        {
+          "title": "Paper",
+          "narration": "[curious] DeepSeek V4.1 Flash is a 552-billion-parameter MoE preprint, and it's dominating Hacker News right now with 650 points and 380 comments."
+        },
+        {
+          "title": "Architecture/Evidence",
+          "narration": "[confident] The asymmetric compute routing means different experts get different budget, and the benchmark table shows it trading blows with far denser frontier models."
+        },
+        {
+          "title": "Release Horizon",
+          "narration": "[excited] PyTorch weights are already on Hugging Face, so this isn't a wait-and-see paper. You can download and test it today."
+        }
+      ]
+    },
+    {
+      "name": "Anthropic Agrees $45B AI Infrastructure Deal with Nscale",
+      "url": "https://brief.delights.pro/newsletters/newsletter_leaders_2026-08-28.html",
+      "mode": "industry_insight",
       "hero_anchor": "main h1, header h1, .hero h1, h1",
       "demo_anchor": "video, audio, canvas, .player, .waveform, iframe[src*='gradio'], .output, figure",
       "download_anchor": "a[href*='download'], a[href*='github.com'], a[href*='huggingface.co'], .cta-button",
       "specs": "Creative Media | Audio/Video/3D | Live Demo",
-      "video_readiness": 56.0,
-      "consensus_count": 1,
-      "hn_points": null,
-      "badges": [],
+      "video_readiness": 45.0,
+      "consensus_count": 3,
+      "hn_points": 190,
+      "badges": [
+        "\ud83d\udd25 HN Trending (190 pts)",
+        "\u26a1 3 Outlets Confirmed"
+      ],
       "beats": {
-        "landing_page": "[skeptical] Finally, OpenAI's approach to data and AI. Media Manager and new data-use policy directly affect how your images, video, and audio train future models.",
-        "demo": "[curious] The page details opt-out controls, provenance signals, and creator rights. If you publish AI media, this is the fine print that decides your leverage.",
-        "access": "[confident] Check the policy now, configure your Media Manager settings, and audit your uploads. No HN thread yet, but ignore this and you're the product."
+        "headline": "[excited] Anthropic just agreed a forty-five-billion-dollar infrastructure deal with Nscale, locking down European gigawatt power and datacenter capacity.",
+        "evidence": "[confident] Three outlets confirmed the terms, and Hacker News pushed it to 190 points as the comments debated whether this is compute security or a bubble signal.",
+        "verdict": "[friendly] Either way, the message is clear: frontier labs are now buying power plants, not just GPUs. Compute is the new moat."
       },
       "ordered_beats": [
         {
-          "title": "Landing Page",
-          "narration": "[skeptical] Finally, OpenAI's approach to data and AI. Media Manager and new data-use policy directly affect how your images, video, and audio train future models."
+          "title": "Headline",
+          "narration": "[excited] Anthropic just agreed a forty-five-billion-dollar infrastructure deal with Nscale, locking down European gigawatt power and datacenter capacity."
         },
         {
-          "title": "Demo",
-          "narration": "[curious] The page details opt-out controls, provenance signals, and creator rights. If you publish AI media, this is the fine print that decides your leverage."
+          "title": "Evidence",
+          "narration": "[confident] Three outlets confirmed the terms, and Hacker News pushed it to 190 points as the comments debated whether this is compute security or a bubble signal."
         },
         {
-          "title": "Access",
-          "narration": "[confident] Check the policy now, configure your Media Manager settings, and audit your uploads. No HN thread yet, but ignore this and you're the product."
+          "title": "Verdict",
+          "narration": "[friendly] Either way, the message is clear: frontier labs are now buying power plants, not just GPUs. Compute is the new moat."
         }
       ]
     }
@@ -140,60 +153,73 @@
   "outro": "[friendly] All project links, Hugging Face spaces, and research papers are organized down in the description below. Hit subscribe to Brief Delights for your daily rundown, and I'll see you tomorrow.",
   "tools_metadata": [
     {
-      "name": "Consistency Models",
-      "url": "https://openai.com/index/consistency-models",
+      "name": "YuE2: Open Full-Song Generation with Symbolic Score Planning",
+      "url": "https://huggingface.co/spaces/multimodal-art/YuE",
       "mode": "tool_drop",
-      "hero_anchor": "main h1, header h1, .hero h1, h1",
-      "demo_anchor": "video, audio, canvas, .player, .waveform, iframe[src*='gradio'], .output, figure",
-      "download_anchor": "a[href*='download'], a[href*='github.com'], a[href*='huggingface.co'], .cta-button",
-      "specs": "Creative Media | Audio/Video/3D | Live Demo",
-      "video_readiness": 69.0,
-      "consensus_count": 1,
-      "hn_points": null,
-      "badges": []
-    },
-    {
-      "name": "Can MiniMax-H3 Reason About the Physical World? An Evaluation of Omni-Modal Generative Model",
-      "url": "https://huggingface.co/papers/2609.18323",
-      "mode": "tool_drop",
-      "hero_anchor": "h1, .paper-title, h1.title",
-      "demo_anchor": "table, figure, .results, #benchmark, div[class*='abstract']",
-      "download_anchor": "a[href*='arxiv.org/pdf'], a[href*='huggingface.co/papers']",
-      "specs": "Research Paper | Hugging Face Daily Papers",
-      "video_readiness": 56.0,
-      "consensus_count": 1,
-      "hn_points": null,
+      "hero_anchor": "h1, .model-header, header",
+      "demo_anchor": "iframe[src*='gradio'], .gradio-container, canvas, video, button[type='submit'], .output",
+      "download_anchor": "button[data-testid='duplicate-button'], a[href*='tree/main']",
+      "specs": "Interactive Space | Hugging Face | Live Demo",
+      "video_readiness": 174.0,
+      "consensus_count": 5,
+      "hn_points": 480,
       "badges": [
-        "\ud83d\udce6 Open Weights"
+        "\ud83d\udd25 HN Trending (480 pts)",
+        "\u26a1 5 Outlets Confirmed",
+        "\u2728 Interactive Demo Live"
       ]
     },
     {
-      "name": "Video generation models as world simulators",
-      "url": "https://openai.com/index/video-generation-models-as-world-simulators",
+      "name": "Marigold v2: Diffusion Transformers for Real-Time Monocular Depth",
+      "url": "https://github.com/prs-eth/marigold",
       "mode": "tool_drop",
-      "hero_anchor": "main h1, header h1, .hero h1, h1",
-      "demo_anchor": "video, audio, canvas, .player, .waveform, iframe[src*='gradio'], .output, figure",
-      "download_anchor": "a[href*='download'], a[href*='github.com'], a[href*='huggingface.co'], .cta-button",
-      "specs": "Creative Media | Audio/Video/3D | Live Demo",
-      "video_readiness": 56.0,
-      "consensus_count": 1,
-      "hn_points": null,
-      "badges": []
+      "hero_anchor": "article.markdown-body h1, .repository-content, #readme h1, h1",
+      "demo_anchor": "article.markdown-body img[src*='.gif'], article.markdown-body video, article.markdown-body details, #readme img, table",
+      "download_anchor": "a[href*='releases'], a[href*='clone'], .btn-primary, a[href$='.zip']",
+      "specs": "Open Source | GitHub | Code & Docs",
+      "video_readiness": 118.0,
+      "consensus_count": 4,
+      "hn_points": 340,
+      "badges": [
+        "\ud83d\udd25 HN Trending (340 pts)",
+        "\u26a1 4 Outlets Confirmed",
+        "\ud83d\udee0\ufe0f Open Source Repo"
+      ]
     },
     {
-      "name": "Our approach to data and AI",
-      "url": "https://openai.com/index/approach-to-data-and-ai",
-      "mode": "tool_drop",
+      "name": "DeepSeek V4.1 Flash: Asymmetric Compute MoE Architecture",
+      "url": "https://arxiv.org/abs/2609.11200",
+      "mode": "paper_preview",
+      "hero_anchor": "h1.title, .title, h1",
+      "demo_anchor": "a.download-pdf, div.extra-services, table.benchmark, figure",
+      "download_anchor": "a.download-pdf, a[href*='arxiv.org/pdf']",
+      "specs": "Research Preprint | arXiv",
+      "video_readiness": 65.0,
+      "consensus_count": 6,
+      "hn_points": 650,
+      "badges": [
+        "\ud83d\udd25 HN Trending (650 pts)",
+        "\u26a1 6 Outlets Confirmed",
+        "\ud83d\udcc4 Research Preprint"
+      ]
+    },
+    {
+      "name": "Anthropic Agrees $45B AI Infrastructure Deal with Nscale",
+      "url": "https://brief.delights.pro/newsletters/newsletter_leaders_2026-08-28.html",
+      "mode": "industry_insight",
       "hero_anchor": "main h1, header h1, .hero h1, h1",
       "demo_anchor": "video, audio, canvas, .player, .waveform, iframe[src*='gradio'], .output, figure",
       "download_anchor": "a[href*='download'], a[href*='github.com'], a[href*='huggingface.co'], .cta-button",
       "specs": "Creative Media | Audio/Video/3D | Live Demo",
-      "video_readiness": 56.0,
-      "consensus_count": 1,
-      "hn_points": null,
-      "badges": []
+      "video_readiness": 45.0,
+      "consensus_count": 3,
+      "hn_points": 190,
+      "badges": [
+        "\ud83d\udd25 HN Trending (190 pts)",
+        "\u26a1 3 Outlets Confirmed"
+      ]
     }
   ],
-  "raw_markdown": "---\nepisode_id: ai-news-2026-09-20-generative_media\ntrack: generative_media\nformat: daily\nvoice_profile: alex_tech\ntools:\n- name: Consistency Models\n  url: https://openai.com/index/consistency-models\n  mode: tool_drop\n  hero_anchor: main h1, header h1, .hero h1, h1\n  demo_anchor: video, audio, canvas, .player, .waveform, iframe[src*='gradio'], .output,\n    figure\n  download_anchor: a[href*='download'], a[href*='github.com'], a[href*='huggingface.co'],\n    .cta-button\n  specs: Creative Media | Audio/Video/3D | Live Demo\n  video_readiness: 69.0\n  consensus_count: 1\n  hn_points: null\n  badges: []\n- name: Can MiniMax-H3 Reason About the Physical World? An Evaluation of Omni-Modal\n    Generative Model\n  url: https://huggingface.co/papers/2609.18323\n  mode: tool_drop\n  hero_anchor: h1, .paper-title, h1.title\n  demo_anchor: 'table, figure, .results, #benchmark, div[class*=''abstract'']'\n  download_anchor: a[href*='arxiv.org/pdf'], a[href*='huggingface.co/papers']\n  specs: Research Paper | Hugging Face Daily Papers\n  video_readiness: 56.0\n  consensus_count: 1\n  hn_points: null\n  badges:\n  - \ud83d\udce6 Open Weights\n- name: Video generation models as world simulators\n  url: https://openai.com/index/video-generation-models-as-world-simulators\n  mode: tool_drop\n  hero_anchor: main h1, header h1, .hero h1, h1\n  demo_anchor: video, audio, canvas, .player, .waveform, iframe[src*='gradio'], .output,\n    figure\n  download_anchor: a[href*='download'], a[href*='github.com'], a[href*='huggingface.co'],\n    .cta-button\n  specs: Creative Media | Audio/Video/3D | Live Demo\n  video_readiness: 56.0\n  consensus_count: 1\n  hn_points: null\n  badges: []\n- name: Our approach to data and AI\n  url: https://openai.com/index/approach-to-data-and-ai\n  mode: tool_drop\n  hero_anchor: main h1, header h1, .hero h1, h1\n  demo_anchor: video, audio, canvas, .player, .waveform, iframe[src*='gradio'], .output,\n    figure\n  download_anchor: a[href*='download'], a[href*='github.com'], a[href*='huggingface.co'],\n    .cta-button\n  specs: Creative Media | Audio/Video/3D | Live Demo\n  video_readiness: 56.0\n  consensus_count: 1\n  hn_points: null\n  badges: []\n---\n\n# Intro\n[excited] Today: OpenAI's Consistency Models slash diffusion sampling, MiniMax-H3 tests physical reasoning, and Sora's world-simulator report. HN is quiet, but Hugging Face is buzzing with 111 upvotes.\n\n---\n\n# Story 1: Consistency Models\n### Landing Page\n[confident] OpenAI just dropped Consistency Models, attacking diffusion's slow iterative sampling across image, audio, and video. One-step generation, no fifty-step crawl.\n\n### Demo\n[amazed] The live demo shows near-instant renders: text to image, audio, even video, trading some fidelity for massive speed. Watch the sampler collapse into a single pass.\n\n### Access\n[excited] Hit the OpenAI page now. No HN thread yet, but this is the bottleneck fix creators begged for. Test it, then tell me if quality holds.\n\n---\n\n# Story 2: Can MiniMax-H3 Reason About the Physical World?\n### Landing Page\n[curious] Next, MiniMax-H3: an omni-modal generative model on Hugging Face, 111 upvotes, open weights. It asks: can unified text, image, video, audio alignment reason about physics?\n\n### Demo\n[skeptical] The paper evaluates physical-world reasoning through joint audio-visual generation in one latent space. Does it understand gravity, collisions, and cause-effect, or just mimic pixels?\n\n### Access\n[confident] Open weights are live on Hugging Face. Grab the paper, run the model, and stress-test its physical intuition. This is the research drop to watch.\n\n---\n\n# Story 3: Video generation models as world simulators\n### Landing Page\n[excited] Third: OpenAI's Sora technical report, \"Video generation models as world simulators.\" Spacetime patches plus diffusion transformers define today's state of the art.\n\n### Demo\n[amazed] The demo treats video as patches in space and time, scaling compute to simulate 3D consistency, object permanence, and long shots. It's a world model hiding in a video generator.\n\n### Access\n[friendly] Read the report on OpenAI's site. No HN thread yet, but every video startup is quietly benchmarking against this. Save it, study the architecture, steal the ideas.\n\n---\n\n# Story 4: Our approach to data and AI\n### Landing Page\n[skeptical] Finally, OpenAI's approach to data and AI. Media Manager and new data-use policy directly affect how your images, video, and audio train future models.\n\n### Demo\n[curious] The page details opt-out controls, provenance signals, and creator rights. If you publish AI media, this is the fine print that decides your leverage.\n\n### Access\n[confident] Check the policy now, configure your Media Manager settings, and audit your uploads. No HN thread yet, but ignore this and you're the product.\n\n---\n\n# Outro\n[friendly] All project links, Hugging Face spaces, and research papers are organized down in the description below. Hit subscribe to Brief Delights for your daily rundown, and I'll see you tomorrow.",
-  "generated_at": "2026-09-20T12:42:07.052319"
+  "raw_markdown": "---\nepisode_id: ai-news-2026-09-19-generative_media\ntrack: generative_media\nformat: daily\nvoice_profile: alex_tech\ntools:\n- name: 'YuE2: Open Full-Song Generation with Symbolic Score Planning'\n  url: https://huggingface.co/spaces/multimodal-art/YuE\n  mode: tool_drop\n  hero_anchor: h1, .model-header, header\n  demo_anchor: iframe[src*='gradio'], .gradio-container, canvas, video, button[type='submit'],\n    .output\n  download_anchor: button[data-testid='duplicate-button'], a[href*='tree/main']\n  specs: Interactive Space | Hugging Face | Live Demo\n  video_readiness: 174.0\n  consensus_count: 5\n  hn_points: 480\n  badges:\n  - \ud83d\udd25 HN Trending (480 pts)\n  - \u26a1 5 Outlets Confirmed\n  - \u2728 Interactive Demo Live\n- name: 'Marigold v2: Diffusion Transformers for Real-Time Monocular Depth'\n  url: https://github.com/prs-eth/marigold\n  mode: tool_drop\n  hero_anchor: 'article.markdown-body h1, .repository-content, #readme h1, h1'\n  demo_anchor: 'article.markdown-body img[src*=''.gif''], article.markdown-body video,\n    article.markdown-body details, #readme img, table'\n  download_anchor: a[href*='releases'], a[href*='clone'], .btn-primary, a[href$='.zip']\n  specs: Open Source | GitHub | Code & Docs\n  video_readiness: 118.0\n  consensus_count: 4\n  hn_points: 340\n  badges:\n  - \ud83d\udd25 HN Trending (340 pts)\n  - \u26a1 4 Outlets Confirmed\n  - \ud83d\udee0\ufe0f Open Source Repo\n- name: 'DeepSeek V4.1 Flash: Asymmetric Compute MoE Architecture'\n  url: https://arxiv.org/abs/2609.11200\n  mode: paper_preview\n  hero_anchor: h1.title, .title, h1\n  demo_anchor: a.download-pdf, div.extra-services, table.benchmark, figure\n  download_anchor: a.download-pdf, a[href*='arxiv.org/pdf']\n  specs: Research Preprint | arXiv\n  video_readiness: 65.0\n  consensus_count: 6\n  hn_points: 650\n  badges:\n  - \ud83d\udd25 HN Trending (650 pts)\n  - \u26a1 6 Outlets Confirmed\n  - \ud83d\udcc4 Research Preprint\n- name: Anthropic Agrees $45B AI Infrastructure Deal with Nscale\n  url: https://brief.delights.pro/newsletters/newsletter_leaders_2026-08-28.html\n  mode: industry_insight\n  hero_anchor: main h1, header h1, .hero h1, h1\n  demo_anchor: video, audio, canvas, .player, .waveform, iframe[src*='gradio'], .output,\n    figure\n  download_anchor: a[href*='download'], a[href*='github.com'], a[href*='huggingface.co'],\n    .cta-button\n  specs: Creative Media | Audio/Video/3D | Live Demo\n  video_readiness: 45.0\n  consensus_count: 3\n  hn_points: 190\n  badges:\n  - \ud83d\udd25 HN Trending (190 pts)\n  - \u26a1 3 Outlets Confirmed\n---\n\n# Intro\n[excited] Today's drops are stacked: YuE2 generates full songs with editable scores, Marigold v2 hits real-time depth, DeepSeek's 552-billion MoE preprint is tearing up Hacker News at 650 points, and Anthropic just signed a 45-billion-dollar compute deal.\n\n---\n\n# Story 1: YuE2: Open Full-Song Generation with Symbolic Score Planning\n### Landing Page\n[confident] YuE2 just landed on Hugging Face, and it's trending hard at 480 points on Hacker News with five outlets already confirming the drop.\n### Demo\n[amazed] This isn't a thirty-second loop. YuE2 writes full vocal tracks, then exposes the ABC symbolic score so you can edit the melody before it ever renders.\n### Access\n[excited] The Space is live right now, so you can generate a complete song in your browser and remix the notation for free.\n\n---\n\n# Story 2: Marigold v2: Diffusion Transformers for Real-Time Monocular Depth\n### Landing Page\n[confident] Marigold v2 is sitting at 340 points on Hacker News, with four independent outlets confirming this is the new depth-estimation baseline.\n### Demo\n[amazed] Diffusion transformers, four times faster, running monocular depth on consumer GPUs. That's the jump from offline batch rendering to genuinely real-time scene understanding.\n### Access\n[skeptical] It's fully open source on GitHub with code and docs, so go clone it, run it on your own GPU, and verify those speed claims yourself.\n\n---\n\n# Story 3: DeepSeek V4.1 Flash: Asymmetric Compute MoE Architecture\n### Paper\n[curious] DeepSeek V4.1 Flash is a 552-billion-parameter MoE preprint, and it's dominating Hacker News right now with 650 points and 380 comments.\n### Architecture/Evidence\n[confident] The asymmetric compute routing means different experts get different budget, and the benchmark table shows it trading blows with far denser frontier models.\n### Release Horizon\n[excited] PyTorch weights are already on Hugging Face, so this isn't a wait-and-see paper. You can download and test it today.\n\n---\n\n# Story 4: Anthropic Agrees $45B AI Infrastructure Deal with Nscale\n### Headline\n[excited] Anthropic just agreed a forty-five-billion-dollar infrastructure deal with Nscale, locking down European gigawatt power and datacenter capacity.\n### Evidence\n[confident] Three outlets confirmed the terms, and Hacker News pushed it to 190 points as the comments debated whether this is compute security or a bubble signal.\n### Verdict\n[friendly] Either way, the message is clear: frontier labs are now buying power plants, not just GPUs. Compute is the new moat.\n\n---\n\n# Outro\n[friendly] All project links, Hugging Face spaces, and research papers are organized down in the description below. Hit subscribe to Brief Delights for your daily rundown, and I'll see you tomorrow.",
+  "generated_at": "2026-09-19T12:32:37.285913"
 }

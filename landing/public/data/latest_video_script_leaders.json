@@ -1,182 +1,172 @@
 {
-  "episode_id": "ai-news-2026-09-20-leaders",
+  "episode_id": "ai-news-2026-09-19-leaders",
   "track": "leaders",
   "format": "daily",
-  "date": "2026-09-20",
+  "date": "2026-09-19",
   "voice_profile": "alex_tech",
-  "intro": "[excited] Today: a stealth AI lab nears four billion, US labs out-earn China ten-to-one, Vercel's build engine, and a Telugu speech QA benchmark. HN's quiet, but Hugging Face upvotes are talking.",
+  "intro": "[excited] Three drops, one massive day \u2014 DeepSeek's 552-billion-parameter MoE just hit 650 Hacker News points, YuE2 generates full songs at 480, and Anthropic locked a 45-billion-dollar compute deal. Let's run it.",
   "stories": [
     {
-      "name": "DeepMind researcher\u2019s new AI lab nears $4bn valuation, reports say",
-      "url": "https://sifted.eu/articles/deepmind-researchers-new-ai-lab-nears-4bn-valuation-reports-say/",
+      "name": "Anthropic Agrees $45B AI Infrastructure Deal with Nscale",
+      "url": "https://brief.delights.pro/newsletters/newsletter_leaders_2026-08-28.html",
       "mode": "industry_insight",
       "hero_anchor": "main h1, header h1, .hero h1, h1",
       "demo_anchor": "figure, table, blockquote, canvas, .chart, .metrics",
       "download_anchor": "a[href*='report'], a[href*='pdf'], a.cta-button",
       "specs": "Industry Insight | Strategic Analysis",
-      "video_readiness": 55.0,
-      "consensus_count": 1,
-      "hn_points": null,
-      "badges": [],
+      "video_readiness": 90.0,
+      "consensus_count": 3,
+      "hn_points": 190,
+      "badges": [
+        "\ud83d\udd25 HN Trending (190 pts)",
+        "\u26a1 3 Outlets Confirmed"
+      ],
       "beats": {
-        "headline": "[confident] A DeepMind researcher's brand-new lab is reportedly nearing a four-billion-dollar valuation. No product, no launch, just frontier talent pulling mega-round pricing. That's the 2026 signal.",
-        "evidence": "[skeptical] Reports are single-source, with no Hacker News thread yet. Consensus count sits at one, so treat the number as a leak, not gospel. Still, talent arbitrage is real.",
-        "the_verdict": "[confident] The verdict: compute and data are cheap; proven frontier researchers are not. Expect more quiet labs raising loud valuations before shipping anything public."
+        "headline": "[confident] Anthropic just signed a 45-billion-dollar infrastructure agreement with Nscale, locking down gigawatt-scale European power and datacenter capacity for the next wave of frontier model training.",
+        "evidence": "[curious] This is multi-outlet confirmed and currently trending on Hacker News at 190 points with 95 comments \u2014 the conversation isn't hype, it's about whether Europe can actually deliver that power on schedule.",
+        "access": "[skeptical] Keep your eye on this one. Draft briefs are published, but the real signal is execution \u2014 if Nscale builds, Anthropic trains; if it slips, compute scarcity prices everyone else's tokens this cycle."
       },
       "ordered_beats": [
         {
           "title": "Headline",
-          "narration": "[confident] A DeepMind researcher's brand-new lab is reportedly nearing a four-billion-dollar valuation. No product, no launch, just frontier talent pulling mega-round pricing. That's the 2026 signal."
+          "narration": "[confident] Anthropic just signed a 45-billion-dollar infrastructure agreement with Nscale, locking down gigawatt-scale European power and datacenter capacity for the next wave of frontier model training."
         },
         {
           "title": "Evidence",
-          "narration": "[skeptical] Reports are single-source, with no Hacker News thread yet. Consensus count sits at one, so treat the number as a leak, not gospel. Still, talent arbitrage is real."
+          "narration": "[curious] This is multi-outlet confirmed and currently trending on Hacker News at 190 points with 95 comments \u2014 the conversation isn't hype, it's about whether Europe can actually deliver that power on schedule."
         },
         {
-          "title": "The Verdict",
-          "narration": "[confident] The verdict: compute and data are cheap; proven frontier researchers are not. Expect more quiet labs raising loud valuations before shipping anything public."
+          "title": "Access",
+          "narration": "[skeptical] Keep your eye on this one. Draft briefs are published, but the real signal is execution \u2014 if Nscale builds, Anthropic trains; if it slips, compute scarcity prices everyone else's tokens this cycle."
         }
       ]
     },
     {
-      "name": "OpenAI and Anthropic are making 10 times more revenue than all Chinese AI models combined, research group Rhodium says",
-      "url": "https://www.cnbc.com/2026/09/17/chinas-ai-models-make-only-10percent-of-us-leaders-revenue-rhodium.html",
-      "mode": "industry_insight",
-      "hero_anchor": "main h1, header h1, .hero h1, h1",
-      "demo_anchor": "figure, table, blockquote, canvas, .chart, .metrics",
-      "download_anchor": "a[href*='report'], a[href*='pdf'], a.cta-button",
-      "specs": "Industry Insight | Strategic Analysis",
-      "video_readiness": 55.0,
-      "consensus_count": 1,
-      "hn_points": null,
-      "badges": [],
-      "beats": {
-        "headline": "[amazed] OpenAI and Anthropic reportedly earn ten times more revenue than every Chinese AI model combined. Rhodium's research reframes the US-China race as a commercial scoreboard, not just benchmarks.",
-        "evidence": "[curious] CNBC cites Rhodium's finding, with no Hacker News thread and consensus still one. That's early, but the revenue gap matches enterprise contracts, API lock-in, and Western distribution advantages.",
-        "the_verdict": "[skeptical] The verdict: China may close technical gaps, but monetization is a different war. Watch pricing, exports, and agent adoption, not just leaderboard wins."
-      },
-      "ordered_beats": [
-        {
-          "title": "Headline",
-          "narration": "[amazed] OpenAI and Anthropic reportedly earn ten times more revenue than every Chinese AI model combined. Rhodium's research reframes the US-China race as a commercial scoreboard, not just benchmarks."
-        },
-        {
-          "title": "Evidence",
-          "narration": "[curious] CNBC cites Rhodium's finding, with no Hacker News thread and consensus still one. That's early, but the revenue gap matches enterprise contracts, API lock-in, and Western distribution advantages."
-        },
-        {
-          "title": "The Verdict",
-          "narration": "[skeptical] The verdict: China may close technical gaps, but monetization is a different war. Watch pricing, exports, and agent adoption, not just leaderboard wins."
-        }
-      ]
-    },
-    {
-      "name": "Writing engineering strategy",
-      "url": "https://staffeng.com/guides/engineering-strategy/",
+      "name": "YuE2: Open Full-Song Generation with Symbolic Score Planning",
+      "url": "https://huggingface.co/spaces/multimodal-art/YuE",
       "mode": "tool_drop",
-      "hero_anchor": "main h1, header h1, .hero h1, h1",
-      "demo_anchor": "video, canvas, #demo, .demo, #comparison, table",
-      "download_anchor": "a[href*='github.com'], a[href*='download'], a[href*='huggingface.co'], .cta-button",
-      "specs": "Live Tool | Web Drop",
-      "video_readiness": 65.0,
-      "consensus_count": 2,
-      "hn_points": null,
-      "badges": [],
+      "hero_anchor": "h1, .model-header, header",
+      "demo_anchor": "iframe[src*='gradio'], .gradio-container, canvas, video, button[type='submit'], .output",
+      "download_anchor": "button[data-testid='duplicate-button'], a[href*='tree/main']",
+      "specs": "Interactive Space | Hugging Face | Live Demo",
+      "video_readiness": 135.0,
+      "consensus_count": 5,
+      "hn_points": 480,
+      "badges": [
+        "\ud83d\udd25 HN Trending (480 pts)",
+        "\u26a1 5 Outlets Confirmed",
+        "\u2728 Interactive Demo Live"
+      ],
       "beats": {
-        "landing_page": "[friendly] StaffEng's engineering strategy guide is live, but the real meat is a Vercel Hive teardown hidden inside. Consensus count two, no Hacker News thread yet. Still, build nerds should bookmark this.",
-        "demo": "[excited] Hive optimizes builds for speed and security, turning monorepo pain into cached, parallel execution. Think faster previews, tighter supply-chain controls, and infrastructure decisions you can actually defend in a strategy doc.",
-        "access": "[confident] Access it now at StaffEng dot com, under guides, engineering strategy. No install, no waitlist. Read it, steal the framework, and pressure-test your platform bets."
+        "landing_page": "[amazed] YuE2 does something most music models can't: full-length songs, vocals included, planned through editable symbolic ABC score notation. And the live Space is already sitting at 480 Hacker News points.",
+        "demo": "[excited] You type a lyric and style prompt, the model drafts a symbolic score you can edit bar by bar, then renders it into a full vocal track \u2014 structure, verses, chorus, all under your control.",
+        "access": "[friendly] It's live right now on Hugging Face Spaces \u2014 five outlets confirmed it, and honestly, click the link in the description and try it yourself before the queue fills up."
       },
       "ordered_beats": [
         {
           "title": "Landing Page",
-          "narration": "[friendly] StaffEng's engineering strategy guide is live, but the real meat is a Vercel Hive teardown hidden inside. Consensus count two, no Hacker News thread yet. Still, build nerds should bookmark this."
+          "narration": "[amazed] YuE2 does something most music models can't: full-length songs, vocals included, planned through editable symbolic ABC score notation. And the live Space is already sitting at 480 Hacker News points."
         },
         {
           "title": "Demo",
-          "narration": "[excited] Hive optimizes builds for speed and security, turning monorepo pain into cached, parallel execution. Think faster previews, tighter supply-chain controls, and infrastructure decisions you can actually defend in a strategy doc."
+          "narration": "[excited] You type a lyric and style prompt, the model drafts a symbolic score you can edit bar by bar, then renders it into a full vocal track \u2014 structure, verses, chorus, all under your control."
         },
         {
           "title": "Access",
-          "narration": "[confident] Access it now at StaffEng dot com, under guides, engineering strategy. No install, no waitlist. Read it, steal the framework, and pressure-test your platform bets."
+          "narration": "[friendly] It's live right now on Hugging Face Spaces \u2014 five outlets confirmed it, and honestly, click the link in the description and try it yourself before the queue fills up."
         }
       ]
     },
     {
-      "name": "V\u0101kQA: A Benchmark and Evaluation Study for Telugu Spoken Factoid Question Answering",
-      "url": "https://huggingface.co/papers/2609.19879",
+      "name": "DeepSeek V4.1 Flash: Asymmetric Compute MoE Architecture",
+      "url": "https://arxiv.org/abs/2609.11200",
       "mode": "paper_preview",
-      "hero_anchor": "h1, .paper-title, h1.title",
-      "demo_anchor": "table, figure, .results, #benchmark, div[class*='abstract']",
-      "download_anchor": "a[href*='arxiv.org/pdf'], a[href*='huggingface.co/papers']",
-      "specs": "Research Paper | Hugging Face Daily Papers",
-      "video_readiness": 55.0,
-      "consensus_count": 1,
-      "hn_points": null,
+      "hero_anchor": "h1.title, .title, h1",
+      "demo_anchor": "a.download-pdf, div.extra-services, table.benchmark, figure",
+      "download_anchor": "a.download-pdf, a[href*='arxiv.org/pdf']",
+      "specs": "Research Preprint | arXiv",
+      "video_readiness": 105.0,
+      "consensus_count": 6,
+      "hn_points": 650,
       "badges": [
-        "\ud83d\udce6 Open Weights"
+        "\ud83d\udd25 HN Trending (650 pts)",
+        "\u26a1 6 Outlets Confirmed",
+        "\ud83d\udcc4 Research Preprint"
       ],
-      "beats": {},
-      "ordered_beats": []
-    }
-  ],
-  "outro": "",
-  "tools_metadata": [
-    {
-      "name": "DeepMind researcher\u2019s new AI lab nears $4bn valuation, reports say",
-      "url": "https://sifted.eu/articles/deepmind-researchers-new-ai-lab-nears-4bn-valuation-reports-say/",
-      "mode": "industry_insight",
-      "hero_anchor": "main h1, header h1, .hero h1, h1",
-      "demo_anchor": "figure, table, blockquote, canvas, .chart, .metrics",
-      "download_anchor": "a[href*='report'], a[href*='pdf'], a.cta-button",
-      "specs": "Industry Insight | Strategic Analysis",
-      "video_readiness": 55.0,
-      "consensus_count": 1,
-      "hn_points": null,
-      "badges": []
-    },
-    {
-      "name": "OpenAI and Anthropic are making 10 times more revenue than all Chinese AI models combined, research group Rhodium says",
-      "url": "https://www.cnbc.com/2026/09/17/chinas-ai-models-make-only-10percent-of-us-leaders-revenue-rhodium.html",
-      "mode": "industry_insight",
-      "hero_anchor": "main h1, header h1, .hero h1, h1",
-      "demo_anchor": "figure, table, blockquote, canvas, .chart, .metrics",
-      "download_anchor": "a[href*='report'], a[href*='pdf'], a.cta-button",
-      "specs": "Industry Insight | Strategic Analysis",
-      "video_readiness": 55.0,
-      "consensus_count": 1,
-      "hn_points": null,
-      "badges": []
-    },
-    {
-      "name": "Writing engineering strategy",
-      "url": "https://staffeng.com/guides/engineering-strategy/",
-      "mode": "tool_drop",
-      "hero_anchor": "main h1, header h1, .hero h1, h1",
-      "demo_anchor": "video, canvas, #demo, .demo, #comparison, table",
-      "download_anchor": "a[href*='github.com'], a[href*='download'], a[href*='huggingface.co'], .cta-button",
-      "specs": "Live Tool | Web Drop",
-      "video_readiness": 65.0,
-      "consensus_count": 2,
-      "hn_points": null,
-      "badges": []
-    },
-    {
-      "name": "V\u0101kQA: A Benchmark and Evaluation Study for Telugu Spoken Factoid Question Answering",
-      "url": "https://huggingface.co/papers/2609.19879",
-      "mode": "paper_preview",
-      "hero_anchor": "h1, .paper-title, h1.title",
-      "demo_anchor": "table, figure, .results, #benchmark, div[class*='abstract']",
-      "download_anchor": "a[href*='arxiv.org/pdf'], a[href*='huggingface.co/papers']",
-      "specs": "Research Paper | Hugging Face Daily Papers",
-      "video_readiness": 55.0,
-      "consensus_count": 1,
-      "hn_points": null,
-      "badges": [
-        "\ud83d\udce6 Open Weights"
+      "beats": {
+        "paper": "[confident] DeepSeek V4.1 Flash is a 552-billion-parameter mixture-of-experts preprint, and it's the top story on Hacker News right now \u2014 650 points, 380 comments, six outlets confirming.",
+        "architecture": "[amazed] The twist is asymmetric compute: experts get uneven budgets, so cheap tokens route through tiny experts while hard tokens get the heavy ones. That's how you get MoE efficiency without losing reasoning depth.",
+        "release_horizon": "[curious] Weights are already on Hugging Face alongside PyTorch checkpoints and a full benchmark table. Fair warning \u2014 it's a preprint, so benchmark independently before you rebuild your stack around it."
+      },
+      "ordered_beats": [
+        {
+          "title": "Paper",
+          "narration": "[confident] DeepSeek V4.1 Flash is a 552-billion-parameter mixture-of-experts preprint, and it's the top story on Hacker News right now \u2014 650 points, 380 comments, six outlets confirming."
+        },
+        {
+          "title": "Architecture",
+          "narration": "[amazed] The twist is asymmetric compute: experts get uneven budgets, so cheap tokens route through tiny experts while hard tokens get the heavy ones. That's how you get MoE efficiency without losing reasoning depth."
+        },
+        {
+          "title": "Release Horizon",
+          "narration": "[curious] Weights are already on Hugging Face alongside PyTorch checkpoints and a full benchmark table. Fair warning \u2014 it's a preprint, so benchmark independently before you rebuild your stack around it."
+        }
       ]
     }
   ],
-  "raw_markdown": "---\nepisode_id: ai-news-2026-09-20-leaders\ntrack: leaders\nformat: daily\nvoice_profile: alex_tech\ntools:\n- name: DeepMind researcher\u2019s new AI lab nears $4bn valuation, reports say\n  url: https://sifted.eu/articles/deepmind-researchers-new-ai-lab-nears-4bn-valuation-reports-say/\n  mode: industry_insight\n  hero_anchor: main h1, header h1, .hero h1, h1\n  demo_anchor: figure, table, blockquote, canvas, .chart, .metrics\n  download_anchor: a[href*='report'], a[href*='pdf'], a.cta-button\n  specs: Industry Insight | Strategic Analysis\n  video_readiness: 55.0\n  consensus_count: 1\n  hn_points: null\n  badges: []\n- name: OpenAI and Anthropic are making 10 times more revenue than all Chinese AI\n    models combined, research group Rhodium says\n  url: https://www.cnbc.com/2026/09/17/chinas-ai-models-make-only-10percent-of-us-leaders-revenue-rhodium.html\n  mode: industry_insight\n  hero_anchor: main h1, header h1, .hero h1, h1\n  demo_anchor: figure, table, blockquote, canvas, .chart, .metrics\n  download_anchor: a[href*='report'], a[href*='pdf'], a.cta-button\n  specs: Industry Insight | Strategic Analysis\n  video_readiness: 55.0\n  consensus_count: 1\n  hn_points: null\n  badges: []\n- name: Writing engineering strategy\n  url: https://staffeng.com/guides/engineering-strategy/\n  mode: tool_drop\n  hero_anchor: main h1, header h1, .hero h1, h1\n  demo_anchor: 'video, canvas, #demo, .demo, #comparison, table'\n  download_anchor: a[href*='github.com'], a[href*='download'], a[href*='huggingface.co'],\n    .cta-button\n  specs: Live Tool | Web Drop\n  video_readiness: 65.0\n  consensus_count: 2\n  hn_points: null\n  badges: []\n- name: 'V\u0101kQA: A Benchmark and Evaluation Study for Telugu Spoken Factoid Question\n    Answering'\n  url: https://huggingface.co/papers/2609.19879\n  mode: paper_preview\n  hero_anchor: h1, .paper-title, h1.title\n  demo_anchor: 'table, figure, .results, #benchmark, div[class*=''abstract'']'\n  download_anchor: a[href*='arxiv.org/pdf'], a[href*='huggingface.co/papers']\n  specs: Research Paper | Hugging Face Daily Papers\n  video_readiness: 55.0\n  consensus_count: 1\n  hn_points: null\n  badges:\n  - \ud83d\udce6 Open Weights\n---\n\n# Intro\n[excited] Today: a stealth AI lab nears four billion, US labs out-earn China ten-to-one, Vercel's build engine, and a Telugu speech QA benchmark. HN's quiet, but Hugging Face upvotes are talking.\n\n---\n\n# Story 1: DeepMind researcher\u2019s new AI lab nears $4bn valuation, reports say\n### Headline\n[confident] A DeepMind researcher's brand-new lab is reportedly nearing a four-billion-dollar valuation. No product, no launch, just frontier talent pulling mega-round pricing. That's the 2026 signal.\n\n### Evidence\n[skeptical] Reports are single-source, with no Hacker News thread yet. Consensus count sits at one, so treat the number as a leak, not gospel. Still, talent arbitrage is real.\n\n### The Verdict\n[confident] The verdict: compute and data are cheap; proven frontier researchers are not. Expect more quiet labs raising loud valuations before shipping anything public.\n\n---\n\n# Story 2: OpenAI and Anthropic are making 10 times more revenue than all Chinese AI models combined, research group Rhodium says\n### Headline\n[amazed] OpenAI and Anthropic reportedly earn ten times more revenue than every Chinese AI model combined. Rhodium's research reframes the US-China race as a commercial scoreboard, not just benchmarks.\n\n### Evidence\n[curious] CNBC cites Rhodium's finding, with no Hacker News thread and consensus still one. That's early, but the revenue gap matches enterprise contracts, API lock-in, and Western distribution advantages.\n\n### The Verdict\n[skeptical] The verdict: China may close technical gaps, but monetization is a different war. Watch pricing, exports, and agent adoption, not just leaderboard wins.\n\n---\n\n# Story 3: Writing engineering strategy\n### Landing Page\n[friendly] StaffEng's engineering strategy guide is live, but the real meat is a Vercel Hive teardown hidden inside. Consensus count two, no Hacker News thread yet. Still, build nerds should bookmark this.\n\n### Demo\n[excited] Hive optimizes builds for speed and security, turning monorepo pain into cached, parallel execution. Think faster previews, tighter supply-chain controls, and infrastructure decisions you can actually defend in a strategy doc.\n\n### Access\n[confident] Access it now at StaffEng dot com, under guides, engineering strategy. No install, no waitlist. Read it, steal the framework, and pressure-test your platform bets.\n\n---\n\n# Story 4: V\u0101kQA: A Benchmark and Evaluation Study for Telugu Spoken Factoid Question Answer",
-  "generated_at": "2026-09-20T12:41:55.337637"
+  "outro": "[friendly] All project links, Hugging Face spaces, and research papers are organized down in the description below. Hit subscribe to Brief Delights for your daily rundown, and I'll see you tomorrow.",
+  "tools_metadata": [
+    {
+      "name": "Anthropic Agrees $45B AI Infrastructure Deal with Nscale",
+      "url": "https://brief.delights.pro/newsletters/newsletter_leaders_2026-08-28.html",
+      "mode": "industry_insight",
+      "hero_anchor": "main h1, header h1, .hero h1, h1",
+      "demo_anchor": "figure, table, blockquote, canvas, .chart, .metrics",
+      "download_anchor": "a[href*='report'], a[href*='pdf'], a.cta-button",
+      "specs": "Industry Insight | Strategic Analysis",
+      "video_readiness": 90.0,
+      "consensus_count": 3,
+      "hn_points": 190,
+      "badges": [
+        "\ud83d\udd25 HN Trending (190 pts)",
+        "\u26a1 3 Outlets Confirmed"
+      ]
+    },
+    {
+      "name": "YuE2: Open Full-Song Generation with Symbolic Score Planning",
+      "url": "https://huggingface.co/spaces/multimodal-art/YuE",
+      "mode": "tool_drop",
+      "hero_anchor": "h1, .model-header, header",
+      "demo_anchor": "iframe[src*='gradio'], .gradio-container, canvas, video, button[type='submit'], .output",
+      "download_anchor": "button[data-testid='duplicate-button'], a[href*='tree/main']",
+      "specs": "Interactive Space | Hugging Face | Live Demo",
+      "video_readiness": 135.0,
+      "consensus_count": 5,
+      "hn_points": 480,
+      "badges": [
+        "\ud83d\udd25 HN Trending (480 pts)",
+        "\u26a1 5 Outlets Confirmed",
+        "\u2728 Interactive Demo Live"
+      ]
+    },
+    {
+      "name": "DeepSeek V4.1 Flash: Asymmetric Compute MoE Architecture",
+      "url": "https://arxiv.org/abs/2609.11200",
+      "mode": "paper_preview",
+      "hero_anchor": "h1.title, .title, h1",
+      "demo_anchor": "a.download-pdf, div.extra-services, table.benchmark, figure",
+      "download_anchor": "a.download-pdf, a[href*='arxiv.org/pdf']",
+      "specs": "Research Preprint | arXiv",
+      "video_readiness": 105.0,
+      "consensus_count": 6,
+      "hn_points": 650,
+      "badges": [
+        "\ud83d\udd25 HN Trending (650 pts)",
+        "\u26a1 6 Outlets Confirmed",
+        "\ud83d\udcc4 Research Preprint"
+      ]
+    }
+  ],
+  "raw_markdown": "---\nepisode_id: ai-news-2026-09-19-leaders\ntrack: leaders\nformat: daily\nvoice_profile: alex_tech\ntools:\n- name: Anthropic Agrees $45B AI Infrastructure Deal with Nscale\n  url: https://brief.delights.pro/newsletters/newsletter_leaders_2026-08-28.html\n  mode: industry_insight\n  hero_anchor: main h1, header h1, .hero h1, h1\n  demo_anchor: figure, table, blockquote, canvas, .chart, .metrics\n  download_anchor: a[href*='report'], a[href*='pdf'], a.cta-button\n  specs: Industry Insight | Strategic Analysis\n  video_readiness: 90.0\n  consensus_count: 3\n  hn_points: 190\n  badges:\n  - \ud83d\udd25 HN Trending (190 pts)\n  - \u26a1 3 Outlets Confirmed\n- name: 'YuE2: Open Full-Song Generation with Symbolic Score Planning'\n  url: https://huggingface.co/spaces/multimodal-art/YuE\n  mode: tool_drop\n  hero_anchor: h1, .model-header, header\n  demo_anchor: iframe[src*='gradio'], .gradio-container, canvas, video, button[type='submit'],\n    .output\n  download_anchor: button[data-testid='duplicate-button'], a[href*='tree/main']\n  specs: Interactive Space | Hugging Face | Live Demo\n  video_readiness: 135.0\n  consensus_count: 5\n  hn_points: 480\n  badges:\n  - \ud83d\udd25 HN Trending (480 pts)\n  - \u26a1 5 Outlets Confirmed\n  - \u2728 Interactive Demo Live\n- name: 'DeepSeek V4.1 Flash: Asymmetric Compute MoE Architecture'\n  url: https://arxiv.org/abs/2609.11200\n  mode: paper_preview\n  hero_anchor: h1.title, .title, h1\n  demo_anchor: a.download-pdf, div.extra-services, table.benchmark, figure\n  download_anchor: a.download-pdf, a[href*='arxiv.org/pdf']\n  specs: Research Preprint | arXiv\n  video_readiness: 105.0\n  consensus_count: 6\n  hn_points: 650\n  badges:\n  - \ud83d\udd25 HN Trending (650 pts)\n  - \u26a1 6 Outlets Confirmed\n  - \ud83d\udcc4 Research Preprint\n---\n\n# Intro\n[excited] Three drops, one massive day \u2014 DeepSeek's 552-billion-parameter MoE just hit 650 Hacker News points, YuE2 generates full songs at 480, and Anthropic locked a 45-billion-dollar compute deal. Let's run it.\n\n---\n\n# Story 1: Anthropic Agrees $45B AI Infrastructure Deal with Nscale\n### Headline\n[confident] Anthropic just signed a 45-billion-dollar infrastructure agreement with Nscale, locking down gigawatt-scale European power and datacenter capacity for the next wave of frontier model training.\n\n### Evidence\n[curious] This is multi-outlet confirmed and currently trending on Hacker News at 190 points with 95 comments \u2014 the conversation isn't hype, it's about whether Europe can actually deliver that power on schedule.\n\n### Access\n[skeptical] Keep your eye on this one. Draft briefs are published, but the real signal is execution \u2014 if Nscale builds, Anthropic trains; if it slips, compute scarcity prices everyone else's tokens this cycle.\n\n---\n\n# Story 2: YuE2: Open Full-Song Generation with Symbolic Score Planning\n### Landing Page\n[amazed] YuE2 does something most music models can't: full-length songs, vocals included, planned through editable symbolic ABC score notation. And the live Space is already sitting at 480 Hacker News points.\n\n### Demo\n[excited] You type a lyric and style prompt, the model drafts a symbolic score you can edit bar by bar, then renders it into a full vocal track \u2014 structure, verses, chorus, all under your control.\n\n### Access\n[friendly] It's live right now on Hugging Face Spaces \u2014 five outlets confirmed it, and honestly, click the link in the description and try it yourself before the queue fills up.\n\n---\n\n# Story 3: DeepSeek V4.1 Flash: Asymmetric Compute MoE Architecture\n### Paper\n[confident] DeepSeek V4.1 Flash is a 552-billion-parameter mixture-of-experts preprint, and it's the top story on Hacker News right now \u2014 650 points, 380 comments, six outlets confirming.\n\n### Architecture\n[amazed] The twist is asymmetric compute: experts get uneven budgets, so cheap tokens route through tiny experts while hard tokens get the heavy ones. That's how you get MoE efficiency without losing reasoning depth.\n\n### Release Horizon\n[curious] Weights are already on Hugging Face alongside PyTorch checkpoints and a full benchmark table. Fair warning \u2014 it's a preprint, so benchmark independently before you rebuild your stack around it.\n\n---\n\n# Outro\n[friendly] All project links, Hugging Face spaces, and research papers are organized down in the description below. Hit subscribe to Brief Delights for your daily rundown, and I'll see you tomorrow.",
+  "generated_at": "2026-09-19T12:32:22.341223"
 }

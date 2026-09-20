@@ -1,142 +1,116 @@
 {
-  "episode_id": "ai-news-2026-09-20-builders",
+  "episode_id": "ai-news-2026-09-19-builders",
   "track": "builders",
   "format": "daily",
-  "date": "2026-09-20",
+  "date": "2026-09-19",
   "voice_profile": "alex_tech",
-  "intro": "[excited] Today FLUX.1 gets API fine-tuning, spaCy lands on Hugging Face, SageMaker deepens its HF partnership, and OpenAI revisits human preferences \u2014 all before Hacker News even spins up a thread.",
+  "intro": "[excited] Three drops just hit, and Hacker News is on fire \u2014 YuE2 generates full songs, Marigold v2 does real-time depth, and DeepSeek's 552-billion-parameter MoE preprint is already at 650 points.",
   "stories": [
     {
-      "name": "Fine-tune FLUX.1 with an API",
-      "url": "https://replicate.com/blog/fine-tune-flux-with-an-api",
+      "name": "YuE2: Open Full-Song Generation with Symbolic Score Planning",
+      "url": "https://huggingface.co/spaces/multimodal-art/YuE",
       "mode": "tool_drop",
-      "hero_anchor": "h1, header, .hero h1",
-      "demo_anchor": "form, input, button[type='submit'], canvas, video, audio, .output, .demo",
-      "download_anchor": "a[href*='github.com'], a[href*='api'], button",
-      "specs": "Live Web App | Interactive Demo",
-      "video_readiness": 75.0,
-      "consensus_count": 1,
-      "hn_points": null,
+      "hero_anchor": "h1, .model-header, header",
+      "demo_anchor": "iframe[src*='gradio'], .gradio-container, canvas, video, button[type='submit'], .output",
+      "download_anchor": "button[data-testid='duplicate-button'], a[href*='tree/main']",
+      "specs": "Interactive Space | Hugging Face | Live Demo",
+      "video_readiness": 150.0,
+      "consensus_count": 5,
+      "hn_points": 480,
       "badges": [
+        "\ud83d\udd25 HN Trending (480 pts)",
+        "\u26a1 5 Outlets Confirmed",
         "\u2728 Interactive Demo Live"
       ],
       "beats": {
-        "landing_page": "[confident] Replicate just dropped a full walkthrough for fine-tuning FLUX.1 entirely through their API \u2014 no local GPU cluster, no environment headaches, just code that turns your dataset into a custom image model.",
-        "demo": "[amazed] The interactive demo is live, and the loop is brutally simple: upload reference images, kick off the training job, then generate outputs that actually hold your style instead of drifting into generic FLUX.",
-        "access": "[energetic] Score sits at seventy-five for video readiness, and Hacker News hasn't even opened a thread yet \u2014 meaning you can build on this before the rest of the timeline catches up. Link below."
+        "landing_page": "[confident] YuE2 just landed on Hugging Face, and it's trending at 480 points with 210 comments. Five outlets confirmed it: full-length vocal songs, not loops \u2014 actual structured tracks with verses.",
+        "demo": "[amazed] Here's the wild part \u2014 it plans songs through editable ABC symbolic score notation. You can literally rewrite the melody in text before the model sings it. That's compositional control, live in the Space right now.",
+        "access": "[excited] The interactive demo is live and free. Click the link below, type a prompt, tweak the score, and generate a full track. Open full-song generation just became a browser tab."
       },
       "ordered_beats": [
         {
           "title": "Landing Page",
-          "narration": "[confident] Replicate just dropped a full walkthrough for fine-tuning FLUX.1 entirely through their API \u2014 no local GPU cluster, no environment headaches, just code that turns your dataset into a custom image model."
+          "narration": "[confident] YuE2 just landed on Hugging Face, and it's trending at 480 points with 210 comments. Five outlets confirmed it: full-length vocal songs, not loops \u2014 actual structured tracks with verses."
         },
         {
           "title": "Demo",
-          "narration": "[amazed] The interactive demo is live, and the loop is brutally simple: upload reference images, kick off the training job, then generate outputs that actually hold your style instead of drifting into generic FLUX."
+          "narration": "[amazed] Here's the wild part \u2014 it plans songs through editable ABC symbolic score notation. You can literally rewrite the melody in text before the model sings it. That's compositional control, live in the Space right now."
         },
         {
           "title": "Access",
-          "narration": "[energetic] Score sits at seventy-five for video readiness, and Hacker News hasn't even opened a thread yet \u2014 meaning you can build on this before the rest of the timeline catches up. Link below."
+          "narration": "[excited] The interactive demo is live and free. Click the link below, type a prompt, tweak the score, and generate a full track. Open full-song generation just became a browser tab."
         }
       ]
     },
     {
-      "name": "Welcome spaCy to the Hugging Face Hub",
-      "url": "https://huggingface.co/blog/spacy",
+      "name": "Marigold v2: Diffusion Transformers for Real-Time Monocular Depth",
+      "url": "https://github.com/prs-eth/marigold",
       "mode": "tool_drop",
-      "hero_anchor": "h1, .model-header, header",
-      "demo_anchor": "table, .results, #benchmark, canvas, .viewer, video",
-      "download_anchor": "button[data-testid='download-button'], a[href*='tree/main'], a[href*='resolve']",
-      "specs": "Model Weights | Hugging Face Hub",
-      "video_readiness": 70.0,
-      "consensus_count": 1,
-      "hn_points": null,
+      "hero_anchor": "article.markdown-body h1, .repository-content, #readme h1, h1",
+      "demo_anchor": "article.markdown-body img[src*='.gif'], article.markdown-body video, article.markdown-body details, #readme img, table",
+      "download_anchor": "a[href*='releases'], a[href*='clone'], .btn-primary, a[href$='.zip']",
+      "specs": "Open Source | GitHub | Code & Docs",
+      "video_readiness": 125.0,
+      "consensus_count": 4,
+      "hn_points": 340,
       "badges": [
-        "\ud83d\udce6 Open Weights"
+        "\ud83d\udd25 HN Trending (340 pts)",
+        "\u26a1 4 Outlets Confirmed",
+        "\ud83d\udee0\ufe0f Open Source Repo"
       ],
       "beats": {
-        "landing_page": "[friendly] spaCy, the NLP library half the industry already imports, is officially on the Hugging Face Hub \u2014 giving you one home for tokenizers, pipelines, and model weights instead of five browser tabs.",
-        "demo": "[confident] Search spaCy inside the Hub, pull the pipeline, and load it with your existing workflow. The integration cuts the install friction that used to scare people away from production-grade NLP.",
-        "access": "[curious] Open weights, Hugging Face Hub, readiness score of seventy. No HN thread yet, which is surprising for a library this deeply embedded \u2014 go test it yourself and post what breaks."
+        "landing_page": "[confident] Marigold v2 is sitting at 340 points on Hacker News with four outlets confirming. It's a GitHub repo, fully open source, and it's rewriting what depth estimation costs you.",
+        "demo": "[amazed] Diffusion transformers, four times faster, running monocular depth on consumer GPUs. Real-time depth from a single camera \u2014 that's robotics, AR, and video pipelines getting a massive speed unlock.",
+        "access": "[excited] Code and docs are on GitHub right now. Clone it, run it on your own GPU, and check the benchmarks yourself. No waitlist, no API key \u2014 just a repo."
       },
       "ordered_beats": [
         {
           "title": "Landing Page",
-          "narration": "[friendly] spaCy, the NLP library half the industry already imports, is officially on the Hugging Face Hub \u2014 giving you one home for tokenizers, pipelines, and model weights instead of five browser tabs."
+          "narration": "[confident] Marigold v2 is sitting at 340 points on Hacker News with four outlets confirming. It's a GitHub repo, fully open source, and it's rewriting what depth estimation costs you."
         },
         {
           "title": "Demo",
-          "narration": "[confident] Search spaCy inside the Hub, pull the pipeline, and load it with your existing workflow. The integration cuts the install friction that used to scare people away from production-grade NLP."
+          "narration": "[amazed] Diffusion transformers, four times faster, running monocular depth on consumer GPUs. Real-time depth from a single camera \u2014 that's robotics, AR, and video pipelines getting a massive speed unlock."
         },
         {
           "title": "Access",
-          "narration": "[curious] Open weights, Hugging Face Hub, readiness score of seventy. No HN thread yet, which is surprising for a library this deeply embedded \u2014 go test it yourself and post what breaks."
+          "narration": "[excited] Code and docs are on GitHub right now. Clone it, run it on your own GPU, and check the benchmarks yourself. No waitlist, no API key \u2014 just a repo."
         }
       ]
     },
     {
-      "name": "The Partnership: Amazon SageMaker and Hugging Face",
-      "url": "https://huggingface.co/blog/the-partnership-amazon-sagemaker-and-hugging-face",
-      "mode": "tool_drop",
-      "hero_anchor": "h1, .model-header, header",
-      "demo_anchor": "table, .results, #benchmark, canvas, .viewer, video",
-      "download_anchor": "button[data-testid='download-button'], a[href*='tree/main'], a[href*='resolve']",
-      "specs": "Model Weights | Hugging Face Hub",
-      "video_readiness": 65.0,
-      "consensus_count": 1,
-      "hn_points": null,
-      "badges": [
-        "\ud83d\udce6 Open Weights"
-      ],
-      "beats": {
-        "landing_page": "[confident] Amazon SageMaker and Hugging Face are deepening their partnership, tightening the path from Hub-hosted model weights to deployed SageMaker endpoints without the usual glue code.",
-        "demo": "[amazed] The promise is smoother training and deployment inside one managed flow \u2014 pick a model, point it at your data, and let SageMaker handle the scaling you used to babysit manually.",
-        "access": "[skeptical] Readiness score is sixty-five, and there's still no Hacker News thread to pressure-test the claims. Open weights across the Hub, but verify the pricing before you migrate anything serious."
-      },
-      "ordered_beats": [
-        {
-          "title": "Landing Page",
-          "narration": "[confident] Amazon SageMaker and Hugging Face are deepening their partnership, tightening the path from Hub-hosted model weights to deployed SageMaker endpoints without the usual glue code."
-        },
-        {
-          "title": "Demo",
-          "narration": "[amazed] The promise is smoother training and deployment inside one managed flow \u2014 pick a model, point it at your data, and let SageMaker handle the scaling you used to babysit manually."
-        },
-        {
-          "title": "Access",
-          "narration": "[skeptical] Readiness score is sixty-five, and there's still no Hacker News thread to pressure-test the claims. Open weights across the Hub, but verify the pricing before you migrate anything serious."
-        }
-      ]
-    },
-    {
-      "name": "Learning from human preferences",
-      "url": "https://openai.com/index/learning-from-human-preferences",
+      "name": "DeepSeek V4.1 Flash: Asymmetric Compute MoE Architecture",
+      "url": "https://arxiv.org/abs/2609.11200",
       "mode": "paper_preview",
-      "hero_anchor": "main h1, header h1, h1",
-      "demo_anchor": "figure, table, .results, #diagram, #comparison",
-      "download_anchor": "a[href*='pdf'], a[href*='arxiv.org'], a[href*='github.com']",
-      "specs": "Research Preview | Benchmark",
-      "video_readiness": 40.0,
-      "consensus_count": 2,
-      "hn_points": null,
-      "badges": [],
+      "hero_anchor": "h1.title, .title, h1",
+      "demo_anchor": "a.download-pdf, div.extra-services, table.benchmark, figure",
+      "download_anchor": "a.download-pdf, a[href*='arxiv.org/pdf']",
+      "specs": "Research Preprint | arXiv",
+      "video_readiness": 85.0,
+      "consensus_count": 6,
+      "hn_points": 650,
+      "badges": [
+        "\ud83d\udd25 HN Trending (650 pts)",
+        "\u26a1 6 Outlets Confirmed",
+        "\ud83d\udcc4 Research Preprint"
+      ],
       "beats": {
-        "paper_preview": "### Paper\n[curious] OpenAI resurfaced \"Learning from human preferences\" \u2014 the research lineage behind today's alignment stacks, and it's pulling a consensus count of two across outlets with zero HN thread so far.",
-        "architecture": "[amazed] The core idea: humans compare pairs of outputs, a reward model learns those preferences, and reinforcement learning optimizes against it. That loop still powers how modern assistants get tuned.",
-        "release_horizon": "[confident] This is a research preview and benchmark reference, not a product drop. Read it as foundational context before your next fine-tune \u2014 the mechanics explain why your reward model matters more than your dataset size."
+        "paper": "[curious] DeepSeek V4.1 Flash is the loudest thing on Hacker News today \u2014 650 points, 380 comments, six outlets confirmed. It's a preprint, not a product, so let's read it carefully.",
+        "architecture_evidence": "[skeptical] 552 billion parameters in a Mixture-of-Experts, but the twist is asymmetric compute \u2014 uneven budget across experts. The benchmark table looks strong, though independent replication is still pending.",
+        "release_horizon": "[confident] PyTorch weights are already on Hugging Face, which is unusually fast for a preprint. Expect fine-tunes within days. The real question is whether the efficiency claims survive outside DeepSeek's own harness."
       },
       "ordered_beats": [
         {
-          "title": "Paper Preview",
-          "narration": "### Paper\n[curious] OpenAI resurfaced \"Learning from human preferences\" \u2014 the research lineage behind today's alignment stacks, and it's pulling a consensus count of two across outlets with zero HN thread so far."
+          "title": "Paper",
+          "narration": "[curious] DeepSeek V4.1 Flash is the loudest thing on Hacker News today \u2014 650 points, 380 comments, six outlets confirmed. It's a preprint, not a product, so let's read it carefully."
         },
         {
-          "title": "Architecture",
-          "narration": "[amazed] The core idea: humans compare pairs of outputs, a reward model learns those preferences, and reinforcement learning optimizes against it. That loop still powers how modern assistants get tuned."
+          "title": "Architecture/Evidence",
+          "narration": "[skeptical] 552 billion parameters in a Mixture-of-Experts, but the twist is asymmetric compute \u2014 uneven budget across experts. The benchmark table looks strong, though independent replication is still pending."
         },
         {
           "title": "Release Horizon",
-          "narration": "[confident] This is a research preview and benchmark reference, not a product drop. Read it as foundational context before your next fine-tune \u2014 the mechanics explain why your reward model matters more than your dataset size."
+          "narration": "[confident] PyTorch weights are already on Hugging Face, which is unusually fast for a preprint. Expect fine-tunes within days. The real question is whether the efficiency claims survive outside DeepSeek's own harness."
         }
       ]
     }
@@ -144,64 +118,57 @@
   "outro": "[friendly] All project links, Hugging Face spaces, and research papers are organized down in the description below. Hit subscribe to Brief Delights for your daily rundown, and I'll see you tomorrow.",
   "tools_metadata": [
     {
-      "name": "Fine-tune FLUX.1 with an API",
-      "url": "https://replicate.com/blog/fine-tune-flux-with-an-api",
+      "name": "YuE2: Open Full-Song Generation with Symbolic Score Planning",
+      "url": "https://huggingface.co/spaces/multimodal-art/YuE",
       "mode": "tool_drop",
-      "hero_anchor": "h1, header, .hero h1",
-      "demo_anchor": "form, input, button[type='submit'], canvas, video, audio, .output, .demo",
-      "download_anchor": "a[href*='github.com'], a[href*='api'], button",
-      "specs": "Live Web App | Interactive Demo",
-      "video_readiness": 75.0,
-      "consensus_count": 1,
-      "hn_points": null,
+      "hero_anchor": "h1, .model-header, header",
+      "demo_anchor": "iframe[src*='gradio'], .gradio-container, canvas, video, button[type='submit'], .output",
+      "download_anchor": "button[data-testid='duplicate-button'], a[href*='tree/main']",
+      "specs": "Interactive Space | Hugging Face | Live Demo",
+      "video_readiness": 150.0,
+      "consensus_count": 5,
+      "hn_points": 480,
       "badges": [
+        "\ud83d\udd25 HN Trending (480 pts)",
+        "\u26a1 5 Outlets Confirmed",
         "\u2728 Interactive Demo Live"
       ]
     },
     {
-      "name": "Welcome spaCy to the Hugging Face Hub",
-      "url": "https://huggingface.co/blog/spacy",
+      "name": "Marigold v2: Diffusion Transformers for Real-Time Monocular Depth",
+      "url": "https://github.com/prs-eth/marigold",
       "mode": "tool_drop",
-      "hero_anchor": "h1, .model-header, header",
-      "demo_anchor": "table, .results, #benchmark, canvas, .viewer, video",
-      "download_anchor": "button[data-testid='download-button'], a[href*='tree/main'], a[href*='resolve']",
-      "specs": "Model Weights | Hugging Face Hub",
-      "video_readiness": 70.0,
-      "consensus_count": 1,
-      "hn_points": null,
+      "hero_anchor": "article.markdown-body h1, .repository-content, #readme h1, h1",
+      "demo_anchor": "article.markdown-body img[src*='.gif'], article.markdown-body video, article.markdown-body details, #readme img, table",
+      "download_anchor": "a[href*='releases'], a[href*='clone'], .btn-primary, a[href$='.zip']",
+      "specs": "Open Source | GitHub | Code & Docs",
+      "video_readiness": 125.0,
+      "consensus_count": 4,
+      "hn_points": 340,
       "badges": [
-        "\ud83d\udce6 Open Weights"
+        "\ud83d\udd25 HN Trending (340 pts)",
+        "\u26a1 4 Outlets Confirmed",
+        "\ud83d\udee0\ufe0f Open Source Repo"
       ]
     },
     {
-      "name": "The Partnership: Amazon SageMaker and Hugging Face",
-      "url": "https://huggingface.co/blog/the-partnership-amazon-sagemaker-and-hugging-face",
-      "mode": "tool_drop",
-      "hero_anchor": "h1, .model-header, header",
-      "demo_anchor": "table, .results, #benchmark, canvas, .viewer, video",
-      "download_anchor": "button[data-testid='download-button'], a[href*='tree/main'], a[href*='resolve']",
-      "specs": "Model Weights | Hugging Face Hub",
-      "video_readiness": 65.0,
-      "consensus_count": 1,
-      "hn_points": null,
-      "badges": [
-        "\ud83d\udce6 Open Weights"
-      ]
-    },
-    {
-      "name": "Learning from human preferences",
-      "url": "https://openai.com/index/learning-from-human-preferences",
+      "name": "DeepSeek V4.1 Flash: Asymmetric Compute MoE Architecture",
+      "url": "https://arxiv.org/abs/2609.11200",
       "mode": "paper_preview",
-      "hero_anchor": "main h1, header h1, h1",
-      "demo_anchor": "figure, table, .results, #diagram, #comparison",
-      "download_anchor": "a[href*='pdf'], a[href*='arxiv.org'], a[href*='github.com']",
-      "specs": "Research Preview | Benchmark",
-      "video_readiness": 40.0,
-      "consensus_count": 2,
-      "hn_points": null,
-      "badges": []
+      "hero_anchor": "h1.title, .title, h1",
+      "demo_anchor": "a.download-pdf, div.extra-services, table.benchmark, figure",
+      "download_anchor": "a.download-pdf, a[href*='arxiv.org/pdf']",
+      "specs": "Research Preprint | arXiv",
+      "video_readiness": 85.0,
+      "consensus_count": 6,
+      "hn_points": 650,
+      "badges": [
+        "\ud83d\udd25 HN Trending (650 pts)",
+        "\u26a1 6 Outlets Confirmed",
+        "\ud83d\udcc4 Research Preprint"
+      ]
     }
   ],
-  "raw_markdown": "---\nepisode_id: ai-news-2026-09-20-builders\ntrack: builders\nformat: daily\nvoice_profile: alex_tech\ntools:\n- name: Fine-tune FLUX.1 with an API\n  url: https://replicate.com/blog/fine-tune-flux-with-an-api\n  mode: tool_drop\n  hero_anchor: h1, header, .hero h1\n  demo_anchor: form, input, button[type='submit'], canvas, video, audio, .output,\n    .demo\n  download_anchor: a[href*='github.com'], a[href*='api'], button\n  specs: Live Web App | Interactive Demo\n  video_readiness: 75.0\n  consensus_count: 1\n  hn_points: null\n  badges:\n  - \u2728 Interactive Demo Live\n- name: Welcome spaCy to the Hugging Face Hub\n  url: https://huggingface.co/blog/spacy\n  mode: tool_drop\n  hero_anchor: h1, .model-header, header\n  demo_anchor: 'table, .results, #benchmark, canvas, .viewer, video'\n  download_anchor: button[data-testid='download-button'], a[href*='tree/main'], a[href*='resolve']\n  specs: Model Weights | Hugging Face Hub\n  video_readiness: 70.0\n  consensus_count: 1\n  hn_points: null\n  badges:\n  - \ud83d\udce6 Open Weights\n- name: 'The Partnership: Amazon SageMaker and Hugging Face'\n  url: https://huggingface.co/blog/the-partnership-amazon-sagemaker-and-hugging-face\n  mode: tool_drop\n  hero_anchor: h1, .model-header, header\n  demo_anchor: 'table, .results, #benchmark, canvas, .viewer, video'\n  download_anchor: button[data-testid='download-button'], a[href*='tree/main'], a[href*='resolve']\n  specs: Model Weights | Hugging Face Hub\n  video_readiness: 65.0\n  consensus_count: 1\n  hn_points: null\n  badges:\n  - \ud83d\udce6 Open Weights\n- name: Learning from human preferences\n  url: https://openai.com/index/learning-from-human-preferences\n  mode: paper_preview\n  hero_anchor: main h1, header h1, h1\n  demo_anchor: 'figure, table, .results, #diagram, #comparison'\n  download_anchor: a[href*='pdf'], a[href*='arxiv.org'], a[href*='github.com']\n  specs: Research Preview | Benchmark\n  video_readiness: 40.0\n  consensus_count: 2\n  hn_points: null\n  badges: []\n---\n\n# Intro\n[excited] Today FLUX.1 gets API fine-tuning, spaCy lands on Hugging Face, SageMaker deepens its HF partnership, and OpenAI revisits human preferences \u2014 all before Hacker News even spins up a thread.\n\n---\n\n# Story 1: Fine-tune FLUX.1 with an API\n### Landing Page\n[confident] Replicate just dropped a full walkthrough for fine-tuning FLUX.1 entirely through their API \u2014 no local GPU cluster, no environment headaches, just code that turns your dataset into a custom image model.\n\n### Demo\n[amazed] The interactive demo is live, and the loop is brutally simple: upload reference images, kick off the training job, then generate outputs that actually hold your style instead of drifting into generic FLUX.\n\n### Access\n[energetic] Score sits at seventy-five for video readiness, and Hacker News hasn't even opened a thread yet \u2014 meaning you can build on this before the rest of the timeline catches up. Link below.\n\n---\n\n# Story 2: Welcome spaCy to the Hugging Face Hub\n### Landing Page\n[friendly] spaCy, the NLP library half the industry already imports, is officially on the Hugging Face Hub \u2014 giving you one home for tokenizers, pipelines, and model weights instead of five browser tabs.\n\n### Demo\n[confident] Search spaCy inside the Hub, pull the pipeline, and load it with your existing workflow. The integration cuts the install friction that used to scare people away from production-grade NLP.\n\n### Access\n[curious] Open weights, Hugging Face Hub, readiness score of seventy. No HN thread yet, which is surprising for a library this deeply embedded \u2014 go test it yourself and post what breaks.\n\n---\n\n# Story 3: The Partnership: Amazon SageMaker and Hugging Face\n### Landing Page\n[confident] Amazon SageMaker and Hugging Face are deepening their partnership, tightening the path from Hub-hosted model weights to deployed SageMaker endpoints without the usual glue code.\n\n### Demo\n[amazed] The promise is smoother training and deployment inside one managed flow \u2014 pick a model, point it at your data, and let SageMaker handle the scaling you used to babysit manually.\n\n### Access\n[skeptical] Readiness score is sixty-five, and there's still no Hacker News thread to pressure-test the claims. Open weights across the Hub, but verify the pricing before you migrate anything serious.\n\n---\n\n# Story 4: Learning from human preferences\n### Paper Preview\n### Paper\n[curious] OpenAI resurfaced \"Learning from human preferences\" \u2014 the research lineage behind today's alignment stacks, and it's pulling a consensus count of two across outlets with zero HN thread so far.\n\n### Architecture\n[amazed] The core idea: humans compare pairs of outputs, a reward model learns those preferences, and reinforcement learning optimizes against it. That loop still powers how modern assistants get tuned.\n\n### Release Horizon\n[confident] This is a research preview and benchmark reference, not a product drop. Read it as foundational context before your next fine-tune \u2014 the mechanics explain why your reward model matters more than your dataset size.\n\n---\n\n# Outro\n[friendly] All project links, Hugging Face spaces, and research papers are organized down in the description below. Hit subscribe to Brief Delights for your daily rundown, and I'll see you tomorrow.",
-  "generated_at": "2026-09-20T12:41:26.197365"
+  "raw_markdown": "---\nepisode_id: ai-news-2026-09-19-builders\ntrack: builders\nformat: daily\nvoice_profile: alex_tech\ntools:\n- name: 'YuE2: Open Full-Song Generation with Symbolic Score Planning'\n  url: https://huggingface.co/spaces/multimodal-art/YuE\n  mode: tool_drop\n  hero_anchor: h1, .model-header, header\n  demo_anchor: iframe[src*='gradio'], .gradio-container, canvas, video, button[type='submit'],\n    .output\n  download_anchor: button[data-testid='duplicate-button'], a[href*='tree/main']\n  specs: Interactive Space | Hugging Face | Live Demo\n  video_readiness: 150.0\n  consensus_count: 5\n  hn_points: 480\n  badges:\n  - \ud83d\udd25 HN Trending (480 pts)\n  - \u26a1 5 Outlets Confirmed\n  - \u2728 Interactive Demo Live\n- name: 'Marigold v2: Diffusion Transformers for Real-Time Monocular Depth'\n  url: https://github.com/prs-eth/marigold\n  mode: tool_drop\n  hero_anchor: 'article.markdown-body h1, .repository-content, #readme h1, h1'\n  demo_anchor: 'article.markdown-body img[src*=''.gif''], article.markdown-body video,\n    article.markdown-body details, #readme img, table'\n  download_anchor: a[href*='releases'], a[href*='clone'], .btn-primary, a[href$='.zip']\n  specs: Open Source | GitHub | Code & Docs\n  video_readiness: 125.0\n  consensus_count: 4\n  hn_points: 340\n  badges:\n  - \ud83d\udd25 HN Trending (340 pts)\n  - \u26a1 4 Outlets Confirmed\n  - \ud83d\udee0\ufe0f Open Source Repo\n- name: 'DeepSeek V4.1 Flash: Asymmetric Compute MoE Architecture'\n  url: https://arxiv.org/abs/2609.11200\n  mode: paper_preview\n  hero_anchor: h1.title, .title, h1\n  demo_anchor: a.download-pdf, div.extra-services, table.benchmark, figure\n  download_anchor: a.download-pdf, a[href*='arxiv.org/pdf']\n  specs: Research Preprint | arXiv\n  video_readiness: 85.0\n  consensus_count: 6\n  hn_points: 650\n  badges:\n  - \ud83d\udd25 HN Trending (650 pts)\n  - \u26a1 6 Outlets Confirmed\n  - \ud83d\udcc4 Research Preprint\n---\n\n# Intro\n[excited] Three drops just hit, and Hacker News is on fire \u2014 YuE2 generates full songs, Marigold v2 does real-time depth, and DeepSeek's 552-billion-parameter MoE preprint is already at 650 points.\n\n---\n\n# Story 1: YuE2: Open Full-Song Generation with Symbolic Score Planning\n### Landing Page\n[confident] YuE2 just landed on Hugging Face, and it's trending at 480 points with 210 comments. Five outlets confirmed it: full-length vocal songs, not loops \u2014 actual structured tracks with verses.\n\n### Demo\n[amazed] Here's the wild part \u2014 it plans songs through editable ABC symbolic score notation. You can literally rewrite the melody in text before the model sings it. That's compositional control, live in the Space right now.\n\n### Access\n[excited] The interactive demo is live and free. Click the link below, type a prompt, tweak the score, and generate a full track. Open full-song generation just became a browser tab.\n\n---\n\n# Story 2: Marigold v2: Diffusion Transformers for Real-Time Monocular Depth\n### Landing Page\n[confident] Marigold v2 is sitting at 340 points on Hacker News with four outlets confirming. It's a GitHub repo, fully open source, and it's rewriting what depth estimation costs you.\n\n### Demo\n[amazed] Diffusion transformers, four times faster, running monocular depth on consumer GPUs. Real-time depth from a single camera \u2014 that's robotics, AR, and video pipelines getting a massive speed unlock.\n\n### Access\n[excited] Code and docs are on GitHub right now. Clone it, run it on your own GPU, and check the benchmarks yourself. No waitlist, no API key \u2014 just a repo.\n\n---\n\n# Story 3: DeepSeek V4.1 Flash: Asymmetric Compute MoE Architecture\n### Paper\n[curious] DeepSeek V4.1 Flash is the loudest thing on Hacker News today \u2014 650 points, 380 comments, six outlets confirmed. It's a preprint, not a product, so let's read it carefully.\n\n### Architecture/Evidence\n[skeptical] 552 billion parameters in a Mixture-of-Experts, but the twist is asymmetric compute \u2014 uneven budget across experts. The benchmark table looks strong, though independent replication is still pending.\n\n### Release Horizon\n[confident] PyTorch weights are already on Hugging Face, which is unusually fast for a preprint. Expect fine-tunes within days. The real question is whether the efficiency claims survive outside DeepSeek's own harness.\n\n---\n\n# Outro\n[friendly] All project links, Hugging Face spaces, and research papers are organized down in the description below. Hit subscribe to Brief Delights for your daily rundown, and I'll see you tomorrow.",
+  "generated_at": "2026-09-19T12:32:06.775755"
 }

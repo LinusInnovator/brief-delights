@@ -362,10 +362,10 @@ def get_sent_emails_today(segment_id: str) -> set:
     return sent_set
 
 
-def send_to_segment(segment_id: str, subscribers: list, html_content: str, segment_name: str, ab_enabled: bool = True) -> dict:
+def send_to_segment(segment_id: str, subscribers: list, html_content: str, segment_name: str, ab_enabled: bool = True, dry_run: bool = False) -> dict:
     """Send newsletter to all subscribers in a segment using Resend Batch API with Strict Idempotency Lock"""
     already_sent = get_sent_emails_today(segment_id)
-    if already_sent and not os.environ.get("FORCE_RESEND"):
+    if already_sent and not os.environ.get("FORCE_RESEND") and not dry_run:
         unsent_subscribers = [s for s in subscribers if s.get('email', '').lower() not in already_sent]
         skipped_count = len(subscribers) - len(unsent_subscribers)
         if skipped_count > 0:
@@ -416,6 +416,19 @@ def send_to_segment(segment_id: str, subscribers: list, html_content: str, segme
                 "email": subscriber['email'],
                 "variant": variant
             })
+            
+        if dry_run:
+            log(f"    [DRY-RUN] Simulated delivery for {len(batch)} recipients in batch {batch_num}")
+            for meta in batch_metadata:
+                results['details'].append({
+                    "email": meta['email'],
+                    "status": "success (dry-run)",
+                    "message_id": "dry-run-id",
+                    "subject_variant": meta['variant'],
+                    "timestamp": datetime.now().isoformat()
+                })
+                results['sent'] += 1
+            continue
             
         # Send the batch
         try:
@@ -495,6 +508,7 @@ def main():
     parser.add_argument('--segment', help='Specific segment to send (optional)')
     parser.add_argument('--weekly', action='store_true', help='Send weekly insights instead of daily')
     parser.add_argument('--no-ab', action='store_true', help='Disable A/B subject line testing')
+    parser.add_argument('--dry-run', action='store_true', help='Simulate delivery without actually emailing subscribers')
     parser.add_argument('--send-window', type=int, default=None,
                        help='Target local hour for send (e.g. 8 = send to subscribers where it is ~8 AM). Omit to send to everyone.')
     args = parser.parse_args()
@@ -520,6 +534,20 @@ def main():
         log(f"\n📊 Found subscribers in {len(segments_by_sub)} segments:")
         for seg_id, subs in segments_by_sub.items():
             log(f"  {seg_id}: {len(subs)} subscribers")
+            
+        # Filter to requested segment if provided
+        if args.segment:
+            target_seg = args.segment.strip()
+            configured = segments_data.get('segments', {})
+            if target_seg in segments_by_sub:
+                segments_by_sub = {target_seg: segments_by_sub[target_seg]}
+                log(f"🎯 Filtered delivery to single segment: {target_seg} ({len(segments_by_sub[target_seg])} subscribers)")
+            elif target_seg in configured:
+                log(f"ℹ️ Segment '{target_seg}' configured but has 0 active subscribers. Nothing to send.")
+                segments_by_sub = {}
+            else:
+                log(f"⚠️ Segment '{target_seg}' not found in segments configuration.")
+                segments_by_sub = {}
         
         # Timezone-based send window filtering
         if args.send_window is not None:
@@ -549,8 +577,8 @@ def main():
         all_results = {}
         fallback_used = {}  # Track which segments used fallback
         
-        # Weekly gating: minimum referrals to receive Deep Dive
-        WEEKLY_REFERRAL_GATE = 3
+        # Weekly gating: minimum referrals to receive Deep Dive (default 0 = deliver to all active subscribers)
+        WEEKLY_REFERRAL_GATE = int(os.getenv("WEEKLY_REFERRAL_GATE", "0"))
         TEASER_TEMPLATE = PROJECT_ROOT / "newsletter_teaser_weekly.html"
         
         for segment_id, subscribers in segments_by_sub.items():
@@ -566,7 +594,7 @@ def main():
                 sponsor = get_sponsor_for_segment(segment_id)
                 html_content = inject_sponsor(html_content, sponsor, segment_id)
                 
-                if args.weekly:
+                if args.weekly and WEEKLY_REFERRAL_GATE > 0:
                     # Gate weekly Deep Dive behind referral count
                     unlocked = [s for s in subscribers if (s.get('referral_count') or 0) >= WEEKLY_REFERRAL_GATE]
                     locked = [s for s in subscribers if (s.get('referral_count') or 0) < WEEKLY_REFERRAL_GATE]
@@ -574,23 +602,27 @@ def main():
                     log(f"\n🔓 Weekly gate: {len(unlocked)} unlocked, {len(locked)} locked (need {WEEKLY_REFERRAL_GATE}+ referrals)")
                     
                     # Send full Deep Dive to unlocked subscribers
-                    results = send_to_segment(segment_id, unlocked, html_content, segment_name, ab_enabled=ab_enabled)
+                    results = send_to_segment(segment_id, unlocked, html_content, segment_name, ab_enabled=ab_enabled, dry_run=args.dry_run)
                     
                     # Send teaser to locked subscribers
                     if locked and TEASER_TEMPLATE.exists():
                         teaser_html = TEASER_TEMPLATE.read_text(encoding='utf-8')
                         # Inject segment name into teaser
                         teaser_html = teaser_html.replace('{{ segment_name }}', segment_name)
-                        teaser_results = send_to_segment(segment_id, locked, teaser_html, f"{segment_name} (teaser)", ab_enabled=ab_enabled)
+                        teaser_results = send_to_segment(segment_id, locked, teaser_html, f"{segment_name} (teaser)", ab_enabled=ab_enabled, dry_run=args.dry_run)
                         results['sent'] += teaser_results['sent']
                         results['failed'] += teaser_results['failed']
                         results['details'].extend(teaser_results['details'])
                         results['teaser_sent'] = teaser_results['sent']
                     elif locked:
-                        log(f"  ⚠️ Teaser template not found, skipping {len(locked)} locked subscribers")
+                        log(f"  ⚠️ Teaser template not found, delivering full edition to {len(locked)} subscribers")
+                        fallback_results = send_to_segment(segment_id, locked, html_content, segment_name, ab_enabled=ab_enabled, dry_run=args.dry_run)
+                        results['sent'] += fallback_results['sent']
+                        results['failed'] += fallback_results['failed']
+                        results['details'].extend(fallback_results['details'])
                 else:
-                    # Daily: send to everyone
-                    results = send_to_segment(segment_id, subscribers, html_content, segment_name, ab_enabled=ab_enabled)
+                    # Send full edition to everyone
+                    results = send_to_segment(segment_id, subscribers, html_content, segment_name, ab_enabled=ab_enabled, dry_run=args.dry_run)
                 
                 results['used_fallback'] = is_fallback
                 results['sponsor'] = sponsor.get('company', 'none') if sponsor else 'none'

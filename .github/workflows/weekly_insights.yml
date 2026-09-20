@@ -9,7 +9,7 @@ on:
   workflow_dispatch:
     inputs:
       segment:
-        description: 'Segment to run (all, builders, leaders, innovators)'
+        description: 'Segment to run (all, builders, leaders, innovators, generative_media)'
         required: false
         default: 'all'
       test_mode:
@@ -22,6 +22,10 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 30
     
+    # Give workflow permission to commit newsletters, data, and scripts
+    permissions:
+      contents: write
+      
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -36,42 +40,118 @@ jobs:
           echo '${{ secrets.SUBSCRIBERS_JSON }}' > subscribers.json
           echo "✅ Loaded subscribers from GitHub Secret"
       
+      - name: Install uv
+        uses: astral-sh/setup-uv@v5
+        with:
+          enable-cache: true
+
       - name: Install dependencies
         run: |
-          python -m pip install --upgrade pip
-          pip install -r requirements.txt
+          uv pip install --system -r requirements.txt
       
-      - name: Create temp directory
-        run: mkdir -p .tmp .tmp/weekly_insights
-      
-      - name: Step 1 - Synthesize weekly insights (All segments)
+      - name: Create temp and output directories
         run: |
-          python3 execution/synthesize_weekly_insights.py builders
-          python3 execution/synthesize_weekly_insights.py leaders
-          python3 execution/synthesize_weekly_insights.py innovators
+          mkdir -p .tmp .tmp/charts .tmp/weekly_insights reports/weekly_insights reports/video_scripts landing/public/newsletters landing/public/data
+      
+      - name: Step 1 - Synthesize weekly insights
+        run: |
+          TARGET_SEGMENT="${{ github.event.inputs.segment || 'all' }}"
+          if [ "$TARGET_SEGMENT" == "all" ] || [ -z "$TARGET_SEGMENT" ]; then
+            SEGMENTS="builders leaders innovators generative_media"
+          else
+            SEGMENTS="$TARGET_SEGMENT"
+          fi
+          
+          for seg in $SEGMENTS; do
+            echo "::group::Synthesizing insights for $seg"
+            python3 execution/synthesize_weekly_insights.py "$seg"
+            echo "::endgroup::"
+          done
         env:
           OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+          PYTHONPATH: .
       
-      - name: Step 2 - Compose insights newsletters
+      - name: Step 2 - Generate weekly charts
         run: |
-          python3 execution/compose_insights_newsletter.py builders
-          python3 execution/compose_insights_newsletter.py leaders
-          python3 execution/compose_insights_newsletter.py innovators
-      
-      - name: Step 3 - Send insights newsletters
-        run: |
-          if [ "${{ github.event.inputs.test_mode }}" == "true" ]; then
-            echo "Test mode: Would send to test recipients only"
-            # Implement test mode in send_newsletter.py
+          TARGET_SEGMENT="${{ github.event.inputs.segment || 'all' }}"
+          if [ "$TARGET_SEGMENT" == "all" ] || [ -z "$TARGET_SEGMENT" ]; then
+            SEGMENTS="builders leaders innovators generative_media"
           else
-            python3 execution/send_newsletter.py --segment builders --weekly
-            python3 execution/send_newsletter.py --segment leaders --weekly
-            python3 execution/send_newsletter.py --segment innovators --weekly
+            SEGMENTS="$TARGET_SEGMENT"
           fi
+          
+          for seg in $SEGMENTS; do
+            echo "::group::Generating charts for $seg"
+            python3 execution/generate_weekly_charts.py "$seg"
+            echo "::endgroup::"
+          done
+        env:
+          PYTHONPATH: .
+
+      - name: Step 3 - Compose insights newsletters
+        run: |
+          TARGET_SEGMENT="${{ github.event.inputs.segment || 'all' }}"
+          if [ "$TARGET_SEGMENT" == "all" ] || [ -z "$TARGET_SEGMENT" ]; then
+            SEGMENTS="builders leaders innovators generative_media"
+          else
+            SEGMENTS="$TARGET_SEGMENT"
+          fi
+          
+          for seg in $SEGMENTS; do
+            echo "::group::Composing weekly newsletter for $seg"
+            python3 execution/compose_insights_newsletter.py "$seg"
+            echo "::endgroup::"
+          done
+        env:
+          PYTHONPATH: .
+
+      - name: Step 4 - Generate Sunday Weekly Mega-Recap Video Script
+        run: |
+          python3 execution/generate_video_script.py --weekly --date $(date +%Y-%m-%d)
+        env:
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+          PYTHONPATH: .
+      
+      - name: Step 5 - Send insights newsletters
+        run: |
+          TARGET_SEGMENT="${{ github.event.inputs.segment || 'all' }}"
+          if [ "$TARGET_SEGMENT" == "all" ] || [ -z "$TARGET_SEGMENT" ]; then
+            SEGMENTS="builders leaders innovators generative_media"
+          else
+            SEGMENTS="$TARGET_SEGMENT"
+          fi
+          
+          for seg in $SEGMENTS; do
+            echo "::group::Sending weekly newsletter for $seg"
+            python3 execution/send_newsletter.py --segment "$seg" --weekly
+            echo "::endgroup::"
+          done
         env:
           RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
           NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
           SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
+          PYTHONPATH: .
+      
+      - name: Move newsletters and data to public folder
+        run: |
+          mkdir -p landing/public/newsletters landing/public/data
+          if ls .tmp/newsletter_weekly_*.html 1> /dev/null 2>&1; then
+            cp .tmp/newsletter_weekly_*.html landing/public/newsletters/
+            echo "✅ Moved weekly newsletters to public folder"
+          fi
+
+      - name: Commit and push weekly artifacts
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action Bot"
+          git add landing/public/newsletters/ landing/public/data/ reports/weekly_insights/ reports/video_scripts/ 2>/dev/null || true
+          if ! git diff --staged --quiet; then
+            git commit -m "📊 Sunday Weekly Insights & Mega-Recap $(date +%Y-%m-%d)"
+            git stash || true
+            git pull --rebase origin main
+            git stash pop || true
+            git push origin main
+          fi
       
       - name: Upload artifacts (logs and newsletters)
         if: always()
@@ -82,10 +162,10 @@ jobs:
             .tmp/*.json
             .tmp/*.html
             .tmp/*.txt
+            .tmp/charts/*.png
           retention-days: 7
       
       - name: Send completion notification
         if: failure()
         run: |
           echo "Weekly insights pipeline failed! Check logs in GitHub Actions"
-          # Optional: Send alert email via Resend

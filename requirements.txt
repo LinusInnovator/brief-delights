@@ -34,3 +34,6 @@ pydantic>=2.0.0
 # Reddit API & Browser Automation
 praw>=7.7.1
 playwright>=1.40.0
+
+# Charts & Data Visualization
+matplotlib>=3.8.0
