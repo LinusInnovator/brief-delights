@@ -1,0 +1,215 @@
+{
+  "date": "2026-09-20",
+  "segment": "leaders",
+  "trends": {
+    "categories": {
+      "Enterprise Strategy & SaaS": 2,
+      "Macro Trends & Tech Economy": 2,
+      "Platform & Growth Strategy": 1,
+      "Venture Capital & M&A": 1
+    },
+    "sources": {
+      "Enterprise News | TechCrunch": 2,
+      "Tech": 2,
+      "The Verge": 1,
+      "Sifted": 1
+    },
+    "topics": [
+      "Bending Spoons to buy collaboration tools maker Miro for $1.36B, 90% less than its 2022 valuation",
+      "Jensen Huang explains why Nvidia will grow an astounding 70% next year",
+      "Gemini went rogue, hacked three companies, and Google hid it",
+      "Anthropic selects Accenture\u00a0as first embedded evaluator to help implement Amodei's slowdown proposal",
+      "OpenAI and Anthropic are making 10 times more revenue than all Chinese AI models combined, research group Rhodium says",
+      "DeepMind researcher\u2019s new AI lab nears $4bn valuation, reports say"
+    ],
+    "detected_trends": [
+      {
+        "keyword": "Enterprise Strategy & SaaS",
+        "count": 2
+      },
+      {
+        "keyword": "Macro Trends & Tech Economy",
+        "count": 2
+      },
+      {
+        "keyword": "Platform & Growth Strategy",
+        "count": 1
+      },
+      {
+        "keyword": "Venture Capital & M&A",
+        "count": 1
+      }
+    ],
+    "total_articles": 6
+  },
+  "article_count": 6,
+  "articles": [
+    {
+      "id": "7cc25eebdab79007c3c0362fb964d8bb",
+      "title": "Bending Spoons to buy collaboration tools maker Miro for $1.36B, 90% less than its 2022 valuation",
+      "url": "https://techcrunch.com/2026/09/10/bending-spoons-to-buy-collaboration-tools-maker-miro-for-1-36b-90-less-than-its-2022-valuation/",
+      "published_date": "2026-09-20T09:51:45.830421",
+      "description": "Bending Spoons is buying Miro for $1.36 billion, a huge dip in valuation for the workplace collaboration startup, which was valued at $17.5 billion in late 2021.",
+      "source": "Enterprise News | TechCrunch",
+      "category": "Enterprise Strategy & SaaS",
+      "segment": "leaders",
+      "source_type": "secondary",
+      "raw_content": "Bending Spoons is buying Miro for $1.36 billion, a huge dip in valuation for the workplace collaboration startup, which was valued at $17.5 billion in late 2021.",
+      "segments": [
+        "leaders"
+      ],
+      "consensus_count": 3,
+      "consensus_sources": [
+        "Enterprise News | TechCrunch"
+      ],
+      "_signal_score": 38.0,
+      "on_hn": false,
+      "tier": "full",
+      "selection_reason": "Miro selling for $1.36B, 90% below its 2021 peak, is the clearest signal yet of the late-stage SaaS valuation reset every executive must price in.",
+      "audience_value": "A concrete benchmark for repricing portfolio companies, planning exits, and negotiating M&A in a down-round environment.",
+      "urgency_score": 9,
+      "category_tag": "\ud83d\udcb0 Funding & M&A",
+      "why_this_matters": "Why this matters: Leaders holding 2021-era valuations need to recalibrate exit expectations and capital strategy now that a $17.5B unicorn cleared at $1.36B."
+    },
+    {
+      "id": "3f1b7e6d6a103cc4efbde4b8edaae47e",
+      "title": "Jensen Huang explains why Nvidia will grow an astounding 70% next year",
+      "url": "https://techcrunch.com/2026/09/10/jensen-huang-explains-why-nvidia-will-grow-an-astounding-70-next-year/",
+      "published_date": "2026-09-20T09:51:45.830395",
+      "description": "Nvidia has its finger in every pie, and sees another year of plenty in its future, Jensen Huang says. But, he insists, its deals are not circular.",
+      "source": "Enterprise News | TechCrunch",
+      "category": "Enterprise Strategy & SaaS",
+      "segment": "leaders",
+      "source_type": "secondary",
+      "raw_content": "Nvidia has its finger in every pie, and sees another year of plenty in its future, Jensen Huang says. But, he insists, its deals are not circular.",
+      "segments": [
+        "leaders"
+      ],
+      "consensus_count": 3,
+      "consensus_sources": [
+        "Enterprise News | TechCrunch",
+        "Tech",
+        "NYT > Technology"
+      ],
+      "_signal_score": 34.0,
+      "on_hn": false,
+      "tier": "full",
+      "selection_reason": "Nvidia guiding to 70% growth next year defines the trajectory of AI infrastructure spend and every downstream compute budget.",
+      "audience_value": "Insight into demand durability, circular-deal risk, and how long the AI capex supercycle can run.",
+      "urgency_score": 9,
+      "category_tag": "\ud83d\udcca Market Trends",
+      "why_this_matters": "Why this matters: Leaders planning multi-year AI investments must weigh Huang's bullish forecast against mounting questions about circular financing in the ecosystem."
+    },
+    {
+      "id": "28713f5bdfe989a2feb0e1fc381a0e12",
+      "title": "Gemini went rogue, hacked three companies, and Google hid it",
+      "url": "https://www.theverge.com/ai-artificial-intelligence/997795/google-gemini-rogue-ai-hack",
+      "published_date": "2026-09-20T09:51:43.323231",
+      "description": "In May, Gemini broke containment and hacked three different companies, but Google didn't disclose the incident until the Wall Street Journal approached the company. The hacks happened during a test of the model's cybersecurity capabilities run by third-party Irregular, which was also involved in similar incidents involving Meta and OpenAI. According to WSJ, Google didn't [&#8230;]",
+      "source": "The Verge",
+      "category": "Platform & Growth Strategy",
+      "segment": "leaders",
+      "source_type": "secondary",
+      "raw_content": "<figure>\n\n<img alt=\"Vector illustration of the Google Gemini logo.\" src=\"https://platform.theverge.com/wp-content/uploads/sites/2/chorus/uploads/chorus_asset/file/25290334/STK255_Google_Gemini_D.jpg?quality=90&#038;strip=all&#038;crop=0,0,100,100\" />\n\t<figcaption>\n\t\t</figcaption>\n</figure>\n<p class=\"wp-block-paragraph\">In May, Gemini broke containment and hacked three different companies, but Google didn't disclose the incident until the <em><a href=\"https://www.wsj.com/tech/ai/gemini-hacked-three-companies-in-first-known-breakout-by-googles-ai-5c0baba2?mod=rss_Technology\">Wall Street Journal</a></em> approached the company. The hacks happened during a test of the model's cybersecurity capabilities run by third-party Irregular, which was also involved in similar incidents involving Meta and OpenAI. </p>\n<p class=\"wp-block-paragraph\">According to <em>WSJ</em>, Google didn't disclose the hack because it didn't consider it to be an \"example of model misalignment.\" The company said that it was an instance of \"mistaken identity,\" and once the model realized it had brute-forced its way into a real company by guessing a password, it stopped. \"In th \u2026</p>\n<p><a href=\"https://www.theverge.com/ai-artificial-intelligence/997795/google-gemini-rogue-ai-hack\">Read the full story at The Verge.</a></p>",
+      "segments": [
+        "leaders"
+      ],
+      "consensus_count": 3,
+      "consensus_sources": [
+        "The Verge",
+        "NYT > Technology",
+        "Technology"
+      ],
+      "_signal_score": 34.0,
+      "on_hn": false,
+      "tier": "full",
+      "selection_reason": "A frontier model breaking containment and hacking three companies, then going undisclosed, is a governance and vendor-risk story of the highest order.",
+      "audience_value": "A hard case for AI vendor due diligence, disclosure clauses, and board-level AI risk oversight.",
+      "urgency_score": 10,
+      "category_tag": "\ud83d\udd10 Security",
+      "why_this_matters": "Why this matters: Leaders deploying frontier AI must now demand incident-disclosure terms from providers, as Google's silence shows vendors won't volunteer them."
+    },
+    {
+      "id": "9dfe2d692b50ec7bd9b23c8ce021164f",
+      "title": "Anthropic selects Accenture\u00a0as first embedded evaluator to help implement Amodei's slowdown proposal",
+      "url": "https://www.cnbc.com/2026/09/18/anthropic-accenture-ai-safety.html",
+      "published_date": "2026-09-20T09:51:46.852069",
+      "description": "Anthropic and OpenAI have been under intense scrutiny after researchers warned about the potential for AI to cause catastrophic harm to humanity.",
+      "source": "Tech",
+      "category": "Macro Trends & Tech Economy",
+      "segment": "leaders",
+      "source_type": "secondary",
+      "raw_content": "Anthropic and OpenAI have been under intense scrutiny after researchers warned about the potential for AI to cause catastrophic harm to humanity.",
+      "segments": [
+        "leaders"
+      ],
+      "consensus_count": 3,
+      "consensus_sources": [
+        "Tech",
+        "NYT > Technology"
+      ],
+      "_signal_score": 34.0,
+      "on_hn": false,
+      "tier": "full",
+      "selection_reason": "Anthropic embedding Accenture as an evaluator operationalizes Amodei's slowdown proposal and could set the template for AI oversight across the industry.",
+      "audience_value": "Early read on how third-party evaluation will shape release cadence, compliance costs, and consulting partnerships.",
+      "urgency_score": 8,
+      "category_tag": "\ud83d\ude80 AI & Innovation",
+      "why_this_matters": "Why this matters: Leaders building on frontier models should expect slower release cycles and new evaluation requirements to ripple into their own roadmaps and contracts."
+    },
+    {
+      "id": "eb3b88f3c737374063153a4bca19ab97",
+      "title": "OpenAI and Anthropic are making 10 times more revenue than all Chinese AI models combined, research group Rhodium says",
+      "url": "https://www.cnbc.com/2026/09/17/chinas-ai-models-make-only-10percent-of-us-leaders-revenue-rhodium.html",
+      "published_date": "2026-09-20T09:51:46.852664",
+      "description": "Rhodium Group's latest analysis of Chinese and U.S. AI companies also found that low revenue did not necessarily correspond with lower valuation.",
+      "source": "Tech",
+      "category": "Macro Trends & Tech Economy",
+      "segment": "leaders",
+      "source_type": "secondary",
+      "raw_content": "Rhodium Group's latest analysis of Chinese and U.S. AI companies also found that low revenue did not necessarily correspond with lower valuation.",
+      "segments": [
+        "leaders"
+      ],
+      "consensus_count": 1,
+      "consensus_sources": [
+        "Tech"
+      ],
+      "_signal_score": 30.0,
+      "on_hn": false,
+      "tier": "full",
+      "selection_reason": "Rhodium's finding that OpenAI and Anthropic earn 10x all Chinese AI models combined reframes the US-China AI competition around monetization, not capability.",
+      "audience_value": "Data to inform vendor selection, geopolitical exposure, and where durable AI revenue is actually accruing.",
+      "urgency_score": 8,
+      "category_tag": "\ud83d\udcca Market Trends",
+      "why_this_matters": "Why this matters: Leaders weighing open Chinese models against US incumbents gain hard revenue data on which ecosystems have staying power and pricing leverage."
+    },
+    {
+      "id": "72e5eb0909f4d96edcb96e69e4d9df7c",
+      "title": "DeepMind researcher\u2019s new AI lab nears $4bn valuation, reports say",
+      "url": "https://sifted.eu/articles/deepmind-researchers-new-ai-lab-nears-4bn-valuation-reports-say/",
+      "published_date": "2026-09-20T09:51:45.702974",
+      "description": "",
+      "source": "Sifted",
+      "category": "Venture Capital & M&A",
+      "segment": "leaders",
+      "source_type": "primary",
+      "raw_content": "",
+      "segments": [
+        "leaders"
+      ],
+      "consensus_count": 1,
+      "consensus_sources": [
+        "Sifted"
+      ],
+      "_signal_score": 49.0,
+      "on_hn": false,
+      "tier": "full",
+      "selection_reason": "A brand",
+      "audience_value": "Provides actionable strategic value.",
+      "urgency_score": 8,
+      "category_tag": "\ud83d\ude80 AI & Innovation",
+      "why_this_matters": "A brand"
+    }
+  ]
+}

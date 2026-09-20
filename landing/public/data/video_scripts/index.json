@@ -1,5 +1,65 @@
 [
   {
+    "date": "2026-09-20",
+    "track": "weekly_mega_recap",
+    "episode_id": "weekly-ai-news-2026-09-20",
+    "chapters": [
+      "Frontier Models & Open Weights [00:45]",
+      "Creative & Multimodal Breakthroughs [03:00]",
+      "The Gigawatt Compute & Enterprise Battlefield [05:30]",
+      "Breakthrough Agents & Tools [07:30]"
+    ],
+    "tools_count": 8,
+    "json_path": "/data/video_scripts/weekly_2026-09-20-mega-recap.json",
+    "md_path": "/data/video_scripts/weekly_2026-09-20-mega-recap.md",
+    "updated_at": "2026-09-20T10:11:30.377333"
+  },
+  {
+    "date": "2026-09-20",
+    "track": "top4",
+    "episode_id": "ai-news-2026-09-20-top4",
+    "stories": [
+      "Video generation models as world simulators",
+      "Introducing gpt-oss",
+      "Jensen Huang explains why Nvidia will grow an astounding 70% next year",
+      "Don't Mask the Environment: Observation Supervision Changes How Agents Explore Under RL"
+    ],
+    "stories_count": 4,
+    "json_path": "/data/video_scripts/2026-09-20-ai-news.json",
+    "md_path": "/data/video_scripts/2026-09-20-ai-news.md",
+    "updated_at": "2026-09-20T10:03:11.578404"
+  },
+  {
+    "date": "2026-09-20",
+    "track": "leaders",
+    "episode_id": "ai-news-2026-09-20-leaders",
+    "stories": [
+      "Jensen Huang explains why Nvidia will grow an astounding 70% next year",
+      "Anthropic selects Accenture\u00a0as first embedded evaluator to help implement Amodei's slowdown proposal",
+      "Can MiniMax-H3 Reason About the Physical World? An Evaluation of Omni-Modal Generative Model",
+      "V\u0101kQA: A Benchmark and Evaluation Study for Telugu Spoken Factoid Question Answering"
+    ],
+    "stories_count": 4,
+    "json_path": "/data/video_scripts/2026-09-20-ai-news-leaders.json",
+    "md_path": "/data/video_scripts/2026-09-20-ai-news-leaders.md",
+    "updated_at": "2026-09-20T10:07:11.602902"
+  },
+  {
+    "date": "2026-09-20",
+    "track": "builders",
+    "episode_id": "ai-news-2026-09-20-builders",
+    "stories": [
+      "Video generation models as world simulators",
+      "Don't Mask the Environment: Observation Supervision Changes How Agents Explore Under RL",
+      "Can MiniMax-H3 Reason About the Physical World? An Evaluation of Omni-Modal Generative Model",
+      "Introducing gpt-oss"
+    ],
+    "stories_count": 4,
+    "json_path": "/data/video_scripts/2026-09-20-ai-news-builders.json",
+    "md_path": "/data/video_scripts/2026-09-20-ai-news-builders.md",
+    "updated_at": "2026-09-20T10:05:12.948536"
+  },
+  {
     "date": "2026-09-19",
     "track": "top4",
     "episode_id": "ai-news-2026-09-19-top4",
