@@ -15,6 +15,21 @@
     "updated_at": "2026-09-21T01:20:44.621453"
   },
   {
+    "date": "2026-09-20",
+    "track": "weekly_mega_recap",
+    "episode_id": "weekly-ai-news-2026-09-20",
+    "chapters": [
+      "Frontier Models & Open Weights [00:45]",
+      "Creative & Multimodal Breakthroughs [03:00]",
+      "The Gigawatt Compute & Enterprise Battlefield [05:30]",
+      "Breakthrough Agents & Tools [07:30]"
+    ],
+    "tools_count": 8,
+    "json_path": "/data/video_scripts/weekly_2026-09-20-mega-recap.json",
+    "md_path": "/data/video_scripts/weekly_2026-09-20-mega-recap.md",
+    "updated_at": "2026-09-20T23:24:43.542549"
+  },
+  {
     "date": "2026-09-19",
     "track": "top4",
     "episode_id": "ai-news-2026-09-19-top4",
