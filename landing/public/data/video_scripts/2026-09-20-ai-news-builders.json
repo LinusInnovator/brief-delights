@@ -4,137 +4,139 @@
   "format": "daily",
   "date": "2026-09-20",
   "voice_profile": "alex_tech",
-  "intro": "[excited] Today: Sora's world-simulator report, MiniMax-H3 physical reasoning, ActObs, and gpt-oss going Apache 2.0. Hacker News hasn't caught fire yet\u2014but Hugging Face upvotes are loud.",
+  "intro": "[excited] Today FLUX.1 gets API fine-tuning, spaCy lands on Hugging Face, SageMaker deepens its HF partnership, and OpenAI revisits human preferences \u2014 all before Hacker News even spins up a thread.",
   "stories": [
     {
-      "name": "Video generation models as world simulators",
-      "url": "https://openai.com/index/video-generation-models-as-world-simulators",
+      "name": "Fine-tune FLUX.1 with an API",
+      "url": "https://replicate.com/blog/fine-tune-flux-with-an-api",
       "mode": "tool_drop",
-      "hero_anchor": "main h1, header h1, .hero h1, h1",
-      "demo_anchor": "video, canvas, #demo, .demo, #comparison, table",
-      "download_anchor": "a[href*='github.com'], a[href*='download'], a[href*='huggingface.co'], .cta-button",
-      "specs": "Live Tool | Web Drop",
-      "video_readiness": 60.0,
+      "hero_anchor": "h1, header, .hero h1",
+      "demo_anchor": "form, input, button[type='submit'], canvas, video, audio, .output, .demo",
+      "download_anchor": "a[href*='github.com'], a[href*='api'], button",
+      "specs": "Live Web App | Interactive Demo",
+      "video_readiness": 75.0,
       "consensus_count": 1,
       "hn_points": null,
-      "badges": [],
+      "badges": [
+        "\u2728 Interactive Demo Live"
+      ],
       "beats": {
-        "landing_page": "[confident] OpenAI's new report frames video generation models as world simulators, using spacetime patches and diffusion transformers. It's foundational reading for anyone evaluating generative video.",
-        "demo": "[amazed] The demo shows Sora-style clips maintaining 3D consistency, object permanence, and long-horizon coherence. That's not just pixels\u2014it's a learned physics engine.",
-        "access": "[excited] It's a live web drop, but Hacker News has no thread yet. Still, this is required reading before you build or buy video generation."
+        "landing_page": "[confident] Replicate just dropped a full walkthrough for fine-tuning FLUX.1 entirely through their API \u2014 no local GPU cluster, no environment headaches, just code that turns your dataset into a custom image model.",
+        "demo": "[amazed] The interactive demo is live, and the loop is brutally simple: upload reference images, kick off the training job, then generate outputs that actually hold your style instead of drifting into generic FLUX.",
+        "access": "[energetic] Score sits at seventy-five for video readiness, and Hacker News hasn't even opened a thread yet \u2014 meaning you can build on this before the rest of the timeline catches up. Link below."
       },
       "ordered_beats": [
         {
           "title": "Landing Page",
-          "narration": "[confident] OpenAI's new report frames video generation models as world simulators, using spacetime patches and diffusion transformers. It's foundational reading for anyone evaluating generative video."
+          "narration": "[confident] Replicate just dropped a full walkthrough for fine-tuning FLUX.1 entirely through their API \u2014 no local GPU cluster, no environment headaches, just code that turns your dataset into a custom image model."
         },
         {
           "title": "Demo",
-          "narration": "[amazed] The demo shows Sora-style clips maintaining 3D consistency, object permanence, and long-horizon coherence. That's not just pixels\u2014it's a learned physics engine."
+          "narration": "[amazed] The interactive demo is live, and the loop is brutally simple: upload reference images, kick off the training job, then generate outputs that actually hold your style instead of drifting into generic FLUX."
         },
         {
           "title": "Access",
-          "narration": "[excited] It's a live web drop, but Hacker News has no thread yet. Still, this is required reading before you build or buy video generation."
+          "narration": "[energetic] Score sits at seventy-five for video readiness, and Hacker News hasn't even opened a thread yet \u2014 meaning you can build on this before the rest of the timeline catches up. Link below."
         }
       ]
     },
     {
-      "name": "Don't Mask the Environment: Observation Supervision Changes How Agents Explore Under RL",
-      "url": "https://huggingface.co/papers/2609.20715",
+      "name": "Welcome spaCy to the Hugging Face Hub",
+      "url": "https://huggingface.co/blog/spacy",
       "mode": "tool_drop",
-      "hero_anchor": "h1, .paper-title, h1.title",
-      "demo_anchor": "table, figure, .results, #benchmark, div[class*='abstract']",
-      "download_anchor": "a[href*='arxiv.org/pdf'], a[href*='huggingface.co/papers']",
-      "specs": "Research Paper | Hugging Face Daily Papers",
-      "video_readiness": 55.0,
+      "hero_anchor": "h1, .model-header, header",
+      "demo_anchor": "table, .results, #benchmark, canvas, .viewer, video",
+      "download_anchor": "button[data-testid='download-button'], a[href*='tree/main'], a[href*='resolve']",
+      "specs": "Model Weights | Hugging Face Hub",
+      "video_readiness": 70.0,
       "consensus_count": 1,
       "hn_points": null,
       "badges": [
         "\ud83d\udce6 Open Weights"
       ],
       "beats": {
-        "landing_page": "[curious] ActObs asks a sharp question: why mask environment observations during supervised fine-tuning? Hugging Face upvotes hit 28, and the paper is open weights.",
-        "demo": "[confident] Standard SFT only trains on action tokens. ActObs also supervises observations, changing how agents explore before reinforcement learning kicks in.",
-        "access": "[excited] Open weights are available on Hugging Face. If you're fine-tuning agents, this changes your initialization recipe."
+        "landing_page": "[friendly] spaCy, the NLP library half the industry already imports, is officially on the Hugging Face Hub \u2014 giving you one home for tokenizers, pipelines, and model weights instead of five browser tabs.",
+        "demo": "[confident] Search spaCy inside the Hub, pull the pipeline, and load it with your existing workflow. The integration cuts the install friction that used to scare people away from production-grade NLP.",
+        "access": "[curious] Open weights, Hugging Face Hub, readiness score of seventy. No HN thread yet, which is surprising for a library this deeply embedded \u2014 go test it yourself and post what breaks."
       },
       "ordered_beats": [
         {
           "title": "Landing Page",
-          "narration": "[curious] ActObs asks a sharp question: why mask environment observations during supervised fine-tuning? Hugging Face upvotes hit 28, and the paper is open weights."
+          "narration": "[friendly] spaCy, the NLP library half the industry already imports, is officially on the Hugging Face Hub \u2014 giving you one home for tokenizers, pipelines, and model weights instead of five browser tabs."
         },
         {
           "title": "Demo",
-          "narration": "[confident] Standard SFT only trains on action tokens. ActObs also supervises observations, changing how agents explore before reinforcement learning kicks in."
+          "narration": "[confident] Search spaCy inside the Hub, pull the pipeline, and load it with your existing workflow. The integration cuts the install friction that used to scare people away from production-grade NLP."
         },
         {
           "title": "Access",
-          "narration": "[excited] Open weights are available on Hugging Face. If you're fine-tuning agents, this changes your initialization recipe."
+          "narration": "[curious] Open weights, Hugging Face Hub, readiness score of seventy. No HN thread yet, which is surprising for a library this deeply embedded \u2014 go test it yourself and post what breaks."
         }
       ]
     },
     {
-      "name": "Can MiniMax-H3 Reason About the Physical World? An Evaluation of Omni-Modal Generative Model",
-      "url": "https://huggingface.co/papers/2609.18323",
+      "name": "The Partnership: Amazon SageMaker and Hugging Face",
+      "url": "https://huggingface.co/blog/the-partnership-amazon-sagemaker-and-hugging-face",
       "mode": "tool_drop",
-      "hero_anchor": "h1, .paper-title, h1.title",
-      "demo_anchor": "table, figure, .results, #benchmark, div[class*='abstract']",
-      "download_anchor": "a[href*='arxiv.org/pdf'], a[href*='huggingface.co/papers']",
-      "specs": "Research Paper | Hugging Face Daily Papers",
-      "video_readiness": 55.0,
+      "hero_anchor": "h1, .model-header, header",
+      "demo_anchor": "table, .results, #benchmark, canvas, .viewer, video",
+      "download_anchor": "button[data-testid='download-button'], a[href*='tree/main'], a[href*='resolve']",
+      "specs": "Model Weights | Hugging Face Hub",
+      "video_readiness": 65.0,
       "consensus_count": 1,
       "hn_points": null,
       "badges": [
         "\ud83d\udce6 Open Weights"
       ],
       "beats": {
-        "landing_page": "[amazed] MiniMax-H3 is an omni-modal generative model that jointly handles text, images, video, and audio. Hugging Face upvotes hit 109, making it today's loudest paper.",
-        "demo": "[curious] The evaluation asks whether multimodal alignment improves physical-world reasoning. It tests if unified latent space actually understands cause, effect, and motion.",
-        "access": "[confident] Open weights are flagged, so researchers can probe the model directly. This is a benchmark for omni-modal reasoning, not just generation."
+        "landing_page": "[confident] Amazon SageMaker and Hugging Face are deepening their partnership, tightening the path from Hub-hosted model weights to deployed SageMaker endpoints without the usual glue code.",
+        "demo": "[amazed] The promise is smoother training and deployment inside one managed flow \u2014 pick a model, point it at your data, and let SageMaker handle the scaling you used to babysit manually.",
+        "access": "[skeptical] Readiness score is sixty-five, and there's still no Hacker News thread to pressure-test the claims. Open weights across the Hub, but verify the pricing before you migrate anything serious."
       },
       "ordered_beats": [
         {
           "title": "Landing Page",
-          "narration": "[amazed] MiniMax-H3 is an omni-modal generative model that jointly handles text, images, video, and audio. Hugging Face upvotes hit 109, making it today's loudest paper."
+          "narration": "[confident] Amazon SageMaker and Hugging Face are deepening their partnership, tightening the path from Hub-hosted model weights to deployed SageMaker endpoints without the usual glue code."
         },
         {
           "title": "Demo",
-          "narration": "[curious] The evaluation asks whether multimodal alignment improves physical-world reasoning. It tests if unified latent space actually understands cause, effect, and motion."
+          "narration": "[amazed] The promise is smoother training and deployment inside one managed flow \u2014 pick a model, point it at your data, and let SageMaker handle the scaling you used to babysit manually."
         },
         {
           "title": "Access",
-          "narration": "[confident] Open weights are flagged, so researchers can probe the model directly. This is a benchmark for omni-modal reasoning, not just generation."
+          "narration": "[skeptical] Readiness score is sixty-five, and there's still no Hacker News thread to pressure-test the claims. Open weights across the Hub, but verify the pricing before you migrate anything serious."
         }
       ]
     },
     {
-      "name": "Introducing gpt-oss",
-      "url": "https://openai.com/index/introducing-gpt-oss",
+      "name": "Learning from human preferences",
+      "url": "https://openai.com/index/learning-from-human-preferences",
       "mode": "paper_preview",
       "hero_anchor": "main h1, header h1, h1",
       "demo_anchor": "figure, table, .results, #diagram, #comparison",
       "download_anchor": "a[href*='pdf'], a[href*='arxiv.org'], a[href*='github.com']",
       "specs": "Research Preview | Benchmark",
-      "video_readiness": 45.0,
+      "video_readiness": 40.0,
       "consensus_count": 2,
       "hn_points": null,
       "badges": [],
       "beats": {
-        "paper": "[excited] OpenAI's gpt-oss is a landmark shift: state-of-the-art open-weight models under Apache 2.0. Two-source consensus confirms this reshapes local fine-tuning.",
-        "architecture_evidence": "[confident] The release targets researchers and early adopters who want to build locally. Benchmarks position it as competitive, not a toy open-weight drop.",
-        "release_horizon": "[skeptical] Hacker News has no thread yet, so hype is still forming. But Apache 2.0 means you can fine-tune and ship without permission."
+        "paper_preview": "### Paper\n[curious] OpenAI resurfaced \"Learning from human preferences\" \u2014 the research lineage behind today's alignment stacks, and it's pulling a consensus count of two across outlets with zero HN thread so far.",
+        "architecture": "[amazed] The core idea: humans compare pairs of outputs, a reward model learns those preferences, and reinforcement learning optimizes against it. That loop still powers how modern assistants get tuned.",
+        "release_horizon": "[confident] This is a research preview and benchmark reference, not a product drop. Read it as foundational context before your next fine-tune \u2014 the mechanics explain why your reward model matters more than your dataset size."
       },
       "ordered_beats": [
         {
-          "title": "Paper",
-          "narration": "[excited] OpenAI's gpt-oss is a landmark shift: state-of-the-art open-weight models under Apache 2.0. Two-source consensus confirms this reshapes local fine-tuning."
+          "title": "Paper Preview",
+          "narration": "### Paper\n[curious] OpenAI resurfaced \"Learning from human preferences\" \u2014 the research lineage behind today's alignment stacks, and it's pulling a consensus count of two across outlets with zero HN thread so far."
         },
         {
-          "title": "Architecture/Evidence",
-          "narration": "[confident] The release targets researchers and early adopters who want to build locally. Benchmarks position it as competitive, not a toy open-weight drop."
+          "title": "Architecture",
+          "narration": "[amazed] The core idea: humans compare pairs of outputs, a reward model learns those preferences, and reinforcement learning optimizes against it. That loop still powers how modern assistants get tuned."
         },
         {
           "title": "Release Horizon",
-          "narration": "[skeptical] Hacker News has no thread yet, so hype is still forming. But Apache 2.0 means you can fine-tune and ship without permission."
+          "narration": "[confident] This is a research preview and benchmark reference, not a product drop. Read it as foundational context before your next fine-tune \u2014 the mechanics explain why your reward model matters more than your dataset size."
         }
       ]
     }
@@ -142,27 +144,29 @@
   "outro": "[friendly] All project links, Hugging Face spaces, and research papers are organized down in the description below. Hit subscribe to Brief Delights for your daily rundown, and I'll see you tomorrow.",
   "tools_metadata": [
     {
-      "name": "Video generation models as world simulators",
-      "url": "https://openai.com/index/video-generation-models-as-world-simulators",
+      "name": "Fine-tune FLUX.1 with an API",
+      "url": "https://replicate.com/blog/fine-tune-flux-with-an-api",
       "mode": "tool_drop",
-      "hero_anchor": "main h1, header h1, .hero h1, h1",
-      "demo_anchor": "video, canvas, #demo, .demo, #comparison, table",
-      "download_anchor": "a[href*='github.com'], a[href*='download'], a[href*='huggingface.co'], .cta-button",
-      "specs": "Live Tool | Web Drop",
-      "video_readiness": 60.0,
+      "hero_anchor": "h1, header, .hero h1",
+      "demo_anchor": "form, input, button[type='submit'], canvas, video, audio, .output, .demo",
+      "download_anchor": "a[href*='github.com'], a[href*='api'], button",
+      "specs": "Live Web App | Interactive Demo",
+      "video_readiness": 75.0,
       "consensus_count": 1,
       "hn_points": null,
-      "badges": []
+      "badges": [
+        "\u2728 Interactive Demo Live"
+      ]
     },
     {
-      "name": "Don't Mask the Environment: Observation Supervision Changes How Agents Explore Under RL",
-      "url": "https://huggingface.co/papers/2609.20715",
+      "name": "Welcome spaCy to the Hugging Face Hub",
+      "url": "https://huggingface.co/blog/spacy",
       "mode": "tool_drop",
-      "hero_anchor": "h1, .paper-title, h1.title",
-      "demo_anchor": "table, figure, .results, #benchmark, div[class*='abstract']",
-      "download_anchor": "a[href*='arxiv.org/pdf'], a[href*='huggingface.co/papers']",
-      "specs": "Research Paper | Hugging Face Daily Papers",
-      "video_readiness": 55.0,
+      "hero_anchor": "h1, .model-header, header",
+      "demo_anchor": "table, .results, #benchmark, canvas, .viewer, video",
+      "download_anchor": "button[data-testid='download-button'], a[href*='tree/main'], a[href*='resolve']",
+      "specs": "Model Weights | Hugging Face Hub",
+      "video_readiness": 70.0,
       "consensus_count": 1,
       "hn_points": null,
       "badges": [
@@ -170,14 +174,14 @@
       ]
     },
     {
-      "name": "Can MiniMax-H3 Reason About the Physical World? An Evaluation of Omni-Modal Generative Model",
-      "url": "https://huggingface.co/papers/2609.18323",
+      "name": "The Partnership: Amazon SageMaker and Hugging Face",
+      "url": "https://huggingface.co/blog/the-partnership-amazon-sagemaker-and-hugging-face",
       "mode": "tool_drop",
-      "hero_anchor": "h1, .paper-title, h1.title",
-      "demo_anchor": "table, figure, .results, #benchmark, div[class*='abstract']",
-      "download_anchor": "a[href*='arxiv.org/pdf'], a[href*='huggingface.co/papers']",
-      "specs": "Research Paper | Hugging Face Daily Papers",
-      "video_readiness": 55.0,
+      "hero_anchor": "h1, .model-header, header",
+      "demo_anchor": "table, .results, #benchmark, canvas, .viewer, video",
+      "download_anchor": "button[data-testid='download-button'], a[href*='tree/main'], a[href*='resolve']",
+      "specs": "Model Weights | Hugging Face Hub",
+      "video_readiness": 65.0,
       "consensus_count": 1,
       "hn_points": null,
       "badges": [
@@ -185,19 +189,19 @@
       ]
     },
     {
-      "name": "Introducing gpt-oss",
-      "url": "https://openai.com/index/introducing-gpt-oss",
+      "name": "Learning from human preferences",
+      "url": "https://openai.com/index/learning-from-human-preferences",
       "mode": "paper_preview",
       "hero_anchor": "main h1, header h1, h1",
       "demo_anchor": "figure, table, .results, #diagram, #comparison",
       "download_anchor": "a[href*='pdf'], a[href*='arxiv.org'], a[href*='github.com']",
       "specs": "Research Preview | Benchmark",
-      "video_readiness": 45.0,
+      "video_readiness": 40.0,
       "consensus_count": 2,
       "hn_points": null,
       "badges": []
     }
   ],
-  "raw_markdown": "---\nepisode_id: ai-news-2026-09-20-builders\ntrack: builders\nformat: daily\nvoice_profile: alex_tech\ntools:\n- name: Video generation models as world simulators\n  url: https://openai.com/index/video-generation-models-as-world-simulators\n  mode: tool_drop\n  hero_anchor: main h1, header h1, .hero h1, h1\n  demo_anchor: 'video, canvas, #demo, .demo, #comparison, table'\n  download_anchor: a[href*='github.com'], a[href*='download'], a[href*='huggingface.co'],\n    .cta-button\n  specs: Live Tool | Web Drop\n  video_readiness: 60.0\n  consensus_count: 1\n  hn_points: null\n  badges: []\n- name: 'Don''t Mask the Environment: Observation Supervision Changes How Agents Explore\n    Under RL'\n  url: https://huggingface.co/papers/2609.20715\n  mode: tool_drop\n  hero_anchor: h1, .paper-title, h1.title\n  demo_anchor: 'table, figure, .results, #benchmark, div[class*=''abstract'']'\n  download_anchor: a[href*='arxiv.org/pdf'], a[href*='huggingface.co/papers']\n  specs: Research Paper | Hugging Face Daily Papers\n  video_readiness: 55.0\n  consensus_count: 1\n  hn_points: null\n  badges:\n  - \ud83d\udce6 Open Weights\n- name: Can MiniMax-H3 Reason About the Physical World? An Evaluation of Omni-Modal\n    Generative Model\n  url: https://huggingface.co/papers/2609.18323\n  mode: tool_drop\n  hero_anchor: h1, .paper-title, h1.title\n  demo_anchor: 'table, figure, .results, #benchmark, div[class*=''abstract'']'\n  download_anchor: a[href*='arxiv.org/pdf'], a[href*='huggingface.co/papers']\n  specs: Research Paper | Hugging Face Daily Papers\n  video_readiness: 55.0\n  consensus_count: 1\n  hn_points: null\n  badges:\n  - \ud83d\udce6 Open Weights\n- name: Introducing gpt-oss\n  url: https://openai.com/index/introducing-gpt-oss\n  mode: paper_preview\n  hero_anchor: main h1, header h1, h1\n  demo_anchor: 'figure, table, .results, #diagram, #comparison'\n  download_anchor: a[href*='pdf'], a[href*='arxiv.org'], a[href*='github.com']\n  specs: Research Preview | Benchmark\n  video_readiness: 45.0\n  consensus_count: 2\n  hn_points: null\n  badges: []\n---\n\n# Intro\n[excited] Today: Sora's world-simulator report, MiniMax-H3 physical reasoning, ActObs, and gpt-oss going Apache 2.0. Hacker News hasn't caught fire yet\u2014but Hugging Face upvotes are loud.\n\n---\n\n# Story 1: Video generation models as world simulators\n### Landing Page\n[confident] OpenAI's new report frames video generation models as world simulators, using spacetime patches and diffusion transformers. It's foundational reading for anyone evaluating generative video.\n\n### Demo\n[amazed] The demo shows Sora-style clips maintaining 3D consistency, object permanence, and long-horizon coherence. That's not just pixels\u2014it's a learned physics engine.\n\n### Access\n[excited] It's a live web drop, but Hacker News has no thread yet. Still, this is required reading before you build or buy video generation.\n\n---\n\n# Story 2: Don't Mask the Environment: Observation Supervision Changes How Agents Explore Under RL\n### Landing Page\n[curious] ActObs asks a sharp question: why mask environment observations during supervised fine-tuning? Hugging Face upvotes hit 28, and the paper is open weights.\n\n### Demo\n[confident] Standard SFT only trains on action tokens. ActObs also supervises observations, changing how agents explore before reinforcement learning kicks in.\n\n### Access\n[excited] Open weights are available on Hugging Face. If you're fine-tuning agents, this changes your initialization recipe.\n\n---\n\n# Story 3: Can MiniMax-H3 Reason About the Physical World? An Evaluation of Omni-Modal Generative Model\n### Landing Page\n[amazed] MiniMax-H3 is an omni-modal generative model that jointly handles text, images, video, and audio. Hugging Face upvotes hit 109, making it today's loudest paper.\n\n### Demo\n[curious] The evaluation asks whether multimodal alignment improves physical-world reasoning. It tests if unified latent space actually understands cause, effect, and motion.\n\n### Access\n[confident] Open weights are flagged, so researchers can probe the model directly. This is a benchmark for omni-modal reasoning, not just generation.\n\n---\n\n# Story 4: Introducing gpt-oss\n### Paper\n[excited] OpenAI's gpt-oss is a landmark shift: state-of-the-art open-weight models under Apache 2.0. Two-source consensus confirms this reshapes local fine-tuning.\n\n### Architecture/Evidence\n[confident] The release targets researchers and early adopters who want to build locally. Benchmarks position it as competitive, not a toy open-weight drop.\n\n### Release Horizon\n[skeptical] Hacker News has no thread yet, so hype is still forming. But Apache 2.0 means you can fine-tune and ship without permission.\n\n---\n\n# Outro\n[friendly] All project links, Hugging Face spaces, and research papers are organized down in the description below. Hit subscribe to Brief Delights for your daily rundown, and I'll see you tomorrow.",
-  "generated_at": "2026-09-20T10:05:12.947174"
+  "raw_markdown": "---\nepisode_id: ai-news-2026-09-20-builders\ntrack: builders\nformat: daily\nvoice_profile: alex_tech\ntools:\n- name: Fine-tune FLUX.1 with an API\n  url: https://replicate.com/blog/fine-tune-flux-with-an-api\n  mode: tool_drop\n  hero_anchor: h1, header, .hero h1\n  demo_anchor: form, input, button[type='submit'], canvas, video, audio, .output,\n    .demo\n  download_anchor: a[href*='github.com'], a[href*='api'], button\n  specs: Live Web App | Interactive Demo\n  video_readiness: 75.0\n  consensus_count: 1\n  hn_points: null\n  badges:\n  - \u2728 Interactive Demo Live\n- name: Welcome spaCy to the Hugging Face Hub\n  url: https://huggingface.co/blog/spacy\n  mode: tool_drop\n  hero_anchor: h1, .model-header, header\n  demo_anchor: 'table, .results, #benchmark, canvas, .viewer, video'\n  download_anchor: button[data-testid='download-button'], a[href*='tree/main'], a[href*='resolve']\n  specs: Model Weights | Hugging Face Hub\n  video_readiness: 70.0\n  consensus_count: 1\n  hn_points: null\n  badges:\n  - \ud83d\udce6 Open Weights\n- name: 'The Partnership: Amazon SageMaker and Hugging Face'\n  url: https://huggingface.co/blog/the-partnership-amazon-sagemaker-and-hugging-face\n  mode: tool_drop\n  hero_anchor: h1, .model-header, header\n  demo_anchor: 'table, .results, #benchmark, canvas, .viewer, video'\n  download_anchor: button[data-testid='download-button'], a[href*='tree/main'], a[href*='resolve']\n  specs: Model Weights | Hugging Face Hub\n  video_readiness: 65.0\n  consensus_count: 1\n  hn_points: null\n  badges:\n  - \ud83d\udce6 Open Weights\n- name: Learning from human preferences\n  url: https://openai.com/index/learning-from-human-preferences\n  mode: paper_preview\n  hero_anchor: main h1, header h1, h1\n  demo_anchor: 'figure, table, .results, #diagram, #comparison'\n  download_anchor: a[href*='pdf'], a[href*='arxiv.org'], a[href*='github.com']\n  specs: Research Preview | Benchmark\n  video_readiness: 40.0\n  consensus_count: 2\n  hn_points: null\n  badges: []\n---\n\n# Intro\n[excited] Today FLUX.1 gets API fine-tuning, spaCy lands on Hugging Face, SageMaker deepens its HF partnership, and OpenAI revisits human preferences \u2014 all before Hacker News even spins up a thread.\n\n---\n\n# Story 1: Fine-tune FLUX.1 with an API\n### Landing Page\n[confident] Replicate just dropped a full walkthrough for fine-tuning FLUX.1 entirely through their API \u2014 no local GPU cluster, no environment headaches, just code that turns your dataset into a custom image model.\n\n### Demo\n[amazed] The interactive demo is live, and the loop is brutally simple: upload reference images, kick off the training job, then generate outputs that actually hold your style instead of drifting into generic FLUX.\n\n### Access\n[energetic] Score sits at seventy-five for video readiness, and Hacker News hasn't even opened a thread yet \u2014 meaning you can build on this before the rest of the timeline catches up. Link below.\n\n---\n\n# Story 2: Welcome spaCy to the Hugging Face Hub\n### Landing Page\n[friendly] spaCy, the NLP library half the industry already imports, is officially on the Hugging Face Hub \u2014 giving you one home for tokenizers, pipelines, and model weights instead of five browser tabs.\n\n### Demo\n[confident] Search spaCy inside the Hub, pull the pipeline, and load it with your existing workflow. The integration cuts the install friction that used to scare people away from production-grade NLP.\n\n### Access\n[curious] Open weights, Hugging Face Hub, readiness score of seventy. No HN thread yet, which is surprising for a library this deeply embedded \u2014 go test it yourself and post what breaks.\n\n---\n\n# Story 3: The Partnership: Amazon SageMaker and Hugging Face\n### Landing Page\n[confident] Amazon SageMaker and Hugging Face are deepening their partnership, tightening the path from Hub-hosted model weights to deployed SageMaker endpoints without the usual glue code.\n\n### Demo\n[amazed] The promise is smoother training and deployment inside one managed flow \u2014 pick a model, point it at your data, and let SageMaker handle the scaling you used to babysit manually.\n\n### Access\n[skeptical] Readiness score is sixty-five, and there's still no Hacker News thread to pressure-test the claims. Open weights across the Hub, but verify the pricing before you migrate anything serious.\n\n---\n\n# Story 4: Learning from human preferences\n### Paper Preview\n### Paper\n[curious] OpenAI resurfaced \"Learning from human preferences\" \u2014 the research lineage behind today's alignment stacks, and it's pulling a consensus count of two across outlets with zero HN thread so far.\n\n### Architecture\n[amazed] The core idea: humans compare pairs of outputs, a reward model learns those preferences, and reinforcement learning optimizes against it. That loop still powers how modern assistants get tuned.\n\n### Release Horizon\n[confident] This is a research preview and benchmark reference, not a product drop. Read it as foundational context before your next fine-tune \u2014 the mechanics explain why your reward model matters more than your dataset size.\n\n---\n\n# Outro\n[friendly] All project links, Hugging Face spaces, and research papers are organized down in the description below. Hit subscribe to Brief Delights for your daily rundown, and I'll see you tomorrow.",
+  "generated_at": "2026-09-20T12:41:26.197365"
 }

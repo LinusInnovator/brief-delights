@@ -4,11 +4,11 @@
   "format": "daily",
   "date": "2026-09-20",
   "voice_profile": "alex_tech",
-  "intro": "[excited] Nvidia's CEO just called seventy percent growth, Anthropic hired Accenture to slow AI down, and a new omni-modal model hit Hugging Face with 109 upvotes. Hacker News is quiet \u2014 the papers are not.",
+  "intro": "[excited] Today: a stealth AI lab nears four billion, US labs out-earn China ten-to-one, Vercel's build engine, and a Telugu speech QA benchmark. HN's quiet, but Hugging Face upvotes are talking.",
   "stories": [
     {
-      "name": "Jensen Huang explains why Nvidia will grow an astounding 70% next year",
-      "url": "https://techcrunch.com/2026/09/10/jensen-huang-explains-why-nvidia-will-grow-an-astounding-70-next-year/",
+      "name": "DeepMind researcher\u2019s new AI lab nears $4bn valuation, reports say",
+      "url": "https://sifted.eu/articles/deepmind-researchers-new-ai-lab-nears-4bn-valuation-reports-say/",
       "mode": "industry_insight",
       "hero_anchor": "main h1, header h1, .hero h1, h1",
       "demo_anchor": "figure, table, blockquote, canvas, .chart, .metrics",
@@ -19,28 +19,28 @@
       "hn_points": null,
       "badges": [],
       "beats": {
-        "headline": "[confident] Jensen Huang just told TechCrunch Nvidia is guiding to seventy percent growth next year. That's not a chip forecast \u2014 that's the entire AI infrastructure budget.",
-        "evidence": "[amazed] Seventy percent on a base this size means data center spend keeps compounding. Every downstream compute budget, every startup's inference bill, gets repriced upward.",
-        "the_verdict": "[skeptical] Consensus is thin \u2014 one outlet, no Hacker News thread yet. But when Jensen guides, the whole supply chain moves. Watch the hyperscaler capex calls next."
+        "headline": "[confident] A DeepMind researcher's brand-new lab is reportedly nearing a four-billion-dollar valuation. No product, no launch, just frontier talent pulling mega-round pricing. That's the 2026 signal.",
+        "evidence": "[skeptical] Reports are single-source, with no Hacker News thread yet. Consensus count sits at one, so treat the number as a leak, not gospel. Still, talent arbitrage is real.",
+        "the_verdict": "[confident] The verdict: compute and data are cheap; proven frontier researchers are not. Expect more quiet labs raising loud valuations before shipping anything public."
       },
       "ordered_beats": [
         {
           "title": "Headline",
-          "narration": "[confident] Jensen Huang just told TechCrunch Nvidia is guiding to seventy percent growth next year. That's not a chip forecast \u2014 that's the entire AI infrastructure budget."
+          "narration": "[confident] A DeepMind researcher's brand-new lab is reportedly nearing a four-billion-dollar valuation. No product, no launch, just frontier talent pulling mega-round pricing. That's the 2026 signal."
         },
         {
           "title": "Evidence",
-          "narration": "[amazed] Seventy percent on a base this size means data center spend keeps compounding. Every downstream compute budget, every startup's inference bill, gets repriced upward."
+          "narration": "[skeptical] Reports are single-source, with no Hacker News thread yet. Consensus count sits at one, so treat the number as a leak, not gospel. Still, talent arbitrage is real."
         },
         {
           "title": "The Verdict",
-          "narration": "[skeptical] Consensus is thin \u2014 one outlet, no Hacker News thread yet. But when Jensen guides, the whole supply chain moves. Watch the hyperscaler capex calls next."
+          "narration": "[confident] The verdict: compute and data are cheap; proven frontier researchers are not. Expect more quiet labs raising loud valuations before shipping anything public."
         }
       ]
     },
     {
-      "name": "Anthropic selects Accenture\u00a0as first embedded evaluator to help implement Amodei's slowdown proposal",
-      "url": "https://www.cnbc.com/2026/09/18/anthropic-accenture-ai-safety.html",
+      "name": "OpenAI and Anthropic are making 10 times more revenue than all Chinese AI models combined, research group Rhodium says",
+      "url": "https://www.cnbc.com/2026/09/17/chinas-ai-models-make-only-10percent-of-us-leaders-revenue-rhodium.html",
       "mode": "industry_insight",
       "hero_anchor": "main h1, header h1, .hero h1, h1",
       "demo_anchor": "figure, table, blockquote, canvas, .chart, .metrics",
@@ -51,56 +51,54 @@
       "hn_points": null,
       "badges": [],
       "beats": {
-        "headline": "[curious] Anthropic just picked Accenture as its first embedded evaluator \u2014 operationalizing Dario Amodei's slowdown proposal. This is AI oversight turning into a consulting contract.",
-        "evidence": "[confident] Accenture sits inside deployment, not the lab. That means safety checks happen where models actually ship \u2014 and the template could spread across every enterprise AI rollout.",
-        "the_verdict": "[skeptical] One source, no HN thread, so treat it as a signal not a verdict. But if this works, \"embedded evaluator\" becomes a job title everywhere."
+        "headline": "[amazed] OpenAI and Anthropic reportedly earn ten times more revenue than every Chinese AI model combined. Rhodium's research reframes the US-China race as a commercial scoreboard, not just benchmarks.",
+        "evidence": "[curious] CNBC cites Rhodium's finding, with no Hacker News thread and consensus still one. That's early, but the revenue gap matches enterprise contracts, API lock-in, and Western distribution advantages.",
+        "the_verdict": "[skeptical] The verdict: China may close technical gaps, but monetization is a different war. Watch pricing, exports, and agent adoption, not just leaderboard wins."
       },
       "ordered_beats": [
         {
           "title": "Headline",
-          "narration": "[curious] Anthropic just picked Accenture as its first embedded evaluator \u2014 operationalizing Dario Amodei's slowdown proposal. This is AI oversight turning into a consulting contract."
+          "narration": "[amazed] OpenAI and Anthropic reportedly earn ten times more revenue than every Chinese AI model combined. Rhodium's research reframes the US-China race as a commercial scoreboard, not just benchmarks."
         },
         {
           "title": "Evidence",
-          "narration": "[confident] Accenture sits inside deployment, not the lab. That means safety checks happen where models actually ship \u2014 and the template could spread across every enterprise AI rollout."
+          "narration": "[curious] CNBC cites Rhodium's finding, with no Hacker News thread and consensus still one. That's early, but the revenue gap matches enterprise contracts, API lock-in, and Western distribution advantages."
         },
         {
           "title": "The Verdict",
-          "narration": "[skeptical] One source, no HN thread, so treat it as a signal not a verdict. But if this works, \"embedded evaluator\" becomes a job title everywhere."
+          "narration": "[skeptical] The verdict: China may close technical gaps, but monetization is a different war. Watch pricing, exports, and agent adoption, not just leaderboard wins."
         }
       ]
     },
     {
-      "name": "Can MiniMax-H3 Reason About the Physical World? An Evaluation of Omni-Modal Generative Model",
-      "url": "https://huggingface.co/papers/2609.18323",
+      "name": "Writing engineering strategy",
+      "url": "https://staffeng.com/guides/engineering-strategy/",
       "mode": "tool_drop",
-      "hero_anchor": "h1, .paper-title, h1.title",
-      "demo_anchor": "table, figure, .results, #benchmark, div[class*='abstract']",
-      "download_anchor": "a[href*='arxiv.org/pdf'], a[href*='huggingface.co/papers']",
-      "specs": "Research Paper | Hugging Face Daily Papers",
-      "video_readiness": 60.0,
-      "consensus_count": 1,
+      "hero_anchor": "main h1, header h1, .hero h1, h1",
+      "demo_anchor": "video, canvas, #demo, .demo, #comparison, table",
+      "download_anchor": "a[href*='github.com'], a[href*='download'], a[href*='huggingface.co'], .cta-button",
+      "specs": "Live Tool | Web Drop",
+      "video_readiness": 65.0,
+      "consensus_count": 2,
       "hn_points": null,
-      "badges": [
-        "\ud83d\udce6 Open Weights"
-      ],
+      "badges": [],
       "beats": {
-        "landing_page": "[excited] MiniMax-H3 just hit Hugging Face papers with 109 upvotes \u2014 an omni-modal model that generates text, images, video, and audio in one shared latent space.",
-        "demo": "[amazed] The real question: can it reason about the physical world? Researchers are probing whether multimodal alignment gives it grounded physics \u2014 or just pretty pixels.",
-        "access": "[friendly] Open weights badge is on, so you can test it yourself. Grab the paper and checkpoints from the Hugging Face link in the description."
+        "landing_page": "[friendly] StaffEng's engineering strategy guide is live, but the real meat is a Vercel Hive teardown hidden inside. Consensus count two, no Hacker News thread yet. Still, build nerds should bookmark this.",
+        "demo": "[excited] Hive optimizes builds for speed and security, turning monorepo pain into cached, parallel execution. Think faster previews, tighter supply-chain controls, and infrastructure decisions you can actually defend in a strategy doc.",
+        "access": "[confident] Access it now at StaffEng dot com, under guides, engineering strategy. No install, no waitlist. Read it, steal the framework, and pressure-test your platform bets."
       },
       "ordered_beats": [
         {
           "title": "Landing Page",
-          "narration": "[excited] MiniMax-H3 just hit Hugging Face papers with 109 upvotes \u2014 an omni-modal model that generates text, images, video, and audio in one shared latent space."
+          "narration": "[friendly] StaffEng's engineering strategy guide is live, but the real meat is a Vercel Hive teardown hidden inside. Consensus count two, no Hacker News thread yet. Still, build nerds should bookmark this."
         },
         {
           "title": "Demo",
-          "narration": "[amazed] The real question: can it reason about the physical world? Researchers are probing whether multimodal alignment gives it grounded physics \u2014 or just pretty pixels."
+          "narration": "[excited] Hive optimizes builds for speed and security, turning monorepo pain into cached, parallel execution. Think faster previews, tighter supply-chain controls, and infrastructure decisions you can actually defend in a strategy doc."
         },
         {
           "title": "Access",
-          "narration": "[friendly] Open weights badge is on, so you can test it yourself. Grab the paper and checkpoints from the Hugging Face link in the description."
+          "narration": "[confident] Access it now at StaffEng dot com, under guides, engineering strategy. No install, no waitlist. Read it, steal the framework, and pressure-test your platform bets."
         }
       ]
     },
@@ -118,32 +116,15 @@
       "badges": [
         "\ud83d\udce6 Open Weights"
       ],
-      "beats": {
-        "paper": "[curious] V\u0101kQA is a new Telugu spoken factoid QA benchmark \u2014 2,001 question-answer pairs. Twenty-three upvotes on Hugging Face, and it's filling a real gap.",
-        "architecture_evidence": "[confident] It tests spoken question answering in a low-resource language, and quantifies how unreliable automatic evaluation gets. That's the part most benchmarks skip.",
-        "release_horizon": "[friendly] Open weights badge is live. Expect this to become the reference eval for Indic speech models \u2014 and a template for other low-resource languages."
-      },
-      "ordered_beats": [
-        {
-          "title": "Paper",
-          "narration": "[curious] V\u0101kQA is a new Telugu spoken factoid QA benchmark \u2014 2,001 question-answer pairs. Twenty-three upvotes on Hugging Face, and it's filling a real gap."
-        },
-        {
-          "title": "Architecture & Evidence",
-          "narration": "[confident] It tests spoken question answering in a low-resource language, and quantifies how unreliable automatic evaluation gets. That's the part most benchmarks skip."
-        },
-        {
-          "title": "Release Horizon",
-          "narration": "[friendly] Open weights badge is live. Expect this to become the reference eval for Indic speech models \u2014 and a template for other low-resource languages."
-        }
-      ]
+      "beats": {},
+      "ordered_beats": []
     }
   ],
-  "outro": "[friendly] All project links, Hugging Face spaces, and research papers are organized down in the description below. Hit subscribe to Brief Delights for your daily rundown, and I'll see you tomorrow.",
+  "outro": "",
   "tools_metadata": [
     {
-      "name": "Jensen Huang explains why Nvidia will grow an astounding 70% next year",
-      "url": "https://techcrunch.com/2026/09/10/jensen-huang-explains-why-nvidia-will-grow-an-astounding-70-next-year/",
+      "name": "DeepMind researcher\u2019s new AI lab nears $4bn valuation, reports say",
+      "url": "https://sifted.eu/articles/deepmind-researchers-new-ai-lab-nears-4bn-valuation-reports-say/",
       "mode": "industry_insight",
       "hero_anchor": "main h1, header h1, .hero h1, h1",
       "demo_anchor": "figure, table, blockquote, canvas, .chart, .metrics",
@@ -155,8 +136,8 @@
       "badges": []
     },
     {
-      "name": "Anthropic selects Accenture\u00a0as first embedded evaluator to help implement Amodei's slowdown proposal",
-      "url": "https://www.cnbc.com/2026/09/18/anthropic-accenture-ai-safety.html",
+      "name": "OpenAI and Anthropic are making 10 times more revenue than all Chinese AI models combined, research group Rhodium says",
+      "url": "https://www.cnbc.com/2026/09/17/chinas-ai-models-make-only-10percent-of-us-leaders-revenue-rhodium.html",
       "mode": "industry_insight",
       "hero_anchor": "main h1, header h1, .hero h1, h1",
       "demo_anchor": "figure, table, blockquote, canvas, .chart, .metrics",
@@ -168,19 +149,17 @@
       "badges": []
     },
     {
-      "name": "Can MiniMax-H3 Reason About the Physical World? An Evaluation of Omni-Modal Generative Model",
-      "url": "https://huggingface.co/papers/2609.18323",
+      "name": "Writing engineering strategy",
+      "url": "https://staffeng.com/guides/engineering-strategy/",
       "mode": "tool_drop",
-      "hero_anchor": "h1, .paper-title, h1.title",
-      "demo_anchor": "table, figure, .results, #benchmark, div[class*='abstract']",
-      "download_anchor": "a[href*='arxiv.org/pdf'], a[href*='huggingface.co/papers']",
-      "specs": "Research Paper | Hugging Face Daily Papers",
-      "video_readiness": 60.0,
-      "consensus_count": 1,
+      "hero_anchor": "main h1, header h1, .hero h1, h1",
+      "demo_anchor": "video, canvas, #demo, .demo, #comparison, table",
+      "download_anchor": "a[href*='github.com'], a[href*='download'], a[href*='huggingface.co'], .cta-button",
+      "specs": "Live Tool | Web Drop",
+      "video_readiness": 65.0,
+      "consensus_count": 2,
       "hn_points": null,
-      "badges": [
-        "\ud83d\udce6 Open Weights"
-      ]
+      "badges": []
     },
     {
       "name": "V\u0101kQA: A Benchmark and Evaluation Study for Telugu Spoken Factoid Question Answering",
@@ -198,6 +177,6 @@
       ]
     }
   ],
-  "raw_markdown": "---\nepisode_id: ai-news-2026-09-20-leaders\ntrack: leaders\nformat: daily\nvoice_profile: alex_tech\ntools:\n- name: Jensen Huang explains why Nvidia will grow an astounding 70% next year\n  url: https://techcrunch.com/2026/09/10/jensen-huang-explains-why-nvidia-will-grow-an-astounding-70-next-year/\n  mode: industry_insight\n  hero_anchor: main h1, header h1, .hero h1, h1\n  demo_anchor: figure, table, blockquote, canvas, .chart, .metrics\n  download_anchor: a[href*='report'], a[href*='pdf'], a.cta-button\n  specs: Industry Insight | Strategic Analysis\n  video_readiness: 55.0\n  consensus_count: 1\n  hn_points: null\n  badges: []\n- name: Anthropic selects Accenture\u00a0as first embedded evaluator to help implement\n    Amodei's slowdown proposal\n  url: https://www.cnbc.com/2026/09/18/anthropic-accenture-ai-safety.html\n  mode: industry_insight\n  hero_anchor: main h1, header h1, .hero h1, h1\n  demo_anchor: figure, table, blockquote, canvas, .chart, .metrics\n  download_anchor: a[href*='report'], a[href*='pdf'], a.cta-button\n  specs: Industry Insight | Strategic Analysis\n  video_readiness: 55.0\n  consensus_count: 1\n  hn_points: null\n  badges: []\n- name: Can MiniMax-H3 Reason About the Physical World? An Evaluation of Omni-Modal\n    Generative Model\n  url: https://huggingface.co/papers/2609.18323\n  mode: tool_drop\n  hero_anchor: h1, .paper-title, h1.title\n  demo_anchor: 'table, figure, .results, #benchmark, div[class*=''abstract'']'\n  download_anchor: a[href*='arxiv.org/pdf'], a[href*='huggingface.co/papers']\n  specs: Research Paper | Hugging Face Daily Papers\n  video_readiness: 60.0\n  consensus_count: 1\n  hn_points: null\n  badges:\n  - \ud83d\udce6 Open Weights\n- name: 'V\u0101kQA: A Benchmark and Evaluation Study for Telugu Spoken Factoid Question\n    Answering'\n  url: https://huggingface.co/papers/2609.19879\n  mode: paper_preview\n  hero_anchor: h1, .paper-title, h1.title\n  demo_anchor: 'table, figure, .results, #benchmark, div[class*=''abstract'']'\n  download_anchor: a[href*='arxiv.org/pdf'], a[href*='huggingface.co/papers']\n  specs: Research Paper | Hugging Face Daily Papers\n  video_readiness: 55.0\n  consensus_count: 1\n  hn_points: null\n  badges:\n  - \ud83d\udce6 Open Weights\n---\n\n# Intro\n[excited] Nvidia's CEO just called seventy percent growth, Anthropic hired Accenture to slow AI down, and a new omni-modal model hit Hugging Face with 109 upvotes. Hacker News is quiet \u2014 the papers are not.\n\n---\n\n# Story 1: Jensen Huang explains why Nvidia will grow an astounding 70% next year\n### Headline\n[confident] Jensen Huang just told TechCrunch Nvidia is guiding to seventy percent growth next year. That's not a chip forecast \u2014 that's the entire AI infrastructure budget.\n\n### Evidence\n[amazed] Seventy percent on a base this size means data center spend keeps compounding. Every downstream compute budget, every startup's inference bill, gets repriced upward.\n\n### The Verdict\n[skeptical] Consensus is thin \u2014 one outlet, no Hacker News thread yet. But when Jensen guides, the whole supply chain moves. Watch the hyperscaler capex calls next.\n\n---\n\n# Story 2: Anthropic selects Accenture as first embedded evaluator to help implement Amodei's slowdown proposal\n### Headline\n[curious] Anthropic just picked Accenture as its first embedded evaluator \u2014 operationalizing Dario Amodei's slowdown proposal. This is AI oversight turning into a consulting contract.\n\n### Evidence\n[confident] Accenture sits inside deployment, not the lab. That means safety checks happen where models actually ship \u2014 and the template could spread across every enterprise AI rollout.\n\n### The Verdict\n[skeptical] One source, no HN thread, so treat it as a signal not a verdict. But if this works, \"embedded evaluator\" becomes a job title everywhere.\n\n---\n\n# Story 3: Can MiniMax-H3 Reason About the Physical World?\n### Landing Page\n[excited] MiniMax-H3 just hit Hugging Face papers with 109 upvotes \u2014 an omni-modal model that generates text, images, video, and audio in one shared latent space.\n\n### Demo\n[amazed] The real question: can it reason about the physical world? Researchers are probing whether multimodal alignment gives it grounded physics \u2014 or just pretty pixels.\n\n### Access\n[friendly] Open weights badge is on, so you can test it yourself. Grab the paper and checkpoints from the Hugging Face link in the description.\n\n---\n\n# Story 4: V\u0101kQA: A Benchmark for Telugu Spoken Factoid Question Answering\n### Paper\n[curious] V\u0101kQA is a new Telugu spoken factoid QA benchmark \u2014 2,001 question-answer pairs. Twenty-three upvotes on Hugging Face, and it's filling a real gap.\n\n### Architecture & Evidence\n[confident] It tests spoken question answering in a low-resource language, and quantifies how unreliable automatic evaluation gets. That's the part most benchmarks skip.\n\n### Release Horizon\n[friendly] Open weights badge is live. Expect this to become the reference eval for Indic speech models \u2014 and a template for other low-resource languages.\n\n---\n\n# Outro\n[friendly] All project links, Hugging Face spaces, and research papers are organized down in the description below. Hit subscribe to Brief Delights for your daily rundown, and I'll see you tomorrow.",
-  "generated_at": "2026-09-20T10:07:11.601819"
+  "raw_markdown": "---\nepisode_id: ai-news-2026-09-20-leaders\ntrack: leaders\nformat: daily\nvoice_profile: alex_tech\ntools:\n- name: DeepMind researcher\u2019s new AI lab nears $4bn valuation, reports say\n  url: https://sifted.eu/articles/deepmind-researchers-new-ai-lab-nears-4bn-valuation-reports-say/\n  mode: industry_insight\n  hero_anchor: main h1, header h1, .hero h1, h1\n  demo_anchor: figure, table, blockquote, canvas, .chart, .metrics\n  download_anchor: a[href*='report'], a[href*='pdf'], a.cta-button\n  specs: Industry Insight | Strategic Analysis\n  video_readiness: 55.0\n  consensus_count: 1\n  hn_points: null\n  badges: []\n- name: OpenAI and Anthropic are making 10 times more revenue than all Chinese AI\n    models combined, research group Rhodium says\n  url: https://www.cnbc.com/2026/09/17/chinas-ai-models-make-only-10percent-of-us-leaders-revenue-rhodium.html\n  mode: industry_insight\n  hero_anchor: main h1, header h1, .hero h1, h1\n  demo_anchor: figure, table, blockquote, canvas, .chart, .metrics\n  download_anchor: a[href*='report'], a[href*='pdf'], a.cta-button\n  specs: Industry Insight | Strategic Analysis\n  video_readiness: 55.0\n  consensus_count: 1\n  hn_points: null\n  badges: []\n- name: Writing engineering strategy\n  url: https://staffeng.com/guides/engineering-strategy/\n  mode: tool_drop\n  hero_anchor: main h1, header h1, .hero h1, h1\n  demo_anchor: 'video, canvas, #demo, .demo, #comparison, table'\n  download_anchor: a[href*='github.com'], a[href*='download'], a[href*='huggingface.co'],\n    .cta-button\n  specs: Live Tool | Web Drop\n  video_readiness: 65.0\n  consensus_count: 2\n  hn_points: null\n  badges: []\n- name: 'V\u0101kQA: A Benchmark and Evaluation Study for Telugu Spoken Factoid Question\n    Answering'\n  url: https://huggingface.co/papers/2609.19879\n  mode: paper_preview\n  hero_anchor: h1, .paper-title, h1.title\n  demo_anchor: 'table, figure, .results, #benchmark, div[class*=''abstract'']'\n  download_anchor: a[href*='arxiv.org/pdf'], a[href*='huggingface.co/papers']\n  specs: Research Paper | Hugging Face Daily Papers\n  video_readiness: 55.0\n  consensus_count: 1\n  hn_points: null\n  badges:\n  - \ud83d\udce6 Open Weights\n---\n\n# Intro\n[excited] Today: a stealth AI lab nears four billion, US labs out-earn China ten-to-one, Vercel's build engine, and a Telugu speech QA benchmark. HN's quiet, but Hugging Face upvotes are talking.\n\n---\n\n# Story 1: DeepMind researcher\u2019s new AI lab nears $4bn valuation, reports say\n### Headline\n[confident] A DeepMind researcher's brand-new lab is reportedly nearing a four-billion-dollar valuation. No product, no launch, just frontier talent pulling mega-round pricing. That's the 2026 signal.\n\n### Evidence\n[skeptical] Reports are single-source, with no Hacker News thread yet. Consensus count sits at one, so treat the number as a leak, not gospel. Still, talent arbitrage is real.\n\n### The Verdict\n[confident] The verdict: compute and data are cheap; proven frontier researchers are not. Expect more quiet labs raising loud valuations before shipping anything public.\n\n---\n\n# Story 2: OpenAI and Anthropic are making 10 times more revenue than all Chinese AI models combined, research group Rhodium says\n### Headline\n[amazed] OpenAI and Anthropic reportedly earn ten times more revenue than every Chinese AI model combined. Rhodium's research reframes the US-China race as a commercial scoreboard, not just benchmarks.\n\n### Evidence\n[curious] CNBC cites Rhodium's finding, with no Hacker News thread and consensus still one. That's early, but the revenue gap matches enterprise contracts, API lock-in, and Western distribution advantages.\n\n### The Verdict\n[skeptical] The verdict: China may close technical gaps, but monetization is a different war. Watch pricing, exports, and agent adoption, not just leaderboard wins.\n\n---\n\n# Story 3: Writing engineering strategy\n### Landing Page\n[friendly] StaffEng's engineering strategy guide is live, but the real meat is a Vercel Hive teardown hidden inside. Consensus count two, no Hacker News thread yet. Still, build nerds should bookmark this.\n\n### Demo\n[excited] Hive optimizes builds for speed and security, turning monorepo pain into cached, parallel execution. Think faster previews, tighter supply-chain controls, and infrastructure decisions you can actually defend in a strategy doc.\n\n### Access\n[confident] Access it now at StaffEng dot com, under guides, engineering strategy. No install, no waitlist. Read it, steal the framework, and pressure-test your platform bets.\n\n---\n\n# Story 4: V\u0101kQA: A Benchmark and Evaluation Study for Telugu Spoken Factoid Question Answer",
+  "generated_at": "2026-09-20T12:41:55.337637"
 }

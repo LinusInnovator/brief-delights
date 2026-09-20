@@ -4,31 +4,32 @@ track: top4
 format: daily
 voice_profile: alex_tech
 tools:
-- name: Video generation models as world simulators
-  url: https://openai.com/index/video-generation-models-as-world-simulators
+- name: Fine-tune FLUX.1 with an API
+  url: https://replicate.com/blog/fine-tune-flux-with-an-api
   mode: tool_drop
-  hero_anchor: main h1, header h1, .hero h1, h1
-  demo_anchor: 'video, canvas, #demo, .demo, #comparison, table'
-  download_anchor: a[href*='github.com'], a[href*='download'], a[href*='huggingface.co'],
-    .cta-button
-  specs: Live Tool | Web Drop
-  video_readiness: 45.0
+  hero_anchor: h1, header, .hero h1
+  demo_anchor: form, input, button[type='submit'], canvas, video, audio, .output,
+    .demo
+  download_anchor: a[href*='github.com'], a[href*='api'], button
+  specs: Live Web App | Interactive Demo
+  video_readiness: 60.0
   consensus_count: 1
   hn_points: null
-  badges: []
-- name: Introducing gpt-oss
-  url: https://openai.com/index/introducing-gpt-oss
+  badges:
+  - ✨ Interactive Demo Live
+- name: Learning from human preferences
+  url: https://openai.com/index/learning-from-human-preferences
   mode: paper_preview
   hero_anchor: main h1, header h1, h1
   demo_anchor: 'figure, table, .results, #diagram, #comparison'
   download_anchor: a[href*='pdf'], a[href*='arxiv.org'], a[href*='github.com']
   specs: Research Preview | Benchmark
-  video_readiness: 45.0
+  video_readiness: 40.0
   consensus_count: 2
   hn_points: null
   badges: []
-- name: Jensen Huang explains why Nvidia will grow an astounding 70% next year
-  url: https://techcrunch.com/2026/09/10/jensen-huang-explains-why-nvidia-will-grow-an-astounding-70-next-year/
+- name: DeepMind researcher’s new AI lab nears $4bn valuation, reports say
+  url: https://sifted.eu/articles/deepmind-researchers-new-ai-lab-nears-4bn-valuation-reports-say/
   mode: industry_insight
   hero_anchor: main h1, header h1, .hero h1, h1
   demo_anchor: figure, table, blockquote, canvas, .chart, .metrics
@@ -38,15 +39,14 @@ tools:
   consensus_count: 1
   hn_points: null
   badges: []
-- name: 'Don''t Mask the Environment: Observation Supervision Changes How Agents Explore
-    Under RL'
-  url: https://huggingface.co/papers/2609.20715
+- name: Welcome spaCy to the Hugging Face Hub
+  url: https://huggingface.co/blog/spacy
   mode: tool_drop
-  hero_anchor: h1, .paper-title, h1.title
-  demo_anchor: 'table, figure, .results, #benchmark, div[class*=''abstract'']'
-  download_anchor: a[href*='arxiv.org/pdf'], a[href*='huggingface.co/papers']
-  specs: Research Paper | Hugging Face Daily Papers
-  video_readiness: 40.0
+  hero_anchor: h1, .model-header, header
+  demo_anchor: 'table, .results, #benchmark, canvas, .viewer, video'
+  download_anchor: button[data-testid='download-button'], a[href*='tree/main'], a[href*='resolve']
+  specs: Model Weights | Hugging Face Hub
+  video_readiness: 55.0
   consensus_count: 1
   hn_points: null
   badges:
@@ -54,55 +54,55 @@ tools:
 ---
 
 # Intro
-[excited] Four drops today: Sora's spacetime-patch paper, gpt-oss going Apache 2.0, Nvidia's 70% growth call, and a Hugging Face paper on agent exploration. No HN threads yet — so you're early. Let's go.
+[excited] Today: fine-tune FLUX.1 by API, spaCy lands on Hugging Face, OpenAI studies human preferences, and a DeepMind alum’s lab nears four billion. No HN threads, but consensus is moving.
 
 ---
 
-# Story 1: Video generation models as world simulators
+# Story 1: Fine-tune FLUX.1 with an API
 ### Landing Page
-[confident] OpenAI's Sora technical report is live, and it's the foundational read on video generation as world simulation. If you're building or evaluating video models, start here.
+[confident] Replicate just dropped a guide to fine-tune FLUX.1 entirely through its API, turning custom image models into a scriptable workflow.
 
 ### Demo
-[amazed] Spacetime patches plus diffusion transformers — that's the whole trick. Sora treats video as patches across space and time, so it scales like a language model instead of a renderer.
+[amazed] You upload a dataset, kick off training, then call the tuned endpoint. The interactive demo is live, so you can watch your style lock in.
 
 ### Access
-[curious] It's a web drop, not a product launch, so no API keys today. Read it as a spec sheet for where video generation is heading next.
+[excited] Access is live on Replicate’s blog. One consensus source, no Hacker News thread yet, but this is the fastest path from prompt to custom FLUX.
 
 ---
 
-# Story 2: Introducing gpt-oss
+# Story 2: Learning from human preferences
 ### Paper
-[excited] OpenAI just released state-of-the-art open-weight models under Apache 2.0. Two independent outlets flagged it, and honestly, that license change is the headline.
+[curious] OpenAI revisits learning from human preferences, the alignment recipe behind safer, more useful models. Two outlets flag it, though Hacker News stays quiet.
 
-### Architecture and Evidence
-[confident] Apache 2.0 means commercial use, no gatekeeping, no weird clauses. You can fine-tune locally, ship it in a product, and own your weights outright.
+### Architecture/Evidence
+[confident] The method trains a reward model on human comparisons, then optimizes policy against that learned signal. It’s a benchmark for preference-based tuning.
 
 ### Release Horizon
-[friendly] It's a research preview with benchmarks attached, so expect rough edges. But the era of closed-only frontier weights just took a real hit.
+[skeptical] No release date or code drop yet. Treat this as a research preview: useful context, not a plug-and-play tool for your stack today.
 
 ---
 
-# Story 3: Jensen Huang explains why Nvidia will grow an astounding 70% next year
+# Story 3: DeepMind researcher’s new AI lab nears $4bn valuation, reports say
 ### Headline
-[skeptical] Jensen Huang says Nvidia grows seventy percent next year. That's not a forecast, that's a declaration that AI infrastructure spend has no ceiling yet.
+[amazed] A DeepMind researcher’s new AI lab is reportedly nearing a four-billion-dollar valuation before shipping a public product.
 
 ### Evidence
-[confident] TechCrunch breaks down the guidance: demand is still supply-constrained, and every downstream compute budget gets repriced upward off this number.
+[skeptical] Sifted reports the mega-round pricing is driven by frontier talent alone. One outlet, no HN thread, but the signal is clear: pedigrees still raise capital fast.
 
 ### The Verdict
-[curious] Treat it as the baseline, not the bull case. If Nvidia hits seventy, your inference costs and GPU rental rates follow the same curve.
+[confident] The verdict? Talent is the moat investors are buying. Watch for team poaching, stealth benchmarks, and a very loud launch.
 
 ---
 
-# Story 4: Don't Mask the Environment: Observation Supervision Changes How Agents Explore Under RL
+# Story 4: Welcome spaCy to the Hugging Face Hub
 ### Landing Page
-[curious] Twenty-eight upvotes on Hugging Face Daily Papers for a simple question: why do we only train agents on their own actions, never on what the environment tells them back?
+[friendly] spaCy just landed on the Hugging Face Hub, bringing the battle-tested NLP library into the same ecosystem as transformers and datasets.
 
 ### Demo
-[amazed] ActObs supervises observation tokens too. That one change reshapes how agents explore under reinforcement learning — better initialization, better trajectories, less flailing.
+[excited] You can browse spaCy models, pull pipelines, and integrate them with Hugging Face workflows. The badge says open weights, so experimentation is immediate.
 
 ### Access
-[excited] Open weights are flagged on this one, so you can actually run it. Grab it from Hugging Face and test it against your own agent stack.
+[confident] Access is live now on the Hugging Face blog. One consensus source, no HN thread yet, but this removes real friction for production NLP teams.
 
 ---
 

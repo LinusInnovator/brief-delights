@@ -4,60 +4,75 @@
     "track": "weekly_mega_recap",
     "episode_id": "weekly-ai-news-2026-09-20",
     "chapters": [
-      "Frontier Models & Open Weights [00:45]",
-      "Creative & Multimodal Breakthroughs [03:00]",
-      "The Gigawatt Compute & Enterprise Battlefield [05:30]",
-      "Breakthrough Agents & Tools [07:30]"
+      "Frontier Models & Open Weights",
+      "Creative & Multimodal Breakthroughs",
+      "The Gigawatt Compute & Enterprise Battlefield",
+      "Breakthrough Agents & Tools"
     ],
     "tools_count": 8,
     "json_path": "/data/video_scripts/weekly_2026-09-20-mega-recap.json",
     "md_path": "/data/video_scripts/weekly_2026-09-20-mega-recap.md",
-    "updated_at": "2026-09-20T10:11:30.377333"
+    "updated_at": "2026-09-20T12:42:29.166485"
   },
   {
     "date": "2026-09-20",
     "track": "top4",
     "episode_id": "ai-news-2026-09-20-top4",
     "stories": [
-      "Video generation models as world simulators",
-      "Introducing gpt-oss",
-      "Jensen Huang explains why Nvidia will grow an astounding 70% next year",
-      "Don't Mask the Environment: Observation Supervision Changes How Agents Explore Under RL"
+      "Fine-tune FLUX.1 with an API",
+      "Learning from human preferences",
+      "DeepMind researcher\u2019s new AI lab nears $4bn valuation, reports say",
+      "Welcome spaCy to the Hugging Face Hub"
     ],
     "stories_count": 4,
     "json_path": "/data/video_scripts/2026-09-20-ai-news.json",
     "md_path": "/data/video_scripts/2026-09-20-ai-news.md",
-    "updated_at": "2026-09-20T10:03:11.578404"
+    "updated_at": "2026-09-20T12:41:12.772706"
   },
   {
     "date": "2026-09-20",
     "track": "leaders",
     "episode_id": "ai-news-2026-09-20-leaders",
     "stories": [
-      "Jensen Huang explains why Nvidia will grow an astounding 70% next year",
-      "Anthropic selects Accenture\u00a0as first embedded evaluator to help implement Amodei's slowdown proposal",
-      "Can MiniMax-H3 Reason About the Physical World? An Evaluation of Omni-Modal Generative Model",
+      "DeepMind researcher\u2019s new AI lab nears $4bn valuation, reports say",
+      "OpenAI and Anthropic are making 10 times more revenue than all Chinese AI models combined, research group Rhodium says",
+      "Writing engineering strategy",
       "V\u0101kQA: A Benchmark and Evaluation Study for Telugu Spoken Factoid Question Answering"
     ],
     "stories_count": 4,
     "json_path": "/data/video_scripts/2026-09-20-ai-news-leaders.json",
     "md_path": "/data/video_scripts/2026-09-20-ai-news-leaders.md",
-    "updated_at": "2026-09-20T10:07:11.602902"
+    "updated_at": "2026-09-20T12:41:55.338737"
+  },
+  {
+    "date": "2026-09-20",
+    "track": "generative_media",
+    "episode_id": "ai-news-2026-09-20-generative_media",
+    "stories": [
+      "Consistency Models",
+      "Can MiniMax-H3 Reason About the Physical World? An Evaluation of Omni-Modal Generative Model",
+      "Video generation models as world simulators",
+      "Our approach to data and AI"
+    ],
+    "stories_count": 4,
+    "json_path": "/data/video_scripts/2026-09-20-ai-news-generative_media.json",
+    "md_path": "/data/video_scripts/2026-09-20-ai-news-generative_media.md",
+    "updated_at": "2026-09-20T12:42:07.053414"
   },
   {
     "date": "2026-09-20",
     "track": "builders",
     "episode_id": "ai-news-2026-09-20-builders",
     "stories": [
-      "Video generation models as world simulators",
-      "Don't Mask the Environment: Observation Supervision Changes How Agents Explore Under RL",
-      "Can MiniMax-H3 Reason About the Physical World? An Evaluation of Omni-Modal Generative Model",
-      "Introducing gpt-oss"
+      "Fine-tune FLUX.1 with an API",
+      "Welcome spaCy to the Hugging Face Hub",
+      "The Partnership: Amazon SageMaker and Hugging Face",
+      "Learning from human preferences"
     ],
     "stories_count": 4,
     "json_path": "/data/video_scripts/2026-09-20-ai-news-builders.json",
     "md_path": "/data/video_scripts/2026-09-20-ai-news-builders.md",
-    "updated_at": "2026-09-20T10:05:12.948536"
+    "updated_at": "2026-09-20T12:41:26.198554"
   },
   {
     "date": "2026-09-19",
