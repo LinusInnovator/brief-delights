@@ -1,0 +1,287 @@
+{
+  "date": "2026-09-21",
+  "segment": "leaders",
+  "trends": {
+    "categories": {
+      "Venture Capital & M&A": 7,
+      "Macro Trends & Tech Economy": 2
+    },
+    "sources": {
+      "\"a16z AI when:3d\" - Google News": 5,
+      "McKinsey Insights & Publications": 2,
+      "Venture Capital News | TechCrunch": 1,
+      "Sifted": 1
+    },
+    "topics": [
+      "a16z Reports Surge in AI Applications but Revenue Growth Lags Behind - ababnews.com",
+      "Databricks CEO Ali Ghodsi: Stop Scaring People About AI - finance.biggo.com",
+      "The AI economy: Interconnected forces, feedback loops, and speeds of change",
+      "Only at TechCrunch Disrupt 2026: What happens when OpenAI ships your roadmap?",
+      "DeepMind researcher\u2019s new AI lab nears $4bn valuation, reports say",
+      "Geopolitics and the geometry of global trade: September 2026 update",
+      "Vals, backed by Andreessen Horowitz, is looking to become the gold standard for AI benchmarking - TechCrunch",
+      "Anthropic, OpenAI Test Growth Sustainability Amid Cash Burn - \uc870\uc120\uc77c\ubcf4",
+      "a16z-Backed Layer-1 Project Linera Shuts Down After Token Sale Falls Short - KuCoin"
+    ],
+    "detected_trends": [
+      {
+        "keyword": "Venture Capital & M&A",
+        "count": 7
+      },
+      {
+        "keyword": "Macro Trends & Tech Economy",
+        "count": 2
+      }
+    ],
+    "total_articles": 9
+  },
+  "article_count": 9,
+  "articles": [
+    {
+      "id": "3452ae442a09fd3fd275cb8f4d551baf",
+      "title": "a16z Reports Surge in AI Applications but Revenue Growth Lags Behind - ababnews.com",
+      "url": "https://news.google.com/rss/articles/CBMidEFVX3lxTE5iTTdfWUNFQVNUWmZLU3VGbXFPM3FsQmd5WWJ2emFVOGtnUUFJdzdjVFdWbXREZ2JGMFoyNDhXSWNFdDVndFdPcnpkczgxcHg2OVpUQURkM0ZocDUtZkpoZmlKMm5WZVlhdTlOMzg3X3hibExM?oc=5",
+      "published_date": "2026-09-21T14:17:11.074249",
+      "description": "<a href=\"https://news.google.com/rss/articles/CBMidEFVX3lxTE5iTTdfWUNFQVNUWmZLU3VGbXFPM3FsQmd5WWJ2emFVOGtnUUFJdzdjVFdWbXREZ2JGMFoyNDhXSWNFdDVndFdPcnpkczgxcHg2OVpUQURkM0ZocDUtZkpoZmlKMm5WZVlhdTlOMzg3X3hibExM?oc=5\" target=\"_blank\">a16z Reports Surge in AI Applications but Revenue Growth Lags Behind</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">ababnews.com</font>",
+      "source": "\"a16z AI when:3d\" - Google News",
+      "category": "Venture Capital & M&A",
+      "segment": "leaders",
+      "source_type": "primary",
+      "raw_content": "<a href=\"https://news.google.com/rss/articles/CBMidEFVX3lxTE5iTTdfWUNFQVNUWmZLU3VGbXFPM3FsQmd5WWJ2emFVOGtnUUFJdzdjVFdWbXREZ2JGMFoyNDhXSWNFdDVndFdPcnpkczgxcHg2OVpUQURkM0ZocDUtZkpoZmlKMm5WZVlhdTlOMzg3X3hibExM?oc=5\" target=\"_blank\">a16z Reports Surge in AI Applications but Revenue Growth Lags Behind</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">ababnews.com</font>",
+      "segments": [
+        "leaders"
+      ],
+      "consensus_count": 2,
+      "consensus_sources": [
+        "\"a16z AI when:3d\" - Google News",
+        "\"saastr AI when:3d\" - Google News"
+      ],
+      "_signal_score": 59.0,
+      "on_hn": false,
+      "tier": "full",
+      "selection_reason": "This article provides critical insights into the current state of AI application adoption versus revenue generation, directly impacting strategic investment and growth planning for executives.",
+      "audience_value": "Leaders will understand the disconnect between AI investment and tangible revenue, informing their go-to-market strategies and resource allocation for AI initiatives.",
+      "urgency_score": 9,
+      "category_tag": "\ud83d\ude80 AI & Innovation",
+      "why_this_matters": "Why this matters: Understand the critical gap between AI adoption and revenue realization to guide your company's strategic investment in AI technologies."
+    },
+    {
+      "id": "26c60d0d6dd1543a6d136fa3a076caac",
+      "title": "Databricks CEO Ali Ghodsi: Stop Scaring People About AI - finance.biggo.com",
+      "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE9raFBlMXo2NGJWeURVV1hYRXAwb1lsb0gzcWdIWXNJcFNnS29qeVYya1o2dnJrVmQ4Zm1kZ0Z1NXZPdUxYMmNvWnJXRks0Y0dMZVJTcV9YM2pfZXc?oc=5",
+      "published_date": "2026-09-21T14:17:11.074177",
+      "description": "<a href=\"https://news.google.com/rss/articles/CBMiW0FVX3lxTE9raFBlMXo2NGJWeURVV1hYRXAwb1lsb0gzcWdIWXNJcFNnS29qeVYya1o2dnJrVmQ4Zm1kZ0Z1NXZPdUxYMmNvWnJXRks0Y0dMZVJTcV9YM2pfZXc?oc=5\" target=\"_blank\">Databricks CEO Ali Ghodsi: Stop Scaring People About AI</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">finance.biggo.com</font>",
+      "source": "\"a16z AI when:3d\" - Google News",
+      "category": "Venture Capital & M&A",
+      "segment": "leaders",
+      "source_type": "primary",
+      "raw_content": "<a href=\"https://news.google.com/rss/articles/CBMiW0FVX3lxTE9raFBlMXo2NGJWeURVV1hYRXAwb1lsb0gzcWdIWXNJcFNnS29qeVYya1o2dnJrVmQ4Zm1kZ0Z1NXZPdUxYMmNvWnJXRks0Y0dMZVJTcV9YM2pfZXc?oc=5\" target=\"_blank\">Databricks CEO Ali Ghodsi: Stop Scaring People About AI</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">finance.biggo.com</font>",
+      "segments": [
+        "leaders"
+      ],
+      "consensus_count": 3,
+      "consensus_sources": [
+        "\"a16z AI when:3d\" - Google News",
+        "\"economist AI when:3d\" - Google News"
+      ],
+      "_signal_score": 57.0,
+      "on_hn": false,
+      "tier": "full",
+      "selection_reason": "Databricks CEO's perspective on AI fears offers a strategic viewpoint on market perception and adoption challenges, crucial for leaders navigating the AI landscape.",
+      "audience_value": "Executives can gain a leadership perspective on managing market sentiment around AI, helping to shape internal and external communications and strategic positioning.",
+      "urgency_score": 8,
+      "category_tag": "\ud83d\ude80 AI & Innovation",
+      "why_this_matters": "Why this matters: Gain strategic insights from a key industry leader on how to address and frame public perception of AI to foster responsible adoption."
+    },
+    {
+      "id": "64608b883d3f275539be6c33fc1866ae",
+      "title": "The AI economy: Interconnected forces, feedback loops, and speeds of change",
+      "url": "https://www.mckinsey.com/mgi/our-research/the-ai-economy-interconnected-forces-feedback-loops-and-speeds-of-change",
+      "published_date": "2026-09-21T14:17:13.764747",
+      "description": "AI is shaped by forces far beyond the technology itself, and its effects reach just as widely. Mapping how the pieces interact helps us see what could influence its course and where hurdles and opportunities may emerge.",
+      "source": "McKinsey Insights & Publications",
+      "category": "Macro Trends & Tech Economy",
+      "segment": "leaders",
+      "source_type": "primary",
+      "raw_content": "AI is shaped by forces far beyond the technology itself, and its effects reach just as widely. Mapping how the pieces interact helps us see what could influence its course and where hurdles and opportunities may emerge.",
+      "segments": [
+        "leaders"
+      ],
+      "consensus_count": 1,
+      "consensus_sources": [
+        "McKinsey Insights & Publications"
+      ],
+      "_signal_score": 45.0,
+      "on_hn": false,
+      "tier": "full",
+      "selection_reason": "This analysis from McKinsey provides a high-level framework for understanding the interconnected forces driving the AI economy, essential for long-term strategic planning.",
+      "audience_value": "Leaders will benefit from a comprehensive view of the AI ecosystem's dynamics, enabling them to anticipate market shifts and identify strategic opportunities and risks.",
+      "urgency_score": 8,
+      "category_tag": "\ud83d\udcca Market Trends",
+      "why_this_matters": "Why this matters: Understand the complex interplay of factors shaping the AI economy to inform your company's long-term strategic roadmap and competitive positioning."
+    },
+    {
+      "id": "2f204386282f9070a031eeeae5b8b0a0",
+      "title": "Only at TechCrunch Disrupt 2026: What happens when OpenAI ships your roadmap?",
+      "url": "https://techcrunch.com/2026/09/14/only-at-techcrunch-disrupt-2026-what-happens-when-openai-ships-your-roadmap/",
+      "published_date": "2026-09-21T14:17:12.072728",
+      "description": "If you're building an AI company, the question isn't whether foundation models will continue to evolve. It's whether your company will continue creating value as they do. Don't miss this interactive session on the Builders Stage at TechCrunch Disrupt 2026.",
+      "source": "Venture Capital News | TechCrunch",
+      "category": "Venture Capital & M&A",
+      "segment": "leaders",
+      "source_type": "secondary",
+      "raw_content": "If you're building an AI company, the question isn't whether foundation models will continue to evolve. It's whether your company will continue creating value as they do. Don't miss this interactive session on the Builders Stage at TechCrunch Disrupt 2026.",
+      "segments": [
+        "leaders"
+      ],
+      "consensus_count": 10,
+      "consensus_sources": [
+        "Venture Capital News | TechCrunch",
+        "AI News & Artificial Intelligence | TechCrunch"
+      ],
+      "_signal_score": 47.0,
+      "on_hn": false,
+      "tier": "full",
+      "selection_reason": "This session at TechCrunch Disrupt addresses a critical strategic question for AI companies: how to maintain value as foundational models evolve.",
+      "audience_value": "Leaders of AI-focused companies will gain actionable insights on adapting their business models and product strategies in response to rapid advancements in foundation models.",
+      "urgency_score": 8,
+      "category_tag": "\ud83d\ude80 AI & Innovation",
+      "why_this_matters": "Why this matters: Learn how to strategically position your AI company to create and sustain value amidst the rapid evolution of foundational models."
+    },
+    {
+      "id": "72e5eb0909f4d96edcb96e69e4d9df7c",
+      "title": "DeepMind researcher\u2019s new AI lab nears $4bn valuation, reports say",
+      "url": "https://sifted.eu/articles/deepmind-researchers-new-ai-lab-nears-4bn-valuation-reports-say/",
+      "published_date": "2026-09-21T14:17:12.829911",
+      "description": "",
+      "source": "Sifted",
+      "category": "Venture Capital & M&A",
+      "segment": "leaders",
+      "source_type": "primary",
+      "raw_content": "",
+      "segments": [
+        "leaders"
+      ],
+      "consensus_count": 1,
+      "consensus_sources": [
+        "Sifted"
+      ],
+      "_signal_score": 49.0,
+      "on_hn": false,
+      "tier": "full",
+      "selection_reason": "A new AI lab nearing a $4 billion valuation highlights significant investor confidence and emerging market leaders in specialized AI sectors.",
+      "audience_value": "Executives can track high-growth areas and potential competitors or acquisition targets within the AI landscape, informing investment and partnership strategies.",
+      "urgency_score": 8,
+      "category_tag": "\ud83d\udcb0 Funding & M&A",
+      "why_this_matters": "Why this matters: Monitor significant funding and valuation trends in emerging AI labs to identify strategic investment opportunities and competitive threats."
+    },
+    {
+      "id": "70d63fe94d1f102e87f1c3eb1334bf6d",
+      "title": "Geopolitics and the geometry of global trade: September 2026 update",
+      "url": "https://www.mckinsey.com/mgi/our-research/global-trade-regional-updates",
+      "published_date": "2026-09-21T14:17:13.764950",
+      "description": "",
+      "source": "McKinsey Insights & Publications",
+      "category": "Macro Trends & Tech Economy",
+      "segment": "leaders",
+      "source_type": "primary",
+      "raw_content": "",
+      "segments": [
+        "leaders"
+      ],
+      "consensus_count": 2,
+      "consensus_sources": [
+        "McKinsey Insights & Publications"
+      ],
+      "_signal_score": 51.0,
+      "on_hn": false,
+      "tier": "full",
+      "selection_reason": "This McKinsey update on geopolitics and global trade provides essential context for understanding macro-economic shifts that impact international business strategy.",
+      "audience_value": "Leaders will gain a strategic overview of geopolitical influences on global trade, enabling them to better assess market risks and opportunities in an interconnected world.",
+      "urgency_score": 7,
+      "category_tag": "\ud83d\udcca Market Trends",
+      "why_this_matters": "Why this matters: Understand the geopolitical forces shaping global trade to make informed strategic decisions about market entry, supply chains, and international expansion."
+    },
+    {
+      "id": "283af3d4492ab5156e16e53fbd865106",
+      "title": "Vals, backed by Andreessen Horowitz, is looking to become the gold standard for AI benchmarking - TechCrunch",
+      "url": "https://news.google.com/rss/articles/CBMixwFBVV95cUxNbGJ4Rm1xU3l0ZmZpa1BiN21DekVIQWlBaHVLbG9vX2JPRENVRHduNHVNSFpLb0VTR1ZkUkJMdVlmZlFxUWpVM3c1MTFkSDBSWTFWMHE0a1U3dFBGb3plU0QtREZmXzVtUGV3MVVxYXgzLXlJWHpBN2dqNy01R2VONWFQV3dFQ1ZrRm5nTVZXZmN6OG53bUF2d2VFd0lVcDlTaHIwT2Vra0dyNV9xaFJtczBEeDBkNi12TXRKNGVHRVJKRUY3SDhv?oc=5",
+      "published_date": "2026-09-21T14:17:11.073995",
+      "description": "<a href=\"https://news.google.com/rss/articles/CBMixwFBVV95cUxNbGJ4Rm1xU3l0ZmZpa1BiN21DekVIQWlBaHVLbG9vX2JPRENVRHduNHVNSFpLb0VTR1ZkUkJMdVlmZlFxUWpVM3c1MTFkSDBSWTFWMHE0a1U3dFBGb3plU0QtREZmXzVtUGV3MVVxYXgzLXlJWHpBN2dqNy01R2VONWFQV3dFQ1ZrRm5nTVZXZmN6OG53bUF2d2VFd0lVcDlTaHIwT2Vra0dyNV9xaFJtczBEeDBkNi12TXRKNGVHRVJKRUY3SDhv?oc=5\" target=\"_blank\">Vals, backed by Andreessen Horowitz, is looking to become the gold standard for AI benchmarking</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">TechCrunch</font>",
+      "source": "\"a16z AI when:3d\" - Google News",
+      "category": "Venture Capital & M&A",
+      "segment": "leaders",
+      "source_type": "primary",
+      "raw_content": "<a href=\"https://news.google.com/rss/articles/CBMixwFBVV95cUxNbGJ4Rm1xU3l0ZmZpa1BiN21DekVIQWlBaHVLbG9vX2JPRENVRHduNHVNSFpLb0VTR1ZkUkJMdVlmZlFxUWpVM3c1MTFkSDBSWTFWMHE0a1U3dFBGb3plU0QtREZmXzVtUGV3MVVxYXgzLXlJWHpBN2dqNy01R2VONWFQV3dFQ1ZrRm5nTVZXZmN6OG53bUF2d2VFd0lVcDlTaHIwT2Vra0dyNV9xaFJtczBEeDBkNi12TXRKNGVHRVJKRUY3SDhv?oc=5\" target=\"_blank\">Vals, backed by Andreessen Horowitz, is looking to become the gold standard for AI benchmarking</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">TechCrunch</font>",
+      "segments": [
+        "leaders"
+      ],
+      "consensus_count": 3,
+      "consensus_sources": [
+        "\"a16z AI when:3d\" - Google News"
+      ],
+      "_signal_score": 57.0,
+      "on_hn": false,
+      "tier": "quick",
+      "selection_reason": "A16z-backed Vals is aiming to set the standard for AI benchmarking, a key area for evaluating AI performance and investment.",
+      "audience_value": "Stay informed on emerging leaders in AI infrastructure and benchmarking.",
+      "urgency_score": 7,
+      "category_tag": "\ud83d\ude80 AI & Innovation",
+      "why_this_matters": "Why this matters: Track key players defining AI performance standards and attracting significant venture capital."
+    },
+    {
+      "id": "4b97ca529b31e6898942f1b3fb7c8dbd",
+      "title": "Anthropic, OpenAI Test Growth Sustainability Amid Cash Burn - \uc870\uc120\uc77c\ubcf4",
+      "url": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxPUHBYalk3cXZGU29TTkxrc2JVVkxSYjIxZGpPUTl4Rl9FTE50dFMwVnZSU3pTRlYzMXV2NUNkU0liOURVQ3llbjNCR3R3dHYyTnBlYkZHRmJEVUhoNFVhR0NVcEdLbzkwOTVPSXNUMy04SzdkYmI0Nk50X1F6WTZveS1BVnpMbHhQ?oc=5",
+      "published_date": "2026-09-21T14:17:11.074086",
+      "description": "<a href=\"https://news.google.com/rss/articles/CBMiiAFBVV95cUxPUHBYalk3cXZGU29TTkxrc2JVVkxSYjIxZGpPUTl4Rl9FTE50dFMwVnZSU3pTRlYzMXV2NUNkU0liOURVQ3llbjNCR3R3dHYyTnBlYkZHRmJEVUhoNFVhR0NVcEdLbzkwOTVPSXNUMy04SzdkYmI0Nk50X1F6WTZveS1BVnpMbHhQ?oc=5\" target=\"_blank\">Anthropic, OpenAI Test Growth Sustainability Amid Cash Burn</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">\uc870\uc120\uc77c\ubcf4</font>",
+      "source": "\"a16z AI when:3d\" - Google News",
+      "category": "Venture Capital & M&A",
+      "segment": "leaders",
+      "source_type": "primary",
+      "raw_content": "<a href=\"https://news.google.com/rss/articles/CBMiiAFBVV95cUxPUHBYalk3cXZGU29TTkxrc2JVVkxSYjIxZGpPUTl4Rl9FTE50dFMwVnZSU3pTRlYzMXV2NUNkU0liOURVQ3llbjNCR3R3dHYyTnBlYkZHRmJEVUhoNFVhR0NVcEdLbzkwOTVPSXNUMy04SzdkYmI0Nk50X1F6WTZveS1BVnpMbHhQ?oc=5\" target=\"_blank\">Anthropic, OpenAI Test Growth Sustainability Amid Cash Burn</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">\uc870\uc120\uc77c\ubcf4</font>",
+      "segments": [
+        "leaders"
+      ],
+      "consensus_count": 1,
+      "consensus_sources": [
+        "\"a16z AI when:3d\" - Google News"
+      ],
+      "_signal_score": 49.0,
+      "on_hn": false,
+      "tier": "quick",
+      "selection_reason": "This article examines the sustainability of growth for major AI players like Anthropic and OpenAI amidst high cash burn, a critical factor for market analysis.",
+      "audience_value": "Understand the financial health and growth sustainability of leading AI companies.",
+      "urgency_score": 8,
+      "category_tag": "\ud83d\udcb0 Funding & M&A",
+      "why_this_matters": "Why this matters: Assess the financial viability of major AI players to inform strategic partnerships and investment decisions."
+    },
+    {
+      "id": "9244aee706277f616613baf0803ec29e",
+      "title": "a16z-Backed Layer-1 Project Linera Shuts Down After Token Sale Falls Short - KuCoin",
+      "url": "https://news.google.com/rss/articles/CBMirAFBVV95cUxNNjc5T3hNWi1fejBuTEJwQjdZa3NOaFdPS253SVBnMFJKLXZfaVFiV0NSQmdnTGRvNWRteGlxSVgtV3laYWZ0MV9qUFdtR0tRcHVnaUthc0N4NEJUaG9yU2V4eFlsWnNrNGpGZlpDTTF4T2ZMR2FaZXR4M3R4d0VMSXhneDF5YVdPYThISGV4bDRqekFJZTAtUGtGSlpTWU9YaTZnYnRuSk1KVUow?oc=5",
+      "published_date": "2026-09-21T14:17:11.074140",
+      "description": "<a href=\"https://news.google.com/rss/articles/CBMirAFBVV95cUxNNjc5T3hNWi1fejBuTEJwQjdZa3NOaFdPS253SVBnMFJKLXZfaVFiV0NSQmdnTGRvNWRteGlxSVgtV3laYWZ0MV9qUFdtR0tRcHVnaUthc0N4NEJUaG9yU2V4eFlsWnNrNGpGZlpDTTF4T2ZMR2FaZXR4M3R4d0VMSXhneDF5YVdPYThISGV4bDRqekFJZTAtUGtGSlpTWU9YaTZnYnRuSk1KVUow?oc=5\" target=\"_blank\">a16z-Backed Layer-1 Project Linera Shuts Down After Token Sale Falls Short</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">KuCoin</font>",
+      "source": "\"a16z AI when:3d\" - Google News",
+      "category": "Venture Capital & M&A",
+      "segment": "leaders",
+      "source_type": "primary",
+      "raw_content": "<a href=\"https://news.google.com/rss/articles/CBMirAFBVV95cUxNNjc5T3hNWi1fejBuTEJwQjdZa3NOaFdPS253SVBnMFJKLXZfaVFiV0NSQmdnTGRvNWRteGlxSVgtV3laYWZ0MV9qUFdtR0tRcHVnaUthc0N4NEJUaG9yU2V4eFlsWnNrNGpGZlpDTTF4T2ZMR2FaZXR4M3R4d0VMSXhneDF5YVdPYThISGV4bDRqekFJZTAtUGtGSlpTWU9YaTZnYnRuSk1KVUow?oc=5\" target=\"_blank\">a16z-Backed Layer-1 Project Linera Shuts Down After Token Sale Falls Short</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">KuCoin</font>",
+      "segments": [
+        "leaders"
+      ],
+      "consensus_count": 2,
+      "consensus_sources": [
+        "\"a16z AI when:3d\" - Google News"
+      ],
+      "_signal_score": 51.0,
+      "on_hn": false,
+      "tier": "quick",
+      "selection_reason": "Key development for the leaders persona.",
+      "audience_value": "Provides actionable strategic value.",
+      "urgency_score": 8,
+      "category_tag": "\ud83d\ude80 AI & Innovation",
+      "why_this_matters": "Key development for the leaders persona."
+    }
+  ]
+}

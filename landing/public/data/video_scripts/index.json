@@ -15,6 +15,36 @@
     "updated_at": "2026-09-21T01:20:44.621453"
   },
   {
+    "date": "2026-09-21",
+    "track": "top4",
+    "episode_id": "ai-news-2026-09-21-top4",
+    "stories": [
+      "Clone your voice using open-source models",
+      "Refinement Is Inherently Editable: Training-Free Prompt-to-Prompt Image Editing with Generative Refinement Network",
+      "Vals, backed by Andreessen Horowitz, is looking to become the gold standard for AI benchmarking - TechCrunch",
+      "Jev-Leftpad"
+    ],
+    "stories_count": 4,
+    "json_path": "/data/video_scripts/2026-09-21-ai-news.json",
+    "md_path": "/data/video_scripts/2026-09-21-ai-news.md",
+    "updated_at": "2026-09-21T14:27:41.146695"
+  },
+  {
+    "date": "2026-09-21",
+    "track": "builders",
+    "episode_id": "ai-news-2026-09-21-builders",
+    "stories": [
+      "Clone your voice using open-source models",
+      "Jev-Leftpad",
+      "Amazon EC2 R9g and R9gd instances powered by AWS Graviton5 processors are now generally available",
+      "Refinement Is Inherently Editable: Training-Free Prompt-to-Prompt Image Editing with Generative Refinement Network"
+    ],
+    "stories_count": 4,
+    "json_path": "/data/video_scripts/2026-09-21-ai-news-builders.json",
+    "md_path": "/data/video_scripts/2026-09-21-ai-news-builders.md",
+    "updated_at": "2026-09-21T14:31:10.322556"
+  },
+  {
     "date": "2026-09-20",
     "track": "weekly_mega_recap",
     "episode_id": "weekly-ai-news-2026-09-20",
