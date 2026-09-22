@@ -58,6 +58,20 @@ rsync -av "$ICLOUD_DIR/tools/" "$TMP_REPO/tools/" 2>/dev/null || true
 echo "  ✅ Files synced"
 echo ""
 
+# Step 2.5: Enforce Video Safari Script Quality Gate
+echo "[2.5/5] Running Video Script URL Liveness & Safety Validator..."
+cd "$TMP_REPO"
+if [ -f "tools/validate_video_scripts.py" ]; then
+    if python3 tools/validate_video_scripts.py; then
+        echo "  ✅ Video scripts quality gate PASSED"
+    else
+        echo "  ❌ Quality Gate FAILED: Broken URLs or forbidden domains detected in video scripts!"
+        echo "  Aborting deploy to protect video generation."
+        exit 1
+    fi
+fi
+echo ""
+
 # Step 3: Install dependencies and test build
 echo "[3/5] Installing dependencies and testing build..."
 cd "$TMP_REPO/landing"

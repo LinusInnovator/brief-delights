@@ -4,15 +4,58 @@
     "track": "top4",
     "episode_id": "ai-news-2026-09-22-top4",
     "stories": [
-      "Marigold v2",
-      "DeepSeek V4.1 Flash",
-      "Anthropic / Nscale",
-      "YuE2"
+      "TRACE",
+      "Studying Without a Syllabus",
+      "Ambient @ EgoProactive 2026"
     ],
-    "stories_count": 4,
+    "stories_count": 3,
     "json_path": "/data/video_scripts/2026-09-22-ai-news.json",
     "md_path": "/data/video_scripts/2026-09-22-ai-news.md",
-    "updated_at": "2026-09-22T17:18:59.775263"
+    "updated_at": "2026-09-22T17:28:23.022399"
+  },
+  {
+    "date": "2026-09-22",
+    "track": "leaders",
+    "episode_id": "ai-news-2026-09-22-leaders",
+    "stories": [
+      "ActionSplice",
+      "Studying Without a Syllabus",
+      "DataFlex-RL"
+    ],
+    "stories_count": 3,
+    "json_path": "/data/video_scripts/2026-09-22-ai-news-leaders.json",
+    "md_path": "/data/video_scripts/2026-09-22-ai-news-leaders.md",
+    "updated_at": "2026-09-22T17:29:07.262618"
+  },
+  {
+    "date": "2026-09-22",
+    "track": "generative_media",
+    "episode_id": "ai-news-2026-09-22-generative_media",
+    "stories": [
+      "StepAudio 3 Gen",
+      "Ambient @ EgoProactive 2026",
+      "Ambient @ EgoLongQA 2026",
+      "ActionSplice"
+    ],
+    "stories_count": 4,
+    "json_path": "/data/video_scripts/2026-09-22-ai-news-generative_media.json",
+    "md_path": "/data/video_scripts/2026-09-22-ai-news-generative_media.md",
+    "updated_at": "2026-09-22T17:29:21.890502"
+  },
+  {
+    "date": "2026-09-22",
+    "track": "builders",
+    "episode_id": "ai-news-2026-09-22-builders",
+    "stories": [
+      "TRACE",
+      "Ambient @ EgoLongQA 2026",
+      "ActionSplice",
+      "Studying Without a Syllabus"
+    ],
+    "stories_count": 4,
+    "json_path": "/data/video_scripts/2026-09-22-ai-news-builders.json",
+    "md_path": "/data/video_scripts/2026-09-22-ai-news-builders.md",
+    "updated_at": "2026-09-22T17:28:35.625393"
   },
   {
     "date": "2026-09-21",

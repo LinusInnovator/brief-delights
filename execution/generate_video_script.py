@@ -1153,6 +1153,10 @@ def run_track(track: str, date_str: str, test_mode: bool = False) -> bool:
         latest_md_file = PUBLIC_DATA_DIR / "latest_video_script.md"
         with open(latest_md_file, "w", encoding="utf-8") as f:
             f.write(full_md_script)
+    else:
+        latest_md_file = PUBLIC_DATA_DIR / f"latest_video_script_{track}.md"
+        with open(latest_md_file, "w", encoding="utf-8") as f:
+            f.write(full_md_script)
 
     parsed_json = parse_markdown_to_json(full_md_script, date_str, track=track, format_type="daily")
     json_filename = "latest_video_script.json" if track == "top4" else f"latest_video_script_{track}.json"
