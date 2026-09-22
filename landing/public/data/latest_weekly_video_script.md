@@ -4,59 +4,10 @@ track: weekly_mega_recap
 format: weekly
 voice_profile: alex_tech
 tools:
-- name: Amazon EC2 R9g and R9gd instances powered by AWS Graviton5 processors are
-    now generally available
-  url: https://aws.amazon.com/blogs/aws/amazon-ec2-r9g-and-r9gd-instances-powered-by-aws-graviton5-processors-are-now-generally-available/
-  mode: tool_drop
-  hero_anchor: main h1, header h1, .hero h1, h1
-  demo_anchor: 'video, canvas, #demo, .demo, #comparison, table'
-  download_anchor: a[href*='github.com'], a[href*='download'], a[href*='huggingface.co'],
-    .cta-button
-  specs: Live Tool | Web Drop
-  video_readiness: 55.0
-  consensus_count: 4
-  hn_points: null
-  badges:
-  - ⚡ 4 Outlets Confirmed
-- name: Learning from human preferences
-  url: https://openai.com/index/learning-from-human-preferences
-  mode: tool_drop
-  hero_anchor: main h1, header h1, .hero h1, h1
-  demo_anchor: 'video, canvas, #demo, .demo, #comparison, table'
-  download_anchor: a[href*='github.com'], a[href*='download'], a[href*='huggingface.co'],
-    .cta-button
-  specs: Live Tool | Web Drop
-  video_readiness: 50.0
-  consensus_count: 3
-  hn_points: null
-  badges:
-  - ⚡ 3 Outlets Confirmed
-- name: Amazon DynamoDB now supports real-time vector search at any scale
-  url: https://aws.amazon.com/blogs/aws/amazon-dynamodb-now-supports-real-time-vector-search-at-any-scale/
-  mode: tool_drop
-  hero_anchor: main h1, header h1, .hero h1, h1
-  demo_anchor: 'video, canvas, #demo, .demo, #comparison, table'
-  download_anchor: a[href*='github.com'], a[href*='download'], a[href*='huggingface.co'],
-    .cta-button
-  specs: Live Tool | Web Drop
-  video_readiness: 50.0
-  consensus_count: 2
-  hn_points: null
-  badges: []
-- name: 'Vercel Services: Run full stack on Vercel'
-  url: https://vercel.com/blog/vercel-services-run-full-stack-on-vercel
-  mode: tool_drop
-  hero_anchor: main h1, header h1, .hero h1, h1
-  demo_anchor: 'video, canvas, #demo, .demo, #comparison, table'
-  download_anchor: a[href*='github.com'], a[href*='download'], a[href*='huggingface.co'],
-    .cta-button
-  specs: Live Tool | Web Drop
-  video_readiness: 50.0
-  consensus_count: 2
-  hn_points: null
-  badges: []
-- name: Introducing gpt-oss
-  url: https://openai.com/index/introducing-gpt-oss
+- name: From Cloudwashing
+  headline: From Cloudwashing to O11ywashing
+  title: From Cloudwashing to O11ywashing
+  url: https://charity.wtf/p/from-cloudwashing-to-o11ywashing
   mode: tool_drop
   hero_anchor: main h1, header h1, .hero h1, h1
   demo_anchor: 'video, canvas, #demo, .demo, #comparison, table'
@@ -67,21 +18,38 @@ tools:
   consensus_count: 2
   hn_points: null
   badges: []
-- name: Fine-tune FLUX.1 with an API
-  url: https://replicate.com/blog/fine-tune-flux-with-an-api
+- name: Deno 1.6 Release Notes
+  headline: Deno 1.6 Release Notes
+  title: Deno 1.6 Release Notes
+  url: https://deno.com/blog/v1.6
   mode: tool_drop
-  hero_anchor: h1, header, .hero h1
-  demo_anchor: form, input, button[type='submit'], canvas, video, audio, .output,
-    .demo
-  download_anchor: a[href*='github.com'], a[href*='api'], button
-  specs: Live Web App | Interactive Demo
-  video_readiness: 60.0
-  consensus_count: 1
+  hero_anchor: main h1, header h1, .hero h1, h1
+  demo_anchor: 'video, canvas, #demo, .demo, #comparison, table'
+  download_anchor: a[href*='github.com'], a[href*='download'], a[href*='huggingface.co'],
+    .cta-button
+  specs: Live Tool | Web Drop
+  video_readiness: 45.0
+  consensus_count: 2
   hn_points: null
-  badges:
-  - ✨ Interactive Demo Live
-- name: Accelerating scientific discovery with ChatGPT for Academic Researchers
-  url: https://openai.com/index/chatgpt-for-academic-researchers
+  badges: []
+- name: From SSH to REST
+  headline: A Security-Driven Modernization of Slack’s EMR Data Pipelines
+  title: 'From SSH to REST: A Security-Driven Modernization of Slack’s EMR Data Pipelines'
+  url: https://slack.engineering/from-ssh-to-rest-a-security-driven-modernization-of-slacks-emr-data-pipelines/
+  mode: tool_drop
+  hero_anchor: main h1, header h1, .hero h1, h1
+  demo_anchor: 'video, canvas, #demo, .demo, #comparison, table'
+  download_anchor: a[href*='github.com'], a[href*='download'], a[href*='huggingface.co'],
+    .cta-button
+  specs: Live Tool | Web Drop
+  video_readiness: 45.0
+  consensus_count: 2
+  hn_points: null
+  badges: []
+- name: Resurrected
+  headline: How We Migrated the Parse API From Ruby to Golang (Resurrected)
+  title: How We Migrated the Parse API From Ruby to Golang (Resurrected)
+  url: https://charity.wtf/p/how-we-migrated-the-parse-api-from-ruby-to-golang-resurrected
   mode: tool_drop
   hero_anchor: main h1, header h1, .hero h1, h1
   demo_anchor: 'video, canvas, #demo, .demo, #comparison, table'
@@ -92,8 +60,53 @@ tools:
   consensus_count: 2
   hn_points: null
   badges: []
-- name: 'Update to GPT-5 System Card: GPT-5.2'
-  url: https://openai.com/index/gpt-5-system-card-update-gpt-5-2
+- name: How many pillars of
+  headline: How many pillars of observability can you fit on the head of a pin?
+  title: How many pillars of observability can you fit on the head of a pin?
+  url: https://charity.wtf/p/the-pillar-is-a-lie
+  mode: tool_drop
+  hero_anchor: main h1, header h1, .hero h1, h1
+  demo_anchor: 'video, canvas, #demo, .demo, #comparison, table'
+  download_anchor: a[href*='github.com'], a[href*='download'], a[href*='huggingface.co'],
+    .cta-button
+  specs: Live Tool | Web Drop
+  video_readiness: 40.0
+  consensus_count: 2
+  hn_points: null
+  badges: []
+- name: From Custom to Open
+  headline: Scalable Network Probing and HTTP/3 Readiness with Prometheus
+  title: 'From Custom to Open: Scalable Network Probing and HTTP/3 Readiness with
+    Prometheus'
+  url: https://slack.engineering/from-custom-to-open-scalable-network-probing-and-http-3-readiness-with-prometheus/
+  mode: tool_drop
+  hero_anchor: main h1, header h1, .hero h1, h1
+  demo_anchor: 'video, canvas, #demo, .demo, #comparison, table'
+  download_anchor: a[href*='github.com'], a[href*='download'], a[href*='huggingface.co'],
+    .cta-button
+  specs: Live Tool | Web Drop
+  video_readiness: 40.0
+  consensus_count: 2
+  hn_points: null
+  badges: []
+- name: Slack AI
+  headline: The Path to Multi-Cloud
+  title: 'Slack AI: The Path to Multi-Cloud'
+  url: https://slack.engineering/slack-ai-the-path-to-multi-cloud/
+  mode: tool_drop
+  hero_anchor: main h1, header h1, .hero h1, h1
+  demo_anchor: 'video, canvas, #demo, .demo, #comparison, table'
+  download_anchor: a[href*='github.com'], a[href*='download'], a[href*='huggingface.co'],
+    .cta-button
+  specs: Live Tool | Web Drop
+  video_readiness: 40.0
+  consensus_count: 2
+  hn_points: null
+  badges: []
+- name: Introducing Claude Opus 5
+  headline: Introducing Claude Opus 5
+  title: Introducing Claude Opus 5
+  url: https://www.anthropic.com/news/claude-opus-5
   mode: tool_drop
   hero_anchor: main h1, header h1, .hero h1, h1
   demo_anchor: 'video, canvas, #demo, .demo, #comparison, table'
@@ -108,48 +121,96 @@ tools:
 
 # Intro
 
-[confident] This week, the line between the cloud and the model officially evaporated. We're not just watching AI get smarter anymore—we're watching it become the infrastructure itself. Amazon just rewired the backbone of the internet, OpenAI opened the vault on safety and open weights, and the tools to build autonomous agents finally grew up. This is the Brief Delights Sunday Special for September 20th, 2026. Let's dive in.
+[excited] There are weeks where the story is a new model. And there are weeks where the story is everything underneath the model — the pipes, the probes, the binaries, the post-mortems nobody wants to write.
 
-# Chapter 1: Frontier Models & Open Weights [00:45]
+This was the second kind of week.
 
-[excited] Kicking off with the foundation layer, because the race for frontier intelligence just got a whole lot more transparent. OpenAI dropped a double bombshell this week. First, they released gpt-oss—specifically the gpt-oss-120b and gpt-oss-20b models. These aren't just toy models. We're talking state-of-the-art open-weight language models under the flexible Apache 2.0 license. They're outperforming similarly sized open models on reasoning tasks and showing strong tool use capabilities. This is a massive signal. OpenAI is betting that open weights can coexist with their closed frontier.
+[analytical] On the surface, the headline drop is a frontier release. Anthropic shipped **Claude Opus 5**, and it landed with a consensus count of two in our sweep — meaning two independent signals in our pipeline agreed it was worth your attention. That's our threshold for "this is real," and it cleared it.
 
-[analytical] But here's the nuance. They also updated the GPT-5 System Card for GPT-5.2. The safety mitigation approach remains largely the same as GPT-5.1, but the model family is iterating fast. And in a move that feels like a direct response to the alignment debate, they republished their foundational work on learning from human preferences. The core thesis? Removing the need for humans to write goal functions. Because using a simple proxy for a complex goal can lead to dangerous behavior. This algorithm infers what humans actually want. It's a quiet reminder that safety isn't a feature—it's the foundation.
+But underneath that, something stranger happened. Three separate engineering teams at Slack published deep, unglamorous write-ups about ripping out SSH, replacing custom network probes, and rebuilding their LLM serving path across multiple clouds. Charity Majors — one of the sharpest voices in observability — published two pieces that effectively declare war on the vocabulary the industry has been using for a decade. And Deno quietly shipped the thing every runtime has been promising since 2018: a real compiler.
 
-[confident] The consensus here is clear. With three outlets confirming the human preferences work and two confirming the gpt-oss drop, the open-weight ecosystem just got a massive credibility boost. The gap between closed and open SOTA is now measured in months, not years.
+[confident] So today, four chapters. The frontier, the observability reckoning, the enterprise battlefield, and the tools that actually ship. Let's get into it.
 
-# Chapter 2: Creative & Multimodal Breakthroughs [03:00]
+---
 
-[amazed] Moving to the creative layer, and this one is for the builders who want to own their models. Replicate just dropped the ability to fine-tune FLUX.1 with an API. You can now create and run your own fine-tuned Flux models programmatically using Replicate's HTTP API. No local GPUs. No massive infrastructure. Just an API call.
+## Chapter 1: Frontier Models & Open Weights — The Quiet Frontier [00:45]
 
-[friendly] If you've been watching the image generation space, you know FLUX is already a beast. But fine-tuning it on your own dataset—your brand style, your character, your specific aesthetic—that used to be a weekend project with a lot of headaches. Now it's a script. The video readiness score here is 60, the highest of the week, and it's flagged as a live web app with an interactive demo. That means you can literally watch the fine-tuning happen in the browser.
+[analytical] Let's start with **Claude Opus 5**.
 
-[excited] This is the creative multiplier. The tools are no longer just for generating images. They're for generating *your* images. The moat isn't the model anymore. It's the data you feed it.
+Here's what's interesting about this drop, and I want to be precise, because precision is the whole point of this show. Our pipeline flagged it with a consensus count of two. That means two independent sources in our sweep agreed this was a top-tier macro drop for the week. That's the signal. That's why it's in Chapter One.
 
-# Chapter 3: The Gigawatt Compute & Enterprise Battlefield [05:30]
+But look at what we actually pulled. The announcement page came through as mostly hero markup — an image, a headline, a wrapper. No benchmark table in the extract. No context window number. No pricing line. Just the promise.
 
-[skeptical] Now, the enterprise layer. And this is where the week gets heavy. Amazon Web Services dropped two massive infrastructure announcements that signal where the real battle is being fought: silicon and vector search.
+[skeptical] And I think that's worth naming out loud. We are now in a phase of the frontier race where the *announcement* is the product. The model card is the marketing. The actual capability delta gets discovered by users over the following two weeks, not by the launch post.
 
-[analytical] First, Amazon EC2 R9g and R9gd instances powered by AWS Graviton5 are now generally available. The headline? Up to 25% better compute performance than R8g. That's not a marginal bump. That's a generational leap. These instances are purpose-built for databases, in-memory caches, and real-time analytics. With four outlets confirming this drop, it's the most consensus-backed story of the week. AWS is telling the world: we own the silicon, we own the cloud, and we're optimizing the entire stack.
+So here's how I'd frame Opus 5 this week: it's a closed-frontier release arriving at a moment when the open-weight ecosystem is closing the gap faster than anyone predicted eighteen months ago. The strategic question is no longer "is closed better?" It's "how long does closed stay better, and at what price?"
 
-[confident] But the sleeper hit is DynamoDB's new native vector search. Real-time vector search at any scale. We're talking single-digit millisecond latency at 99%+ recall. And it's designed for trillions of vectors. Zero infrastructure management. This is huge for RAG pipelines and AI-native apps. You no longer need a separate vector database. It's just... in your DynamoDB.
+[confident] That's the tension to hold in your head for the rest of this episode. Because everything in the next three chapters — the observability fights, the multi-cloud builds, the new compilers — is really an answer to one question: *who owns the stack underneath the intelligence?*
 
-[skeptical] The enterprise battlefield is no longer about who has the best model. It's about who has the best plumbing. And right now, AWS is laying pipe at a pace that's hard to match.
+---
 
-# Chapter 4: Breakthrough Agents & Tools [07:30]
+## Chapter 2: Creative & Multimodal Breakthroughs — The Observability Reckoning [03:00]
 
-[friendly] Finally, the tooling layer. The stuff that makes agents actually work on your screen. Vercel just announced Vercel Services—run full stack on Vercel. The pitch is simple: a Next.js frontend and a FastAPI backend should feel like one product, not two separate deployments across different clouds. They're collapsing the workflow. One deploy. One environment. One team.
+[friendly] Okay, I'll be honest with you. This week's multimodal beat was quiet. No new video model, no new voice engine that cleared our consensus bar.
 
-[excited] And then there's the access play. OpenAI is giving 100,000 academic researchers free access to ChatGPT's most advanced models. This isn't charity. This is ecosystem seeding. They're putting the most powerful tools in the hands of the people who will publish the papers, build the prototypes, and train the next generation of AI-native scientists.
+What we got instead was something I'd argue is more valuable: two pieces of writing that are going to change how a lot of engineers talk about their own systems.
 
-[confident] The through-line here is integration. Vercel is integrating the stack. OpenAI is integrating the research community. The tools are no longer standalone. They're becoming the operating system for building.
+[excited] The first is **O11ywashing**.
 
-# Outro [09:00]
+That's the badge name. Charity Majors' piece, *From Cloudwashing to O11ywashing*, opens with a scene that made my head hurt just reading it — a panel where tech executives nodded along as someone described the *original definition of observability* as an "unsolved problem" they had to build custom tooling for.
 
-[analytical] So, where does this leave us? This week, the story is convergence. AWS is building the silicon and the vector search. OpenAI is opening the weights and the safety playbook. Vercel is collapsing the deployment pipeline. And Replicate is democratizing fine-tuning.
+[analytical] Sit with that for a second. Observability isn't a new problem. The definition has existed for years. What happened is that vendors took a well-understood engineering discipline, wrapped it in a marketing term, and then sold the discipline back to you as a feature — while the actual practitioners sat in the audience watching their own vocabulary get reinvented on stage.
 
-[confident] The message is clear: the AI stack is consolidating. The winners won't be the ones with the single best model. They'll be the ones who own the entire pipeline—from the chip to the API to the fine-tuned output.
+That's cloudwashing. And now, per Majors, it's O11ywashing — the same trick, applied to a word that already meant something specific.
 
-[friendly] Next week, we're watching for two things: how the open-weight community responds to gpt-oss, and whether AWS's vector search triggers a wave of DynamoDB-native AI apps. The infrastructure is ready. The models are ready. The only question left is: what are you going to build?
+[confident] The second piece is **Three Pillars** — *How many pillars of observability can you fit on the head of a pin?* And this one is a straight-up demolition job.
 
-[excited] That's it for this week's Brief Delights Sunday Special. If you got value from this breakdown, hit that subscribe button, ring the bell, and drop a comment with the one tool you're most excited to try. We'll see you next Sunday. Stay curious.
+The argument: the "three pillars" — logs, metrics, traces — are a lie. Not a harmless simplification. A *lie* that keeps good engineers trapped inside a mental model from the 1980s, paying outrageous sums for tooling that structurally cannot keep up with modern system complexity.
+
+[amazed] And here's why this belongs in a chapter about breakthroughs. Because the breakthrough isn't a new dashboard. It's the realization that the mental model itself is the bottleneck. You can't buy your way out of a framing problem. You can only think your way out.
+
+Both pieces cleared a consensus count of two. Both are getting passed around engineering orgs right now. If you lead a platform team, this is your required reading for the week.
+
+---
+
+## Chapter 3: The Gigawatt Compute & Enterprise Battlefield [05:30]
+
+[analytical] Now to the enterprise. And this week, one company dominated the chapter: Slack. Three separate engineering drops, all consensus count two, all about the same thing — *unglamorous infrastructure at enormous scale.*
+
+[confident] First: **Slack AI**.
+
+The story here is a three-year arc. Early 2023, Slack faces a foundational problem — serving large language models at enterprise scale with the security, reliability, and performance their customers actually demand. Not a demo. Not a chatbot. Production.
+
+And the answer, over three years, was multi-cloud. Not because multi-cloud is fashionable — because single-cloud couldn't give them the model access, the capacity, and the compliance posture simultaneously. They went from basic infrastructure to orchestrating a sophisticated multi-cloud architecture for LLM serving.
+
+[skeptical] I want you to notice what's *not* in that summary. There's no "we found a cheaper GPU." There's no "we switched vendors." It's three years of architecture work. That's the real cost of enterprise AI, and almost nobody puts it on a slide.
+
+[analytical] Second: **Slack EMR**.
+
+By 2024, Slack's data platform had accumulated *seven hundred plus* SSH-based operators orchestrating critical pipelines. Daily search indexing processing terabytes. Analytics jobs powering business intelligence. Every single one requiring direct SSH access to production AWS infrastructure.
+
+They migrated all of it from SSH to REST. That's the badge — **SSH to REST**.
+
+[confident] And this is a security story disguised as a modernization story. Seven hundred SSH entry points into production is seven hundred credentials to rotate, seven hundred audit gaps, seven hundred ways for one compromised key to become an incident. Moving to a REST-based control plane isn't about elegance. It's about shrinking the blast radius from seven hundred doors down to one.
+
+[excited] Third: **Slack Probing**.
+
+Slack was running a hybrid of commercial SaaS and custom internal tooling to measure network performance — internal traffic between AWS availability zones, external traffic from the public internet into their infrastructure. Legacy tooling, legacy limits.
+
+They rebuilt it on Prometheus. Scalable network probing, plus HTTP/3 readiness measurement, on open infrastructure instead of a vendor contract.
+
+[analytical] Three drops. One pattern. When you're operating at Slack's scale, the differentiator isn't which model you call. It's whether your control plane is auditable, your probes are open, and your serving layer survives a cloud going sideways.
+
+---
+
+## Chapter 4: Breakthrough Agents & Tools [07:30]
+
+[excited] Final chapter. And this is where the week gets genuinely fun, because two of these drops are about *removing* dependencies rather than adding them.
+
+First: **Deno 1.6**.
+
+[confident] `deno compile`. That's the headline. Deno 1.6 lets you build your Deno projects into fully standalone, self-contained executables. One binary. No runtime install. No dependency resolution at deploy time. You ship a file, and it runs.
+
+The release also lands a built-in LSP for editor integrations, and experimental Apple Silicon support.
+
+[analytical] Here's why that matters beyond Deno users. The entire pitch of the last decade of JavaScript tooling

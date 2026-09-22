@@ -15,6 +15,11 @@ ICLOUD_DIR="$(cd "$SCRIPT_DIR/.." && pwd)"
 TMP_REPO="/tmp/brief-delights-deploy"
 GITHUB_REPO="https://github.com/LinusInnovator/brief-delights.git"
 
+# Ensure Node >= 20 is on PATH for Next.js build
+if [ -d "/opt/homebrew/Cellar/node@20/20.19.6/bin" ]; then
+    export PATH="/opt/homebrew/Cellar/node@20/20.19.6/bin:$PATH"
+fi
+
 # Step 1: Clone/Update clean repository
 echo "[1/5] Setting up clean repository..."
 if [ -d "$TMP_REPO" ]; then

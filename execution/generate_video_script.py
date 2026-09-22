@@ -23,7 +23,7 @@ import yaml
 import argparse
 from datetime import datetime, timedelta
 from pathlib import Path
-from typing import List, Dict, Any, Optional
+from typing import List, Dict, Any, Optional, Tuple
 from dotenv import load_dotenv
 from openai import OpenAI
 
@@ -296,12 +296,132 @@ def build_story_badges(article: Dict[str, Any]) -> List[str]:
     return badges[:3]
 
 
+def clean_broadcast_entity_name(title: str, url: str = "") -> Tuple[str, str]:
+    """
+    Deterministic broadcast sanitizer for lower-third badges and video cards.
+    Separates:
+      1. name: Entity/Tool Name (1 to 4 words, maximum 28 characters).
+      2. headline: Punchy editorial hook/headline stripped of publication suffixes.
+    """
+    if not title:
+        return ("AI Tool", "")
+    
+    headline = re.sub(r'\s+', ' ', str(title)).strip()
+    
+    # 1. Strip RSS and publication suffixes
+    headline = re.sub(
+        r'[-–—|:]\s*(TechCrunch|VentureBeat|The Verge|Ars Technica|Wired|Reuters|Bloomberg|arXiv|Hugging Face|MarkTechPost|InfoQ|SiliconANGLE|MIT Technology Review|Hacker News|GitHub|Medium|Substack|YouTube|Google News|AI NEWS).*$',
+        '',
+        headline,
+        flags=re.IGNORECASE
+    ).strip()
+    
+    # Strip feed tags
+    headline = re.sub(r'\[(?:Paper & Demo|Paper|Demo|P|D|R|Discussion|News)\]\s*', '', headline, flags=re.IGNORECASE).strip()
+    headline = re.sub(r'^(?:Show HN|Ask HN|Tell HN):\s*', '', headline, flags=re.IGNORECASE).strip()
+
+    name = ""
+    extracted_headline = headline
+    
+    # Case A: GitHub repo name fallback if URL is a repository
+    github_name = ""
+    if "github.com/" in url:
+        repo_match = re.search(r'github\.com/[^/]+/([^/?#]+)', url)
+        if repo_match:
+            repo_name = repo_match.group(1).rstrip('.git')
+            if len(repo_name) <= 28 and len(repo_name.split()) <= 4:
+                github_name = repo_name
+
+    # Case B: Colon / Dash delimiter (Entity Name : Headline Hook)
+    delim_match = re.split(r'\s*[:–—|]\s*', headline, maxsplit=1)
+    if len(delim_match) == 2:
+        prefix, suffix = delim_match[0].strip(), delim_match[1].strip()
+        prefix_words = prefix.split()
+        if (1 <= len(prefix_words) <= 4 and len(prefix) <= 28 and 
+            not re.match(r'^(Why|How|What|When|Where|New|Watch|Read|Listen)\b', prefix, re.IGNORECASE)):
+            name = prefix
+            extracted_headline = suffix
+
+    # Case C: Announcement verbs: 'Company/Tool launches/releases/raises/agrees...'
+    if not name:
+        verb_match = re.match(
+            r'^([A-Z0-9][A-Za-z0-9\s\.\-_]{1,24})\s+(?:raises|launches|releases|unveils|introduces|drops|announces|debuts|open-sources|agrees|signs|partners|acquires)\b(?:\s+([A-Za-z0-9\.\-_]{2,20}))?',
+            headline,
+            re.IGNORECASE
+        )
+        if verb_match:
+            company = verb_match.group(1).strip()
+            raw_product = (verb_match.group(2) or '').strip().rstrip(',. ')
+            partner_match = re.search(r'\bwith\s+([A-Z][A-Za-z0-9]{1,15})\b', headline)
+            if partner_match:
+                cand = f'{company} / {partner_match.group(1)}'
+            elif raw_product and not raw_product.startswith('$') and not raw_product[0].isdigit() and company.lower() in {'apple', 'google', 'meta', 'microsoft', 'openai', 'anthropic', 'amazon', 'nvidia', 'mistral'}:
+                cand = f'{company} {raw_product}'
+            else:
+                cand = company
+            if len(cand.split()) <= 4 and len(cand) <= 28:
+                name = cand
+
+    # Case D: Parenthetical model or acronym (e.g. '... (RefineEdit)')
+    if not name:
+        paren_match = re.search(r'\(([A-Z0-9][A-Za-z0-9\-_]{1,20})\)', headline)
+        if paren_match:
+            cand = paren_match.group(1).strip()
+            if 2 <= len(cand) <= 24:
+                name = cand
+
+    # Case E: If headline itself is already concise (1-4 words, <= 28 chars)
+    if not name:
+        words = headline.split()
+        if 1 <= len(words) <= 4 and len(headline) <= 28 and not re.match(r'^(Why|How|What|When|Where|New|Watch|Read|Listen)\b', headline, re.IGNORECASE):
+            name = headline
+
+    # Case F: GitHub repo name if title was obscure
+    if not name and github_name:
+        name = github_name
+
+    # Case G: Stopwords heuristic on first few capitalized tokens
+    if not name:
+        first_words = headline.split()[:4]
+        stop_words = {'is', 'for', 'with', 'by', 'in', 'on', 'a', 'an', 'the', 'to', 'from', 'training-free', 'real-time', 'fast', 'open'}
+        cand_words = []
+        for w in first_words:
+            clean_w = re.sub(r'[^a-zA-Z0-9\.\-]', '', w)
+            if clean_w.lower() in stop_words and cand_words:
+                break
+            cand_words.append(clean_w)
+            if len(' '.join(cand_words)) > 24:
+                cand_words.pop()
+                break
+        if cand_words:
+            name = ' '.join(cand_words)
+
+    # Fallback clamp
+    if not name:
+        name = ' '.join(headline.split()[:3])
+
+    # Enforce strict lower-third broadcast constraint: 1 to 4 words, max 28 characters
+    words = name.strip().split()
+    if len(words) > 4:
+        name = ' '.join(words[:4])
+    name = name[:28].strip()
+
+    return name, extracted_headline
+
+
 def build_frontmatter_yaml(stories: List[Dict[str, Any]], episode_id: str, track: str = "top4", format_type: str = "daily") -> str:
-    """Builds deterministic, clean YAML frontmatter in Python with verified DOM selectors"""
+    """Builds deterministic, clean YAML frontmatter in Python with verified DOM selectors and broadcast lower-third fields"""
     tools_list = []
     for s in stories:
+        clean_name, clean_headline = clean_broadcast_entity_name(s.get("title") or s.get("name") or "", s.get("url", ""))
+        final_name = s.get("name") or clean_name
+        final_name = " ".join(final_name.split()[:4])[:28].strip()
+        final_headline = s.get("headline") or clean_headline
+
         tools_list.append({
-            "name": s.get("name") or s.get("title"),
+            "name": final_name,
+            "headline": final_headline,
+            "title": s.get("title") or final_headline,
             "url": s.get("url", ""),
             "mode": s.get("suggested_mode", "tool_drop"),
             "hero_anchor": s.get("hero_anchor", "main h1, .hero"),
@@ -406,6 +526,9 @@ def load_candidate_stories(date_str: str, track: str = "top4") -> List[Dict[str,
     enriched = enrich_articles_with_hn(clustered)
 
     for art in enriched:
+        clean_name, clean_headline = clean_broadcast_entity_name(art.get("title", ""), art.get("url", ""))
+        art["name"] = clean_name
+        art["headline"] = clean_headline
         art["video_readiness"] = calculate_video_readiness_score(art, track=track)
         anchors = resolve_omnicap_anchors(art.get("url", ""), art.get("suggested_mode", "tool_drop"), track=track)
         art["hero_anchor"] = anchors["hero_anchor"]
@@ -475,11 +598,14 @@ def generate_video_script_body(stories: List[Dict[str, Any]], date_str: str, tra
     """Uses LLM to write ONLY the editorial Markdown script body (Intro, Stories with Beats, Outro)"""
     story_prompts = []
     for s in stories:
+        clean_name, clean_hl = clean_broadcast_entity_name(s.get("name") or s.get("title", ""), s.get("url", ""))
         hn = s.get("hn_stats") or {}
         hn_text = f"HN: {hn.get('points', 0)} pts, {hn.get('comments', 0)} comments ({hn.get('velocity', 'normal')} velocity)" if hn.get("points") else "HN: No thread"
         badges_text = ", ".join(s.get("badges", []))
         story_prompts.append({
-            "title": s.get("title"),
+            "name": clean_name,
+            "headline": s.get("headline") or clean_hl,
+            "title": s.get("title") or clean_hl,
             "url": s.get("url"),
             "mode": s.get("suggested_mode"),
             "summary": s.get("summary"),
@@ -493,6 +619,9 @@ def generate_video_script_body(stories: List[Dict[str, Any]], date_str: str, tra
     track_info = TRACK_CONFIG.get(track, TRACK_CONFIG["top4"])
     track_title = track_info["title"]
 
+    sample_name = story_prompts[0].get('name') if story_prompts else 'RefineEdit'
+    sample_hl = story_prompts[0].get('headline') if story_prompts else 'Training-Free Real-Time Image Editing'
+
     prompt = f"""You are the senior executive producer and scriptwriter for the high-performing AI video channel "Brief Delights" ({track_title}).
 Signature style: fast-paced, high-utility demo walk-through (in the cadence of AI Search and Wes Roth).
 
@@ -500,6 +629,17 @@ Your job is to transform today's ({date_str}) top AI drops into an editorial Mar
 
 SELECTED STORIES TODAY (WITH VERIFIED TELEMETRY):
 {json.dumps(story_prompts, indent=2)}
+
+STRICT BROADCAST LOWER-THIRD RULES (CRITICAL):
+1. Broadcast Separation: In broadcast video, the Entity/Tool Name (what appears on the video card badge) MUST be cleanly separated from the Story Headline (the hook):
+   - "name": 1 to 4 words, MAXIMUM 28 characters (e.g., "RefineEdit", "Vals AI", "Marigold v2", "DeepSeek V4.1"). NEVER use long paper subtitles, academic clauses, or RSS publication tags in the name.
+   - "headline": Punchy editorial hook describing what it actually does.
+2. Story Header Format: You MUST format each story header with a pipe delimiter:
+   # Story {{i}}: {{name}} | {{headline}}
+   Examples:
+   # Story 1: RefineEdit | Training-Free Real-Time Image Editing
+   # Story 2: Vals AI | Automated Enterprise LLM Evaluations
+   # Story 3: Marigold v2 | Monocular Depth Estimation on Consumer GPUs
 
 STRICT RULES FOR THE SCRIPT:
 1. Spoken Conversational Tone: Fast, direct, zero corporate filler.
@@ -518,7 +658,7 @@ Follow this EXACT structure (DO NOT generate YAML frontmatter, start directly wi
 
 ---
 
-# Story 1: {stories[0].get('title')}
+# Story 1: {sample_name} | {sample_hl}
 ### Landing Page
 [confident] ...
 ### Demo
@@ -611,8 +751,32 @@ def parse_markdown_to_json(md_content: str, date_str: str, track: str = "top4", 
         story_blocks = re.split(r"\n#\s+Story\s+\d+:\s*", body)
         for idx, block in enumerate(story_blocks[1:]):
             lines = block.strip().split("\n")
-            story_name = lines[0].strip() if lines else f"Story {idx+1}"
-            meta = tools_metadata[idx] if idx < len(tools_metadata) else {}
+            header_line = lines[0].strip() if lines else f"Story {idx+1}"
+            header_name = header_line
+            header_headline = ""
+            if "|" in header_line:
+                h_parts = header_line.split("|", 1)
+                header_name = h_parts[0].strip()
+                header_headline = h_parts[1].strip()
+
+            clean_header_name, clean_header_hl = clean_broadcast_entity_name(header_name)
+
+            # Match with tools_metadata: first try to find matching tool by entity name, fallback to idx
+            matched_meta = None
+            chn_lower = clean_header_name.lower()
+            for tm in tools_metadata:
+                tm_name = tm.get("name", "").lower()
+                tm_title = tm.get("title", "").lower()
+                if (chn_lower and (chn_lower in tm_name or tm_name in chn_lower or chn_lower in tm_title)) or (clean_header_hl and clean_header_hl.lower() in tm_title):
+                    matched_meta = tm
+                    break
+
+            meta = matched_meta or (tools_metadata[idx] if idx < len(tools_metadata) else {})
+
+            final_name = meta.get("name") or clean_header_name
+            # Strictly clamp final_name to max 4 words, max 28 chars
+            final_name = " ".join(final_name.split()[:4])[:28].strip()
+            final_headline = meta.get("headline") or header_headline or clean_header_hl or meta.get("title") or header_line
 
             beat_matches = list(re.finditer(r"###\s+([^\n]+)\n(.*?)(?=\n###|\n---|\n#|$)", block, re.DOTALL))
             beats_dict = {}
@@ -625,7 +789,9 @@ def parse_markdown_to_json(md_content: str, date_str: str, track: str = "top4", 
                 ordered_beats.append({"title": b_title, "narration": b_text})
 
             parsed_stories.append({
-                "name": meta.get("name", story_name),
+                "name": final_name,
+                "headline": final_headline,
+                "title": f"{final_name}: {final_headline}" if final_headline and final_name not in final_headline else (meta.get("title") or final_name),
                 "url": meta.get("url", ""),
                 "mode": meta.get("mode", "tool_drop"),
                 "hero_anchor": meta.get("hero_anchor", "main h1, .hero"),
@@ -778,6 +944,9 @@ def load_weekly_mega_candidates(date_str: str) -> List[Dict[str, Any]]:
     enriched = enrich_articles_with_hn(clustered)
 
     for art in enriched:
+        clean_name, clean_headline = clean_broadcast_entity_name(art.get("title", ""), art.get("url", ""))
+        art["name"] = clean_name
+        art["headline"] = clean_headline
         art["video_readiness"] = calculate_video_readiness_score(art, track="top4")
         anchors = resolve_omnicap_anchors(art.get("url", ""), art.get("suggested_mode", "tool_drop"))
         art["hero_anchor"] = anchors["hero_anchor"]
@@ -795,12 +964,27 @@ def load_weekly_mega_candidates(date_str: str) -> List[Dict[str, Any]]:
 
 def generate_weekly_video_script_body(stories: List[Dict[str, Any]], date_str: str) -> str:
     """Uses LLM to write the 8-10 minute chaptered narrative body for Sunday Mega-Recap"""
+    clean_stories = []
+    for s in stories:
+        clean_name, clean_hl = clean_broadcast_entity_name(s.get("name") or s.get("title", ""), s.get("url", ""))
+        clean_stories.append({
+            "name": clean_name,
+            "headline": s.get("headline") or clean_hl,
+            "title": s.get("title") or clean_hl,
+            "url": s.get("url"),
+            "mode": s.get("suggested_mode"),
+            "summary": s.get("summary"),
+            "consensus_count": s.get("consensus_count", 1),
+            "hn_stats": s.get("hn_stats"),
+            "badges": s.get("badges", [])
+        })
+
     prompt = f"""You are the senior executive producer and host of Brief Delights Sunday Special (in the engaging, analytical documentary cadence of ColdFusion and Wes Roth).
 
 Your job is to transform this week's ({date_str}) top macro drops into a chaptered 8-10 minute YouTube Mega-Recap script BODY (Intro, 4 Chapters, Outro) for TTS and OmniCap browser recording.
 
-TOP MACRO DROPS OF THE WEEK:
-{json.dumps(stories, indent=2)}
+TOP MACRO DROPS OF THE WEEK (WITH CLEAN BROADCAST ENTITY NAMES):
+{json.dumps(clean_stories, indent=2)}
 
 STRUCTURE OF THE SUNDAY MEGA-RECAP:
 1. Intro (00:00 - 00:45): Cinematic cold open setting the central narrative theme of the week.
@@ -813,6 +997,10 @@ STRUCTURE OF THE SUNDAY MEGA-RECAP:
 5. Chapter 4: Breakthrough Agents & Tools [07:30]
    - The tooling that makes autonomous agents actually work on user screens.
 6. Outro (09:00 - 09:45): Big-picture synthesis of where next week is heading + CTA to subscribe to Brief Delights.
+
+STRICT BROADCAST LOWER-THIRD RULES:
+- When introducing or analyzing tools/models, ALWAYS use the clean 1-4 word badge name (e.g., "Wan2.1", "YuE2", "OmniParser v2", "DeepSeek V4.1").
+- NEVER use full paper titles, academic subclauses, or RSS publication tags in lower-third mentions.
 
 STRICT WRITING RULES:
 - Start every section with an emotional tag: [excited], [confident], [amazed], [analytical], [skeptical], [friendly].
@@ -908,6 +1096,9 @@ def run_track(track: str, date_str: str, test_mode: bool = False) -> bool:
             }
         ]
         for art in test_pool:
+            clean_name, clean_headline = clean_broadcast_entity_name(art.get("title", ""), art.get("url", ""))
+            art["name"] = clean_name
+            art["headline"] = clean_headline
             art["video_readiness"] = calculate_video_readiness_score(art, track=track)
             anchors = resolve_omnicap_anchors(art.get("url", ""), art.get("suggested_mode", "tool_drop"), track=track)
             art["hero_anchor"] = anchors["hero_anchor"]

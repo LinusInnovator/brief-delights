@@ -1,144 +1,116 @@
 {
-  "episode_id": "ai-news-2026-09-21-builders",
+  "episode_id": "ai-news-2026-09-19-builders",
   "track": "builders",
   "format": "daily",
-  "date": "2026-09-21",
+  "date": "2026-09-19",
   "voice_profile": "alex_tech",
-  "intro": "[excited] Four drops today: open-source voice cloning you can run live, a tiny repo with a big name, AWS Graviton5 going GA across four outlets, and a training-free image editor. No Hacker News threads yet \u2014 we're early.",
+  "intro": "[excited] Three drops just hit, and Hacker News is on fire \u2014 YuE2 generates full songs, Marigold v2 does real-time depth, and DeepSeek's 552-billion-parameter MoE preprint is already at 650 points.",
   "stories": [
     {
-      "name": "Clone your voice using open-source models",
-      "url": "https://replicate.com/blog/how-to-tune-a-realistic-voice-clone",
+      "name": "YuE2: Open Full-Song Generation with Symbolic Score Planning",
+      "url": "https://huggingface.co/spaces/multimodal-art/YuE",
       "mode": "tool_drop",
-      "hero_anchor": "h1, header, .hero h1",
-      "demo_anchor": "form, input, button[type='submit'], canvas, video, audio, .output, .demo",
-      "download_anchor": "a[href*='github.com'], a[href*='api'], button",
-      "specs": "Live Web App | Interactive Demo",
-      "video_readiness": 95.0,
-      "consensus_count": 1,
-      "hn_points": null,
+      "hero_anchor": "h1, .model-header, header",
+      "demo_anchor": "iframe[src*='gradio'], .gradio-container, canvas, video, button[type='submit'], .output",
+      "download_anchor": "button[data-testid='duplicate-button'], a[href*='tree/main']",
+      "specs": "Interactive Space | Hugging Face | Live Demo",
+      "video_readiness": 150.0,
+      "consensus_count": 5,
+      "hn_points": 480,
       "badges": [
+        "\ud83d\udd25 HN Trending (480 pts)",
+        "\u26a1 5 Outlets Confirmed",
         "\u2728 Interactive Demo Live"
       ],
       "beats": {
-        "landing_page": "[confident] Replicate just published a full walkthrough on tuning a realistic voice clone using open-source models. Not a waitlist, not a demo reel \u2014 an actual recipe you can follow today.",
-        "demo": "[amazed] The interactive web app is live right now. Upload a few minutes of audio, tune the model, and generate speech that holds up. Readiness score ninety-five \u2014 the highest thing we've seen this week.",
-        "access": "[excited] Everything's linked below: the blog, the live demo, the model endpoints. Clone your voice before someone clones it for you. Link in the description."
+        "landing_page": "[confident] YuE2 just landed on Hugging Face, and it's trending at 480 points with 210 comments. Five outlets confirmed it: full-length vocal songs, not loops \u2014 actual structured tracks with verses.",
+        "demo": "[amazed] Here's the wild part \u2014 it plans songs through editable ABC symbolic score notation. You can literally rewrite the melody in text before the model sings it. That's compositional control, live in the Space right now.",
+        "access": "[excited] The interactive demo is live and free. Click the link below, type a prompt, tweak the score, and generate a full track. Open full-song generation just became a browser tab."
       },
       "ordered_beats": [
         {
           "title": "Landing Page",
-          "narration": "[confident] Replicate just published a full walkthrough on tuning a realistic voice clone using open-source models. Not a waitlist, not a demo reel \u2014 an actual recipe you can follow today."
+          "narration": "[confident] YuE2 just landed on Hugging Face, and it's trending at 480 points with 210 comments. Five outlets confirmed it: full-length vocal songs, not loops \u2014 actual structured tracks with verses."
         },
         {
           "title": "Demo",
-          "narration": "[amazed] The interactive web app is live right now. Upload a few minutes of audio, tune the model, and generate speech that holds up. Readiness score ninety-five \u2014 the highest thing we've seen this week."
+          "narration": "[amazed] Here's the wild part \u2014 it plans songs through editable ABC symbolic score notation. You can literally rewrite the melody in text before the model sings it. That's compositional control, live in the Space right now."
         },
         {
           "title": "Access",
-          "narration": "[excited] Everything's linked below: the blog, the live demo, the model endpoints. Clone your voice before someone clones it for you. Link in the description."
+          "narration": "[excited] The interactive demo is live and free. Click the link below, type a prompt, tweak the score, and generate a full track. Open full-song generation just became a browser tab."
         }
       ]
     },
     {
-      "name": "Jev-Leftpad",
-      "url": "https://github.com/f/jev-leftpad",
+      "name": "Marigold v2: Diffusion Transformers for Real-Time Monocular Depth",
+      "url": "https://github.com/prs-eth/marigold",
       "mode": "tool_drop",
       "hero_anchor": "article.markdown-body h1, .repository-content, #readme h1, h1",
       "demo_anchor": "article.markdown-body img[src*='.gif'], article.markdown-body video, article.markdown-body details, #readme img, table",
       "download_anchor": "a[href*='releases'], a[href*='clone'], .btn-primary, a[href$='.zip']",
       "specs": "Open Source | GitHub | Code & Docs",
-      "video_readiness": 75.0,
-      "consensus_count": 1,
-      "hn_points": null,
+      "video_readiness": 125.0,
+      "consensus_count": 4,
+      "hn_points": 340,
       "badges": [
+        "\ud83d\udd25 HN Trending (340 pts)",
+        "\u26a1 4 Outlets Confirmed",
         "\ud83d\udee0\ufe0f Open Source Repo"
       ],
       "beats": {
-        "landing_page": "[curious] Next up: Jev-Leftpad on GitHub. A small, focused repo from the community \u2014 open source, code and docs, no gatekeeping, no paywall. Seventy-five readiness.",
-        "demo": "[skeptical] No Hacker News thread, no outlet coverage, just one consensus signal. So treat this as a raw look at the code rather than a finished product. Still worth a scroll.",
-        "access": "[friendly] Clone it, read it, break it. Open source repos like this are where half of tomorrow's infrastructure starts. GitHub link is down in the description."
+        "landing_page": "[confident] Marigold v2 is sitting at 340 points on Hacker News with four outlets confirming. It's a GitHub repo, fully open source, and it's rewriting what depth estimation costs you.",
+        "demo": "[amazed] Diffusion transformers, four times faster, running monocular depth on consumer GPUs. Real-time depth from a single camera \u2014 that's robotics, AR, and video pipelines getting a massive speed unlock.",
+        "access": "[excited] Code and docs are on GitHub right now. Clone it, run it on your own GPU, and check the benchmarks yourself. No waitlist, no API key \u2014 just a repo."
       },
       "ordered_beats": [
         {
           "title": "Landing Page",
-          "narration": "[curious] Next up: Jev-Leftpad on GitHub. A small, focused repo from the community \u2014 open source, code and docs, no gatekeeping, no paywall. Seventy-five readiness."
+          "narration": "[confident] Marigold v2 is sitting at 340 points on Hacker News with four outlets confirming. It's a GitHub repo, fully open source, and it's rewriting what depth estimation costs you."
         },
         {
           "title": "Demo",
-          "narration": "[skeptical] No Hacker News thread, no outlet coverage, just one consensus signal. So treat this as a raw look at the code rather than a finished product. Still worth a scroll."
+          "narration": "[amazed] Diffusion transformers, four times faster, running monocular depth on consumer GPUs. Real-time depth from a single camera \u2014 that's robotics, AR, and video pipelines getting a massive speed unlock."
         },
         {
           "title": "Access",
-          "narration": "[friendly] Clone it, read it, break it. Open source repos like this are where half of tomorrow's infrastructure starts. GitHub link is down in the description."
+          "narration": "[excited] Code and docs are on GitHub right now. Clone it, run it on your own GPU, and check the benchmarks yourself. No waitlist, no API key \u2014 just a repo."
         }
       ]
     },
     {
-      "name": "Amazon EC2 R9g and R9gd instances powered by AWS Graviton5 processors are now generally available",
-      "url": "https://aws.amazon.com/blogs/aws/amazon-ec2-r9g-and-r9gd-instances-powered-by-aws-graviton5-processors-are-now-generally-available/",
-      "mode": "tool_drop",
-      "hero_anchor": "main h1, header h1, .hero h1, h1",
-      "demo_anchor": "video, canvas, #demo, .demo, #comparison, table",
-      "download_anchor": "a[href*='github.com'], a[href*='download'], a[href*='huggingface.co'], .cta-button",
-      "specs": "Live Tool | Web Drop",
-      "video_readiness": 65.0,
-      "consensus_count": 4,
-      "hn_points": null,
-      "badges": [
-        "\u26a1 4 Outlets Confirmed"
-      ],
-      "beats": {
-        "landing_page": "[confident] AWS just made EC2 R9g and R9gd instances generally available, powered by new Graviton5 processors. Four outlets confirmed this one \u2014 that's the strongest consensus signal on today's board.",
-        "demo": "[amazed] The pitch: big performance gains for compute-intensive workloads \u2014 databases, caches, memory-hungry services. Same AWS console, same tooling, just faster silicon underneath your stack.",
-        "access": "[excited] It's live in the AWS console right now. If you're running Postgres or Redis at scale, benchmark it this week. Pricing and region details are linked below."
-      },
-      "ordered_beats": [
-        {
-          "title": "Landing Page",
-          "narration": "[confident] AWS just made EC2 R9g and R9gd instances generally available, powered by new Graviton5 processors. Four outlets confirmed this one \u2014 that's the strongest consensus signal on today's board."
-        },
-        {
-          "title": "Demo",
-          "narration": "[amazed] The pitch: big performance gains for compute-intensive workloads \u2014 databases, caches, memory-hungry services. Same AWS console, same tooling, just faster silicon underneath your stack."
-        },
-        {
-          "title": "Access",
-          "narration": "[excited] It's live in the AWS console right now. If you're running Postgres or Redis at scale, benchmark it this week. Pricing and region details are linked below."
-        }
-      ]
-    },
-    {
-      "name": "Refinement Is Inherently Editable: Training-Free Prompt-to-Prompt Image Editing with Generative Refinement Network",
-      "url": "https://huggingface.co/papers/2609.20633",
+      "name": "DeepSeek V4.1 Flash: Asymmetric Compute MoE Architecture",
+      "url": "https://arxiv.org/abs/2609.11200",
       "mode": "paper_preview",
-      "hero_anchor": "h1, .paper-title, h1.title",
-      "demo_anchor": "table, figure, .results, #benchmark, div[class*='abstract']",
-      "download_anchor": "a[href*='arxiv.org/pdf'], a[href*='huggingface.co/papers']",
-      "specs": "Research Paper | Hugging Face Daily Papers",
-      "video_readiness": 50.0,
-      "consensus_count": 1,
-      "hn_points": null,
+      "hero_anchor": "h1.title, .title, h1",
+      "demo_anchor": "a.download-pdf, div.extra-services, table.benchmark, figure",
+      "download_anchor": "a.download-pdf, a[href*='arxiv.org/pdf']",
+      "specs": "Research Preprint | arXiv",
+      "video_readiness": 85.0,
+      "consensus_count": 6,
+      "hn_points": 650,
       "badges": [
-        "\ud83d\udce6 Open Weights"
+        "\ud83d\udd25 HN Trending (650 pts)",
+        "\u26a1 6 Outlets Confirmed",
+        "\ud83d\udcc4 Research Preprint"
       ],
       "beats": {
-        "paper": "[curious] And a fresh Hugging Face paper: RefineEdit. Training-free prompt-to-prompt image editing. The problem it attacks \u2014 diffusion editors that wreck unrelated pixels while chasing your edit.",
-        "architecture": "[amazed] Their fix: treat refinement as inherently editable, so earlier decoding decisions can be revised instead of locked in. Two upvotes, open weights, early days \u2014 but the framing is clean.",
-        "release_horizon": "[friendly] No product, no API, just a paper and weights. If you're building image pipelines, this is one to watch before it becomes a feature in something you already pay for."
+        "paper": "[curious] DeepSeek V4.1 Flash is the loudest thing on Hacker News today \u2014 650 points, 380 comments, six outlets confirmed. It's a preprint, not a product, so let's read it carefully.",
+        "architecture_evidence": "[skeptical] 552 billion parameters in a Mixture-of-Experts, but the twist is asymmetric compute \u2014 uneven budget across experts. The benchmark table looks strong, though independent replication is still pending.",
+        "release_horizon": "[confident] PyTorch weights are already on Hugging Face, which is unusually fast for a preprint. Expect fine-tunes within days. The real question is whether the efficiency claims survive outside DeepSeek's own harness."
       },
       "ordered_beats": [
         {
           "title": "Paper",
-          "narration": "[curious] And a fresh Hugging Face paper: RefineEdit. Training-free prompt-to-prompt image editing. The problem it attacks \u2014 diffusion editors that wreck unrelated pixels while chasing your edit."
+          "narration": "[curious] DeepSeek V4.1 Flash is the loudest thing on Hacker News today \u2014 650 points, 380 comments, six outlets confirmed. It's a preprint, not a product, so let's read it carefully."
         },
         {
-          "title": "Architecture",
-          "narration": "[amazed] Their fix: treat refinement as inherently editable, so earlier decoding decisions can be revised instead of locked in. Two upvotes, open weights, early days \u2014 but the framing is clean."
+          "title": "Architecture/Evidence",
+          "narration": "[skeptical] 552 billion parameters in a Mixture-of-Experts, but the twist is asymmetric compute \u2014 uneven budget across experts. The benchmark table looks strong, though independent replication is still pending."
         },
         {
           "title": "Release Horizon",
-          "narration": "[friendly] No product, no API, just a paper and weights. If you're building image pipelines, this is one to watch before it becomes a feature in something you already pay for."
+          "narration": "[confident] PyTorch weights are already on Hugging Face, which is unusually fast for a preprint. Expect fine-tunes within days. The real question is whether the efficiency claims survive outside DeepSeek's own harness."
         }
       ]
     }
@@ -146,66 +118,57 @@
   "outro": "[friendly] All project links, Hugging Face spaces, and research papers are organized down in the description below. Hit subscribe to Brief Delights for your daily rundown, and I'll see you tomorrow.",
   "tools_metadata": [
     {
-      "name": "Clone your voice using open-source models",
-      "url": "https://replicate.com/blog/how-to-tune-a-realistic-voice-clone",
+      "name": "YuE2: Open Full-Song Generation with Symbolic Score Planning",
+      "url": "https://huggingface.co/spaces/multimodal-art/YuE",
       "mode": "tool_drop",
-      "hero_anchor": "h1, header, .hero h1",
-      "demo_anchor": "form, input, button[type='submit'], canvas, video, audio, .output, .demo",
-      "download_anchor": "a[href*='github.com'], a[href*='api'], button",
-      "specs": "Live Web App | Interactive Demo",
-      "video_readiness": 95.0,
-      "consensus_count": 1,
-      "hn_points": null,
+      "hero_anchor": "h1, .model-header, header",
+      "demo_anchor": "iframe[src*='gradio'], .gradio-container, canvas, video, button[type='submit'], .output",
+      "download_anchor": "button[data-testid='duplicate-button'], a[href*='tree/main']",
+      "specs": "Interactive Space | Hugging Face | Live Demo",
+      "video_readiness": 150.0,
+      "consensus_count": 5,
+      "hn_points": 480,
       "badges": [
+        "\ud83d\udd25 HN Trending (480 pts)",
+        "\u26a1 5 Outlets Confirmed",
         "\u2728 Interactive Demo Live"
       ]
     },
     {
-      "name": "Jev-Leftpad",
-      "url": "https://github.com/f/jev-leftpad",
+      "name": "Marigold v2: Diffusion Transformers for Real-Time Monocular Depth",
+      "url": "https://github.com/prs-eth/marigold",
       "mode": "tool_drop",
       "hero_anchor": "article.markdown-body h1, .repository-content, #readme h1, h1",
       "demo_anchor": "article.markdown-body img[src*='.gif'], article.markdown-body video, article.markdown-body details, #readme img, table",
       "download_anchor": "a[href*='releases'], a[href*='clone'], .btn-primary, a[href$='.zip']",
       "specs": "Open Source | GitHub | Code & Docs",
-      "video_readiness": 75.0,
-      "consensus_count": 1,
-      "hn_points": null,
+      "video_readiness": 125.0,
+      "consensus_count": 4,
+      "hn_points": 340,
       "badges": [
+        "\ud83d\udd25 HN Trending (340 pts)",
+        "\u26a1 4 Outlets Confirmed",
         "\ud83d\udee0\ufe0f Open Source Repo"
       ]
     },
     {
-      "name": "Amazon EC2 R9g and R9gd instances powered by AWS Graviton5 processors are now generally available",
-      "url": "https://aws.amazon.com/blogs/aws/amazon-ec2-r9g-and-r9gd-instances-powered-by-aws-graviton5-processors-are-now-generally-available/",
-      "mode": "tool_drop",
-      "hero_anchor": "main h1, header h1, .hero h1, h1",
-      "demo_anchor": "video, canvas, #demo, .demo, #comparison, table",
-      "download_anchor": "a[href*='github.com'], a[href*='download'], a[href*='huggingface.co'], .cta-button",
-      "specs": "Live Tool | Web Drop",
-      "video_readiness": 65.0,
-      "consensus_count": 4,
-      "hn_points": null,
-      "badges": [
-        "\u26a1 4 Outlets Confirmed"
-      ]
-    },
-    {
-      "name": "Refinement Is Inherently Editable: Training-Free Prompt-to-Prompt Image Editing with Generative Refinement Network",
-      "url": "https://huggingface.co/papers/2609.20633",
+      "name": "DeepSeek V4.1 Flash: Asymmetric Compute MoE Architecture",
+      "url": "https://arxiv.org/abs/2609.11200",
       "mode": "paper_preview",
-      "hero_anchor": "h1, .paper-title, h1.title",
-      "demo_anchor": "table, figure, .results, #benchmark, div[class*='abstract']",
-      "download_anchor": "a[href*='arxiv.org/pdf'], a[href*='huggingface.co/papers']",
-      "specs": "Research Paper | Hugging Face Daily Papers",
-      "video_readiness": 50.0,
-      "consensus_count": 1,
-      "hn_points": null,
+      "hero_anchor": "h1.title, .title, h1",
+      "demo_anchor": "a.download-pdf, div.extra-services, table.benchmark, figure",
+      "download_anchor": "a.download-pdf, a[href*='arxiv.org/pdf']",
+      "specs": "Research Preprint | arXiv",
+      "video_readiness": 85.0,
+      "consensus_count": 6,
+      "hn_points": 650,
       "badges": [
-        "\ud83d\udce6 Open Weights"
+        "\ud83d\udd25 HN Trending (650 pts)",
+        "\u26a1 6 Outlets Confirmed",
+        "\ud83d\udcc4 Research Preprint"
       ]
     }
   ],
-  "raw_markdown": "---\nepisode_id: ai-news-2026-09-21-builders\ntrack: builders\nformat: daily\nvoice_profile: alex_tech\ntools:\n- name: Clone your voice using open-source models\n  url: https://replicate.com/blog/how-to-tune-a-realistic-voice-clone\n  mode: tool_drop\n  hero_anchor: h1, header, .hero h1\n  demo_anchor: form, input, button[type='submit'], canvas, video, audio, .output,\n    .demo\n  download_anchor: a[href*='github.com'], a[href*='api'], button\n  specs: Live Web App | Interactive Demo\n  video_readiness: 95.0\n  consensus_count: 1\n  hn_points: null\n  badges:\n  - \u2728 Interactive Demo Live\n- name: Jev-Leftpad\n  url: https://github.com/f/jev-leftpad\n  mode: tool_drop\n  hero_anchor: 'article.markdown-body h1, .repository-content, #readme h1, h1'\n  demo_anchor: 'article.markdown-body img[src*=''.gif''], article.markdown-body video,\n    article.markdown-body details, #readme img, table'\n  download_anchor: a[href*='releases'], a[href*='clone'], .btn-primary, a[href$='.zip']\n  specs: Open Source | GitHub | Code & Docs\n  video_readiness: 75.0\n  consensus_count: 1\n  hn_points: null\n  badges:\n  - \ud83d\udee0\ufe0f Open Source Repo\n- name: Amazon EC2 R9g and R9gd instances powered by AWS Graviton5 processors are\n    now generally available\n  url: https://aws.amazon.com/blogs/aws/amazon-ec2-r9g-and-r9gd-instances-powered-by-aws-graviton5-processors-are-now-generally-available/\n  mode: tool_drop\n  hero_anchor: main h1, header h1, .hero h1, h1\n  demo_anchor: 'video, canvas, #demo, .demo, #comparison, table'\n  download_anchor: a[href*='github.com'], a[href*='download'], a[href*='huggingface.co'],\n    .cta-button\n  specs: Live Tool | Web Drop\n  video_readiness: 65.0\n  consensus_count: 4\n  hn_points: null\n  badges:\n  - \u26a1 4 Outlets Confirmed\n- name: 'Refinement Is Inherently Editable: Training-Free Prompt-to-Prompt Image Editing\n    with Generative Refinement Network'\n  url: https://huggingface.co/papers/2609.20633\n  mode: paper_preview\n  hero_anchor: h1, .paper-title, h1.title\n  demo_anchor: 'table, figure, .results, #benchmark, div[class*=''abstract'']'\n  download_anchor: a[href*='arxiv.org/pdf'], a[href*='huggingface.co/papers']\n  specs: Research Paper | Hugging Face Daily Papers\n  video_readiness: 50.0\n  consensus_count: 1\n  hn_points: null\n  badges:\n  - \ud83d\udce6 Open Weights\n---\n\n# Intro\n[excited] Four drops today: open-source voice cloning you can run live, a tiny repo with a big name, AWS Graviton5 going GA across four outlets, and a training-free image editor. No Hacker News threads yet \u2014 we're early.\n\n---\n\n# Story 1: Clone your voice using open-source models\n### Landing Page\n[confident] Replicate just published a full walkthrough on tuning a realistic voice clone using open-source models. Not a waitlist, not a demo reel \u2014 an actual recipe you can follow today.\n\n### Demo\n[amazed] The interactive web app is live right now. Upload a few minutes of audio, tune the model, and generate speech that holds up. Readiness score ninety-five \u2014 the highest thing we've seen this week.\n\n### Access\n[excited] Everything's linked below: the blog, the live demo, the model endpoints. Clone your voice before someone clones it for you. Link in the description.\n\n---\n\n# Story 2: Jev-Leftpad\n### Landing Page\n[curious] Next up: Jev-Leftpad on GitHub. A small, focused repo from the community \u2014 open source, code and docs, no gatekeeping, no paywall. Seventy-five readiness.\n\n### Demo\n[skeptical] No Hacker News thread, no outlet coverage, just one consensus signal. So treat this as a raw look at the code rather than a finished product. Still worth a scroll.\n\n### Access\n[friendly] Clone it, read it, break it. Open source repos like this are where half of tomorrow's infrastructure starts. GitHub link is down in the description.\n\n---\n\n# Story 3: Amazon EC2 R9g and R9gd instances powered by AWS Graviton5 processors are now generally available\n### Landing Page\n[confident] AWS just made EC2 R9g and R9gd instances generally available, powered by new Graviton5 processors. Four outlets confirmed this one \u2014 that's the strongest consensus signal on today's board.\n\n### Demo\n[amazed] The pitch: big performance gains for compute-intensive workloads \u2014 databases, caches, memory-hungry services. Same AWS console, same tooling, just faster silicon underneath your stack.\n\n### Access\n[excited] It's live in the AWS console right now. If you're running Postgres or Redis at scale, benchmark it this week. Pricing and region details are linked below.\n\n---\n\n# Story 4: Refinement Is Inherently Editable: Training-Free Prompt-to-Prompt Image Editing with Generative Refinement Network\n### Paper\n[curious] And a fresh Hugging Face paper: RefineEdit. Training-free prompt-to-prompt image editing. The problem it attacks \u2014 diffusion editors that wreck unrelated pixels while chasing your edit.\n\n### Architecture\n[amazed] Their fix: treat refinement as inherently editable, so earlier decoding decisions can be revised instead of locked in. Two upvotes, open weights, early days \u2014 but the framing is clean.\n\n### Release Horizon\n[friendly] No product, no API, just a paper and weights. If you're building image pipelines, this is one to watch before it becomes a feature in something you already pay for.\n\n---\n\n# Outro\n[friendly] All project links, Hugging Face spaces, and research papers are organized down in the description below. Hit subscribe to Brief Delights for your daily rundown, and I'll see you tomorrow.",
-  "generated_at": "2026-09-21T14:31:10.321663"
+  "raw_markdown": "---\nepisode_id: ai-news-2026-09-19-builders\ntrack: builders\nformat: daily\nvoice_profile: alex_tech\ntools:\n- name: 'YuE2: Open Full-Song Generation with Symbolic Score Planning'\n  url: https://huggingface.co/spaces/multimodal-art/YuE\n  mode: tool_drop\n  hero_anchor: h1, .model-header, header\n  demo_anchor: iframe[src*='gradio'], .gradio-container, canvas, video, button[type='submit'],\n    .output\n  download_anchor: button[data-testid='duplicate-button'], a[href*='tree/main']\n  specs: Interactive Space | Hugging Face | Live Demo\n  video_readiness: 150.0\n  consensus_count: 5\n  hn_points: 480\n  badges:\n  - \ud83d\udd25 HN Trending (480 pts)\n  - \u26a1 5 Outlets Confirmed\n  - \u2728 Interactive Demo Live\n- name: 'Marigold v2: Diffusion Transformers for Real-Time Monocular Depth'\n  url: https://github.com/prs-eth/marigold\n  mode: tool_drop\n  hero_anchor: 'article.markdown-body h1, .repository-content, #readme h1, h1'\n  demo_anchor: 'article.markdown-body img[src*=''.gif''], article.markdown-body video,\n    article.markdown-body details, #readme img, table'\n  download_anchor: a[href*='releases'], a[href*='clone'], .btn-primary, a[href$='.zip']\n  specs: Open Source | GitHub | Code & Docs\n  video_readiness: 125.0\n  consensus_count: 4\n  hn_points: 340\n  badges:\n  - \ud83d\udd25 HN Trending (340 pts)\n  - \u26a1 4 Outlets Confirmed\n  - \ud83d\udee0\ufe0f Open Source Repo\n- name: 'DeepSeek V4.1 Flash: Asymmetric Compute MoE Architecture'\n  url: https://arxiv.org/abs/2609.11200\n  mode: paper_preview\n  hero_anchor: h1.title, .title, h1\n  demo_anchor: a.download-pdf, div.extra-services, table.benchmark, figure\n  download_anchor: a.download-pdf, a[href*='arxiv.org/pdf']\n  specs: Research Preprint | arXiv\n  video_readiness: 85.0\n  consensus_count: 6\n  hn_points: 650\n  badges:\n  - \ud83d\udd25 HN Trending (650 pts)\n  - \u26a1 6 Outlets Confirmed\n  - \ud83d\udcc4 Research Preprint\n---\n\n# Intro\n[excited] Three drops just hit, and Hacker News is on fire \u2014 YuE2 generates full songs, Marigold v2 does real-time depth, and DeepSeek's 552-billion-parameter MoE preprint is already at 650 points.\n\n---\n\n# Story 1: YuE2: Open Full-Song Generation with Symbolic Score Planning\n### Landing Page\n[confident] YuE2 just landed on Hugging Face, and it's trending at 480 points with 210 comments. Five outlets confirmed it: full-length vocal songs, not loops \u2014 actual structured tracks with verses.\n\n### Demo\n[amazed] Here's the wild part \u2014 it plans songs through editable ABC symbolic score notation. You can literally rewrite the melody in text before the model sings it. That's compositional control, live in the Space right now.\n\n### Access\n[excited] The interactive demo is live and free. Click the link below, type a prompt, tweak the score, and generate a full track. Open full-song generation just became a browser tab.\n\n---\n\n# Story 2: Marigold v2: Diffusion Transformers for Real-Time Monocular Depth\n### Landing Page\n[confident] Marigold v2 is sitting at 340 points on Hacker News with four outlets confirming. It's a GitHub repo, fully open source, and it's rewriting what depth estimation costs you.\n\n### Demo\n[amazed] Diffusion transformers, four times faster, running monocular depth on consumer GPUs. Real-time depth from a single camera \u2014 that's robotics, AR, and video pipelines getting a massive speed unlock.\n\n### Access\n[excited] Code and docs are on GitHub right now. Clone it, run it on your own GPU, and check the benchmarks yourself. No waitlist, no API key \u2014 just a repo.\n\n---\n\n# Story 3: DeepSeek V4.1 Flash: Asymmetric Compute MoE Architecture\n### Paper\n[curious] DeepSeek V4.1 Flash is the loudest thing on Hacker News today \u2014 650 points, 380 comments, six outlets confirmed. It's a preprint, not a product, so let's read it carefully.\n\n### Architecture/Evidence\n[skeptical] 552 billion parameters in a Mixture-of-Experts, but the twist is asymmetric compute \u2014 uneven budget across experts. The benchmark table looks strong, though independent replication is still pending.\n\n### Release Horizon\n[confident] PyTorch weights are already on Hugging Face, which is unusually fast for a preprint. Expect fine-tunes within days. The real question is whether the efficiency claims survive outside DeepSeek's own harness.\n\n---\n\n# Outro\n[friendly] All project links, Hugging Face spaces, and research papers are organized down in the description below. Hit subscribe to Brief Delights for your daily rundown, and I'll see you tomorrow.",
+  "generated_at": "2026-09-19T12:32:06.775755"
 }
