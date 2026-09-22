@@ -4,116 +4,115 @@ track: top4
 format: daily
 voice_profile: alex_tech
 tools:
-- name: Stable Diffusion
-  headline: Stable Diffusion with 🧨 Diffusers
-  title: Stable Diffusion with 🧨 Diffusers
-  url: https://huggingface.co/blog/stable_diffusion
+- name: Marigold v2
+  headline: Diffusion Transformers for Real-Time Monocular Depth
+  title: 'Marigold v2: Diffusion Transformers for Real-Time Monocular Depth'
+  url: https://github.com/prs-eth/marigold
   mode: tool_drop
-  hero_anchor: h1, .model-header, header
-  demo_anchor: 'table, .results, #benchmark, canvas, .viewer, video'
-  download_anchor: button[data-testid='download-button'], a[href*='tree/main'], a[href*='resolve']
-  specs: Model Weights | Hugging Face Hub
-  video_readiness: 55.0
-  consensus_count: 1
-  hn_points: null
+  hero_anchor: 'article.markdown-body h1, .repository-content, #readme h1, h1'
+  demo_anchor: 'article.markdown-body img[src*=''.gif''], article.markdown-body video,
+    article.markdown-body details, #readme img, table'
+  download_anchor: a[href*='releases'], a[href*='clone'], .btn-primary, a[href$='.zip']
+  specs: Open Source | GitHub | Code & Docs
+  video_readiness: 110.0
+  consensus_count: 4
+  hn_points: 340
   badges:
-  - 📦 Open Weights
-- name: Introducing gpt-oss
-  headline: Introducing gpt-oss
-  title: Introducing gpt-oss
-  url: https://openai.com/index/introducing-gpt-oss
+  - 🔥 HN Trending (340 pts)
+  - ⚡ 4 Outlets Confirmed
+  - 🛠️ Open Source Repo
+- name: DeepSeek V4.1 Flash
+  headline: Asymmetric Compute MoE Architecture
+  title: 'DeepSeek V4.1 Flash: Asymmetric Compute MoE Architecture'
+  url: https://arxiv.org/abs/2609.11200
   mode: paper_preview
-  hero_anchor: main h1, header h1, h1
-  demo_anchor: 'figure, table, .results, #diagram, #comparison'
-  download_anchor: a[href*='pdf'], a[href*='arxiv.org'], a[href*='github.com']
-  specs: Research Preview | Benchmark
-  video_readiness: 40.0
-  consensus_count: 2
-  hn_points: null
-  badges: []
-- name: Anthropic OpenAI Test
-  headline: Anthropic, OpenAI Test Growth Sustainability Amid Cash Burn - 조선일보
-  title: Anthropic, OpenAI Test Growth Sustainability Amid Cash Burn - 조선일보
-  url: https://news.google.com/rss/articles/CBMiiAFBVV95cUxPUHBYalk3cXZGU29TTkxrc2JVVkxSYjIxZGpPUTl4Rl9FTE50dFMwVnZSU3pTRlYzMXV2NUNkU0liOURVQ3llbjNCR3R3dHYyTnBlYkZHRmJEVUhoNFVhR0NVcEdLbzkwOTVPSXNUMy04SzdkYmI0Nk50X1F6WTZveS1BVnpMbHhQ?oc=5
+  hero_anchor: h1.title, .title, h1
+  demo_anchor: a.download-pdf, div.extra-services, table.benchmark, figure
+  download_anchor: a.download-pdf, a[href*='arxiv.org/pdf']
+  specs: Research Preprint | arXiv
+  video_readiness: 85.0
+  consensus_count: 6
+  hn_points: 650
+  badges:
+  - 🔥 HN Trending (650 pts)
+  - ⚡ 6 Outlets Confirmed
+  - 📄 Research Preprint
+- name: Anthropic / Nscale
+  headline: Anthropic Agrees $45B AI Infrastructure Deal with Nscale
+  title: Anthropic Agrees $45B AI Infrastructure Deal with Nscale
+  url: https://www.nscale.com
   mode: industry_insight
   hero_anchor: main h1, header h1, .hero h1, h1
   demo_anchor: figure, table, blockquote, canvas, .chart, .metrics
   download_anchor: a[href*='report'], a[href*='pdf'], a.cta-button
   specs: Industry Insight | Strategic Analysis
-  video_readiness: 40.0
-  consensus_count: 2
-  hn_points: null
-  badges: []
-- name: Grounded Action Model
-  headline: 3D Grounding as a Foundation for Robotics
-  title: 'Grounded Action Model: 3D Grounding as a Foundation for Robotics'
-  url: https://huggingface.co/papers/2609.23863
-  mode: tool_drop
-  hero_anchor: h1, .paper-title, h1.title
-  demo_anchor: 'table, figure, .results, #benchmark, div[class*=''abstract'']'
-  download_anchor: a[href*='arxiv.org/pdf'], a[href*='huggingface.co/papers']
-  specs: Research Paper | Hugging Face Daily Papers
-  video_readiness: 50.0
-  consensus_count: 1
-  hn_points: null
+  video_readiness: 65.0
+  consensus_count: 3
+  hn_points: 190
   badges:
-  - 📦 Open Weights
+  - 🔥 HN Trending (190 pts)
+  - ⚡ 3 Outlets Confirmed
+- name: YuE2
+  headline: Open Full-Song Generation with Symbolic Score Planning
+  title: 'YuE2: Open Full-Song Generation with Symbolic Score Planning'
+  url: https://github.com/multimodal-art-projection/YuE
+  mode: tool_drop
+  hero_anchor: 'article.markdown-body h1, .repository-content, #readme h1, h1'
+  demo_anchor: 'article.markdown-body img[src*=''.gif''], article.markdown-body video,
+    article.markdown-body details, #readme img, table'
+  download_anchor: a[href*='releases'], a[href*='clone'], .btn-primary, a[href$='.zip']
+  specs: Open Source | GitHub | Code & Docs
+  video_readiness: 110.0
+  consensus_count: 5
+  hn_points: 480
+  badges:
+  - 🔥 HN Trending (480 pts)
+  - ⚡ 5 Outlets Confirmed
+  - 🛠️ Open Source Repo
 ---
 
 # Intro
-[excited] Today's safari: OpenAI drops open weights under Apache 2.0, robots learn to actually see objects, and the AI cash-burn question nobody wants to answer.
+[excited] Four huge drops today: real-time depth, a 552-billion-parameter MoE, a 45-billion-dollar compute deal, and open full-song generation. Hacker News is absolutely cooking.
 
 ---
 
-# Story 1: Stable Diffusion | Image Generation With 🧨 Diffusers
-
+# Story 1: Marigold v2 | Diffusion Transformers for Real-Time Monocular Depth
 ### Landing Page
-[confident] First up, Hugging Face's Diffusers guide — the cleanest on-ramp to Stable Diffusion. No boilerplate, no broken repos; just the library that became the default for open image generation.
-
+[confident] Marigold v2 just hit GitHub, turning diffusion transformers into real-time monocular depth estimators. Hacker News is trending at 340 points with 112 comments, and four outlets already confirmed the drop.
 ### Demo
-[amazed] Three lines of Python and you're rendering images. Swap schedulers, load open weights straight off the Hub, and quantize to fit your own GPU. It's the fastest path from zero to a diffusion pipeline.
-
+[amazed] On a consumer GPU, it delivers four-times faster depth maps without sacrificing detail. Point it at a webcam, a robot, or AR scene, and watch geometry lock in instantly.
 ### Access
-[excited] Everything's open weights on the Hugging Face Hub, installable right now. Scorecard sits at 55 for video readiness — solid, but it's the foundation every other image tool builds on.
+[energetic] The code and docs are open source on GitHub. Clone the repo, load the weights, and run real-time depth on your own hardware today.
 
 ---
 
-# Story 2: gpt-oss | OpenAI Ships Apache 2.0 Open Weights
-
+# Story 2: DeepSeek V4.1 Flash | Asymmetric Compute MoE Architecture
 ### Paper
-[curious] Now the one that broke the timeline — OpenAI publishing state-of-the-art open-weight models under Apache 2.0. That's a genuine watershed for the open-source crowd, and it's still only a research preview.
-
-### Architecture
-[confident] Benchmarks are the headline here, and multi-outlet consensus is doubling up on the story. The weights land permissively, which means fine-tune it, ship it, sell it — no licensing lawyers required.
-
+[curious] DeepSeek V4.1 Flash lands as a preprint: 552 billion parameters, mixture-of-experts, and an asymmetric compute design. HN exploded to 650 points and 380 comments.
+### Architecture & Evidence
+[confident] The paper compares benchmarks side by side, showing Flash routing compute only where needed. Six outlets confirmed the results, and PyTorch weights are already on Hugging Face.
 ### Release Horizon
-[skeptical] Scorecard only reads 40, because a preview isn't a product. Watch the benchmark table carefully — if these numbers hold up against closed frontier models, the pricing floor just moved.
+[skeptical] It's still a research preview, so treat throughput claims carefully. But open weights mean you can test the architecture yourself right now.
 
 ---
 
-# Story 3: Anthropic OpenAI | Testing Growth Amid Massive Cash Burn
-
+# Story 3: Anthropic / Nscale | $45B AI Infrastructure Deal for European Compute
 ### Headline
-[curious] Third story, and it's the uncomfortable one: Anthropic and OpenAI under scrutiny for growth sustainability while burning cash at a rate that makes VCs sweat through their quarter-zips.
-
+[excited] Anthropic just agreed a forty-five-billion-dollar infrastructure deal with Nscale, securing European gigawatt power and massive datacenter buildout. HN is trending at 190 points.
 ### Evidence
-[confident] The reporting tracks revenue against compute spend, and the gap is the entire story. Two outlets are converging on the same analysis — this isn't a hit piece, it's a runway check.
-
+[confident] Three outlets confirmed the deal, pointing to a strategic race for compute capacity. This is about locking down energy, land, and chips before rivals scale.
 ### The Verdict
-[skeptical] Verdict: the models get cheaper, the infrastructure doesn't. If you're budgeting AI for 2027, model spend is a line item your CFO will absolutely ask about. Plan accordingly.
+[curious] The real signal isn't the dollar figure. It's that AI labs now buy power like utilities, and Europe just became a battleground.
 
 ---
 
-# Story 4: Grounded Action Model | 3D Grounding as a Robotics Foundation
-
+# Story 4: YuE2 | Open Full-Song Generation with Symbolic Score Planning
 ### Landing Page
-[curious] Last one's from the Hugging Face daily papers — a Grounded Action Model that teaches manipulation policies which objects matter and exactly where they are in 3D space.
-
+[excited] YuE2 hits GitHub with open full-song generation, complete with vocals and editable ABC symbolic score notation. HN is trending at 480 points with 210 comments.
 ### Demo
-[amazed] Current robot foundation models, VLAs and world-action models alike, never explicitly require metric grounding — they just hope it emerges from demonstrations. This one bakes it in and hits 18 upvotes on the board.
-
+[amazed] You can prompt a full track, then edit the symbolic score to fix melody, harmony, or structure. Five outlets confirmed it, and the weights are open.
 ### Access
-[excited] Open weights are published and the paper's live. Grounding is the missing layer for real-world robots, and this is the blueprint worth reading tonight.
+[energetic] Clone YuE2, generate a song, export the score, and remix it however you want. Open-source music generation just leveled up.
 
 ---
 

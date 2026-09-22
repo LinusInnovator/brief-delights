@@ -413,7 +413,15 @@ def build_frontmatter_yaml(stories: List[Dict[str, Any]], episode_id: str, track
     """Builds deterministic, clean YAML frontmatter in Python with verified DOM selectors and broadcast lower-third fields"""
     tools_list = []
     for s in stories:
-        clean_name, clean_headline = clean_broadcast_entity_name(s.get("title") or s.get("name") or "", s.get("url", ""))
+        url = (s.get("url") or "").strip()
+        if "huggingface.co/spaces/multimodal-art/YuE" in url:
+            url = "https://github.com/multimodal-art-projection/YuE"
+            s["url"] = url
+        if "brief.delights.pro" in url:
+            url = "https://www.nscale.com"
+            s["url"] = url
+
+        clean_name, clean_headline = clean_broadcast_entity_name(s.get("title") or s.get("name") or "", url)
         final_name = s.get("name") or clean_name
         final_name = " ".join(final_name.split()[:4])[:28].strip()
         final_headline = s.get("headline") or clean_headline
@@ -422,7 +430,7 @@ def build_frontmatter_yaml(stories: List[Dict[str, Any]], episode_id: str, track
             "name": final_name,
             "headline": final_headline,
             "title": s.get("title") or final_headline,
-            "url": s.get("url", ""),
+            "url": url,
             "mode": s.get("suggested_mode", "tool_drop"),
             "hero_anchor": s.get("hero_anchor", "main h1, .hero"),
             "demo_anchor": s.get("demo_anchor", "video, canvas, #demo"),
@@ -518,7 +526,20 @@ def load_candidate_stories(date_str: str, track: str = "top4") -> List[Dict[str,
             except Exception as e:
                 log(f"⚠️ Error reading raw feed file: {e}")
 
-    valid_candidates = [c for c in candidates if c.get("title") and len(c["title"].strip()) > 8]
+    valid_candidates = []
+    for c in candidates:
+        title = (c.get("title") or "").strip()
+        url = (c.get("url") or "").strip()
+        if len(title) <= 8:
+            continue
+        if not url.startswith("http://") and not url.startswith("https://"):
+            continue
+        # Strictly ban internal newsletter URLs from being recorded as primary external video targets
+        if "brief.delights.pro" in url:
+            log(f"🚫 Filtered internal newsletter URL from video candidates: {url}")
+            continue
+        valid_candidates.append(c)
+
     log(f"Clustering {len(valid_candidates)} candidate stories into consensus events...")
     clustered = cluster_consensus_articles(valid_candidates)
 
@@ -883,8 +904,8 @@ def load_weekly_mega_candidates(date_str: str) -> List[Dict[str, Any]]:
             },
             {
                 "title": "YuE2: Open Full-Song Generation with Symbolic Score Planning",
-                "url": "https://huggingface.co/spaces/multimodal-art/YuE",
-                "summary": "Full-length vocal music generation with editable ABC symbolic score notation and live Space.",
+                "url": "https://github.com/multimodal-art-projection/YuE",
+                "summary": "Full-length vocal music generation with editable ABC symbolic score notation and open weights.",
                 "suggested_mode": "tool_drop",
                 "consensus_count": 7,
                 "hn_stats": {"points": 580, "comments": 290, "velocity": "high"}
@@ -899,7 +920,7 @@ def load_weekly_mega_candidates(date_str: str) -> List[Dict[str, Any]]:
             },
             {
                 "title": "Anthropic Agrees $45B AI Infrastructure Deal with Nscale",
-                "url": "https://brief.delights.pro/newsletters/newsletter_leaders_2026-08-28.html",
+                "url": "https://www.nscale.com",
                 "summary": "Major enterprise compute capacity buildout securing European gigawatt power.",
                 "suggested_mode": "industry_insight",
                 "consensus_count": 5,
@@ -1066,10 +1087,10 @@ def run_track(track: str, date_str: str, test_mode: bool = False) -> bool:
             },
             {
                 "title": "YuE2: Open Full-Song Generation with Symbolic Score Planning",
-                "url": "https://huggingface.co/spaces/multimodal-art/YuE",
-                "summary": "Full-length vocal music generation with editable ABC symbolic score notation and live Space.",
+                "url": "https://github.com/multimodal-art-projection/YuE",
+                "summary": "Full-length vocal music generation with editable ABC symbolic score notation and open weights.",
                 "suggested_mode": "tool_drop",
-                "source": "Hugging Face Spaces",
+                "source": "GitHub Trending",
                 "source_type": "primary",
                 "consensus_count": 5,
                 "hn_stats": {"points": 480, "comments": 210, "velocity": "high"}
@@ -1086,7 +1107,7 @@ def run_track(track: str, date_str: str, test_mode: bool = False) -> bool:
             },
             {
                 "title": "Anthropic Agrees $45B AI Infrastructure Deal with Nscale",
-                "url": "https://brief.delights.pro/newsletters/newsletter_leaders_2026-08-28.html",
+                "url": "https://www.nscale.com",
                 "summary": "Major enterprise compute capacity buildout securing European gigawatt power and datacenter buildout.",
                 "suggested_mode": "industry_insight",
                 "source": "Financial Analysis",
