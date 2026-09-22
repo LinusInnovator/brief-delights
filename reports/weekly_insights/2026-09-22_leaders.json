@@ -1,0 +1,288 @@
+{
+  "date": "2026-09-22",
+  "segment": "leaders",
+  "trends": {
+    "categories": {
+      "Venture Capital & M&A": 7,
+      "Macro Trends & Tech Economy": 2
+    },
+    "sources": {
+      "\"a16z AI when:3d\" - Google News": 5,
+      "McKinsey Insights & Publications": 2,
+      "Sifted": 1,
+      "\"economist AI when:3d\" - Google News": 1
+    },
+    "topics": [
+      "Anthropic, OpenAI Test Growth Sustainability Amid Cash Burn - \uc870\uc120\uc77c\ubcf4",
+      "a16z Reports Surge in AI Applications but Revenue Growth Lags Behind - ababnews.com",
+      "DeepMind researcher\u2019s new AI lab nears $4bn valuation, reports say",
+      "The AI economy: Interconnected forces, feedback loops, and speeds of change",
+      "Geopolitics and the geometry of global trade: September 2026 update",
+      "Anthropic, OpenAI Test Growth Sustainability Amid Cash Burn - \uc870\uc120\uc77c\ubcf4",
+      "How Artificial Intelligence Fuels Unicorn Startups Growth - finway.com.ua",
+      "AI model capabilities have reached \"sufficiency\" as competition shifts to the application layer. - KuCoin",
+      "World in Brief: AfD triumphs again in Germany; America and China agree to talk AI - The Economist"
+    ],
+    "detected_trends": [
+      {
+        "keyword": "Venture Capital & M&A",
+        "count": 7
+      },
+      {
+        "keyword": "Macro Trends & Tech Economy",
+        "count": 2
+      }
+    ],
+    "total_articles": 9
+  },
+  "article_count": 9,
+  "articles": [
+    {
+      "id": "4b97ca529b31e6898942f1b3fb7c8dbd",
+      "title": "Anthropic, OpenAI Test Growth Sustainability Amid Cash Burn - \uc870\uc120\uc77c\ubcf4",
+      "url": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxPUHBYalk3cXZGU29TTkxrc2JVVkxSYjIxZGpPUTl4Rl9FTE50dFMwVnZSU3pTRlYzMXV2NUNkU0liOURVQ3llbjNCR3R3dHYyTnBlYkZHRmJEVUhoNFVhR0NVcEdLbzkwOTVPSXNUMy04SzdkYmI0Nk50X1F6WTZveS1BVnpMbHhQ?oc=5",
+      "published_date": "2026-09-22T12:40:16.047821",
+      "description": "<a href=\"https://news.google.com/rss/articles/CBMiiAFBVV95cUxPUHBYalk3cXZGU29TTkxrc2JVVkxSYjIxZGpPUTl4Rl9FTE50dFMwVnZSU3pTRlYzMXV2NUNkU0liOURVQ3llbjNCR3R3dHYyTnBlYkZHRmJEVUhoNFVhR0NVcEdLbzkwOTVPSXNUMy04SzdkYmI0Nk50X1F6WTZveS1BVnpMbHhQ?oc=5\" target=\"_blank\">Anthropic, OpenAI Test Growth Sustainability Amid Cash Burn</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">\uc870\uc120\uc77c\ubcf4</font>",
+      "source": "\"a16z AI when:3d\" - Google News",
+      "category": "Venture Capital & M&A",
+      "segment": "leaders",
+      "source_type": "primary",
+      "raw_content": "<a href=\"https://news.google.com/rss/articles/CBMiiAFBVV95cUxPUHBYalk3cXZGU29TTkxrc2JVVkxSYjIxZGpPUTl4Rl9FTE50dFMwVnZSU3pTRlYzMXV2NUNkU0liOURVQ3llbjNCR3R3dHYyTnBlYkZHRmJEVUhoNFVhR0NVcEdLbzkwOTVPSXNUMy04SzdkYmI0Nk50X1F6WTZveS1BVnpMbHhQ?oc=5\" target=\"_blank\">Anthropic, OpenAI Test Growth Sustainability Amid Cash Burn</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">\uc870\uc120\uc77c\ubcf4</font>",
+      "segments": [
+        "leaders"
+      ],
+      "consensus_count": 2,
+      "consensus_sources": [
+        "\"a16z AI when:3d\" - Google News",
+        "The Information"
+      ],
+      "_signal_score": 55.0,
+      "on_hn": false,
+      "tier": "full",
+      "selection_reason": "This article provides critical insights into the financial sustainability of major AI players, directly impacting strategic investment and competitive analysis for executives.",
+      "audience_value": "Leaders will gain an understanding of the cash burn and growth sustainability challenges faced by leading AI companies, informing their own investment and operational strategies.",
+      "urgency_score": 9,
+      "category_tag": "\ud83d\udcb0 Funding & M&A",
+      "why_this_matters": "Why this matters: Understanding the financial health of AI giants like Anthropic and OpenAI is crucial for assessing market stability and identifying potential investment or partnership opportunities."
+    },
+    {
+      "id": "3452ae442a09fd3fd275cb8f4d551baf",
+      "title": "a16z Reports Surge in AI Applications but Revenue Growth Lags Behind - ababnews.com",
+      "url": "https://news.google.com/rss/articles/CBMidEFVX3lxTE5iTTdfWUNFQVNUWmZLU3VGbXFPM3FsQmd5WWJ2emFVOGtnUUFJdzdjVFdWbXREZ2JGMFoyNDhXSWNFdDVndFdPcnpkczgxcHg2OVpUQURkM0ZocDUtZkpoZmlKMm5WZVlhdTlOMzg3X3hibExM?oc=5",
+      "published_date": "2026-09-22T12:40:16.047884",
+      "description": "<a href=\"https://news.google.com/rss/articles/CBMidEFVX3lxTE5iTTdfWUNFQVNUWmZLU3VGbXFPM3FsQmd5WWJ2emFVOGtnUUFJdzdjVFdWbXREZ2JGMFoyNDhXSWNFdDVndFdPcnpkczgxcHg2OVpUQURkM0ZocDUtZkpoZmlKMm5WZVlhdTlOMzg3X3hibExM?oc=5\" target=\"_blank\">a16z Reports Surge in AI Applications but Revenue Growth Lags Behind</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">ababnews.com</font>",
+      "source": "\"a16z AI when:3d\" - Google News",
+      "category": "Venture Capital & M&A",
+      "segment": "leaders",
+      "source_type": "primary",
+      "raw_content": "<a href=\"https://news.google.com/rss/articles/CBMidEFVX3lxTE5iTTdfWUNFQVNUWmZLU3VGbXFPM3FsQmd5WWJ2emFVOGtnUUFJdzdjVFdWbXREZ2JGMFoyNDhXSWNFdDVndFdPcnpkczgxcHg2OVpUQURkM0ZocDUtZkpoZmlKMm5WZVlhdTlOMzg3X3hibExM?oc=5\" target=\"_blank\">a16z Reports Surge in AI Applications but Revenue Growth Lags Behind</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">ababnews.com</font>",
+      "segments": [
+        "leaders"
+      ],
+      "consensus_count": 1,
+      "consensus_sources": [
+        "\"a16z AI when:3d\" - Google News"
+      ],
+      "_signal_score": 53.0,
+      "on_hn": false,
+      "tier": "full",
+      "selection_reason": "This report from a16z highlights a key market trend: the disconnect between AI application growth and actual revenue, offering strategic insights for business leaders.",
+      "audience_value": "Leaders can leverage this information to understand the current state of AI monetization and identify potential market gaps or opportunities for their own ventures.",
+      "urgency_score": 8,
+      "category_tag": "\ud83d\udcca Market Trends",
+      "why_this_matters": "Why this matters: This analysis from a prominent VC firm signals a critical inflection point in the AI market, requiring leaders to reassess their go-to-market strategies and revenue projections."
+    },
+    {
+      "id": "72e5eb0909f4d96edcb96e69e4d9df7c",
+      "title": "DeepMind researcher\u2019s new AI lab nears $4bn valuation, reports say",
+      "url": "https://sifted.eu/articles/deepmind-researchers-new-ai-lab-nears-4bn-valuation-reports-say/",
+      "published_date": "2026-09-22T12:40:18.125004",
+      "description": "",
+      "source": "Sifted",
+      "category": "Venture Capital & M&A",
+      "segment": "leaders",
+      "source_type": "primary",
+      "raw_content": "",
+      "segments": [
+        "leaders"
+      ],
+      "consensus_count": 1,
+      "consensus_sources": [
+        "Sifted"
+      ],
+      "_signal_score": 49.0,
+      "on_hn": false,
+      "tier": "full",
+      "selection_reason": "The high valuation of a new AI lab founded by a DeepMind researcher indicates significant investor confidence and a potential new competitor in the AI space.",
+      "audience_value": "Executives can gauge the competitive landscape and understand where significant capital is flowing within the AI research and development sector.",
+      "urgency_score": 8,
+      "category_tag": "\ud83d\udcb0 Funding & M&A",
+      "why_this_matters": "Why this matters: A new AI lab achieving a near-$4 billion valuation signals intense competition and innovation, prompting leaders to evaluate their own AI talent acquisition and R&D strategies."
+    },
+    {
+      "id": "64608b883d3f275539be6c33fc1866ae",
+      "title": "The AI economy: Interconnected forces, feedback loops, and speeds of change",
+      "url": "https://www.mckinsey.com/mgi/our-research/the-ai-economy-interconnected-forces-feedback-loops-and-speeds-of-change",
+      "published_date": "2026-09-22T12:40:19.288938",
+      "description": "AI is shaped by forces far beyond the technology itself, and its effects reach just as widely. Mapping how the pieces interact helps us see what could influence its course and where hurdles and opportunities may emerge.",
+      "source": "McKinsey Insights & Publications",
+      "category": "Macro Trends & Tech Economy",
+      "segment": "leaders",
+      "source_type": "primary",
+      "raw_content": "AI is shaped by forces far beyond the technology itself, and its effects reach just as widely. Mapping how the pieces interact helps us see what could influence its course and where hurdles and opportunities may emerge.",
+      "segments": [
+        "leaders"
+      ],
+      "consensus_count": 1,
+      "consensus_sources": [
+        "McKinsey Insights & Publications"
+      ],
+      "_signal_score": 45.0,
+      "on_hn": false,
+      "tier": "full",
+      "selection_reason": "This deep dive into the AI economy's interconnected forces provides a strategic framework for understanding market dynamics and future growth.",
+      "audience_value": "Leaders will gain a comprehensive understanding of the complex feedback loops and external factors shaping the AI economy, enabling more informed long-term strategic planning.",
+      "urgency_score": 7,
+      "category_tag": "\ud83d\udcca Market Trends",
+      "why_this_matters": "Why this matters: Understanding the systemic forces driving the AI economy is essential for leaders to anticipate market shifts and position their companies for sustained growth."
+    },
+    {
+      "id": "70d63fe94d1f102e87f1c3eb1334bf6d",
+      "title": "Geopolitics and the geometry of global trade: September 2026 update",
+      "url": "https://www.mckinsey.com/mgi/our-research/global-trade-regional-updates",
+      "published_date": "2026-09-22T12:40:19.289118",
+      "description": "",
+      "source": "McKinsey Insights & Publications",
+      "category": "Macro Trends & Tech Economy",
+      "segment": "leaders",
+      "source_type": "primary",
+      "raw_content": "",
+      "segments": [
+        "leaders"
+      ],
+      "consensus_count": 2,
+      "consensus_sources": [
+        "McKinsey Insights & Publications"
+      ],
+      "_signal_score": 51.0,
+      "on_hn": false,
+      "tier": "full",
+      "selection_reason": "An update on global trade dynamics provides essential context for businesses operating in an increasingly complex geopolitical and economic environment.",
+      "audience_value": "Executives will receive crucial updates on global trade patterns and geopolitical influences that could impact supply chains, market access, and international business strategy.",
+      "urgency_score": 7,
+      "category_tag": "\ud83d\udcca Market Trends",
+      "why_this_matters": "Why this matters: Geopolitical shifts directly impact global trade, requiring leaders to adapt their strategies for market access, supply chain resilience, and international revenue streams."
+    },
+    {
+      "id": "4b97ca529b31e6898942f1b3fb7c8dbd",
+      "title": "Anthropic, OpenAI Test Growth Sustainability Amid Cash Burn - \uc870\uc120\uc77c\ubcf4",
+      "url": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxPUHBYalk3cXZGU29TTkxrc2JVVkxSYjIxZGpPUTl4Rl9FTE50dFMwVnZSU3pTRlYzMXV2NUNkU0liOURVQ3llbjNCR3R3dHYyTnBlYkZHRmJEVUhoNFVhR0NVcEdLbzkwOTVPSXNUMy04SzdkYmI0Nk50X1F6WTZveS1BVnpMbHhQ?oc=5",
+      "published_date": "2026-09-22T12:40:16.047821",
+      "description": "<a href=\"https://news.google.com/rss/articles/CBMiiAFBVV95cUxPUHBYalk3cXZGU29TTkxrc2JVVkxSYjIxZGpPUTl4Rl9FTE50dFMwVnZSU3pTRlYzMXV2NUNkU0liOURVQ3llbjNCR3R3dHYyTnBlYkZHRmJEVUhoNFVhR0NVcEdLbzkwOTVPSXNUMy04SzdkYmI0Nk50X1F6WTZveS1BVnpMbHhQ?oc=5\" target=\"_blank\">Anthropic, OpenAI Test Growth Sustainability Amid Cash Burn</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">\uc870\uc120\uc77c\ubcf4</font>",
+      "source": "\"a16z AI when:3d\" - Google News",
+      "category": "Venture Capital & M&A",
+      "segment": "leaders",
+      "source_type": "primary",
+      "raw_content": "<a href=\"https://news.google.com/rss/articles/CBMiiAFBVV95cUxPUHBYalk3cXZGU29TTkxrc2JVVkxSYjIxZGpPUTl4Rl9FTE50dFMwVnZSU3pTRlYzMXV2NUNkU0liOURVQ3llbjNCR3R3dHYyTnBlYkZHRmJEVUhoNFVhR0NVcEdLbzkwOTVPSXNUMy04SzdkYmI0Nk50X1F6WTZveS1BVnpMbHhQ?oc=5\" target=\"_blank\">Anthropic, OpenAI Test Growth Sustainability Amid Cash Burn</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">\uc870\uc120\uc77c\ubcf4</font>",
+      "segments": [
+        "leaders"
+      ],
+      "consensus_count": 2,
+      "consensus_sources": [
+        "\"a16z AI when:3d\" - Google News",
+        "The Information"
+      ],
+      "_signal_score": 55.0,
+      "on_hn": false,
+      "tier": "full",
+      "selection_reason": "This article delves into the financial sustainability of major AI companies, offering critical insights for strategic investment and competitive analysis.",
+      "audience_value": "Leaders will understand the cash burn and growth sustainability challenges faced by leading AI firms, informing their own investment and operational strategies.",
+      "urgency_score": 9,
+      "category_tag": "\ud83d\udcb0 Funding & M&A",
+      "why_this_matters": "Why this matters: Assessing the financial viability of key AI players is essential for leaders to make informed decisions about partnerships, investments, and competitive positioning."
+    },
+    {
+      "id": "6e29168c2d7ea37c582f482c6740964c",
+      "title": "How Artificial Intelligence Fuels Unicorn Startups Growth - finway.com.ua",
+      "url": "https://news.google.com/rss/articles/CBMigAFBVV95cUxNWTJ6MmhvWmFlUHk1ek9UUVA1UXpsWUZkZXd4bXlWU1ROZ2UtbXJ2c3RxaEhKbGdQbjhURnB0ZWRmdlpWbkdMekhaalQtcktGU0ZVd1dyYldWcXNqY1cwSW5ta2NUOVl5RWhyNVoxUmdOcmNLeGFpY3JGYlZVNEY3Zg?oc=5",
+      "published_date": "2026-09-22T12:40:16.047914",
+      "description": "<a href=\"https://news.google.com/rss/articles/CBMigAFBVV95cUxNWTJ6MmhvWmFlUHk1ek9UUVA1UXpsWUZkZXd4bXlWU1ROZ2UtbXJ2c3RxaEhKbGdQbjhURnB0ZWRmdlpWbkdMekhaalQtcktGU0ZVd1dyYldWcXNqY1cwSW5ta2NUOVl5RWhyNVoxUmdOcmNLeGFpY3JGYlZVNEY3Zg?oc=5\" target=\"_blank\">How Artificial Intelligence Fuels Unicorn Startups Growth</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">finway.com.ua</font>",
+      "source": "\"a16z AI when:3d\" - Google News",
+      "category": "Venture Capital & M&A",
+      "segment": "leaders",
+      "source_type": "primary",
+      "raw_content": "<a href=\"https://news.google.com/rss/articles/CBMigAFBVV95cUxNWTJ6MmhvWmFlUHk1ek9UUVA1UXpsWUZkZXd4bXlWU1ROZ2UtbXJ2c3RxaEhKbGdQbjhURnB0ZWRmdlpWbkdMekhaalQtcktGU0ZVd1dyYldWcXNqY1cwSW5ta2NUOVl5RWhyNVoxUmdOcmNLeGFpY3JGYlZVNEY3Zg?oc=5\" target=\"_blank\">How Artificial Intelligence Fuels Unicorn Startups Growth</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">finway.com.ua</font>",
+      "segments": [
+        "leaders"
+      ],
+      "consensus_count": 3,
+      "consensus_sources": [
+        "\"a16z AI when:3d\" - Google News",
+        "\"economist AI when:3d\" - Google News"
+      ],
+      "_signal_score": 61.0,
+      "on_hn": false,
+      "tier": "full",
+      "selection_reason": "This article explores how AI is a key driver for unicorn startup growth, providing strategic insights into leveraging AI for rapid business expansion.",
+      "audience_value": "Leaders can learn about the critical role of AI in achieving hyper-growth and unicorn status, informing their own strategies for scaling and market leadership.",
+      "urgency_score": 8,
+      "category_tag": "\ud83d\ude80 AI & Innovation",
+      "why_this_matters": "Why this matters: Understanding how AI fuels unicorn growth is vital for leaders aiming to achieve rapid scaling and market dominance."
+    },
+    {
+      "id": "77572e194d14ed3e2650eca4180898f2",
+      "title": "AI model capabilities have reached \"sufficiency\" as competition shifts to the application layer. - KuCoin",
+      "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxQb1puQjhzNEsxLUZvZVp4LXFlYy1UaUhpRF9FQkxpZXNyWWVWSUJVXy1nbk5FRlRsMlVucDFmcjB0SkpUajR3ZzRURjFPcS1QejJCcUVGV0x0NmlhUUNIdlU2UWlobUstY00tWUQ1SklFTDhzUGVwMDNyaUtIdjRZZy1yT0c5ZmRnTkNxeXV6TWlfT0FjZmlsQXBYN0daU3VLVGUwME9POTQ5dGF4SjBXTFRJb0ZOQnc?oc=5",
+      "published_date": "2026-09-22T12:40:16.047868",
+      "description": "<a href=\"https://news.google.com/rss/articles/CBMitwFBVV95cUxQb1puQjhzNEsxLUZvZVp4LXFlYy1UaUhpRF9FQkxpZXNyWWVWSUJVXy1nbk5FRlRsMlVucDFmcjB0SkpUajR3ZzRURjFPcS1QejJCcUVGV0x0NmlhUUNIdlU2UWlobUstY00tWUQ1SklFTDhzUGVwMDNyaUtIdjRZZy1yT0c5ZmRnTkNxeXV6TWlfT0FjZmlsQXBYN0daU3VLVGUwME9POTQ5dGF4SjBXTFRJb0ZOQnc?oc=5\" target=\"_blank\">AI model capabilities have reached \"sufficiency\" as competition shifts to the application layer.</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">KuCoin</font>",
+      "source": "\"a16z AI when:3d\" - Google News",
+      "category": "Venture Capital & M&A",
+      "segment": "leaders",
+      "source_type": "primary",
+      "raw_content": "<a href=\"https://news.google.com/rss/articles/CBMitwFBVV95cUxQb1puQjhzNEsxLUZvZVp4LXFlYy1UaUhpRF9FQkxpZXNyWWVWSUJVXy1nbk5FRlRsMlVucDFmcjB0SkpUajR3ZzRURjFPcS1QejJCcUVGV0x0NmlhUUNIdlU2UWlobUstY00tWUQ1SklFTDhzUGVwMDNyaUtIdjRZZy1yT0c5ZmRnTkNxeXV6TWlfT0FjZmlsQXBYN0daU3VLVGUwME9POTQ5dGF4SjBXTFRJb0ZOQnc?oc=5\" target=\"_blank\">AI model capabilities have reached \"sufficiency\" as competition shifts to the application layer.</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">KuCoin</font>",
+      "segments": [
+        "leaders"
+      ],
+      "consensus_count": 1,
+      "consensus_sources": [
+        "\"a16z AI when:3d\" - Google News"
+      ],
+      "_signal_score": 45.0,
+      "on_hn": false,
+      "tier": "quick",
+      "selection_reason": "This article signals a shift in AI development focus from model capabilities to application layer innovation, impacting product strategy.",
+      "audience_value": "Leaders can understand the evolving AI landscape and where future innovation and competitive advantage will likely lie.",
+      "urgency_score": 7,
+      "category_tag": "\ud83d\ude80 AI & Innovation",
+      "why_this_matters": "Why this matters: The shift to the application layer in AI development signifies new opportunities for market differentiation and strategic product focus."
+    },
+    {
+      "id": "20710469484a651b10d9cb84f74aa82c",
+      "title": "World in Brief: AfD triumphs again in Germany; America and China agree to talk AI - The Economist",
+      "url": "https://news.google.com/rss/articles/CBMilwFBVV95cUxNZWFDRENoNzlFV3RwamFFdEVxdnBRV3VCOV9SQ2g0RFNLVU4xNm41ZVdGOWl3RXp5bVNEc0J6RWtjQzBFTURReG9WM3NfR1JUSFNWd3dzNUpZaDJFRkZRODhrclVNdXdRQlMzZDEtV25VWTVXdHVVSnktNG10WHhYUzJVd1pFTFlOQ0FoV3hjaU5hb0tEX2RJ?oc=5",
+      "published_date": "2026-09-22T12:40:17.636662",
+      "description": "<a href=\"https://news.google.com/rss/articles/CBMilwFBVV95cUxNZWFDRENoNzlFV3RwamFFdEVxdnBRV3VCOV9SQ2g0RFNLVU4xNm41ZVdGOWl3RXp5bVNEc0J6RWtjQzBFTURReG9WM3NfR1JUSFNWd3dzNUpZaDJFRkZRODhrclVNdXdRQlMzZDEtV25VWTVXdHVVSnktNG10WHhYUzJVd1pFTFlOQ0FoV3hjaU5hb0tEX2RJ?oc=5\" target=\"_blank\">World in Brief: AfD triumphs again in Germany; America and China agree to talk AI</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">The Economist</font>",
+      "source": "\"economist AI when:3d\" - Google News",
+      "category": "Venture Capital & M&A",
+      "segment": "leaders",
+      "source_type": "secondary",
+      "raw_content": "<a href=\"https://news.google.com/rss/articles/CBMilwFBVV95cUxNZWFDRENoNzlFV3RwamFFdEVxdnBRV3VCOV9SQ2g0RFNLVU4xNm41ZVdGOWl3RXp5bVNEc0J6RWtjQzBFTURReG9WM3NfR1JUSFNWd3dzNUpZaDJFRkZRODhrclVNdXdRQlMzZDEtV25VWTVXdHVVSnktNG10WHhYUzJVd1pFTFlOQ0FoV3hjaU5hb0tEX2RJ?oc=5\" target=\"_blank\">World in Brief: AfD triumphs again in Germany; America and China agree to talk AI</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">The Economist</font>",
+      "segments": [
+        "leaders"
+      ],
+      "consensus_count": 4,
+      "consensus_sources": [
+        "\"economist AI when:3d\" - Google News",
+        "\"restofworld AI when:3d\" - Google News"
+      ],
+      "_signal_score": 36.0,
+      "on_hn": false,
+      "tier": "quick",
+      "selection_reason": "This brief covers international AI developments, including US-China discussions, relevant for global strategy.",
+      "audience_value": "Leaders can stay informed about key geopolitical developments in AI that could affect international markets and partnerships.",
+      "urgency_score": 6,
+      "category_tag": "\ud83d\udcca Market Trends",
+      "why_this_matters": "Why this matters: International AI policy and collaboration discussions are critical for leaders navigating global markets and regulatory landscapes."
+    }
+  ]
+}

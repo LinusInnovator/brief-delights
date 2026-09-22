@@ -4,15 +4,15 @@
     "track": "top4",
     "episode_id": "ai-news-2026-09-22-top4",
     "stories": [
-      "YuE2",
-      "DeepSeek V4.1 Flash",
-      "Anthropic / Nscale",
-      "Marigold v2"
+      "Stable Diffusion",
+      "Introducing gpt-oss",
+      "Anthropic OpenAI Test",
+      "Grounded Action Model"
     ],
     "stories_count": 4,
     "json_path": "/data/video_scripts/2026-09-22-ai-news.json",
     "md_path": "/data/video_scripts/2026-09-22-ai-news.md",
-    "updated_at": "2026-09-22T11:23:47.863613"
+    "updated_at": "2026-09-22T12:51:27.956454"
   },
   {
     "date": "2026-09-21",

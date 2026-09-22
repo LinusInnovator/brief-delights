@@ -4,156 +4,145 @@
   "format": "daily",
   "date": "2026-09-22",
   "voice_profile": "alex_tech",
-  "intro": "[excited] Four drops today, and Hacker News is on fire \u2014 YuE2 hits 480 points, DeepSeek V4.1 Flash tops 650. Music, models, mega-compute, and real-time depth. Let's go.",
+  "intro": "[excited] Today's safari: OpenAI drops open weights under Apache 2.0, robots learn to actually see objects, and the AI cash-burn question nobody wants to answer.",
   "stories": [
     {
-      "name": "YuE2",
-      "headline": "Open Full-Song Generation with Symbolic Score Planning",
-      "title": "YuE2: Open Full-Song Generation with Symbolic Score Planning",
-      "url": "https://huggingface.co/spaces/multimodal-art/YuE",
+      "name": "Stable Diffusion",
+      "headline": "Stable Diffusion with \ud83e\udde8 Diffusers",
+      "title": "Stable Diffusion with \ud83e\udde8 Diffusers",
+      "url": "https://huggingface.co/blog/stable_diffusion",
       "mode": "tool_drop",
       "hero_anchor": "h1, .model-header, header",
-      "demo_anchor": "iframe[src*='gradio'], .gradio-container, canvas, video, button[type='submit'], .output",
-      "download_anchor": "button[data-testid='duplicate-button'], a[href*='tree/main']",
-      "specs": "Interactive Space | Hugging Face | Live Demo",
-      "video_readiness": 135.0,
-      "consensus_count": 5,
-      "hn_points": 480,
+      "demo_anchor": "table, .results, #benchmark, canvas, .viewer, video",
+      "download_anchor": "button[data-testid='download-button'], a[href*='tree/main'], a[href*='resolve']",
+      "specs": "Model Weights | Hugging Face Hub",
+      "video_readiness": 55.0,
+      "consensus_count": 1,
+      "hn_points": null,
       "badges": [
-        "\ud83d\udd25 HN Trending (480 pts)",
-        "\u26a1 5 Outlets Confirmed",
-        "\u2728 Interactive Demo Live"
+        "\ud83d\udce6 Open Weights"
       ],
       "beats": {
-        "landing_page": "[confident] YuE2 generates full songs with vocals, but here's the twist \u2014 it plans the track as an editable symbolic ABC score first. Five outlets confirmed, 480 points on Hacker News.",
-        "demo": "[amazed] Open the Space, type a style prompt, and watch it draft notation before it ever renders audio. You can rewrite the score mid-flight and regenerate. Structure you can actually edit.",
-        "access": "[excited] It's live right now on Hugging Face Spaces \u2014 free to poke at. Link's below. Go break it, then tell me if the chorus holds up."
+        "landing_page": "[confident] First up, Hugging Face's Diffusers guide \u2014 the cleanest on-ramp to Stable Diffusion. No boilerplate, no broken repos; just the library that became the default for open image generation.",
+        "demo": "[amazed] Three lines of Python and you're rendering images. Swap schedulers, load open weights straight off the Hub, and quantize to fit your own GPU. It's the fastest path from zero to a diffusion pipeline.",
+        "access": "[excited] Everything's open weights on the Hugging Face Hub, installable right now. Scorecard sits at 55 for video readiness \u2014 solid, but it's the foundation every other image tool builds on."
       },
       "ordered_beats": [
         {
           "title": "Landing Page",
-          "narration": "[confident] YuE2 generates full songs with vocals, but here's the twist \u2014 it plans the track as an editable symbolic ABC score first. Five outlets confirmed, 480 points on Hacker News."
+          "narration": "[confident] First up, Hugging Face's Diffusers guide \u2014 the cleanest on-ramp to Stable Diffusion. No boilerplate, no broken repos; just the library that became the default for open image generation."
         },
         {
           "title": "Demo",
-          "narration": "[amazed] Open the Space, type a style prompt, and watch it draft notation before it ever renders audio. You can rewrite the score mid-flight and regenerate. Structure you can actually edit."
+          "narration": "[amazed] Three lines of Python and you're rendering images. Swap schedulers, load open weights straight off the Hub, and quantize to fit your own GPU. It's the fastest path from zero to a diffusion pipeline."
         },
         {
           "title": "Access",
-          "narration": "[excited] It's live right now on Hugging Face Spaces \u2014 free to poke at. Link's below. Go break it, then tell me if the chorus holds up."
+          "narration": "[excited] Everything's open weights on the Hugging Face Hub, installable right now. Scorecard sits at 55 for video readiness \u2014 solid, but it's the foundation every other image tool builds on."
         }
       ]
     },
     {
-      "name": "DeepSeek V4.1 Flash",
-      "headline": "Asymmetric Compute MoE Architecture",
-      "title": "DeepSeek V4.1 Flash: Asymmetric Compute MoE Architecture",
-      "url": "https://arxiv.org/abs/2609.11200",
+      "name": "Introducing gpt-oss",
+      "headline": "Introducing gpt-oss",
+      "title": "Introducing gpt-oss",
+      "url": "https://openai.com/index/introducing-gpt-oss",
       "mode": "paper_preview",
-      "hero_anchor": "h1.title, .title, h1",
-      "demo_anchor": "a.download-pdf, div.extra-services, table.benchmark, figure",
-      "download_anchor": "a.download-pdf, a[href*='arxiv.org/pdf']",
-      "specs": "Research Preprint | arXiv",
-      "video_readiness": 85.0,
-      "consensus_count": 6,
-      "hn_points": 650,
-      "badges": [
-        "\ud83d\udd25 HN Trending (650 pts)",
-        "\u26a1 6 Outlets Confirmed",
-        "\ud83d\udcc4 Research Preprint"
-      ],
+      "hero_anchor": "main h1, header h1, h1",
+      "demo_anchor": "figure, table, .results, #diagram, #comparison",
+      "download_anchor": "a[href*='pdf'], a[href*='arxiv.org'], a[href*='github.com']",
+      "specs": "Research Preview | Benchmark",
+      "video_readiness": 40.0,
+      "consensus_count": 2,
+      "hn_points": null,
+      "badges": [],
       "beats": {
-        "paper": "[curious] DeepSeek V4.1 Flash lands as a 552-billion parameter MoE preprint \u2014 and it's already the biggest thread today at 650 points, 380 comments.",
-        "architecture": "[confident] The hook is asymmetric compute: different experts get different budgets, so cheap tokens stay cheap and hard tokens get real depth. Benchmark tables are in the paper.",
-        "release_horizon": "[skeptical] PyTorch weights are already on Hugging Face, which is unusually fast for a preprint. Six outlets confirmed it. Treat the benchmarks as claimed until independent evals drop."
+        "paper": "[curious] Now the one that broke the timeline \u2014 OpenAI publishing state-of-the-art open-weight models under Apache 2.0. That's a genuine watershed for the open-source crowd, and it's still only a research preview.",
+        "architecture": "[confident] Benchmarks are the headline here, and multi-outlet consensus is doubling up on the story. The weights land permissively, which means fine-tune it, ship it, sell it \u2014 no licensing lawyers required.",
+        "release_horizon": "[skeptical] Scorecard only reads 40, because a preview isn't a product. Watch the benchmark table carefully \u2014 if these numbers hold up against closed frontier models, the pricing floor just moved."
       },
       "ordered_beats": [
         {
           "title": "Paper",
-          "narration": "[curious] DeepSeek V4.1 Flash lands as a 552-billion parameter MoE preprint \u2014 and it's already the biggest thread today at 650 points, 380 comments."
+          "narration": "[curious] Now the one that broke the timeline \u2014 OpenAI publishing state-of-the-art open-weight models under Apache 2.0. That's a genuine watershed for the open-source crowd, and it's still only a research preview."
         },
         {
           "title": "Architecture",
-          "narration": "[confident] The hook is asymmetric compute: different experts get different budgets, so cheap tokens stay cheap and hard tokens get real depth. Benchmark tables are in the paper."
+          "narration": "[confident] Benchmarks are the headline here, and multi-outlet consensus is doubling up on the story. The weights land permissively, which means fine-tune it, ship it, sell it \u2014 no licensing lawyers required."
         },
         {
           "title": "Release Horizon",
-          "narration": "[skeptical] PyTorch weights are already on Hugging Face, which is unusually fast for a preprint. Six outlets confirmed it. Treat the benchmarks as claimed until independent evals drop."
+          "narration": "[skeptical] Scorecard only reads 40, because a preview isn't a product. Watch the benchmark table carefully \u2014 if these numbers hold up against closed frontier models, the pricing floor just moved."
         }
       ]
     },
     {
-      "name": "Anthropic / Nscale",
-      "headline": "Anthropic Agrees $45B AI Infrastructure Deal with Nscale",
-      "title": "Anthropic / Nscale: Anthropic Agrees $45B AI Infrastructure Deal with Nscale",
-      "url": "https://brief.delights.pro/newsletters/newsletter_leaders_2026-08-28.html",
+      "name": "Anthropic OpenAI Test",
+      "headline": "Anthropic, OpenAI Test Growth Sustainability Amid Cash Burn - \uc870\uc120\uc77c\ubcf4",
+      "title": "Anthropic OpenAI Test: Anthropic, OpenAI Test Growth Sustainability Amid Cash Burn - \uc870\uc120\uc77c\ubcf4",
+      "url": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxPUHBYalk3cXZGU29TTkxrc2JVVkxSYjIxZGpPUTl4Rl9FTE50dFMwVnZSU3pTRlYzMXV2NUNkU0liOURVQ3llbjNCR3R3dHYyTnBlYkZHRmJEVUhoNFVhR0NVcEdLbzkwOTVPSXNUMy04SzdkYmI0Nk50X1F6WTZveS1BVnpMbHhQ?oc=5",
       "mode": "industry_insight",
       "hero_anchor": "main h1, header h1, .hero h1, h1",
       "demo_anchor": "figure, table, blockquote, canvas, .chart, .metrics",
       "download_anchor": "a[href*='report'], a[href*='pdf'], a.cta-button",
       "specs": "Industry Insight | Strategic Analysis",
-      "video_readiness": 65.0,
-      "consensus_count": 3,
-      "hn_points": 190,
-      "badges": [
-        "\ud83d\udd25 HN Trending (190 pts)",
-        "\u26a1 3 Outlets Confirmed"
-      ],
+      "video_readiness": 40.0,
+      "consensus_count": 2,
+      "hn_points": null,
+      "badges": [],
       "beats": {
-        "headline": "[excited] Anthropic just signed a forty-five billion dollar infrastructure deal with Nscale \u2014 locking down European gigawatt power and datacenter capacity.",
-        "evidence": "[confident] Three outlets confirmed it, and it's sitting at 190 points on Hacker News. This isn't a model launch \u2014 it's a land grab for electricity and silicon.",
-        "the_verdict": "[curious] Compute is the new moat. Watch who else signs gigawatt contracts this quarter. If you're building on Claude, your inference costs just got a long-term bet behind them."
+        "headline": "[curious] Third story, and it's the uncomfortable one: Anthropic and OpenAI under scrutiny for growth sustainability while burning cash at a rate that makes VCs sweat through their quarter-zips.",
+        "evidence": "[confident] The reporting tracks revenue against compute spend, and the gap is the entire story. Two outlets are converging on the same analysis \u2014 this isn't a hit piece, it's a runway check.",
+        "the_verdict": "[skeptical] Verdict: the models get cheaper, the infrastructure doesn't. If you're budgeting AI for 2027, model spend is a line item your CFO will absolutely ask about. Plan accordingly."
       },
       "ordered_beats": [
         {
           "title": "Headline",
-          "narration": "[excited] Anthropic just signed a forty-five billion dollar infrastructure deal with Nscale \u2014 locking down European gigawatt power and datacenter capacity."
+          "narration": "[curious] Third story, and it's the uncomfortable one: Anthropic and OpenAI under scrutiny for growth sustainability while burning cash at a rate that makes VCs sweat through their quarter-zips."
         },
         {
           "title": "Evidence",
-          "narration": "[confident] Three outlets confirmed it, and it's sitting at 190 points on Hacker News. This isn't a model launch \u2014 it's a land grab for electricity and silicon."
+          "narration": "[confident] The reporting tracks revenue against compute spend, and the gap is the entire story. Two outlets are converging on the same analysis \u2014 this isn't a hit piece, it's a runway check."
         },
         {
           "title": "The Verdict",
-          "narration": "[curious] Compute is the new moat. Watch who else signs gigawatt contracts this quarter. If you're building on Claude, your inference costs just got a long-term bet behind them."
+          "narration": "[skeptical] Verdict: the models get cheaper, the infrastructure doesn't. If you're budgeting AI for 2027, model spend is a line item your CFO will absolutely ask about. Plan accordingly."
         }
       ]
     },
     {
-      "name": "Marigold v2",
-      "headline": "Diffusion Transformers for Real-Time Monocular Depth",
-      "title": "Marigold v2: Diffusion Transformers for Real-Time Monocular Depth",
-      "url": "https://github.com/prs-eth/marigold",
+      "name": "Grounded Action Model",
+      "headline": "3D Grounding as a Foundation for Robotics",
+      "title": "Grounded Action Model: 3D Grounding as a Foundation for Robotics",
+      "url": "https://huggingface.co/papers/2609.23863",
       "mode": "tool_drop",
-      "hero_anchor": "article.markdown-body h1, .repository-content, #readme h1, h1",
-      "demo_anchor": "article.markdown-body img[src*='.gif'], article.markdown-body video, article.markdown-body details, #readme img, table",
-      "download_anchor": "a[href*='releases'], a[href*='clone'], .btn-primary, a[href$='.zip']",
-      "specs": "Open Source | GitHub | Code & Docs",
-      "video_readiness": 110.0,
-      "consensus_count": 4,
-      "hn_points": 340,
+      "hero_anchor": "h1, .paper-title, h1.title",
+      "demo_anchor": "table, figure, .results, #benchmark, div[class*='abstract']",
+      "download_anchor": "a[href*='arxiv.org/pdf'], a[href*='huggingface.co/papers']",
+      "specs": "Research Paper | Hugging Face Daily Papers",
+      "video_readiness": 50.0,
+      "consensus_count": 1,
+      "hn_points": null,
       "badges": [
-        "\ud83d\udd25 HN Trending (340 pts)",
-        "\u26a1 4 Outlets Confirmed",
-        "\ud83d\udee0\ufe0f Open Source Repo"
+        "\ud83d\udce6 Open Weights"
       ],
       "beats": {
-        "landing_page": "[confident] Marigold v2 does monocular depth estimation four times faster using diffusion transformers \u2014 on consumer GPUs. 340 points, four outlets confirmed.",
-        "demo": "[amazed] Feed it a single video frame, get a dense depth map back in real time. Robotics, AR, 3D reconstruction \u2014 all of it just got cheaper to prototype.",
-        "access": "[friendly] Fully open source on GitHub, code and docs included. Clone it, run it on your own card, and see how it holds up on your footage."
+        "landing_page": "[curious] Last one's from the Hugging Face daily papers \u2014 a Grounded Action Model that teaches manipulation policies which objects matter and exactly where they are in 3D space.",
+        "demo": "[amazed] Current robot foundation models, VLAs and world-action models alike, never explicitly require metric grounding \u2014 they just hope it emerges from demonstrations. This one bakes it in and hits 18 upvotes on the board.",
+        "access": "[excited] Open weights are published and the paper's live. Grounding is the missing layer for real-world robots, and this is the blueprint worth reading tonight."
       },
       "ordered_beats": [
         {
           "title": "Landing Page",
-          "narration": "[confident] Marigold v2 does monocular depth estimation four times faster using diffusion transformers \u2014 on consumer GPUs. 340 points, four outlets confirmed."
+          "narration": "[curious] Last one's from the Hugging Face daily papers \u2014 a Grounded Action Model that teaches manipulation policies which objects matter and exactly where they are in 3D space."
         },
         {
           "title": "Demo",
-          "narration": "[amazed] Feed it a single video frame, get a dense depth map back in real time. Robotics, AR, 3D reconstruction \u2014 all of it just got cheaper to prototype."
+          "narration": "[amazed] Current robot foundation models, VLAs and world-action models alike, never explicitly require metric grounding \u2014 they just hope it emerges from demonstrations. This one bakes it in and hits 18 upvotes on the board."
         },
         {
           "title": "Access",
-          "narration": "[friendly] Fully open source on GitHub, code and docs included. Clone it, run it on your own card, and see how it holds up on your footage."
+          "narration": "[excited] Open weights are published and the paper's live. Grounding is the missing layer for real-world robots, and this is the blueprint worth reading tonight."
         }
       ]
     }
@@ -161,81 +150,70 @@
   "outro": "[friendly] All project links, Hugging Face spaces, and research papers are organized down in the description below. Hit subscribe to Brief Delights for your daily rundown, and I'll see you tomorrow.",
   "tools_metadata": [
     {
-      "name": "YuE2",
-      "headline": "Open Full-Song Generation with Symbolic Score Planning",
-      "title": "YuE2: Open Full-Song Generation with Symbolic Score Planning",
-      "url": "https://huggingface.co/spaces/multimodal-art/YuE",
+      "name": "Stable Diffusion",
+      "headline": "Stable Diffusion with \ud83e\udde8 Diffusers",
+      "title": "Stable Diffusion with \ud83e\udde8 Diffusers",
+      "url": "https://huggingface.co/blog/stable_diffusion",
       "mode": "tool_drop",
       "hero_anchor": "h1, .model-header, header",
-      "demo_anchor": "iframe[src*='gradio'], .gradio-container, canvas, video, button[type='submit'], .output",
-      "download_anchor": "button[data-testid='duplicate-button'], a[href*='tree/main']",
-      "specs": "Interactive Space | Hugging Face | Live Demo",
-      "video_readiness": 135.0,
-      "consensus_count": 5,
-      "hn_points": 480,
+      "demo_anchor": "table, .results, #benchmark, canvas, .viewer, video",
+      "download_anchor": "button[data-testid='download-button'], a[href*='tree/main'], a[href*='resolve']",
+      "specs": "Model Weights | Hugging Face Hub",
+      "video_readiness": 55.0,
+      "consensus_count": 1,
+      "hn_points": null,
       "badges": [
-        "\ud83d\udd25 HN Trending (480 pts)",
-        "\u26a1 5 Outlets Confirmed",
-        "\u2728 Interactive Demo Live"
+        "\ud83d\udce6 Open Weights"
       ]
     },
     {
-      "name": "DeepSeek V4.1 Flash",
-      "headline": "Asymmetric Compute MoE Architecture",
-      "title": "DeepSeek V4.1 Flash: Asymmetric Compute MoE Architecture",
-      "url": "https://arxiv.org/abs/2609.11200",
+      "name": "Introducing gpt-oss",
+      "headline": "Introducing gpt-oss",
+      "title": "Introducing gpt-oss",
+      "url": "https://openai.com/index/introducing-gpt-oss",
       "mode": "paper_preview",
-      "hero_anchor": "h1.title, .title, h1",
-      "demo_anchor": "a.download-pdf, div.extra-services, table.benchmark, figure",
-      "download_anchor": "a.download-pdf, a[href*='arxiv.org/pdf']",
-      "specs": "Research Preprint | arXiv",
-      "video_readiness": 85.0,
-      "consensus_count": 6,
-      "hn_points": 650,
-      "badges": [
-        "\ud83d\udd25 HN Trending (650 pts)",
-        "\u26a1 6 Outlets Confirmed",
-        "\ud83d\udcc4 Research Preprint"
-      ]
+      "hero_anchor": "main h1, header h1, h1",
+      "demo_anchor": "figure, table, .results, #diagram, #comparison",
+      "download_anchor": "a[href*='pdf'], a[href*='arxiv.org'], a[href*='github.com']",
+      "specs": "Research Preview | Benchmark",
+      "video_readiness": 40.0,
+      "consensus_count": 2,
+      "hn_points": null,
+      "badges": []
     },
     {
-      "name": "Anthropic / Nscale",
-      "headline": "Anthropic Agrees $45B AI Infrastructure Deal with Nscale",
-      "title": "Anthropic Agrees $45B AI Infrastructure Deal with Nscale",
-      "url": "https://brief.delights.pro/newsletters/newsletter_leaders_2026-08-28.html",
+      "name": "Anthropic OpenAI Test",
+      "headline": "Anthropic, OpenAI Test Growth Sustainability Amid Cash Burn - \uc870\uc120\uc77c\ubcf4",
+      "title": "Anthropic, OpenAI Test Growth Sustainability Amid Cash Burn - \uc870\uc120\uc77c\ubcf4",
+      "url": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxPUHBYalk3cXZGU29TTkxrc2JVVkxSYjIxZGpPUTl4Rl9FTE50dFMwVnZSU3pTRlYzMXV2NUNkU0liOURVQ3llbjNCR3R3dHYyTnBlYkZHRmJEVUhoNFVhR0NVcEdLbzkwOTVPSXNUMy04SzdkYmI0Nk50X1F6WTZveS1BVnpMbHhQ?oc=5",
       "mode": "industry_insight",
       "hero_anchor": "main h1, header h1, .hero h1, h1",
       "demo_anchor": "figure, table, blockquote, canvas, .chart, .metrics",
       "download_anchor": "a[href*='report'], a[href*='pdf'], a.cta-button",
       "specs": "Industry Insight | Strategic Analysis",
-      "video_readiness": 65.0,
-      "consensus_count": 3,
-      "hn_points": 190,
-      "badges": [
-        "\ud83d\udd25 HN Trending (190 pts)",
-        "\u26a1 3 Outlets Confirmed"
-      ]
+      "video_readiness": 40.0,
+      "consensus_count": 2,
+      "hn_points": null,
+      "badges": []
     },
     {
-      "name": "Marigold v2",
-      "headline": "Diffusion Transformers for Real-Time Monocular Depth",
-      "title": "Marigold v2: Diffusion Transformers for Real-Time Monocular Depth",
-      "url": "https://github.com/prs-eth/marigold",
+      "name": "Grounded Action Model",
+      "headline": "3D Grounding as a Foundation for Robotics",
+      "title": "Grounded Action Model: 3D Grounding as a Foundation for Robotics",
+      "url": "https://huggingface.co/papers/2609.23863",
       "mode": "tool_drop",
-      "hero_anchor": "article.markdown-body h1, .repository-content, #readme h1, h1",
-      "demo_anchor": "article.markdown-body img[src*='.gif'], article.markdown-body video, article.markdown-body details, #readme img, table",
-      "download_anchor": "a[href*='releases'], a[href*='clone'], .btn-primary, a[href$='.zip']",
-      "specs": "Open Source | GitHub | Code & Docs",
-      "video_readiness": 110.0,
-      "consensus_count": 4,
-      "hn_points": 340,
+      "hero_anchor": "h1, .paper-title, h1.title",
+      "demo_anchor": "table, figure, .results, #benchmark, div[class*='abstract']",
+      "download_anchor": "a[href*='arxiv.org/pdf'], a[href*='huggingface.co/papers']",
+      "specs": "Research Paper | Hugging Face Daily Papers",
+      "video_readiness": 50.0,
+      "consensus_count": 1,
+      "hn_points": null,
       "badges": [
-        "\ud83d\udd25 HN Trending (340 pts)",
-        "\u26a1 4 Outlets Confirmed",
-        "\ud83d\udee0\ufe0f Open Source Repo"
+        "\ud83d\udce6 Open Weights"
       ]
     }
   ],
-  "raw_markdown": "---\nepisode_id: ai-news-2026-09-22-top4\ntrack: top4\nformat: daily\nvoice_profile: alex_tech\ntools:\n- name: YuE2\n  headline: Open Full-Song Generation with Symbolic Score Planning\n  title: 'YuE2: Open Full-Song Generation with Symbolic Score Planning'\n  url: https://huggingface.co/spaces/multimodal-art/YuE\n  mode: tool_drop\n  hero_anchor: h1, .model-header, header\n  demo_anchor: iframe[src*='gradio'], .gradio-container, canvas, video, button[type='submit'],\n    .output\n  download_anchor: button[data-testid='duplicate-button'], a[href*='tree/main']\n  specs: Interactive Space | Hugging Face | Live Demo\n  video_readiness: 135.0\n  consensus_count: 5\n  hn_points: 480\n  badges:\n  - \ud83d\udd25 HN Trending (480 pts)\n  - \u26a1 5 Outlets Confirmed\n  - \u2728 Interactive Demo Live\n- name: DeepSeek V4.1 Flash\n  headline: Asymmetric Compute MoE Architecture\n  title: 'DeepSeek V4.1 Flash: Asymmetric Compute MoE Architecture'\n  url: https://arxiv.org/abs/2609.11200\n  mode: paper_preview\n  hero_anchor: h1.title, .title, h1\n  demo_anchor: a.download-pdf, div.extra-services, table.benchmark, figure\n  download_anchor: a.download-pdf, a[href*='arxiv.org/pdf']\n  specs: Research Preprint | arXiv\n  video_readiness: 85.0\n  consensus_count: 6\n  hn_points: 650\n  badges:\n  - \ud83d\udd25 HN Trending (650 pts)\n  - \u26a1 6 Outlets Confirmed\n  - \ud83d\udcc4 Research Preprint\n- name: Anthropic / Nscale\n  headline: Anthropic Agrees $45B AI Infrastructure Deal with Nscale\n  title: Anthropic Agrees $45B AI Infrastructure Deal with Nscale\n  url: https://brief.delights.pro/newsletters/newsletter_leaders_2026-08-28.html\n  mode: industry_insight\n  hero_anchor: main h1, header h1, .hero h1, h1\n  demo_anchor: figure, table, blockquote, canvas, .chart, .metrics\n  download_anchor: a[href*='report'], a[href*='pdf'], a.cta-button\n  specs: Industry Insight | Strategic Analysis\n  video_readiness: 65.0\n  consensus_count: 3\n  hn_points: 190\n  badges:\n  - \ud83d\udd25 HN Trending (190 pts)\n  - \u26a1 3 Outlets Confirmed\n- name: Marigold v2\n  headline: Diffusion Transformers for Real-Time Monocular Depth\n  title: 'Marigold v2: Diffusion Transformers for Real-Time Monocular Depth'\n  url: https://github.com/prs-eth/marigold\n  mode: tool_drop\n  hero_anchor: 'article.markdown-body h1, .repository-content, #readme h1, h1'\n  demo_anchor: 'article.markdown-body img[src*=''.gif''], article.markdown-body video,\n    article.markdown-body details, #readme img, table'\n  download_anchor: a[href*='releases'], a[href*='clone'], .btn-primary, a[href$='.zip']\n  specs: Open Source | GitHub | Code & Docs\n  video_readiness: 110.0\n  consensus_count: 4\n  hn_points: 340\n  badges:\n  - \ud83d\udd25 HN Trending (340 pts)\n  - \u26a1 4 Outlets Confirmed\n  - \ud83d\udee0\ufe0f Open Source Repo\n---\n\n# Intro\n[excited] Four drops today, and Hacker News is on fire \u2014 YuE2 hits 480 points, DeepSeek V4.1 Flash tops 650. Music, models, mega-compute, and real-time depth. Let's go.\n\n---\n\n# Story 1: YuE2 | Open Full-Song Generation with Symbolic Score Planning\n### Landing Page\n[confident] YuE2 generates full songs with vocals, but here's the twist \u2014 it plans the track as an editable symbolic ABC score first. Five outlets confirmed, 480 points on Hacker News.\n\n### Demo\n[amazed] Open the Space, type a style prompt, and watch it draft notation before it ever renders audio. You can rewrite the score mid-flight and regenerate. Structure you can actually edit.\n\n### Access\n[excited] It's live right now on Hugging Face Spaces \u2014 free to poke at. Link's below. Go break it, then tell me if the chorus holds up.\n\n---\n\n# Story 2: DeepSeek V4.1 Flash | Asymmetric Compute MoE Architecture\n### Paper\n[curious] DeepSeek V4.1 Flash lands as a 552-billion parameter MoE preprint \u2014 and it's already the biggest thread today at 650 points, 380 comments.\n\n### Architecture\n[confident] The hook is asymmetric compute: different experts get different budgets, so cheap tokens stay cheap and hard tokens get real depth. Benchmark tables are in the paper.\n\n### Release Horizon\n[skeptical] PyTorch weights are already on Hugging Face, which is unusually fast for a preprint. Six outlets confirmed it. Treat the benchmarks as claimed until independent evals drop.\n\n---\n\n# Story 3: Anthropic x Nscale | $45B AI Infrastructure Deal\n### Headline\n[excited] Anthropic just signed a forty-five billion dollar infrastructure deal with Nscale \u2014 locking down European gigawatt power and datacenter capacity.\n\n### Evidence\n[confident] Three outlets confirmed it, and it's sitting at 190 points on Hacker News. This isn't a model launch \u2014 it's a land grab for electricity and silicon.\n\n### The Verdict\n[curious] Compute is the new moat. Watch who else signs gigawatt contracts this quarter. If you're building on Claude, your inference costs just got a long-term bet behind them.\n\n---\n\n# Story 4: Marigold v2 | Real-Time Monocular Depth on Consumer GPUs\n### Landing Page\n[confident] Marigold v2 does monocular depth estimation four times faster using diffusion transformers \u2014 on consumer GPUs. 340 points, four outlets confirmed.\n\n### Demo\n[amazed] Feed it a single video frame, get a dense depth map back in real time. Robotics, AR, 3D reconstruction \u2014 all of it just got cheaper to prototype.\n\n### Access\n[friendly] Fully open source on GitHub, code and docs included. Clone it, run it on your own card, and see how it holds up on your footage.\n\n---\n\n# Outro\n[friendly] All project links, Hugging Face spaces, and research papers are organized down in the description below. Hit subscribe to Brief Delights for your daily rundown, and I'll see you tomorrow.",
-  "generated_at": "2026-09-22T11:23:47.862552"
+  "raw_markdown": "---\nepisode_id: ai-news-2026-09-22-top4\ntrack: top4\nformat: daily\nvoice_profile: alex_tech\ntools:\n- name: Stable Diffusion\n  headline: Stable Diffusion with \ud83e\udde8 Diffusers\n  title: Stable Diffusion with \ud83e\udde8 Diffusers\n  url: https://huggingface.co/blog/stable_diffusion\n  mode: tool_drop\n  hero_anchor: h1, .model-header, header\n  demo_anchor: 'table, .results, #benchmark, canvas, .viewer, video'\n  download_anchor: button[data-testid='download-button'], a[href*='tree/main'], a[href*='resolve']\n  specs: Model Weights | Hugging Face Hub\n  video_readiness: 55.0\n  consensus_count: 1\n  hn_points: null\n  badges:\n  - \ud83d\udce6 Open Weights\n- name: Introducing gpt-oss\n  headline: Introducing gpt-oss\n  title: Introducing gpt-oss\n  url: https://openai.com/index/introducing-gpt-oss\n  mode: paper_preview\n  hero_anchor: main h1, header h1, h1\n  demo_anchor: 'figure, table, .results, #diagram, #comparison'\n  download_anchor: a[href*='pdf'], a[href*='arxiv.org'], a[href*='github.com']\n  specs: Research Preview | Benchmark\n  video_readiness: 40.0\n  consensus_count: 2\n  hn_points: null\n  badges: []\n- name: Anthropic OpenAI Test\n  headline: Anthropic, OpenAI Test Growth Sustainability Amid Cash Burn - \uc870\uc120\uc77c\ubcf4\n  title: Anthropic, OpenAI Test Growth Sustainability Amid Cash Burn - \uc870\uc120\uc77c\ubcf4\n  url: https://news.google.com/rss/articles/CBMiiAFBVV95cUxPUHBYalk3cXZGU29TTkxrc2JVVkxSYjIxZGpPUTl4Rl9FTE50dFMwVnZSU3pTRlYzMXV2NUNkU0liOURVQ3llbjNCR3R3dHYyTnBlYkZHRmJEVUhoNFVhR0NVcEdLbzkwOTVPSXNUMy04SzdkYmI0Nk50X1F6WTZveS1BVnpMbHhQ?oc=5\n  mode: industry_insight\n  hero_anchor: main h1, header h1, .hero h1, h1\n  demo_anchor: figure, table, blockquote, canvas, .chart, .metrics\n  download_anchor: a[href*='report'], a[href*='pdf'], a.cta-button\n  specs: Industry Insight | Strategic Analysis\n  video_readiness: 40.0\n  consensus_count: 2\n  hn_points: null\n  badges: []\n- name: Grounded Action Model\n  headline: 3D Grounding as a Foundation for Robotics\n  title: 'Grounded Action Model: 3D Grounding as a Foundation for Robotics'\n  url: https://huggingface.co/papers/2609.23863\n  mode: tool_drop\n  hero_anchor: h1, .paper-title, h1.title\n  demo_anchor: 'table, figure, .results, #benchmark, div[class*=''abstract'']'\n  download_anchor: a[href*='arxiv.org/pdf'], a[href*='huggingface.co/papers']\n  specs: Research Paper | Hugging Face Daily Papers\n  video_readiness: 50.0\n  consensus_count: 1\n  hn_points: null\n  badges:\n  - \ud83d\udce6 Open Weights\n---\n\n# Intro\n[excited] Today's safari: OpenAI drops open weights under Apache 2.0, robots learn to actually see objects, and the AI cash-burn question nobody wants to answer.\n\n---\n\n# Story 1: Stable Diffusion | Image Generation With \ud83e\udde8 Diffusers\n\n### Landing Page\n[confident] First up, Hugging Face's Diffusers guide \u2014 the cleanest on-ramp to Stable Diffusion. No boilerplate, no broken repos; just the library that became the default for open image generation.\n\n### Demo\n[amazed] Three lines of Python and you're rendering images. Swap schedulers, load open weights straight off the Hub, and quantize to fit your own GPU. It's the fastest path from zero to a diffusion pipeline.\n\n### Access\n[excited] Everything's open weights on the Hugging Face Hub, installable right now. Scorecard sits at 55 for video readiness \u2014 solid, but it's the foundation every other image tool builds on.\n\n---\n\n# Story 2: gpt-oss | OpenAI Ships Apache 2.0 Open Weights\n\n### Paper\n[curious] Now the one that broke the timeline \u2014 OpenAI publishing state-of-the-art open-weight models under Apache 2.0. That's a genuine watershed for the open-source crowd, and it's still only a research preview.\n\n### Architecture\n[confident] Benchmarks are the headline here, and multi-outlet consensus is doubling up on the story. The weights land permissively, which means fine-tune it, ship it, sell it \u2014 no licensing lawyers required.\n\n### Release Horizon\n[skeptical] Scorecard only reads 40, because a preview isn't a product. Watch the benchmark table carefully \u2014 if these numbers hold up against closed frontier models, the pricing floor just moved.\n\n---\n\n# Story 3: Anthropic OpenAI | Testing Growth Amid Massive Cash Burn\n\n### Headline\n[curious] Third story, and it's the uncomfortable one: Anthropic and OpenAI under scrutiny for growth sustainability while burning cash at a rate that makes VCs sweat through their quarter-zips.\n\n### Evidence\n[confident] The reporting tracks revenue against compute spend, and the gap is the entire story. Two outlets are converging on the same analysis \u2014 this isn't a hit piece, it's a runway check.\n\n### The Verdict\n[skeptical] Verdict: the models get cheaper, the infrastructure doesn't. If you're budgeting AI for 2027, model spend is a line item your CFO will absolutely ask about. Plan accordingly.\n\n---\n\n# Story 4: Grounded Action Model | 3D Grounding as a Robotics Foundation\n\n### Landing Page\n[curious] Last one's from the Hugging Face daily papers \u2014 a Grounded Action Model that teaches manipulation policies which objects matter and exactly where they are in 3D space.\n\n### Demo\n[amazed] Current robot foundation models, VLAs and world-action models alike, never explicitly require metric grounding \u2014 they just hope it emerges from demonstrations. This one bakes it in and hits 18 upvotes on the board.\n\n### Access\n[excited] Open weights are published and the paper's live. Grounding is the missing layer for real-world robots, and this is the blueprint worth reading tonight.\n\n---\n\n# Outro\n[friendly] All project links, Hugging Face spaces, and research papers are organized down in the description below. Hit subscribe to Brief Delights for your daily rundown, and I'll see you tomorrow.",
+  "generated_at": "2026-09-22T12:51:27.955744"
 }
