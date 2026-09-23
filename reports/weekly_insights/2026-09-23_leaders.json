@@ -1,0 +1,207 @@
+{
+  "date": "2026-09-23",
+  "segment": "leaders",
+  "trends": {
+    "categories": {
+      "Macro Trends & Tech Economy": 3,
+      "Venture Capital & M&A": 2,
+      "Enterprise Strategy & SaaS": 1
+    },
+    "sources": {
+      "Tech": 2,
+      "Enterprise News | TechCrunch": 1,
+      "Sifted": 1,
+      "McKinsey Insights & Publications": 1,
+      "\"a16z AI when:3d\" - Google News": 1
+    },
+    "topics": [
+      "Bending Spoons to buy collaboration tools maker Miro for $1.36B, 90% less than its 2022 valuation",
+      "DeepMind researcher\u2019s new AI lab nears $4bn valuation, reports say",
+      "The AI economy: Interconnected forces, feedback loops, and speeds of change",
+      "Qualcomm releases Android chip built for AI as memory shortage weighs on smartphone market",
+      "Anthropic and OpenAI roll out cheaper models in first release since call for slowdown",
+      "Inside a16z's new academy: $40M, no grades and proof of work - Dealroom"
+    ],
+    "detected_trends": [
+      {
+        "keyword": "Macro Trends & Tech Economy",
+        "count": 3
+      },
+      {
+        "keyword": "Venture Capital & M&A",
+        "count": 2
+      },
+      {
+        "keyword": "Enterprise Strategy & SaaS",
+        "count": 1
+      }
+    ],
+    "total_articles": 6
+  },
+  "article_count": 6,
+  "articles": [
+    {
+      "id": "7cc25eebdab79007c3c0362fb964d8bb",
+      "title": "Bending Spoons to buy collaboration tools maker Miro for $1.36B, 90% less than its 2022 valuation",
+      "url": "https://techcrunch.com/2026/09/10/bending-spoons-to-buy-collaboration-tools-maker-miro-for-1-36b-90-less-than-its-2022-valuation/",
+      "published_date": "2026-09-23T10:50:13.642159",
+      "description": "Bending Spoons is buying Miro for $1.36 billion, a huge dip in valuation for the workplace collaboration startup, which was valued at $17.5 billion in late 2021.",
+      "source": "Enterprise News | TechCrunch",
+      "category": "Enterprise Strategy & SaaS",
+      "segment": "leaders",
+      "source_type": "secondary",
+      "raw_content": "Bending Spoons is buying Miro for $1.36 billion, a huge dip in valuation for the workplace collaboration startup, which was valued at $17.5 billion in late 2021.",
+      "segments": [
+        "leaders"
+      ],
+      "consensus_count": 3,
+      "consensus_sources": [
+        "Enterprise News | TechCrunch"
+      ],
+      "_signal_score": 38.0,
+      "on_hn": false,
+      "tier": "full",
+      "selection_reason": "A $1.36B acquisition at 90% below peak valuation signals a major market correction in SaaS, crucial for strategic planning.",
+      "audience_value": "Insight into distressed asset valuations and M&A opportunities in the collaboration tools market.",
+      "urgency_score": 9,
+      "category_tag": "\ud83d\udcb0 Funding & M&A",
+      "why_this_matters": "Why this matters: At 90% off peak, this deal sets a new floor for how executives should value SaaS assets in 2026."
+    },
+    {
+      "id": "72e5eb0909f4d96edcb96e69e4d9df7c",
+      "title": "DeepMind researcher\u2019s new AI lab nears $4bn valuation, reports say",
+      "url": "https://sifted.eu/articles/deepmind-researchers-new-ai-lab-nears-4bn-valuation-reports-say/",
+      "published_date": "2026-09-23T10:50:13.595843",
+      "description": "",
+      "source": "Sifted",
+      "category": "Venture Capital & M&A",
+      "segment": "leaders",
+      "source_type": "primary",
+      "raw_content": "",
+      "segments": [
+        "leaders"
+      ],
+      "consensus_count": 1,
+      "consensus_sources": [
+        "Sifted"
+      ],
+      "_signal_score": 49.0,
+      "on_hn": false,
+      "tier": "full",
+      "selection_reason": "A new AI lab from a DeepMind researcher approaching $4B signals where top AI talent and capital are flowing.",
+      "audience_value": "Early warning on emerging competitors and investment hotspots in frontier AI.",
+      "urgency_score": 9,
+      "category_tag": "\ud83d\ude80 AI & Innovation",
+      "why_this_matters": "Why this matters: $4B valuation for a pre-revenue lab means AI talent arbitrage is driving massive capital allocation decisions."
+    },
+    {
+      "id": "64608b883d3f275539be6c33fc1866ae",
+      "title": "The AI economy: Interconnected forces, feedback loops, and speeds of change",
+      "url": "https://www.mckinsey.com/mgi/our-research/the-ai-economy-interconnected-forces-feedback-loops-and-speeds-of-change",
+      "published_date": "2026-09-23T10:50:14.302284",
+      "description": "AI is shaped by forces far beyond the technology itself, and its effects reach just as widely. Mapping how the pieces interact helps us see what could influence its course and where hurdles and opportunities may emerge.",
+      "source": "McKinsey Insights & Publications",
+      "category": "Macro Trends & Tech Economy",
+      "segment": "leaders",
+      "source_type": "primary",
+      "raw_content": "AI is shaped by forces far beyond the technology itself, and its effects reach just as widely. Mapping how the pieces interact helps us see what could influence its course and where hurdles and opportunities may emerge.",
+      "segments": [
+        "leaders"
+      ],
+      "consensus_count": 1,
+      "consensus_sources": [
+        "McKinsey Insights & Publications"
+      ],
+      "_signal_score": 45.0,
+      "on_hn": false,
+      "tier": "full",
+      "selection_reason": "McKinsey's systemic analysis of AI's economic feedback loops is essential reading for long-term strategic planning.",
+      "audience_value": "A framework to understand how AI forces interconnect and where to position the company for maximum leverage.",
+      "urgency_score": 8,
+      "category_tag": "\ud83d\udcca Market Trends",
+      "why_this_matters": "Why this matters: Leaders need a map of AI's economic ripples\u2014this McKinsey report provides the playbook for strategic bets."
+    },
+    {
+      "id": "964d3a81c6b6ed5a452c03bd28f38c4d",
+      "title": "Qualcomm releases Android chip built for AI as memory shortage weighs on smartphone market",
+      "url": "https://www.cnbc.com/2026/09/22/qualcomm-releases-android-chip-built-for-ai-amid-memory-shortage.html",
+      "published_date": "2026-09-23T10:50:14.552891",
+      "description": "The overall smartphone market is expected to contract 14% in terms of units shipped in 2026.",
+      "source": "Tech",
+      "category": "Macro Trends & Tech Economy",
+      "segment": "leaders",
+      "source_type": "primary",
+      "raw_content": "The overall smartphone market is expected to contract 14% in terms of units shipped in 2026.",
+      "segments": [
+        "leaders"
+      ],
+      "consensus_count": 1,
+      "consensus_sources": [
+        "Tech"
+      ],
+      "_signal_score": 41.0,
+      "on_hn": false,
+      "tier": "full",
+      "selection_reason": "Qualcomm's new AI-focused chip amid a smartphone memory shortage directly impacts device strategy and supply chain decisions.",
+      "audience_value": "Critical hardware intelligence for product leaders planning AI-enabled mobile roadmaps.",
+      "urgency_score": 8,
+      "category_tag": "\u2601\ufe0f Enterprise Tech",
+      "why_this_matters": "Why this matters: On-device AI meets memory scarcity\u2014executives must recalibrate hardware supply assumptions and product timelines."
+    },
+    {
+      "id": "caa3a07be02dec87051de655957bcd3b",
+      "title": "Anthropic and OpenAI roll out cheaper models in first release since call for slowdown",
+      "url": "https://www.cnbc.com/2026/09/22/anthropic-openai-cheaper-ai-models.html",
+      "published_date": "2026-09-23T10:50:14.553038",
+      "description": "OpenAI introduced GPT-6 Sol and GPT-6 Luna. Anthropic unveiled Claude Opus 5.5.",
+      "source": "Tech",
+      "category": "Macro Trends & Tech Economy",
+      "segment": "leaders",
+      "source_type": "secondary",
+      "raw_content": "OpenAI introduced GPT-6 Sol and GPT-6 Luna. Anthropic unveiled Claude Opus 5.5.",
+      "segments": [
+        "leaders"
+      ],
+      "consensus_count": 2,
+      "consensus_sources": [
+        "Tech",
+        "Technology"
+      ],
+      "_signal_score": 28.0,
+      "on_hn": false,
+      "tier": "full",
+      "selection_reason": "OpenAI and Anthropic launch cheaper models immediately after a call for AI slowdown\u2014a strategic pivot with broad market implications.",
+      "audience_value": "Pricing intelligence to assess competitive dynamics in AI services and negotiate better vendor terms.",
+      "urgency_score": 9,
+      "category_tag": "\ud83d\ude80 AI & Innovation",
+      "why_this_matters": "Why this matters: Cheaper models from leaders trigger a price war\u2014executives must rethink AI ROI and build vs. buy calculus now."
+    },
+    {
+      "id": "3c0a5c1f2f58615e81be86d91c717298",
+      "title": "Inside a16z's new academy: $40M, no grades and proof of work - Dealroom",
+      "url": "https://news.google.com/rss/articles/CBMilgFBVV95cUxOWTM4RVBjOE81YnJIa3EzY1NZSGExU2NMOE1ja3pwYW16S3ZYUUZGTEJFbXRpUDZGQUNXVEl1MVF0MjN2SGx3RVIyOTA5clY1MnpVUmFkbVd0MnRvVFlLVFVaYThVd010TkRoVU9OVC1tS2E4N0tlWkJwTlFkZ3FOMVdvamJBQzVPWF9YT2Ezdk9lb3lwVEE?oc=5",
+      "published_date": "2026-09-23T10:50:12.179267",
+      "description": "<a href=\"https://news.google.com/rss/articles/CBMilgFBVV95cUxOWTM4RVBjOE81YnJIa3EzY1NZSGExU2NMOE1ja3pwYW16S3ZYUUZGTEJFbXRpUDZGQUNXVEl1MVF0MjN2SGx3RVIyOTA5clY1MnpVUmFkbVd0MnRvVFlLVFVaYThVd010TkRoVU9OVC1tS2E4N0tlWkJwTlFkZ3FOMVdvamJBQzVPWF9YT2Ezdk9lb3lwVEE?oc=5\" target=\"_blank\">Inside a16z's new academy: $40M, no grades and proof of work</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">Dealroom</font>",
+      "source": "\"a16z AI when:3d\" - Google News",
+      "category": "Venture Capital & M&A",
+      "segment": "leaders",
+      "source_type": "primary",
+      "raw_content": "<a href=\"https://news.google.com/rss/articles/CBMilgFBVV95cUxOWTM4RVBjOE81YnJIa3EzY1NZSGExU2NMOE1ja3pwYW16S3ZYUUZGTEJFbXRpUDZGQUNXVEl1MVF0MjN2SGx3RVIyOTA5clY1MnpVUmFkbVd0MnRvVFlLVFVaYThVd010TkRoVU9OVC1tS2E4N0tlWkJwTlFkZ3FOMVdvamJBQzVPWF9YT2Ezdk9lb3lwVEE?oc=5\" target=\"_blank\">Inside a16z's new academy: $40M, no grades and proof of work</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">Dealroom</font>",
+      "segments": [
+        "leaders"
+      ],
+      "consensus_count": 1,
+      "consensus_sources": [
+        "\"a16z AI when:3d\" - Google News"
+      ],
+      "_signal_score": 45.0,
+      "on_hn": false,
+      "tier": "full",
+      "selection_reason": "a16z's $40M no-g",
+      "audience_value": "Provides actionable strategic value.",
+      "urgency_score": 8,
+      "category_tag": "\ud83d\ude80 AI & Innovation",
+      "why_this_matters": "a16z's $40M no-g"
+    }
+  ]
+}

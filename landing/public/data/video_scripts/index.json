@@ -1,5 +1,62 @@
 [
   {
+    "date": "2026-09-23",
+    "track": "top4",
+    "episode_id": "ai-news-2026-09-23-top4",
+    "stories": [
+      "Clone your voice using",
+      "StableVQ",
+      "Qualcomm",
+      "Emergent Collusion"
+    ],
+    "stories_count": 4,
+    "json_path": "/data/video_scripts/2026-09-23-ai-news.json",
+    "md_path": "/data/video_scripts/2026-09-23-ai-news.md",
+    "updated_at": "2026-09-23T11:01:51.057473"
+  },
+  {
+    "date": "2026-09-23",
+    "track": "leaders",
+    "episode_id": "ai-news-2026-09-23-leaders",
+    "stories": [
+      "Qualcomm",
+      "DeepMind researchers new",
+      "Clone your voice using"
+    ],
+    "stories_count": 3,
+    "json_path": "/data/video_scripts/2026-09-23-ai-news-leaders.json",
+    "md_path": "/data/video_scripts/2026-09-23-ai-news-leaders.md",
+    "updated_at": "2026-09-23T11:03:04.578378"
+  },
+  {
+    "date": "2026-09-23",
+    "track": "generative_media",
+    "episode_id": "ai-news-2026-09-23-generative_media",
+    "stories": [
+      "Consistency Models",
+      "Clone your voice using",
+      "Video generation models",
+      "CLIP"
+    ],
+    "stories_count": 4,
+    "json_path": "/data/video_scripts/2026-09-23-ai-news-generative_media.json",
+    "md_path": "/data/video_scripts/2026-09-23-ai-news-generative_media.md",
+    "updated_at": "2026-09-23T11:03:59.055903"
+  },
+  {
+    "date": "2026-09-23",
+    "track": "builders",
+    "episode_id": "ai-news-2026-09-23-builders",
+    "stories": [
+      "Clone your voice using",
+      "Emergent Collusion"
+    ],
+    "stories_count": 2,
+    "json_path": "/data/video_scripts/2026-09-23-ai-news-builders.json",
+    "md_path": "/data/video_scripts/2026-09-23-ai-news-builders.md",
+    "updated_at": "2026-09-23T11:02:11.624018"
+  },
+  {
     "date": "2026-09-22",
     "track": "top4",
     "episode_id": "ai-news-2026-09-22-top4",
