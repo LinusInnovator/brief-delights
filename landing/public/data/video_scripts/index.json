@@ -1,5 +1,65 @@
 [
   {
+    "date": "2026-09-24",
+    "track": "top4",
+    "episode_id": "ai-news-2026-09-24-top4",
+    "stories": [
+      "Amazon EC2 R9g and",
+      "All modalities are equal",
+      "Andreessen Horowitz",
+      "HappyWorld-Bench"
+    ],
+    "stories_count": 4,
+    "json_path": "/data/video_scripts/2026-09-24-ai-news.json",
+    "md_path": "/data/video_scripts/2026-09-24-ai-news.md",
+    "updated_at": "2026-09-24T12:57:03.764861"
+  },
+  {
+    "date": "2026-09-24",
+    "track": "leaders",
+    "episode_id": "ai-news-2026-09-24-leaders",
+    "stories": [
+      "Andreessen Horowitz",
+      "Venn",
+      "How Zo Computer improved",
+      "Uranus"
+    ],
+    "stories_count": 4,
+    "json_path": "/data/video_scripts/2026-09-24-ai-news-leaders.json",
+    "md_path": "/data/video_scripts/2026-09-24-ai-news-leaders.md",
+    "updated_at": "2026-09-24T12:58:01.289674"
+  },
+  {
+    "date": "2026-09-24",
+    "track": "generative_media",
+    "episode_id": "ai-news-2026-09-24-generative_media",
+    "stories": [
+      "All modalities are equal",
+      "Consistency Models",
+      "Introducing",
+      "Video generation models"
+    ],
+    "stories_count": 4,
+    "json_path": "/data/video_scripts/2026-09-24-ai-news-generative_media.json",
+    "md_path": "/data/video_scripts/2026-09-24-ai-news-generative_media.md",
+    "updated_at": "2026-09-24T12:58:15.890333"
+  },
+  {
+    "date": "2026-09-24",
+    "track": "builders",
+    "episode_id": "ai-news-2026-09-24-builders",
+    "stories": [
+      "Amazon EC2 R9g and",
+      "Introducing",
+      "Consistency Models",
+      "All modalities are equal"
+    ],
+    "stories_count": 4,
+    "json_path": "/data/video_scripts/2026-09-24-ai-news-builders.json",
+    "md_path": "/data/video_scripts/2026-09-24-ai-news-builders.md",
+    "updated_at": "2026-09-24T12:57:29.960026"
+  },
+  {
     "date": "2026-09-23",
     "track": "top4",
     "episode_id": "ai-news-2026-09-23-top4",
