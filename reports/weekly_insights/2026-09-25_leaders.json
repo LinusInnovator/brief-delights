@@ -1,0 +1,321 @@
+{
+  "date": "2026-09-25",
+  "segment": "leaders",
+  "trends": {
+    "categories": {
+      "Venture Capital & M&A": 8,
+      "Frontier AI Labs & Research": 1,
+      "Macro Trends & Tech Economy": 1
+    },
+    "sources": {
+      "\"a16z AI when:3d\" - Google News": 8,
+      "AI News & Artificial Intelligence | TechCrunch": 1,
+      "McKinsey Insights & Publications": 1
+    },
+    "topics": [
+      "Andreessen Horowitz launches AI academy as an alternative to college degree - The Tech Portal",
+      "a16z Just Launched a School With OpenAI, NVIDIA & Anthropic\uff5cSourcery - finance.biggo.com",
+      "What to know about Horowitz Andreessen Academy, Silicon Valley's $42 million AI-era college alternative - Business Insider",
+      "a16z is challenging Silicon Valley\u2019s love for drop-outs by launching a school - TechCrunch",
+      "Venn acquires a16z-backed Zuma for $50 million as its platform closes in on one million homes - GlobeNewswire",
+      "Tech elites launch college alternative to nurture next generation of AI geniuses, raises $42M - New York Post",
+      "Andreessen Horowitz is launching an \u2018academy\u2019 with no homework and partnerships with Palantir, Google, and Meta - The Verge",
+      "Exclusive | The Tech Elite Is Funding an Alternative to College - WSJ",
+      "Meet the next wave of VCs judging Startup Battlefield 200 at TechCrunch Disrupt 2026",
+      "The AI economy: Interconnected forces, feedback loops, and speeds of change"
+    ],
+    "detected_trends": [
+      {
+        "keyword": "Venture Capital & M&A",
+        "count": 8
+      },
+      {
+        "keyword": "Frontier AI Labs & Research",
+        "count": 1
+      },
+      {
+        "keyword": "Macro Trends & Tech Economy",
+        "count": 1
+      }
+    ],
+    "total_articles": 10
+  },
+  "article_count": 10,
+  "articles": [
+    {
+      "id": "442319497537192ceb841cfe4a75a774",
+      "title": "Andreessen Horowitz launches AI academy as an alternative to college degree - The Tech Portal",
+      "url": "https://news.google.com/rss/articles/CBMinwFBVV95cUxNTW93WWd0dVpHQnJXQXE0dUFEd0l1YW0yZk9taWRSMERKQkFrOFN6MjZHU096NDdEb085dnVFNW9Vamc2VGxMR2dvdVBBaVJxR293STZ1aS00Q0dONXowdXRCT1NFYk5raXFsYVV5c3J5bG1JSng4ZmpLQ0RaYjNTVGxGUEJEOEZPWHFsSk5jazN3R0hQTW9nYXMyWkFQcXPSAaQBQVVfeXFMUE5UWGJnVER0dlNRc0J0SWtvVURrZkhMUjlTNjRWMGRSMTZ2QUZCTzNsbU5wbTk4TmFqRlJaUmduTHVjNkFkUVVVOGVTU3I4eGl3VTYyUHlCdlJ2S05va0FYZWV2eHlNQXFjaGl3NkFMOUdLYXBZRC13eDUtczE1QjQ0cVkzYzJwaTFEbGZ5UGt5VDZMRUdjaTdNTGJHMjVRRFBhMGE?oc=5",
+      "published_date": "2026-09-25T10:15:21.406226",
+      "description": "<a href=\"https://news.google.com/rss/articles/CBMinwFBVV95cUxNTW93WWd0dVpHQnJXQXE0dUFEd0l1YW0yZk9taWRSMERKQkFrOFN6MjZHU096NDdEb085dnVFNW9Vamc2VGxMR2dvdVBBaVJxR293STZ1aS00Q0dONXowdXRCT1NFYk5raXFsYVV5c3J5bG1JSng4ZmpLQ0RaYjNTVGxGUEJEOEZPWHFsSk5jazN3R0hQTW9nYXMyWkFQcXPSAaQBQVVfeXFMUE5UWGJnVER0dlNRc0J0SWtvVURrZkhMUjlTNjRWMGRSMTZ2QUZCTzNsbU5wbTk4TmFqRlJaUmduTHVjNkFkUVVVOGVTU3I4eGl3VTYyUHlCdlJ2S05va0FYZWV2eHlNQXFjaGl3NkFMOUdLYXBZRC13eDUtczE1QjQ0cVkzYzJwaTFEbGZ5UGt5VDZMRUdjaTdNTGJHMjVRRFBhMGE?oc=5\" target=\"_blank\">Andreessen Horowitz launches AI academy as an alternative to college degree</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">The Tech Portal</font>",
+      "source": "\"a16z AI when:3d\" - Google News",
+      "category": "Venture Capital & M&A",
+      "segment": "leaders",
+      "source_type": "primary",
+      "raw_content": "<a href=\"https://news.google.com/rss/articles/CBMinwFBVV95cUxNTW93WWd0dVpHQnJXQXE0dUFEd0l1YW0yZk9taWRSMERKQkFrOFN6MjZHU096NDdEb085dnVFNW9Vamc2VGxMR2dvdVBBaVJxR293STZ1aS00Q0dONXowdXRCT1NFYk5raXFsYVV5c3J5bG1JSng4ZmpLQ0RaYjNTVGxGUEJEOEZPWHFsSk5jazN3R0hQTW9nYXMyWkFQcXPSAaQBQVVfeXFMUE5UWGJnVER0dlNRc0J0SWtvVURrZkhMUjlTNjRWMGRSMTZ2QUZCTzNsbU5wbTk4TmFqRlJaUmduTHVjNkFkUVVVOGVTU3I4eGl3VTYyUHlCdlJ2S05va0FYZWV2eHlNQXFjaGl3NkFMOUdLYXBZRC13eDUtczE1QjQ0cVkzYzJwaTFEbGZ5UGt5VDZMRUdjaTdNTGJHMjVRRFBhMGE?oc=5\" target=\"_blank\">Andreessen Horowitz launches AI academy as an alternative to college degree</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">The Tech Portal</font>",
+      "segments": [
+        "leaders"
+      ],
+      "consensus_count": 10,
+      "consensus_sources": [
+        "\"a16z AI when:3d\" - Google News"
+      ],
+      "_signal_score": 70.0,
+      "on_hn": false,
+      "tier": "full",
+      "selection_reason": "Selected headline for leaders.",
+      "audience_value": "Actionable industry signal.",
+      "urgency_score": 8,
+      "category_tag": "\ud83d\ude80 AI & Innovation",
+      "why_this_matters": "<a href=\"https://news.google.com/rss/articles/CBMinwFBVV95cUxNTW93WWd0dVpHQnJXQXE0dUFEd0l1YW0yZk9taWRSMERKQkFrOFN6MjZHU096NDdEb085dnVFNW9Vamc2VGxMR2dvdVBBaVJxR293STZ1aS00Q0dONXowdXRCT1NFYk5raXFsYVV5c3J5bG1JSng4ZmpLQ0RaYjNTVGxGUEJEOEZPWHFsSk5jazN3R0hQTW9nYXMyWkFQcXPSAaQBQVVfeXFMUE5UWGJnVER0dlNRc0J0SWtvVURrZkhMUjlTNjRWMGRSMTZ2QUZCTzNsbU5wbTk4TmFqRlJaUmduTHVjNkFkUVVVOGVTU3I4eGl3VTYyUHlCdlJ2S05va0FYZWV2eHlNQXFjaGl3NkFMOUdLYXBZRC13eDUtczE1QjQ0cVkzYzJwaTFEbGZ5UGt5VDZMRUdjaTdNTGJHMjVRRFBhMGE?oc=5\" target=\"_blank\">Andreessen Horowitz launches AI academy as an alternative to college degree</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">The Tech Portal</font>"
+    },
+    {
+      "id": "57b11856f29e10a77c5e21108ec5e63f",
+      "title": "a16z Just Launched a School With OpenAI, NVIDIA & Anthropic\uff5cSourcery - finance.biggo.com",
+      "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE1IckxiSFFpU2FNcjAxUGEtcUlhcFZBaEw1NnFUT2xrZnY2dTU2d1VsTGVpRmpqR0RXN3N6SUtnM25PLUV2U3JkSjk2U1lSaVhOeXVaZ1FEZUF3c2d4S244?oc=5",
+      "published_date": "2026-09-25T10:15:21.406098",
+      "description": "<a href=\"https://news.google.com/rss/articles/CBMiX0FVX3lxTE1IckxiSFFpU2FNcjAxUGEtcUlhcFZBaEw1NnFUT2xrZnY2dTU2d1VsTGVpRmpqR0RXN3N6SUtnM25PLUV2U3JkSjk2U1lSaVhOeXVaZ1FEZUF3c2d4S244?oc=5\" target=\"_blank\">a16z Just Launched a School With OpenAI, NVIDIA & Anthropic\uff5cSourcery</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">finance.biggo.com</font>",
+      "source": "\"a16z AI when:3d\" - Google News",
+      "category": "Venture Capital & M&A",
+      "segment": "leaders",
+      "source_type": "primary",
+      "raw_content": "<a href=\"https://news.google.com/rss/articles/CBMiX0FVX3lxTE1IckxiSFFpU2FNcjAxUGEtcUlhcFZBaEw1NnFUT2xrZnY2dTU2d1VsTGVpRmpqR0RXN3N6SUtnM25PLUV2U3JkSjk2U1lSaVhOeXVaZ1FEZUF3c2d4S244?oc=5\" target=\"_blank\">a16z Just Launched a School With OpenAI, NVIDIA & Anthropic\uff5cSourcery</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">finance.biggo.com</font>",
+      "segments": [
+        "leaders"
+      ],
+      "consensus_count": 5,
+      "consensus_sources": [
+        "\"a16z AI when:3d\" - Google News",
+        "\"economist AI when:3d\" - Google News"
+      ],
+      "_signal_score": 69.0,
+      "on_hn": false,
+      "tier": "full",
+      "selection_reason": "Selected headline for leaders.",
+      "audience_value": "Actionable industry signal.",
+      "urgency_score": 8,
+      "category_tag": "\ud83d\ude80 AI & Innovation",
+      "why_this_matters": "<a href=\"https://news.google.com/rss/articles/CBMiX0FVX3lxTE1IckxiSFFpU2FNcjAxUGEtcUlhcFZBaEw1NnFUT2xrZnY2dTU2d1VsTGVpRmpqR0RXN3N6SUtnM25PLUV2U3JkSjk2U1lSaVhOeXVaZ1FEZUF3c2d4S244?oc=5\" target=\"_blank\">a16z Just Launched a School With OpenAI, NVIDIA & Anthropic\uff5cSourcery</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">finance.biggo.com</font>"
+    },
+    {
+      "id": "e6bf5d0b497a5845f004fd8fd30e12b3",
+      "title": "What to know about Horowitz Andreessen Academy, Silicon Valley's $42 million AI-era college alternative - Business Insider",
+      "url": "https://news.google.com/rss/articles/CBMipAFBVV95cUxPZnI2X0NPd2g4bGx2X1VkSXJfeWZIN3ppUEpqT1ZTWmRJYjVhZE00Sk1EQVdLSkNxZ3VoN1BTaGY4RVhSenpJMlFrSVhtS2V5UDhvZ2VCYXJWd1VDSEc4QzZRc0pUWEdvSzFNRk9vaUVKVklWWGVsYlg5SVp2TzZ6bUh2Nm94RXlUeTdJNVlFcDMyWTdMNDl3Q3R5bDd1YmlxZl9PWA?oc=5",
+      "published_date": "2026-09-25T10:15:21.405854",
+      "description": "<a href=\"https://news.google.com/rss/articles/CBMipAFBVV95cUxPZnI2X0NPd2g4bGx2X1VkSXJfeWZIN3ppUEpqT1ZTWmRJYjVhZE00Sk1EQVdLSkNxZ3VoN1BTaGY4RVhSenpJMlFrSVhtS2V5UDhvZ2VCYXJWd1VDSEc4QzZRc0pUWEdvSzFNRk9vaUVKVklWWGVsYlg5SVp2TzZ6bUh2Nm94RXlUeTdJNVlFcDMyWTdMNDl3Q3R5bDd1YmlxZl9PWA?oc=5\" target=\"_blank\">What to know about Horowitz Andreessen Academy, Silicon Valley's $42 million AI-era college alternative</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">Business Insider</font>",
+      "source": "\"a16z AI when:3d\" - Google News",
+      "category": "Venture Capital & M&A",
+      "segment": "leaders",
+      "source_type": "primary",
+      "raw_content": "<a href=\"https://news.google.com/rss/articles/CBMipAFBVV95cUxPZnI2X0NPd2g4bGx2X1VkSXJfeWZIN3ppUEpqT1ZTWmRJYjVhZE00Sk1EQVdLSkNxZ3VoN1BTaGY4RVhSenpJMlFrSVhtS2V5UDhvZ2VCYXJWd1VDSEc4QzZRc0pUWEdvSzFNRk9vaUVKVklWWGVsYlg5SVp2TzZ6bUh2Nm94RXlUeTdJNVlFcDMyWTdMNDl3Q3R5bDd1YmlxZl9PWA?oc=5\" target=\"_blank\">What to know about Horowitz Andreessen Academy, Silicon Valley's $42 million AI-era college alternative</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">Business Insider</font>",
+      "segments": [
+        "leaders"
+      ],
+      "consensus_count": 4,
+      "consensus_sources": [
+        "\"a16z AI when:3d\" - Google News"
+      ],
+      "_signal_score": 63.0,
+      "on_hn": false,
+      "tier": "full",
+      "selection_reason": "Selected headline for leaders.",
+      "audience_value": "Actionable industry signal.",
+      "urgency_score": 8,
+      "category_tag": "\ud83d\ude80 AI & Innovation",
+      "why_this_matters": "<a href=\"https://news.google.com/rss/articles/CBMipAFBVV95cUxPZnI2X0NPd2g4bGx2X1VkSXJfeWZIN3ppUEpqT1ZTWmRJYjVhZE00Sk1EQVdLSkNxZ3VoN1BTaGY4RVhSenpJMlFrSVhtS2V5UDhvZ2VCYXJWd1VDSEc4QzZRc0pUWEdvSzFNRk9vaUVKVklWWGVsYlg5SVp2TzZ6bUh2Nm94RXlUeTdJNVlFcDMyWTdMNDl3Q3R5bDd1YmlxZl9PWA?oc=5\" target=\"_blank\">What to know about Horowitz Andreessen Academy, Silicon Valley's $42 million AI-era college alternative</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">Business Insider</font>"
+    },
+    {
+      "id": "ab57b13327314793aeeaeb0f8c3d0558",
+      "title": "a16z is challenging Silicon Valley\u2019s love for drop-outs by launching a school - TechCrunch",
+      "url": "https://news.google.com/rss/articles/CBMisAFBVV95cUxOMlAwR0p6NTVPYkJYZTBndmlwRjdQSUVTRHpUZ19Ic1VVakdWTnVFMkJQTHUzcXJyYmJBLUpESWxSSl90cDZyUklBR1dmMDBZWUR2VzZ1OW1wMWFTUk5qVjBLNURfM1BqT2FxalI1MlluSTR0QUdwbnVUdnVnUnZuclhCOWh1ZGFVeHAxSDlURlpmTElyd05xZVh1MEZ4cU9PMGRTeGRYdU5KQi1DX0o1TQ?oc=5",
+      "published_date": "2026-09-25T10:15:21.405762",
+      "description": "<a href=\"https://news.google.com/rss/articles/CBMisAFBVV95cUxOMlAwR0p6NTVPYkJYZTBndmlwRjdQSUVTRHpUZ19Ic1VVakdWTnVFMkJQTHUzcXJyYmJBLUpESWxSSl90cDZyUklBR1dmMDBZWUR2VzZ1OW1wMWFTUk5qVjBLNURfM1BqT2FxalI1MlluSTR0QUdwbnVUdnVnUnZuclhCOWh1ZGFVeHAxSDlURlpmTElyd05xZVh1MEZ4cU9PMGRTeGRYdU5KQi1DX0o1TQ?oc=5\" target=\"_blank\">a16z is challenging Silicon Valley\u2019s love for drop-outs by launching a school</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">TechCrunch</font>",
+      "source": "\"a16z AI when:3d\" - Google News",
+      "category": "Venture Capital & M&A",
+      "segment": "leaders",
+      "source_type": "primary",
+      "raw_content": "<a href=\"https://news.google.com/rss/articles/CBMisAFBVV95cUxOMlAwR0p6NTVPYkJYZTBndmlwRjdQSUVTRHpUZ19Ic1VVakdWTnVFMkJQTHUzcXJyYmJBLUpESWxSSl90cDZyUklBR1dmMDBZWUR2VzZ1OW1wMWFTUk5qVjBLNURfM1BqT2FxalI1MlluSTR0QUdwbnVUdnVnUnZuclhCOWh1ZGFVeHAxSDlURlpmTElyd05xZVh1MEZ4cU9PMGRTeGRYdU5KQi1DX0o1TQ?oc=5\" target=\"_blank\">a16z is challenging Silicon Valley\u2019s love for drop-outs by launching a school</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">TechCrunch</font>",
+      "segments": [
+        "leaders"
+      ],
+      "consensus_count": 3,
+      "consensus_sources": [
+        "\"a16z AI when:3d\" - Google News",
+        "Venture Capital News | TechCrunch"
+      ],
+      "_signal_score": 57.0,
+      "on_hn": false,
+      "tier": "full",
+      "selection_reason": "Selected headline for leaders.",
+      "audience_value": "Actionable industry signal.",
+      "urgency_score": 8,
+      "category_tag": "\ud83d\ude80 AI & Innovation",
+      "why_this_matters": "<a href=\"https://news.google.com/rss/articles/CBMisAFBVV95cUxOMlAwR0p6NTVPYkJYZTBndmlwRjdQSUVTRHpUZ19Ic1VVakdWTnVFMkJQTHUzcXJyYmJBLUpESWxSSl90cDZyUklBR1dmMDBZWUR2VzZ1OW1wMWFTUk5qVjBLNURfM1BqT2FxalI1MlluSTR0QUdwbnVUdnVnUnZuclhCOWh1ZGFVeHAxSDlURlpmTElyd05xZVh1MEZ4cU9PMGRTeGRYdU5KQi1DX0o1TQ?oc=5\" target=\"_blank\">a16z is challenging Silicon Valley\u2019s love for drop-outs by launching a school</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">TechCrunch</font>"
+    },
+    {
+      "id": "6f5b8eb764dec9e69da28942377a585c",
+      "title": "Venn acquires a16z-backed Zuma for $50 million as its platform closes in on one million homes - GlobeNewswire",
+      "url": "https://news.google.com/rss/articles/CBMi9wFBVV95cUxPMmRHdk1fVFZHa0IzNXFoYnBGNWE2NV9iZlc3NDMxMkEzaXNJZFZlTjNRSTlDYWpfQWE0b1J0SzFtZW1IazZJZklra2R2dmVTUTBNbjE0RTNsWFZNRzlsSFFXei1VMWRxN3ZQMUdLQkR0bjFnVnJicC0zcmwyRGRKMHBMbmg5alJDQUpLNDM2M2dfZUVrQjc2VWQtSFhFODdLdE1iR0FiZjNGNEt0czVoVFFaZUE3WjB3VXlqYUk3dGowMGJkYUtqSzl1X2g0YUMzQzNERnFRbzIzREZJV0hhQXdndGlweHAxOGloX3Vzcmh5QjM4eGU0?oc=5",
+      "published_date": "2026-09-25T10:15:21.405979",
+      "description": "<a href=\"https://news.google.com/rss/articles/CBMi9wFBVV95cUxPMmRHdk1fVFZHa0IzNXFoYnBGNWE2NV9iZlc3NDMxMkEzaXNJZFZlTjNRSTlDYWpfQWE0b1J0SzFtZW1IazZJZklra2R2dmVTUTBNbjE0RTNsWFZNRzlsSFFXei1VMWRxN3ZQMUdLQkR0bjFnVnJicC0zcmwyRGRKMHBMbmg5alJDQUpLNDM2M2dfZUVrQjc2VWQtSFhFODdLdE1iR0FiZjNGNEt0czVoVFFaZUE3WjB3VXlqYUk3dGowMGJkYUtqSzl1X2g0YUMzQzNERnFRbzIzREZJV0hhQXdndGlweHAxOGloX3Vzcmh5QjM4eGU0?oc=5\" target=\"_blank\">Venn acquires a16z-backed Zuma for $50 million as its platform closes in on one million homes</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">GlobeNewswire</font>",
+      "source": "\"a16z AI when:3d\" - Google News",
+      "category": "Venture Capital & M&A",
+      "segment": "leaders",
+      "source_type": "primary",
+      "raw_content": "<a href=\"https://news.google.com/rss/articles/CBMi9wFBVV95cUxPMmRHdk1fVFZHa0IzNXFoYnBGNWE2NV9iZlc3NDMxMkEzaXNJZFZlTjNRSTlDYWpfQWE0b1J0SzFtZW1IazZJZklra2R2dmVTUTBNbjE0RTNsWFZNRzlsSFFXei1VMWRxN3ZQMUdLQkR0bjFnVnJicC0zcmwyRGRKMHBMbmg5alJDQUpLNDM2M2dfZUVrQjc2VWQtSFhFODdLdE1iR0FiZjNGNEt0czVoVFFaZUE3WjB3VXlqYUk3dGowMGJkYUtqSzl1X2g0YUMzQzNERnFRbzIzREZJV0hhQXdndGlweHAxOGloX3Vzcmh5QjM4eGU0?oc=5\" target=\"_blank\">Venn acquires a16z-backed Zuma for $50 million as its platform closes in on one million homes</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">GlobeNewswire</font>",
+      "segments": [
+        "leaders"
+      ],
+      "consensus_count": 3,
+      "consensus_sources": [
+        "\"a16z AI when:3d\" - Google News"
+      ],
+      "_signal_score": 57.0,
+      "on_hn": false,
+      "tier": "full",
+      "selection_reason": "Selected headline for leaders.",
+      "audience_value": "Actionable industry signal.",
+      "urgency_score": 8,
+      "category_tag": "\ud83d\ude80 AI & Innovation",
+      "why_this_matters": "<a href=\"https://news.google.com/rss/articles/CBMi9wFBVV95cUxPMmRHdk1fVFZHa0IzNXFoYnBGNWE2NV9iZlc3NDMxMkEzaXNJZFZlTjNRSTlDYWpfQWE0b1J0SzFtZW1IazZJZklra2R2dmVTUTBNbjE0RTNsWFZNRzlsSFFXei1VMWRxN3ZQMUdLQkR0bjFnVnJicC0zcmwyRGRKMHBMbmg5alJDQUpLNDM2M2dfZUVrQjc2VWQtSFhFODdLdE1iR0FiZjNGNEt0czVoVFFaZUE3WjB3VXlqYUk3dGowMGJkYUtqSzl1X2g0YUMzQzNERnFRbzIzREZJV0hhQXdndGlweHAxOGloX3Vzcmh5QjM4eGU0?oc=5\" target=\"_blank\">Venn acquires a16z-backed Zuma for $50 million as its platform closes in on one million homes</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">GlobeNewswire</font>"
+    },
+    {
+      "id": "7665f0530430a76ee43616165113717f",
+      "title": "Tech elites launch college alternative to nurture next generation of AI geniuses, raises $42M - New York Post",
+      "url": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxNdDdtcGNNd1d1QXYyQ2M0bzV0dVppX1phbE1qZEs1MHZXSnpPMlhXREpmOW83ZEZKNzVFcy1lOC16b2FpczJNbkwxc1BXb1p0TElKd1E5anhCUGVpSnVuN2J0QWpjYkdKUGVVcS1EakdGbC1ibFFpTWpPenpBRWkyQl94UGNHSXdBX2g5MVYxUENuZ3pCUWhIUUJWbGlpdnB5WDJNak54UE5XLWJKdXc5dDZBQS1MTHpNNGFnaDlLT3l6UQ?oc=5",
+      "published_date": "2026-09-25T10:15:21.405799",
+      "description": "<a href=\"https://news.google.com/rss/articles/CBMiwgFBVV95cUxNdDdtcGNNd1d1QXYyQ2M0bzV0dVppX1phbE1qZEs1MHZXSnpPMlhXREpmOW83ZEZKNzVFcy1lOC16b2FpczJNbkwxc1BXb1p0TElKd1E5anhCUGVpSnVuN2J0QWpjYkdKUGVVcS1EakdGbC1ibFFpTWpPenpBRWkyQl94UGNHSXdBX2g5MVYxUENuZ3pCUWhIUUJWbGlpdnB5WDJNak54UE5XLWJKdXc5dDZBQS1MTHpNNGFnaDlLT3l6UQ?oc=5\" target=\"_blank\">Tech elites launch college alternative to nurture next generation of AI geniuses, raises $42M</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">New York Post</font>",
+      "source": "\"a16z AI when:3d\" - Google News",
+      "category": "Venture Capital & M&A",
+      "segment": "leaders",
+      "source_type": "primary",
+      "raw_content": "<a href=\"https://news.google.com/rss/articles/CBMiwgFBVV95cUxNdDdtcGNNd1d1QXYyQ2M0bzV0dVppX1phbE1qZEs1MHZXSnpPMlhXREpmOW83ZEZKNzVFcy1lOC16b2FpczJNbkwxc1BXb1p0TElKd1E5anhCUGVpSnVuN2J0QWpjYkdKUGVVcS1EakdGbC1ibFFpTWpPenpBRWkyQl94UGNHSXdBX2g5MVYxUENuZ3pCUWhIUUJWbGlpdnB5WDJNak54UE5XLWJKdXc5dDZBQS1MTHpNNGFnaDlLT3l6UQ?oc=5\" target=\"_blank\">Tech elites launch college alternative to nurture next generation of AI geniuses, raises $42M</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">New York Post</font>",
+      "segments": [
+        "leaders"
+      ],
+      "consensus_count": 2,
+      "consensus_sources": [
+        "\"a16z AI when:3d\" - Google News",
+        "Sifted"
+      ],
+      "_signal_score": 51.0,
+      "on_hn": false,
+      "tier": "full",
+      "selection_reason": "Selected headline for leaders.",
+      "audience_value": "Actionable industry signal.",
+      "urgency_score": 8,
+      "category_tag": "\ud83d\ude80 AI & Innovation",
+      "why_this_matters": "<a href=\"https://news.google.com/rss/articles/CBMiwgFBVV95cUxNdDdtcGNNd1d1QXYyQ2M0bzV0dVppX1phbE1qZEs1MHZXSnpPMlhXREpmOW83ZEZKNzVFcy1lOC16b2FpczJNbkwxc1BXb1p0TElKd1E5anhCUGVpSnVuN2J0QWpjYkdKUGVVcS1EakdGbC1ibFFpTWpPenpBRWkyQl94UGNHSXdBX2g5MVYxUENuZ3pCUWhIUUJWbGlpdnB5WDJNak54UE5XLWJKdXc5dDZBQS1MTHpNNGFnaDlLT3l6UQ?oc=5\" target=\"_blank\">Tech elites launch college alternative to nurture next generation of AI geniuses, raises $42M</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">New York Post</font>"
+    },
+    {
+      "id": "37548f5fb18372ea1d4d2d2bf56dbe23",
+      "title": "Andreessen Horowitz is launching an \u2018academy\u2019 with no homework and partnerships with Palantir, Google, and Meta - The Verge",
+      "url": "https://news.google.com/rss/articles/CBMikwFBVV95cUxOV3ZPNHJPTEJVWWVVdXpOdFUweF9lODB3NHNQNXhGYTNYa3FwN1lCQWNoVTBzN3U0NkwyaGZkY3pYT0twVUlSdGxwaXRUY3J5RTA4QjJmb1dCZ21KMmZFbUJpTWNaVDFFUl84dVp0NzhWeXZvQzBmbFVoQm81ZWM0VmpqV3lsbE1YbG5WMnlNeEh6YjQ?oc=5",
+      "published_date": "2026-09-25T10:15:21.405781",
+      "description": "<a href=\"https://news.google.com/rss/articles/CBMikwFBVV95cUxOV3ZPNHJPTEJVWWVVdXpOdFUweF9lODB3NHNQNXhGYTNYa3FwN1lCQWNoVTBzN3U0NkwyaGZkY3pYT0twVUlSdGxwaXRUY3J5RTA4QjJmb1dCZ21KMmZFbUJpTWNaVDFFUl84dVp0NzhWeXZvQzBmbFVoQm81ZWM0VmpqV3lsbE1YbG5WMnlNeEh6YjQ?oc=5\" target=\"_blank\">Andreessen Horowitz is launching an \u2018academy\u2019 with no homework and partnerships with Palantir, Google, and Meta</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">The Verge</font>",
+      "source": "\"a16z AI when:3d\" - Google News",
+      "category": "Venture Capital & M&A",
+      "segment": "leaders",
+      "source_type": "primary",
+      "raw_content": "<a href=\"https://news.google.com/rss/articles/CBMikwFBVV95cUxOV3ZPNHJPTEJVWWVVdXpOdFUweF9lODB3NHNQNXhGYTNYa3FwN1lCQWNoVTBzN3U0NkwyaGZkY3pYT0twVUlSdGxwaXRUY3J5RTA4QjJmb1dCZ21KMmZFbUJpTWNaVDFFUl84dVp0NzhWeXZvQzBmbFVoQm81ZWM0VmpqV3lsbE1YbG5WMnlNeEh6YjQ?oc=5\" target=\"_blank\">Andreessen Horowitz is launching an \u2018academy\u2019 with no homework and partnerships with Palantir, Google, and Meta</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">The Verge</font>",
+      "segments": [
+        "leaders"
+      ],
+      "consensus_count": 2,
+      "consensus_sources": [
+        "\"a16z AI when:3d\" - Google News"
+      ],
+      "_signal_score": 51.0,
+      "on_hn": false,
+      "tier": "quick",
+      "selection_reason": "Selected headline for leaders.",
+      "audience_value": "Actionable industry signal.",
+      "urgency_score": 8,
+      "category_tag": "\ud83d\ude80 AI & Innovation",
+      "why_this_matters": "<a href=\"https://news.google.com/rss/articles/CBMikwFBVV95cUxOV3ZPNHJPTEJVWWVVdXpOdFUweF9lODB3NHNQNXhGYTNYa3FwN1lCQWNoVTBzN3U0NkwyaGZkY3pYT0twVUlSdGxwaXRUY3J5RTA4QjJmb1dCZ21KMmZFbUJpTWNaVDFFUl84dVp0NzhWeXZvQzBmbFVoQm81ZWM0VmpqV3lsbE1YbG5WMnlNeEh6YjQ?oc=5\" target=\"_blank\">Andreessen Horowitz is launching an \u2018academy\u2019 with no homework and partnerships with Palantir, Google, and Meta</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">The Verge</font>"
+    },
+    {
+      "id": "56048929c0ee329359266847550ec3c4",
+      "title": "Exclusive | The Tech Elite Is Funding an Alternative to College - WSJ",
+      "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxPLWpGX2hIVUowNFhocktqQ2JRc2o3YmZJeGg2SEphdEJGOEtOMUJBc3NFME96cGtydlpud2tJT3hZWXhKb0hyVV9sUUZ5S0x2Yko0OEZOcnQycFdtTFJCakZYUDdvdHkyOGxHbXcyYWxiSEZvWGRmOUFXSERmWVVCTTY5TE5GUmN3T0oxaEh6V1c0TER2NEpfdzZB?oc=5",
+      "published_date": "2026-09-25T10:15:21.405818",
+      "description": "<a href=\"https://news.google.com/rss/articles/CBMimgFBVV95cUxPLWpGX2hIVUowNFhocktqQ2JRc2o3YmZJeGg2SEphdEJGOEtOMUJBc3NFME96cGtydlpud2tJT3hZWXhKb0hyVV9sUUZ5S0x2Yko0OEZOcnQycFdtTFJCakZYUDdvdHkyOGxHbXcyYWxiSEZvWGRmOUFXSERmWVVCTTY5TE5GUmN3T0oxaEh6V1c0TER2NEpfdzZB?oc=5\" target=\"_blank\">Exclusive | The Tech Elite Is Funding an Alternative to College</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">WSJ</font>",
+      "source": "\"a16z AI when:3d\" - Google News",
+      "category": "Venture Capital & M&A",
+      "segment": "leaders",
+      "source_type": "primary",
+      "raw_content": "<a href=\"https://news.google.com/rss/articles/CBMimgFBVV95cUxPLWpGX2hIVUowNFhocktqQ2JRc2o3YmZJeGg2SEphdEJGOEtOMUJBc3NFME96cGtydlpud2tJT3hZWXhKb0hyVV9sUUZ5S0x2Yko0OEZOcnQycFdtTFJCakZYUDdvdHkyOGxHbXcyYWxiSEZvWGRmOUFXSERmWVVCTTY5TE5GUmN3T0oxaEh6V1c0TER2NEpfdzZB?oc=5\" target=\"_blank\">Exclusive | The Tech Elite Is Funding an Alternative to College</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">WSJ</font>",
+      "segments": [
+        "leaders"
+      ],
+      "consensus_count": 1,
+      "consensus_sources": [
+        "\"a16z AI when:3d\" - Google News"
+      ],
+      "_signal_score": 49.0,
+      "on_hn": false,
+      "tier": "quick",
+      "selection_reason": "Selected headline for leaders.",
+      "audience_value": "Actionable industry signal.",
+      "urgency_score": 8,
+      "category_tag": "\ud83d\ude80 AI & Innovation",
+      "why_this_matters": "<a href=\"https://news.google.com/rss/articles/CBMimgFBVV95cUxPLWpGX2hIVUowNFhocktqQ2JRc2o3YmZJeGg2SEphdEJGOEtOMUJBc3NFME96cGtydlpud2tJT3hZWXhKb0hyVV9sUUZ5S0x2Yko0OEZOcnQycFdtTFJCakZYUDdvdHkyOGxHbXcyYWxiSEZvWGRmOUFXSERmWVVCTTY5TE5GUmN3T0oxaEh6V1c0TER2NEpfdzZB?oc=5\" target=\"_blank\">Exclusive | The Tech Elite Is Funding an Alternative to College</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">WSJ</font>"
+    },
+    {
+      "id": "ba83901647bccaac841e56d8cd73c6d1",
+      "title": "Meet the next wave of VCs judging Startup Battlefield 200 at TechCrunch Disrupt 2026",
+      "url": "https://techcrunch.com/2026/09/24/meet-the-next-wave-of-vcs-judging-startup-battlefield-200-at-techcrunch-disrupt-2026/",
+      "published_date": "2026-09-25T10:14:44.701714",
+      "description": "Meet the next wave of VCs judging the Startup Battlefield 200 contenders on the main stage at TechCrunch Disrupt 2026. Register by September 25 at 11:59 p.m. PT, to save up to $200 and to get a front-row seat to one of the most intense startup pitch competitions.",
+      "source": "AI News & Artificial Intelligence | TechCrunch",
+      "category": "Frontier AI Labs & Research",
+      "segment": "innovators",
+      "source_type": "secondary",
+      "raw_content": "Meet the next wave of VCs judging the Startup Battlefield 200 contenders on the main stage at TechCrunch Disrupt 2026. Register by September 25 at 11:59 p.m. PT, to save up to $200 and to get a front-row seat to one of the most intense startup pitch competitions.",
+      "segments": [
+        "innovators",
+        "leaders"
+      ],
+      "consensus_count": 8,
+      "consensus_sources": [
+        "AI News & Artificial Intelligence | TechCrunch",
+        "Venture Capital News | TechCrunch"
+      ],
+      "_signal_score": 47.0,
+      "on_hn": false,
+      "tier": "trending",
+      "selection_reason": "Selected headline for leaders.",
+      "audience_value": "Actionable industry signal.",
+      "urgency_score": 8,
+      "category_tag": "\ud83d\ude80 AI & Innovation",
+      "why_this_matters": "Meet the next wave of VCs judging the Startup Battlefield 200 contenders on the main stage at TechCrunch Disrupt 2026. Register by September 25 at 11:59 p.m. PT, to save up to $200 and to get a front-row seat to one of the most intense startup pitch competitions."
+    },
+    {
+      "id": "64608b883d3f275539be6c33fc1866ae",
+      "title": "The AI economy: Interconnected forces, feedback loops, and speeds of change",
+      "url": "https://www.mckinsey.com/mgi/our-research/the-ai-economy-interconnected-forces-feedback-loops-and-speeds-of-change",
+      "published_date": "2026-09-25T10:15:24.416024",
+      "description": "AI is shaped by forces far beyond the technology itself, and its effects reach just as widely. Mapping how the pieces interact helps us see what could influence its course and where hurdles and opportunities may emerge.",
+      "source": "McKinsey Insights & Publications",
+      "category": "Macro Trends & Tech Economy",
+      "segment": "leaders",
+      "source_type": "primary",
+      "raw_content": "AI is shaped by forces far beyond the technology itself, and its effects reach just as widely. Mapping how the pieces interact helps us see what could influence its course and where hurdles and opportunities may emerge.",
+      "segments": [
+        "leaders"
+      ],
+      "consensus_count": 1,
+      "consensus_sources": [
+        "McKinsey Insights & Publications"
+      ],
+      "_signal_score": 45.0,
+      "on_hn": false,
+      "tier": "trending",
+      "selection_reason": "Selected headline for leaders.",
+      "audience_value": "Actionable industry signal.",
+      "urgency_score": 8,
+      "category_tag": "\ud83d\ude80 AI & Innovation",
+      "why_this_matters": "AI is shaped by forces far beyond the technology itself, and its effects reach just as widely. Mapping how the pieces interact helps us see what could influence its course and where hurdles and opportunities may emerge."
+    }
+  ]
+}

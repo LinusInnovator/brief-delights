@@ -1,5 +1,65 @@
 [
   {
+    "date": "2026-09-25",
+    "track": "top4",
+    "episode_id": "ai-news-2026-09-25-top4",
+    "stories": [
+      "DeltaWAM",
+      "ViRDM",
+      "OmniEcho",
+      "OmniEcho"
+    ],
+    "stories_count": 4,
+    "json_path": "/data/video_scripts/2026-09-25-ai-news.json",
+    "md_path": "/data/video_scripts/2026-09-25-ai-news.md",
+    "updated_at": "2026-09-25T10:25:26.447994"
+  },
+  {
+    "date": "2026-09-25",
+    "track": "leaders",
+    "episode_id": "ai-news-2026-09-25-leaders",
+    "stories": [
+      "Andreessen Horowitz",
+      "Venn",
+      "Amazon EC2 R9g and",
+      "Rufus-Air"
+    ],
+    "stories_count": 4,
+    "json_path": "/data/video_scripts/2026-09-25-ai-news-leaders.json",
+    "md_path": "/data/video_scripts/2026-09-25-ai-news-leaders.md",
+    "updated_at": "2026-09-25T10:25:59.130377"
+  },
+  {
+    "date": "2026-09-25",
+    "track": "generative_media",
+    "episode_id": "ai-news-2026-09-25-generative_media",
+    "stories": [
+      "Consistency Models",
+      "ViRDM",
+      "Introducing",
+      "DeltaWAM"
+    ],
+    "stories_count": 4,
+    "json_path": "/data/video_scripts/2026-09-25-ai-news-generative_media.json",
+    "md_path": "/data/video_scripts/2026-09-25-ai-news-generative_media.md",
+    "updated_at": "2026-09-25T10:26:13.447683"
+  },
+  {
+    "date": "2026-09-25",
+    "track": "builders",
+    "episode_id": "ai-news-2026-09-25-builders",
+    "stories": [
+      "DeltaWAM",
+      "OmniEcho",
+      "Introducing",
+      "ViRDM"
+    ],
+    "stories_count": 4,
+    "json_path": "/data/video_scripts/2026-09-25-ai-news-builders.json",
+    "md_path": "/data/video_scripts/2026-09-25-ai-news-builders.md",
+    "updated_at": "2026-09-25T10:25:40.581133"
+  },
+  {
     "date": "2026-09-24",
     "track": "top4",
     "episode_id": "ai-news-2026-09-24-top4",
