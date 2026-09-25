@@ -4,147 +4,149 @@
   "format": "daily",
   "date": "2026-09-25",
   "voice_profile": "alex_tech",
-  "intro": "[excited] Four drops today: robot world-action models, spatial audio for embodied agents, OpenAI's new steerable voice API, and a teacher-free video diffusion trick. Upvotes are thin but the signal is loud. Let's go.",
+  "intro": "[excited] Today on Brief Delights, we're diving into the future of voice, with open-source voice cloning hitting the web! Then, we'll explore the latest in Stable Diffusion, and finally, a landmark shift from OpenAI with their new frontier-class open-weight models, confirmed by 5 outlets!",
   "stories": [
     {
-      "name": "DeltaWAM",
-      "headline": "Delta World Action Models for Bimanual Manipulation",
-      "title": "DeltaWAM: Delta World Action Models for Bimanual Manipulation",
-      "url": "https://huggingface.co/papers/2609.28811",
+      "name": "Clone your voice using",
+      "headline": "Clone your voice using open-source models",
+      "title": "Clone your voice using open-source models",
+      "url": "https://replicate.com/blog/how-to-tune-a-realistic-voice-clone",
       "mode": "tool_drop",
-      "hero_anchor": "h1, .paper-title, h1.title",
-      "demo_anchor": "table, figure, .results, #benchmark, div[class*='abstract']",
-      "download_anchor": "a[href*='arxiv.org/pdf'], a[href*='huggingface.co/papers']",
-      "specs": "Research Paper | Hugging Face Daily Papers",
-      "video_readiness": 65.0,
-      "consensus_count": 2,
+      "hero_anchor": "h1, header, .hero h1",
+      "demo_anchor": "form, input, button[type='submit'], canvas, video, audio, .output, .demo",
+      "download_anchor": "a[href*='github.com'], a[href*='api'], button",
+      "specs": "Live Web App | Interactive Demo",
+      "video_readiness": 95.0,
+      "consensus_count": 1,
       "hn_points": null,
       "badges": [
-        "\ud83d\udce6 Open Weights"
+        "\u2728 Interactive Demo Live"
       ],
       "beats": {
-        "landing_page": "[confident] DeltaWAM wants to fix what's broken in world-action models. Instead of predicting dense future frames every step, it models only the deltas \u2014 the actual changes \u2014 so robot actions stop drowning in static background noise.",
-        "demo": "[amazed] The payoff is bimanual manipulation: two-armed robots learning from pretrained video generators, transferring visual and motion priors straight into control. Less compute per frame, tighter action-conditioned dynamics, and no wasted modeling of scenes that never move.",
-        "access": "[energetic] It's open weights, sitting on Hugging Face Daily Papers with a fresh consensus score. One upvote so far, so this is early \u2014 check the description to grab the paper and weights before the crowd arrives."
+        "landing_page": "[confident] Replicate is making voice cloning accessible with open-source models. Their latest blog post walks you through tuning a realistic voice clone, right from your browser.",
+        "demo": "[amazed] This interactive demo lets you hear the power of these models firsthand. Generate speech, customize parameters, and experience high-fidelity voice synthesis.",
+        "access": "[energetic] Get started now! The live web app and interactive demo are ready for you to experiment with. Dive in and clone your voice today!"
       },
       "ordered_beats": [
         {
           "title": "Landing Page",
-          "narration": "[confident] DeltaWAM wants to fix what's broken in world-action models. Instead of predicting dense future frames every step, it models only the deltas \u2014 the actual changes \u2014 so robot actions stop drowning in static background noise."
+          "narration": "[confident] Replicate is making voice cloning accessible with open-source models. Their latest blog post walks you through tuning a realistic voice clone, right from your browser."
         },
         {
           "title": "Demo",
-          "narration": "[amazed] The payoff is bimanual manipulation: two-armed robots learning from pretrained video generators, transferring visual and motion priors straight into control. Less compute per frame, tighter action-conditioned dynamics, and no wasted modeling of scenes that never move."
+          "narration": "[amazed] This interactive demo lets you hear the power of these models firsthand. Generate speech, customize parameters, and experience high-fidelity voice synthesis."
         },
         {
           "title": "Access",
-          "narration": "[energetic] It's open weights, sitting on Hugging Face Daily Papers with a fresh consensus score. One upvote so far, so this is early \u2014 check the description to grab the paper and weights before the crowd arrives."
+          "narration": "[energetic] Get started now! The live web app and interactive demo are ready for you to experiment with. Dive in and clone your voice today!"
         }
       ]
     },
     {
-      "name": "OmniEcho",
-      "headline": "Spatial Audio Understanding for Embodied Agents",
-      "title": "OmniEcho: Spatial Audio Understanding for Embodied Agents",
-      "url": "https://huggingface.co/papers/2609.23407",
+      "name": "Stable Diffusion",
+      "headline": "Stable Diffusion with \ud83e\udde8 Diffusers",
+      "title": "Stable Diffusion with \ud83e\udde8 Diffusers",
+      "url": "https://huggingface.co/blog/stable_diffusion",
       "mode": "tool_drop",
-      "hero_anchor": "h1, .paper-title, h1.title",
-      "demo_anchor": "table, figure, .results, #benchmark, div[class*='abstract']",
-      "download_anchor": "a[href*='arxiv.org/pdf'], a[href*='huggingface.co/papers']",
-      "specs": "Research Paper | Hugging Face Daily Papers",
-      "video_readiness": 60.0,
+      "hero_anchor": "h1, .model-header, header",
+      "demo_anchor": "table, .results, #benchmark, canvas, .viewer, video",
+      "download_anchor": "button[data-testid='download-button'], a[href*='tree/main'], a[href*='resolve']",
+      "specs": "Model Weights | Hugging Face Hub",
+      "video_readiness": 80.0,
       "consensus_count": 1,
       "hn_points": null,
       "badges": [
         "\ud83d\udce6 Open Weights"
       ],
       "beats": {
-        "landing_page": "[curious] Robots can see, but can they hear where things are? OmniEcho argues that's a real gap. It introduces OmniEchoBench, a unified benchmark for spatial audio-visual perception in embodied settings.",
-        "demo": "[amazed] Humans localize a sound instantly and fuse it with sight. Embodied agents mostly can't. OmniEcho gives them the evaluation harness and the modeling recipe, so we can finally measure whether an agent knows the crash came from behind.",
-        "access": "[confident] Open weights, Hugging Face Daily Papers, sixteen upvotes \u2014 today's strongest signal. This is the benchmark to watch if you're building multi-sensory robots. Links are down below."
+        "landing_page": "[curious] Hugging Face provides a practical guide to harnessing Stable Diffusion with their Diffusers library. This is the key tool for next-level image generation.",
+        "demo": "[confident] The guide showcases how to implement and fine-tune Stable Diffusion models. See the code, understand the workflow, and generate stunning visuals.",
+        "access": "[energetic] All the model weights are open and available on the Hugging Face Hub. Get your hands on these powerful tools and start creating!"
       },
       "ordered_beats": [
         {
           "title": "Landing Page",
-          "narration": "[curious] Robots can see, but can they hear where things are? OmniEcho argues that's a real gap. It introduces OmniEchoBench, a unified benchmark for spatial audio-visual perception in embodied settings."
+          "narration": "[curious] Hugging Face provides a practical guide to harnessing Stable Diffusion with their Diffusers library. This is the key tool for next-level image generation."
         },
         {
           "title": "Demo",
-          "narration": "[amazed] Humans localize a sound instantly and fuse it with sight. Embodied agents mostly can't. OmniEcho gives them the evaluation harness and the modeling recipe, so we can finally measure whether an agent knows the crash came from behind."
+          "narration": "[confident] The guide showcases how to implement and fine-tune Stable Diffusion models. See the code, understand the workflow, and generate stunning visuals."
         },
         {
           "title": "Access",
-          "narration": "[confident] Open weights, Hugging Face Daily Papers, sixteen upvotes \u2014 today's strongest signal. This is the benchmark to watch if you're building multi-sensory robots. Links are down below."
+          "narration": "[energetic] All the model weights are open and available on the Hugging Face Hub. Get your hands on these powerful tools and start creating!"
         }
       ]
     },
     {
-      "name": "Introducing",
-      "headline": "Introducing next-generation audio models in the API",
-      "title": "Introducing next-generation audio models in the API",
-      "url": "https://openai.com/index/introducing-our-next-generation-audio-models",
+      "name": "Welcome spaCy",
+      "headline": "Welcome spaCy to the Hugging Face Hub",
+      "title": "Welcome spaCy to the Hugging Face Hub",
+      "url": "https://huggingface.co/blog/spacy",
       "mode": "tool_drop",
-      "hero_anchor": "main h1, header h1, .hero h1, h1",
-      "demo_anchor": "video, canvas, #demo, .demo, #comparison, table",
-      "download_anchor": "a[href*='github.com'], a[href*='download'], a[href*='huggingface.co'], .cta-button",
-      "specs": "Live Tool | Web Drop",
-      "video_readiness": 60.0,
-      "consensus_count": 2,
+      "hero_anchor": "h1, .model-header, header",
+      "demo_anchor": "table, .results, #benchmark, canvas, .viewer, video",
+      "download_anchor": "button[data-testid='download-button'], a[href*='tree/main'], a[href*='resolve']",
+      "specs": "Model Weights | Hugging Face Hub",
+      "video_readiness": 70.0,
+      "consensus_count": 1,
       "hn_points": null,
-      "badges": [],
+      "badges": [
+        "\ud83d\udce6 Open Weights"
+      ],
       "beats": {
-        "landing_page": "[excited] OpenAI just shipped next-generation audio models in the API. The headline feature: steerable text-to-speech \u2014 you instruct the delivery style in plain language, not dropdown presets.",
-        "demo": "[amazed] That's a direct shot at ElevenLabs-class tooling. Need it whispered, sarcastic, or like a 1990s radio ad? You describe it. The model performs it. Voice synthesis is becoming a prompt-driven interface.",
-        "access": "[confident] It's live in the API right now, no waitlist. If you build audio products, this is a same-day swap test on your stack. Web drop links are in the description."
+        "landing_page": "[friendly] Big news for NLP! spaCy, the industrial-strength natural language processing library, has officially landed on the Hugging Face Hub.",
+        "demo": "[amazed] This integration means easier access to pre-trained spaCy models and components. Explore new possibilities for text analysis and understanding.",
+        "access": "[energetic] Find all the open weights and resources directly on the Hugging Face Hub. Integrate spaCy into your projects with unprecedented ease!"
       },
       "ordered_beats": [
         {
           "title": "Landing Page",
-          "narration": "[excited] OpenAI just shipped next-generation audio models in the API. The headline feature: steerable text-to-speech \u2014 you instruct the delivery style in plain language, not dropdown presets."
+          "narration": "[friendly] Big news for NLP! spaCy, the industrial-strength natural language processing library, has officially landed on the Hugging Face Hub."
         },
         {
           "title": "Demo",
-          "narration": "[amazed] That's a direct shot at ElevenLabs-class tooling. Need it whispered, sarcastic, or like a 1990s radio ad? You describe it. The model performs it. Voice synthesis is becoming a prompt-driven interface."
+          "narration": "[amazed] This integration means easier access to pre-trained spaCy models and components. Explore new possibilities for text analysis and understanding."
         },
         {
           "title": "Access",
-          "narration": "[confident] It's live in the API right now, no waitlist. If you build audio products, this is a same-day swap test on your stack. Web drop links are in the description."
+          "narration": "[energetic] Find all the open weights and resources directly on the Hugging Face Hub. Integrate spaCy into your projects with unprecedented ease!"
         }
       ]
     },
     {
-      "name": "ViRDM",
-      "headline": "Taming Representation Distribution Matching for Few-Step Causal Video Generation",
-      "title": "ViRDM: Taming Representation Distribution Matching for Few-Step Causal Video Generation",
-      "url": "https://huggingface.co/papers/2609.28923",
+      "name": "Introducing gpt-oss",
+      "headline": "Introducing gpt-oss",
+      "title": "Introducing gpt-oss",
+      "url": "https://openai.com/index/introducing-gpt-oss",
       "mode": "paper_preview",
-      "hero_anchor": "h1, .paper-title, h1.title",
-      "demo_anchor": "table, figure, .results, #benchmark, div[class*='abstract']",
-      "download_anchor": "a[href*='arxiv.org/pdf'], a[href*='huggingface.co/papers']",
-      "specs": "Research Paper | Hugging Face Daily Papers",
-      "video_readiness": 45.0,
-      "consensus_count": 1,
+      "hero_anchor": "main h1, header h1, h1",
+      "demo_anchor": "figure, table, .results, #diagram, #comparison",
+      "download_anchor": "a[href*='pdf'], a[href*='arxiv.org'], a[href*='github.com']",
+      "specs": "Research Preview | Benchmark",
+      "video_readiness": 55.0,
+      "consensus_count": 5,
       "hn_points": null,
       "badges": [
-        "\ud83d\udce6 Open Weights"
+        "\u26a1 5 Outlets Confirmed"
       ],
       "beats": {
-        "paper": "[skeptical] Few-step autoregressive video diffusion usually needs two crutches: a giant pretrained teacher and an online critic. ViRDM asks the obvious question \u2014 can we throw both away?",
-        "architecture": "[curious] It replaces teacher-critic distillation with representation distribution matching, aligning internal features instead of chasing diffusion scores. That means low-latency streaming video generation without the resource-hungry post-training rig.",
-        "release_horizon": "[confident] Open weights, early on Hugging Face Daily Papers with a single upvote. If the claims hold, real-time causal video gets much cheaper to train. Paper link's below."
+        "paper": "[excited] OpenAI just dropped gpt-oss! This is a landmark shift: Apache 2.0 open-weight frontier-class models, confirmed by 5 outlets, are now available.",
+        "architecture_evidence": "[confident] This research preview outlines the architecture and benchmarks of these new models. It\u2019s a game-changer for the open ecosystem, empowering builders and researchers.",
+        "release_horizon": "[amazed] While a research preview, the immediate impact is undeniable. This release sets a new standard for open-source AI, with vast potential for future applications."
       },
       "ordered_beats": [
         {
           "title": "Paper",
-          "narration": "[skeptical] Few-step autoregressive video diffusion usually needs two crutches: a giant pretrained teacher and an online critic. ViRDM asks the obvious question \u2014 can we throw both away?"
+          "narration": "[excited] OpenAI just dropped gpt-oss! This is a landmark shift: Apache 2.0 open-weight frontier-class models, confirmed by 5 outlets, are now available."
         },
         {
-          "title": "Architecture",
-          "narration": "[curious] It replaces teacher-critic distillation with representation distribution matching, aligning internal features instead of chasing diffusion scores. That means low-latency streaming video generation without the resource-hungry post-training rig."
+          "title": "Architecture/Evidence",
+          "narration": "[confident] This research preview outlines the architecture and benchmarks of these new models. It\u2019s a game-changer for the open ecosystem, empowering builders and researchers."
         },
         {
           "title": "Release Horizon",
-          "narration": "[confident] Open weights, early on Hugging Face Daily Papers with a single upvote. If the claims hold, real-time causal video gets much cheaper to train. Paper link's below."
+          "narration": "[amazed] While a research preview, the immediate impact is undeniable. This release sets a new standard for open-source AI, with vast potential for future applications."
         }
       ]
     }
@@ -152,33 +154,33 @@
   "outro": "[friendly] All project links, Hugging Face spaces, and research papers are organized down in the description below. Hit subscribe to Brief Delights for your daily rundown, and I'll see you tomorrow.",
   "tools_metadata": [
     {
-      "name": "DeltaWAM",
-      "headline": "Delta World Action Models for Bimanual Manipulation",
-      "title": "DeltaWAM: Delta World Action Models for Bimanual Manipulation",
-      "url": "https://huggingface.co/papers/2609.28811",
+      "name": "Clone your voice using",
+      "headline": "Clone your voice using open-source models",
+      "title": "Clone your voice using open-source models",
+      "url": "https://replicate.com/blog/how-to-tune-a-realistic-voice-clone",
       "mode": "tool_drop",
-      "hero_anchor": "h1, .paper-title, h1.title",
-      "demo_anchor": "table, figure, .results, #benchmark, div[class*='abstract']",
-      "download_anchor": "a[href*='arxiv.org/pdf'], a[href*='huggingface.co/papers']",
-      "specs": "Research Paper | Hugging Face Daily Papers",
-      "video_readiness": 65.0,
-      "consensus_count": 2,
+      "hero_anchor": "h1, header, .hero h1",
+      "demo_anchor": "form, input, button[type='submit'], canvas, video, audio, .output, .demo",
+      "download_anchor": "a[href*='github.com'], a[href*='api'], button",
+      "specs": "Live Web App | Interactive Demo",
+      "video_readiness": 95.0,
+      "consensus_count": 1,
       "hn_points": null,
       "badges": [
-        "\ud83d\udce6 Open Weights"
+        "\u2728 Interactive Demo Live"
       ]
     },
     {
-      "name": "OmniEcho",
-      "headline": "Spatial Audio Understanding for Embodied Agents",
-      "title": "OmniEcho: Spatial Audio Understanding for Embodied Agents",
-      "url": "https://huggingface.co/papers/2609.23407",
+      "name": "Stable Diffusion",
+      "headline": "Stable Diffusion with \ud83e\udde8 Diffusers",
+      "title": "Stable Diffusion with \ud83e\udde8 Diffusers",
+      "url": "https://huggingface.co/blog/stable_diffusion",
       "mode": "tool_drop",
-      "hero_anchor": "h1, .paper-title, h1.title",
-      "demo_anchor": "table, figure, .results, #benchmark, div[class*='abstract']",
-      "download_anchor": "a[href*='arxiv.org/pdf'], a[href*='huggingface.co/papers']",
-      "specs": "Research Paper | Hugging Face Daily Papers",
-      "video_readiness": 60.0,
+      "hero_anchor": "h1, .model-header, header",
+      "demo_anchor": "table, .results, #benchmark, canvas, .viewer, video",
+      "download_anchor": "button[data-testid='download-button'], a[href*='tree/main'], a[href*='resolve']",
+      "specs": "Model Weights | Hugging Face Hub",
+      "video_readiness": 80.0,
       "consensus_count": 1,
       "hn_points": null,
       "badges": [
@@ -186,38 +188,40 @@
       ]
     },
     {
-      "name": "Introducing",
-      "headline": "Introducing next-generation audio models in the API",
-      "title": "Introducing next-generation audio models in the API",
-      "url": "https://openai.com/index/introducing-our-next-generation-audio-models",
+      "name": "Welcome spaCy",
+      "headline": "Welcome spaCy to the Hugging Face Hub",
+      "title": "Welcome spaCy to the Hugging Face Hub",
+      "url": "https://huggingface.co/blog/spacy",
       "mode": "tool_drop",
-      "hero_anchor": "main h1, header h1, .hero h1, h1",
-      "demo_anchor": "video, canvas, #demo, .demo, #comparison, table",
-      "download_anchor": "a[href*='github.com'], a[href*='download'], a[href*='huggingface.co'], .cta-button",
-      "specs": "Live Tool | Web Drop",
-      "video_readiness": 60.0,
-      "consensus_count": 2,
+      "hero_anchor": "h1, .model-header, header",
+      "demo_anchor": "table, .results, #benchmark, canvas, .viewer, video",
+      "download_anchor": "button[data-testid='download-button'], a[href*='tree/main'], a[href*='resolve']",
+      "specs": "Model Weights | Hugging Face Hub",
+      "video_readiness": 70.0,
+      "consensus_count": 1,
       "hn_points": null,
-      "badges": []
+      "badges": [
+        "\ud83d\udce6 Open Weights"
+      ]
     },
     {
-      "name": "ViRDM",
-      "headline": "Taming Representation Distribution Matching for Few-Step Causal Video Generation",
-      "title": "ViRDM: Taming Representation Distribution Matching for Few-Step Causal Video Generation",
-      "url": "https://huggingface.co/papers/2609.28923",
+      "name": "Introducing gpt-oss",
+      "headline": "Introducing gpt-oss",
+      "title": "Introducing gpt-oss",
+      "url": "https://openai.com/index/introducing-gpt-oss",
       "mode": "paper_preview",
-      "hero_anchor": "h1, .paper-title, h1.title",
-      "demo_anchor": "table, figure, .results, #benchmark, div[class*='abstract']",
-      "download_anchor": "a[href*='arxiv.org/pdf'], a[href*='huggingface.co/papers']",
-      "specs": "Research Paper | Hugging Face Daily Papers",
-      "video_readiness": 45.0,
-      "consensus_count": 1,
+      "hero_anchor": "main h1, header h1, h1",
+      "demo_anchor": "figure, table, .results, #diagram, #comparison",
+      "download_anchor": "a[href*='pdf'], a[href*='arxiv.org'], a[href*='github.com']",
+      "specs": "Research Preview | Benchmark",
+      "video_readiness": 55.0,
+      "consensus_count": 5,
       "hn_points": null,
       "badges": [
-        "\ud83d\udce6 Open Weights"
+        "\u26a1 5 Outlets Confirmed"
       ]
     }
   ],
-  "raw_markdown": "---\nepisode_id: ai-news-2026-09-25-builders\ntrack: builders\nformat: daily\nvoice_profile: alex_tech\ntools:\n- name: DeltaWAM\n  headline: Delta World Action Models for Bimanual Manipulation\n  title: 'DeltaWAM: Delta World Action Models for Bimanual Manipulation'\n  url: https://huggingface.co/papers/2609.28811\n  mode: tool_drop\n  hero_anchor: h1, .paper-title, h1.title\n  demo_anchor: 'table, figure, .results, #benchmark, div[class*=''abstract'']'\n  download_anchor: a[href*='arxiv.org/pdf'], a[href*='huggingface.co/papers']\n  specs: Research Paper | Hugging Face Daily Papers\n  video_readiness: 65.0\n  consensus_count: 2\n  hn_points: null\n  badges:\n  - \ud83d\udce6 Open Weights\n- name: OmniEcho\n  headline: Spatial Audio Understanding for Embodied Agents\n  title: 'OmniEcho: Spatial Audio Understanding for Embodied Agents'\n  url: https://huggingface.co/papers/2609.23407\n  mode: tool_drop\n  hero_anchor: h1, .paper-title, h1.title\n  demo_anchor: 'table, figure, .results, #benchmark, div[class*=''abstract'']'\n  download_anchor: a[href*='arxiv.org/pdf'], a[href*='huggingface.co/papers']\n  specs: Research Paper | Hugging Face Daily Papers\n  video_readiness: 60.0\n  consensus_count: 1\n  hn_points: null\n  badges:\n  - \ud83d\udce6 Open Weights\n- name: Introducing\n  headline: Introducing next-generation audio models in the API\n  title: Introducing next-generation audio models in the API\n  url: https://openai.com/index/introducing-our-next-generation-audio-models\n  mode: tool_drop\n  hero_anchor: main h1, header h1, .hero h1, h1\n  demo_anchor: 'video, canvas, #demo, .demo, #comparison, table'\n  download_anchor: a[href*='github.com'], a[href*='download'], a[href*='huggingface.co'],\n    .cta-button\n  specs: Live Tool | Web Drop\n  video_readiness: 60.0\n  consensus_count: 2\n  hn_points: null\n  badges: []\n- name: ViRDM\n  headline: Taming Representation Distribution Matching for Few-Step Causal Video\n    Generation\n  title: 'ViRDM: Taming Representation Distribution Matching for Few-Step Causal Video\n    Generation'\n  url: https://huggingface.co/papers/2609.28923\n  mode: paper_preview\n  hero_anchor: h1, .paper-title, h1.title\n  demo_anchor: 'table, figure, .results, #benchmark, div[class*=''abstract'']'\n  download_anchor: a[href*='arxiv.org/pdf'], a[href*='huggingface.co/papers']\n  specs: Research Paper | Hugging Face Daily Papers\n  video_readiness: 45.0\n  consensus_count: 1\n  hn_points: null\n  badges:\n  - \ud83d\udce6 Open Weights\n---\n\n# Intro\n[excited] Four drops today: robot world-action models, spatial audio for embodied agents, OpenAI's new steerable voice API, and a teacher-free video diffusion trick. Upvotes are thin but the signal is loud. Let's go.\n\n---\n\n# Story 1: DeltaWAM | Delta World Action Models for Bimanual Manipulation\n### Landing Page\n[confident] DeltaWAM wants to fix what's broken in world-action models. Instead of predicting dense future frames every step, it models only the deltas \u2014 the actual changes \u2014 so robot actions stop drowning in static background noise.\n### Demo\n[amazed] The payoff is bimanual manipulation: two-armed robots learning from pretrained video generators, transferring visual and motion priors straight into control. Less compute per frame, tighter action-conditioned dynamics, and no wasted modeling of scenes that never move.\n### Access\n[energetic] It's open weights, sitting on Hugging Face Daily Papers with a fresh consensus score. One upvote so far, so this is early \u2014 check the description to grab the paper and weights before the crowd arrives.\n\n---\n\n# Story 2: OmniEcho | Spatial Audio Understanding for Embodied Agents\n### Landing Page\n[curious] Robots can see, but can they hear where things are? OmniEcho argues that's a real gap. It introduces OmniEchoBench, a unified benchmark for spatial audio-visual perception in embodied settings.\n### Demo\n[amazed] Humans localize a sound instantly and fuse it with sight. Embodied agents mostly can't. OmniEcho gives them the evaluation harness and the modeling recipe, so we can finally measure whether an agent knows the crash came from behind.\n### Access\n[confident] Open weights, Hugging Face Daily Papers, sixteen upvotes \u2014 today's strongest signal. This is the benchmark to watch if you're building multi-sensory robots. Links are down below.\n\n---\n\n# Story 3: OpenAI Audio API | Steerable Text-to-Speech with Instructable Delivery\n### Landing Page\n[excited] OpenAI just shipped next-generation audio models in the API. The headline feature: steerable text-to-speech \u2014 you instruct the delivery style in plain language, not dropdown presets.\n### Demo\n[amazed] That's a direct shot at ElevenLabs-class tooling. Need it whispered, sarcastic, or like a 1990s radio ad? You describe it. The model performs it. Voice synthesis is becoming a prompt-driven interface.\n### Access\n[confident] It's live in the API right now, no waitlist. If you build audio products, this is a same-day swap test on your stack. Web drop links are in the description.\n\n---\n\n# Story 4: ViRDM | Few-Step Causal Video Generation Without a Teacher\n### Paper\n[skeptical] Few-step autoregressive video diffusion usually needs two crutches: a giant pretrained teacher and an online critic. ViRDM asks the obvious question \u2014 can we throw both away?\n### Architecture\n[curious] It replaces teacher-critic distillation with representation distribution matching, aligning internal features instead of chasing diffusion scores. That means low-latency streaming video generation without the resource-hungry post-training rig.\n### Release Horizon\n[confident] Open weights, early on Hugging Face Daily Papers with a single upvote. If the claims hold, real-time causal video gets much cheaper to train. Paper link's below.\n\n---\n\n# Outro\n[friendly] All project links, Hugging Face spaces, and research papers are organized down in the description below. Hit subscribe to Brief Delights for your daily rundown, and I'll see you tomorrow.",
-  "generated_at": "2026-09-25T10:25:40.580193"
+  "raw_markdown": "---\nepisode_id: ai-news-2026-09-25-builders\ntrack: builders\nformat: daily\nvoice_profile: alex_tech\ntools:\n- name: Clone your voice using\n  headline: Clone your voice using open-source models\n  title: Clone your voice using open-source models\n  url: https://replicate.com/blog/how-to-tune-a-realistic-voice-clone\n  mode: tool_drop\n  hero_anchor: h1, header, .hero h1\n  demo_anchor: form, input, button[type='submit'], canvas, video, audio, .output,\n    .demo\n  download_anchor: a[href*='github.com'], a[href*='api'], button\n  specs: Live Web App | Interactive Demo\n  video_readiness: 95.0\n  consensus_count: 1\n  hn_points: null\n  badges:\n  - \u2728 Interactive Demo Live\n- name: Stable Diffusion\n  headline: Stable Diffusion with \ud83e\udde8 Diffusers\n  title: Stable Diffusion with \ud83e\udde8 Diffusers\n  url: https://huggingface.co/blog/stable_diffusion\n  mode: tool_drop\n  hero_anchor: h1, .model-header, header\n  demo_anchor: 'table, .results, #benchmark, canvas, .viewer, video'\n  download_anchor: button[data-testid='download-button'], a[href*='tree/main'], a[href*='resolve']\n  specs: Model Weights | Hugging Face Hub\n  video_readiness: 80.0\n  consensus_count: 1\n  hn_points: null\n  badges:\n  - \ud83d\udce6 Open Weights\n- name: Welcome spaCy\n  headline: Welcome spaCy to the Hugging Face Hub\n  title: Welcome spaCy to the Hugging Face Hub\n  url: https://huggingface.co/blog/spacy\n  mode: tool_drop\n  hero_anchor: h1, .model-header, header\n  demo_anchor: 'table, .results, #benchmark, canvas, .viewer, video'\n  download_anchor: button[data-testid='download-button'], a[href*='tree/main'], a[href*='resolve']\n  specs: Model Weights | Hugging Face Hub\n  video_readiness: 70.0\n  consensus_count: 1\n  hn_points: null\n  badges:\n  - \ud83d\udce6 Open Weights\n- name: Introducing gpt-oss\n  headline: Introducing gpt-oss\n  title: Introducing gpt-oss\n  url: https://openai.com/index/introducing-gpt-oss\n  mode: paper_preview\n  hero_anchor: main h1, header h1, h1\n  demo_anchor: 'figure, table, .results, #diagram, #comparison'\n  download_anchor: a[href*='pdf'], a[href*='arxiv.org'], a[href*='github.com']\n  specs: Research Preview | Benchmark\n  video_readiness: 55.0\n  consensus_count: 5\n  hn_points: null\n  badges:\n  - \u26a1 5 Outlets Confirmed\n---\n\n# Intro\n[excited] Today on Brief Delights, we're diving into the future of voice, with open-source voice cloning hitting the web! Then, we'll explore the latest in Stable Diffusion, and finally, a landmark shift from OpenAI with their new frontier-class open-weight models, confirmed by 5 outlets!\n\n---\n\n# Story 1: Clone your voice using | Clone your voice using open-source models\n### Landing Page\n[confident] Replicate is making voice cloning accessible with open-source models. Their latest blog post walks you through tuning a realistic voice clone, right from your browser.\n### Demo\n[amazed] This interactive demo lets you hear the power of these models firsthand. Generate speech, customize parameters, and experience high-fidelity voice synthesis.\n### Access\n[energetic] Get started now! The live web app and interactive demo are ready for you to experiment with. Dive in and clone your voice today!\n\n---\n\n# Story 2: Stable Diffusion | Stable Diffusion with \ud83e\uddd1\u200d\ud83d\udcbb Diffusers\n### Landing Page\n[curious] Hugging Face provides a practical guide to harnessing Stable Diffusion with their Diffusers library. This is the key tool for next-level image generation.\n### Demo\n[confident] The guide showcases how to implement and fine-tune Stable Diffusion models. See the code, understand the workflow, and generate stunning visuals.\n### Access\n[energetic] All the model weights are open and available on the Hugging Face Hub. Get your hands on these powerful tools and start creating!\n\n---\n\n# Story 3: Welcome spaCy | Welcome spaCy to the Hugging Face Hub\n### Landing Page\n[friendly] Big news for NLP! spaCy, the industrial-strength natural language processing library, has officially landed on the Hugging Face Hub.\n### Demo\n[amazed] This integration means easier access to pre-trained spaCy models and components. Explore new possibilities for text analysis and understanding.\n### Access\n[energetic] Find all the open weights and resources directly on the Hugging Face Hub. Integrate spaCy into your projects with unprecedented ease!\n\n---\n\n# Story 4: Introducing gpt-oss | Introducing gpt-oss\n### Paper\n[excited] OpenAI just dropped gpt-oss! This is a landmark shift: Apache 2.0 open-weight frontier-class models, confirmed by 5 outlets, are now available.\n### Architecture/Evidence\n[confident] This research preview outlines the architecture and benchmarks of these new models. It\u2019s a game-changer for the open ecosystem, empowering builders and researchers.\n### Release Horizon\n[amazed] While a research preview, the immediate impact is undeniable. This release sets a new standard for open-source AI, with vast potential for future applications.\n\n---\n\n# Outro\n[friendly] All project links, Hugging Face spaces, and research papers are organized down in the description below. Hit subscribe to Brief Delights for your daily rundown, and I'll see you tomorrow.",
+  "generated_at": "2026-09-25T12:59:24.777052"
 }

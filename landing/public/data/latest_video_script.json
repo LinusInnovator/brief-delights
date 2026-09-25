@@ -4,149 +4,147 @@
   "format": "daily",
   "date": "2026-09-25",
   "voice_profile": "alex_tech",
-  "intro": "[excited] Four drops today: bimanual robot world models, streaming causal video, spatial audio for embodied agents, and a16z's college-killer academy. Let's go.",
+  "intro": "[excited] Hacker News is quiet today, but OpenAI just dropped Apache 2.0 open-weight frontier models, five outlets confirmed. Plus voice cloning, Stripe AI growth benchmarks, and Stable Diffusion with Diffusers. Let's go.",
   "stories": [
     {
-      "name": "DeltaWAM",
-      "headline": "Delta World Action Models for Bimanual Manipulation",
-      "title": "DeltaWAM: Delta World Action Models for Bimanual Manipulation",
-      "url": "https://huggingface.co/papers/2609.28811",
+      "name": "Clone your voice using",
+      "headline": "Clone your voice using open-source models",
+      "title": "Clone your voice using open-source models",
+      "url": "https://replicate.com/blog/how-to-tune-a-realistic-voice-clone",
       "mode": "tool_drop",
-      "hero_anchor": "h1, .paper-title, h1.title",
-      "demo_anchor": "table, figure, .results, #benchmark, div[class*='abstract']",
-      "download_anchor": "a[href*='arxiv.org/pdf'], a[href*='huggingface.co/papers']",
-      "specs": "Research Paper | Hugging Face Daily Papers",
-      "video_readiness": 50.0,
-      "consensus_count": 2,
+      "hero_anchor": "h1, header, .hero h1",
+      "demo_anchor": "form, input, button[type='submit'], canvas, video, audio, .output, .demo",
+      "download_anchor": "a[href*='github.com'], a[href*='api'], button",
+      "specs": "Live Web App | Interactive Demo",
+      "video_readiness": 80.0,
+      "consensus_count": 1,
       "hn_points": null,
       "badges": [
-        "\ud83d\udce6 Open Weights"
+        "\u2728 Interactive Demo Live"
       ],
       "beats": {
-        "landing_page": "[confident] DeltaWAM rethinks world-action models by predicting only changed content, not dense future frames. That's a big efficiency win for robot control.",
-        "demo": "[amazed] By dropping repetitive visual modeling, it decouples action dynamics from nuisance appearance. Bimanual manipulation gets cleaner, faster, and more generalizable.",
-        "access": "[excited] It's open weights on Hugging Face Daily Papers, linked below. Robotics folks, this one's worth cloning today."
+        "landing_page": "[confident] Replicate just published a hands-on guide to tuning a realistic voice clone using open-source models. No giant lab required; you bring clean audio and follow the pipeline.",
+        "demo": "[amazed] The live web app walks through dataset prep, training, and inference. You can hear the clone improve as the model learns your tone, pacing, and vocal quirks.",
+        "access": "[energetic] The full tutorial and interactive demo are live on Replicate right now. Link is below, so you can clone your own voice before this gets saturated."
       },
       "ordered_beats": [
         {
           "title": "Landing Page",
-          "narration": "[confident] DeltaWAM rethinks world-action models by predicting only changed content, not dense future frames. That's a big efficiency win for robot control."
+          "narration": "[confident] Replicate just published a hands-on guide to tuning a realistic voice clone using open-source models. No giant lab required; you bring clean audio and follow the pipeline."
         },
         {
           "title": "Demo",
-          "narration": "[amazed] By dropping repetitive visual modeling, it decouples action dynamics from nuisance appearance. Bimanual manipulation gets cleaner, faster, and more generalizable."
+          "narration": "[amazed] The live web app walks through dataset prep, training, and inference. You can hear the clone improve as the model learns your tone, pacing, and vocal quirks."
         },
         {
           "title": "Access",
-          "narration": "[excited] It's open weights on Hugging Face Daily Papers, linked below. Robotics folks, this one's worth cloning today."
+          "narration": "[energetic] The full tutorial and interactive demo are live on Replicate right now. Link is below, so you can clone your own voice before this gets saturated."
         }
       ]
     },
     {
-      "name": "ViRDM",
-      "headline": "Taming Representation Distribution Matching for Few-Step Causal Video Generation",
-      "title": "ViRDM: Taming Representation Distribution Matching for Few-Step Causal Video Generation",
-      "url": "https://huggingface.co/papers/2609.28923",
+      "name": "Introducing gpt-oss",
+      "headline": "Introducing gpt-oss",
+      "title": "Introducing gpt-oss",
+      "url": "https://openai.com/index/introducing-gpt-oss",
       "mode": "paper_preview",
-      "hero_anchor": "h1, .paper-title, h1.title",
-      "demo_anchor": "table, figure, .results, #benchmark, div[class*='abstract']",
-      "download_anchor": "a[href*='arxiv.org/pdf'], a[href*='huggingface.co/papers']",
-      "specs": "Research Paper | Hugging Face Daily Papers",
-      "video_readiness": 45.0,
-      "consensus_count": 1,
+      "hero_anchor": "main h1, header h1, h1",
+      "demo_anchor": "figure, table, .results, #diagram, #comparison",
+      "download_anchor": "a[href*='pdf'], a[href*='arxiv.org'], a[href*='github.com']",
+      "specs": "Research Preview | Benchmark",
+      "video_readiness": 55.0,
+      "consensus_count": 5,
       "hn_points": null,
       "badges": [
-        "\ud83d\udce6 Open Weights"
+        "\u26a1 5 Outlets Confirmed"
       ],
       "beats": {
-        "paper": "[curious] ViRDM asks a sharp question: do few-step autoregressive video diffusion models really need a giant teacher and an online critic?",
-        "architecture": "[confident] Instead, it uses representation distribution matching, cutting the resource-heavy teacher-critic loop while keeping low-latency streaming generation intact.",
-        "release_horizon": "[hopeful] Open weights are flagged on Hugging Face. If this holds up, real-time video gen just got cheaper for everyone."
+        "paper": "[excited] OpenAI is releasing gpt-oss under Apache 2.0, a landmark shift for open-weight frontier models. Five outlets confirmed it, and researchers can immediately exploit the weights.",
+        "architecture_evidence": "[curious] Early benchmarks position gpt-oss as frontier-class, with broad provider support and production-agent capabilities. It is a research preview, so expect rapid iteration and community fine-tunes.",
+        "release_horizon": "[confident] The weights are available now for builders to download, fine-tune, and deploy commercially. This is the open ecosystem's biggest unlock this quarter."
       },
       "ordered_beats": [
         {
           "title": "Paper",
-          "narration": "[curious] ViRDM asks a sharp question: do few-step autoregressive video diffusion models really need a giant teacher and an online critic?"
+          "narration": "[excited] OpenAI is releasing gpt-oss under Apache 2.0, a landmark shift for open-weight frontier models. Five outlets confirmed it, and researchers can immediately exploit the weights."
         },
         {
-          "title": "Architecture",
-          "narration": "[confident] Instead, it uses representation distribution matching, cutting the resource-heavy teacher-critic loop while keeping low-latency streaming generation intact."
+          "title": "Architecture/Evidence",
+          "narration": "[curious] Early benchmarks position gpt-oss as frontier-class, with broad provider support and production-agent capabilities. It is a research preview, so expect rapid iteration and community fine-tunes."
         },
         {
           "title": "Release Horizon",
-          "narration": "[hopeful] Open weights are flagged on Hugging Face. If this holds up, real-time video gen just got cheaper for everyone."
+          "narration": "[confident] The weights are available now for builders to download, fine-tune, and deploy commercially. This is the open ecosystem's biggest unlock this quarter."
         }
       ]
     },
     {
-      "name": "OmniEcho",
-      "headline": "Spatial Audio Understanding for Embodied Agents",
-      "title": "OmniEcho: Spatial Audio Understanding for Embodied Agents",
-      "url": "https://huggingface.co/papers/2609.23407",
-      "mode": "tool_drop",
-      "hero_anchor": "h1, .paper-title, h1.title",
-      "demo_anchor": "table, figure, .results, #benchmark, div[class*='abstract']",
-      "download_anchor": "a[href*='arxiv.org/pdf'], a[href*='huggingface.co/papers']",
-      "specs": "Research Paper | Hugging Face Daily Papers",
-      "video_readiness": 45.0,
+      "name": "Stripes AI CRO",
+      "headline": "Stripe\u2019s AI CRO on the Fastest-Growing AI Companies: 175% Growth, 48% of Revenue From Outside the Home Market, and Agents About to Read More Stripe Docs Than Human - saastr.com",
+      "title": "Stripes AI CRO: Stripe\u2019s AI CRO on the Fastest-Growing AI Companies: 175% Growth, 48% of Revenue From Outside the Home Market, and Agents About to Read More Stripe Docs Than Human - saastr.com",
+      "url": "https://news.google.com/rss/articles/CBMijgJBVV95cUxNcDBLRzFjZl9xd3c1elE5cGN4RXlEMGJ3QkkxbEMtaHFSZVlOZjZmaVA1WklnM0VqWnA1eU9JRWZLZDRMM18zaE5oVzJFWHJ4OEh0NDYxbGNpUlpGVjUycHBrc0FrUUpRUm5VR2x6TGtJMVdjRlRveVJVS1RPTkRZRFVYZ2lhdXVpUmo1YWlZNC1JMWE3a0VQU015UFdpTHFRbGI3eVpHa2R1VXFsckVzWkNaWWc1Um9EUU5YeDU2RmR2TnF3bC1DdVhjUXNKaGhFTkg0dDlPWHdRY2hzYWo5d29EZGJTaGJYSzZXZlRmNUFDSTNaYjFDT3hmY2N4TURJLXNHZ3IweTZ0WUw3VWc?oc=5",
+      "mode": "industry_insight",
+      "hero_anchor": "main h1, header h1, .hero h1, h1",
+      "demo_anchor": "figure, table, blockquote, canvas, .chart, .metrics",
+      "download_anchor": "a[href*='report'], a[href*='pdf'], a.cta-button",
+      "specs": "Industry Insight | Strategic Analysis",
+      "video_readiness": 40.0,
       "consensus_count": 1,
       "hn_points": null,
-      "badges": [
-        "\ud83d\udce6 Open Weights"
-      ],
+      "badges": [],
       "beats": {
-        "landing_page": "[amazed] OmniEchoBench is a unified benchmark for spatial audio-visual perception. It asks: can embodied agents actually localize sound like we do?",
-        "demo": "[excited] Sixteen upvotes on the paper, and it fuses audio direction with visual cues for reasoning. This is the missing eval layer for embodied AI.",
-        "access": "[confident] Open weights and the benchmark are on Hugging Face. Robotics and audio researchers, this is your new test bed."
-      },
-      "ordered_beats": [
-        {
-          "title": "Landing Page",
-          "narration": "[amazed] OmniEchoBench is a unified benchmark for spatial audio-visual perception. It asks: can embodied agents actually localize sound like we do?"
-        },
-        {
-          "title": "Demo",
-          "narration": "[excited] Sixteen upvotes on the paper, and it fuses audio direction with visual cues for reasoning. This is the missing eval layer for embodied AI."
-        },
-        {
-          "title": "Access",
-          "narration": "[confident] Open weights and the benchmark are on Hugging Face. Robotics and audio researchers, this is your new test bed."
-        }
-      ]
-    },
-    {
-      "name": "OmniEcho",
-      "headline": "Spatial Audio Understanding for Embodied Agents",
-      "title": "OmniEcho: Spatial Audio Understanding for Embodied Agents",
-      "url": "https://huggingface.co/papers/2609.23407",
-      "mode": "tool_drop",
-      "hero_anchor": "h1, .paper-title, h1.title",
-      "demo_anchor": "table, figure, .results, #benchmark, div[class*='abstract']",
-      "download_anchor": "a[href*='arxiv.org/pdf'], a[href*='huggingface.co/papers']",
-      "specs": "Research Paper | Hugging Face Daily Papers",
-      "video_readiness": 45.0,
-      "consensus_count": 1,
-      "hn_points": null,
-      "badges": [
-        "\ud83d\udce6 Open Weights"
-      ],
-      "beats": {
-        "headline": "[skeptical] Andreessen Horowitz is launching an AI academy positioned as an alternative to a college degree. Five outlets confirmed the story.",
-        "evidence": "[curious] Consensus is building fast, and the framing is aggressive: skip the diploma, learn AI directly. That's a direct challenge to higher ed.",
-        "the_verdict": "[confident] For leaders, this signals talent pipelines are being rebuilt outside universities. Watch this space closely \u2014 it could reshape hiring."
+        "headline": "[confident] Stripe's AI CRO just shared the fastest-growing AI companies' playbook: 175% growth, with 48% of revenue coming from outside the home market.",
+        "evidence": "[curious] The data shows agents are about to read more Stripe docs than humans. That signals a massive shift in how AI products monetize and expand globally.",
+        "the_verdict": "[skeptical] Single-source, no HN thread yet, so treat these benchmarks as directional. Still, if you're building AI, international revenue is no longer optional."
       },
       "ordered_beats": [
         {
           "title": "Headline",
-          "narration": "[skeptical] Andreessen Horowitz is launching an AI academy positioned as an alternative to a college degree. Five outlets confirmed the story."
+          "narration": "[confident] Stripe's AI CRO just shared the fastest-growing AI companies' playbook: 175% growth, with 48% of revenue coming from outside the home market."
         },
         {
           "title": "Evidence",
-          "narration": "[curious] Consensus is building fast, and the framing is aggressive: skip the diploma, learn AI directly. That's a direct challenge to higher ed."
+          "narration": "[curious] The data shows agents are about to read more Stripe docs than humans. That signals a massive shift in how AI products monetize and expand globally."
         },
         {
           "title": "The Verdict",
-          "narration": "[confident] For leaders, this signals talent pipelines are being rebuilt outside universities. Watch this space closely \u2014 it could reshape hiring."
+          "narration": "[skeptical] Single-source, no HN thread yet, so treat these benchmarks as directional. Still, if you're building AI, international revenue is no longer optional."
+        }
+      ]
+    },
+    {
+      "name": "Stable Diffusion",
+      "headline": "Stable Diffusion with \ud83e\udde8 Diffusers",
+      "title": "Stable Diffusion with \ud83e\udde8 Diffusers",
+      "url": "https://huggingface.co/blog/stable_diffusion",
+      "mode": "tool_drop",
+      "hero_anchor": "h1, .model-header, header",
+      "demo_anchor": "table, .results, #benchmark, canvas, .viewer, video",
+      "download_anchor": "button[data-testid='download-button'], a[href*='tree/main'], a[href*='resolve']",
+      "specs": "Model Weights | Hugging Face Hub",
+      "video_readiness": 65.0,
+      "consensus_count": 1,
+      "hn_points": null,
+      "badges": [
+        "\ud83d\udce6 Open Weights"
+      ],
+      "beats": {
+        "landing_page": "[friendly] Hugging Face's Diffusers guide breaks down Stable Diffusion into practical steps. Open weights are on the Hub, ready for image generation and fine-tuning.",
+        "demo": "[amazed] The walkthrough shows text-to-image pipelines, schedulers, and memory tricks. You can run it locally or in a notebook, then swap models without rewriting your stack.",
+        "access": "[energetic] Install Diffusers, pull the weights, and generate your first image in minutes. The link below has the full code and model card."
+      },
+      "ordered_beats": [
+        {
+          "title": "Landing Page",
+          "narration": "[friendly] Hugging Face's Diffusers guide breaks down Stable Diffusion into practical steps. Open weights are on the Hub, ready for image generation and fine-tuning."
+        },
+        {
+          "title": "Demo",
+          "narration": "[amazed] The walkthrough shows text-to-image pipelines, schedulers, and memory tricks. You can run it locally or in a notebook, then swap models without rewriting your stack."
+        },
+        {
+          "title": "Access",
+          "narration": "[energetic] Install Diffusers, pull the weights, and generate your first image in minutes. The link below has the full code and model card."
         }
       ]
     }
@@ -154,50 +152,33 @@
   "outro": "[friendly] All project links, Hugging Face spaces, and research papers are organized down in the description below. Hit subscribe to Brief Delights for your daily rundown, and I'll see you tomorrow.",
   "tools_metadata": [
     {
-      "name": "DeltaWAM",
-      "headline": "Delta World Action Models for Bimanual Manipulation",
-      "title": "DeltaWAM: Delta World Action Models for Bimanual Manipulation",
-      "url": "https://huggingface.co/papers/2609.28811",
+      "name": "Clone your voice using",
+      "headline": "Clone your voice using open-source models",
+      "title": "Clone your voice using open-source models",
+      "url": "https://replicate.com/blog/how-to-tune-a-realistic-voice-clone",
       "mode": "tool_drop",
-      "hero_anchor": "h1, .paper-title, h1.title",
-      "demo_anchor": "table, figure, .results, #benchmark, div[class*='abstract']",
-      "download_anchor": "a[href*='arxiv.org/pdf'], a[href*='huggingface.co/papers']",
-      "specs": "Research Paper | Hugging Face Daily Papers",
-      "video_readiness": 50.0,
-      "consensus_count": 2,
-      "hn_points": null,
-      "badges": [
-        "\ud83d\udce6 Open Weights"
-      ]
-    },
-    {
-      "name": "ViRDM",
-      "headline": "Taming Representation Distribution Matching for Few-Step Causal Video Generation",
-      "title": "ViRDM: Taming Representation Distribution Matching for Few-Step Causal Video Generation",
-      "url": "https://huggingface.co/papers/2609.28923",
-      "mode": "paper_preview",
-      "hero_anchor": "h1, .paper-title, h1.title",
-      "demo_anchor": "table, figure, .results, #benchmark, div[class*='abstract']",
-      "download_anchor": "a[href*='arxiv.org/pdf'], a[href*='huggingface.co/papers']",
-      "specs": "Research Paper | Hugging Face Daily Papers",
-      "video_readiness": 45.0,
+      "hero_anchor": "h1, header, .hero h1",
+      "demo_anchor": "form, input, button[type='submit'], canvas, video, audio, .output, .demo",
+      "download_anchor": "a[href*='github.com'], a[href*='api'], button",
+      "specs": "Live Web App | Interactive Demo",
+      "video_readiness": 80.0,
       "consensus_count": 1,
       "hn_points": null,
       "badges": [
-        "\ud83d\udce6 Open Weights"
+        "\u2728 Interactive Demo Live"
       ]
     },
     {
-      "name": "Andreessen Horowitz",
-      "headline": "Andreessen Horowitz launches AI academy as an alternative to college degree - The Tech Portal",
-      "title": "Andreessen Horowitz launches AI academy as an alternative to college degree - The Tech Portal",
-      "url": "https://news.google.com/rss/articles/CBMinwFBVV95cUxNTW93WWd0dVpHQnJXQXE0dUFEd0l1YW0yZk9taWRSMERKQkFrOFN6MjZHU096NDdEb085dnVFNW9Vamc2VGxMR2dvdVBBaVJxR293STZ1aS00Q0dONXowdXRCT1NFYk5raXFsYVV5c3J5bG1JSng4ZmpLQ0RaYjNTVGxGUEJEOEZPWHFsSk5jazN3R0hQTW9nYXMyWkFQcXPSAaQBQVVfeXFMUE5UWGJnVER0dlNRc0J0SWtvVURrZkhMUjlTNjRWMGRSMTZ2QUZCTzNsbU5wbTk4TmFqRlJaUmduTHVjNkFkUVVVOGVTU3I4eGl3VTYyUHlCdlJ2S05va0FYZWV2eHlNQXFjaGl3NkFMOUdLYXBZRC13eDUtczE1QjQ0cVkzYzJwaTFEbGZ5UGt5VDZMRUdjaTdNTGJHMjVRRFBhMGE?oc=5",
-      "mode": "industry_insight",
-      "hero_anchor": "main h1, header h1, .hero h1, h1",
-      "demo_anchor": "figure, table, blockquote, canvas, .chart, .metrics",
-      "download_anchor": "a[href*='report'], a[href*='pdf'], a.cta-button",
-      "specs": "Industry Insight | Strategic Analysis",
-      "video_readiness": 50.0,
+      "name": "Introducing gpt-oss",
+      "headline": "Introducing gpt-oss",
+      "title": "Introducing gpt-oss",
+      "url": "https://openai.com/index/introducing-gpt-oss",
+      "mode": "paper_preview",
+      "hero_anchor": "main h1, header h1, h1",
+      "demo_anchor": "figure, table, .results, #diagram, #comparison",
+      "download_anchor": "a[href*='pdf'], a[href*='arxiv.org'], a[href*='github.com']",
+      "specs": "Research Preview | Benchmark",
+      "video_readiness": 55.0,
       "consensus_count": 5,
       "hn_points": null,
       "badges": [
@@ -205,16 +186,31 @@
       ]
     },
     {
-      "name": "OmniEcho",
-      "headline": "Spatial Audio Understanding for Embodied Agents",
-      "title": "OmniEcho: Spatial Audio Understanding for Embodied Agents",
-      "url": "https://huggingface.co/papers/2609.23407",
+      "name": "Stripes AI CRO",
+      "headline": "Stripe\u2019s AI CRO on the Fastest-Growing AI Companies: 175% Growth, 48% of Revenue From Outside the Home Market, and Agents About to Read More Stripe Docs Than Human - saastr.com",
+      "title": "Stripe\u2019s AI CRO on the Fastest-Growing AI Companies: 175% Growth, 48% of Revenue From Outside the Home Market, and Agents About to Read More Stripe Docs Than Human - saastr.com",
+      "url": "https://news.google.com/rss/articles/CBMijgJBVV95cUxNcDBLRzFjZl9xd3c1elE5cGN4RXlEMGJ3QkkxbEMtaHFSZVlOZjZmaVA1WklnM0VqWnA1eU9JRWZLZDRMM18zaE5oVzJFWHJ4OEh0NDYxbGNpUlpGVjUycHBrc0FrUUpRUm5VR2x6TGtJMVdjRlRveVJVS1RPTkRZRFVYZ2lhdXVpUmo1YWlZNC1JMWE3a0VQU015UFdpTHFRbGI3eVpHa2R1VXFsckVzWkNaWWc1Um9EUU5YeDU2RmR2TnF3bC1DdVhjUXNKaGhFTkg0dDlPWHdRY2hzYWo5d29EZGJTaGJYSzZXZlRmNUFDSTNaYjFDT3hmY2N4TURJLXNHZ3IweTZ0WUw3VWc?oc=5",
+      "mode": "industry_insight",
+      "hero_anchor": "main h1, header h1, .hero h1, h1",
+      "demo_anchor": "figure, table, blockquote, canvas, .chart, .metrics",
+      "download_anchor": "a[href*='report'], a[href*='pdf'], a.cta-button",
+      "specs": "Industry Insight | Strategic Analysis",
+      "video_readiness": 40.0,
+      "consensus_count": 1,
+      "hn_points": null,
+      "badges": []
+    },
+    {
+      "name": "Stable Diffusion",
+      "headline": "Stable Diffusion with \ud83e\udde8 Diffusers",
+      "title": "Stable Diffusion with \ud83e\udde8 Diffusers",
+      "url": "https://huggingface.co/blog/stable_diffusion",
       "mode": "tool_drop",
-      "hero_anchor": "h1, .paper-title, h1.title",
-      "demo_anchor": "table, figure, .results, #benchmark, div[class*='abstract']",
-      "download_anchor": "a[href*='arxiv.org/pdf'], a[href*='huggingface.co/papers']",
-      "specs": "Research Paper | Hugging Face Daily Papers",
-      "video_readiness": 45.0,
+      "hero_anchor": "h1, .model-header, header",
+      "demo_anchor": "table, .results, #benchmark, canvas, .viewer, video",
+      "download_anchor": "button[data-testid='download-button'], a[href*='tree/main'], a[href*='resolve']",
+      "specs": "Model Weights | Hugging Face Hub",
+      "video_readiness": 65.0,
       "consensus_count": 1,
       "hn_points": null,
       "badges": [
@@ -222,6 +218,6 @@
       ]
     }
   ],
-  "raw_markdown": "---\nepisode_id: ai-news-2026-09-25-top4\ntrack: top4\nformat: daily\nvoice_profile: alex_tech\ntools:\n- name: DeltaWAM\n  headline: Delta World Action Models for Bimanual Manipulation\n  title: 'DeltaWAM: Delta World Action Models for Bimanual Manipulation'\n  url: https://huggingface.co/papers/2609.28811\n  mode: tool_drop\n  hero_anchor: h1, .paper-title, h1.title\n  demo_anchor: 'table, figure, .results, #benchmark, div[class*=''abstract'']'\n  download_anchor: a[href*='arxiv.org/pdf'], a[href*='huggingface.co/papers']\n  specs: Research Paper | Hugging Face Daily Papers\n  video_readiness: 50.0\n  consensus_count: 2\n  hn_points: null\n  badges:\n  - \ud83d\udce6 Open Weights\n- name: ViRDM\n  headline: Taming Representation Distribution Matching for Few-Step Causal Video\n    Generation\n  title: 'ViRDM: Taming Representation Distribution Matching for Few-Step Causal Video\n    Generation'\n  url: https://huggingface.co/papers/2609.28923\n  mode: paper_preview\n  hero_anchor: h1, .paper-title, h1.title\n  demo_anchor: 'table, figure, .results, #benchmark, div[class*=''abstract'']'\n  download_anchor: a[href*='arxiv.org/pdf'], a[href*='huggingface.co/papers']\n  specs: Research Paper | Hugging Face Daily Papers\n  video_readiness: 45.0\n  consensus_count: 1\n  hn_points: null\n  badges:\n  - \ud83d\udce6 Open Weights\n- name: Andreessen Horowitz\n  headline: Andreessen Horowitz launches AI academy as an alternative to college degree\n    - The Tech Portal\n  title: Andreessen Horowitz launches AI academy as an alternative to college degree\n    - The Tech Portal\n  url: https://news.google.com/rss/articles/CBMinwFBVV95cUxNTW93WWd0dVpHQnJXQXE0dUFEd0l1YW0yZk9taWRSMERKQkFrOFN6MjZHU096NDdEb085dnVFNW9Vamc2VGxMR2dvdVBBaVJxR293STZ1aS00Q0dONXowdXRCT1NFYk5raXFsYVV5c3J5bG1JSng4ZmpLQ0RaYjNTVGxGUEJEOEZPWHFsSk5jazN3R0hQTW9nYXMyWkFQcXPSAaQBQVVfeXFMUE5UWGJnVER0dlNRc0J0SWtvVURrZkhMUjlTNjRWMGRSMTZ2QUZCTzNsbU5wbTk4TmFqRlJaUmduTHVjNkFkUVVVOGVTU3I4eGl3VTYyUHlCdlJ2S05va0FYZWV2eHlNQXFjaGl3NkFMOUdLYXBZRC13eDUtczE1QjQ0cVkzYzJwaTFEbGZ5UGt5VDZMRUdjaTdNTGJHMjVRRFBhMGE?oc=5\n  mode: industry_insight\n  hero_anchor: main h1, header h1, .hero h1, h1\n  demo_anchor: figure, table, blockquote, canvas, .chart, .metrics\n  download_anchor: a[href*='report'], a[href*='pdf'], a.cta-button\n  specs: Industry Insight | Strategic Analysis\n  video_readiness: 50.0\n  consensus_count: 5\n  hn_points: null\n  badges:\n  - \u26a1 5 Outlets Confirmed\n- name: OmniEcho\n  headline: Spatial Audio Understanding for Embodied Agents\n  title: 'OmniEcho: Spatial Audio Understanding for Embodied Agents'\n  url: https://huggingface.co/papers/2609.23407\n  mode: tool_drop\n  hero_anchor: h1, .paper-title, h1.title\n  demo_anchor: 'table, figure, .results, #benchmark, div[class*=''abstract'']'\n  download_anchor: a[href*='arxiv.org/pdf'], a[href*='huggingface.co/papers']\n  specs: Research Paper | Hugging Face Daily Papers\n  video_readiness: 45.0\n  consensus_count: 1\n  hn_points: null\n  badges:\n  - \ud83d\udce6 Open Weights\n---\n\n# Intro\n[excited] Four drops today: bimanual robot world models, streaming causal video, spatial audio for embodied agents, and a16z's college-killer academy. Let's go.\n\n---\n\n# Story 1: DeltaWAM | Delta World Action Models for Bimanual Manipulation\n### Landing Page\n[confident] DeltaWAM rethinks world-action models by predicting only changed content, not dense future frames. That's a big efficiency win for robot control.\n\n### Demo\n[amazed] By dropping repetitive visual modeling, it decouples action dynamics from nuisance appearance. Bimanual manipulation gets cleaner, faster, and more generalizable.\n\n### Access\n[excited] It's open weights on Hugging Face Daily Papers, linked below. Robotics folks, this one's worth cloning today.\n\n---\n\n# Story 2: ViRDM | Few-Step Causal Video Generation\n### Paper\n[curious] ViRDM asks a sharp question: do few-step autoregressive video diffusion models really need a giant teacher and an online critic?\n\n### Architecture\n[confident] Instead, it uses representation distribution matching, cutting the resource-heavy teacher-critic loop while keeping low-latency streaming generation intact.\n\n### Release Horizon\n[hopeful] Open weights are flagged on Hugging Face. If this holds up, real-time video gen just got cheaper for everyone.\n\n---\n\n# Story 3: OmniEcho | Spatial Audio Understanding for Embodied Agents\n### Landing Page\n[amazed] OmniEchoBench is a unified benchmark for spatial audio-visual perception. It asks: can embodied agents actually localize sound like we do?\n\n### Demo\n[excited] Sixteen upvotes on the paper, and it fuses audio direction with visual cues for reasoning. This is the missing eval layer for embodied AI.\n\n### Access\n[confident] Open weights and the benchmark are on Hugging Face. Robotics and audio researchers, this is your new test bed.\n\n---\n\n# Story 4: a16z | AI Academy as a College Alternative\n### Headline\n[skeptical] Andreessen Horowitz is launching an AI academy positioned as an alternative to a college degree. Five outlets confirmed the story.\n\n### Evidence\n[curious] Consensus is building fast, and the framing is aggressive: skip the diploma, learn AI directly. That's a direct challenge to higher ed.\n\n### The Verdict\n[confident] For leaders, this signals talent pipelines are being rebuilt outside universities. Watch this space closely \u2014 it could reshape hiring.\n\n---\n\n# Outro\n[friendly] All project links, Hugging Face spaces, and research papers are organized down in the description below. Hit subscribe to Brief Delights for your daily rundown, and I'll see you tomorrow.",
-  "generated_at": "2026-09-25T10:25:26.447014"
+  "raw_markdown": "---\nepisode_id: ai-news-2026-09-25-top4\ntrack: top4\nformat: daily\nvoice_profile: alex_tech\ntools:\n- name: Clone your voice using\n  headline: Clone your voice using open-source models\n  title: Clone your voice using open-source models\n  url: https://replicate.com/blog/how-to-tune-a-realistic-voice-clone\n  mode: tool_drop\n  hero_anchor: h1, header, .hero h1\n  demo_anchor: form, input, button[type='submit'], canvas, video, audio, .output,\n    .demo\n  download_anchor: a[href*='github.com'], a[href*='api'], button\n  specs: Live Web App | Interactive Demo\n  video_readiness: 80.0\n  consensus_count: 1\n  hn_points: null\n  badges:\n  - \u2728 Interactive Demo Live\n- name: Introducing gpt-oss\n  headline: Introducing gpt-oss\n  title: Introducing gpt-oss\n  url: https://openai.com/index/introducing-gpt-oss\n  mode: paper_preview\n  hero_anchor: main h1, header h1, h1\n  demo_anchor: 'figure, table, .results, #diagram, #comparison'\n  download_anchor: a[href*='pdf'], a[href*='arxiv.org'], a[href*='github.com']\n  specs: Research Preview | Benchmark\n  video_readiness: 55.0\n  consensus_count: 5\n  hn_points: null\n  badges:\n  - \u26a1 5 Outlets Confirmed\n- name: Stripes AI CRO\n  headline: 'Stripe\u2019s AI CRO on the Fastest-Growing AI Companies: 175% Growth, 48%\n    of Revenue From Outside the Home Market, and Agents About to Read More Stripe\n    Docs Than Human - saastr.com'\n  title: 'Stripe\u2019s AI CRO on the Fastest-Growing AI Companies: 175% Growth, 48% of\n    Revenue From Outside the Home Market, and Agents About to Read More Stripe Docs\n    Than Human - saastr.com'\n  url: https://news.google.com/rss/articles/CBMijgJBVV95cUxNcDBLRzFjZl9xd3c1elE5cGN4RXlEMGJ3QkkxbEMtaHFSZVlOZjZmaVA1WklnM0VqWnA1eU9JRWZLZDRMM18zaE5oVzJFWHJ4OEh0NDYxbGNpUlpGVjUycHBrc0FrUUpRUm5VR2x6TGtJMVdjRlRveVJVS1RPTkRZRFVYZ2lhdXVpUmo1YWlZNC1JMWE3a0VQU015UFdpTHFRbGI3eVpHa2R1VXFsckVzWkNaWWc1Um9EUU5YeDU2RmR2TnF3bC1DdVhjUXNKaGhFTkg0dDlPWHdRY2hzYWo5d29EZGJTaGJYSzZXZlRmNUFDSTNaYjFDT3hmY2N4TURJLXNHZ3IweTZ0WUw3VWc?oc=5\n  mode: industry_insight\n  hero_anchor: main h1, header h1, .hero h1, h1\n  demo_anchor: figure, table, blockquote, canvas, .chart, .metrics\n  download_anchor: a[href*='report'], a[href*='pdf'], a.cta-button\n  specs: Industry Insight | Strategic Analysis\n  video_readiness: 40.0\n  consensus_count: 1\n  hn_points: null\n  badges: []\n- name: Stable Diffusion\n  headline: Stable Diffusion with \ud83e\udde8 Diffusers\n  title: Stable Diffusion with \ud83e\udde8 Diffusers\n  url: https://huggingface.co/blog/stable_diffusion\n  mode: tool_drop\n  hero_anchor: h1, .model-header, header\n  demo_anchor: 'table, .results, #benchmark, canvas, .viewer, video'\n  download_anchor: button[data-testid='download-button'], a[href*='tree/main'], a[href*='resolve']\n  specs: Model Weights | Hugging Face Hub\n  video_readiness: 65.0\n  consensus_count: 1\n  hn_points: null\n  badges:\n  - \ud83d\udce6 Open Weights\n---\n\n# Intro\n[excited] Hacker News is quiet today, but OpenAI just dropped Apache 2.0 open-weight frontier models, five outlets confirmed. Plus voice cloning, Stripe AI growth benchmarks, and Stable Diffusion with Diffusers. Let's go.\n\n---\n\n# Story 1: Voice Clone OSS | Clone Your Voice With Open-Source Models\n### Landing Page\n[confident] Replicate just published a hands-on guide to tuning a realistic voice clone using open-source models. No giant lab required; you bring clean audio and follow the pipeline.\n\n### Demo\n[amazed] The live web app walks through dataset prep, training, and inference. You can hear the clone improve as the model learns your tone, pacing, and vocal quirks.\n\n### Access\n[energetic] The full tutorial and interactive demo are live on Replicate right now. Link is below, so you can clone your own voice before this gets saturated.\n\n---\n\n# Story 2: gpt-oss | OpenAI's Apache 2.0 Open-Weight Frontier Models\n### Paper\n[excited] OpenAI is releasing gpt-oss under Apache 2.0, a landmark shift for open-weight frontier models. Five outlets confirmed it, and researchers can immediately exploit the weights.\n\n### Architecture/Evidence\n[curious] Early benchmarks position gpt-oss as frontier-class, with broad provider support and production-agent capabilities. It is a research preview, so expect rapid iteration and community fine-tunes.\n\n### Release Horizon\n[confident] The weights are available now for builders to download, fine-tune, and deploy commercially. This is the open ecosystem's biggest unlock this quarter.\n\n---\n\n# Story 3: Stripe AI CRO | AI Growth Benchmarks: 175% and Global Revenue\n### Headline\n[confident] Stripe's AI CRO just shared the fastest-growing AI companies' playbook: 175% growth, with 48% of revenue coming from outside the home market.\n\n### Evidence\n[curious] The data shows agents are about to read more Stripe docs than humans. That signals a massive shift in how AI products monetize and expand globally.\n\n### The Verdict\n[skeptical] Single-source, no HN thread yet, so treat these benchmarks as directional. Still, if you're building AI, international revenue is no longer optional.\n\n---\n\n# Story 4: Diffusers SD | Stable Diffusion Image Generation Made Practical\n### Landing Page\n[friendly] Hugging Face's Diffusers guide breaks down Stable Diffusion into practical steps. Open weights are on the Hub, ready for image generation and fine-tuning.\n\n### Demo\n[amazed] The walkthrough shows text-to-image pipelines, schedulers, and memory tricks. You can run it locally or in a notebook, then swap models without rewriting your stack.\n\n### Access\n[energetic] Install Diffusers, pull the weights, and generate your first image in minutes. The link below has the full code and model card.\n\n---\n\n# Outro\n[friendly] All project links, Hugging Face spaces, and research papers are organized down in the description below. Hit subscribe to Brief Delights for your daily rundown, and I'll see you tomorrow.",
+  "generated_at": "2026-09-25T12:59:03.946923"
 }

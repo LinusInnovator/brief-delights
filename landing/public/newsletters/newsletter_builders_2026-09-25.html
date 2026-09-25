@@ -98,7 +98,7 @@
               <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="background-color: #F4EFEB; border: 1px solid #E5DCD3; border-radius: 10px;">
                 <tr>
                   <td style="padding: 12px 16px; text-align: center; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 12px; line-height: 18px; color: #58111A; font-weight: 600; -webkit-text-size-adjust: 100%; text-size-adjust: 100%;">
-                    📊 Scanned <strong>7,403</strong> articles &bull; Selected top <strong>6</strong> role-critical insights for today.
+                    📊 Scanned <strong>7,403</strong> articles &bull; Selected top <strong>11</strong> role-critical insights for today.
                   </td>
                 </tr>
               </table>
@@ -119,7 +119,7 @@
                       The other side of ai market outlook
                     </h3>
                     <p style="margin: 0; font-family: -apple-system, BlinkMacSystemFont, sans-serif; font-size: 14px; line-height: 22px; color: #e2e8f0; -webkit-text-size-adjust: 100%; text-size-adjust: 100%;">
-                      524 articles say ai boom, but 167 argue ai bubble.
+                      532 articles say ai boom, but 164 argue ai bubble.
                     </p>
                   </td>
                 </tr>
@@ -183,7 +183,7 @@
                             💡 WHY THIS MATTERS FOR YOUR ROLE
                           </div>
                           <div style="font-family: -apple-system, sans-serif; font-size: 13px; line-height: 19px; color: #1e293b; font-weight: 500;">
-                            Builders shipping production agents need eval and tracing infrastructure, and a native CloudWatch option changes the vendor calculus.
+                            AI-powered observability is essential for managing the complexity and performance of generative AI and agentic applications.
                           </div>
                         </td>
                       </tr>
@@ -201,79 +201,6 @@
                         </td>
                         <td align="right">
                           <a href="https://brief.delights.pro/api/track?url=https%3A%2F%2Faws.amazon.com%2Fblogs%2Faws%2Fintroducing-amazon-cloudwatch-omni-ai-powered-observability-for-generative-ai-and-agentic-workloads%2F&s=builders&d=2026-09-25&t=Introducing+Amazon+CloudWatch+Omni%3A+AI-powered+observability+for+generative+AI+and+agentic+workloads" target="_blank" style="font-family: -apple-system, sans-serif; font-size: 13px; font-weight: 700; color: #58111A; text-decoration: none;">
-                            Read Full Analysis &rarr;
-                          </a>
-                        </td>
-                      </tr>
-                    </table>
-
-                  </td>
-                </tr>
-              </table>
-            </td>
-          </tr>
-          
-          <!-- Single Article Card -->
-          <tr>
-            <td style="padding-bottom: 20px;">
-              <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="background-color: #FFFFFF; border: 1px solid #E5DCD3; border-radius: 12px; width: 100%;" class="card-bg">
-                <tr>
-                  <td style="padding: 20px;">
-                    
-                    <!-- Meta Row: Tag & Source -->
-                    <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="margin-bottom: 10px;">
-                      <tr>
-                        <td align="left">
-                          <span style="background-color: #58111A; color: #FFFFFF; font-family: -apple-system, sans-serif; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; padding: 3px 8px; border-radius: 4px; display: inline-block;">
-                            🚀 AI & Innovation
-                          </span>
-                          <span style="font-family: -apple-system, sans-serif; font-size: 12px; color: #64748b; margin-left: 8px;">
-                            via <strong>Vercel News</strong> &bull; 9 min read
-                          </span>
-                        </td>
-                      </tr>
-                    </table>
-
-                    <!-- Article Headline -->
-                    <h3 style="margin: 0 0 10px 0; font-family: Georgia, 'Times New Roman', serif; font-size: 19px; line-height: 25px; font-weight: 700;">
-                      <a href="https://brief.delights.pro/api/track?url=https%3A%2F%2Fvercel.com%2Fchangelog%2Fai-sdk-7&s=builders&d=2026-09-25&t=AI+SDK+7+is+now+available" target="_blank" style="color: #121212; text-decoration: none;" class="header-title">
-                        AI SDK 7 is now available
-                      </a>
-                    </h3>
-
-                    <!-- Article Summary Body -->
-                    
-                      <p class="body-text" style="margin: 0 0 12px 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 15px; line-height: 24px; color: #334155; -webkit-text-size-adjust: 100%; text-size-adjust: 100%;">AI SDK 7 is a major release for building production agents in TypeScript. The SDK has grown from model calls and chat primitives into a broader agent platform for developing, running, integrating, and observing agents across text, audio, realtime, image, and video. Every major provider is supported out of the box.At a GlanceDevelop agents with reasoning control, tool and runtime context, provider files and skills support, MCP Apps, and a terminal UI.Run agents with tool approvals, durable WorkflowAgent execution, first-class timeouts, and sandbox support.Integrate any agent harness such as Codex, Claude Code, Deep Agents, OpenCode, or Pi.Observe agent behavior with redesigned telemetry, @ai-sdk/otel, Node.js tracing channel support, lifecycle callbacks, and step performance statistics.Build beyond text with stable speech/transcription APIs, richer file parts, image generation and editing, multimodal embeddings, reranking, realtime voice (experimental), and video generation (experimental).Upgrade with clearer APIs through the new migration skill, codemods, and migration paths for ESM, Node.js 22, instructions, telemetry, stream, finalStep, runtimeContext, and toolsContext.Before You UpgradeAI SDK 7 introduces two breaking requirements:Node.js 22 minimum: Node 22 is required because the SDK depends on APIs (including the native fetch implementation and improved AsyncLocalStorage semantics) that are not backported to earlier LTS lines.ESM imports required: AI SDK 7 requires ESM imports (import syntax or .mjs files). CommonJS require() is not supported. Update your package.json to include "type": "module" or migrate individual files to .mjs.Run the v7 codemods to automate most import and rename changes before manually reviewing semantic migration items. See the full v7 migration guide.Develop AgentsProvider-agnostic reasoning control: generateText and streamText now support a top-level reasoning option that maps to provider-native settings across OpenAI, Anthropic, Google, Groq, xAI, Bedrock, Fireworks, DeepSeek, Open Responses, and OpenAI-compatible providers. Note that exact behavior and available parameters vary by provider.Typed runtime context: Shared orchestration state lives in runtimeContext and flows through prepareStep, approval functions, lifecycle callbacks, telemetry, ToolLoopAgent, and WorkflowAgent.Scoped tool context: Tools can declare a contextSchema, and callers provide per-tool values through toolsContext, so third-party tools only receive the secrets or config they need.Provider file uploads: uploadFile uploads large inputs once and reuses provider references in later calls, reducing redundant uploads in repeated PDF, dataset, image, and multi-step workflows.Provider skill uploads: uploadSkill brings the same pattern to provider-managed skill environments.MCP Apps: MCP support now includes model-visible versus app-only tools, app metadata, sandboxed iframe rendering, and JSON-RPC communication for tools, resources, logs, and display updates. Add an MCP app to your agentic app.Terminal agent development: @ai-sdk/tui runs AI SDK agents in an interactive terminal UI, letting you test reasoning, tools, and markdown output before building a full app. Learn how to build your own terminal agent.Run Agents in ProductionAI SDK 7 adds the primitives agents need once they leave local demos.Tool approvals: generateText, streamText, and ToolLoopAgent can define approval policies at the call or agent level. Policies can require user approval, auto-approve, auto-deny, or delegate to typed approval functions.Hardened approval replay: Higher-risk approval flows can revalidate tool inputs and policies before continuation, use WorkflowAgent approval validation, and opt into HMAC signing. HMAC signing cryptographically binds the original tool inputs to the approval token, preventing tampering with tool arguments between the approval request and resumption.Durable execution: @ai-sdk/workflow introduces WorkflowAgent for long-running agents. Execution state is persisted to durable storage between steps, so agents survive deploys, process restarts, interruptions, and delayed approvals. To learn more, see the WorkflowAgent migration guide.Workflow-aware agent features: WorkflowAgent supports streaming, tools, approvals, typed runtime and tool context, lifecycle callbacks, stable telemetry, provider-executed approval resumption, and tool result conversion.First-class timeouts: Text generation and agent APIs can define total, per-step, per-chunk, default tool, and per-tool timeout budgets. Timeout aborts use TimeoutError, and abort reasons flow through stream and UI protocols.Sandboxed execution: The sandbox abstractions support command execution, streaming output, working directories, environment variables, abort signals, and step-level sandbox overrides.Integrate Agent HarnessesAI SDK 7 introduces a harness layer for bringing established agents into the AI SDK ecosystem. Wrap harnesses such as Claude Code, Codex, Deep Agents, OpenCode, and Pi behind the same agent interface used by the rest of the SDK.HarnessAgent: Run external agent harnesses through the AI SDK Agent interface, with standard generate and stream results.Adapters for agents: Claude Code, Codex, Deep Agents, OpenCode, and Pi harness adapters let teams plug existing agent runtimes into AI SDK apps.Configurable harness runs: Harness agents can receive sandboxes, instructions, custom skills, and tools, so the same runtime can be shaped for different products and workflows.Durable, resumable sessions: Workflow utilities, session bridging, and APIs for interrupted-turn continuation make harness runs suitable for longer tasks.Gateway-ready authentication: Harness adapters support Vercel OIDC for AI Gateway, simplifying hosted and sandboxed agent execution.Observe AgentsGlobal telemetry integrations: Register telemetry once and receive structured events across model calls, steps, tools, embeddings, reranking, and agent execution.Dedicated OpenTelemetry package: OpenTelemetry support now lives in @ai-sdk/otel, with GenAI-semantic convention spans and metrics, supplemental AI SDK attributes, and span-enrichment hooks. To learn more, see the @ai-sdk/otel docs.Node.js tracing channel: AI SDK 7 emits structured telemetry through the Node.js tracing channel, allowing observability providers to subscribe once while preserving async context across streaming and tool execution.Sensitive context controls: Runtime and tool context can be deliberately included in telemetry, with controls to prevent secrets from being exposed by default.Lifecycle callbacks: Callbacks are more consistent across core functions, agents, tools, embeddings, reranking, structured output, and UI streams. Callback payloads carry richer data for step, usage, content, file, source, warning, tool, model-call, and error events.Performance statistics: Step results expose timing and throughput metrics, including response time, total step time, tool execution time, time to first output, and output tokens per second.Build Beyond TextAI SDK 7 expands the SDK across realtime, video, speech, transcription, images, files, embeddings, and structured output.Realtime (experimental): Browser-to-provider WebSocket sessions for OpenAI, Google, and xAI, with audio/text conversations, client-driven tool calls, and normalized routing through AI Gateway.Video generation (experimental): Video generation works across AI Gateway, Google AI Studio, Google Vertex, fal, Replicate, ByteDance Seedance, Kling AI, Prodia, and xAI, with support for long-running SSE responses and safer bounded downloads.Stable speech and transcription: generateSpeech, transcribe, SpeechResult, and TranscriptionResult are stable exports.Images as files: Image parts move toward the same canonical file model as other media. Tool outputs can use a single file shape for inline data, URLs, provider references, and text-backed content.Richer media and model support: Providers add image generation, image editing, multimodal embeddings, speech, transcription, reranking, file references, reasoning files, and provider-specific media metadata.Structured output reliability: JSON Schema post-processing is stricter for Zod and Standard Schema inputs, malformed JSON extraction and repair is available for structured outputs and tool calls, and array output mode preserves transforms, coercions, defaults, and pipes.UI, Streams, and Message HandlingThe UI and streaming work in v7 focuses on making agent streams correct, composable, and reliable.Direct agent transport: DirectChatTransport can call an Agent directly from UI code.Tool approval in UI flows: UI messages support automatic approval responses and improved approval replay behavior.Framework improvements: React useChat callbacks update with current props/state; sendAutomaticallyWhen supports async conditions; Vue gains an idiomatic useChat composable; and Angular APIs are aligned with current AI SDK patterns.More reliable streams: Provider streams that end before a finish chunk are treated as errors, tool execution errors are emitted and cleaned up predictably, and streaming reasoning edge cases are handled more consistently.Provider metadata preservation: Provider metadata is retained across text generation, UI streams, tool invocations, and multi-turn provider ID mapping.Multi-step results: Top-level content, tool calls/results, files, sources, warnings, and usage now represent the full run. Final-step-only details are available through finalStep.Configure MCPThe MCP package grows from a tool transport layer into a richer integration surface for agent tools and app UIs.Protocol and metadata: MCP clients support protocol version 2025-11-25, server metadata, server instructions, ping responses, negotiated protocol headers, and public listTools().Typed tool outputs: MCP tools can expose outputSchema and structuredContent, and tool definitions can be separated from executable tools.Resource content: Tool results and prompt messages can include MCP resource_link content.App rendering: MCP Apps use tool metadata to render app-specific UI inside sandboxed iframes while keeping model-visible and app-only tools separate.Transport reliability: HTTP, SSE, and OAuth transports support custom fetch, redirect configuration, OAuth refresh deduplication, state validation, asynchronous client authentication, richer errors, and better SSE frame handling.Configure Runtime and PackagingNode.js 22 minimum: AI SDK packages require Node.js 22 or later.ESM imports required: AI SDK 7 requires ESM imports (import syntax or .mjs files). Update your package.json to include "type": "module" or migrate individual files to .mjs.Migration skill available: A dedicated migration skill is available that developers can install and ask their agent to use for AI SDK v6-to-v7 upgrades. Codemods available: The v7 codemods cover the majority of renames and cleanup migrations.Send this prompt to your AI coding agent to get started:Coming Out of ExperimentalThe following highlights cover the most impactful promotions:experimental_customProvider becomes customProviderexperimental_generateImage becomes generateImageexperimental_output becomes outputexperimental_prepareStep becomes prepareStepexperimental_telemetry becomes telemetryRenamed APIsThe following highlights cover the most impactful renames:system option becomes instructionsSystem messages inside prompt or messages require allowSystemInMessages: trueonFinish becomes onEndStreamTextResult.fullStream becomes streamCallSettings is split into model generation options and request/transport optionsDeprecated APIsThe following highlights cover the most impactful deprecations:Tool approval: needsApproval on tool() and dynamicTool() is deprecated. Move approval logic to toolApproval on generateText, streamText, or ToolLoopAgent.Stream response helpers: Result methods like result.toUIMessageStreamResponse() and result.toTextStreamResponse() are deprecated. Use top-level helpers like createUIMessageStreamResponse and createTextStreamResponse.Vue chat: The Vue Chat class is deprecated. Use the useChat composable instead.Other Migration ThemesReasoning configuration is centralized: The top-level reasoning option replaces overlapping provider-specific reasoning settings unless a provider-specific override is intentional.OpenTelemetry moved to @ai-sdk/otel: OpenTelemetry span collection is no longer built into the ai package. Telemetry is registered globally, and custom tracers move into the OpenTelemetry constructor.Request and response body retention is opt-in: Text generation results exclude request and response bodies by default.Multi-step results now represent the full run: Top-level usage, content, tool calls/results, files, sources, and warnings accumulate across all steps; final-step-only data lives under finalStep.Message parts are more canonical: Legacy media and image-specific parts move toward file parts with media types.Package-specific behavior changed: MCP HTTP/SSE redirects are treated as errors, OpenAI Responses reasoning summaries default to detailed, and Anthropic cache creation token metadata moves into standard usage fields.Upgrade PathFollow these steps to migrate an existing project to AI SDK 7:Update Node.js to 22+: Verify your runtime and CI environments meet the minimum requirement before upgrading packages.Update packages: Bump ai and all @ai-sdk/* packages to their v7 releases in your package.json.Run the v7 codemods: The codemods automate the majority of renames, import changes, and API moves. Review the diff before committing.Migrate OpenTelemetry: If you use tracing, move your setup to @ai-sdk/otel and register telemetry globally. Refer to the @ai-sdk/otel docs and the OpenTelemetry span schema for attribute details.Review semantic changes manually: Codemods cannot fully decide runtime requirements, ESM imports, instruction/message behavior, runtime/tool context separation, approval policy placement, stream helper usage, and multi-step result shapes. See the full v7 migration guide.For a guided migration, install the AI SDK v7 migration skill with npx skills add vercel/ai --skill migrate-ai-sdk-v6-to-v7.  Read more </p>
-                    
-
-
-                    
-                    <!-- Strategic Takeaway Box -->
-                    <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="background-color: #FAF8F5; border-left: 3px solid #58111A; border-radius: 0 8px 8px 0;">
-                      <tr>
-                        <td style="padding: 12px 14px;">
-                          <div style="font-family: -apple-system, sans-serif; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: #58111A; margin-bottom: 4px;">
-                            💡 WHY THIS MATTERS FOR YOUR ROLE
-                          </div>
-                          <div style="font-family: -apple-system, sans-serif; font-size: 13px; line-height: 19px; color: #1e293b; font-weight: 500;">
-                            Key development for the builders persona.
-                          </div>
-                        </td>
-                      </tr>
-                    </table>
-                    
-
-                    <!-- Article Action Row: Social Share & Read Link -->
-                    <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="margin-top: 14px; padding-top: 10px; border-top: 1px dashed #E5DCD3;">
-                      <tr>
-                        <td align="left" style="font-family: -apple-system, sans-serif; font-size: 12px; color: #64748b;">
-                          Share: 
-                          <a href="https://twitter.com/intent/tweet?text=AI%20SDK%207%20is%20now%20available&url=https%3A//brief.delights.pro/api/track%3Furl%3Dhttps%253A%252F%252Fvercel.com%252Fchangelog%252Fai-sdk-7%26s%3Dbuilders%26d%3D2026-09-25%26t%3DAI%2BSDK%2B7%2Bis%2Bnow%2Bavailable" target="_blank" style="color: #58111A; text-decoration: none; font-weight: 600; margin-left: 4px; margin-right: 8px;">𝕏 Post</a>
-                          <a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A//brief.delights.pro/api/track%3Furl%3Dhttps%253A%252F%252Fvercel.com%252Fchangelog%252Fai-sdk-7%26s%3Dbuilders%26d%3D2026-09-25%26t%3DAI%2BSDK%2B7%2Bis%2Bnow%2Bavailable" target="_blank" style="color: #58111A; text-decoration: none; font-weight: 600; margin-right: 8px;">LinkedIn</a>
-                          <a href="mailto:?subject=AI%20SDK%207%20is%20now%20available&body=Check%20out%20this%20insight%20from%20Brief%20Delights:%20https%3A//brief.delights.pro/api/track%3Furl%3Dhttps%253A%252F%252Fvercel.com%252Fchangelog%252Fai-sdk-7%26s%3Dbuilders%26d%3D2026-09-25%26t%3DAI%2BSDK%2B7%2Bis%2Bnow%2Bavailable" style="color: #64748b; text-decoration: none;">Email</a>
-                        </td>
-                        <td align="right">
-                          <a href="https://brief.delights.pro/api/track?url=https%3A%2F%2Fvercel.com%2Fchangelog%2Fai-sdk-7&s=builders&d=2026-09-25&t=AI+SDK+7+is+now+available" target="_blank" style="font-family: -apple-system, sans-serif; font-size: 13px; font-weight: 700; color: #58111A; text-decoration: none;">
                             Read Full Analysis &rarr;
                           </a>
                         </td>
@@ -340,7 +267,7 @@
                             💡 WHY THIS MATTERS FOR YOUR ROLE
                           </div>
                           <div style="font-family: -apple-system, sans-serif; font-size: 13px; line-height: 19px; color: #1e293b; font-weight: 500;">
-                            Builders evaluating vector database vendors for RAG and agent workloads must now weigh a serverless, trillion-vector option already inside their AWS footprint.
+                            Native vector search in DynamoDB offers a scalable, zero-infrastructure solution for AI applications, influencing database selection and architecture.
                           </div>
                         </td>
                       </tr>
@@ -413,7 +340,7 @@
                             💡 WHY THIS MATTERS FOR YOUR ROLE
                           </div>
                           <div style="font-family: -apple-system, sans-serif; font-size: 13px; line-height: 19px; color: #1e293b; font-weight: 500;">
-                            Builders running databases, caches, and real-time analytics on AWS now have a new price-performance ceiling to plan fleet upgrades around.
+                            Evaluating new AWS Graviton instances is crucial for optimizing database and cache performance, directly impacting scalability and operational costs.
                           </div>
                         </td>
                       </tr>
@@ -458,7 +385,7 @@
                             ☁️ Enterprise Tech
                           </span>
                           <span style="font-family: -apple-system, sans-serif; font-size: 12px; color: #64748b; margin-left: 8px;">
-                            via <strong>AWS News Blog</strong> &bull; 1 min read
+                            via <strong>The GitHub Blog</strong> &bull; 1 min read
                           </span>
                         </td>
                       </tr>
@@ -466,14 +393,14 @@
 
                     <!-- Article Headline -->
                     <h3 style="margin: 0 0 10px 0; font-family: Georgia, 'Times New Roman', serif; font-size: 19px; line-height: 25px; font-weight: 700;">
-                      <a href="https://brief.delights.pro/api/track?url=https%3A%2F%2Faws.amazon.com%2Fblogs%2Faws%2Fintroducing-enhanced-custom-event-buses-in-amazon-eventbridge-for-enterprise-scale-event-driven-applications%2F&s=builders&d=2026-09-25&t=Introducing+enhanced+custom+event+buses+in+Amazon+EventBridge+for+enterprise-scale+event-driven+appl" target="_blank" style="color: #121212; text-decoration: none;" class="header-title">
-                        Introducing enhanced custom event buses in Amazon EventBridge for enterprise-scale event-driven applications
+                      <a href="https://brief.delights.pro/api/track?url=https%3A%2F%2Fgithub.blog%2Fai-and-ml%2Fgenerative-ai%2Fmigrating-the-github-copilot-runtime-to-rust-using-copilot%2F&s=builders&d=2026-09-25&t=Migrating+the+GitHub+Copilot+runtime+to+Rust%2C+using+Copilot" target="_blank" style="color: #121212; text-decoration: none;" class="header-title">
+                        Migrating the GitHub Copilot runtime to Rust, using Copilot
                       </a>
                     </h3>
 
                     <!-- Article Summary Body -->
                     
-                      <p class="body-text" style="margin: 0 0 12px 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 15px; line-height: 24px; color: #334155; -webkit-text-size-adjust: 100%; text-size-adjust: 100%;">Amazon EventBridge announces an enhanced custom event bus for organizations scaling event-driven applications across teams and accounts. Deploy a single event bus shared across all AWS accounts in your organization, with ordering guarantees, a simplified Subscriber resource, and improved economics at scale.</p>
+                      <p class="body-text" style="margin: 0 0 12px 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 15px; line-height: 24px; color: #334155; -webkit-text-size-adjust: 100%; text-size-adjust: 100%;">A rewrite this size wasn't affordable before agents. Here's what porting the Copilot agent runtime to 800,000 lines of production Rust actually took. The post Migrating the GitHub Copilot runtime to Rust, using Copilot appeared first on The GitHub Blog.</p>
                     
 
 
@@ -486,7 +413,7 @@
                             💡 WHY THIS MATTERS FOR YOUR ROLE
                           </div>
                           <div style="font-family: -apple-system, sans-serif; font-size: 13px; line-height: 19px; color: #1e293b; font-weight: 500;">
-                            Builders scaling microservices across many AWS accounts get a managed path to a single ordered event backbone without standing up their own streaming platform.
+                            This deep dive into migrating a core system to Rust using AI tools offers valuable insights into modern development practices and infrastructure choices.
                           </div>
                         </td>
                       </tr>
@@ -498,12 +425,85 @@
                       <tr>
                         <td align="left" style="font-family: -apple-system, sans-serif; font-size: 12px; color: #64748b;">
                           Share: 
-                          <a href="https://twitter.com/intent/tweet?text=Introducing%20enhanced%20custom%20event%20buses%20in%20Amazon%20EventBridge%20for%20enterprise-scale%20event-driven%20applications&url=https%3A//brief.delights.pro/api/track%3Furl%3Dhttps%253A%252F%252Faws.amazon.com%252Fblogs%252Faws%252Fintroducing-enhanced-custom-event-buses-in-amazon-eventbridge-for-enterprise-scale-event-driven-applications%252F%26s%3Dbuilders%26d%3D2026-09-25%26t%3DIntroducing%2Benhanced%2Bcustom%2Bevent%2Bbuses%2Bin%2BAmazon%2BEventBridge%2Bfor%2Benterprise-scale%2Bevent-driven%2Bappl" target="_blank" style="color: #58111A; text-decoration: none; font-weight: 600; margin-left: 4px; margin-right: 8px;">𝕏 Post</a>
-                          <a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A//brief.delights.pro/api/track%3Furl%3Dhttps%253A%252F%252Faws.amazon.com%252Fblogs%252Faws%252Fintroducing-enhanced-custom-event-buses-in-amazon-eventbridge-for-enterprise-scale-event-driven-applications%252F%26s%3Dbuilders%26d%3D2026-09-25%26t%3DIntroducing%2Benhanced%2Bcustom%2Bevent%2Bbuses%2Bin%2BAmazon%2BEventBridge%2Bfor%2Benterprise-scale%2Bevent-driven%2Bappl" target="_blank" style="color: #58111A; text-decoration: none; font-weight: 600; margin-right: 8px;">LinkedIn</a>
-                          <a href="mailto:?subject=Introducing%20enhanced%20custom%20event%20buses%20in%20Amazon%20EventBridge%20for%20enterprise-scale%20event-driven%20applications&body=Check%20out%20this%20insight%20from%20Brief%20Delights:%20https%3A//brief.delights.pro/api/track%3Furl%3Dhttps%253A%252F%252Faws.amazon.com%252Fblogs%252Faws%252Fintroducing-enhanced-custom-event-buses-in-amazon-eventbridge-for-enterprise-scale-event-driven-applications%252F%26s%3Dbuilders%26d%3D2026-09-25%26t%3DIntroducing%2Benhanced%2Bcustom%2Bevent%2Bbuses%2Bin%2BAmazon%2BEventBridge%2Bfor%2Benterprise-scale%2Bevent-driven%2Bappl" style="color: #64748b; text-decoration: none;">Email</a>
+                          <a href="https://twitter.com/intent/tweet?text=Migrating%20the%20GitHub%20Copilot%20runtime%20to%20Rust%2C%20using%20Copilot&url=https%3A//brief.delights.pro/api/track%3Furl%3Dhttps%253A%252F%252Fgithub.blog%252Fai-and-ml%252Fgenerative-ai%252Fmigrating-the-github-copilot-runtime-to-rust-using-copilot%252F%26s%3Dbuilders%26d%3D2026-09-25%26t%3DMigrating%2Bthe%2BGitHub%2BCopilot%2Bruntime%2Bto%2BRust%252C%2Busing%2BCopilot" target="_blank" style="color: #58111A; text-decoration: none; font-weight: 600; margin-left: 4px; margin-right: 8px;">𝕏 Post</a>
+                          <a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A//brief.delights.pro/api/track%3Furl%3Dhttps%253A%252F%252Fgithub.blog%252Fai-and-ml%252Fgenerative-ai%252Fmigrating-the-github-copilot-runtime-to-rust-using-copilot%252F%26s%3Dbuilders%26d%3D2026-09-25%26t%3DMigrating%2Bthe%2BGitHub%2BCopilot%2Bruntime%2Bto%2BRust%252C%2Busing%2BCopilot" target="_blank" style="color: #58111A; text-decoration: none; font-weight: 600; margin-right: 8px;">LinkedIn</a>
+                          <a href="mailto:?subject=Migrating%20the%20GitHub%20Copilot%20runtime%20to%20Rust%2C%20using%20Copilot&body=Check%20out%20this%20insight%20from%20Brief%20Delights:%20https%3A//brief.delights.pro/api/track%3Furl%3Dhttps%253A%252F%252Fgithub.blog%252Fai-and-ml%252Fgenerative-ai%252Fmigrating-the-github-copilot-runtime-to-rust-using-copilot%252F%26s%3Dbuilders%26d%3D2026-09-25%26t%3DMigrating%2Bthe%2BGitHub%2BCopilot%2Bruntime%2Bto%2BRust%252C%2Busing%2BCopilot" style="color: #64748b; text-decoration: none;">Email</a>
                         </td>
                         <td align="right">
-                          <a href="https://brief.delights.pro/api/track?url=https%3A%2F%2Faws.amazon.com%2Fblogs%2Faws%2Fintroducing-enhanced-custom-event-buses-in-amazon-eventbridge-for-enterprise-scale-event-driven-applications%2F&s=builders&d=2026-09-25&t=Introducing+enhanced+custom+event+buses+in+Amazon+EventBridge+for+enterprise-scale+event-driven+appl" target="_blank" style="font-family: -apple-system, sans-serif; font-size: 13px; font-weight: 700; color: #58111A; text-decoration: none;">
+                          <a href="https://brief.delights.pro/api/track?url=https%3A%2F%2Fgithub.blog%2Fai-and-ml%2Fgenerative-ai%2Fmigrating-the-github-copilot-runtime-to-rust-using-copilot%2F&s=builders&d=2026-09-25&t=Migrating+the+GitHub+Copilot+runtime+to+Rust%2C+using+Copilot" target="_blank" style="font-family: -apple-system, sans-serif; font-size: 13px; font-weight: 700; color: #58111A; text-decoration: none;">
+                            Read Full Analysis &rarr;
+                          </a>
+                        </td>
+                      </tr>
+                    </table>
+
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          
+          <!-- Single Article Card -->
+          <tr>
+            <td style="padding-bottom: 20px;">
+              <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="background-color: #FFFFFF; border: 1px solid #E5DCD3; border-radius: 12px; width: 100%;" class="card-bg">
+                <tr>
+                  <td style="padding: 20px;">
+                    
+                    <!-- Meta Row: Tag & Source -->
+                    <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="margin-bottom: 10px;">
+                      <tr>
+                        <td align="left">
+                          <span style="background-color: #58111A; color: #FFFFFF; font-family: -apple-system, sans-serif; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; padding: 3px 8px; border-radius: 4px; display: inline-block;">
+                            ☁️ Enterprise Tech
+                          </span>
+                          <span style="font-family: -apple-system, sans-serif; font-size: 12px; color: #64748b; margin-left: 8px;">
+                            via <strong>Vercel News</strong> &bull; 1 min read
+                          </span>
+                        </td>
+                      </tr>
+                    </table>
+
+                    <!-- Article Headline -->
+                    <h3 style="margin: 0 0 10px 0; font-family: Georgia, 'Times New Roman', serif; font-size: 19px; line-height: 25px; font-weight: 700;">
+                      <a href="https://brief.delights.pro/api/track?url=https%3A%2F%2Fvercel.com%2Fblog%2Fa-deep-dive-into-hive-vercels-builds-infrastructure&s=builders&d=2026-09-25&t=A+deep+dive+into+Vercel%E2%80%99s+build+infrastructure" target="_blank" style="color: #121212; text-decoration: none;" class="header-title">
+                        A deep dive into Vercel’s build infrastructure
+                      </a>
+                    </h3>
+
+                    <!-- Article Summary Body -->
+                    
+                      <p class="body-text" style="margin: 0 0 12px 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 15px; line-height: 24px; color: #334155; -webkit-text-size-adjust: 100%; text-size-adjust: 100%;">Vercel has a new low-level untrusted and ephemeral compute platform—designed to give us the control needed to securely and efficiently manage and run builds. Since November 2023, this compute platform, internally codenamed "Hive", has powered Vercel’s builds, enabling key improvements like enhanced build machines and a 30% improvement in build performance.The platform operates on the fundamental assumption that we’re executing potentially malicious code on multi-tenant machines, requiring it to be safe, reliable, performant, and cost-effective. It’s architected to handle multiple use cases and can be composed in different ways depending on what’s needed. Most recently, Hive allowed us to reduce provisioning times for Secure Compute customers from 90 seconds to 5 seconds, while also improving their build speeds.We built Hive because we needed finer control and more granular management to continuously improve Vercel’s infrastructure, to meet the growing demands of our customers and to fulfill our vision of delivering the best development experience in the world.  Read more </p>
+                    
+
+
+                    
+                    <!-- Strategic Takeaway Box -->
+                    <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="background-color: #FAF8F5; border-left: 3px solid #58111A; border-radius: 0 8px 8px 0;">
+                      <tr>
+                        <td style="padding: 12px 14px;">
+                          <div style="font-family: -apple-system, sans-serif; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: #58111A; margin-bottom: 4px;">
+                            💡 WHY THIS MATTERS FOR YOUR ROLE
+                          </div>
+                          <div style="font-family: -apple-system, sans-serif; font-size: 13px; line-height: 19px; color: #1e293b; font-weight: 500;">
+                            Understanding Vercel's build infrastructure provides valuable lessons in secure, scalable, and efficient CI/CD pipeline design.
+                          </div>
+                        </td>
+                      </tr>
+                    </table>
+                    
+
+                    <!-- Article Action Row: Social Share & Read Link -->
+                    <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="margin-top: 14px; padding-top: 10px; border-top: 1px dashed #E5DCD3;">
+                      <tr>
+                        <td align="left" style="font-family: -apple-system, sans-serif; font-size: 12px; color: #64748b;">
+                          Share: 
+                          <a href="https://twitter.com/intent/tweet?text=A%20deep%20dive%20into%20Vercel%E2%80%99s%20build%20infrastructure&url=https%3A//brief.delights.pro/api/track%3Furl%3Dhttps%253A%252F%252Fvercel.com%252Fblog%252Fa-deep-dive-into-hive-vercels-builds-infrastructure%26s%3Dbuilders%26d%3D2026-09-25%26t%3DA%2Bdeep%2Bdive%2Binto%2BVercel%25E2%2580%2599s%2Bbuild%2Binfrastructure" target="_blank" style="color: #58111A; text-decoration: none; font-weight: 600; margin-left: 4px; margin-right: 8px;">𝕏 Post</a>
+                          <a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A//brief.delights.pro/api/track%3Furl%3Dhttps%253A%252F%252Fvercel.com%252Fblog%252Fa-deep-dive-into-hive-vercels-builds-infrastructure%26s%3Dbuilders%26d%3D2026-09-25%26t%3DA%2Bdeep%2Bdive%2Binto%2BVercel%25E2%2580%2599s%2Bbuild%2Binfrastructure" target="_blank" style="color: #58111A; text-decoration: none; font-weight: 600; margin-right: 8px;">LinkedIn</a>
+                          <a href="mailto:?subject=A%20deep%20dive%20into%20Vercel%E2%80%99s%20build%20infrastructure&body=Check%20out%20this%20insight%20from%20Brief%20Delights:%20https%3A//brief.delights.pro/api/track%3Furl%3Dhttps%253A%252F%252Fvercel.com%252Fblog%252Fa-deep-dive-into-hive-vercels-builds-infrastructure%26s%3Dbuilders%26d%3D2026-09-25%26t%3DA%2Bdeep%2Bdive%2Binto%2BVercel%25E2%2580%2599s%2Bbuild%2Binfrastructure" style="color: #64748b; text-decoration: none;">Email</a>
+                        </td>
+                        <td align="right">
+                          <a href="https://brief.delights.pro/api/track?url=https%3A%2F%2Fvercel.com%2Fblog%2Fa-deep-dive-into-hive-vercels-builds-infrastructure&s=builders&d=2026-09-25&t=A+deep+dive+into+Vercel%E2%80%99s+build+infrastructure" target="_blank" style="font-family: -apple-system, sans-serif; font-size: 13px; font-weight: 700; color: #58111A; text-decoration: none;">
                             Read Full Analysis &rarr;
                           </a>
                         </td>
@@ -559,7 +559,7 @@
                             💡 WHY THIS MATTERS FOR YOUR ROLE
                           </div>
                           <div style="font-family: -apple-system, sans-serif; font-size: 13px; line-height: 19px; color: #1e293b; font-weight: 500;">
-                            Builders splitting Next.js and Python services across clouds now have a consolidated option to evaluate against their existing DevOps footprint.
+                            Understanding EventBridge enhancements is key for building robust, scalable, and manageable event-driven systems across enterprise accounts.
                           </div>
                         </td>
                       </tr>
@@ -577,6 +577,152 @@
                         </td>
                         <td align="right">
                           <a href="https://brief.delights.pro/api/track?url=https%3A%2F%2Fvercel.com%2Fblog%2Fvercel-services-run-full-stack-on-vercel&s=builders&d=2026-09-25&t=Vercel+Services%3A+Run+full+stack+on+Vercel" target="_blank" style="font-family: -apple-system, sans-serif; font-size: 13px; font-weight: 700; color: #58111A; text-decoration: none;">
+                            Read Full Analysis &rarr;
+                          </a>
+                        </td>
+                      </tr>
+                    </table>
+
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          
+          <!-- Single Article Card -->
+          <tr>
+            <td style="padding-bottom: 20px;">
+              <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="background-color: #FFFFFF; border: 1px solid #E5DCD3; border-radius: 12px; width: 100%;" class="card-bg">
+                <tr>
+                  <td style="padding: 20px;">
+                    
+                    <!-- Meta Row: Tag & Source -->
+                    <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="margin-bottom: 10px;">
+                      <tr>
+                        <td align="left">
+                          <span style="background-color: #58111A; color: #FFFFFF; font-family: -apple-system, sans-serif; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; padding: 3px 8px; border-radius: 4px; display: inline-block;">
+                            ☁️ Enterprise Tech
+                          </span>
+                          <span style="font-family: -apple-system, sans-serif; font-size: 12px; color: #64748b; margin-left: 8px;">
+                            via <strong>Vercel News</strong> &bull; 1 min read
+                          </span>
+                        </td>
+                      </tr>
+                    </table>
+
+                    <!-- Article Headline -->
+                    <h3 style="margin: 0 0 10px 0; font-family: Georgia, 'Times New Roman', serif; font-size: 19px; line-height: 25px; font-weight: 700;">
+                      <a href="https://brief.delights.pro/api/track?url=https%3A%2F%2Fvercel.com%2Fblog%2Fthe-foundations-of-the-frontend-cloud&s=builders&d=2026-09-25&t=The+foundations+of+the+Frontend+Cloud" target="_blank" style="color: #121212; text-decoration: none;" class="header-title">
+                        The foundations of the Frontend Cloud
+                      </a>
+                    </h3>
+
+                    <!-- Article Summary Body -->
+                    
+                      <p class="body-text" style="margin: 0 0 12px 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 15px; line-height: 24px; color: #334155; -webkit-text-size-adjust: 100%; text-size-adjust: 100%;">Core web app decisions tend to center the backend, due to its complexity and impact over huge swaths of the business.However, frontends have grown far more important and complex in their own right. When not prioritized, the intricate infrastructure around them can quickly spin out of control, dragging teams into untold amounts of tech debt.As decoupled architecture becomes more common, developers are turning to the Frontend Cloud to automate away the behind-the-scenes hassles of creating and growing dynamic websites.Instead of managing infrastructure as a separate step of the development process, the Frontend Cloud provisions global infrastructure for you, based on your existing application code. This approach to web development massively increases developer velocity, allowing your team to experiment safely and meet shifting market demands. Teams of all sizes can effortlessly scale global apps while maintaining the highest possible bars for performance, personalization, and security.You can think of the backend cloud as your cost center and the Frontend Cloud as your profit center.  Read more </p>
+                    
+
+
+                    
+                    <!-- Strategic Takeaway Box -->
+                    <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="background-color: #FAF8F5; border-left: 3px solid #58111A; border-radius: 0 8px 8px 0;">
+                      <tr>
+                        <td style="padding: 12px 14px;">
+                          <div style="font-family: -apple-system, sans-serif; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: #58111A; margin-bottom: 4px;">
+                            💡 WHY THIS MATTERS FOR YOUR ROLE
+                          </div>
+                          <div style="font-family: -apple-system, sans-serif; font-size: 13px; line-height: 19px; color: #1e293b; font-weight: 500;">
+                            Recognizing the 'Frontend Cloud' is crucial for architects and leaders to allocate resources effectively to complex frontend infrastructure.
+                          </div>
+                        </td>
+                      </tr>
+                    </table>
+                    
+
+                    <!-- Article Action Row: Social Share & Read Link -->
+                    <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="margin-top: 14px; padding-top: 10px; border-top: 1px dashed #E5DCD3;">
+                      <tr>
+                        <td align="left" style="font-family: -apple-system, sans-serif; font-size: 12px; color: #64748b;">
+                          Share: 
+                          <a href="https://twitter.com/intent/tweet?text=The%20foundations%20of%20the%20Frontend%20Cloud&url=https%3A//brief.delights.pro/api/track%3Furl%3Dhttps%253A%252F%252Fvercel.com%252Fblog%252Fthe-foundations-of-the-frontend-cloud%26s%3Dbuilders%26d%3D2026-09-25%26t%3DThe%2Bfoundations%2Bof%2Bthe%2BFrontend%2BCloud" target="_blank" style="color: #58111A; text-decoration: none; font-weight: 600; margin-left: 4px; margin-right: 8px;">𝕏 Post</a>
+                          <a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A//brief.delights.pro/api/track%3Furl%3Dhttps%253A%252F%252Fvercel.com%252Fblog%252Fthe-foundations-of-the-frontend-cloud%26s%3Dbuilders%26d%3D2026-09-25%26t%3DThe%2Bfoundations%2Bof%2Bthe%2BFrontend%2BCloud" target="_blank" style="color: #58111A; text-decoration: none; font-weight: 600; margin-right: 8px;">LinkedIn</a>
+                          <a href="mailto:?subject=The%20foundations%20of%20the%20Frontend%20Cloud&body=Check%20out%20this%20insight%20from%20Brief%20Delights:%20https%3A//brief.delights.pro/api/track%3Furl%3Dhttps%253A%252F%252Fvercel.com%252Fblog%252Fthe-foundations-of-the-frontend-cloud%26s%3Dbuilders%26d%3D2026-09-25%26t%3DThe%2Bfoundations%2Bof%2Bthe%2BFrontend%2BCloud" style="color: #64748b; text-decoration: none;">Email</a>
+                        </td>
+                        <td align="right">
+                          <a href="https://brief.delights.pro/api/track?url=https%3A%2F%2Fvercel.com%2Fblog%2Fthe-foundations-of-the-frontend-cloud&s=builders&d=2026-09-25&t=The+foundations+of+the+Frontend+Cloud" target="_blank" style="font-family: -apple-system, sans-serif; font-size: 13px; font-weight: 700; color: #58111A; text-decoration: none;">
+                            Read Full Analysis &rarr;
+                          </a>
+                        </td>
+                      </tr>
+                    </table>
+
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          
+          <!-- Single Article Card -->
+          <tr>
+            <td style="padding-bottom: 20px;">
+              <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="background-color: #FFFFFF; border: 1px solid #E5DCD3; border-radius: 12px; width: 100%;" class="card-bg">
+                <tr>
+                  <td style="padding: 20px;">
+                    
+                    <!-- Meta Row: Tag & Source -->
+                    <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="margin-bottom: 10px;">
+                      <tr>
+                        <td align="left">
+                          <span style="background-color: #58111A; color: #FFFFFF; font-family: -apple-system, sans-serif; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; padding: 3px 8px; border-radius: 4px; display: inline-block;">
+                            ☁️ Enterprise Tech
+                          </span>
+                          <span style="font-family: -apple-system, sans-serif; font-size: 12px; color: #64748b; margin-left: 8px;">
+                            via <strong>Netflix TechBlog - Medium</strong> &bull; 10 min read
+                          </span>
+                        </td>
+                      </tr>
+                    </table>
+
+                    <!-- Article Headline -->
+                    <h3 style="margin: 0 0 10px 0; font-family: Georgia, 'Times New Roman', serif; font-size: 19px; line-height: 25px; font-weight: 700;">
+                      <a href="https://brief.delights.pro/api/track?url=https%3A%2F%2Fnetflixtechblog.com%2Fa-tale-of-two-flink-autoscalers-e9f6a1b1492b%3Fsource%3Drss----2615bd06b42e---4&s=builders&d=2026-09-25&t=A+Tale+of+Two+Flink+Autoscalers" target="_blank" style="color: #121212; text-decoration: none;" class="header-title">
+                        A Tale of Two Flink Autoscalers
+                      </a>
+                    </h3>
+
+                    <!-- Article Summary Body -->
+                    
+                      <p class="body-text" style="margin: 0 0 12px 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 15px; line-height: 24px; color: #334155; -webkit-text-size-adjust: 100%; text-size-adjust: 100%;">Samuel Yeboah, Francesco Di Chiara and Mingliang LiuToday, Netflix runs two Flink autoscalers. That is exactly one more than we want. We built the first one in-house years ago, when there was no mature option suited to our platform. The second came from the Apache Flink community, and it can scale workloads our homegrown system was never designed for. We now run both in production and are steadily converging on the open-source one. Along the way we learned some hard lessons about metrics, cost, and the real price of maintaining infrastructure you could instead adopt, and we hope they are useful whether you run a handful of Flink jobs or tens of thousands.Why autoscaling is not optional at our scaleNetflix has run stream processing on Apache Flink since 2017. As of 2026 we operate more than 30,000 Flink jobs across multiple AWS regions. Most are not deployed by hand; they are generated by our managed platform Data Mesh, so the majority of users never touch a Flink job directly. A smaller but growing set are custom jobs, built and operated by teams across the company for use cases like personalization, Ads, and Live events. They range from single-operator jobs that shuttle records between Kafka topics to stateful pipelines with branches, joins, and terabytes of state, and their load swings with daily cycles, launches, and regional failovers.Provisioning every one of those jobs for its peak is wasteful; provisioning for the average causes lag during surges. And in our platform a scaling action is not free: by default it means taking a savepoint, stopping the job gracefully, and restarting it at the new size, which for a large stateful job can take minutes. That leaves a genuinely hard question: how do you give each job the resources it needs, when it needs them, without a human in the loop and without breaking anything?The first autoscaler: watching from outsideOur first answer, built around 2019, was an autoscaler shaped like a stream-processing job. It ran on Mantis, consuming a live feed of cluster-level metrics from Atlas, our telemetry platform, including CPU, network, Kafka lag, input-rate, and consume-rate signals for every job. The scaler combined lag-derived catch-up time, CPU/network utilization thresholds, observed performance history, and regression over recent input rate to decide when to scale up or whether a smaller cluster could handle the lookahead window. Because the autoscaler operates independently of the Flink platform, it remains unaffected by issues within Flink itself. Building it as a streaming job also made it easy to scale. Each autoscaler node handled the metrics for a subset of Flink jobs, and we never had to write custom sharding or coordination logic to keep up with a growing Flink fleet. It reliably cut resource usage by 25–45% across thousands of managed pipelines. Check our previous talk at Flink Forward 2020.But watching from outside has a ceiling. The system reasoned about a whole cluster through coarse container metrics, and it scaled a single knob, the total TaskManager count, so every operator in a job moved together. That fit the simple, single-operator pipelines it was built for, but not the multi-operator, stateful DAGs that teams were increasingly bringing to us for Ads, recommendations, and games. Those were exactly the jobs it could not reason about, and supporting each new case meant more custom logic rather than any general capability.The autoscaler is only as good as the metrics served by external systems beneath it. Those metrics could miss real trouble: a job could be completely busy without any of it showing up as CPU utilization, leaving the job stuck in a degraded state the scaler had no way to see. Recently a networking migration quietly changed how some traffic was reported, and a subset of the Atlas metrics the scaler relied on stopped capturing everything accurately. The gap stayed invisible until it surfaced in production much later.It was time to reconsider build versus buy.The second autoscaler: reasoning from insideWhen we started, the Flink community had no mature autoscaler to offer. By the time we re-evaluated, it did: the Apache Flink Autoscaler. Instead of watching containers from outside, it reasons from inside the job.Its key idea is to estimate each operator’s true processing rate (TPR): the throughput it could sustain if it were fully busy. Flink reports, per subtask, the fraction of each second spent doing actual work, separate from time spent backpressured or idle. Dividing observed throughput by that busy fraction extrapolates capacity to full utilization: an operator handling 700 records/sec while busy 70% of the time has a TPR of 700 / 0.7 = 1,000 records/sec. Starting from the sources, the autoscaler walks the job graph and uses each operator’s TPR, its input/output ratios, and a target utilization to compute the parallelism every vertex needs so that no operator becomes the bottleneck, rather than resizing the whole cluster as a unit.The two approaches make a different contract, summarized below.The decisive difference for us is the last two rows: the OSS autoscaler can scale exactly the stateful, multi-operator jobs our homegrown system could not, and it lets each job carry its own configuration — stabilization periods, thresholds, and other scaling behavior tuned to the workload. That made it the natural fit for the custom jobs teams had been scaling by hand.Making it work at Netflix scaleAdopting the algorithm was straightforward; the community had done the hard part. The work for us was running it reliably across our own jobs, and this is where our system differs most from the stock open-source deployment.Firstly, the OSS autoscaler was originally architected to reside within the Kubernetes Operator for Flink, but our Flink platform runs on its own control plane, not that operator (see our previous talk at Current Conference 2024). The community later made a fantastic decision to keep the core logic as a standalone library. They refactored four generic interfaces that made it easy to plug directly into our internal ecosystem: a context carrying job metadata and REST API info, a state store, an event handler, and a realizer that applies scaling decisions.That service is a Spring Boot application whose orchestration runs on Temporal, the durable workflow engine. An orchestrator workflow polls our Flink control plane about once a minute for the jobs with autoscaling enabled, and starts one long-running workflow per job. Each per-job workflow pulls that job’s per-vertex metrics from its Flink JobManager, runs the OSS evaluation algorithm, and, when a scaling decision results, hands it to a realizer that actuates the change through our Flink control plane.The workflow-per-job design was a direct response to pain. We first ran evaluations in a single batch loop over the whole set of jobs, and it was fragile: one slow or misbehaving job could stall metric collection and scaling for every job behind it. Giving each job its own durable workflow isolated that blast radius, so a single problematic job now fails and retries on its own, and the runtime scales out as we onboard more jobs.Secondly, three engineering gaps stood between “works in community” and “works at Netflix scale”:Metric collection at high parallelism. On big jobs, pulling metrics from the JobManager became a bottleneck, and part of the cause was in Flink’s runtime. To address that, we changed the JobManager to cache transient metric names and clean them up once instead of rescanning on every fetch, and we added server-side filtering so the autoscaler asks only for the metrics it needs. This let the autoscaler work on jobs up to 3,000 Flink subtasks, where it had previously struggled above roughly 1,000. Those are in our internal fork of Flink release, while some are contributed upstream such as FLINK-36172.Preserving forward chaining. Two separate vertices joined by a forward connection must run at the same parallelism, because records are handed over in memory on a fixed local channel. Scale one of them alone and Flink does not fail; it silently converts that edge into a network shuffle. Our fork detects forward-connected subgraphs and scales each as a unit.Respecting sink limits. Some sinks have finite write capacity, so we added detection for async-sink backpressure (also a fork change) to keep the autoscaler from scaling a job up into a sink that cannot absorb more.Before it actuates anything, the realizer runs a set of safety checks. For example, it refuses to scale a job down in a region being evacuated during a company-wide region failover. It also verifies there is enough disk for the new cluster to hold the job’s checkpoint state, and it adds a small standby buffer for larger clusters.The road to one autoscalerLast year, the OSS-based autoscaler achieved general availability for custom jobs at Netflix, yielding promising initial outcomes. For instance, our client telemetry and logging team achieved a 58% reduction in its annualized Flink compute expenditures, saving approximately $1.1 million annually. This efficiency is driven by three key factors. First, whereas static provisioning must always account for peak loads, autoscaling dynamically adapts to daily cycles, capturing the drop in traffic during nights and weekends compared to weekday peaks. Second, rather than relying on teams to manually optimize resources following performance improvements or post-holiday slowdowns, the autoscaler continually adjusts capacity. Finally, adopting uniform container dimensions enables superior bin-packing and more granular scaling increments.Additionally, scaling down too eagerly is its own trap. Cut too deep and CPU saturates, lag spikes, and the system cannot react instantly because its metric window and stabilization period have to rebuild after each restart. We now run a target utilization of 0.45, below the community default of 0.7, deliberately trading a little efficiency for stability. Fewer and calmer rescales are worth the marginal cost for large stateful jobs.While our scaler provides fine-grained signals and vertex-level decision units for stateful DAGs, fast rescaling still heavily depends on Flink Core’s state restoration performance. Today, the biggest remaining cost in scaling a stateful job isn’t the scaler’s logic — it’s the restart and state recovery process itself. Flink 2 addresses this through its disaggregated state architecture, keeping state in external storage rather than on local disk, which can sharply reduce how much a rescale or recovery depends on total state size. Having started supporting Flink 2.2 at Netflix, we plan on experimenting with this new state backend to see if it can help eliminate state recovery bottlenecks when scaling large stateful jobs.Looking ahead, we aim to migrate all internal scaler use cases onto the new one based on OSS autoscaler to simplify our operational surface area.Key TakeawaysAlong the way, three lessons that generalize beyond Flink:Metric choice matters more than algorithm sophistication. Our most useful debugging was rarely about the scaling math; it was about which signal to trust most. Understand your metrics before you tune your algorithm.Set sensible defaults, but leave room to tune. Our managed jobs are similar enough that one good default covers most of them untouched, which is the point of a platform. But forcing a single configuration on every job punishes the ones that do not fit, so we pair defaults with per-job overrides and deliberately hide the knobs that need deep expertise. Most teams should never have to think about the autoscaler.Adopt, then extend. We built in-house because in 2019 nothing mature fit our platform. When a strong community project appeared, the right move was neither to defend our investment forever nor to rip it out overnight, but to adopt it for new workloads, contribute fixes back, and plan a deliberate migration.Thanks to the Flink and Data Mesh teams for the control-plane changes this work depended on, to the Temporal team and our early pilot teams, and to the Apache Flink autoscaler maintainers whose foundation we built on. Special thanks to Andy Zhang, Calvin Cheung, Daniel Trager, Guil Pires, Mark Cho, Matthew Kornitsky, Nikhil Sulegaon, Sujay Jain, and Tom Lee.A Tale of Two Flink Autoscalers was originally published in Netflix TechBlog on Medium, where people are continuing the conversation by highlighting and responding to this story.</p>
+                    
+
+
+                    
+                    <!-- Strategic Takeaway Box -->
+                    <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="background-color: #FAF8F5; border-left: 3px solid #58111A; border-radius: 0 8px 8px 0;">
+                      <tr>
+                        <td style="padding: 12px 14px;">
+                          <div style="font-family: -apple-system, sans-serif; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: #58111A; margin-bottom: 4px;">
+                            💡 WHY THIS MATTERS FOR YOUR ROLE
+                          </div>
+                          <div style="font-family: -apple-system, sans-serif; font-size: 13px; line-height: 19px; color: #1e293b; font-weight: 500;">
+                            Analyzing Flink autoscaling strategies from Netflix offers direct insights into optimizing performance and cost for large-scale data infrastructure.
+                          </div>
+                        </td>
+                      </tr>
+                    </table>
+                    
+
+                    <!-- Article Action Row: Social Share & Read Link -->
+                    <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="margin-top: 14px; padding-top: 10px; border-top: 1px dashed #E5DCD3;">
+                      <tr>
+                        <td align="left" style="font-family: -apple-system, sans-serif; font-size: 12px; color: #64748b;">
+                          Share: 
+                          <a href="https://twitter.com/intent/tweet?text=A%20Tale%20of%20Two%20Flink%20Autoscalers&url=https%3A//brief.delights.pro/api/track%3Furl%3Dhttps%253A%252F%252Fnetflixtechblog.com%252Fa-tale-of-two-flink-autoscalers-e9f6a1b1492b%253Fsource%253Drss----2615bd06b42e---4%26s%3Dbuilders%26d%3D2026-09-25%26t%3DA%2BTale%2Bof%2BTwo%2BFlink%2BAutoscalers" target="_blank" style="color: #58111A; text-decoration: none; font-weight: 600; margin-left: 4px; margin-right: 8px;">𝕏 Post</a>
+                          <a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A//brief.delights.pro/api/track%3Furl%3Dhttps%253A%252F%252Fnetflixtechblog.com%252Fa-tale-of-two-flink-autoscalers-e9f6a1b1492b%253Fsource%253Drss----2615bd06b42e---4%26s%3Dbuilders%26d%3D2026-09-25%26t%3DA%2BTale%2Bof%2BTwo%2BFlink%2BAutoscalers" target="_blank" style="color: #58111A; text-decoration: none; font-weight: 600; margin-right: 8px;">LinkedIn</a>
+                          <a href="mailto:?subject=A%20Tale%20of%20Two%20Flink%20Autoscalers&body=Check%20out%20this%20insight%20from%20Brief%20Delights:%20https%3A//brief.delights.pro/api/track%3Furl%3Dhttps%253A%252F%252Fnetflixtechblog.com%252Fa-tale-of-two-flink-autoscalers-e9f6a1b1492b%253Fsource%253Drss----2615bd06b42e---4%26s%3Dbuilders%26d%3D2026-09-25%26t%3DA%2BTale%2Bof%2BTwo%2BFlink%2BAutoscalers" style="color: #64748b; text-decoration: none;">Email</a>
+                        </td>
+                        <td align="right">
+                          <a href="https://brief.delights.pro/api/track?url=https%3A%2F%2Fnetflixtechblog.com%2Fa-tale-of-two-flink-autoscalers-e9f6a1b1492b%3Fsource%3Drss----2615bd06b42e---4&s=builders&d=2026-09-25&t=A+Tale+of+Two+Flink+Autoscalers" target="_blank" style="font-family: -apple-system, sans-serif; font-size: 13px; font-weight: 700; color: #58111A; text-decoration: none;">
                             Read Full Analysis &rarr;
                           </a>
                         </td>

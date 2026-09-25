@@ -4,22 +4,23 @@ track: leaders
 format: daily
 voice_profile: alex_tech
 tools:
-- name: Andreessen Horowitz
-  headline: Andreessen Horowitz launches AI academy as an alternative to college degree
-    - The Tech Portal
-  title: Andreessen Horowitz launches AI academy as an alternative to college degree
-    - The Tech Portal
-  url: https://news.google.com/rss/articles/CBMinwFBVV95cUxNTW93WWd0dVpHQnJXQXE0dUFEd0l1YW0yZk9taWRSMERKQkFrOFN6MjZHU096NDdEb085dnVFNW9Vamc2VGxMR2dvdVBBaVJxR293STZ1aS00Q0dONXowdXRCT1NFYk5raXFsYVV5c3J5bG1JSng4ZmpLQ0RaYjNTVGxGUEJEOEZPWHFsSk5jazN3R0hQTW9nYXMyWkFQcXPSAaQBQVVfeXFMUE5UWGJnVER0dlNRc0J0SWtvVURrZkhMUjlTNjRWMGRSMTZ2QUZCTzNsbU5wbTk4TmFqRlJaUmduTHVjNkFkUVVVOGVTU3I4eGl3VTYyUHlCdlJ2S05va0FYZWV2eHlNQXFjaGl3NkFMOUdLYXBZRC13eDUtczE1QjQ0cVkzYzJwaTFEbGZ5UGt5VDZMRUdjaTdNTGJHMjVRRFBhMGE?oc=5
+- name: Stripes AI CRO
+  headline: 'Stripe’s AI CRO on the Fastest-Growing AI Companies: 175% Growth, 48%
+    of Revenue From Outside the Home Market, and Agents About to Read More Stripe
+    Docs Than Human - saastr.com'
+  title: 'Stripe’s AI CRO on the Fastest-Growing AI Companies: 175% Growth, 48% of
+    Revenue From Outside the Home Market, and Agents About to Read More Stripe Docs
+    Than Human - saastr.com'
+  url: https://news.google.com/rss/articles/CBMijgJBVV95cUxNcDBLRzFjZl9xd3c1elE5cGN4RXlEMGJ3QkkxbEMtaHFSZVlOZjZmaVA1WklnM0VqWnA1eU9JRWZLZDRMM18zaE5oVzJFWHJ4OEh0NDYxbGNpUlpGVjUycHBrc0FrUUpRUm5VR2x6TGtJMVdjRlRveVJVS1RPTkRZRFVYZ2lhdXVpUmo1YWlZNC1JMWE3a0VQU015UFdpTHFRbGI3eVpHa2R1VXFsckVzWkNaWWc1Um9EUU5YeDU2RmR2TnF3bC1DdVhjUXNKaGhFTkg0dDlPWHdRY2hzYWo5d29EZGJTaGJYSzZXZlRmNUFDSTNaYjFDT3hmY2N4TURJLXNHZ3IweTZ0WUw3VWc?oc=5
   mode: industry_insight
   hero_anchor: main h1, header h1, .hero h1, h1
   demo_anchor: figure, table, blockquote, canvas, .chart, .metrics
   download_anchor: a[href*='report'], a[href*='pdf'], a.cta-button
   specs: Industry Insight | Strategic Analysis
-  video_readiness: 75.0
-  consensus_count: 5
+  video_readiness: 65.0
+  consensus_count: 1
   hn_points: null
-  badges:
-  - ⚡ 5 Outlets Confirmed
+  badges: []
 - name: Venn
   headline: Venn acquires a16z-backed Zuma for $50 million as its platform closes
     in on one million homes - GlobeNewswire
@@ -35,88 +36,80 @@ tools:
   consensus_count: 1
   hn_points: null
   badges: []
-- name: Amazon EC2 R9g and
-  headline: Amazon EC2 R9g and R9gd instances powered by AWS Graviton5 processors
-    are now generally available
-  title: Amazon EC2 R9g and R9gd instances powered by AWS Graviton5 processors are
-    now generally available
-  url: https://aws.amazon.com/blogs/aws/amazon-ec2-r9g-and-r9gd-instances-powered-by-aws-graviton5-processors-are-now-generally-available/
+- name: Clone your voice using
+  headline: Clone your voice using open-source models
+  title: Clone your voice using open-source models
+  url: https://replicate.com/blog/how-to-tune-a-realistic-voice-clone
   mode: tool_drop
-  hero_anchor: main h1, header h1, .hero h1, h1
-  demo_anchor: 'video, canvas, #demo, .demo, #comparison, table'
-  download_anchor: a[href*='github.com'], a[href*='download'], a[href*='huggingface.co'],
-    .cta-button
-  specs: Live Tool | Web Drop
+  hero_anchor: h1, header, .hero h1
+  demo_anchor: form, input, button[type='submit'], canvas, video, audio, .output,
+    .demo
+  download_anchor: a[href*='github.com'], a[href*='api'], button
+  specs: Live Web App | Interactive Demo
+  video_readiness: 80.0
+  consensus_count: 1
+  hn_points: null
+  badges:
+  - ✨ Interactive Demo Live
+- name: AMD and OpenAI announce
+  headline: AMD and OpenAI announce strategic partnership to deploy 6 gigawatts of
+    AMD GPUs
+  title: AMD and OpenAI announce strategic partnership to deploy 6 gigawatts of AMD
+    GPUs
+  url: https://openai.com/index/openai-amd-strategic-partnership
+  mode: paper_preview
+  hero_anchor: main h1, header h1, h1
+  demo_anchor: 'figure, table, .results, #diagram, #comparison'
+  download_anchor: a[href*='pdf'], a[href*='arxiv.org'], a[href*='github.com']
+  specs: Research Preview | Benchmark
   video_readiness: 60.0
   consensus_count: 2
   hn_points: null
   badges: []
-- name: Rufus-Air
-  headline: An Open LLM Post-Training Recipe
-  title: 'Rufus-Air: An Open LLM Post-Training Recipe'
-  url: https://huggingface.co/papers/2609.29421
-  mode: paper_preview
-  hero_anchor: h1, .paper-title, h1.title
-  demo_anchor: 'table, figure, .results, #benchmark, div[class*=''abstract'']'
-  download_anchor: a[href*='arxiv.org/pdf'], a[href*='huggingface.co/papers']
-  specs: Research Paper | Hugging Face Daily Papers
-  video_readiness: 55.0
-  consensus_count: 1
-  hn_points: null
-  badges:
-  - 📦 Open Weights
 ---
 
 # Intro
-[excited] Five outlets confirmed a venture giant launching a college alternative, fifty million dollars changed hands in proptech, AWS dropped memory-dense silicon, and a fully open post-training recipe just landed. Let's go.
+[excited] Today: Stripe's AI CRO drops growth benchmarks, Venn buys Zuma for fifty million, open-source voice cloning goes live, and AMD-OpenAI commit six gigawatts. Let's dive in.
 
 ---
 
-# Story 1: Andreessen Horowitz | AI Academy Positioned as a College Alternative
-### Landing Page
-[excited] Andreessen Horowitz just launched an AI academy pitched as a direct alternative to a four-year college degree — and five separate outlets confirmed it the same day.
-
-### Demo
-[confident] The mechanics: compressed, employer-facing AI training instead of a tuition-heavy four-year credential. The bet is that hiring managers now weigh shipped work far heavier than diplomas.
-
-### Access
-[skeptical] It's a signal, not a revolution. Hacker News stayed quiet on this one, but when top venture capital starts funding credential alternatives, every university roadmap quietly gets rewritten.
-
----
-
-# Story 2: Venn | $50M Zuma Acquisition Nears One Million Homes
-### Landing Page
-[confident] Venn just paid fifty million dollars to acquire a16z-backed Zuma, and its platform is closing in on one million homes under management.
-
+# Story 1: Stripe AI CRO | 175% Growth, 48% Global Revenue
+### Headline
+[confident] Stripe's AI CRO says fastest-growing AI companies hit 175% growth, with 48% revenue outside home market. These are benchmarks that matter.
 ### Evidence
-[curious] The play is consolidation — fold property management, tenant experience, and payments into one operating layer before the market crowns a default winner in residential tech.
-
+[curious] The data suggests global-first go-to-market is no longer optional. Agents will soon read more Stripe docs than humans, reshaping developer experience.
 ### The Verdict
-[amazed] Fifty million is buying distribution, not novelty. If Venn crosses a million homes, it becomes the default interface between renters and landlords — and that's the real moat.
+[skeptical] If your AI startup isn't built for international payments and agent-readable APIs, you're leaving half the market on the table.
 
 ---
 
-# Story 3: AWS Graviton5 | EC2 R9g and R9gd Instances Go GA
+# Story 2: Venn | Acquires Zuma for $50M, Nears 1M Homes
+### Headline
+[excited] Venn just acquired a16z-backed Zuma for $50 million, closing in on one million homes. Consolidation in AI-powered smart home living.
+### Evidence
+[amazed] Zuma's tech plus Venn's distribution signals a land grab for smart home agents. The a16z backing strongly validates the thesis.
+### The Verdict
+[confident] Expect more roll-ups as AI platforms race to own the household operating layer before big tech locks it down completely.
+
+---
+
+# Story 3: Voice Clone | Open-Source Realistic Voice Tuning
 ### Landing Page
-[excited] AWS just pushed Graviton5 into general availability with R9g and R9gd instances — memory-dense compute aimed straight at databases, caches, and in-memory workloads.
-
+[friendly] Replicate just dropped a guide to tuning realistic voice clones using open-source models. No proprietary black boxes, just your data and GPUs.
 ### Demo
-[confident] R9gd throws in local NVMe storage, and both target the exact cost-performance curve where RAM-heavy workloads usually bleed the most money. That's a direct shot at pricey x86 memory.
-
+[amazed] The interactive demo is live. You upload samples, fine-tune, and generate speech that captures tone, pacing, and emotion in minutes.
 ### Access
-[energetic] It's live in the console right now. Check your region, benchmark one real workload, and compare price-performance before you sign off on your next reserved capacity commit.
+[excited] Link in description. Run it on Replicate, clone your voice, and ship audio agents without paying expensive per-character fees ever again.
 
 ---
 
-# Story 4: Rufus-Air | Open LLM Post-Training Recipe
+# Story 4: AMD + OpenAI | 6 Gigawatts of AMD GPUs
 ### Paper
-[curious] Rufus-Air is a fully open, reproducible post-training recipe built on GLM-4.5-Air-Base — one hundred six billion parameters, twelve active — with every stage documented.
-
+[excited] AMD and OpenAI announce a strategic partnership to deploy six gigawatts of AMD GPUs. That's a direct challenge to Nvidia's frontier compute monopoly.
 ### Architecture
-[amazed] Eight serial stages: SFT, reasoning RL, coding RL, instruction-following RL, general agent, coding agent, search agent, then RLHF. Data, reward design, infrastructure, and stagewise results are all published.
-
+[curious] The deal spans multiple years and signals OpenAI wants supply diversity. Six gigawatts is enough to train and serve next-gen models at scale.
 ### Release Horizon
-[confident] It's out now on Hugging Face with open weights. This is the rare recipe you can actually re-run yourself instead of just reading about someone else's results.
+[confident] Expect first deployments within eighteen months. This fundamentally reshapes hardware economics for every AI lab across the industry through 2030.
 
 ---
 

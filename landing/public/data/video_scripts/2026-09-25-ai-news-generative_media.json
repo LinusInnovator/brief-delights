@@ -4,39 +4,77 @@
   "format": "daily",
   "date": "2026-09-25",
   "voice_profile": "alex_tech",
-  "intro": "[excited] OpenAI just collapsed diffusion from dozens of steps to one, shipped a steerable voice API, and two open-weight papers dropped on Hugging Face. None have Hacker News threads yet, so you're early. Let's go.",
+  "intro": "[excited] Today: clone your voice open-source, Stable Diffusion with Diffusers, ViRDM few-step video, and DeltaWAM robots\u2014HN is quiet, but the builder signal is loud.",
   "stories": [
     {
-      "name": "Consistency Models",
-      "headline": "Consistency Models",
-      "title": "Consistency Models",
-      "url": "https://openai.com/index/consistency-models",
+      "name": "Clone your voice using",
+      "headline": "Clone your voice using open-source models",
+      "title": "Clone your voice using open-source models",
+      "url": "https://replicate.com/blog/how-to-tune-a-realistic-voice-clone",
       "mode": "tool_drop",
-      "hero_anchor": "main h1, header h1, .hero h1, h1",
-      "demo_anchor": "video, audio, canvas, .player, .waveform, iframe[src*='gradio'], .output, figure",
-      "download_anchor": "a[href*='download'], a[href*='github.com'], a[href*='huggingface.co'], .cta-button",
-      "specs": "Creative Media | Audio/Video/3D | Live Demo",
-      "video_readiness": 69.0,
+      "hero_anchor": "h1, header, .hero h1",
+      "demo_anchor": "form, input, button[type='submit'], canvas, video, audio, .output, .demo",
+      "download_anchor": "a[href*='github.com'], a[href*='api'], button",
+      "specs": "Live Web App | Interactive Demo",
+      "video_readiness": 111.0,
       "consensus_count": 1,
       "hn_points": null,
-      "badges": [],
+      "badges": [
+        "\u2728 Interactive Demo Live"
+      ],
       "beats": {
-        "landing_page": "[confident] OpenAI's Consistency Models attack diffusion's core bottleneck, that slow iterative sampling loop, and replace it with single-step generation across image, audio, and video.",
-        "demo": "[amazed] The spec sheet lists a live demo spanning creative media, audio, video, and 3D, so expect the same prompt, radically fewer compute passes, near-instant output.",
-        "access": "[excited] It scores a sixty-nine on our video-readiness index, the highest drop today. Head to the link and run the live demo yourself before everyone else catches on."
+        "landing_page": "[confident] Replicate just dropped a hands-on guide to tuning realistic voice clones with open-source models\u2014no black-box API, full control over your own audio pipeline.",
+        "demo": "[amazed] The interactive demo is live: upload samples, fine-tune, and hear your digital twin speak. Video readiness score hit 111\u2014highest on today's board.",
+        "access": "[excited] No HN thread yet, but consensus is building. Grab the live web app and start cloning responsibly\u2014link below."
       },
       "ordered_beats": [
         {
           "title": "Landing Page",
-          "narration": "[confident] OpenAI's Consistency Models attack diffusion's core bottleneck, that slow iterative sampling loop, and replace it with single-step generation across image, audio, and video."
+          "narration": "[confident] Replicate just dropped a hands-on guide to tuning realistic voice clones with open-source models\u2014no black-box API, full control over your own audio pipeline."
         },
         {
           "title": "Demo",
-          "narration": "[amazed] The spec sheet lists a live demo spanning creative media, audio, video, and 3D, so expect the same prompt, radically fewer compute passes, near-instant output."
+          "narration": "[amazed] The interactive demo is live: upload samples, fine-tune, and hear your digital twin speak. Video readiness score hit 111\u2014highest on today's board."
         },
         {
           "title": "Access",
-          "narration": "[excited] It scores a sixty-nine on our video-readiness index, the highest drop today. Head to the link and run the live demo yourself before everyone else catches on."
+          "narration": "[excited] No HN thread yet, but consensus is building. Grab the live web app and start cloning responsibly\u2014link below."
+        }
+      ]
+    },
+    {
+      "name": "Stable Diffusion",
+      "headline": "Stable Diffusion with \ud83e\udde8 Diffusers",
+      "title": "Stable Diffusion with \ud83e\udde8 Diffusers",
+      "url": "https://huggingface.co/blog/stable_diffusion",
+      "mode": "tool_drop",
+      "hero_anchor": "h1, .model-header, header",
+      "demo_anchor": "table, .results, #benchmark, canvas, .viewer, video",
+      "download_anchor": "button[data-testid='download-button'], a[href*='tree/main'], a[href*='resolve']",
+      "specs": "Model Weights | Hugging Face Hub",
+      "video_readiness": 73.0,
+      "consensus_count": 1,
+      "hn_points": null,
+      "badges": [
+        "\ud83d\udce6 Open Weights"
+      ],
+      "beats": {
+        "landing_page": "[confident] Stable Diffusion with Diffusers: the practical guide every image-gen builder bookmarks. Open weights, Hugging Face Hub, zero gatekeeping.",
+        "demo": "[curious] Diffusers turns text prompts into production-ready pipelines\u2014swap schedulers, load LoRAs, and batch generations without wrestling raw checkpoints.",
+        "access": "[friendly] Consensus count one, HN silent, but this remains the default stack. Model weights are ready on Hugging Face\u2014link in description."
+      },
+      "ordered_beats": [
+        {
+          "title": "Landing Page",
+          "narration": "[confident] Stable Diffusion with Diffusers: the practical guide every image-gen builder bookmarks. Open weights, Hugging Face Hub, zero gatekeeping."
+        },
+        {
+          "title": "Demo",
+          "narration": "[curious] Diffusers turns text prompts into production-ready pipelines\u2014swap schedulers, load LoRAs, and batch generations without wrestling raw checkpoints."
+        },
+        {
+          "title": "Access",
+          "narration": "[friendly] Consensus count one, HN silent, but this remains the default stack. Model weights are ready on Hugging Face\u2014link in description."
         }
       ]
     },
@@ -57,56 +95,22 @@
         "\ud83d\udce6 Open Weights"
       ],
       "beats": {
-        "paper": "[curious] ViRDM asks a sharp question: do few-step autoregressive video diffusion models really need a massive pretrained teacher plus an online critic to distill distributional matching?",
-        "architecture": "[confident] Their representation distribution matching skips the resource-intensive teacher-critic setup entirely, targeting low-latency streaming video generation with far fewer sampling steps.",
-        "release_horizon": "[friendly] It's flagged Open Weights on Hugging Face Daily Papers with one upvote so far. Early, but if the results hold, this is streaming video's missing piece."
+        "paper": "[skeptical] ViRDM asks: can few-step causal video generation ditch the heavy teacher-critic? It targets low-latency streaming without DMD's resource tax.",
+        "architecture_evidence": "[amazed] They tame representation distribution matching for autoregressive video diffusion\u2014fewer steps, causal streaming, and open weights on HF Daily Papers.",
+        "release_horizon": "[confident] One upvote, no HN thread\u2014early. But if the method holds, real-time video agents get cheaper. Paper link below."
       },
       "ordered_beats": [
         {
           "title": "Paper",
-          "narration": "[curious] ViRDM asks a sharp question: do few-step autoregressive video diffusion models really need a massive pretrained teacher plus an online critic to distill distributional matching?"
+          "narration": "[skeptical] ViRDM asks: can few-step causal video generation ditch the heavy teacher-critic? It targets low-latency streaming without DMD's resource tax."
         },
         {
-          "title": "Architecture",
-          "narration": "[confident] Their representation distribution matching skips the resource-intensive teacher-critic setup entirely, targeting low-latency streaming video generation with far fewer sampling steps."
+          "title": "Architecture/Evidence",
+          "narration": "[amazed] They tame representation distribution matching for autoregressive video diffusion\u2014fewer steps, causal streaming, and open weights on HF Daily Papers."
         },
         {
           "title": "Release Horizon",
-          "narration": "[friendly] It's flagged Open Weights on Hugging Face Daily Papers with one upvote so far. Early, but if the results hold, this is streaming video's missing piece."
-        }
-      ]
-    },
-    {
-      "name": "Introducing",
-      "headline": "Introducing next-generation audio models in the API",
-      "title": "Introducing next-generation audio models in the API",
-      "url": "https://openai.com/index/introducing-our-next-generation-audio-models",
-      "mode": "tool_drop",
-      "hero_anchor": "main h1, header h1, .hero h1, h1",
-      "demo_anchor": "video, audio, canvas, .player, .waveform, iframe[src*='gradio'], .output, figure",
-      "download_anchor": "a[href*='download'], a[href*='github.com'], a[href*='huggingface.co'], .cta-button",
-      "specs": "Creative Media | Audio/Video/3D | Live Demo",
-      "video_readiness": 61.0,
-      "consensus_count": 2,
-      "hn_points": null,
-      "badges": [],
-      "beats": {
-        "landing_page": "[excited] OpenAI's next-generation audio models are live in the API, and the headline feature is instructable delivery, meaning you describe the tone and the voice actually delivers it.",
-        "demo": "[amazed] This is a direct shot across ElevenLabs' bow: steerable text-to-speech, two-outlet consensus behind it, and voice control sitting right inside your existing API calls.",
-        "access": "[confident] It's in the API now, no waitlist theater. Swap your model name, pass an instruction, and your agent's voice stops sounding like a GPS unit."
-      },
-      "ordered_beats": [
-        {
-          "title": "Landing Page",
-          "narration": "[excited] OpenAI's next-generation audio models are live in the API, and the headline feature is instructable delivery, meaning you describe the tone and the voice actually delivers it."
-        },
-        {
-          "title": "Demo",
-          "narration": "[amazed] This is a direct shot across ElevenLabs' bow: steerable text-to-speech, two-outlet consensus behind it, and voice control sitting right inside your existing API calls."
-        },
-        {
-          "title": "Access",
-          "narration": "[confident] It's in the API now, no waitlist theater. Swap your model name, pass an instruction, and your agent's voice stops sounding like a GPS unit."
+          "narration": "[confident] One upvote, no HN thread\u2014early. But if the method holds, real-time video agents get cheaper. Paper link below."
         }
       ]
     },
@@ -127,22 +131,22 @@
         "\ud83d\udce6 Open Weights"
       ],
       "beats": {
-        "landing_page": "[confident] DeltaWAM wants to fix world-action models that waste training on dense future frames, re-modeling content that barely changes while coupling actions to nuisance appearance.",
-        "demo": "[amazed] Instead it models deltas, transferring visual and motion priors from pretrained video generators straight into bimanual manipulation control, tighter and cheaper at inference.",
-        "access": "[friendly] Open weights, Hugging Face Daily Papers, consensus count of two. Robotics folks, this is the one to fork this weekend."
+        "landing_page": "[excited] DeltaWAM: delta world action models for bimanual robots. It skips dense future frames and focuses on what actually changes.",
+        "demo": "[confident] By modeling action-conditioned dynamics without nuisance appearance, it transfers video priors to two-arm control\u2014double consensus signal on HF.",
+        "access": "[friendly] Open weights, research paper, no HN thread yet. If you build robotics, this is your weekend read\u2014link below."
       },
       "ordered_beats": [
         {
           "title": "Landing Page",
-          "narration": "[confident] DeltaWAM wants to fix world-action models that waste training on dense future frames, re-modeling content that barely changes while coupling actions to nuisance appearance."
+          "narration": "[excited] DeltaWAM: delta world action models for bimanual robots. It skips dense future frames and focuses on what actually changes."
         },
         {
           "title": "Demo",
-          "narration": "[amazed] Instead it models deltas, transferring visual and motion priors from pretrained video generators straight into bimanual manipulation control, tighter and cheaper at inference."
+          "narration": "[confident] By modeling action-conditioned dynamics without nuisance appearance, it transfers video priors to two-arm control\u2014double consensus signal on HF."
         },
         {
           "title": "Access",
-          "narration": "[friendly] Open weights, Hugging Face Daily Papers, consensus count of two. Robotics folks, this is the one to fork this weekend."
+          "narration": "[friendly] Open weights, research paper, no HN thread yet. If you build robotics, this is your weekend read\u2014link below."
         }
       ]
     }
@@ -150,19 +154,38 @@
   "outro": "[friendly] All project links, Hugging Face spaces, and research papers are organized down in the description below. Hit subscribe to Brief Delights for your daily rundown, and I'll see you tomorrow.",
   "tools_metadata": [
     {
-      "name": "Consistency Models",
-      "headline": "Consistency Models",
-      "title": "Consistency Models",
-      "url": "https://openai.com/index/consistency-models",
+      "name": "Clone your voice using",
+      "headline": "Clone your voice using open-source models",
+      "title": "Clone your voice using open-source models",
+      "url": "https://replicate.com/blog/how-to-tune-a-realistic-voice-clone",
       "mode": "tool_drop",
-      "hero_anchor": "main h1, header h1, .hero h1, h1",
-      "demo_anchor": "video, audio, canvas, .player, .waveform, iframe[src*='gradio'], .output, figure",
-      "download_anchor": "a[href*='download'], a[href*='github.com'], a[href*='huggingface.co'], .cta-button",
-      "specs": "Creative Media | Audio/Video/3D | Live Demo",
-      "video_readiness": 69.0,
+      "hero_anchor": "h1, header, .hero h1",
+      "demo_anchor": "form, input, button[type='submit'], canvas, video, audio, .output, .demo",
+      "download_anchor": "a[href*='github.com'], a[href*='api'], button",
+      "specs": "Live Web App | Interactive Demo",
+      "video_readiness": 111.0,
       "consensus_count": 1,
       "hn_points": null,
-      "badges": []
+      "badges": [
+        "\u2728 Interactive Demo Live"
+      ]
+    },
+    {
+      "name": "Stable Diffusion",
+      "headline": "Stable Diffusion with \ud83e\udde8 Diffusers",
+      "title": "Stable Diffusion with \ud83e\udde8 Diffusers",
+      "url": "https://huggingface.co/blog/stable_diffusion",
+      "mode": "tool_drop",
+      "hero_anchor": "h1, .model-header, header",
+      "demo_anchor": "table, .results, #benchmark, canvas, .viewer, video",
+      "download_anchor": "button[data-testid='download-button'], a[href*='tree/main'], a[href*='resolve']",
+      "specs": "Model Weights | Hugging Face Hub",
+      "video_readiness": 73.0,
+      "consensus_count": 1,
+      "hn_points": null,
+      "badges": [
+        "\ud83d\udce6 Open Weights"
+      ]
     },
     {
       "name": "ViRDM",
@@ -182,21 +205,6 @@
       ]
     },
     {
-      "name": "Introducing",
-      "headline": "Introducing next-generation audio models in the API",
-      "title": "Introducing next-generation audio models in the API",
-      "url": "https://openai.com/index/introducing-our-next-generation-audio-models",
-      "mode": "tool_drop",
-      "hero_anchor": "main h1, header h1, .hero h1, h1",
-      "demo_anchor": "video, audio, canvas, .player, .waveform, iframe[src*='gradio'], .output, figure",
-      "download_anchor": "a[href*='download'], a[href*='github.com'], a[href*='huggingface.co'], .cta-button",
-      "specs": "Creative Media | Audio/Video/3D | Live Demo",
-      "video_readiness": 61.0,
-      "consensus_count": 2,
-      "hn_points": null,
-      "badges": []
-    },
-    {
       "name": "DeltaWAM",
       "headline": "Delta World Action Models for Bimanual Manipulation",
       "title": "DeltaWAM: Delta World Action Models for Bimanual Manipulation",
@@ -214,6 +222,6 @@
       ]
     }
   ],
-  "raw_markdown": "---\nepisode_id: ai-news-2026-09-25-generative_media\ntrack: generative_media\nformat: daily\nvoice_profile: alex_tech\ntools:\n- name: Consistency Models\n  headline: Consistency Models\n  title: Consistency Models\n  url: https://openai.com/index/consistency-models\n  mode: tool_drop\n  hero_anchor: main h1, header h1, .hero h1, h1\n  demo_anchor: video, audio, canvas, .player, .waveform, iframe[src*='gradio'], .output,\n    figure\n  download_anchor: a[href*='download'], a[href*='github.com'], a[href*='huggingface.co'],\n    .cta-button\n  specs: Creative Media | Audio/Video/3D | Live Demo\n  video_readiness: 69.0\n  consensus_count: 1\n  hn_points: null\n  badges: []\n- name: ViRDM\n  headline: Taming Representation Distribution Matching for Few-Step Causal Video\n    Generation\n  title: 'ViRDM: Taming Representation Distribution Matching for Few-Step Causal Video\n    Generation'\n  url: https://huggingface.co/papers/2609.28923\n  mode: paper_preview\n  hero_anchor: h1, .paper-title, h1.title\n  demo_anchor: 'table, figure, .results, #benchmark, div[class*=''abstract'']'\n  download_anchor: a[href*='arxiv.org/pdf'], a[href*='huggingface.co/papers']\n  specs: Research Paper | Hugging Face Daily Papers\n  video_readiness: 61.0\n  consensus_count: 1\n  hn_points: null\n  badges:\n  - \ud83d\udce6 Open Weights\n- name: Introducing\n  headline: Introducing next-generation audio models in the API\n  title: Introducing next-generation audio models in the API\n  url: https://openai.com/index/introducing-our-next-generation-audio-models\n  mode: tool_drop\n  hero_anchor: main h1, header h1, .hero h1, h1\n  demo_anchor: video, audio, canvas, .player, .waveform, iframe[src*='gradio'], .output,\n    figure\n  download_anchor: a[href*='download'], a[href*='github.com'], a[href*='huggingface.co'],\n    .cta-button\n  specs: Creative Media | Audio/Video/3D | Live Demo\n  video_readiness: 61.0\n  consensus_count: 2\n  hn_points: null\n  badges: []\n- name: DeltaWAM\n  headline: Delta World Action Models for Bimanual Manipulation\n  title: 'DeltaWAM: Delta World Action Models for Bimanual Manipulation'\n  url: https://huggingface.co/papers/2609.28811\n  mode: tool_drop\n  hero_anchor: h1, .paper-title, h1.title\n  demo_anchor: 'table, figure, .results, #benchmark, div[class*=''abstract'']'\n  download_anchor: a[href*='arxiv.org/pdf'], a[href*='huggingface.co/papers']\n  specs: Research Paper | Hugging Face Daily Papers\n  video_readiness: 58.0\n  consensus_count: 2\n  hn_points: null\n  badges:\n  - \ud83d\udce6 Open Weights\n---\n\n# Intro\n[excited] OpenAI just collapsed diffusion from dozens of steps to one, shipped a steerable voice API, and two open-weight papers dropped on Hugging Face. None have Hacker News threads yet, so you're early. Let's go.\n\n---\n\n# Story 1: Consistency Models | One-Step Generation for Image, Audio, and Video\n### Landing Page\n[confident] OpenAI's Consistency Models attack diffusion's core bottleneck, that slow iterative sampling loop, and replace it with single-step generation across image, audio, and video.\n### Demo\n[amazed] The spec sheet lists a live demo spanning creative media, audio, video, and 3D, so expect the same prompt, radically fewer compute passes, near-instant output.\n### Access\n[excited] It scores a sixty-nine on our video-readiness index, the highest drop today. Head to the link and run the live demo yourself before everyone else catches on.\n\n---\n\n# Story 2: ViRDM | Few-Step Causal Video Generation Without a Teacher\n### Paper\n[curious] ViRDM asks a sharp question: do few-step autoregressive video diffusion models really need a massive pretrained teacher plus an online critic to distill distributional matching?\n### Architecture\n[confident] Their representation distribution matching skips the resource-intensive teacher-critic setup entirely, targeting low-latency streaming video generation with far fewer sampling steps.\n### Release Horizon\n[friendly] It's flagged Open Weights on Hugging Face Daily Papers with one upvote so far. Early, but if the results hold, this is streaming video's missing piece.\n\n---\n\n# Story 3: OpenAI Audio API | Steerable Text-to-Speech You Can Direct\n### Landing Page\n[excited] OpenAI's next-generation audio models are live in the API, and the headline feature is instructable delivery, meaning you describe the tone and the voice actually delivers it.\n### Demo\n[amazed] This is a direct shot across ElevenLabs' bow: steerable text-to-speech, two-outlet consensus behind it, and voice control sitting right inside your existing API calls.\n### Access\n[confident] It's in the API now, no waitlist theater. Swap your model name, pass an instruction, and your agent's voice stops sounding like a GPS unit.\n\n---\n\n# Story 4: DeltaWAM | Delta World Action Models for Bimanual Robots\n### Landing Page\n[confident] DeltaWAM wants to fix world-action models that waste training on dense future frames, re-modeling content that barely changes while coupling actions to nuisance appearance.\n### Demo\n[amazed] Instead it models deltas, transferring visual and motion priors from pretrained video generators straight into bimanual manipulation control, tighter and cheaper at inference.\n### Access\n[friendly] Open weights, Hugging Face Daily Papers, consensus count of two. Robotics folks, this is the one to fork this weekend.\n\n---\n\n# Outro\n[friendly] All project links, Hugging Face spaces, and research papers are organized down in the description below. Hit subscribe to Brief Delights for your daily rundown, and I'll see you tomorrow.",
-  "generated_at": "2026-09-25T10:26:13.446632"
+  "raw_markdown": "---\nepisode_id: ai-news-2026-09-25-generative_media\ntrack: generative_media\nformat: daily\nvoice_profile: alex_tech\ntools:\n- name: Clone your voice using\n  headline: Clone your voice using open-source models\n  title: Clone your voice using open-source models\n  url: https://replicate.com/blog/how-to-tune-a-realistic-voice-clone\n  mode: tool_drop\n  hero_anchor: h1, header, .hero h1\n  demo_anchor: form, input, button[type='submit'], canvas, video, audio, .output,\n    .demo\n  download_anchor: a[href*='github.com'], a[href*='api'], button\n  specs: Live Web App | Interactive Demo\n  video_readiness: 111.0\n  consensus_count: 1\n  hn_points: null\n  badges:\n  - \u2728 Interactive Demo Live\n- name: Stable Diffusion\n  headline: Stable Diffusion with \ud83e\udde8 Diffusers\n  title: Stable Diffusion with \ud83e\udde8 Diffusers\n  url: https://huggingface.co/blog/stable_diffusion\n  mode: tool_drop\n  hero_anchor: h1, .model-header, header\n  demo_anchor: 'table, .results, #benchmark, canvas, .viewer, video'\n  download_anchor: button[data-testid='download-button'], a[href*='tree/main'], a[href*='resolve']\n  specs: Model Weights | Hugging Face Hub\n  video_readiness: 73.0\n  consensus_count: 1\n  hn_points: null\n  badges:\n  - \ud83d\udce6 Open Weights\n- name: ViRDM\n  headline: Taming Representation Distribution Matching for Few-Step Causal Video\n    Generation\n  title: 'ViRDM: Taming Representation Distribution Matching for Few-Step Causal Video\n    Generation'\n  url: https://huggingface.co/papers/2609.28923\n  mode: paper_preview\n  hero_anchor: h1, .paper-title, h1.title\n  demo_anchor: 'table, figure, .results, #benchmark, div[class*=''abstract'']'\n  download_anchor: a[href*='arxiv.org/pdf'], a[href*='huggingface.co/papers']\n  specs: Research Paper | Hugging Face Daily Papers\n  video_readiness: 61.0\n  consensus_count: 1\n  hn_points: null\n  badges:\n  - \ud83d\udce6 Open Weights\n- name: DeltaWAM\n  headline: Delta World Action Models for Bimanual Manipulation\n  title: 'DeltaWAM: Delta World Action Models for Bimanual Manipulation'\n  url: https://huggingface.co/papers/2609.28811\n  mode: tool_drop\n  hero_anchor: h1, .paper-title, h1.title\n  demo_anchor: 'table, figure, .results, #benchmark, div[class*=''abstract'']'\n  download_anchor: a[href*='arxiv.org/pdf'], a[href*='huggingface.co/papers']\n  specs: Research Paper | Hugging Face Daily Papers\n  video_readiness: 58.0\n  consensus_count: 2\n  hn_points: null\n  badges:\n  - \ud83d\udce6 Open Weights\n---\n\n# Intro\n[excited] Today: clone your voice open-source, Stable Diffusion with Diffusers, ViRDM few-step video, and DeltaWAM robots\u2014HN is quiet, but the builder signal is loud.\n\n---\n\n# Story 1: Voice Clone | Clone Your Voice with Open-Source Models\n### Landing Page\n[confident] Replicate just dropped a hands-on guide to tuning realistic voice clones with open-source models\u2014no black-box API, full control over your own audio pipeline.\n### Demo\n[amazed] The interactive demo is live: upload samples, fine-tune, and hear your digital twin speak. Video readiness score hit 111\u2014highest on today's board.\n### Access\n[excited] No HN thread yet, but consensus is building. Grab the live web app and start cloning responsibly\u2014link below.\n\n---\n\n# Story 2: Stable Diffusion | Diffusers Guide for Image Generation\n### Landing Page\n[confident] Stable Diffusion with Diffusers: the practical guide every image-gen builder bookmarks. Open weights, Hugging Face Hub, zero gatekeeping.\n### Demo\n[curious] Diffusers turns text prompts into production-ready pipelines\u2014swap schedulers, load LoRAs, and batch generations without wrestling raw checkpoints.\n### Access\n[friendly] Consensus count one, HN silent, but this remains the default stack. Model weights are ready on Hugging Face\u2014link in description.\n\n---\n\n# Story 3: ViRDM | Few-Step Causal Video Generation\n### Paper\n[skeptical] ViRDM asks: can few-step causal video generation ditch the heavy teacher-critic? It targets low-latency streaming without DMD's resource tax.\n### Architecture/Evidence\n[amazed] They tame representation distribution matching for autoregressive video diffusion\u2014fewer steps, causal streaming, and open weights on HF Daily Papers.\n### Release Horizon\n[confident] One upvote, no HN thread\u2014early. But if the method holds, real-time video agents get cheaper. Paper link below.\n\n---\n\n# Story 4: DeltaWAM | Bimanual Manipulation World Models\n### Landing Page\n[excited] DeltaWAM: delta world action models for bimanual robots. It skips dense future frames and focuses on what actually changes.\n### Demo\n[confident] By modeling action-conditioned dynamics without nuisance appearance, it transfers video priors to two-arm control\u2014double consensus signal on HF.\n### Access\n[friendly] Open weights, research paper, no HN thread yet. If you build robotics, this is your weekend read\u2014link below.\n\n---\n\n# Outro\n[friendly] All project links, Hugging Face spaces, and research papers are organized down in the description below. Hit subscribe to Brief Delights for your daily rundown, and I'll see you tomorrow.",
+  "generated_at": "2026-09-25T13:00:39.189290"
 }

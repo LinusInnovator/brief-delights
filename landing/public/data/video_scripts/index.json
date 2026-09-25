@@ -4,60 +4,60 @@
     "track": "top4",
     "episode_id": "ai-news-2026-09-25-top4",
     "stories": [
-      "DeltaWAM",
-      "ViRDM",
-      "OmniEcho",
-      "OmniEcho"
+      "Clone your voice using",
+      "Introducing gpt-oss",
+      "Stripes AI CRO",
+      "Stable Diffusion"
     ],
     "stories_count": 4,
     "json_path": "/data/video_scripts/2026-09-25-ai-news.json",
     "md_path": "/data/video_scripts/2026-09-25-ai-news.md",
-    "updated_at": "2026-09-25T10:25:26.447994"
+    "updated_at": "2026-09-25T12:59:03.948450"
   },
   {
     "date": "2026-09-25",
     "track": "leaders",
     "episode_id": "ai-news-2026-09-25-leaders",
     "stories": [
-      "Andreessen Horowitz",
+      "Stripes AI CRO",
       "Venn",
-      "Amazon EC2 R9g and",
-      "Rufus-Air"
+      "Clone your voice using",
+      "AMD and OpenAI announce"
     ],
     "stories_count": 4,
     "json_path": "/data/video_scripts/2026-09-25-ai-news-leaders.json",
     "md_path": "/data/video_scripts/2026-09-25-ai-news-leaders.md",
-    "updated_at": "2026-09-25T10:25:59.130377"
+    "updated_at": "2026-09-25T12:59:47.033606"
   },
   {
     "date": "2026-09-25",
     "track": "generative_media",
     "episode_id": "ai-news-2026-09-25-generative_media",
     "stories": [
-      "Consistency Models",
+      "Clone your voice using",
+      "Stable Diffusion",
       "ViRDM",
-      "Introducing",
       "DeltaWAM"
     ],
     "stories_count": 4,
     "json_path": "/data/video_scripts/2026-09-25-ai-news-generative_media.json",
     "md_path": "/data/video_scripts/2026-09-25-ai-news-generative_media.md",
-    "updated_at": "2026-09-25T10:26:13.447683"
+    "updated_at": "2026-09-25T13:00:39.190708"
   },
   {
     "date": "2026-09-25",
     "track": "builders",
     "episode_id": "ai-news-2026-09-25-builders",
     "stories": [
-      "DeltaWAM",
-      "OmniEcho",
-      "Introducing",
-      "ViRDM"
+      "Clone your voice using",
+      "Stable Diffusion",
+      "Welcome spaCy",
+      "Introducing gpt-oss"
     ],
     "stories_count": 4,
     "json_path": "/data/video_scripts/2026-09-25-ai-news-builders.json",
     "md_path": "/data/video_scripts/2026-09-25-ai-news-builders.md",
-    "updated_at": "2026-09-25T10:25:40.581133"
+    "updated_at": "2026-09-25T12:59:24.778511"
   },
   {
     "date": "2026-09-24",
